@@ -1,1 +1,5 @@
 # interchain
+
+```
+npm install interchain
+```
