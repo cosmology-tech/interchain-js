@@ -1,9 +1,9 @@
 {
   "name": "interchain",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "interchainjs",
   "author": "Dan Lynch <pyramation@gmail.com>",
-  "homepage": "https://github.com/pyramation/interchain#readme",
+  "homepage": "https://github.com/cosmology-tech/interchain#readme",
   "license": "SEE LICENSE IN LICENSE",
   "main": "main/index.js",
   "module": "module/index.js",
@@ -37,11 +37,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pyramation/interchain"
+    "url": "https://github.com/cosmology-tech/interchain"
   },
   "keywords": [],
   "bugs": {
-    "url": "https://github.com/pyramation/interchain/issues"
+    "url": "https://github.com/cosmology-tech/interchain/issues"
   },
   "devDependencies": {
     "@babel/cli": "7.18.9",
