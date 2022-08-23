@@ -5,5 +5,5 @@ export declare class LCDQueryClient extends LCDClient {
         restEndpoint: any;
     });
     params(params: QueryParamsRequest): Promise<QueryParamsResponse>;
-    subspaces(params: QuerySubspacesRequest): Promise<QuerySubspacesResponse>;
+    subspaces(_params?: QuerySubspacesRequest): Promise<QuerySubspacesResponse>;
 }

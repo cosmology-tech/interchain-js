@@ -89,57 +89,57 @@ import * as _90 from "./upgrade/v1beta1/tx";
 import * as _91 from "./upgrade/v1beta1/upgrade";
 import * as _92 from "./vesting/v1beta1/tx";
 import * as _93 from "./vesting/v1beta1/vesting";
-import * as _171 from "./auth/v1beta1/query.lcd";
-import * as _172 from "./authz/v1beta1/query.lcd";
-import * as _173 from "./bank/v1beta1/query.lcd";
-import * as _174 from "./distribution/v1beta1/query.lcd";
-import * as _175 from "./evidence/v1beta1/query.lcd";
-import * as _176 from "./feegrant/v1beta1/query.lcd";
-import * as _177 from "./gov/v1/query.lcd";
-import * as _178 from "./gov/v1beta1/query.lcd";
-import * as _179 from "./group/v1/query.lcd";
-import * as _180 from "./mint/v1beta1/query.lcd";
-import * as _181 from "./nft/v1beta1/query.lcd";
-import * as _182 from "./params/v1beta1/query.lcd";
-import * as _183 from "./slashing/v1beta1/query.lcd";
-import * as _184 from "./staking/v1beta1/query.lcd";
-import * as _185 from "./upgrade/v1beta1/query.lcd";
-import * as _186 from "./app/v1alpha1/query.rpc.query";
-import * as _187 from "./auth/v1beta1/query.rpc.query";
-import * as _188 from "./authz/v1beta1/query.rpc.query";
-import * as _189 from "./bank/v1beta1/query.rpc.query";
-import * as _190 from "./base/tendermint/v1beta1/query.rpc.svc";
-import * as _191 from "./distribution/v1beta1/query.rpc.query";
-import * as _192 from "./evidence/v1beta1/query.rpc.query";
-import * as _193 from "./feegrant/v1beta1/query.rpc.query";
-import * as _194 from "./gov/v1/query.rpc.query";
-import * as _195 from "./gov/v1beta1/query.rpc.query";
-import * as _196 from "./group/v1/query.rpc.query";
-import * as _197 from "./mint/v1beta1/query.rpc.query";
-import * as _198 from "./nft/v1beta1/query.rpc.query";
-import * as _199 from "./params/v1beta1/query.rpc.query";
-import * as _200 from "./slashing/v1beta1/query.rpc.query";
-import * as _201 from "./staking/v1beta1/query.rpc.query";
-import * as _202 from "./tx/v1beta1/service.rpc.svc";
-import * as _203 from "./upgrade/v1beta1/query.rpc.query";
-import * as _204 from "./authz/v1beta1/tx.rpc.msg";
-import * as _205 from "./bank/v1beta1/tx.rpc.msg";
-import * as _206 from "./crisis/v1beta1/tx.rpc.msg";
-import * as _207 from "./distribution/v1beta1/tx.rpc.msg";
-import * as _208 from "./evidence/v1beta1/tx.rpc.msg";
-import * as _209 from "./feegrant/v1beta1/tx.rpc.msg";
-import * as _210 from "./gov/v1/tx.rpc.msg";
-import * as _211 from "./gov/v1beta1/tx.rpc.msg";
-import * as _212 from "./group/v1/tx.rpc.msg";
-import * as _213 from "./nft/v1beta1/tx.rpc.msg";
-import * as _214 from "./slashing/v1beta1/tx.rpc.msg";
-import * as _215 from "./staking/v1beta1/tx.rpc.msg";
-import * as _216 from "./upgrade/v1beta1/tx.rpc.msg";
-import * as _217 from "./vesting/v1beta1/tx.rpc.msg";
+import * as _174 from "./auth/v1beta1/query.lcd";
+import * as _175 from "./authz/v1beta1/query.lcd";
+import * as _176 from "./bank/v1beta1/query.lcd";
+import * as _177 from "./distribution/v1beta1/query.lcd";
+import * as _178 from "./evidence/v1beta1/query.lcd";
+import * as _179 from "./feegrant/v1beta1/query.lcd";
+import * as _180 from "./gov/v1/query.lcd";
+import * as _181 from "./gov/v1beta1/query.lcd";
+import * as _182 from "./group/v1/query.lcd";
+import * as _183 from "./mint/v1beta1/query.lcd";
+import * as _184 from "./nft/v1beta1/query.lcd";
+import * as _185 from "./params/v1beta1/query.lcd";
+import * as _186 from "./slashing/v1beta1/query.lcd";
+import * as _187 from "./staking/v1beta1/query.lcd";
+import * as _188 from "./upgrade/v1beta1/query.lcd";
+import * as _189 from "./app/v1alpha1/query.rpc.query";
+import * as _190 from "./auth/v1beta1/query.rpc.query";
+import * as _191 from "./authz/v1beta1/query.rpc.query";
+import * as _192 from "./bank/v1beta1/query.rpc.query";
+import * as _193 from "./base/tendermint/v1beta1/query.rpc.svc";
+import * as _194 from "./distribution/v1beta1/query.rpc.query";
+import * as _195 from "./evidence/v1beta1/query.rpc.query";
+import * as _196 from "./feegrant/v1beta1/query.rpc.query";
+import * as _197 from "./gov/v1/query.rpc.query";
+import * as _198 from "./gov/v1beta1/query.rpc.query";
+import * as _199 from "./group/v1/query.rpc.query";
+import * as _200 from "./mint/v1beta1/query.rpc.query";
+import * as _201 from "./nft/v1beta1/query.rpc.query";
+import * as _202 from "./params/v1beta1/query.rpc.query";
+import * as _203 from "./slashing/v1beta1/query.rpc.query";
+import * as _204 from "./staking/v1beta1/query.rpc.query";
+import * as _205 from "./tx/v1beta1/service.rpc.svc";
+import * as _206 from "./upgrade/v1beta1/query.rpc.query";
+import * as _207 from "./authz/v1beta1/tx.rpc.msg";
+import * as _208 from "./bank/v1beta1/tx.rpc.msg";
+import * as _209 from "./crisis/v1beta1/tx.rpc.msg";
+import * as _210 from "./distribution/v1beta1/tx.rpc.msg";
+import * as _211 from "./evidence/v1beta1/tx.rpc.msg";
+import * as _212 from "./feegrant/v1beta1/tx.rpc.msg";
+import * as _213 from "./gov/v1/tx.rpc.msg";
+import * as _214 from "./gov/v1beta1/tx.rpc.msg";
+import * as _215 from "./group/v1/tx.rpc.msg";
+import * as _216 from "./nft/v1beta1/tx.rpc.msg";
+import * as _217 from "./slashing/v1beta1/tx.rpc.msg";
+import * as _218 from "./staking/v1beta1/tx.rpc.msg";
+import * as _219 from "./upgrade/v1beta1/tx.rpc.msg";
+import * as _220 from "./vesting/v1beta1/tx.rpc.msg";
 export declare namespace cosmos {
     namespace app {
         const v1alpha1: {
-            QueryClientImpl: typeof _186.QueryClientImpl;
+            QueryClientImpl: typeof _189.QueryClientImpl;
             QueryConfigRequest: {
                 encode(_: _4.QueryConfigRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _4.QueryConfigRequest;
@@ -231,8 +231,8 @@ export declare namespace cosmos {
     }
     namespace auth {
         const v1beta1: {
-            QueryClientImpl: typeof _187.QueryClientImpl;
-            LCDQueryClient: typeof _171.LCDQueryClient;
+            QueryClientImpl: typeof _190.QueryClientImpl;
+            LCDQueryClient: typeof _174.LCDQueryClient;
             QueryAccountsRequest: {
                 encode(message: _7.QueryAccountsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _7.QueryAccountsRequest;
@@ -448,9 +448,9 @@ export declare namespace cosmos {
     }
     namespace authz {
         const v1beta1: {
-            MsgClientImpl: typeof _204.MsgClientImpl;
-            QueryClientImpl: typeof _188.QueryClientImpl;
-            LCDQueryClient: typeof _172.LCDQueryClient;
+            MsgClientImpl: typeof _207.MsgClientImpl;
+            QueryClientImpl: typeof _191.QueryClientImpl;
+            LCDQueryClient: typeof _175.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -601,10 +601,7 @@ export declare namespace cosmos {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
-                        expiration?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        expiration?: Date;
                     };
                 }): _12.MsgGrant;
             };
@@ -684,10 +681,7 @@ export declare namespace cosmos {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
-                        expiration?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        expiration?: Date;
                     }[];
                     pagination?: {
                         nextKey?: Uint8Array;
@@ -724,10 +718,7 @@ export declare namespace cosmos {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
-                        expiration?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        expiration?: Date;
                     }[];
                     pagination?: {
                         nextKey?: Uint8Array;
@@ -764,10 +755,7 @@ export declare namespace cosmos {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
-                        expiration?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        expiration?: Date;
                     }[];
                     pagination?: {
                         nextKey?: Uint8Array;
@@ -788,10 +776,7 @@ export declare namespace cosmos {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
-                        expiration?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        expiration?: Date;
                     }[];
                 }): _10.GenesisState;
             };
@@ -836,10 +821,7 @@ export declare namespace cosmos {
                         typeUrl?: string;
                         value?: Uint8Array;
                     };
-                    expiration?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
+                    expiration?: Date;
                 }): _8.Grant;
             };
             GrantAuthorization: {
@@ -854,10 +836,7 @@ export declare namespace cosmos {
                         typeUrl?: string;
                         value?: Uint8Array;
                     };
-                    expiration?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
+                    expiration?: Date;
                 }): _8.GrantAuthorization;
             };
             GrantQueueItem: {
@@ -873,9 +852,9 @@ export declare namespace cosmos {
     }
     namespace bank {
         const v1beta1: {
-            MsgClientImpl: typeof _205.MsgClientImpl;
-            QueryClientImpl: typeof _189.QueryClientImpl;
-            LCDQueryClient: typeof _173.LCDQueryClient;
+            MsgClientImpl: typeof _208.MsgClientImpl;
+            QueryClientImpl: typeof _192.QueryClientImpl;
+            LCDQueryClient: typeof _176.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -2304,7 +2283,7 @@ export declare namespace cosmos {
         }
         namespace tendermint {
             const v1beta1: {
-                ServiceClientImpl: typeof _190.ServiceClientImpl;
+                ServiceClientImpl: typeof _193.ServiceClientImpl;
                 GetValidatorSetByHeightRequest: {
                     encode(message: _26.GetValidatorSetByHeightRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _26.GetValidatorSetByHeightRequest;
@@ -2425,10 +2404,7 @@ export declare namespace cosmos {
                                 };
                                 chainId?: string;
                                 height?: any;
-                                time?: {
-                                    seconds?: any;
-                                    nanos?: number;
-                                };
+                                time?: Date;
                                 lastBlockId?: {
                                     hash?: Uint8Array;
                                     partSetHeader?: {
@@ -2463,10 +2439,7 @@ export declare namespace cosmos {
                                                     hash?: Uint8Array;
                                                 };
                                             };
-                                            timestamp?: {
-                                                seconds?: any;
-                                                nanos?: number;
-                                            };
+                                            timestamp?: Date;
                                             validatorAddress?: Uint8Array;
                                             validatorIndex?: number;
                                             signature?: Uint8Array;
@@ -2482,20 +2455,14 @@ export declare namespace cosmos {
                                                     hash?: Uint8Array;
                                                 };
                                             };
-                                            timestamp?: {
-                                                seconds?: any;
-                                                nanos?: number;
-                                            };
+                                            timestamp?: Date;
                                             validatorAddress?: Uint8Array;
                                             validatorIndex?: number;
                                             signature?: Uint8Array;
                                         };
                                         totalVotingPower?: any;
                                         validatorPower?: any;
-                                        timestamp?: {
-                                            seconds?: any;
-                                            nanos?: number;
-                                        };
+                                        timestamp?: Date;
                                     };
                                     lightClientAttackEvidence?: {
                                         conflictingBlock?: {
@@ -2507,10 +2474,7 @@ export declare namespace cosmos {
                                                     };
                                                     chainId?: string;
                                                     height?: any;
-                                                    time?: {
-                                                        seconds?: any;
-                                                        nanos?: number;
-                                                    };
+                                                    time?: Date;
                                                     lastBlockId?: {
                                                         hash?: Uint8Array;
                                                         partSetHeader?: {
@@ -2541,10 +2505,7 @@ export declare namespace cosmos {
                                                     signatures?: {
                                                         blockIdFlag?: import("../tendermint/types/types").BlockIDFlag;
                                                         validatorAddress?: Uint8Array;
-                                                        timestamp?: {
-                                                            seconds?: any;
-                                                            nanos?: number;
-                                                        };
+                                                        timestamp?: Date;
                                                         signature?: Uint8Array;
                                                     }[];
                                                 };
@@ -2582,10 +2543,7 @@ export declare namespace cosmos {
                                             proposerPriority?: any;
                                         }[];
                                         totalVotingPower?: any;
-                                        timestamp?: {
-                                            seconds?: any;
-                                            nanos?: number;
-                                        };
+                                        timestamp?: Date;
                                     };
                                 }[];
                             };
@@ -2602,10 +2560,7 @@ export declare namespace cosmos {
                                 signatures?: {
                                     blockIdFlag?: import("../tendermint/types/types").BlockIDFlag;
                                     validatorAddress?: Uint8Array;
-                                    timestamp?: {
-                                        seconds?: any;
-                                        nanos?: number;
-                                    };
+                                    timestamp?: Date;
                                     signature?: Uint8Array;
                                 }[];
                             };
@@ -2640,10 +2595,7 @@ export declare namespace cosmos {
                                 };
                                 chainId?: string;
                                 height?: any;
-                                time?: {
-                                    seconds?: any;
-                                    nanos?: number;
-                                };
+                                time?: Date;
                                 lastBlockId?: {
                                     hash?: Uint8Array;
                                     partSetHeader?: {
@@ -2678,10 +2630,7 @@ export declare namespace cosmos {
                                                     hash?: Uint8Array;
                                                 };
                                             };
-                                            timestamp?: {
-                                                seconds?: any;
-                                                nanos?: number;
-                                            };
+                                            timestamp?: Date;
                                             validatorAddress?: Uint8Array;
                                             validatorIndex?: number;
                                             signature?: Uint8Array;
@@ -2697,20 +2646,14 @@ export declare namespace cosmos {
                                                     hash?: Uint8Array;
                                                 };
                                             };
-                                            timestamp?: {
-                                                seconds?: any;
-                                                nanos?: number;
-                                            };
+                                            timestamp?: Date;
                                             validatorAddress?: Uint8Array;
                                             validatorIndex?: number;
                                             signature?: Uint8Array;
                                         };
                                         totalVotingPower?: any;
                                         validatorPower?: any;
-                                        timestamp?: {
-                                            seconds?: any;
-                                            nanos?: number;
-                                        };
+                                        timestamp?: Date;
                                     };
                                     lightClientAttackEvidence?: {
                                         conflictingBlock?: {
@@ -2722,10 +2665,7 @@ export declare namespace cosmos {
                                                     };
                                                     chainId?: string;
                                                     height?: any;
-                                                    time?: {
-                                                        seconds?: any;
-                                                        nanos?: number;
-                                                    };
+                                                    time?: Date;
                                                     lastBlockId?: {
                                                         hash?: Uint8Array;
                                                         partSetHeader?: {
@@ -2756,10 +2696,7 @@ export declare namespace cosmos {
                                                     signatures?: {
                                                         blockIdFlag?: import("../tendermint/types/types").BlockIDFlag;
                                                         validatorAddress?: Uint8Array;
-                                                        timestamp?: {
-                                                            seconds?: any;
-                                                            nanos?: number;
-                                                        };
+                                                        timestamp?: Date;
                                                         signature?: Uint8Array;
                                                     }[];
                                                 };
@@ -2797,10 +2734,7 @@ export declare namespace cosmos {
                                             proposerPriority?: any;
                                         }[];
                                         totalVotingPower?: any;
-                                        timestamp?: {
-                                            seconds?: any;
-                                            nanos?: number;
-                                        };
+                                        timestamp?: Date;
                                     };
                                 }[];
                             };
@@ -2817,10 +2751,7 @@ export declare namespace cosmos {
                                 signatures?: {
                                     blockIdFlag?: import("../tendermint/types/types").BlockIDFlag;
                                     validatorAddress?: Uint8Array;
-                                    timestamp?: {
-                                        seconds?: any;
-                                        nanos?: number;
-                                    };
+                                    timestamp?: Date;
                                     signature?: Uint8Array;
                                 }[];
                             };
@@ -3033,7 +2964,7 @@ export declare namespace cosmos {
     }
     namespace crisis {
         const v1beta1: {
-            MsgClientImpl: typeof _206.MsgClientImpl;
+            MsgClientImpl: typeof _209.MsgClientImpl;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -3288,9 +3219,9 @@ export declare namespace cosmos {
     }
     namespace distribution {
         const v1beta1: {
-            MsgClientImpl: typeof _207.MsgClientImpl;
-            QueryClientImpl: typeof _191.QueryClientImpl;
-            LCDQueryClient: typeof _174.LCDQueryClient;
+            MsgClientImpl: typeof _210.MsgClientImpl;
+            QueryClientImpl: typeof _194.QueryClientImpl;
+            LCDQueryClient: typeof _177.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -4054,9 +3985,9 @@ export declare namespace cosmos {
     }
     namespace evidence {
         const v1beta1: {
-            MsgClientImpl: typeof _208.MsgClientImpl;
-            QueryClientImpl: typeof _192.QueryClientImpl;
-            LCDQueryClient: typeof _175.LCDQueryClient;
+            MsgClientImpl: typeof _211.MsgClientImpl;
+            QueryClientImpl: typeof _195.QueryClientImpl;
+            LCDQueryClient: typeof _178.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -4203,10 +4134,7 @@ export declare namespace cosmos {
                 toJSON(message: _42.Equivocation): unknown;
                 fromPartial(object: {
                     height?: any;
-                    time?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
+                    time?: Date;
                     power?: any;
                     consensusAddress?: string;
                 }): _42.Equivocation;
@@ -4215,9 +4143,9 @@ export declare namespace cosmos {
     }
     namespace feegrant {
         const v1beta1: {
-            MsgClientImpl: typeof _209.MsgClientImpl;
-            QueryClientImpl: typeof _193.QueryClientImpl;
-            LCDQueryClient: typeof _176.LCDQueryClient;
+            MsgClientImpl: typeof _212.MsgClientImpl;
+            QueryClientImpl: typeof _196.QueryClientImpl;
+            LCDQueryClient: typeof _179.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -4466,10 +4394,7 @@ export declare namespace cosmos {
                         denom?: string;
                         amount?: string;
                     }[];
-                    expiration?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
+                    expiration?: Date;
                 }): _46.BasicAllowance;
             };
             PeriodicAllowance: {
@@ -4483,10 +4408,7 @@ export declare namespace cosmos {
                             denom?: string;
                             amount?: string;
                         }[];
-                        expiration?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        expiration?: Date;
                     };
                     period?: {
                         seconds?: any;
@@ -4500,10 +4422,7 @@ export declare namespace cosmos {
                         denom?: string;
                         amount?: string;
                     }[];
-                    periodReset?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
+                    periodReset?: Date;
                 }): _46.PeriodicAllowance;
             };
             AllowedMsgAllowance: {
@@ -4550,9 +4469,9 @@ export declare namespace cosmos {
     }
     namespace gov {
         const v1: {
-            MsgClientImpl: typeof _210.MsgClientImpl;
-            QueryClientImpl: typeof _194.QueryClientImpl;
-            LCDQueryClient: typeof _177.LCDQueryClient;
+            MsgClientImpl: typeof _213.MsgClientImpl;
+            QueryClientImpl: typeof _197.QueryClientImpl;
+            LCDQueryClient: typeof _180.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -4905,26 +4824,14 @@ export declare namespace cosmos {
                             noCount?: string;
                             noWithVetoCount?: string;
                         };
-                        submitTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
-                        depositEndTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        submitTime?: Date;
+                        depositEndTime?: Date;
                         totalDeposit?: {
                             denom?: string;
                             amount?: string;
                         }[];
-                        votingStartTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
-                        votingEndTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        votingStartTime?: Date;
+                        votingEndTime?: Date;
                         metadata?: string;
                     };
                 }): _53.QueryProposalResponse;
@@ -4966,26 +4873,14 @@ export declare namespace cosmos {
                             noCount?: string;
                             noWithVetoCount?: string;
                         };
-                        submitTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
-                        depositEndTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        submitTime?: Date;
+                        depositEndTime?: Date;
                         totalDeposit?: {
                             denom?: string;
                             amount?: string;
                         }[];
-                        votingStartTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
-                        votingEndTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        votingStartTime?: Date;
+                        votingEndTime?: Date;
                         metadata?: string;
                     }[];
                     pagination?: {
@@ -5229,26 +5124,14 @@ export declare namespace cosmos {
                         noCount?: string;
                         noWithVetoCount?: string;
                     };
-                    submitTime?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
-                    depositEndTime?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
+                    submitTime?: Date;
+                    depositEndTime?: Date;
                     totalDeposit?: {
                         denom?: string;
                         amount?: string;
                     }[];
-                    votingStartTime?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
-                    votingEndTime?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
+                    votingStartTime?: Date;
+                    votingEndTime?: Date;
                     metadata?: string;
                 }): _52.Proposal;
             };
@@ -5355,26 +5238,14 @@ export declare namespace cosmos {
                             noCount?: string;
                             noWithVetoCount?: string;
                         };
-                        submitTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
-                        depositEndTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        submitTime?: Date;
+                        depositEndTime?: Date;
                         totalDeposit?: {
                             denom?: string;
                             amount?: string;
                         }[];
-                        votingStartTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
-                        votingEndTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        votingStartTime?: Date;
+                        votingEndTime?: Date;
                         metadata?: string;
                     }[];
                     depositParams?: {
@@ -5402,9 +5273,9 @@ export declare namespace cosmos {
             };
         };
         const v1beta1: {
-            MsgClientImpl: typeof _211.MsgClientImpl;
-            QueryClientImpl: typeof _195.QueryClientImpl;
-            LCDQueryClient: typeof _178.LCDQueryClient;
+            MsgClientImpl: typeof _214.MsgClientImpl;
+            QueryClientImpl: typeof _198.QueryClientImpl;
+            LCDQueryClient: typeof _181.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -5691,26 +5562,14 @@ export declare namespace cosmos {
                             no?: string;
                             noWithVeto?: string;
                         };
-                        submitTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
-                        depositEndTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        submitTime?: Date;
+                        depositEndTime?: Date;
                         totalDeposit?: {
                             denom?: string;
                             amount?: string;
                         }[];
-                        votingStartTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
-                        votingEndTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        votingStartTime?: Date;
+                        votingEndTime?: Date;
                     };
                 }): _57.QueryProposalResponse;
             };
@@ -5751,26 +5610,14 @@ export declare namespace cosmos {
                             no?: string;
                             noWithVeto?: string;
                         };
-                        submitTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
-                        depositEndTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        submitTime?: Date;
+                        depositEndTime?: Date;
                         totalDeposit?: {
                             denom?: string;
                             amount?: string;
                         }[];
-                        votingStartTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
-                        votingEndTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        votingStartTime?: Date;
+                        votingEndTime?: Date;
                     }[];
                     pagination?: {
                         nextKey?: Uint8Array;
@@ -6023,26 +5870,14 @@ export declare namespace cosmos {
                         no?: string;
                         noWithVeto?: string;
                     };
-                    submitTime?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
-                    depositEndTime?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
+                    submitTime?: Date;
+                    depositEndTime?: Date;
                     totalDeposit?: {
                         denom?: string;
                         amount?: string;
                     }[];
-                    votingStartTime?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
-                    votingEndTime?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
+                    votingStartTime?: Date;
+                    votingEndTime?: Date;
                 }): _56.Proposal;
             };
             TallyResult: {
@@ -6148,26 +5983,14 @@ export declare namespace cosmos {
                             no?: string;
                             noWithVeto?: string;
                         };
-                        submitTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
-                        depositEndTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        submitTime?: Date;
+                        depositEndTime?: Date;
                         totalDeposit?: {
                             denom?: string;
                             amount?: string;
                         }[];
-                        votingStartTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
-                        votingEndTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        votingStartTime?: Date;
+                        votingEndTime?: Date;
                     }[];
                     depositParams?: {
                         minDeposit?: {
@@ -6196,9 +6019,9 @@ export declare namespace cosmos {
     }
     namespace group {
         const v1: {
-            MsgClientImpl: typeof _212.MsgClientImpl;
-            QueryClientImpl: typeof _196.QueryClientImpl;
-            LCDQueryClient: typeof _179.LCDQueryClient;
+            MsgClientImpl: typeof _215.MsgClientImpl;
+            QueryClientImpl: typeof _199.QueryClientImpl;
+            LCDQueryClient: typeof _182.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -6780,10 +6603,7 @@ export declare namespace cosmos {
                     address?: string;
                     weight?: string;
                     metadata?: string;
-                    addedAt?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
+                    addedAt?: Date;
                 }): _63.Member;
             };
             Members: {
@@ -6796,10 +6616,7 @@ export declare namespace cosmos {
                         address?: string;
                         weight?: string;
                         metadata?: string;
-                        addedAt?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        addedAt?: Date;
                     }[];
                 }): _63.Members;
             };
@@ -6868,10 +6685,7 @@ export declare namespace cosmos {
                     metadata?: string;
                     version?: any;
                     totalWeight?: string;
-                    createdAt?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
+                    createdAt?: Date;
                 }): _63.GroupInfo;
             };
             GroupMember: {
@@ -6885,10 +6699,7 @@ export declare namespace cosmos {
                         address?: string;
                         weight?: string;
                         metadata?: string;
-                        addedAt?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        addedAt?: Date;
                     };
                 }): _63.GroupMember;
             };
@@ -6907,10 +6718,7 @@ export declare namespace cosmos {
                         typeUrl?: string;
                         value?: Uint8Array;
                     };
-                    createdAt?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
+                    createdAt?: Date;
                 }): _63.GroupPolicyInfo;
             };
             Proposal: {
@@ -6923,10 +6731,7 @@ export declare namespace cosmos {
                     address?: string;
                     metadata?: string;
                     proposers?: string[];
-                    submitTime?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
+                    submitTime?: Date;
                     groupVersion?: any;
                     groupPolicyVersion?: any;
                     status?: _63.ProposalStatus;
@@ -6937,10 +6742,7 @@ export declare namespace cosmos {
                         noCount?: string;
                         noWithVetoCount?: string;
                     };
-                    votingPeriodEnd?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
+                    votingPeriodEnd?: Date;
                     executorResult?: _63.ProposalExecutorResult;
                     messages?: {
                         typeUrl?: string;
@@ -6970,10 +6772,7 @@ export declare namespace cosmos {
                     voter?: string;
                     option?: _63.VoteOption;
                     metadata?: string;
-                    submitTime?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
+                    submitTime?: Date;
                 }): _63.Vote;
             };
             execFromJSON(object: any): _62.Exec;
@@ -6990,10 +6789,7 @@ export declare namespace cosmos {
                         address?: string;
                         weight?: string;
                         metadata?: string;
-                        addedAt?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        addedAt?: Date;
                     }[];
                     metadata?: string;
                 }): _62.MsgCreateGroup;
@@ -7019,10 +6815,7 @@ export declare namespace cosmos {
                         address?: string;
                         weight?: string;
                         metadata?: string;
-                        addedAt?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        addedAt?: Date;
                     }[];
                 }): _62.MsgUpdateGroupMembers;
             };
@@ -7115,10 +6908,7 @@ export declare namespace cosmos {
                         address?: string;
                         weight?: string;
                         metadata?: string;
-                        addedAt?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        addedAt?: Date;
                     }[];
                     groupMetadata?: string;
                     groupPolicyMetadata?: string;
@@ -7302,10 +7092,7 @@ export declare namespace cosmos {
                         metadata?: string;
                         version?: any;
                         totalWeight?: string;
-                        createdAt?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        createdAt?: Date;
                     };
                 }): _61.QueryGroupInfoResponse;
             };
@@ -7334,10 +7121,7 @@ export declare namespace cosmos {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
-                        createdAt?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        createdAt?: Date;
                     };
                 }): _61.QueryGroupPolicyInfoResponse;
             };
@@ -7369,10 +7153,7 @@ export declare namespace cosmos {
                             address?: string;
                             weight?: string;
                             metadata?: string;
-                            addedAt?: {
-                                seconds?: any;
-                                nanos?: number;
-                            };
+                            addedAt?: Date;
                         };
                     }[];
                     pagination?: {
@@ -7409,10 +7190,7 @@ export declare namespace cosmos {
                         metadata?: string;
                         version?: any;
                         totalWeight?: string;
-                        createdAt?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        createdAt?: Date;
                     }[];
                     pagination?: {
                         nextKey?: Uint8Array;
@@ -7452,10 +7230,7 @@ export declare namespace cosmos {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
-                        createdAt?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        createdAt?: Date;
                     }[];
                     pagination?: {
                         nextKey?: Uint8Array;
@@ -7495,10 +7270,7 @@ export declare namespace cosmos {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
-                        createdAt?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        createdAt?: Date;
                     }[];
                     pagination?: {
                         nextKey?: Uint8Array;
@@ -7526,10 +7298,7 @@ export declare namespace cosmos {
                         address?: string;
                         metadata?: string;
                         proposers?: string[];
-                        submitTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        submitTime?: Date;
                         groupVersion?: any;
                         groupPolicyVersion?: any;
                         status?: _63.ProposalStatus;
@@ -7540,10 +7309,7 @@ export declare namespace cosmos {
                             noCount?: string;
                             noWithVetoCount?: string;
                         };
-                        votingPeriodEnd?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        votingPeriodEnd?: Date;
                         executorResult?: _63.ProposalExecutorResult;
                         messages?: {
                             typeUrl?: string;
@@ -7579,10 +7345,7 @@ export declare namespace cosmos {
                         address?: string;
                         metadata?: string;
                         proposers?: string[];
-                        submitTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        submitTime?: Date;
                         groupVersion?: any;
                         groupPolicyVersion?: any;
                         status?: _63.ProposalStatus;
@@ -7593,10 +7356,7 @@ export declare namespace cosmos {
                             noCount?: string;
                             noWithVetoCount?: string;
                         };
-                        votingPeriodEnd?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        votingPeriodEnd?: Date;
                         executorResult?: _63.ProposalExecutorResult;
                         messages?: {
                             typeUrl?: string;
@@ -7630,10 +7390,7 @@ export declare namespace cosmos {
                         voter?: string;
                         option?: _63.VoteOption;
                         metadata?: string;
-                        submitTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        submitTime?: Date;
                     };
                 }): _61.QueryVoteByProposalVoterResponse;
             };
@@ -7664,10 +7421,7 @@ export declare namespace cosmos {
                         voter?: string;
                         option?: _63.VoteOption;
                         metadata?: string;
-                        submitTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        submitTime?: Date;
                     }[];
                     pagination?: {
                         nextKey?: Uint8Array;
@@ -7702,10 +7456,7 @@ export declare namespace cosmos {
                         voter?: string;
                         option?: _63.VoteOption;
                         metadata?: string;
-                        submitTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        submitTime?: Date;
                     }[];
                     pagination?: {
                         nextKey?: Uint8Array;
@@ -7741,10 +7492,7 @@ export declare namespace cosmos {
                         metadata?: string;
                         version?: any;
                         totalWeight?: string;
-                        createdAt?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        createdAt?: Date;
                     }[];
                     pagination?: {
                         nextKey?: Uint8Array;
@@ -7788,10 +7536,7 @@ export declare namespace cosmos {
                         metadata?: string;
                         version?: any;
                         totalWeight?: string;
-                        createdAt?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        createdAt?: Date;
                     }[];
                     groupMembers?: {
                         groupId?: any;
@@ -7799,10 +7544,7 @@ export declare namespace cosmos {
                             address?: string;
                             weight?: string;
                             metadata?: string;
-                            addedAt?: {
-                                seconds?: any;
-                                nanos?: number;
-                            };
+                            addedAt?: Date;
                         };
                     }[];
                     groupPolicySeq?: any;
@@ -7816,10 +7558,7 @@ export declare namespace cosmos {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
-                        createdAt?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        createdAt?: Date;
                     }[];
                     proposalSeq?: any;
                     proposals?: {
@@ -7827,10 +7566,7 @@ export declare namespace cosmos {
                         address?: string;
                         metadata?: string;
                         proposers?: string[];
-                        submitTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        submitTime?: Date;
                         groupVersion?: any;
                         groupPolicyVersion?: any;
                         status?: _63.ProposalStatus;
@@ -7841,10 +7577,7 @@ export declare namespace cosmos {
                             noCount?: string;
                             noWithVetoCount?: string;
                         };
-                        votingPeriodEnd?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        votingPeriodEnd?: Date;
                         executorResult?: _63.ProposalExecutorResult;
                         messages?: {
                             typeUrl?: string;
@@ -7856,10 +7589,7 @@ export declare namespace cosmos {
                         voter?: string;
                         option?: _63.VoteOption;
                         metadata?: string;
-                        submitTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        submitTime?: Date;
                     }[];
                 }): _60.GenesisState;
             };
@@ -7950,8 +7680,8 @@ export declare namespace cosmos {
     }
     namespace mint {
         const v1beta1: {
-            QueryClientImpl: typeof _197.QueryClientImpl;
-            LCDQueryClient: typeof _180.LCDQueryClient;
+            QueryClientImpl: typeof _200.QueryClientImpl;
+            LCDQueryClient: typeof _183.LCDQueryClient;
             QueryParamsRequest: {
                 encode(_: _66.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _66.QueryParamsRequest;
@@ -8058,9 +7788,9 @@ export declare namespace cosmos {
     }
     namespace nft {
         const v1beta1: {
-            MsgClientImpl: typeof _213.MsgClientImpl;
-            QueryClientImpl: typeof _198.QueryClientImpl;
-            LCDQueryClient: typeof _181.LCDQueryClient;
+            MsgClientImpl: typeof _216.MsgClientImpl;
+            QueryClientImpl: typeof _201.QueryClientImpl;
+            LCDQueryClient: typeof _184.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -8528,8 +8258,8 @@ export declare namespace cosmos {
     }
     namespace params {
         const v1beta1: {
-            QueryClientImpl: typeof _199.QueryClientImpl;
-            LCDQueryClient: typeof _182.LCDQueryClient;
+            QueryClientImpl: typeof _202.QueryClientImpl;
+            LCDQueryClient: typeof _185.LCDQueryClient;
             QueryParamsRequest: {
                 encode(message: _76.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _76.QueryParamsRequest;
@@ -8612,9 +8342,9 @@ export declare namespace cosmos {
     }
     namespace slashing {
         const v1beta1: {
-            MsgClientImpl: typeof _214.MsgClientImpl;
-            QueryClientImpl: typeof _200.QueryClientImpl;
-            LCDQueryClient: typeof _183.LCDQueryClient;
+            MsgClientImpl: typeof _217.MsgClientImpl;
+            QueryClientImpl: typeof _203.QueryClientImpl;
+            LCDQueryClient: typeof _186.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -8685,10 +8415,7 @@ export declare namespace cosmos {
                     address?: string;
                     startHeight?: any;
                     indexOffset?: any;
-                    jailedUntil?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
+                    jailedUntil?: Date;
                     tombstoned?: boolean;
                     missedBlocksCounter?: any;
                 }): _79.ValidatorSigningInfo;
@@ -8753,10 +8480,7 @@ export declare namespace cosmos {
                         address?: string;
                         startHeight?: any;
                         indexOffset?: any;
-                        jailedUntil?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        jailedUntil?: Date;
                         tombstoned?: boolean;
                         missedBlocksCounter?: any;
                     };
@@ -8787,10 +8511,7 @@ export declare namespace cosmos {
                         address?: string;
                         startHeight?: any;
                         indexOffset?: any;
-                        jailedUntil?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        jailedUntil?: Date;
                         tombstoned?: boolean;
                         missedBlocksCounter?: any;
                     }[];
@@ -8822,10 +8543,7 @@ export declare namespace cosmos {
                             address?: string;
                             startHeight?: any;
                             indexOffset?: any;
-                            jailedUntil?: {
-                                seconds?: any;
-                                nanos?: number;
-                            };
+                            jailedUntil?: Date;
                             tombstoned?: boolean;
                             missedBlocksCounter?: any;
                         };
@@ -8850,10 +8568,7 @@ export declare namespace cosmos {
                         address?: string;
                         startHeight?: any;
                         indexOffset?: any;
-                        jailedUntil?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        jailedUntil?: Date;
                         tombstoned?: boolean;
                         missedBlocksCounter?: any;
                     };
@@ -8886,9 +8601,9 @@ export declare namespace cosmos {
     }
     namespace staking {
         const v1beta1: {
-            MsgClientImpl: typeof _215.MsgClientImpl;
-            QueryClientImpl: typeof _201.QueryClientImpl;
-            LCDQueryClient: typeof _184.LCDQueryClient;
+            MsgClientImpl: typeof _218.MsgClientImpl;
+            QueryClientImpl: typeof _204.QueryClientImpl;
+            LCDQueryClient: typeof _187.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -9249,10 +8964,7 @@ export declare namespace cosmos {
                 fromJSON(object: any): _85.MsgBeginRedelegateResponse;
                 toJSON(message: _85.MsgBeginRedelegateResponse): unknown;
                 fromPartial(object: {
-                    completionTime?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
+                    completionTime?: Date;
                 }): _85.MsgBeginRedelegateResponse;
             };
             MsgUndelegate: {
@@ -9275,10 +8987,7 @@ export declare namespace cosmos {
                 fromJSON(object: any): _85.MsgUndelegateResponse;
                 toJSON(message: _85.MsgUndelegateResponse): unknown;
                 fromPartial(object: {
-                    completionTime?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
+                    completionTime?: Date;
                 }): _85.MsgUndelegateResponse;
             };
             bondStatusFromJSON(object: any): _84.BondStatus;
@@ -9297,10 +9006,7 @@ export declare namespace cosmos {
                         };
                         chainId?: string;
                         height?: any;
-                        time?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        time?: Date;
                         lastBlockId?: {
                             hash?: Uint8Array;
                             partSetHeader?: {
@@ -9336,20 +9042,14 @@ export declare namespace cosmos {
                             details?: string;
                         };
                         unbondingHeight?: any;
-                        unbondingTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        unbondingTime?: Date;
                         commission?: {
                             commissionRates?: {
                                 rate?: string;
                                 maxRate?: string;
                                 maxChangeRate?: string;
                             };
-                            updateTime?: {
-                                seconds?: any;
-                                nanos?: number;
-                            };
+                            updateTime?: Date;
                         };
                         minSelfDelegation?: string;
                     }[];
@@ -9377,10 +9077,7 @@ export declare namespace cosmos {
                         maxRate?: string;
                         maxChangeRate?: string;
                     };
-                    updateTime?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
+                    updateTime?: Date;
                 }): _84.Commission;
             };
             Description: {
@@ -9419,20 +9116,14 @@ export declare namespace cosmos {
                         details?: string;
                     };
                     unbondingHeight?: any;
-                    unbondingTime?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
+                    unbondingTime?: Date;
                     commission?: {
                         commissionRates?: {
                             rate?: string;
                             maxRate?: string;
                             maxChangeRate?: string;
                         };
-                        updateTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        updateTime?: Date;
                     };
                     minSelfDelegation?: string;
                 }): _84.Validator;
@@ -9513,10 +9204,7 @@ export declare namespace cosmos {
                     validatorAddress?: string;
                     entries?: {
                         creationHeight?: any;
-                        completionTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        completionTime?: Date;
                         initialBalance?: string;
                         balance?: string;
                     }[];
@@ -9529,10 +9217,7 @@ export declare namespace cosmos {
                 toJSON(message: _84.UnbondingDelegationEntry): unknown;
                 fromPartial(object: {
                     creationHeight?: any;
-                    completionTime?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
+                    completionTime?: Date;
                     initialBalance?: string;
                     balance?: string;
                 }): _84.UnbondingDelegationEntry;
@@ -9544,10 +9229,7 @@ export declare namespace cosmos {
                 toJSON(message: _84.RedelegationEntry): unknown;
                 fromPartial(object: {
                     creationHeight?: any;
-                    completionTime?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
+                    completionTime?: Date;
                     initialBalance?: string;
                     sharesDst?: string;
                 }): _84.RedelegationEntry;
@@ -9563,10 +9245,7 @@ export declare namespace cosmos {
                     validatorDstAddress?: string;
                     entries?: {
                         creationHeight?: any;
-                        completionTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        completionTime?: Date;
                         initialBalance?: string;
                         sharesDst?: string;
                     }[];
@@ -9614,10 +9293,7 @@ export declare namespace cosmos {
                 fromPartial(object: {
                     redelegationEntry?: {
                         creationHeight?: any;
-                        completionTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        completionTime?: Date;
                         initialBalance?: string;
                         sharesDst?: string;
                     };
@@ -9636,10 +9312,7 @@ export declare namespace cosmos {
                         validatorDstAddress?: string;
                         entries?: {
                             creationHeight?: any;
-                            completionTime?: {
-                                seconds?: any;
-                                nanos?: number;
-                            };
+                            completionTime?: Date;
                             initialBalance?: string;
                             sharesDst?: string;
                         }[];
@@ -9647,10 +9320,7 @@ export declare namespace cosmos {
                     entries?: {
                         redelegationEntry?: {
                             creationHeight?: any;
-                            completionTime?: {
-                                seconds?: any;
-                                nanos?: number;
-                            };
+                            completionTime?: Date;
                             initialBalance?: string;
                             sharesDst?: string;
                         };
@@ -9708,20 +9378,14 @@ export declare namespace cosmos {
                             details?: string;
                         };
                         unbondingHeight?: any;
-                        unbondingTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        unbondingTime?: Date;
                         commission?: {
                             commissionRates?: {
                                 rate?: string;
                                 maxRate?: string;
                                 maxChangeRate?: string;
                             };
-                            updateTime?: {
-                                seconds?: any;
-                                nanos?: number;
-                            };
+                            updateTime?: Date;
                         };
                         minSelfDelegation?: string;
                     }[];
@@ -9764,20 +9428,14 @@ export declare namespace cosmos {
                             details?: string;
                         };
                         unbondingHeight?: any;
-                        unbondingTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        unbondingTime?: Date;
                         commission?: {
                             commissionRates?: {
                                 rate?: string;
                                 maxRate?: string;
                                 maxChangeRate?: string;
                             };
-                            updateTime?: {
-                                seconds?: any;
-                                nanos?: number;
-                            };
+                            updateTime?: Date;
                         };
                         minSelfDelegation?: string;
                     };
@@ -9849,10 +9507,7 @@ export declare namespace cosmos {
                         validatorAddress?: string;
                         entries?: {
                             creationHeight?: any;
-                            completionTime?: {
-                                seconds?: any;
-                                nanos?: number;
-                            };
+                            completionTime?: Date;
                             initialBalance?: string;
                             balance?: string;
                         }[];
@@ -9913,10 +9568,7 @@ export declare namespace cosmos {
                         validatorAddress?: string;
                         entries?: {
                             creationHeight?: any;
-                            completionTime?: {
-                                seconds?: any;
-                                nanos?: number;
-                            };
+                            completionTime?: Date;
                             initialBalance?: string;
                             balance?: string;
                         }[];
@@ -9989,10 +9641,7 @@ export declare namespace cosmos {
                         validatorAddress?: string;
                         entries?: {
                             creationHeight?: any;
-                            completionTime?: {
-                                seconds?: any;
-                                nanos?: number;
-                            };
+                            completionTime?: Date;
                             initialBalance?: string;
                             balance?: string;
                         }[];
@@ -10034,10 +9683,7 @@ export declare namespace cosmos {
                             validatorDstAddress?: string;
                             entries?: {
                                 creationHeight?: any;
-                                completionTime?: {
-                                    seconds?: any;
-                                    nanos?: number;
-                                };
+                                completionTime?: Date;
                                 initialBalance?: string;
                                 sharesDst?: string;
                             }[];
@@ -10045,10 +9691,7 @@ export declare namespace cosmos {
                         entries?: {
                             redelegationEntry?: {
                                 creationHeight?: any;
-                                completionTime?: {
-                                    seconds?: any;
-                                    nanos?: number;
-                                };
+                                completionTime?: Date;
                                 initialBalance?: string;
                                 sharesDst?: string;
                             };
@@ -10101,20 +9744,14 @@ export declare namespace cosmos {
                             details?: string;
                         };
                         unbondingHeight?: any;
-                        unbondingTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        unbondingTime?: Date;
                         commission?: {
                             commissionRates?: {
                                 rate?: string;
                                 maxRate?: string;
                                 maxChangeRate?: string;
                             };
-                            updateTime?: {
-                                seconds?: any;
-                                nanos?: number;
-                            };
+                            updateTime?: Date;
                         };
                         minSelfDelegation?: string;
                     }[];
@@ -10158,20 +9795,14 @@ export declare namespace cosmos {
                             details?: string;
                         };
                         unbondingHeight?: any;
-                        unbondingTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        unbondingTime?: Date;
                         commission?: {
                             commissionRates?: {
                                 rate?: string;
                                 maxRate?: string;
                                 maxChangeRate?: string;
                             };
-                            updateTime?: {
-                                seconds?: any;
-                                nanos?: number;
-                            };
+                            updateTime?: Date;
                         };
                         minSelfDelegation?: string;
                     };
@@ -10200,10 +9831,7 @@ export declare namespace cosmos {
                             };
                             chainId?: string;
                             height?: any;
-                            time?: {
-                                seconds?: any;
-                                nanos?: number;
-                            };
+                            time?: Date;
                             lastBlockId?: {
                                 hash?: Uint8Array;
                                 partSetHeader?: {
@@ -10239,20 +9867,14 @@ export declare namespace cosmos {
                                 details?: string;
                             };
                             unbondingHeight?: any;
-                            unbondingTime?: {
-                                seconds?: any;
-                                nanos?: number;
-                            };
+                            unbondingTime?: Date;
                             commission?: {
                                 commissionRates?: {
                                     rate?: string;
                                     maxRate?: string;
                                     maxChangeRate?: string;
                                 };
-                                updateTime?: {
-                                    seconds?: any;
-                                    nanos?: number;
-                                };
+                                updateTime?: Date;
                             };
                             minSelfDelegation?: string;
                         }[];
@@ -10344,20 +9966,14 @@ export declare namespace cosmos {
                             details?: string;
                         };
                         unbondingHeight?: any;
-                        unbondingTime?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        unbondingTime?: Date;
                         commission?: {
                             commissionRates?: {
                                 rate?: string;
                                 maxRate?: string;
                                 maxChangeRate?: string;
                             };
-                            updateTime?: {
-                                seconds?: any;
-                                nanos?: number;
-                            };
+                            updateTime?: Date;
                         };
                         minSelfDelegation?: string;
                     }[];
@@ -10371,10 +9987,7 @@ export declare namespace cosmos {
                         validatorAddress?: string;
                         entries?: {
                             creationHeight?: any;
-                            completionTime?: {
-                                seconds?: any;
-                                nanos?: number;
-                            };
+                            completionTime?: Date;
                             initialBalance?: string;
                             balance?: string;
                         }[];
@@ -10385,10 +9998,7 @@ export declare namespace cosmos {
                         validatorDstAddress?: string;
                         entries?: {
                             creationHeight?: any;
-                            completionTime?: {
-                                seconds?: any;
-                                nanos?: number;
-                            };
+                            completionTime?: Date;
                             initialBalance?: string;
                             sharesDst?: string;
                         }[];
@@ -10544,7 +10154,7 @@ export declare namespace cosmos {
             };
         }
         const v1beta1: {
-            ServiceClientImpl: typeof _202.ServiceClientImpl;
+            ServiceClientImpl: typeof _205.ServiceClientImpl;
             Tx: {
                 encode(message: _88.Tx, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _88.Tx;
@@ -11312,10 +10922,7 @@ export declare namespace cosmos {
                             };
                             chainId?: string;
                             height?: any;
-                            time?: {
-                                seconds?: any;
-                                nanos?: number;
-                            };
+                            time?: Date;
                             lastBlockId?: {
                                 hash?: Uint8Array;
                                 partSetHeader?: {
@@ -11350,10 +10957,7 @@ export declare namespace cosmos {
                                                 hash?: Uint8Array;
                                             };
                                         };
-                                        timestamp?: {
-                                            seconds?: any;
-                                            nanos?: number;
-                                        };
+                                        timestamp?: Date;
                                         validatorAddress?: Uint8Array;
                                         validatorIndex?: number;
                                         signature?: Uint8Array;
@@ -11369,20 +10973,14 @@ export declare namespace cosmos {
                                                 hash?: Uint8Array;
                                             };
                                         };
-                                        timestamp?: {
-                                            seconds?: any;
-                                            nanos?: number;
-                                        };
+                                        timestamp?: Date;
                                         validatorAddress?: Uint8Array;
                                         validatorIndex?: number;
                                         signature?: Uint8Array;
                                     };
                                     totalVotingPower?: any;
                                     validatorPower?: any;
-                                    timestamp?: {
-                                        seconds?: any;
-                                        nanos?: number;
-                                    };
+                                    timestamp?: Date;
                                 };
                                 lightClientAttackEvidence?: {
                                     conflictingBlock?: {
@@ -11394,10 +10992,7 @@ export declare namespace cosmos {
                                                 };
                                                 chainId?: string;
                                                 height?: any;
-                                                time?: {
-                                                    seconds?: any;
-                                                    nanos?: number;
-                                                };
+                                                time?: Date;
                                                 lastBlockId?: {
                                                     hash?: Uint8Array;
                                                     partSetHeader?: {
@@ -11428,10 +11023,7 @@ export declare namespace cosmos {
                                                 signatures?: {
                                                     blockIdFlag?: import("../tendermint/types/types").BlockIDFlag;
                                                     validatorAddress?: Uint8Array;
-                                                    timestamp?: {
-                                                        seconds?: any;
-                                                        nanos?: number;
-                                                    };
+                                                    timestamp?: Date;
                                                     signature?: Uint8Array;
                                                 }[];
                                             };
@@ -11469,10 +11061,7 @@ export declare namespace cosmos {
                                         proposerPriority?: any;
                                     }[];
                                     totalVotingPower?: any;
-                                    timestamp?: {
-                                        seconds?: any;
-                                        nanos?: number;
-                                    };
+                                    timestamp?: Date;
                                 };
                             }[];
                         };
@@ -11489,10 +11078,7 @@ export declare namespace cosmos {
                             signatures?: {
                                 blockIdFlag?: import("../tendermint/types/types").BlockIDFlag;
                                 validatorAddress?: Uint8Array;
-                                timestamp?: {
-                                    seconds?: any;
-                                    nanos?: number;
-                                };
+                                timestamp?: Date;
                                 signature?: Uint8Array;
                             }[];
                         };
@@ -11507,9 +11093,9 @@ export declare namespace cosmos {
     }
     namespace upgrade {
         const v1beta1: {
-            MsgClientImpl: typeof _216.MsgClientImpl;
-            QueryClientImpl: typeof _203.QueryClientImpl;
-            LCDQueryClient: typeof _185.LCDQueryClient;
+            MsgClientImpl: typeof _219.MsgClientImpl;
+            QueryClientImpl: typeof _206.QueryClientImpl;
+            LCDQueryClient: typeof _188.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -11617,10 +11203,7 @@ export declare namespace cosmos {
                 toJSON(message: _91.Plan): unknown;
                 fromPartial(object: {
                     name?: string;
-                    time?: {
-                        seconds?: any;
-                        nanos?: number;
-                    };
+                    time?: Date;
                     height?: any;
                     info?: string;
                     upgradedClientState?: {
@@ -11639,10 +11222,7 @@ export declare namespace cosmos {
                     description?: string;
                     plan?: {
                         name?: string;
-                        time?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        time?: Date;
                         height?: any;
                         info?: string;
                         upgradedClientState?: {
@@ -11681,10 +11261,7 @@ export declare namespace cosmos {
                     authority?: string;
                     plan?: {
                         name?: string;
-                        time?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        time?: Date;
                         height?: any;
                         info?: string;
                         upgradedClientState?: {
@@ -11732,10 +11309,7 @@ export declare namespace cosmos {
                 fromPartial(object: {
                     plan?: {
                         name?: string;
-                        time?: {
-                            seconds?: any;
-                            nanos?: number;
-                        };
+                        time?: Date;
                         height?: any;
                         info?: string;
                         upgradedClientState?: {
@@ -11822,7 +11396,7 @@ export declare namespace cosmos {
     }
     namespace vesting {
         const v1beta1: {
-            MsgClientImpl: typeof _217.MsgClientImpl;
+            MsgClientImpl: typeof _220.MsgClientImpl;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -12225,44 +11799,44 @@ export declare namespace cosmos {
         }) => Promise<{
             cosmos: {
                 authz: {
-                    v1beta1: _204.MsgClientImpl;
-                };
-                bank: {
-                    v1beta1: _205.MsgClientImpl;
-                };
-                crisis: {
-                    v1beta1: _206.MsgClientImpl;
-                };
-                distribution: {
                     v1beta1: _207.MsgClientImpl;
                 };
-                evidence: {
+                bank: {
                     v1beta1: _208.MsgClientImpl;
                 };
-                feegrant: {
+                crisis: {
                     v1beta1: _209.MsgClientImpl;
                 };
-                gov: {
-                    v1: _210.MsgClientImpl;
+                distribution: {
+                    v1beta1: _210.MsgClientImpl;
+                };
+                evidence: {
                     v1beta1: _211.MsgClientImpl;
                 };
-                group: {
-                    v1: _212.MsgClientImpl;
+                feegrant: {
+                    v1beta1: _212.MsgClientImpl;
                 };
-                nft: {
-                    v1beta1: _213.MsgClientImpl;
-                };
-                slashing: {
+                gov: {
+                    v1: _213.MsgClientImpl;
                     v1beta1: _214.MsgClientImpl;
                 };
-                staking: {
-                    v1beta1: _215.MsgClientImpl;
+                group: {
+                    v1: _215.MsgClientImpl;
                 };
-                upgrade: {
+                nft: {
                     v1beta1: _216.MsgClientImpl;
                 };
-                vesting: {
+                slashing: {
                     v1beta1: _217.MsgClientImpl;
+                };
+                staking: {
+                    v1beta1: _218.MsgClientImpl;
+                };
+                upgrade: {
+                    v1beta1: _219.MsgClientImpl;
+                };
+                vesting: {
+                    v1beta1: _220.MsgClientImpl;
                 };
             };
         }>;
@@ -12271,50 +11845,50 @@ export declare namespace cosmos {
         }) => Promise<{
             cosmos: {
                 app: {
-                    v1alpha1: _186.QueryClientImpl;
+                    v1alpha1: _189.QueryClientImpl;
                 };
                 auth: {
-                    v1beta1: _187.QueryClientImpl;
+                    v1beta1: _190.QueryClientImpl;
                 };
                 authz: {
-                    v1beta1: _188.QueryClientImpl;
-                };
-                bank: {
-                    v1beta1: _189.QueryClientImpl;
-                };
-                distribution: {
                     v1beta1: _191.QueryClientImpl;
                 };
-                evidence: {
+                bank: {
                     v1beta1: _192.QueryClientImpl;
                 };
-                feegrant: {
-                    v1beta1: _193.QueryClientImpl;
+                distribution: {
+                    v1beta1: _194.QueryClientImpl;
                 };
-                gov: {
-                    v1: _194.QueryClientImpl;
+                evidence: {
                     v1beta1: _195.QueryClientImpl;
                 };
-                group: {
-                    v1: _196.QueryClientImpl;
+                feegrant: {
+                    v1beta1: _196.QueryClientImpl;
                 };
-                mint: {
-                    v1beta1: _197.QueryClientImpl;
-                };
-                nft: {
+                gov: {
+                    v1: _197.QueryClientImpl;
                     v1beta1: _198.QueryClientImpl;
                 };
-                params: {
-                    v1beta1: _199.QueryClientImpl;
+                group: {
+                    v1: _199.QueryClientImpl;
                 };
-                slashing: {
+                mint: {
                     v1beta1: _200.QueryClientImpl;
                 };
-                staking: {
+                nft: {
                     v1beta1: _201.QueryClientImpl;
                 };
-                upgrade: {
+                params: {
+                    v1beta1: _202.QueryClientImpl;
+                };
+                slashing: {
                     v1beta1: _203.QueryClientImpl;
+                };
+                staking: {
+                    v1beta1: _204.QueryClientImpl;
+                };
+                upgrade: {
+                    v1beta1: _206.QueryClientImpl;
                 };
             };
         }>;
@@ -12323,47 +11897,47 @@ export declare namespace cosmos {
         }) => Promise<{
             cosmos: {
                 auth: {
-                    v1beta1: _171.LCDQueryClient;
-                };
-                authz: {
-                    v1beta1: _172.LCDQueryClient;
-                };
-                bank: {
-                    v1beta1: _173.LCDQueryClient;
-                };
-                distribution: {
                     v1beta1: _174.LCDQueryClient;
                 };
-                evidence: {
+                authz: {
                     v1beta1: _175.LCDQueryClient;
                 };
-                feegrant: {
+                bank: {
                     v1beta1: _176.LCDQueryClient;
                 };
-                gov: {
-                    v1: _177.LCDQueryClient;
+                distribution: {
+                    v1beta1: _177.LCDQueryClient;
+                };
+                evidence: {
                     v1beta1: _178.LCDQueryClient;
                 };
-                group: {
-                    v1: _179.LCDQueryClient;
+                feegrant: {
+                    v1beta1: _179.LCDQueryClient;
                 };
-                mint: {
-                    v1beta1: _180.LCDQueryClient;
-                };
-                nft: {
+                gov: {
+                    v1: _180.LCDQueryClient;
                     v1beta1: _181.LCDQueryClient;
                 };
-                params: {
-                    v1beta1: _182.LCDQueryClient;
+                group: {
+                    v1: _182.LCDQueryClient;
                 };
-                slashing: {
+                mint: {
                     v1beta1: _183.LCDQueryClient;
                 };
-                staking: {
+                nft: {
                     v1beta1: _184.LCDQueryClient;
                 };
-                upgrade: {
+                params: {
                     v1beta1: _185.LCDQueryClient;
+                };
+                slashing: {
+                    v1beta1: _186.LCDQueryClient;
+                };
+                staking: {
+                    v1beta1: _187.LCDQueryClient;
+                };
+                upgrade: {
+                    v1beta1: _188.LCDQueryClient;
                 };
             };
         }>;

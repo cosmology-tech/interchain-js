@@ -1,4 +1,3 @@
-import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Duration } from "../../../google/protobuf/duration";
 import { Any } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
@@ -78,7 +77,7 @@ export interface Member {
     /** metadata is any arbitrary metadata to attached to the member. */
     metadata: string;
     /** added_at is a timestamp specifying when a member was added. */
-    addedAt: Timestamp;
+    addedAt: Date;
 }
 /** Members defines a repeated slice of Member objects. */
 export interface Members {
@@ -139,7 +138,7 @@ export interface GroupInfo {
     /** total_weight is the sum of the group members' weights. */
     totalWeight: string;
     /** created_at is a timestamp specifying when a group was created. */
-    createdAt: Timestamp;
+    createdAt: Date;
 }
 /** GroupMember represents the relationship between a group and a member. */
 export interface GroupMember {
@@ -166,7 +165,7 @@ export interface GroupPolicyInfo {
     /** decision_policy specifies the group policy's decision policy. */
     decisionPolicy: Any;
     /** created_at is a timestamp specifying when a group policy was created. */
-    createdAt: Timestamp;
+    createdAt: Date;
 }
 /**
  * Proposal defines a group proposal. Any member of a group can submit a proposal
@@ -184,7 +183,7 @@ export interface Proposal {
     /** proposers are the account addresses of the proposers. */
     proposers: string[];
     /** submit_time is a timestamp specifying when a proposal was submitted. */
-    submitTime: Timestamp;
+    submitTime: Date;
     /**
      * group_version tracks the version of the group that this proposal corresponds to.
      * When group membership is changed, existing proposals from previous group versions will become invalid.
@@ -216,7 +215,7 @@ export interface Proposal {
      * at this point, and the `final_tally_result`, as well
      * as `status` and `result` fields will be accordingly updated.
      */
-    votingPeriodEnd: Timestamp;
+    votingPeriodEnd: Date;
     /** executor_result is the final result based on the votes and election rule. Initial value is NotRun. */
     executorResult: ProposalExecutorResult;
     /** messages is a list of Msgs that will be executed if the proposal passes. */
@@ -244,7 +243,7 @@ export interface Vote {
     /** metadata is any arbitrary metadata to attached to the vote. */
     metadata: string;
     /** submit_time is the timestamp when the vote was submitted. */
-    submitTime: Timestamp;
+    submitTime: Date;
 }
 export declare const Member: {
     encode(message: Member, writer?: _m0.Writer): _m0.Writer;

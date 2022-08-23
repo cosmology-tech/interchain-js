@@ -5,5 +5,5 @@ export declare class LCDQueryClient extends LCDClient {
         restEndpoint: any;
     });
     evidence(params: QueryEvidenceRequest): Promise<QueryEvidenceResponse>;
-    allEvidence(params: QueryAllEvidenceRequest): Promise<QueryAllEvidenceResponse>;
+    allEvidence(params?: QueryAllEvidenceRequest): Promise<QueryAllEvidenceResponse>;
 }

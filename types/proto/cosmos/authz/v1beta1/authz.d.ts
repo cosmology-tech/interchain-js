@@ -1,5 +1,4 @@
 import { Any } from "../../../google/protobuf/any";
-import { Timestamp } from "../../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "@osmonauts/helpers";
 /**
@@ -21,7 +20,7 @@ export interface Grant {
      * doesn't have a time expiration (other conditions  in `authorization`
      * may apply to invalidate the grant)
      */
-    expiration?: Timestamp;
+    expiration?: Date;
 }
 /**
  * GrantAuthorization extends a grant with both the addresses of the grantee and granter.
@@ -31,7 +30,7 @@ export interface GrantAuthorization {
     granter: string;
     grantee: string;
     authorization: Any;
-    expiration: Timestamp;
+    expiration: Date;
 }
 /** GrantQueueItem contains the list of TypeURL of a sdk.Msg. */
 export interface GrantQueueItem {

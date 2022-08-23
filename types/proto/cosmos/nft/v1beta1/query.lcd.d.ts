@@ -10,5 +10,5 @@ export declare class LCDQueryClient extends LCDClient {
     nFTs(params: QueryNFTsRequest): Promise<QueryNFTsResponse>;
     nFT(params: QueryNFTRequest): Promise<QueryNFTResponse>;
     class(params: QueryClassRequest): Promise<QueryClassResponse>;
-    classes(params: QueryClassesRequest): Promise<QueryClassesResponse>;
+    classes(params?: QueryClassesRequest): Promise<QueryClassesResponse>;
 }

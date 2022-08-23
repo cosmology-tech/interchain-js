@@ -1,4 +1,3 @@
-import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Any } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
 import { Long, DeepPartial } from "@osmonauts/helpers";
@@ -20,7 +19,7 @@ export interface Plan {
      * If this field is not empty, an error will be thrown.
      */
     /** @deprecated */
-    time: Timestamp;
+    time: Date;
     /**
      * The height at which the upgrade must be performed.
      * Only used if Time is not set.

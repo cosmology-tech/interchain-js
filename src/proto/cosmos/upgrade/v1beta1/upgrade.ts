@@ -1,7 +1,7 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Any } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, fromJsonTimestamp, fromTimestamp, DeepPartial } from "@osmonauts/helpers";
+import { toTimestamp, fromTimestamp, Long, isSet, fromJsonTimestamp, DeepPartial } from "@osmonauts/helpers";
 
 /** Plan specifies information about a planned upgrade and when it should occur. */
 export interface Plan {
@@ -23,7 +23,7 @@ export interface Plan {
    */
 
   /** @deprecated */
-  time: Timestamp;
+  time: Date;
 
   /**
    * The height at which the upgrade must be performed.
@@ -104,7 +104,7 @@ export const Plan = {
     }
 
     if (message.time !== undefined) {
-      Timestamp.encode(message.time, writer.uint32(18).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.time), writer.uint32(18).fork()).ldelim();
     }
 
     if (!message.height.isZero()) {
@@ -136,7 +136,7 @@ export const Plan = {
           break;
 
         case 2:
-          message.time = Timestamp.decode(reader, reader.uint32());
+          message.time = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
 
         case 3:
@@ -173,7 +173,7 @@ export const Plan = {
   toJSON(message: Plan): unknown {
     const obj: any = {};
     message.name !== undefined && (obj.name = message.name);
-    message.time !== undefined && (obj.time = fromTimestamp(message.time).toISOString());
+    message.time !== undefined && (obj.time = message.time.toISOString());
     message.height !== undefined && (obj.height = (message.height || Long.ZERO).toString());
     message.info !== undefined && (obj.info = message.info);
     message.upgradedClientState !== undefined && (obj.upgradedClientState = message.upgradedClientState ? Any.toJSON(message.upgradedClientState) : undefined);
@@ -183,7 +183,7 @@ export const Plan = {
   fromPartial(object: DeepPartial<Plan>): Plan {
     const message = createBasePlan();
     message.name = object.name ?? "";
-    message.time = object.time !== undefined && object.time !== null ? Timestamp.fromPartial(object.time) : undefined;
+    message.time = object.time ?? undefined;
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
     message.info = object.info ?? "";
     message.upgradedClientState = object.upgradedClientState !== undefined && object.upgradedClientState !== null ? Any.fromPartial(object.upgradedClientState) : undefined;

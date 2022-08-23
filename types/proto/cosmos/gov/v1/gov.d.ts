@@ -1,6 +1,5 @@
 import { Coin } from "../../base/v1beta1/coin";
 import { Any } from "../../../google/protobuf/any";
-import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Duration } from "../../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, Long } from "@osmonauts/helpers";
@@ -78,11 +77,11 @@ export interface Proposal {
      * proposal's voting period has ended.
      */
     finalTallyResult: TallyResult;
-    submitTime: Timestamp;
-    depositEndTime: Timestamp;
+    submitTime: Date;
+    depositEndTime: Date;
     totalDeposit: Coin[];
-    votingStartTime: Timestamp;
-    votingEndTime: Timestamp;
+    votingStartTime: Date;
+    votingEndTime: Date;
     /** metadata is any arbitrary metadata attached to the proposal. */
     metadata: string;
 }

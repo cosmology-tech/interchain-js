@@ -1,4 +1,3 @@
-import { Timestamp } from "../../google/protobuf/timestamp";
 import { Header } from "../types/types";
 import { ProofOps } from "../crypto/proof";
 import { EvidenceParams, ValidatorParams, VersionParams } from "../types/params";
@@ -87,7 +86,7 @@ export interface RequestSetOption {
     value: string;
 }
 export interface RequestInitChain {
-    time: Timestamp;
+    time: Date;
     chainId: string;
     consensusParams: ConsensusParams;
     validators: ValidatorUpdate[];
@@ -327,7 +326,7 @@ export interface Evidence {
     /** The height when the offense occurred */
     height: Long;
     /** The corresponding time where the offense occurred */
-    time: Timestamp;
+    time: Date;
     /**
      * Total voting power of the validator set in case the ABCI application does
      * not store historical validators.

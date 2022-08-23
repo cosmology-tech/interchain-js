@@ -1,4 +1,3 @@
-import { Timestamp } from "../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
 import { Long, DeepPartial } from "@osmonauts/helpers";
 export interface ProtocolVersion {
@@ -23,12 +22,12 @@ export interface NodeInfoOther {
 export interface PeerInfo {
     id: string;
     addressInfo: PeerAddressInfo[];
-    lastConnected: Timestamp;
+    lastConnected: Date;
 }
 export interface PeerAddressInfo {
     address: string;
-    lastDialSuccess: Timestamp;
-    lastDialFailure: Timestamp;
+    lastDialSuccess: Date;
+    lastDialFailure: Date;
     dialFailures: number;
 }
 export declare const ProtocolVersion: {

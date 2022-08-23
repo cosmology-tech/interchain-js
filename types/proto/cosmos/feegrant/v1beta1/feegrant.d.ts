@@ -1,5 +1,4 @@
 import { Coin } from "../../base/v1beta1/coin";
-import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Duration } from "../../../google/protobuf/duration";
 import { Any } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
@@ -16,7 +15,7 @@ export interface BasicAllowance {
      */
     spendLimit: Coin[];
     /** expiration specifies an optional time when this allowance expires */
-    expiration: Timestamp;
+    expiration: Date;
 }
 /**
  * PeriodicAllowance extends Allowance to allow for both a maximum cap,
@@ -42,7 +41,7 @@ export interface PeriodicAllowance {
      * it is calculated from the start time of the first transaction after the
      * last period ended
      */
-    periodReset: Timestamp;
+    periodReset: Date;
 }
 /** AllowedMsgAllowance creates allowance only for specified message types. */
 export interface AllowedMsgAllowance {

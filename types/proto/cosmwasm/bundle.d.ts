@@ -4,15 +4,15 @@ import * as _96 from "./wasm/v1/proposal";
 import * as _97 from "./wasm/v1/query";
 import * as _98 from "./wasm/v1/tx";
 import * as _99 from "./wasm/v1/types";
-import * as _220 from "./wasm/v1/query.lcd";
-import * as _221 from "./wasm/v1/query.rpc.query";
-import * as _222 from "./wasm/v1/tx.rpc.msg";
+import * as _223 from "./wasm/v1/query.lcd";
+import * as _224 from "./wasm/v1/query.rpc.query";
+import * as _225 from "./wasm/v1/tx.rpc.msg";
 export declare namespace cosmwasm {
     namespace wasm {
         const v1: {
-            MsgClientImpl: typeof _222.MsgClientImpl;
-            QueryClientImpl: typeof _221.QueryClientImpl;
-            LCDQueryClient: typeof _220.LCDQueryClient;
+            MsgClientImpl: typeof _225.MsgClientImpl;
+            QueryClientImpl: typeof _224.QueryClientImpl;
+            LCDQueryClient: typeof _223.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -152,7 +152,7 @@ export declare namespace cosmwasm {
                     aminoType: string;
                     toAmino: ({ sender, wasmByteCode, instantiatePermission }: _98.MsgStoreCode) => {
                         sender: string;
-                        wasm_byte_code: Uint8Array;
+                        wasm_byte_code: string;
                         instantiate_permission: {
                             permission: number;
                             address: string;
@@ -160,7 +160,7 @@ export declare namespace cosmwasm {
                     };
                     fromAmino: ({ sender, wasm_byte_code, instantiate_permission }: {
                         sender: string;
-                        wasm_byte_code: Uint8Array;
+                        wasm_byte_code: string;
                         instantiate_permission: {
                             permission: number;
                             address: string;
@@ -1126,7 +1126,7 @@ export declare namespace cosmwasm {
             };
             cosmwasm: {
                 wasm: {
-                    v1: _222.MsgClientImpl;
+                    v1: _225.MsgClientImpl;
                 };
             };
         }>;
@@ -1183,7 +1183,7 @@ export declare namespace cosmwasm {
             };
             cosmwasm: {
                 wasm: {
-                    v1: _221.QueryClientImpl;
+                    v1: _224.QueryClientImpl;
                 };
             };
         }>;
@@ -1237,7 +1237,7 @@ export declare namespace cosmwasm {
             };
             cosmwasm: {
                 wasm: {
-                    v1: _220.LCDQueryClient;
+                    v1: _223.LCDQueryClient;
                 };
             };
         }>;

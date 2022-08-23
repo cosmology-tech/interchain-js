@@ -27,12 +27,14 @@ export class LCDQueryClient extends LCDClient {
       options.params.channel_id = params.channelId;
     }
 
-    const endpoint = `ibc/core/channel/v1/channels/${params.channel_id}ports/${params.port_id}`;
-    return await this.request(endpoint, options);
+    const endpoint = `ibc/core/channel/v1/channels/${params.channelId}ports/${params.portId}`;
+    return await this.request<QueryChannelResponse>(endpoint, options);
   }
 
   /* Channels queries all the IBC channels of a chain. */
-  async channels(params: QueryChannelsRequest): Promise<QueryChannelsResponse> {
+  async channels(params: QueryChannelsRequest = {
+    pagination: undefined
+  }): Promise<QueryChannelsResponse> {
     const options: any = {
       params: {}
     };
@@ -42,7 +44,7 @@ export class LCDQueryClient extends LCDClient {
     }
 
     const endpoint = `ibc/core/channel/v1/channels`;
-    return await this.request(endpoint, options);
+    return await this.request<QueryChannelsResponse>(endpoint, options);
   }
 
   /* ConnectionChannels queries all the channels associated with a connection
@@ -57,7 +59,7 @@ export class LCDQueryClient extends LCDClient {
     }
 
     const endpoint = `ibc/core/channel/v1/connections/${params.connection}/channels`;
-    return await this.request(endpoint, options);
+    return await this.request<QueryConnectionChannelsResponse>(endpoint, options);
   }
 
   /* ChannelClientState queries for the client state for the channel associated
@@ -75,8 +77,8 @@ export class LCDQueryClient extends LCDClient {
       options.params.channel_id = params.channelId;
     }
 
-    const endpoint = `ibc/core/channel/v1/channels/${params.channel_id}/ports/${params.port_id}/client_state`;
-    return await this.request(endpoint, options);
+    const endpoint = `ibc/core/channel/v1/channels/${params.channelId}/ports/${params.portId}/client_state`;
+    return await this.request<QueryChannelClientStateResponse>(endpoint, options);
   }
 
   /* ChannelConsensusState queries for the consensus state for the channel
@@ -102,8 +104,8 @@ export class LCDQueryClient extends LCDClient {
       options.params.revision_height = params.revisionHeight;
     }
 
-    const endpoint = `ibc/core/channel/v1/channels/${params.channel_id}/ports/${params.port_id}/consensus_state/revision/${params.revision_number}height/${params.revision_height}`;
-    return await this.request(endpoint, options);
+    const endpoint = `ibc/core/channel/v1/channels/${params.channelId}/ports/${params.portId}/consensus_state/revision/${params.revisionNumber}height/${params.revisionHeight}`;
+    return await this.request<QueryChannelConsensusStateResponse>(endpoint, options);
   }
 
   /* PacketCommitment queries a stored packet commitment hash. */
@@ -120,8 +122,8 @@ export class LCDQueryClient extends LCDClient {
       options.params.channel_id = params.channelId;
     }
 
-    const endpoint = `ibc/core/channel/v1/channels/${params.channel_id}/ports/${params.port_id}packet_commitments/${params.sequence}`;
-    return await this.request(endpoint, options);
+    const endpoint = `ibc/core/channel/v1/channels/${params.channelId}/ports/${params.portId}packet_commitments/${params.sequence}`;
+    return await this.request<QueryPacketCommitmentResponse>(endpoint, options);
   }
 
   /* PacketCommitments returns all the packet commitments hashes associated
@@ -143,8 +145,8 @@ export class LCDQueryClient extends LCDClient {
       options.params.pagination = params.pagination;
     }
 
-    const endpoint = `ibc/core/channel/v1/channels/${params.channel_id}/ports/${params.port_id}/packet_commitments`;
-    return await this.request(endpoint, options);
+    const endpoint = `ibc/core/channel/v1/channels/${params.channelId}/ports/${params.portId}/packet_commitments`;
+    return await this.request<QueryPacketCommitmentsResponse>(endpoint, options);
   }
 
   /* PacketReceipt queries if a given packet sequence has been received on the
@@ -162,8 +164,8 @@ export class LCDQueryClient extends LCDClient {
       options.params.channel_id = params.channelId;
     }
 
-    const endpoint = `ibc/core/channel/v1/channels/${params.channel_id}/ports/${params.port_id}packet_receipts/${params.sequence}`;
-    return await this.request(endpoint, options);
+    const endpoint = `ibc/core/channel/v1/channels/${params.channelId}/ports/${params.portId}packet_receipts/${params.sequence}`;
+    return await this.request<QueryPacketReceiptResponse>(endpoint, options);
   }
 
   /* PacketAcknowledgement queries a stored packet acknowledgement hash. */
@@ -180,8 +182,8 @@ export class LCDQueryClient extends LCDClient {
       options.params.channel_id = params.channelId;
     }
 
-    const endpoint = `ibc/core/channel/v1/channels/${params.channel_id}/ports/${params.port_id}packet_acks/${params.sequence}`;
-    return await this.request(endpoint, options);
+    const endpoint = `ibc/core/channel/v1/channels/${params.channelId}/ports/${params.portId}packet_acks/${params.sequence}`;
+    return await this.request<QueryPacketAcknowledgementResponse>(endpoint, options);
   }
 
   /* PacketAcknowledgements returns all the packet acknowledgements associated
@@ -207,8 +209,8 @@ export class LCDQueryClient extends LCDClient {
       options.params.packet_commitment_sequences = params.packetCommitmentSequences;
     }
 
-    const endpoint = `ibc/core/channel/v1/channels/${params.channel_id}/ports/${params.port_id}/packet_acknowledgements`;
-    return await this.request(endpoint, options);
+    const endpoint = `ibc/core/channel/v1/channels/${params.channelId}/ports/${params.portId}/packet_acknowledgements`;
+    return await this.request<QueryPacketAcknowledgementsResponse>(endpoint, options);
   }
 
   /* UnreceivedPackets returns all the unreceived IBC packets associated with a
@@ -230,8 +232,8 @@ export class LCDQueryClient extends LCDClient {
       options.params.packet_commitment_sequences = params.packetCommitmentSequences;
     }
 
-    const endpoint = `ibc/core/channel/v1/channels/${params.channel_id}/ports/${params.port_id}/packet_commitments/${params.packet_commitment_sequences}/unreceived_packets`;
-    return await this.request(endpoint, options);
+    const endpoint = `ibc/core/channel/v1/channels/${params.channelId}/ports/${params.portId}/packet_commitments/${params.packetCommitmentSequences}/unreceived_packets`;
+    return await this.request<QueryUnreceivedPacketsResponse>(endpoint, options);
   }
 
   /* UnreceivedAcks returns all the unreceived IBC acknowledgements associated
@@ -253,8 +255,8 @@ export class LCDQueryClient extends LCDClient {
       options.params.packet_ack_sequences = params.packetAckSequences;
     }
 
-    const endpoint = `ibc/core/channel/v1/channels/${params.channel_id}/ports/${params.port_id}/packet_commitments/${params.packet_ack_sequences}/unreceived_acks`;
-    return await this.request(endpoint, options);
+    const endpoint = `ibc/core/channel/v1/channels/${params.channelId}/ports/${params.portId}/packet_commitments/${params.packetAckSequences}/unreceived_acks`;
+    return await this.request<QueryUnreceivedAcksResponse>(endpoint, options);
   }
 
   /* NextSequenceReceive returns the next receive sequence for a given channel. */
@@ -271,8 +273,8 @@ export class LCDQueryClient extends LCDClient {
       options.params.channel_id = params.channelId;
     }
 
-    const endpoint = `ibc/core/channel/v1/channels/${params.channel_id}/ports/${params.port_id}/next_sequence`;
-    return await this.request(endpoint, options);
+    const endpoint = `ibc/core/channel/v1/channels/${params.channelId}/ports/${params.portId}/next_sequence`;
+    return await this.request<QueryNextSequenceReceiveResponse>(endpoint, options);
   }
 
 }

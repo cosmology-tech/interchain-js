@@ -4,7 +4,7 @@ import { ProofOps } from "../crypto/proof";
 import { EvidenceParams, ValidatorParams, VersionParams } from "../types/params";
 import { PublicKey } from "../crypto/keys";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, Long, fromJsonTimestamp, bytesFromBase64, fromTimestamp, base64FromBytes } from "@osmonauts/helpers";
+import { isSet, DeepPartial, Long, toTimestamp, fromTimestamp, fromJsonTimestamp, bytesFromBase64, base64FromBytes } from "@osmonauts/helpers";
 export enum CheckTxType {
   NEW = 0,
   RECHECK = 1,
@@ -264,7 +264,7 @@ export interface RequestSetOption {
   value: string;
 }
 export interface RequestInitChain {
-  time: Timestamp;
+  time: Date;
   chainId: string;
   consensusParams: ConsensusParams;
   validators: ValidatorUpdate[];
@@ -531,7 +531,7 @@ export interface Evidence {
   height: Long;
 
   /** The corresponding time where the offense occurred */
-  time: Timestamp;
+  time: Date;
 
   /**
    * Total voting power of the validator set in case the ABCI application does
@@ -1046,7 +1046,7 @@ function createBaseRequestInitChain(): RequestInitChain {
 export const RequestInitChain = {
   encode(message: RequestInitChain, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.time !== undefined) {
-      Timestamp.encode(message.time, writer.uint32(10).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.time), writer.uint32(10).fork()).ldelim();
     }
 
     if (message.chainId !== "") {
@@ -1082,7 +1082,7 @@ export const RequestInitChain = {
 
       switch (tag >>> 3) {
         case 1:
-          message.time = Timestamp.decode(reader, reader.uint32());
+          message.time = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
 
         case 2:
@@ -1127,7 +1127,7 @@ export const RequestInitChain = {
 
   toJSON(message: RequestInitChain): unknown {
     const obj: any = {};
-    message.time !== undefined && (obj.time = fromTimestamp(message.time).toISOString());
+    message.time !== undefined && (obj.time = message.time.toISOString());
     message.chainId !== undefined && (obj.chainId = message.chainId);
     message.consensusParams !== undefined && (obj.consensusParams = message.consensusParams ? ConsensusParams.toJSON(message.consensusParams) : undefined);
 
@@ -1144,7 +1144,7 @@ export const RequestInitChain = {
 
   fromPartial(object: DeepPartial<RequestInitChain>): RequestInitChain {
     const message = createBaseRequestInitChain();
-    message.time = object.time !== undefined && object.time !== null ? Timestamp.fromPartial(object.time) : undefined;
+    message.time = object.time ?? undefined;
     message.chainId = object.chainId ?? "";
     message.consensusParams = object.consensusParams !== undefined && object.consensusParams !== null ? ConsensusParams.fromPartial(object.consensusParams) : undefined;
     message.validators = object.validators?.map(e => ValidatorUpdate.fromPartial(e)) || [];
@@ -4186,7 +4186,7 @@ export const Evidence = {
     }
 
     if (message.time !== undefined) {
-      Timestamp.encode(message.time, writer.uint32(34).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.time), writer.uint32(34).fork()).ldelim();
     }
 
     if (!message.totalVotingPower.isZero()) {
@@ -4218,7 +4218,7 @@ export const Evidence = {
           break;
 
         case 4:
-          message.time = Timestamp.decode(reader, reader.uint32());
+          message.time = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
 
         case 5:
@@ -4249,7 +4249,7 @@ export const Evidence = {
     message.type !== undefined && (obj.type = evidenceTypeToJSON(message.type));
     message.validator !== undefined && (obj.validator = message.validator ? Validator.toJSON(message.validator) : undefined);
     message.height !== undefined && (obj.height = (message.height || Long.ZERO).toString());
-    message.time !== undefined && (obj.time = fromTimestamp(message.time).toISOString());
+    message.time !== undefined && (obj.time = message.time.toISOString());
     message.totalVotingPower !== undefined && (obj.totalVotingPower = (message.totalVotingPower || Long.ZERO).toString());
     return obj;
   },
@@ -4259,7 +4259,7 @@ export const Evidence = {
     message.type = object.type ?? 0;
     message.validator = object.validator !== undefined && object.validator !== null ? Validator.fromPartial(object.validator) : undefined;
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
-    message.time = object.time !== undefined && object.time !== null ? Timestamp.fromPartial(object.time) : undefined;
+    message.time = object.time ?? undefined;
     message.totalVotingPower = object.totalVotingPower !== undefined && object.totalVotingPower !== null ? Long.fromValue(object.totalVotingPower) : Long.ZERO;
     return message;
   }

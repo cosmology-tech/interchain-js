@@ -1,6 +1,6 @@
 import { Timestamp } from "../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, DeepPartial, bytesFromBase64, base64FromBytes, fromJsonTimestamp, fromTimestamp } from "@osmonauts/helpers";
+import { Long, isSet, DeepPartial, bytesFromBase64, base64FromBytes, toTimestamp, fromTimestamp, fromJsonTimestamp } from "@osmonauts/helpers";
 export interface ProtocolVersion {
   p2p: Long;
   block: Long;
@@ -23,12 +23,12 @@ export interface NodeInfoOther {
 export interface PeerInfo {
   id: string;
   addressInfo: PeerAddressInfo[];
-  lastConnected: Timestamp;
+  lastConnected: Date;
 }
 export interface PeerAddressInfo {
   address: string;
-  lastDialSuccess: Timestamp;
-  lastDialFailure: Timestamp;
+  lastDialSuccess: Date;
+  lastDialFailure: Date;
   dialFailures: number;
 }
 
@@ -342,7 +342,7 @@ export const PeerInfo = {
     }
 
     if (message.lastConnected !== undefined) {
-      Timestamp.encode(message.lastConnected, writer.uint32(26).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.lastConnected), writer.uint32(26).fork()).ldelim();
     }
 
     return writer;
@@ -366,7 +366,7 @@ export const PeerInfo = {
           break;
 
         case 3:
-          message.lastConnected = Timestamp.decode(reader, reader.uint32());
+          message.lastConnected = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -396,7 +396,7 @@ export const PeerInfo = {
       obj.addressInfo = [];
     }
 
-    message.lastConnected !== undefined && (obj.lastConnected = fromTimestamp(message.lastConnected).toISOString());
+    message.lastConnected !== undefined && (obj.lastConnected = message.lastConnected.toISOString());
     return obj;
   },
 
@@ -404,7 +404,7 @@ export const PeerInfo = {
     const message = createBasePeerInfo();
     message.id = object.id ?? "";
     message.addressInfo = object.addressInfo?.map(e => PeerAddressInfo.fromPartial(e)) || [];
-    message.lastConnected = object.lastConnected !== undefined && object.lastConnected !== null ? Timestamp.fromPartial(object.lastConnected) : undefined;
+    message.lastConnected = object.lastConnected ?? undefined;
     return message;
   }
 
@@ -426,11 +426,11 @@ export const PeerAddressInfo = {
     }
 
     if (message.lastDialSuccess !== undefined) {
-      Timestamp.encode(message.lastDialSuccess, writer.uint32(18).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.lastDialSuccess), writer.uint32(18).fork()).ldelim();
     }
 
     if (message.lastDialFailure !== undefined) {
-      Timestamp.encode(message.lastDialFailure, writer.uint32(26).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.lastDialFailure), writer.uint32(26).fork()).ldelim();
     }
 
     if (message.dialFailures !== 0) {
@@ -454,11 +454,11 @@ export const PeerAddressInfo = {
           break;
 
         case 2:
-          message.lastDialSuccess = Timestamp.decode(reader, reader.uint32());
+          message.lastDialSuccess = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
 
         case 3:
-          message.lastDialFailure = Timestamp.decode(reader, reader.uint32());
+          message.lastDialFailure = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
 
         case 4:
@@ -486,8 +486,8 @@ export const PeerAddressInfo = {
   toJSON(message: PeerAddressInfo): unknown {
     const obj: any = {};
     message.address !== undefined && (obj.address = message.address);
-    message.lastDialSuccess !== undefined && (obj.lastDialSuccess = fromTimestamp(message.lastDialSuccess).toISOString());
-    message.lastDialFailure !== undefined && (obj.lastDialFailure = fromTimestamp(message.lastDialFailure).toISOString());
+    message.lastDialSuccess !== undefined && (obj.lastDialSuccess = message.lastDialSuccess.toISOString());
+    message.lastDialFailure !== undefined && (obj.lastDialFailure = message.lastDialFailure.toISOString());
     message.dialFailures !== undefined && (obj.dialFailures = Math.round(message.dialFailures));
     return obj;
   },
@@ -495,8 +495,8 @@ export const PeerAddressInfo = {
   fromPartial(object: DeepPartial<PeerAddressInfo>): PeerAddressInfo {
     const message = createBasePeerAddressInfo();
     message.address = object.address ?? "";
-    message.lastDialSuccess = object.lastDialSuccess !== undefined && object.lastDialSuccess !== null ? Timestamp.fromPartial(object.lastDialSuccess) : undefined;
-    message.lastDialFailure = object.lastDialFailure !== undefined && object.lastDialFailure !== null ? Timestamp.fromPartial(object.lastDialFailure) : undefined;
+    message.lastDialSuccess = object.lastDialSuccess ?? undefined;
+    message.lastDialFailure = object.lastDialFailure ?? undefined;
     message.dialFailures = object.dialFailures ?? 0;
     return message;
   }

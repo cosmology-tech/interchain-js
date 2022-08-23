@@ -1,7 +1,7 @@
 import { Any } from "../../../google/protobuf/any";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, fromJsonTimestamp, fromTimestamp } from "@osmonauts/helpers";
+import { isSet, DeepPartial, toTimestamp, fromTimestamp, fromJsonTimestamp } from "@osmonauts/helpers";
 
 /**
  * GenericAuthorization gives the grantee unrestricted permissions to execute
@@ -24,7 +24,7 @@ export interface Grant {
    * doesn't have a time expiration (other conditions  in `authorization`
    * may apply to invalidate the grant)
    */
-  expiration?: Timestamp;
+  expiration?: Date;
 }
 
 /**
@@ -35,7 +35,7 @@ export interface GrantAuthorization {
   granter: string;
   grantee: string;
   authorization: Any;
-  expiration: Timestamp;
+  expiration: Date;
 }
 
 /** GrantQueueItem contains the list of TypeURL of a sdk.Msg. */
@@ -115,7 +115,7 @@ export const Grant = {
     }
 
     if (message.expiration !== undefined) {
-      Timestamp.encode(message.expiration, writer.uint32(18).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.expiration), writer.uint32(18).fork()).ldelim();
     }
 
     return writer;
@@ -135,7 +135,7 @@ export const Grant = {
           break;
 
         case 2:
-          message.expiration = Timestamp.decode(reader, reader.uint32());
+          message.expiration = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -157,14 +157,14 @@ export const Grant = {
   toJSON(message: Grant): unknown {
     const obj: any = {};
     message.authorization !== undefined && (obj.authorization = message.authorization ? Any.toJSON(message.authorization) : undefined);
-    message.expiration !== undefined && (obj.expiration = fromTimestamp(message.expiration).toISOString());
+    message.expiration !== undefined && (obj.expiration = message.expiration.toISOString());
     return obj;
   },
 
   fromPartial(object: DeepPartial<Grant>): Grant {
     const message = createBaseGrant();
     message.authorization = object.authorization !== undefined && object.authorization !== null ? Any.fromPartial(object.authorization) : undefined;
-    message.expiration = object.expiration !== undefined && object.expiration !== null ? Timestamp.fromPartial(object.expiration) : undefined;
+    message.expiration = object.expiration ?? undefined;
     return message;
   }
 
@@ -194,7 +194,7 @@ export const GrantAuthorization = {
     }
 
     if (message.expiration !== undefined) {
-      Timestamp.encode(message.expiration, writer.uint32(34).fork()).ldelim();
+      Timestamp.encode(toTimestamp(message.expiration), writer.uint32(34).fork()).ldelim();
     }
 
     return writer;
@@ -222,7 +222,7 @@ export const GrantAuthorization = {
           break;
 
         case 4:
-          message.expiration = Timestamp.decode(reader, reader.uint32());
+          message.expiration = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -248,7 +248,7 @@ export const GrantAuthorization = {
     message.granter !== undefined && (obj.granter = message.granter);
     message.grantee !== undefined && (obj.grantee = message.grantee);
     message.authorization !== undefined && (obj.authorization = message.authorization ? Any.toJSON(message.authorization) : undefined);
-    message.expiration !== undefined && (obj.expiration = fromTimestamp(message.expiration).toISOString());
+    message.expiration !== undefined && (obj.expiration = message.expiration.toISOString());
     return obj;
   },
 
@@ -257,7 +257,7 @@ export const GrantAuthorization = {
     message.granter = object.granter ?? "";
     message.grantee = object.grantee ?? "";
     message.authorization = object.authorization !== undefined && object.authorization !== null ? Any.fromPartial(object.authorization) : undefined;
-    message.expiration = object.expiration !== undefined && object.expiration !== null ? Timestamp.fromPartial(object.expiration) : undefined;
+    message.expiration = object.expiration ?? undefined;
     return message;
   }
 

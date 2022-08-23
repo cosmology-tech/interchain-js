@@ -5,11 +5,11 @@ export declare class LCDQueryClient extends LCDClient {
         restEndpoint: any;
     });
     clientState(params: QueryClientStateRequest): Promise<QueryClientStateResponse>;
-    clientStates(params: QueryClientStatesRequest): Promise<QueryClientStatesResponse>;
+    clientStates(params?: QueryClientStatesRequest): Promise<QueryClientStatesResponse>;
     consensusState(params: QueryConsensusStateRequest): Promise<QueryConsensusStateResponse>;
     consensusStates(params: QueryConsensusStatesRequest): Promise<QueryConsensusStatesResponse>;
     clientStatus(params: QueryClientStatusRequest): Promise<QueryClientStatusResponse>;
-    clientParams(params: QueryClientParamsRequest): Promise<QueryClientParamsResponse>;
-    upgradedClientState(params: QueryUpgradedClientStateRequest): Promise<QueryUpgradedClientStateResponse>;
-    upgradedConsensusState(params: QueryUpgradedConsensusStateRequest): Promise<QueryUpgradedConsensusStateResponse>;
+    clientParams(_params?: QueryClientParamsRequest): Promise<QueryClientParamsResponse>;
+    upgradedClientState(_params?: QueryUpgradedClientStateRequest): Promise<QueryUpgradedClientStateResponse>;
+    upgradedConsensusState(_params?: QueryUpgradedConsensusStateRequest): Promise<QueryUpgradedConsensusStateResponse>;
 }

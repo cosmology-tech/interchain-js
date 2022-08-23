@@ -1,7 +1,6 @@
 import { Duration } from "../../../../google/protobuf/duration";
 import { Height } from "../../../core/client/v1/client";
 import { ProofSpec } from "../../../../confio/proofs";
-import { Timestamp } from "../../../../google/protobuf/timestamp";
 import { MerkleRoot } from "../../../core/commitment/v1/commitment";
 import { SignedHeader } from "../../../../tendermint/types/types";
 import { ValidatorSet } from "../../../../tendermint/types/validator";
@@ -56,7 +55,7 @@ export interface ConsensusState {
      * timestamp that corresponds to the block height in which the ConsensusState
      * was stored.
      */
-    timestamp: Timestamp;
+    timestamp: Date;
     /** commitment root (i.e app hash) */
     root: MerkleRoot;
     nextValidatorsHash: Uint8Array;

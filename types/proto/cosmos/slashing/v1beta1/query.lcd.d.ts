@@ -4,7 +4,7 @@ export declare class LCDQueryClient extends LCDClient {
     constructor({ restEndpoint }: {
         restEndpoint: any;
     });
-    params(params: QueryParamsRequest): Promise<QueryParamsResponse>;
+    params(_params?: QueryParamsRequest): Promise<QueryParamsResponse>;
     signingInfo(params: QuerySigningInfoRequest): Promise<QuerySigningInfoResponse>;
-    signingInfos(params: QuerySigningInfosRequest): Promise<QuerySigningInfosResponse>;
+    signingInfos(params?: QuerySigningInfosRequest): Promise<QuerySigningInfosResponse>;
 }
