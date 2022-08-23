@@ -8,12 +8,6 @@ telescope({
   protoDirs,
   outPath,
   options: {
-    includePackageVar: false,
-    typingsFormat: {
-      useExact: false,
-      timestamp: 'date',
-      duration: 'duration'
-    },
     aminoEncoding: {
       enabled: true
     },
@@ -25,4 +19,11 @@ telescope({
       camelCase: true
     }
   }
-});
+})
+  .then(() => {
+    console.log('✨ All Done!');
+  })
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
