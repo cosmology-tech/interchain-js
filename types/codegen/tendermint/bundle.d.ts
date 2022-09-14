@@ -1,33 +1,33 @@
-import * as _135 from "./abci/types";
-import * as _136 from "./crypto/keys";
-import * as _137 from "./crypto/proof";
-import * as _138 from "./libs/bits/types";
-import * as _139 from "./p2p/types";
-import * as _140 from "./types/block";
-import * as _141 from "./types/evidence";
-import * as _142 from "./types/params";
-import * as _143 from "./types/types";
-import * as _144 from "./types/validator";
-import * as _145 from "./version/types";
+import * as _126 from "./abci/types";
+import * as _127 from "./crypto/keys";
+import * as _128 from "./crypto/proof";
+import * as _129 from "./libs/bits/types";
+import * as _130 from "./p2p/types";
+import * as _131 from "./types/block";
+import * as _132 from "./types/evidence";
+import * as _133 from "./types/params";
+import * as _134 from "./types/types";
+import * as _135 from "./types/validator";
+import * as _136 from "./version/types";
 export declare namespace tendermint {
     const abci: {
-        checkTxTypeFromJSON(object: any): _135.CheckTxType;
-        checkTxTypeToJSON(object: _135.CheckTxType): string;
-        responseOfferSnapshot_ResultFromJSON(object: any): _135.ResponseOfferSnapshot_Result;
-        responseOfferSnapshot_ResultToJSON(object: _135.ResponseOfferSnapshot_Result): string;
-        responseApplySnapshotChunk_ResultFromJSON(object: any): _135.ResponseApplySnapshotChunk_Result;
-        responseApplySnapshotChunk_ResultToJSON(object: _135.ResponseApplySnapshotChunk_Result): string;
-        evidenceTypeFromJSON(object: any): _135.EvidenceType;
-        evidenceTypeToJSON(object: _135.EvidenceType): string;
-        CheckTxType: typeof _135.CheckTxType;
-        ResponseOfferSnapshot_Result: typeof _135.ResponseOfferSnapshot_Result;
-        ResponseApplySnapshotChunk_Result: typeof _135.ResponseApplySnapshotChunk_Result;
-        EvidenceType: typeof _135.EvidenceType;
+        checkTxTypeFromJSON(object: any): _126.CheckTxType;
+        checkTxTypeToJSON(object: _126.CheckTxType): string;
+        responseOfferSnapshot_ResultFromJSON(object: any): _126.ResponseOfferSnapshot_Result;
+        responseOfferSnapshot_ResultToJSON(object: _126.ResponseOfferSnapshot_Result): string;
+        responseApplySnapshotChunk_ResultFromJSON(object: any): _126.ResponseApplySnapshotChunk_Result;
+        responseApplySnapshotChunk_ResultToJSON(object: _126.ResponseApplySnapshotChunk_Result): string;
+        evidenceTypeFromJSON(object: any): _126.EvidenceType;
+        evidenceTypeToJSON(object: _126.EvidenceType): string;
+        CheckTxType: typeof _126.CheckTxType;
+        ResponseOfferSnapshot_Result: typeof _126.ResponseOfferSnapshot_Result;
+        ResponseApplySnapshotChunk_Result: typeof _126.ResponseApplySnapshotChunk_Result;
+        EvidenceType: typeof _126.EvidenceType;
         Request: {
-            encode(message: _135.Request, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.Request;
-            fromJSON(object: any): _135.Request;
-            toJSON(message: _135.Request): unknown;
+            encode(message: _126.Request, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.Request;
+            fromJSON(object: any): _126.Request;
+            toJSON(message: _126.Request): unknown;
             fromPartial(object: {
                 echo?: {
                     message?: string;
@@ -35,45 +35,45 @@ export declare namespace tendermint {
                 flush?: {};
                 info?: {
                     version?: string;
-                    blockVersion?: any;
-                    p2pVersion?: any;
+                    block_version?: any;
+                    p2p_version?: any;
                 };
-                setOption?: {
+                set_option?: {
                     key?: string;
                     value?: string;
                 };
-                initChain?: {
+                init_chain?: {
                     time?: Date;
-                    chainId?: string;
-                    consensusParams?: {
+                    chain_id?: string;
+                    consensus_params?: {
                         block?: {
-                            maxBytes?: any;
-                            maxGas?: any;
+                            max_bytes?: any;
+                            max_gas?: any;
                         };
                         evidence?: {
-                            maxAgeNumBlocks?: any;
-                            maxAgeDuration?: {
+                            max_age_num_blocks?: any;
+                            max_age_duration?: {
                                 seconds?: any;
                                 nanos?: number;
                             };
-                            maxBytes?: any;
+                            max_bytes?: any;
                         };
                         validator?: {
-                            pubKeyTypes?: string[];
+                            pub_key_types?: string[];
                         };
                         version?: {
-                            appVersion?: any;
+                            app_version?: any;
                         };
                     };
                     validators?: {
-                        pubKey?: {
+                        pub_key?: {
                             ed25519?: Uint8Array;
                             secp256k1?: Uint8Array;
                         };
                         power?: any;
                     }[];
-                    appStateBytes?: Uint8Array;
-                    initialHeight?: any;
+                    app_state_bytes?: Uint8Array;
+                    initial_height?: any;
                 };
                 query?: {
                     data?: Uint8Array;
@@ -81,67 +81,67 @@ export declare namespace tendermint {
                     height?: any;
                     prove?: boolean;
                 };
-                beginBlock?: {
+                begin_block?: {
                     hash?: Uint8Array;
                     header?: {
                         version?: {
                             block?: any;
                             app?: any;
                         };
-                        chainId?: string;
+                        chain_id?: string;
                         height?: any;
                         time?: Date;
-                        lastBlockId?: {
+                        last_block_id?: {
                             hash?: Uint8Array;
-                            partSetHeader?: {
+                            part_set_header?: {
                                 total?: number;
                                 hash?: Uint8Array;
                             };
                         };
-                        lastCommitHash?: Uint8Array;
-                        dataHash?: Uint8Array;
-                        validatorsHash?: Uint8Array;
-                        nextValidatorsHash?: Uint8Array;
-                        consensusHash?: Uint8Array;
-                        appHash?: Uint8Array;
-                        lastResultsHash?: Uint8Array;
-                        evidenceHash?: Uint8Array;
-                        proposerAddress?: Uint8Array;
+                        last_commit_hash?: Uint8Array;
+                        data_hash?: Uint8Array;
+                        validators_hash?: Uint8Array;
+                        next_validators_hash?: Uint8Array;
+                        consensus_hash?: Uint8Array;
+                        app_hash?: Uint8Array;
+                        last_results_hash?: Uint8Array;
+                        evidence_hash?: Uint8Array;
+                        proposer_address?: Uint8Array;
                     };
-                    lastCommitInfo?: {
+                    last_commit_info?: {
                         round?: number;
                         votes?: {
                             validator?: {
                                 address?: Uint8Array;
                                 power?: any;
                             };
-                            signedLastBlock?: boolean;
+                            signed_last_block?: boolean;
                         }[];
                     };
-                    byzantineValidators?: {
-                        type?: _135.EvidenceType;
+                    byzantine_validators?: {
+                        type?: _126.EvidenceType;
                         validator?: {
                             address?: Uint8Array;
                             power?: any;
                         };
                         height?: any;
                         time?: Date;
-                        totalVotingPower?: any;
+                        total_voting_power?: any;
                     }[];
                 };
-                checkTx?: {
+                check_tx?: {
                     tx?: Uint8Array;
-                    type?: _135.CheckTxType;
+                    type?: _126.CheckTxType;
                 };
-                deliverTx?: {
+                deliver_tx?: {
                     tx?: Uint8Array;
                 };
-                endBlock?: {
+                end_block?: {
                     height?: any;
                 };
                 commit?: {};
-                listSnapshots?: {};
-                offerSnapshot?: {
+                list_snapshots?: {};
+                offer_snapshot?: {
                     snapshot?: {
                         height?: any;
                         format?: number;
@@ -149,113 +149,113 @@ export declare namespace tendermint {
                         hash?: Uint8Array;
                         metadata?: Uint8Array;
                     };
-                    appHash?: Uint8Array;
+                    app_hash?: Uint8Array;
                 };
-                loadSnapshotChunk?: {
+                load_snapshot_chunk?: {
                     height?: any;
                     format?: number;
                     chunk?: number;
                 };
-                applySnapshotChunk?: {
+                apply_snapshot_chunk?: {
                     index?: number;
                     chunk?: Uint8Array;
                     sender?: string;
                 };
-            }): _135.Request;
+            }): _126.Request;
         };
         RequestEcho: {
-            encode(message: _135.RequestEcho, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.RequestEcho;
-            fromJSON(object: any): _135.RequestEcho;
-            toJSON(message: _135.RequestEcho): unknown;
+            encode(message: _126.RequestEcho, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.RequestEcho;
+            fromJSON(object: any): _126.RequestEcho;
+            toJSON(message: _126.RequestEcho): unknown;
             fromPartial(object: {
                 message?: string;
-            }): _135.RequestEcho;
+            }): _126.RequestEcho;
         };
         RequestFlush: {
-            encode(_: _135.RequestFlush, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.RequestFlush;
-            fromJSON(_: any): _135.RequestFlush;
-            toJSON(_: _135.RequestFlush): unknown;
-            fromPartial(_: {}): _135.RequestFlush;
+            encode(_: _126.RequestFlush, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.RequestFlush;
+            fromJSON(_: any): _126.RequestFlush;
+            toJSON(_: _126.RequestFlush): unknown;
+            fromPartial(_: {}): _126.RequestFlush;
         };
         RequestInfo: {
-            encode(message: _135.RequestInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.RequestInfo;
-            fromJSON(object: any): _135.RequestInfo;
-            toJSON(message: _135.RequestInfo): unknown;
+            encode(message: _126.RequestInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.RequestInfo;
+            fromJSON(object: any): _126.RequestInfo;
+            toJSON(message: _126.RequestInfo): unknown;
             fromPartial(object: {
                 version?: string;
-                blockVersion?: any;
-                p2pVersion?: any;
-            }): _135.RequestInfo;
+                block_version?: any;
+                p2p_version?: any;
+            }): _126.RequestInfo;
         };
         RequestSetOption: {
-            encode(message: _135.RequestSetOption, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.RequestSetOption;
-            fromJSON(object: any): _135.RequestSetOption;
-            toJSON(message: _135.RequestSetOption): unknown;
+            encode(message: _126.RequestSetOption, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.RequestSetOption;
+            fromJSON(object: any): _126.RequestSetOption;
+            toJSON(message: _126.RequestSetOption): unknown;
             fromPartial(object: {
                 key?: string;
                 value?: string;
-            }): _135.RequestSetOption;
+            }): _126.RequestSetOption;
         };
         RequestInitChain: {
-            encode(message: _135.RequestInitChain, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.RequestInitChain;
-            fromJSON(object: any): _135.RequestInitChain;
-            toJSON(message: _135.RequestInitChain): unknown;
+            encode(message: _126.RequestInitChain, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.RequestInitChain;
+            fromJSON(object: any): _126.RequestInitChain;
+            toJSON(message: _126.RequestInitChain): unknown;
             fromPartial(object: {
                 time?: Date;
-                chainId?: string;
-                consensusParams?: {
+                chain_id?: string;
+                consensus_params?: {
                     block?: {
-                        maxBytes?: any;
-                        maxGas?: any;
+                        max_bytes?: any;
+                        max_gas?: any;
                     };
                     evidence?: {
-                        maxAgeNumBlocks?: any;
-                        maxAgeDuration?: {
+                        max_age_num_blocks?: any;
+                        max_age_duration?: {
                             seconds?: any;
                             nanos?: number;
                         };
-                        maxBytes?: any;
+                        max_bytes?: any;
                     };
                     validator?: {
-                        pubKeyTypes?: string[];
+                        pub_key_types?: string[];
                     };
                     version?: {
-                        appVersion?: any;
+                        app_version?: any;
                     };
                 };
                 validators?: {
-                    pubKey?: {
+                    pub_key?: {
                         ed25519?: Uint8Array;
                         secp256k1?: Uint8Array;
                     };
                     power?: any;
                 }[];
-                appStateBytes?: Uint8Array;
-                initialHeight?: any;
-            }): _135.RequestInitChain;
+                app_state_bytes?: Uint8Array;
+                initial_height?: any;
+            }): _126.RequestInitChain;
         };
         RequestQuery: {
-            encode(message: _135.RequestQuery, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.RequestQuery;
-            fromJSON(object: any): _135.RequestQuery;
-            toJSON(message: _135.RequestQuery): unknown;
+            encode(message: _126.RequestQuery, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.RequestQuery;
+            fromJSON(object: any): _126.RequestQuery;
+            toJSON(message: _126.RequestQuery): unknown;
             fromPartial(object: {
                 data?: Uint8Array;
                 path?: string;
                 height?: any;
                 prove?: boolean;
-            }): _135.RequestQuery;
+            }): _126.RequestQuery;
         };
         RequestBeginBlock: {
-            encode(message: _135.RequestBeginBlock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.RequestBeginBlock;
-            fromJSON(object: any): _135.RequestBeginBlock;
-            toJSON(message: _135.RequestBeginBlock): unknown;
+            encode(message: _126.RequestBeginBlock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.RequestBeginBlock;
+            fromJSON(object: any): _126.RequestBeginBlock;
+            toJSON(message: _126.RequestBeginBlock): unknown;
             fromPartial(object: {
                 hash?: Uint8Array;
                 header?: {
@@ -263,95 +263,95 @@ export declare namespace tendermint {
                         block?: any;
                         app?: any;
                     };
-                    chainId?: string;
+                    chain_id?: string;
                     height?: any;
                     time?: Date;
-                    lastBlockId?: {
+                    last_block_id?: {
                         hash?: Uint8Array;
-                        partSetHeader?: {
+                        part_set_header?: {
                             total?: number;
                             hash?: Uint8Array;
                         };
                     };
-                    lastCommitHash?: Uint8Array;
-                    dataHash?: Uint8Array;
-                    validatorsHash?: Uint8Array;
-                    nextValidatorsHash?: Uint8Array;
-                    consensusHash?: Uint8Array;
-                    appHash?: Uint8Array;
-                    lastResultsHash?: Uint8Array;
-                    evidenceHash?: Uint8Array;
-                    proposerAddress?: Uint8Array;
+                    last_commit_hash?: Uint8Array;
+                    data_hash?: Uint8Array;
+                    validators_hash?: Uint8Array;
+                    next_validators_hash?: Uint8Array;
+                    consensus_hash?: Uint8Array;
+                    app_hash?: Uint8Array;
+                    last_results_hash?: Uint8Array;
+                    evidence_hash?: Uint8Array;
+                    proposer_address?: Uint8Array;
                 };
-                lastCommitInfo?: {
+                last_commit_info?: {
                     round?: number;
                     votes?: {
                         validator?: {
                             address?: Uint8Array;
                             power?: any;
                         };
-                        signedLastBlock?: boolean;
+                        signed_last_block?: boolean;
                     }[];
                 };
-                byzantineValidators?: {
-                    type?: _135.EvidenceType;
+                byzantine_validators?: {
+                    type?: _126.EvidenceType;
                     validator?: {
                         address?: Uint8Array;
                         power?: any;
                     };
                     height?: any;
                     time?: Date;
-                    totalVotingPower?: any;
+                    total_voting_power?: any;
                 }[];
-            }): _135.RequestBeginBlock;
+            }): _126.RequestBeginBlock;
         };
         RequestCheckTx: {
-            encode(message: _135.RequestCheckTx, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.RequestCheckTx;
-            fromJSON(object: any): _135.RequestCheckTx;
-            toJSON(message: _135.RequestCheckTx): unknown;
+            encode(message: _126.RequestCheckTx, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.RequestCheckTx;
+            fromJSON(object: any): _126.RequestCheckTx;
+            toJSON(message: _126.RequestCheckTx): unknown;
             fromPartial(object: {
                 tx?: Uint8Array;
-                type?: _135.CheckTxType;
-            }): _135.RequestCheckTx;
+                type?: _126.CheckTxType;
+            }): _126.RequestCheckTx;
         };
         RequestDeliverTx: {
-            encode(message: _135.RequestDeliverTx, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.RequestDeliverTx;
-            fromJSON(object: any): _135.RequestDeliverTx;
-            toJSON(message: _135.RequestDeliverTx): unknown;
+            encode(message: _126.RequestDeliverTx, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.RequestDeliverTx;
+            fromJSON(object: any): _126.RequestDeliverTx;
+            toJSON(message: _126.RequestDeliverTx): unknown;
             fromPartial(object: {
                 tx?: Uint8Array;
-            }): _135.RequestDeliverTx;
+            }): _126.RequestDeliverTx;
         };
         RequestEndBlock: {
-            encode(message: _135.RequestEndBlock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.RequestEndBlock;
-            fromJSON(object: any): _135.RequestEndBlock;
-            toJSON(message: _135.RequestEndBlock): unknown;
+            encode(message: _126.RequestEndBlock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.RequestEndBlock;
+            fromJSON(object: any): _126.RequestEndBlock;
+            toJSON(message: _126.RequestEndBlock): unknown;
             fromPartial(object: {
                 height?: any;
-            }): _135.RequestEndBlock;
+            }): _126.RequestEndBlock;
         };
         RequestCommit: {
-            encode(_: _135.RequestCommit, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.RequestCommit;
-            fromJSON(_: any): _135.RequestCommit;
-            toJSON(_: _135.RequestCommit): unknown;
-            fromPartial(_: {}): _135.RequestCommit;
+            encode(_: _126.RequestCommit, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.RequestCommit;
+            fromJSON(_: any): _126.RequestCommit;
+            toJSON(_: _126.RequestCommit): unknown;
+            fromPartial(_: {}): _126.RequestCommit;
         };
         RequestListSnapshots: {
-            encode(_: _135.RequestListSnapshots, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.RequestListSnapshots;
-            fromJSON(_: any): _135.RequestListSnapshots;
-            toJSON(_: _135.RequestListSnapshots): unknown;
-            fromPartial(_: {}): _135.RequestListSnapshots;
+            encode(_: _126.RequestListSnapshots, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.RequestListSnapshots;
+            fromJSON(_: any): _126.RequestListSnapshots;
+            toJSON(_: _126.RequestListSnapshots): unknown;
+            fromPartial(_: {}): _126.RequestListSnapshots;
         };
         RequestOfferSnapshot: {
-            encode(message: _135.RequestOfferSnapshot, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.RequestOfferSnapshot;
-            fromJSON(object: any): _135.RequestOfferSnapshot;
-            toJSON(message: _135.RequestOfferSnapshot): unknown;
+            encode(message: _126.RequestOfferSnapshot, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.RequestOfferSnapshot;
+            fromJSON(object: any): _126.RequestOfferSnapshot;
+            toJSON(message: _126.RequestOfferSnapshot): unknown;
             fromPartial(object: {
                 snapshot?: {
                     height?: any;
@@ -360,36 +360,36 @@ export declare namespace tendermint {
                     hash?: Uint8Array;
                     metadata?: Uint8Array;
                 };
-                appHash?: Uint8Array;
-            }): _135.RequestOfferSnapshot;
+                app_hash?: Uint8Array;
+            }): _126.RequestOfferSnapshot;
         };
         RequestLoadSnapshotChunk: {
-            encode(message: _135.RequestLoadSnapshotChunk, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.RequestLoadSnapshotChunk;
-            fromJSON(object: any): _135.RequestLoadSnapshotChunk;
-            toJSON(message: _135.RequestLoadSnapshotChunk): unknown;
+            encode(message: _126.RequestLoadSnapshotChunk, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.RequestLoadSnapshotChunk;
+            fromJSON(object: any): _126.RequestLoadSnapshotChunk;
+            toJSON(message: _126.RequestLoadSnapshotChunk): unknown;
             fromPartial(object: {
                 height?: any;
                 format?: number;
                 chunk?: number;
-            }): _135.RequestLoadSnapshotChunk;
+            }): _126.RequestLoadSnapshotChunk;
         };
         RequestApplySnapshotChunk: {
-            encode(message: _135.RequestApplySnapshotChunk, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.RequestApplySnapshotChunk;
-            fromJSON(object: any): _135.RequestApplySnapshotChunk;
-            toJSON(message: _135.RequestApplySnapshotChunk): unknown;
+            encode(message: _126.RequestApplySnapshotChunk, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.RequestApplySnapshotChunk;
+            fromJSON(object: any): _126.RequestApplySnapshotChunk;
+            toJSON(message: _126.RequestApplySnapshotChunk): unknown;
             fromPartial(object: {
                 index?: number;
                 chunk?: Uint8Array;
                 sender?: string;
-            }): _135.RequestApplySnapshotChunk;
+            }): _126.RequestApplySnapshotChunk;
         };
         Response: {
-            encode(message: _135.Response, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.Response;
-            fromJSON(object: any): _135.Response;
-            toJSON(message: _135.Response): unknown;
+            encode(message: _126.Response, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.Response;
+            fromJSON(object: any): _126.Response;
+            toJSON(message: _126.Response): unknown;
             fromPartial(object: {
                 exception?: {
                     error?: string;
@@ -401,44 +401,44 @@ export declare namespace tendermint {
                 info?: {
                     data?: string;
                     version?: string;
-                    appVersion?: any;
-                    lastBlockHeight?: any;
-                    lastBlockAppHash?: Uint8Array;
+                    app_version?: any;
+                    last_block_height?: any;
+                    last_block_app_hash?: Uint8Array;
                 };
-                setOption?: {
+                set_option?: {
                     code?: number;
                     log?: string;
                     info?: string;
                 };
-                initChain?: {
-                    consensusParams?: {
+                init_chain?: {
+                    consensus_params?: {
                         block?: {
-                            maxBytes?: any;
-                            maxGas?: any;
+                            max_bytes?: any;
+                            max_gas?: any;
                         };
                         evidence?: {
-                            maxAgeNumBlocks?: any;
-                            maxAgeDuration?: {
+                            max_age_num_blocks?: any;
+                            max_age_duration?: {
                                 seconds?: any;
                                 nanos?: number;
                             };
-                            maxBytes?: any;
+                            max_bytes?: any;
                         };
                         validator?: {
-                            pubKeyTypes?: string[];
+                            pub_key_types?: string[];
                         };
                         version?: {
-                            appVersion?: any;
+                            app_version?: any;
                         };
                     };
                     validators?: {
-                        pubKey?: {
+                        pub_key?: {
                             ed25519?: Uint8Array;
                             secp256k1?: Uint8Array;
                         };
                         power?: any;
                     }[];
-                    appHash?: Uint8Array;
+                    app_hash?: Uint8Array;
                 };
                 query?: {
                     code?: number;
@@ -447,7 +447,7 @@ export declare namespace tendermint {
                     index?: any;
                     key?: Uint8Array;
                     value?: Uint8Array;
-                    proofOps?: {
+                    proof_ops?: {
                         ops?: {
                             type?: string;
                             key?: Uint8Array;
@@ -457,7 +457,7 @@ export declare namespace tendermint {
                     height?: any;
                     codespace?: string;
                 };
-                beginBlock?: {
+                begin_block?: {
                     events?: {
                         type?: string;
                         attributes?: {
@@ -467,13 +467,13 @@ export declare namespace tendermint {
                         }[];
                     }[];
                 };
-                checkTx?: {
+                check_tx?: {
                     code?: number;
                     data?: Uint8Array;
                     log?: string;
                     info?: string;
-                    gasWanted?: any;
-                    gasUsed?: any;
+                    gas_wanted?: any;
+                    gas_used?: any;
                     events?: {
                         type?: string;
                         attributes?: {
@@ -484,13 +484,13 @@ export declare namespace tendermint {
                     }[];
                     codespace?: string;
                 };
-                deliverTx?: {
+                deliver_tx?: {
                     code?: number;
                     data?: Uint8Array;
                     log?: string;
                     info?: string;
-                    gasWanted?: any;
-                    gasUsed?: any;
+                    gas_wanted?: any;
+                    gas_used?: any;
                     events?: {
                         type?: string;
                         attributes?: {
@@ -501,32 +501,32 @@ export declare namespace tendermint {
                     }[];
                     codespace?: string;
                 };
-                endBlock?: {
-                    validatorUpdates?: {
-                        pubKey?: {
+                end_block?: {
+                    validator_updates?: {
+                        pub_key?: {
                             ed25519?: Uint8Array;
                             secp256k1?: Uint8Array;
                         };
                         power?: any;
                     }[];
-                    consensusParamUpdates?: {
+                    consensus_param_updates?: {
                         block?: {
-                            maxBytes?: any;
-                            maxGas?: any;
+                            max_bytes?: any;
+                            max_gas?: any;
                         };
                         evidence?: {
-                            maxAgeNumBlocks?: any;
-                            maxAgeDuration?: {
+                            max_age_num_blocks?: any;
+                            max_age_duration?: {
                                 seconds?: any;
                                 nanos?: number;
                             };
-                            maxBytes?: any;
+                            max_bytes?: any;
                         };
                         validator?: {
-                            pubKeyTypes?: string[];
+                            pub_key_types?: string[];
                         };
                         version?: {
-                            appVersion?: any;
+                            app_version?: any;
                         };
                     };
                     events?: {
@@ -540,9 +540,9 @@ export declare namespace tendermint {
                 };
                 commit?: {
                     data?: Uint8Array;
-                    retainHeight?: any;
+                    retain_height?: any;
                 };
-                listSnapshots?: {
+                list_snapshots?: {
                     snapshots?: {
                         height?: any;
                         format?: number;
@@ -551,109 +551,109 @@ export declare namespace tendermint {
                         metadata?: Uint8Array;
                     }[];
                 };
-                offerSnapshot?: {
-                    result?: _135.ResponseOfferSnapshot_Result;
+                offer_snapshot?: {
+                    result?: _126.ResponseOfferSnapshot_Result;
                 };
-                loadSnapshotChunk?: {
+                load_snapshot_chunk?: {
                     chunk?: Uint8Array;
                 };
-                applySnapshotChunk?: {
-                    result?: _135.ResponseApplySnapshotChunk_Result;
-                    refetchChunks?: number[];
-                    rejectSenders?: string[];
+                apply_snapshot_chunk?: {
+                    result?: _126.ResponseApplySnapshotChunk_Result;
+                    refetch_chunks?: number[];
+                    reject_senders?: string[];
                 };
-            }): _135.Response;
+            }): _126.Response;
         };
         ResponseException: {
-            encode(message: _135.ResponseException, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.ResponseException;
-            fromJSON(object: any): _135.ResponseException;
-            toJSON(message: _135.ResponseException): unknown;
+            encode(message: _126.ResponseException, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.ResponseException;
+            fromJSON(object: any): _126.ResponseException;
+            toJSON(message: _126.ResponseException): unknown;
             fromPartial(object: {
                 error?: string;
-            }): _135.ResponseException;
+            }): _126.ResponseException;
         };
         ResponseEcho: {
-            encode(message: _135.ResponseEcho, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.ResponseEcho;
-            fromJSON(object: any): _135.ResponseEcho;
-            toJSON(message: _135.ResponseEcho): unknown;
+            encode(message: _126.ResponseEcho, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.ResponseEcho;
+            fromJSON(object: any): _126.ResponseEcho;
+            toJSON(message: _126.ResponseEcho): unknown;
             fromPartial(object: {
                 message?: string;
-            }): _135.ResponseEcho;
+            }): _126.ResponseEcho;
         };
         ResponseFlush: {
-            encode(_: _135.ResponseFlush, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.ResponseFlush;
-            fromJSON(_: any): _135.ResponseFlush;
-            toJSON(_: _135.ResponseFlush): unknown;
-            fromPartial(_: {}): _135.ResponseFlush;
+            encode(_: _126.ResponseFlush, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.ResponseFlush;
+            fromJSON(_: any): _126.ResponseFlush;
+            toJSON(_: _126.ResponseFlush): unknown;
+            fromPartial(_: {}): _126.ResponseFlush;
         };
         ResponseInfo: {
-            encode(message: _135.ResponseInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.ResponseInfo;
-            fromJSON(object: any): _135.ResponseInfo;
-            toJSON(message: _135.ResponseInfo): unknown;
+            encode(message: _126.ResponseInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.ResponseInfo;
+            fromJSON(object: any): _126.ResponseInfo;
+            toJSON(message: _126.ResponseInfo): unknown;
             fromPartial(object: {
                 data?: string;
                 version?: string;
-                appVersion?: any;
-                lastBlockHeight?: any;
-                lastBlockAppHash?: Uint8Array;
-            }): _135.ResponseInfo;
+                app_version?: any;
+                last_block_height?: any;
+                last_block_app_hash?: Uint8Array;
+            }): _126.ResponseInfo;
         };
         ResponseSetOption: {
-            encode(message: _135.ResponseSetOption, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.ResponseSetOption;
-            fromJSON(object: any): _135.ResponseSetOption;
-            toJSON(message: _135.ResponseSetOption): unknown;
+            encode(message: _126.ResponseSetOption, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.ResponseSetOption;
+            fromJSON(object: any): _126.ResponseSetOption;
+            toJSON(message: _126.ResponseSetOption): unknown;
             fromPartial(object: {
                 code?: number;
                 log?: string;
                 info?: string;
-            }): _135.ResponseSetOption;
+            }): _126.ResponseSetOption;
         };
         ResponseInitChain: {
-            encode(message: _135.ResponseInitChain, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.ResponseInitChain;
-            fromJSON(object: any): _135.ResponseInitChain;
-            toJSON(message: _135.ResponseInitChain): unknown;
+            encode(message: _126.ResponseInitChain, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.ResponseInitChain;
+            fromJSON(object: any): _126.ResponseInitChain;
+            toJSON(message: _126.ResponseInitChain): unknown;
             fromPartial(object: {
-                consensusParams?: {
+                consensus_params?: {
                     block?: {
-                        maxBytes?: any;
-                        maxGas?: any;
+                        max_bytes?: any;
+                        max_gas?: any;
                     };
                     evidence?: {
-                        maxAgeNumBlocks?: any;
-                        maxAgeDuration?: {
+                        max_age_num_blocks?: any;
+                        max_age_duration?: {
                             seconds?: any;
                             nanos?: number;
                         };
-                        maxBytes?: any;
+                        max_bytes?: any;
                     };
                     validator?: {
-                        pubKeyTypes?: string[];
+                        pub_key_types?: string[];
                     };
                     version?: {
-                        appVersion?: any;
+                        app_version?: any;
                     };
                 };
                 validators?: {
-                    pubKey?: {
+                    pub_key?: {
                         ed25519?: Uint8Array;
                         secp256k1?: Uint8Array;
                     };
                     power?: any;
                 }[];
-                appHash?: Uint8Array;
-            }): _135.ResponseInitChain;
+                app_hash?: Uint8Array;
+            }): _126.ResponseInitChain;
         };
         ResponseQuery: {
-            encode(message: _135.ResponseQuery, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.ResponseQuery;
-            fromJSON(object: any): _135.ResponseQuery;
-            toJSON(message: _135.ResponseQuery): unknown;
+            encode(message: _126.ResponseQuery, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.ResponseQuery;
+            fromJSON(object: any): _126.ResponseQuery;
+            toJSON(message: _126.ResponseQuery): unknown;
             fromPartial(object: {
                 code?: number;
                 log?: string;
@@ -661,7 +661,7 @@ export declare namespace tendermint {
                 index?: any;
                 key?: Uint8Array;
                 value?: Uint8Array;
-                proofOps?: {
+                proof_ops?: {
                     ops?: {
                         type?: string;
                         key?: Uint8Array;
@@ -670,13 +670,13 @@ export declare namespace tendermint {
                 };
                 height?: any;
                 codespace?: string;
-            }): _135.ResponseQuery;
+            }): _126.ResponseQuery;
         };
         ResponseBeginBlock: {
-            encode(message: _135.ResponseBeginBlock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.ResponseBeginBlock;
-            fromJSON(object: any): _135.ResponseBeginBlock;
-            toJSON(message: _135.ResponseBeginBlock): unknown;
+            encode(message: _126.ResponseBeginBlock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.ResponseBeginBlock;
+            fromJSON(object: any): _126.ResponseBeginBlock;
+            toJSON(message: _126.ResponseBeginBlock): unknown;
             fromPartial(object: {
                 events?: {
                     type?: string;
@@ -686,20 +686,20 @@ export declare namespace tendermint {
                         index?: boolean;
                     }[];
                 }[];
-            }): _135.ResponseBeginBlock;
+            }): _126.ResponseBeginBlock;
         };
         ResponseCheckTx: {
-            encode(message: _135.ResponseCheckTx, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.ResponseCheckTx;
-            fromJSON(object: any): _135.ResponseCheckTx;
-            toJSON(message: _135.ResponseCheckTx): unknown;
+            encode(message: _126.ResponseCheckTx, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.ResponseCheckTx;
+            fromJSON(object: any): _126.ResponseCheckTx;
+            toJSON(message: _126.ResponseCheckTx): unknown;
             fromPartial(object: {
                 code?: number;
                 data?: Uint8Array;
                 log?: string;
                 info?: string;
-                gasWanted?: any;
-                gasUsed?: any;
+                gas_wanted?: any;
+                gas_used?: any;
                 events?: {
                     type?: string;
                     attributes?: {
@@ -709,20 +709,20 @@ export declare namespace tendermint {
                     }[];
                 }[];
                 codespace?: string;
-            }): _135.ResponseCheckTx;
+            }): _126.ResponseCheckTx;
         };
         ResponseDeliverTx: {
-            encode(message: _135.ResponseDeliverTx, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.ResponseDeliverTx;
-            fromJSON(object: any): _135.ResponseDeliverTx;
-            toJSON(message: _135.ResponseDeliverTx): unknown;
+            encode(message: _126.ResponseDeliverTx, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.ResponseDeliverTx;
+            fromJSON(object: any): _126.ResponseDeliverTx;
+            toJSON(message: _126.ResponseDeliverTx): unknown;
             fromPartial(object: {
                 code?: number;
                 data?: Uint8Array;
                 log?: string;
                 info?: string;
-                gasWanted?: any;
-                gasUsed?: any;
+                gas_wanted?: any;
+                gas_used?: any;
                 events?: {
                     type?: string;
                     attributes?: {
@@ -732,39 +732,39 @@ export declare namespace tendermint {
                     }[];
                 }[];
                 codespace?: string;
-            }): _135.ResponseDeliverTx;
+            }): _126.ResponseDeliverTx;
         };
         ResponseEndBlock: {
-            encode(message: _135.ResponseEndBlock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.ResponseEndBlock;
-            fromJSON(object: any): _135.ResponseEndBlock;
-            toJSON(message: _135.ResponseEndBlock): unknown;
+            encode(message: _126.ResponseEndBlock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.ResponseEndBlock;
+            fromJSON(object: any): _126.ResponseEndBlock;
+            toJSON(message: _126.ResponseEndBlock): unknown;
             fromPartial(object: {
-                validatorUpdates?: {
-                    pubKey?: {
+                validator_updates?: {
+                    pub_key?: {
                         ed25519?: Uint8Array;
                         secp256k1?: Uint8Array;
                     };
                     power?: any;
                 }[];
-                consensusParamUpdates?: {
+                consensus_param_updates?: {
                     block?: {
-                        maxBytes?: any;
-                        maxGas?: any;
+                        max_bytes?: any;
+                        max_gas?: any;
                     };
                     evidence?: {
-                        maxAgeNumBlocks?: any;
-                        maxAgeDuration?: {
+                        max_age_num_blocks?: any;
+                        max_age_duration?: {
                             seconds?: any;
                             nanos?: number;
                         };
-                        maxBytes?: any;
+                        max_bytes?: any;
                     };
                     validator?: {
-                        pubKeyTypes?: string[];
+                        pub_key_types?: string[];
                     };
                     version?: {
-                        appVersion?: any;
+                        app_version?: any;
                     };
                 };
                 events?: {
@@ -775,23 +775,23 @@ export declare namespace tendermint {
                         index?: boolean;
                     }[];
                 }[];
-            }): _135.ResponseEndBlock;
+            }): _126.ResponseEndBlock;
         };
         ResponseCommit: {
-            encode(message: _135.ResponseCommit, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.ResponseCommit;
-            fromJSON(object: any): _135.ResponseCommit;
-            toJSON(message: _135.ResponseCommit): unknown;
+            encode(message: _126.ResponseCommit, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.ResponseCommit;
+            fromJSON(object: any): _126.ResponseCommit;
+            toJSON(message: _126.ResponseCommit): unknown;
             fromPartial(object: {
                 data?: Uint8Array;
-                retainHeight?: any;
-            }): _135.ResponseCommit;
+                retain_height?: any;
+            }): _126.ResponseCommit;
         };
         ResponseListSnapshots: {
-            encode(message: _135.ResponseListSnapshots, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.ResponseListSnapshots;
-            fromJSON(object: any): _135.ResponseListSnapshots;
-            toJSON(message: _135.ResponseListSnapshots): unknown;
+            encode(message: _126.ResponseListSnapshots, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.ResponseListSnapshots;
+            fromJSON(object: any): _126.ResponseListSnapshots;
+            toJSON(message: _126.ResponseListSnapshots): unknown;
             fromPartial(object: {
                 snapshots?: {
                     height?: any;
@@ -800,78 +800,78 @@ export declare namespace tendermint {
                     hash?: Uint8Array;
                     metadata?: Uint8Array;
                 }[];
-            }): _135.ResponseListSnapshots;
+            }): _126.ResponseListSnapshots;
         };
         ResponseOfferSnapshot: {
-            encode(message: _135.ResponseOfferSnapshot, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.ResponseOfferSnapshot;
-            fromJSON(object: any): _135.ResponseOfferSnapshot;
-            toJSON(message: _135.ResponseOfferSnapshot): unknown;
+            encode(message: _126.ResponseOfferSnapshot, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.ResponseOfferSnapshot;
+            fromJSON(object: any): _126.ResponseOfferSnapshot;
+            toJSON(message: _126.ResponseOfferSnapshot): unknown;
             fromPartial(object: {
-                result?: _135.ResponseOfferSnapshot_Result;
-            }): _135.ResponseOfferSnapshot;
+                result?: _126.ResponseOfferSnapshot_Result;
+            }): _126.ResponseOfferSnapshot;
         };
         ResponseLoadSnapshotChunk: {
-            encode(message: _135.ResponseLoadSnapshotChunk, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.ResponseLoadSnapshotChunk;
-            fromJSON(object: any): _135.ResponseLoadSnapshotChunk;
-            toJSON(message: _135.ResponseLoadSnapshotChunk): unknown;
+            encode(message: _126.ResponseLoadSnapshotChunk, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.ResponseLoadSnapshotChunk;
+            fromJSON(object: any): _126.ResponseLoadSnapshotChunk;
+            toJSON(message: _126.ResponseLoadSnapshotChunk): unknown;
             fromPartial(object: {
                 chunk?: Uint8Array;
-            }): _135.ResponseLoadSnapshotChunk;
+            }): _126.ResponseLoadSnapshotChunk;
         };
         ResponseApplySnapshotChunk: {
-            encode(message: _135.ResponseApplySnapshotChunk, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.ResponseApplySnapshotChunk;
-            fromJSON(object: any): _135.ResponseApplySnapshotChunk;
-            toJSON(message: _135.ResponseApplySnapshotChunk): unknown;
+            encode(message: _126.ResponseApplySnapshotChunk, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.ResponseApplySnapshotChunk;
+            fromJSON(object: any): _126.ResponseApplySnapshotChunk;
+            toJSON(message: _126.ResponseApplySnapshotChunk): unknown;
             fromPartial(object: {
-                result?: _135.ResponseApplySnapshotChunk_Result;
-                refetchChunks?: number[];
-                rejectSenders?: string[];
-            }): _135.ResponseApplySnapshotChunk;
+                result?: _126.ResponseApplySnapshotChunk_Result;
+                refetch_chunks?: number[];
+                reject_senders?: string[];
+            }): _126.ResponseApplySnapshotChunk;
         };
         ConsensusParams: {
-            encode(message: _135.ConsensusParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.ConsensusParams;
-            fromJSON(object: any): _135.ConsensusParams;
-            toJSON(message: _135.ConsensusParams): unknown;
+            encode(message: _126.ConsensusParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.ConsensusParams;
+            fromJSON(object: any): _126.ConsensusParams;
+            toJSON(message: _126.ConsensusParams): unknown;
             fromPartial(object: {
                 block?: {
-                    maxBytes?: any;
-                    maxGas?: any;
+                    max_bytes?: any;
+                    max_gas?: any;
                 };
                 evidence?: {
-                    maxAgeNumBlocks?: any;
-                    maxAgeDuration?: {
+                    max_age_num_blocks?: any;
+                    max_age_duration?: {
                         seconds?: any;
                         nanos?: number;
                     };
-                    maxBytes?: any;
+                    max_bytes?: any;
                 };
                 validator?: {
-                    pubKeyTypes?: string[];
+                    pub_key_types?: string[];
                 };
                 version?: {
-                    appVersion?: any;
+                    app_version?: any;
                 };
-            }): _135.ConsensusParams;
+            }): _126.ConsensusParams;
         };
         BlockParams: {
-            encode(message: _135.BlockParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.BlockParams;
-            fromJSON(object: any): _135.BlockParams;
-            toJSON(message: _135.BlockParams): unknown;
+            encode(message: _126.BlockParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.BlockParams;
+            fromJSON(object: any): _126.BlockParams;
+            toJSON(message: _126.BlockParams): unknown;
             fromPartial(object: {
-                maxBytes?: any;
-                maxGas?: any;
-            }): _135.BlockParams;
+                max_bytes?: any;
+                max_gas?: any;
+            }): _126.BlockParams;
         };
         LastCommitInfo: {
-            encode(message: _135.LastCommitInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.LastCommitInfo;
-            fromJSON(object: any): _135.LastCommitInfo;
-            toJSON(message: _135.LastCommitInfo): unknown;
+            encode(message: _126.LastCommitInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.LastCommitInfo;
+            fromJSON(object: any): _126.LastCommitInfo;
+            toJSON(message: _126.LastCommitInfo): unknown;
             fromPartial(object: {
                 round?: number;
                 votes?: {
@@ -879,15 +879,15 @@ export declare namespace tendermint {
                         address?: Uint8Array;
                         power?: any;
                     };
-                    signedLastBlock?: boolean;
+                    signed_last_block?: boolean;
                 }[];
-            }): _135.LastCommitInfo;
+            }): _126.LastCommitInfo;
         };
         Event: {
-            encode(message: _135.Event, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.Event;
-            fromJSON(object: any): _135.Event;
-            toJSON(message: _135.Event): unknown;
+            encode(message: _126.Event, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.Event;
+            fromJSON(object: any): _126.Event;
+            toJSON(message: _126.Event): unknown;
             fromPartial(object: {
                 type?: string;
                 attributes?: {
@@ -895,24 +895,24 @@ export declare namespace tendermint {
                     value?: Uint8Array;
                     index?: boolean;
                 }[];
-            }): _135.Event;
+            }): _126.Event;
         };
         EventAttribute: {
-            encode(message: _135.EventAttribute, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.EventAttribute;
-            fromJSON(object: any): _135.EventAttribute;
-            toJSON(message: _135.EventAttribute): unknown;
+            encode(message: _126.EventAttribute, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.EventAttribute;
+            fromJSON(object: any): _126.EventAttribute;
+            toJSON(message: _126.EventAttribute): unknown;
             fromPartial(object: {
                 key?: Uint8Array;
                 value?: Uint8Array;
                 index?: boolean;
-            }): _135.EventAttribute;
+            }): _126.EventAttribute;
         };
         TxResult: {
-            encode(message: _135.TxResult, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.TxResult;
-            fromJSON(object: any): _135.TxResult;
-            toJSON(message: _135.TxResult): unknown;
+            encode(message: _126.TxResult, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.TxResult;
+            fromJSON(object: any): _126.TxResult;
+            toJSON(message: _126.TxResult): unknown;
             fromPartial(object: {
                 height?: any;
                 index?: number;
@@ -922,8 +922,8 @@ export declare namespace tendermint {
                     data?: Uint8Array;
                     log?: string;
                     info?: string;
-                    gasWanted?: any;
-                    gasUsed?: any;
+                    gas_wanted?: any;
+                    gas_used?: any;
                     events?: {
                         type?: string;
                         attributes?: {
@@ -934,7 +934,263 @@ export declare namespace tendermint {
                     }[];
                     codespace?: string;
                 };
-            }): _135.TxResult;
+            }): _126.TxResult;
+        };
+        Validator: {
+            encode(message: _126.Validator, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.Validator;
+            fromJSON(object: any): _126.Validator;
+            toJSON(message: _126.Validator): unknown;
+            fromPartial(object: {
+                address?: Uint8Array;
+                power?: any;
+            }): _126.Validator;
+        };
+        ValidatorUpdate: {
+            encode(message: _126.ValidatorUpdate, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.ValidatorUpdate;
+            fromJSON(object: any): _126.ValidatorUpdate;
+            toJSON(message: _126.ValidatorUpdate): unknown;
+            fromPartial(object: {
+                pub_key?: {
+                    ed25519?: Uint8Array;
+                    secp256k1?: Uint8Array;
+                };
+                power?: any;
+            }): _126.ValidatorUpdate;
+        };
+        VoteInfo: {
+            encode(message: _126.VoteInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.VoteInfo;
+            fromJSON(object: any): _126.VoteInfo;
+            toJSON(message: _126.VoteInfo): unknown;
+            fromPartial(object: {
+                validator?: {
+                    address?: Uint8Array;
+                    power?: any;
+                };
+                signed_last_block?: boolean;
+            }): _126.VoteInfo;
+        };
+        Evidence: {
+            encode(message: _126.Evidence, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.Evidence;
+            fromJSON(object: any): _126.Evidence;
+            toJSON(message: _126.Evidence): unknown;
+            fromPartial(object: {
+                type?: _126.EvidenceType;
+                validator?: {
+                    address?: Uint8Array;
+                    power?: any;
+                };
+                height?: any;
+                time?: Date;
+                total_voting_power?: any;
+            }): _126.Evidence;
+        };
+        Snapshot: {
+            encode(message: _126.Snapshot, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _126.Snapshot;
+            fromJSON(object: any): _126.Snapshot;
+            toJSON(message: _126.Snapshot): unknown;
+            fromPartial(object: {
+                height?: any;
+                format?: number;
+                chunks?: number;
+                hash?: Uint8Array;
+                metadata?: Uint8Array;
+            }): _126.Snapshot;
+        };
+    };
+    const crypto: {
+        Proof: {
+            encode(message: _128.Proof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _128.Proof;
+            fromJSON(object: any): _128.Proof;
+            toJSON(message: _128.Proof): unknown;
+            fromPartial(object: {
+                total?: any;
+                index?: any;
+                leaf_hash?: Uint8Array;
+                aunts?: Uint8Array[];
+            }): _128.Proof;
+        };
+        ValueOp: {
+            encode(message: _128.ValueOp, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _128.ValueOp;
+            fromJSON(object: any): _128.ValueOp;
+            toJSON(message: _128.ValueOp): unknown;
+            fromPartial(object: {
+                key?: Uint8Array;
+                proof?: {
+                    total?: any;
+                    index?: any;
+                    leaf_hash?: Uint8Array;
+                    aunts?: Uint8Array[];
+                };
+            }): _128.ValueOp;
+        };
+        DominoOp: {
+            encode(message: _128.DominoOp, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _128.DominoOp;
+            fromJSON(object: any): _128.DominoOp;
+            toJSON(message: _128.DominoOp): unknown;
+            fromPartial(object: {
+                key?: string;
+                input?: string;
+                output?: string;
+            }): _128.DominoOp;
+        };
+        ProofOp: {
+            encode(message: _128.ProofOp, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _128.ProofOp;
+            fromJSON(object: any): _128.ProofOp;
+            toJSON(message: _128.ProofOp): unknown;
+            fromPartial(object: {
+                type?: string;
+                key?: Uint8Array;
+                data?: Uint8Array;
+            }): _128.ProofOp;
+        };
+        ProofOps: {
+            encode(message: _128.ProofOps, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _128.ProofOps;
+            fromJSON(object: any): _128.ProofOps;
+            toJSON(message: _128.ProofOps): unknown;
+            fromPartial(object: {
+                ops?: {
+                    type?: string;
+                    key?: Uint8Array;
+                    data?: Uint8Array;
+                }[];
+            }): _128.ProofOps;
+        };
+        PublicKey: {
+            encode(message: _127.PublicKey, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _127.PublicKey;
+            fromJSON(object: any): _127.PublicKey;
+            toJSON(message: _127.PublicKey): unknown;
+            fromPartial(object: {
+                ed25519?: Uint8Array;
+                secp256k1?: Uint8Array;
+            }): _127.PublicKey;
+        };
+    };
+    namespace libs {
+        const bits: {
+            BitArray: {
+                encode(message: _129.BitArray, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _129.BitArray;
+                fromJSON(object: any): _129.BitArray;
+                toJSON(message: _129.BitArray): unknown;
+                fromPartial(object: {
+                    bits?: any;
+                    elems?: any[];
+                }): _129.BitArray;
+            };
+        };
+    }
+    const p2p: {
+        ProtocolVersion: {
+            encode(message: _130.ProtocolVersion, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.ProtocolVersion;
+            fromJSON(object: any): _130.ProtocolVersion;
+            toJSON(message: _130.ProtocolVersion): unknown;
+            fromPartial(object: {
+                p2p?: any;
+                block?: any;
+                app?: any;
+            }): _130.ProtocolVersion;
+        };
+        NodeInfo: {
+            encode(message: _130.NodeInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.NodeInfo;
+            fromJSON(object: any): _130.NodeInfo;
+            toJSON(message: _130.NodeInfo): unknown;
+            fromPartial(object: {
+                protocol_version?: {
+                    p2p?: any;
+                    block?: any;
+                    app?: any;
+                };
+                node_id?: string;
+                listen_addr?: string;
+                network?: string;
+                version?: string;
+                channels?: Uint8Array;
+                moniker?: string;
+                other?: {
+                    tx_index?: string;
+                    rpc_address?: string;
+                };
+            }): _130.NodeInfo;
+        };
+        NodeInfoOther: {
+            encode(message: _130.NodeInfoOther, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.NodeInfoOther;
+            fromJSON(object: any): _130.NodeInfoOther;
+            toJSON(message: _130.NodeInfoOther): unknown;
+            fromPartial(object: {
+                tx_index?: string;
+                rpc_address?: string;
+            }): _130.NodeInfoOther;
+        };
+        PeerInfo: {
+            encode(message: _130.PeerInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.PeerInfo;
+            fromJSON(object: any): _130.PeerInfo;
+            toJSON(message: _130.PeerInfo): unknown;
+            fromPartial(object: {
+                id?: string;
+                address_info?: {
+                    address?: string;
+                    last_dial_success?: Date;
+                    last_dial_failure?: Date;
+                    dial_failures?: number;
+                }[];
+                last_connected?: Date;
+            }): _130.PeerInfo;
+        };
+        PeerAddressInfo: {
+            encode(message: _130.PeerAddressInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _130.PeerAddressInfo;
+            fromJSON(object: any): _130.PeerAddressInfo;
+            toJSON(message: _130.PeerAddressInfo): unknown;
+            fromPartial(object: {
+                address?: string;
+                last_dial_success?: Date;
+                last_dial_failure?: Date;
+                dial_failures?: number;
+            }): _130.PeerAddressInfo;
+        };
+    };
+    const types: {
+        ValidatorSet: {
+            encode(message: _135.ValidatorSet, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.ValidatorSet;
+            fromJSON(object: any): _135.ValidatorSet;
+            toJSON(message: _135.ValidatorSet): unknown;
+            fromPartial(object: {
+                validators?: {
+                    address?: Uint8Array;
+                    pub_key?: {
+                        ed25519?: Uint8Array;
+                        secp256k1?: Uint8Array;
+                    };
+                    voting_power?: any;
+                    proposer_priority?: any;
+                }[];
+                proposer?: {
+                    address?: Uint8Array;
+                    pub_key?: {
+                        ed25519?: Uint8Array;
+                        secp256k1?: Uint8Array;
+                    };
+                    voting_power?: any;
+                    proposer_priority?: any;
+                };
+                total_voting_power?: any;
+            }): _135.ValidatorSet;
         };
         Validator: {
             encode(message: _135.Validator, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -943,1287 +1199,1031 @@ export declare namespace tendermint {
             toJSON(message: _135.Validator): unknown;
             fromPartial(object: {
                 address?: Uint8Array;
-                power?: any;
+                pub_key?: {
+                    ed25519?: Uint8Array;
+                    secp256k1?: Uint8Array;
+                };
+                voting_power?: any;
+                proposer_priority?: any;
             }): _135.Validator;
         };
-        ValidatorUpdate: {
-            encode(message: _135.ValidatorUpdate, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.ValidatorUpdate;
-            fromJSON(object: any): _135.ValidatorUpdate;
-            toJSON(message: _135.ValidatorUpdate): unknown;
-            fromPartial(object: {
-                pubKey?: {
-                    ed25519?: Uint8Array;
-                    secp256k1?: Uint8Array;
-                };
-                power?: any;
-            }): _135.ValidatorUpdate;
-        };
-        VoteInfo: {
-            encode(message: _135.VoteInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.VoteInfo;
-            fromJSON(object: any): _135.VoteInfo;
-            toJSON(message: _135.VoteInfo): unknown;
-            fromPartial(object: {
-                validator?: {
-                    address?: Uint8Array;
-                    power?: any;
-                };
-                signedLastBlock?: boolean;
-            }): _135.VoteInfo;
-        };
-        Evidence: {
-            encode(message: _135.Evidence, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.Evidence;
-            fromJSON(object: any): _135.Evidence;
-            toJSON(message: _135.Evidence): unknown;
-            fromPartial(object: {
-                type?: _135.EvidenceType;
-                validator?: {
-                    address?: Uint8Array;
-                    power?: any;
-                };
-                height?: any;
-                time?: Date;
-                totalVotingPower?: any;
-            }): _135.Evidence;
-        };
-        Snapshot: {
-            encode(message: _135.Snapshot, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.Snapshot;
-            fromJSON(object: any): _135.Snapshot;
-            toJSON(message: _135.Snapshot): unknown;
-            fromPartial(object: {
-                height?: any;
-                format?: number;
-                chunks?: number;
-                hash?: Uint8Array;
-                metadata?: Uint8Array;
-            }): _135.Snapshot;
-        };
-    };
-    const crypto: {
-        Proof: {
-            encode(message: _137.Proof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _137.Proof;
-            fromJSON(object: any): _137.Proof;
-            toJSON(message: _137.Proof): unknown;
-            fromPartial(object: {
-                total?: any;
-                index?: any;
-                leafHash?: Uint8Array;
-                aunts?: Uint8Array[];
-            }): _137.Proof;
-        };
-        ValueOp: {
-            encode(message: _137.ValueOp, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _137.ValueOp;
-            fromJSON(object: any): _137.ValueOp;
-            toJSON(message: _137.ValueOp): unknown;
-            fromPartial(object: {
-                key?: Uint8Array;
-                proof?: {
-                    total?: any;
-                    index?: any;
-                    leafHash?: Uint8Array;
-                    aunts?: Uint8Array[];
-                };
-            }): _137.ValueOp;
-        };
-        DominoOp: {
-            encode(message: _137.DominoOp, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _137.DominoOp;
-            fromJSON(object: any): _137.DominoOp;
-            toJSON(message: _137.DominoOp): unknown;
-            fromPartial(object: {
-                key?: string;
-                input?: string;
-                output?: string;
-            }): _137.DominoOp;
-        };
-        ProofOp: {
-            encode(message: _137.ProofOp, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _137.ProofOp;
-            fromJSON(object: any): _137.ProofOp;
-            toJSON(message: _137.ProofOp): unknown;
-            fromPartial(object: {
-                type?: string;
-                key?: Uint8Array;
-                data?: Uint8Array;
-            }): _137.ProofOp;
-        };
-        ProofOps: {
-            encode(message: _137.ProofOps, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _137.ProofOps;
-            fromJSON(object: any): _137.ProofOps;
-            toJSON(message: _137.ProofOps): unknown;
-            fromPartial(object: {
-                ops?: {
-                    type?: string;
-                    key?: Uint8Array;
-                    data?: Uint8Array;
-                }[];
-            }): _137.ProofOps;
-        };
-        PublicKey: {
-            encode(message: _136.PublicKey, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _136.PublicKey;
-            fromJSON(object: any): _136.PublicKey;
-            toJSON(message: _136.PublicKey): unknown;
-            fromPartial(object: {
-                ed25519?: Uint8Array;
-                secp256k1?: Uint8Array;
-            }): _136.PublicKey;
-        };
-    };
-    namespace libs {
-        const bits: {
-            BitArray: {
-                encode(message: _138.BitArray, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _138.BitArray;
-                fromJSON(object: any): _138.BitArray;
-                toJSON(message: _138.BitArray): unknown;
-                fromPartial(object: {
-                    bits?: any;
-                    elems?: any[];
-                }): _138.BitArray;
-            };
-        };
-    }
-    const p2p: {
-        ProtocolVersion: {
-            encode(message: _139.ProtocolVersion, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _139.ProtocolVersion;
-            fromJSON(object: any): _139.ProtocolVersion;
-            toJSON(message: _139.ProtocolVersion): unknown;
-            fromPartial(object: {
-                p2p?: any;
-                block?: any;
-                app?: any;
-            }): _139.ProtocolVersion;
-        };
-        NodeInfo: {
-            encode(message: _139.NodeInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _139.NodeInfo;
-            fromJSON(object: any): _139.NodeInfo;
-            toJSON(message: _139.NodeInfo): unknown;
-            fromPartial(object: {
-                protocolVersion?: {
-                    p2p?: any;
-                    block?: any;
-                    app?: any;
-                };
-                nodeId?: string;
-                listenAddr?: string;
-                network?: string;
-                version?: string;
-                channels?: Uint8Array;
-                moniker?: string;
-                other?: {
-                    txIndex?: string;
-                    rpcAddress?: string;
-                };
-            }): _139.NodeInfo;
-        };
-        NodeInfoOther: {
-            encode(message: _139.NodeInfoOther, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _139.NodeInfoOther;
-            fromJSON(object: any): _139.NodeInfoOther;
-            toJSON(message: _139.NodeInfoOther): unknown;
-            fromPartial(object: {
-                txIndex?: string;
-                rpcAddress?: string;
-            }): _139.NodeInfoOther;
-        };
-        PeerInfo: {
-            encode(message: _139.PeerInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _139.PeerInfo;
-            fromJSON(object: any): _139.PeerInfo;
-            toJSON(message: _139.PeerInfo): unknown;
-            fromPartial(object: {
-                id?: string;
-                addressInfo?: {
-                    address?: string;
-                    lastDialSuccess?: Date;
-                    lastDialFailure?: Date;
-                    dialFailures?: number;
-                }[];
-                lastConnected?: Date;
-            }): _139.PeerInfo;
-        };
-        PeerAddressInfo: {
-            encode(message: _139.PeerAddressInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _139.PeerAddressInfo;
-            fromJSON(object: any): _139.PeerAddressInfo;
-            toJSON(message: _139.PeerAddressInfo): unknown;
-            fromPartial(object: {
-                address?: string;
-                lastDialSuccess?: Date;
-                lastDialFailure?: Date;
-                dialFailures?: number;
-            }): _139.PeerAddressInfo;
-        };
-    };
-    const types: {
-        ValidatorSet: {
-            encode(message: _144.ValidatorSet, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _144.ValidatorSet;
-            fromJSON(object: any): _144.ValidatorSet;
-            toJSON(message: _144.ValidatorSet): unknown;
-            fromPartial(object: {
-                validators?: {
-                    address?: Uint8Array;
-                    pubKey?: {
-                        ed25519?: Uint8Array;
-                        secp256k1?: Uint8Array;
-                    };
-                    votingPower?: any;
-                    proposerPriority?: any;
-                }[];
-                proposer?: {
-                    address?: Uint8Array;
-                    pubKey?: {
-                        ed25519?: Uint8Array;
-                        secp256k1?: Uint8Array;
-                    };
-                    votingPower?: any;
-                    proposerPriority?: any;
-                };
-                totalVotingPower?: any;
-            }): _144.ValidatorSet;
-        };
-        Validator: {
-            encode(message: _144.Validator, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _144.Validator;
-            fromJSON(object: any): _144.Validator;
-            toJSON(message: _144.Validator): unknown;
-            fromPartial(object: {
-                address?: Uint8Array;
-                pubKey?: {
-                    ed25519?: Uint8Array;
-                    secp256k1?: Uint8Array;
-                };
-                votingPower?: any;
-                proposerPriority?: any;
-            }): _144.Validator;
-        };
         SimpleValidator: {
-            encode(message: _144.SimpleValidator, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _144.SimpleValidator;
-            fromJSON(object: any): _144.SimpleValidator;
-            toJSON(message: _144.SimpleValidator): unknown;
+            encode(message: _135.SimpleValidator, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _135.SimpleValidator;
+            fromJSON(object: any): _135.SimpleValidator;
+            toJSON(message: _135.SimpleValidator): unknown;
             fromPartial(object: {
-                pubKey?: {
+                pub_key?: {
                     ed25519?: Uint8Array;
                     secp256k1?: Uint8Array;
                 };
-                votingPower?: any;
-            }): _144.SimpleValidator;
+                voting_power?: any;
+            }): _135.SimpleValidator;
         };
-        blockIDFlagFromJSON(object: any): _143.BlockIDFlag;
-        blockIDFlagToJSON(object: _143.BlockIDFlag): string;
-        signedMsgTypeFromJSON(object: any): _143.SignedMsgType;
-        signedMsgTypeToJSON(object: _143.SignedMsgType): string;
-        BlockIDFlag: typeof _143.BlockIDFlag;
-        SignedMsgType: typeof _143.SignedMsgType;
+        blockIDFlagFromJSON(object: any): _134.BlockIDFlag;
+        blockIDFlagToJSON(object: _134.BlockIDFlag): string;
+        signedMsgTypeFromJSON(object: any): _134.SignedMsgType;
+        signedMsgTypeToJSON(object: _134.SignedMsgType): string;
+        BlockIDFlag: typeof _134.BlockIDFlag;
+        SignedMsgType: typeof _134.SignedMsgType;
         PartSetHeader: {
-            encode(message: _143.PartSetHeader, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.PartSetHeader;
-            fromJSON(object: any): _143.PartSetHeader;
-            toJSON(message: _143.PartSetHeader): unknown;
+            encode(message: _134.PartSetHeader, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.PartSetHeader;
+            fromJSON(object: any): _134.PartSetHeader;
+            toJSON(message: _134.PartSetHeader): unknown;
             fromPartial(object: {
                 total?: number;
                 hash?: Uint8Array;
-            }): _143.PartSetHeader;
+            }): _134.PartSetHeader;
         };
         Part: {
-            encode(message: _143.Part, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.Part;
-            fromJSON(object: any): _143.Part;
-            toJSON(message: _143.Part): unknown;
+            encode(message: _134.Part, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.Part;
+            fromJSON(object: any): _134.Part;
+            toJSON(message: _134.Part): unknown;
             fromPartial(object: {
                 index?: number;
                 bytes?: Uint8Array;
                 proof?: {
                     total?: any;
                     index?: any;
-                    leafHash?: Uint8Array;
+                    leaf_hash?: Uint8Array;
                     aunts?: Uint8Array[];
                 };
-            }): _143.Part;
+            }): _134.Part;
         };
         BlockID: {
-            encode(message: _143.BlockID, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.BlockID;
-            fromJSON(object: any): _143.BlockID;
-            toJSON(message: _143.BlockID): unknown;
+            encode(message: _134.BlockID, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.BlockID;
+            fromJSON(object: any): _134.BlockID;
+            toJSON(message: _134.BlockID): unknown;
             fromPartial(object: {
                 hash?: Uint8Array;
-                partSetHeader?: {
+                part_set_header?: {
                     total?: number;
                     hash?: Uint8Array;
                 };
-            }): _143.BlockID;
+            }): _134.BlockID;
         };
         Header: {
-            encode(message: _143.Header, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.Header;
-            fromJSON(object: any): _143.Header;
-            toJSON(message: _143.Header): unknown;
+            encode(message: _134.Header, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.Header;
+            fromJSON(object: any): _134.Header;
+            toJSON(message: _134.Header): unknown;
             fromPartial(object: {
                 version?: {
                     block?: any;
                     app?: any;
                 };
-                chainId?: string;
+                chain_id?: string;
                 height?: any;
                 time?: Date;
-                lastBlockId?: {
+                last_block_id?: {
                     hash?: Uint8Array;
-                    partSetHeader?: {
+                    part_set_header?: {
                         total?: number;
                         hash?: Uint8Array;
                     };
                 };
-                lastCommitHash?: Uint8Array;
-                dataHash?: Uint8Array;
-                validatorsHash?: Uint8Array;
-                nextValidatorsHash?: Uint8Array;
-                consensusHash?: Uint8Array;
-                appHash?: Uint8Array;
-                lastResultsHash?: Uint8Array;
-                evidenceHash?: Uint8Array;
-                proposerAddress?: Uint8Array;
-            }): _143.Header;
+                last_commit_hash?: Uint8Array;
+                data_hash?: Uint8Array;
+                validators_hash?: Uint8Array;
+                next_validators_hash?: Uint8Array;
+                consensus_hash?: Uint8Array;
+                app_hash?: Uint8Array;
+                last_results_hash?: Uint8Array;
+                evidence_hash?: Uint8Array;
+                proposer_address?: Uint8Array;
+            }): _134.Header;
         };
         Data: {
-            encode(message: _143.Data, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.Data;
-            fromJSON(object: any): _143.Data;
-            toJSON(message: _143.Data): unknown;
+            encode(message: _134.Data, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.Data;
+            fromJSON(object: any): _134.Data;
+            toJSON(message: _134.Data): unknown;
             fromPartial(object: {
                 txs?: Uint8Array[];
-            }): _143.Data;
+            }): _134.Data;
         };
         Vote: {
-            encode(message: _143.Vote, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.Vote;
-            fromJSON(object: any): _143.Vote;
-            toJSON(message: _143.Vote): unknown;
+            encode(message: _134.Vote, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.Vote;
+            fromJSON(object: any): _134.Vote;
+            toJSON(message: _134.Vote): unknown;
             fromPartial(object: {
-                type?: _143.SignedMsgType;
+                type?: _134.SignedMsgType;
                 height?: any;
                 round?: number;
-                blockId?: {
+                block_id?: {
                     hash?: Uint8Array;
-                    partSetHeader?: {
+                    part_set_header?: {
                         total?: number;
                         hash?: Uint8Array;
                     };
                 };
                 timestamp?: Date;
-                validatorAddress?: Uint8Array;
-                validatorIndex?: number;
+                validator_address?: Uint8Array;
+                validator_index?: number;
                 signature?: Uint8Array;
-            }): _143.Vote;
+            }): _134.Vote;
         };
         Commit: {
-            encode(message: _143.Commit, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.Commit;
-            fromJSON(object: any): _143.Commit;
-            toJSON(message: _143.Commit): unknown;
+            encode(message: _134.Commit, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.Commit;
+            fromJSON(object: any): _134.Commit;
+            toJSON(message: _134.Commit): unknown;
             fromPartial(object: {
                 height?: any;
                 round?: number;
-                blockId?: {
+                block_id?: {
                     hash?: Uint8Array;
-                    partSetHeader?: {
+                    part_set_header?: {
                         total?: number;
                         hash?: Uint8Array;
                     };
                 };
                 signatures?: {
-                    blockIdFlag?: _143.BlockIDFlag;
-                    validatorAddress?: Uint8Array;
+                    block_id_flag?: _134.BlockIDFlag;
+                    validator_address?: Uint8Array;
                     timestamp?: Date;
                     signature?: Uint8Array;
                 }[];
-            }): _143.Commit;
+            }): _134.Commit;
         };
         CommitSig: {
-            encode(message: _143.CommitSig, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.CommitSig;
-            fromJSON(object: any): _143.CommitSig;
-            toJSON(message: _143.CommitSig): unknown;
+            encode(message: _134.CommitSig, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.CommitSig;
+            fromJSON(object: any): _134.CommitSig;
+            toJSON(message: _134.CommitSig): unknown;
             fromPartial(object: {
-                blockIdFlag?: _143.BlockIDFlag;
-                validatorAddress?: Uint8Array;
+                block_id_flag?: _134.BlockIDFlag;
+                validator_address?: Uint8Array;
                 timestamp?: Date;
                 signature?: Uint8Array;
-            }): _143.CommitSig;
+            }): _134.CommitSig;
         };
         Proposal: {
-            encode(message: _143.Proposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.Proposal;
-            fromJSON(object: any): _143.Proposal;
-            toJSON(message: _143.Proposal): unknown;
+            encode(message: _134.Proposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.Proposal;
+            fromJSON(object: any): _134.Proposal;
+            toJSON(message: _134.Proposal): unknown;
             fromPartial(object: {
-                type?: _143.SignedMsgType;
+                type?: _134.SignedMsgType;
                 height?: any;
                 round?: number;
-                polRound?: number;
-                blockId?: {
+                pol_round?: number;
+                block_id?: {
                     hash?: Uint8Array;
-                    partSetHeader?: {
+                    part_set_header?: {
                         total?: number;
                         hash?: Uint8Array;
                     };
                 };
                 timestamp?: Date;
                 signature?: Uint8Array;
-            }): _143.Proposal;
+            }): _134.Proposal;
         };
         SignedHeader: {
-            encode(message: _143.SignedHeader, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.SignedHeader;
-            fromJSON(object: any): _143.SignedHeader;
-            toJSON(message: _143.SignedHeader): unknown;
+            encode(message: _134.SignedHeader, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.SignedHeader;
+            fromJSON(object: any): _134.SignedHeader;
+            toJSON(message: _134.SignedHeader): unknown;
             fromPartial(object: {
                 header?: {
                     version?: {
                         block?: any;
                         app?: any;
                     };
-                    chainId?: string;
+                    chain_id?: string;
                     height?: any;
                     time?: Date;
-                    lastBlockId?: {
+                    last_block_id?: {
                         hash?: Uint8Array;
-                        partSetHeader?: {
+                        part_set_header?: {
                             total?: number;
                             hash?: Uint8Array;
                         };
                     };
-                    lastCommitHash?: Uint8Array;
-                    dataHash?: Uint8Array;
-                    validatorsHash?: Uint8Array;
-                    nextValidatorsHash?: Uint8Array;
-                    consensusHash?: Uint8Array;
-                    appHash?: Uint8Array;
-                    lastResultsHash?: Uint8Array;
-                    evidenceHash?: Uint8Array;
-                    proposerAddress?: Uint8Array;
+                    last_commit_hash?: Uint8Array;
+                    data_hash?: Uint8Array;
+                    validators_hash?: Uint8Array;
+                    next_validators_hash?: Uint8Array;
+                    consensus_hash?: Uint8Array;
+                    app_hash?: Uint8Array;
+                    last_results_hash?: Uint8Array;
+                    evidence_hash?: Uint8Array;
+                    proposer_address?: Uint8Array;
                 };
                 commit?: {
                     height?: any;
                     round?: number;
-                    blockId?: {
+                    block_id?: {
                         hash?: Uint8Array;
-                        partSetHeader?: {
+                        part_set_header?: {
                             total?: number;
                             hash?: Uint8Array;
                         };
                     };
                     signatures?: {
-                        blockIdFlag?: _143.BlockIDFlag;
-                        validatorAddress?: Uint8Array;
+                        block_id_flag?: _134.BlockIDFlag;
+                        validator_address?: Uint8Array;
                         timestamp?: Date;
                         signature?: Uint8Array;
                     }[];
                 };
-            }): _143.SignedHeader;
+            }): _134.SignedHeader;
         };
         LightBlock: {
-            encode(message: _143.LightBlock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.LightBlock;
-            fromJSON(object: any): _143.LightBlock;
-            toJSON(message: _143.LightBlock): unknown;
+            encode(message: _134.LightBlock, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.LightBlock;
+            fromJSON(object: any): _134.LightBlock;
+            toJSON(message: _134.LightBlock): unknown;
             fromPartial(object: {
-                signedHeader?: {
+                signed_header?: {
                     header?: {
                         version?: {
                             block?: any;
                             app?: any;
                         };
-                        chainId?: string;
+                        chain_id?: string;
                         height?: any;
                         time?: Date;
-                        lastBlockId?: {
+                        last_block_id?: {
                             hash?: Uint8Array;
-                            partSetHeader?: {
+                            part_set_header?: {
                                 total?: number;
                                 hash?: Uint8Array;
                             };
                         };
-                        lastCommitHash?: Uint8Array;
-                        dataHash?: Uint8Array;
-                        validatorsHash?: Uint8Array;
-                        nextValidatorsHash?: Uint8Array;
-                        consensusHash?: Uint8Array;
-                        appHash?: Uint8Array;
-                        lastResultsHash?: Uint8Array;
-                        evidenceHash?: Uint8Array;
-                        proposerAddress?: Uint8Array;
+                        last_commit_hash?: Uint8Array;
+                        data_hash?: Uint8Array;
+                        validators_hash?: Uint8Array;
+                        next_validators_hash?: Uint8Array;
+                        consensus_hash?: Uint8Array;
+                        app_hash?: Uint8Array;
+                        last_results_hash?: Uint8Array;
+                        evidence_hash?: Uint8Array;
+                        proposer_address?: Uint8Array;
                     };
                     commit?: {
                         height?: any;
                         round?: number;
-                        blockId?: {
+                        block_id?: {
                             hash?: Uint8Array;
-                            partSetHeader?: {
+                            part_set_header?: {
                                 total?: number;
                                 hash?: Uint8Array;
                             };
                         };
                         signatures?: {
-                            blockIdFlag?: _143.BlockIDFlag;
-                            validatorAddress?: Uint8Array;
+                            block_id_flag?: _134.BlockIDFlag;
+                            validator_address?: Uint8Array;
                             timestamp?: Date;
                             signature?: Uint8Array;
                         }[];
                     };
                 };
-                validatorSet?: {
+                validator_set?: {
                     validators?: {
                         address?: Uint8Array;
-                        pubKey?: {
+                        pub_key?: {
                             ed25519?: Uint8Array;
                             secp256k1?: Uint8Array;
                         };
-                        votingPower?: any;
-                        proposerPriority?: any;
+                        voting_power?: any;
+                        proposer_priority?: any;
                     }[];
                     proposer?: {
                         address?: Uint8Array;
-                        pubKey?: {
+                        pub_key?: {
                             ed25519?: Uint8Array;
                             secp256k1?: Uint8Array;
                         };
-                        votingPower?: any;
-                        proposerPriority?: any;
+                        voting_power?: any;
+                        proposer_priority?: any;
                     };
-                    totalVotingPower?: any;
+                    total_voting_power?: any;
                 };
-            }): _143.LightBlock;
+            }): _134.LightBlock;
         };
         BlockMeta: {
-            encode(message: _143.BlockMeta, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.BlockMeta;
-            fromJSON(object: any): _143.BlockMeta;
-            toJSON(message: _143.BlockMeta): unknown;
+            encode(message: _134.BlockMeta, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.BlockMeta;
+            fromJSON(object: any): _134.BlockMeta;
+            toJSON(message: _134.BlockMeta): unknown;
             fromPartial(object: {
-                blockId?: {
+                block_id?: {
                     hash?: Uint8Array;
-                    partSetHeader?: {
+                    part_set_header?: {
                         total?: number;
                         hash?: Uint8Array;
                     };
                 };
-                blockSize?: any;
+                block_size?: any;
                 header?: {
                     version?: {
                         block?: any;
                         app?: any;
                     };
-                    chainId?: string;
+                    chain_id?: string;
                     height?: any;
                     time?: Date;
-                    lastBlockId?: {
+                    last_block_id?: {
                         hash?: Uint8Array;
-                        partSetHeader?: {
+                        part_set_header?: {
                             total?: number;
                             hash?: Uint8Array;
                         };
                     };
-                    lastCommitHash?: Uint8Array;
-                    dataHash?: Uint8Array;
-                    validatorsHash?: Uint8Array;
-                    nextValidatorsHash?: Uint8Array;
-                    consensusHash?: Uint8Array;
-                    appHash?: Uint8Array;
-                    lastResultsHash?: Uint8Array;
-                    evidenceHash?: Uint8Array;
-                    proposerAddress?: Uint8Array;
+                    last_commit_hash?: Uint8Array;
+                    data_hash?: Uint8Array;
+                    validators_hash?: Uint8Array;
+                    next_validators_hash?: Uint8Array;
+                    consensus_hash?: Uint8Array;
+                    app_hash?: Uint8Array;
+                    last_results_hash?: Uint8Array;
+                    evidence_hash?: Uint8Array;
+                    proposer_address?: Uint8Array;
                 };
-                numTxs?: any;
-            }): _143.BlockMeta;
+                num_txs?: any;
+            }): _134.BlockMeta;
         };
         TxProof: {
-            encode(message: _143.TxProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _143.TxProof;
-            fromJSON(object: any): _143.TxProof;
-            toJSON(message: _143.TxProof): unknown;
+            encode(message: _134.TxProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _134.TxProof;
+            fromJSON(object: any): _134.TxProof;
+            toJSON(message: _134.TxProof): unknown;
             fromPartial(object: {
-                rootHash?: Uint8Array;
+                root_hash?: Uint8Array;
                 data?: Uint8Array;
                 proof?: {
                     total?: any;
                     index?: any;
-                    leafHash?: Uint8Array;
+                    leaf_hash?: Uint8Array;
                     aunts?: Uint8Array[];
                 };
-            }): _143.TxProof;
+            }): _134.TxProof;
         };
         ConsensusParams: {
-            encode(message: _142.ConsensusParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.ConsensusParams;
-            fromJSON(object: any): _142.ConsensusParams;
-            toJSON(message: _142.ConsensusParams): unknown;
+            encode(message: _133.ConsensusParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _133.ConsensusParams;
+            fromJSON(object: any): _133.ConsensusParams;
+            toJSON(message: _133.ConsensusParams): unknown;
             fromPartial(object: {
                 block?: {
-                    maxBytes?: any;
-                    maxGas?: any;
-                    timeIotaMs?: any;
+                    max_bytes?: any;
+                    max_gas?: any;
+                    time_iota_ms?: any;
                 };
                 evidence?: {
-                    maxAgeNumBlocks?: any;
-                    maxAgeDuration?: {
+                    max_age_num_blocks?: any;
+                    max_age_duration?: {
                         seconds?: any;
                         nanos?: number;
                     };
-                    maxBytes?: any;
+                    max_bytes?: any;
                 };
                 validator?: {
-                    pubKeyTypes?: string[];
+                    pub_key_types?: string[];
                 };
                 version?: {
-                    appVersion?: any;
+                    app_version?: any;
                 };
-            }): _142.ConsensusParams;
+            }): _133.ConsensusParams;
         };
         BlockParams: {
-            encode(message: _142.BlockParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.BlockParams;
-            fromJSON(object: any): _142.BlockParams;
-            toJSON(message: _142.BlockParams): unknown;
+            encode(message: _133.BlockParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _133.BlockParams;
+            fromJSON(object: any): _133.BlockParams;
+            toJSON(message: _133.BlockParams): unknown;
             fromPartial(object: {
-                maxBytes?: any;
-                maxGas?: any;
-                timeIotaMs?: any;
-            }): _142.BlockParams;
+                max_bytes?: any;
+                max_gas?: any;
+                time_iota_ms?: any;
+            }): _133.BlockParams;
         };
         EvidenceParams: {
-            encode(message: _142.EvidenceParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.EvidenceParams;
-            fromJSON(object: any): _142.EvidenceParams;
-            toJSON(message: _142.EvidenceParams): unknown;
+            encode(message: _133.EvidenceParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _133.EvidenceParams;
+            fromJSON(object: any): _133.EvidenceParams;
+            toJSON(message: _133.EvidenceParams): unknown;
             fromPartial(object: {
-                maxAgeNumBlocks?: any;
-                maxAgeDuration?: {
+                max_age_num_blocks?: any;
+                max_age_duration?: {
                     seconds?: any;
                     nanos?: number;
                 };
-                maxBytes?: any;
-            }): _142.EvidenceParams;
+                max_bytes?: any;
+            }): _133.EvidenceParams;
         };
         ValidatorParams: {
-            encode(message: _142.ValidatorParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.ValidatorParams;
-            fromJSON(object: any): _142.ValidatorParams;
-            toJSON(message: _142.ValidatorParams): unknown;
+            encode(message: _133.ValidatorParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _133.ValidatorParams;
+            fromJSON(object: any): _133.ValidatorParams;
+            toJSON(message: _133.ValidatorParams): unknown;
             fromPartial(object: {
-                pubKeyTypes?: string[];
-            }): _142.ValidatorParams;
+                pub_key_types?: string[];
+            }): _133.ValidatorParams;
         };
         VersionParams: {
-            encode(message: _142.VersionParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.VersionParams;
-            fromJSON(object: any): _142.VersionParams;
-            toJSON(message: _142.VersionParams): unknown;
+            encode(message: _133.VersionParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _133.VersionParams;
+            fromJSON(object: any): _133.VersionParams;
+            toJSON(message: _133.VersionParams): unknown;
             fromPartial(object: {
-                appVersion?: any;
-            }): _142.VersionParams;
+                app_version?: any;
+            }): _133.VersionParams;
         };
         HashedParams: {
-            encode(message: _142.HashedParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _142.HashedParams;
-            fromJSON(object: any): _142.HashedParams;
-            toJSON(message: _142.HashedParams): unknown;
+            encode(message: _133.HashedParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _133.HashedParams;
+            fromJSON(object: any): _133.HashedParams;
+            toJSON(message: _133.HashedParams): unknown;
             fromPartial(object: {
-                blockMaxBytes?: any;
-                blockMaxGas?: any;
-            }): _142.HashedParams;
+                block_max_bytes?: any;
+                block_max_gas?: any;
+            }): _133.HashedParams;
         };
         Evidence: {
-            encode(message: _141.Evidence, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.Evidence;
-            fromJSON(object: any): _141.Evidence;
-            toJSON(message: _141.Evidence): unknown;
+            encode(message: _132.Evidence, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _132.Evidence;
+            fromJSON(object: any): _132.Evidence;
+            toJSON(message: _132.Evidence): unknown;
             fromPartial(object: {
-                duplicateVoteEvidence?: {
-                    voteA?: {
-                        type?: _143.SignedMsgType;
+                duplicate_vote_evidence?: {
+                    vote_a?: {
+                        type?: _134.SignedMsgType;
                         height?: any;
                         round?: number;
-                        blockId?: {
+                        block_id?: {
                             hash?: Uint8Array;
-                            partSetHeader?: {
+                            part_set_header?: {
                                 total?: number;
                                 hash?: Uint8Array;
                             };
                         };
                         timestamp?: Date;
-                        validatorAddress?: Uint8Array;
-                        validatorIndex?: number;
+                        validator_address?: Uint8Array;
+                        validator_index?: number;
                         signature?: Uint8Array;
                     };
-                    voteB?: {
-                        type?: _143.SignedMsgType;
+                    vote_b?: {
+                        type?: _134.SignedMsgType;
                         height?: any;
                         round?: number;
-                        blockId?: {
+                        block_id?: {
                             hash?: Uint8Array;
-                            partSetHeader?: {
+                            part_set_header?: {
                                 total?: number;
                                 hash?: Uint8Array;
                             };
                         };
                         timestamp?: Date;
-                        validatorAddress?: Uint8Array;
-                        validatorIndex?: number;
+                        validator_address?: Uint8Array;
+                        validator_index?: number;
                         signature?: Uint8Array;
                     };
-                    totalVotingPower?: any;
-                    validatorPower?: any;
+                    total_voting_power?: any;
+                    validator_power?: any;
                     timestamp?: Date;
                 };
-                lightClientAttackEvidence?: {
-                    conflictingBlock?: {
-                        signedHeader?: {
+                light_client_attack_evidence?: {
+                    conflicting_block?: {
+                        signed_header?: {
                             header?: {
                                 version?: {
                                     block?: any;
                                     app?: any;
                                 };
-                                chainId?: string;
+                                chain_id?: string;
                                 height?: any;
                                 time?: Date;
-                                lastBlockId?: {
+                                last_block_id?: {
                                     hash?: Uint8Array;
-                                    partSetHeader?: {
+                                    part_set_header?: {
                                         total?: number;
                                         hash?: Uint8Array;
                                     };
                                 };
-                                lastCommitHash?: Uint8Array;
-                                dataHash?: Uint8Array;
-                                validatorsHash?: Uint8Array;
-                                nextValidatorsHash?: Uint8Array;
-                                consensusHash?: Uint8Array;
-                                appHash?: Uint8Array;
-                                lastResultsHash?: Uint8Array;
-                                evidenceHash?: Uint8Array;
-                                proposerAddress?: Uint8Array;
+                                last_commit_hash?: Uint8Array;
+                                data_hash?: Uint8Array;
+                                validators_hash?: Uint8Array;
+                                next_validators_hash?: Uint8Array;
+                                consensus_hash?: Uint8Array;
+                                app_hash?: Uint8Array;
+                                last_results_hash?: Uint8Array;
+                                evidence_hash?: Uint8Array;
+                                proposer_address?: Uint8Array;
                             };
                             commit?: {
                                 height?: any;
                                 round?: number;
-                                blockId?: {
+                                block_id?: {
                                     hash?: Uint8Array;
-                                    partSetHeader?: {
+                                    part_set_header?: {
                                         total?: number;
                                         hash?: Uint8Array;
                                     };
                                 };
                                 signatures?: {
-                                    blockIdFlag?: _143.BlockIDFlag;
-                                    validatorAddress?: Uint8Array;
+                                    block_id_flag?: _134.BlockIDFlag;
+                                    validator_address?: Uint8Array;
                                     timestamp?: Date;
                                     signature?: Uint8Array;
                                 }[];
                             };
                         };
-                        validatorSet?: {
+                        validator_set?: {
                             validators?: {
                                 address?: Uint8Array;
-                                pubKey?: {
+                                pub_key?: {
                                     ed25519?: Uint8Array;
                                     secp256k1?: Uint8Array;
                                 };
-                                votingPower?: any;
-                                proposerPriority?: any;
+                                voting_power?: any;
+                                proposer_priority?: any;
                             }[];
                             proposer?: {
                                 address?: Uint8Array;
-                                pubKey?: {
+                                pub_key?: {
                                     ed25519?: Uint8Array;
                                     secp256k1?: Uint8Array;
                                 };
-                                votingPower?: any;
-                                proposerPriority?: any;
+                                voting_power?: any;
+                                proposer_priority?: any;
                             };
-                            totalVotingPower?: any;
+                            total_voting_power?: any;
                         };
                     };
-                    commonHeight?: any;
-                    byzantineValidators?: {
+                    common_height?: any;
+                    byzantine_validators?: {
                         address?: Uint8Array;
-                        pubKey?: {
+                        pub_key?: {
                             ed25519?: Uint8Array;
                             secp256k1?: Uint8Array;
                         };
-                        votingPower?: any;
-                        proposerPriority?: any;
+                        voting_power?: any;
+                        proposer_priority?: any;
                     }[];
-                    totalVotingPower?: any;
+                    total_voting_power?: any;
                     timestamp?: Date;
                 };
-            }): _141.Evidence;
+            }): _132.Evidence;
         };
         DuplicateVoteEvidence: {
-            encode(message: _141.DuplicateVoteEvidence, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.DuplicateVoteEvidence;
-            fromJSON(object: any): _141.DuplicateVoteEvidence;
-            toJSON(message: _141.DuplicateVoteEvidence): unknown;
+            encode(message: _132.DuplicateVoteEvidence, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _132.DuplicateVoteEvidence;
+            fromJSON(object: any): _132.DuplicateVoteEvidence;
+            toJSON(message: _132.DuplicateVoteEvidence): unknown;
             fromPartial(object: {
-                voteA?: {
-                    type?: _143.SignedMsgType;
+                vote_a?: {
+                    type?: _134.SignedMsgType;
                     height?: any;
                     round?: number;
-                    blockId?: {
+                    block_id?: {
                         hash?: Uint8Array;
-                        partSetHeader?: {
+                        part_set_header?: {
                             total?: number;
                             hash?: Uint8Array;
                         };
                     };
                     timestamp?: Date;
-                    validatorAddress?: Uint8Array;
-                    validatorIndex?: number;
+                    validator_address?: Uint8Array;
+                    validator_index?: number;
                     signature?: Uint8Array;
                 };
-                voteB?: {
-                    type?: _143.SignedMsgType;
+                vote_b?: {
+                    type?: _134.SignedMsgType;
                     height?: any;
                     round?: number;
-                    blockId?: {
+                    block_id?: {
                         hash?: Uint8Array;
-                        partSetHeader?: {
+                        part_set_header?: {
                             total?: number;
                             hash?: Uint8Array;
                         };
                     };
                     timestamp?: Date;
-                    validatorAddress?: Uint8Array;
-                    validatorIndex?: number;
+                    validator_address?: Uint8Array;
+                    validator_index?: number;
                     signature?: Uint8Array;
                 };
-                totalVotingPower?: any;
-                validatorPower?: any;
+                total_voting_power?: any;
+                validator_power?: any;
                 timestamp?: Date;
-            }): _141.DuplicateVoteEvidence;
+            }): _132.DuplicateVoteEvidence;
         };
         LightClientAttackEvidence: {
-            encode(message: _141.LightClientAttackEvidence, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.LightClientAttackEvidence;
-            fromJSON(object: any): _141.LightClientAttackEvidence;
-            toJSON(message: _141.LightClientAttackEvidence): unknown;
+            encode(message: _132.LightClientAttackEvidence, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _132.LightClientAttackEvidence;
+            fromJSON(object: any): _132.LightClientAttackEvidence;
+            toJSON(message: _132.LightClientAttackEvidence): unknown;
             fromPartial(object: {
-                conflictingBlock?: {
-                    signedHeader?: {
+                conflicting_block?: {
+                    signed_header?: {
                         header?: {
                             version?: {
                                 block?: any;
                                 app?: any;
                             };
-                            chainId?: string;
+                            chain_id?: string;
                             height?: any;
                             time?: Date;
-                            lastBlockId?: {
+                            last_block_id?: {
                                 hash?: Uint8Array;
-                                partSetHeader?: {
+                                part_set_header?: {
                                     total?: number;
                                     hash?: Uint8Array;
                                 };
                             };
-                            lastCommitHash?: Uint8Array;
-                            dataHash?: Uint8Array;
-                            validatorsHash?: Uint8Array;
-                            nextValidatorsHash?: Uint8Array;
-                            consensusHash?: Uint8Array;
-                            appHash?: Uint8Array;
-                            lastResultsHash?: Uint8Array;
-                            evidenceHash?: Uint8Array;
-                            proposerAddress?: Uint8Array;
+                            last_commit_hash?: Uint8Array;
+                            data_hash?: Uint8Array;
+                            validators_hash?: Uint8Array;
+                            next_validators_hash?: Uint8Array;
+                            consensus_hash?: Uint8Array;
+                            app_hash?: Uint8Array;
+                            last_results_hash?: Uint8Array;
+                            evidence_hash?: Uint8Array;
+                            proposer_address?: Uint8Array;
                         };
                         commit?: {
                             height?: any;
                             round?: number;
-                            blockId?: {
+                            block_id?: {
                                 hash?: Uint8Array;
-                                partSetHeader?: {
+                                part_set_header?: {
                                     total?: number;
                                     hash?: Uint8Array;
                                 };
                             };
                             signatures?: {
-                                blockIdFlag?: _143.BlockIDFlag;
-                                validatorAddress?: Uint8Array;
+                                block_id_flag?: _134.BlockIDFlag;
+                                validator_address?: Uint8Array;
                                 timestamp?: Date;
                                 signature?: Uint8Array;
                             }[];
                         };
                     };
-                    validatorSet?: {
+                    validator_set?: {
                         validators?: {
                             address?: Uint8Array;
-                            pubKey?: {
+                            pub_key?: {
                                 ed25519?: Uint8Array;
                                 secp256k1?: Uint8Array;
                             };
-                            votingPower?: any;
-                            proposerPriority?: any;
+                            voting_power?: any;
+                            proposer_priority?: any;
                         }[];
                         proposer?: {
                             address?: Uint8Array;
-                            pubKey?: {
+                            pub_key?: {
                                 ed25519?: Uint8Array;
                                 secp256k1?: Uint8Array;
                             };
-                            votingPower?: any;
-                            proposerPriority?: any;
+                            voting_power?: any;
+                            proposer_priority?: any;
                         };
-                        totalVotingPower?: any;
+                        total_voting_power?: any;
                     };
                 };
-                commonHeight?: any;
-                byzantineValidators?: {
+                common_height?: any;
+                byzantine_validators?: {
                     address?: Uint8Array;
-                    pubKey?: {
+                    pub_key?: {
                         ed25519?: Uint8Array;
                         secp256k1?: Uint8Array;
                     };
-                    votingPower?: any;
-                    proposerPriority?: any;
+                    voting_power?: any;
+                    proposer_priority?: any;
                 }[];
-                totalVotingPower?: any;
+                total_voting_power?: any;
                 timestamp?: Date;
-            }): _141.LightClientAttackEvidence;
+            }): _132.LightClientAttackEvidence;
         };
         EvidenceList: {
-            encode(message: _141.EvidenceList, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _141.EvidenceList;
-            fromJSON(object: any): _141.EvidenceList;
-            toJSON(message: _141.EvidenceList): unknown;
+            encode(message: _132.EvidenceList, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _132.EvidenceList;
+            fromJSON(object: any): _132.EvidenceList;
+            toJSON(message: _132.EvidenceList): unknown;
             fromPartial(object: {
                 evidence?: {
-                    duplicateVoteEvidence?: {
-                        voteA?: {
-                            type?: _143.SignedMsgType;
+                    duplicate_vote_evidence?: {
+                        vote_a?: {
+                            type?: _134.SignedMsgType;
                             height?: any;
                             round?: number;
-                            blockId?: {
+                            block_id?: {
                                 hash?: Uint8Array;
-                                partSetHeader?: {
+                                part_set_header?: {
                                     total?: number;
                                     hash?: Uint8Array;
                                 };
                             };
                             timestamp?: Date;
-                            validatorAddress?: Uint8Array;
-                            validatorIndex?: number;
+                            validator_address?: Uint8Array;
+                            validator_index?: number;
                             signature?: Uint8Array;
                         };
-                        voteB?: {
-                            type?: _143.SignedMsgType;
+                        vote_b?: {
+                            type?: _134.SignedMsgType;
                             height?: any;
                             round?: number;
-                            blockId?: {
+                            block_id?: {
                                 hash?: Uint8Array;
-                                partSetHeader?: {
+                                part_set_header?: {
                                     total?: number;
                                     hash?: Uint8Array;
                                 };
                             };
                             timestamp?: Date;
-                            validatorAddress?: Uint8Array;
-                            validatorIndex?: number;
+                            validator_address?: Uint8Array;
+                            validator_index?: number;
                             signature?: Uint8Array;
                         };
-                        totalVotingPower?: any;
-                        validatorPower?: any;
+                        total_voting_power?: any;
+                        validator_power?: any;
                         timestamp?: Date;
                     };
-                    lightClientAttackEvidence?: {
-                        conflictingBlock?: {
-                            signedHeader?: {
+                    light_client_attack_evidence?: {
+                        conflicting_block?: {
+                            signed_header?: {
                                 header?: {
                                     version?: {
                                         block?: any;
                                         app?: any;
                                     };
-                                    chainId?: string;
+                                    chain_id?: string;
                                     height?: any;
                                     time?: Date;
-                                    lastBlockId?: {
+                                    last_block_id?: {
                                         hash?: Uint8Array;
-                                        partSetHeader?: {
+                                        part_set_header?: {
                                             total?: number;
                                             hash?: Uint8Array;
                                         };
                                     };
-                                    lastCommitHash?: Uint8Array;
-                                    dataHash?: Uint8Array;
-                                    validatorsHash?: Uint8Array;
-                                    nextValidatorsHash?: Uint8Array;
-                                    consensusHash?: Uint8Array;
-                                    appHash?: Uint8Array;
-                                    lastResultsHash?: Uint8Array;
-                                    evidenceHash?: Uint8Array;
-                                    proposerAddress?: Uint8Array;
+                                    last_commit_hash?: Uint8Array;
+                                    data_hash?: Uint8Array;
+                                    validators_hash?: Uint8Array;
+                                    next_validators_hash?: Uint8Array;
+                                    consensus_hash?: Uint8Array;
+                                    app_hash?: Uint8Array;
+                                    last_results_hash?: Uint8Array;
+                                    evidence_hash?: Uint8Array;
+                                    proposer_address?: Uint8Array;
                                 };
                                 commit?: {
                                     height?: any;
                                     round?: number;
-                                    blockId?: {
+                                    block_id?: {
                                         hash?: Uint8Array;
-                                        partSetHeader?: {
+                                        part_set_header?: {
                                             total?: number;
                                             hash?: Uint8Array;
                                         };
                                     };
                                     signatures?: {
-                                        blockIdFlag?: _143.BlockIDFlag;
-                                        validatorAddress?: Uint8Array;
+                                        block_id_flag?: _134.BlockIDFlag;
+                                        validator_address?: Uint8Array;
                                         timestamp?: Date;
                                         signature?: Uint8Array;
                                     }[];
                                 };
                             };
-                            validatorSet?: {
+                            validator_set?: {
                                 validators?: {
                                     address?: Uint8Array;
-                                    pubKey?: {
+                                    pub_key?: {
                                         ed25519?: Uint8Array;
                                         secp256k1?: Uint8Array;
                                     };
-                                    votingPower?: any;
-                                    proposerPriority?: any;
+                                    voting_power?: any;
+                                    proposer_priority?: any;
                                 }[];
                                 proposer?: {
                                     address?: Uint8Array;
-                                    pubKey?: {
+                                    pub_key?: {
                                         ed25519?: Uint8Array;
                                         secp256k1?: Uint8Array;
                                     };
-                                    votingPower?: any;
-                                    proposerPriority?: any;
+                                    voting_power?: any;
+                                    proposer_priority?: any;
                                 };
-                                totalVotingPower?: any;
+                                total_voting_power?: any;
                             };
                         };
-                        commonHeight?: any;
-                        byzantineValidators?: {
+                        common_height?: any;
+                        byzantine_validators?: {
                             address?: Uint8Array;
-                            pubKey?: {
+                            pub_key?: {
                                 ed25519?: Uint8Array;
                                 secp256k1?: Uint8Array;
                             };
-                            votingPower?: any;
-                            proposerPriority?: any;
+                            voting_power?: any;
+                            proposer_priority?: any;
                         }[];
-                        totalVotingPower?: any;
+                        total_voting_power?: any;
                         timestamp?: Date;
                     };
                 }[];
-            }): _141.EvidenceList;
+            }): _132.EvidenceList;
         };
         Block: {
-            encode(message: _140.Block, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _140.Block;
-            fromJSON(object: any): _140.Block;
-            toJSON(message: _140.Block): unknown;
+            encode(message: _131.Block, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _131.Block;
+            fromJSON(object: any): _131.Block;
+            toJSON(message: _131.Block): unknown;
             fromPartial(object: {
                 header?: {
                     version?: {
                         block?: any;
                         app?: any;
                     };
-                    chainId?: string;
+                    chain_id?: string;
                     height?: any;
                     time?: Date;
-                    lastBlockId?: {
+                    last_block_id?: {
                         hash?: Uint8Array;
-                        partSetHeader?: {
+                        part_set_header?: {
                             total?: number;
                             hash?: Uint8Array;
                         };
                     };
-                    lastCommitHash?: Uint8Array;
-                    dataHash?: Uint8Array;
-                    validatorsHash?: Uint8Array;
-                    nextValidatorsHash?: Uint8Array;
-                    consensusHash?: Uint8Array;
-                    appHash?: Uint8Array;
-                    lastResultsHash?: Uint8Array;
-                    evidenceHash?: Uint8Array;
-                    proposerAddress?: Uint8Array;
+                    last_commit_hash?: Uint8Array;
+                    data_hash?: Uint8Array;
+                    validators_hash?: Uint8Array;
+                    next_validators_hash?: Uint8Array;
+                    consensus_hash?: Uint8Array;
+                    app_hash?: Uint8Array;
+                    last_results_hash?: Uint8Array;
+                    evidence_hash?: Uint8Array;
+                    proposer_address?: Uint8Array;
                 };
                 data?: {
                     txs?: Uint8Array[];
                 };
                 evidence?: {
                     evidence?: {
-                        duplicateVoteEvidence?: {
-                            voteA?: {
-                                type?: _143.SignedMsgType;
+                        duplicate_vote_evidence?: {
+                            vote_a?: {
+                                type?: _134.SignedMsgType;
                                 height?: any;
                                 round?: number;
-                                blockId?: {
+                                block_id?: {
                                     hash?: Uint8Array;
-                                    partSetHeader?: {
+                                    part_set_header?: {
                                         total?: number;
                                         hash?: Uint8Array;
                                     };
                                 };
                                 timestamp?: Date;
-                                validatorAddress?: Uint8Array;
-                                validatorIndex?: number;
+                                validator_address?: Uint8Array;
+                                validator_index?: number;
                                 signature?: Uint8Array;
                             };
-                            voteB?: {
-                                type?: _143.SignedMsgType;
+                            vote_b?: {
+                                type?: _134.SignedMsgType;
                                 height?: any;
                                 round?: number;
-                                blockId?: {
+                                block_id?: {
                                     hash?: Uint8Array;
-                                    partSetHeader?: {
+                                    part_set_header?: {
                                         total?: number;
                                         hash?: Uint8Array;
                                     };
                                 };
                                 timestamp?: Date;
-                                validatorAddress?: Uint8Array;
-                                validatorIndex?: number;
+                                validator_address?: Uint8Array;
+                                validator_index?: number;
                                 signature?: Uint8Array;
                             };
-                            totalVotingPower?: any;
-                            validatorPower?: any;
+                            total_voting_power?: any;
+                            validator_power?: any;
                             timestamp?: Date;
                         };
-                        lightClientAttackEvidence?: {
-                            conflictingBlock?: {
-                                signedHeader?: {
+                        light_client_attack_evidence?: {
+                            conflicting_block?: {
+                                signed_header?: {
                                     header?: {
                                         version?: {
                                             block?: any;
                                             app?: any;
                                         };
-                                        chainId?: string;
+                                        chain_id?: string;
                                         height?: any;
                                         time?: Date;
-                                        lastBlockId?: {
+                                        last_block_id?: {
                                             hash?: Uint8Array;
-                                            partSetHeader?: {
+                                            part_set_header?: {
                                                 total?: number;
                                                 hash?: Uint8Array;
                                             };
                                         };
-                                        lastCommitHash?: Uint8Array;
-                                        dataHash?: Uint8Array;
-                                        validatorsHash?: Uint8Array;
-                                        nextValidatorsHash?: Uint8Array;
-                                        consensusHash?: Uint8Array;
-                                        appHash?: Uint8Array;
-                                        lastResultsHash?: Uint8Array;
-                                        evidenceHash?: Uint8Array;
-                                        proposerAddress?: Uint8Array;
+                                        last_commit_hash?: Uint8Array;
+                                        data_hash?: Uint8Array;
+                                        validators_hash?: Uint8Array;
+                                        next_validators_hash?: Uint8Array;
+                                        consensus_hash?: Uint8Array;
+                                        app_hash?: Uint8Array;
+                                        last_results_hash?: Uint8Array;
+                                        evidence_hash?: Uint8Array;
+                                        proposer_address?: Uint8Array;
                                     };
                                     commit?: {
                                         height?: any;
                                         round?: number;
-                                        blockId?: {
+                                        block_id?: {
                                             hash?: Uint8Array;
-                                            partSetHeader?: {
+                                            part_set_header?: {
                                                 total?: number;
                                                 hash?: Uint8Array;
                                             };
                                         };
                                         signatures?: {
-                                            blockIdFlag?: _143.BlockIDFlag;
-                                            validatorAddress?: Uint8Array;
+                                            block_id_flag?: _134.BlockIDFlag;
+                                            validator_address?: Uint8Array;
                                             timestamp?: Date;
                                             signature?: Uint8Array;
                                         }[];
                                     };
                                 };
-                                validatorSet?: {
+                                validator_set?: {
                                     validators?: {
                                         address?: Uint8Array;
-                                        pubKey?: {
+                                        pub_key?: {
                                             ed25519?: Uint8Array;
                                             secp256k1?: Uint8Array;
                                         };
-                                        votingPower?: any;
-                                        proposerPriority?: any;
+                                        voting_power?: any;
+                                        proposer_priority?: any;
                                     }[];
                                     proposer?: {
                                         address?: Uint8Array;
-                                        pubKey?: {
+                                        pub_key?: {
                                             ed25519?: Uint8Array;
                                             secp256k1?: Uint8Array;
                                         };
-                                        votingPower?: any;
-                                        proposerPriority?: any;
+                                        voting_power?: any;
+                                        proposer_priority?: any;
                                     };
-                                    totalVotingPower?: any;
+                                    total_voting_power?: any;
                                 };
                             };
-                            commonHeight?: any;
-                            byzantineValidators?: {
+                            common_height?: any;
+                            byzantine_validators?: {
                                 address?: Uint8Array;
-                                pubKey?: {
+                                pub_key?: {
                                     ed25519?: Uint8Array;
                                     secp256k1?: Uint8Array;
                                 };
-                                votingPower?: any;
-                                proposerPriority?: any;
+                                voting_power?: any;
+                                proposer_priority?: any;
                             }[];
-                            totalVotingPower?: any;
+                            total_voting_power?: any;
                             timestamp?: Date;
                         };
                     }[];
                 };
-                lastCommit?: {
+                last_commit?: {
                     height?: any;
                     round?: number;
-                    blockId?: {
+                    block_id?: {
                         hash?: Uint8Array;
-                        partSetHeader?: {
+                        part_set_header?: {
                             total?: number;
                             hash?: Uint8Array;
                         };
                     };
                     signatures?: {
-                        blockIdFlag?: _143.BlockIDFlag;
-                        validatorAddress?: Uint8Array;
+                        block_id_flag?: _134.BlockIDFlag;
+                        validator_address?: Uint8Array;
                         timestamp?: Date;
                         signature?: Uint8Array;
                     }[];
                 };
-            }): _140.Block;
+            }): _131.Block;
         };
     };
     const version: {
         App: {
-            encode(message: _145.App, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _145.App;
-            fromJSON(object: any): _145.App;
-            toJSON(message: _145.App): unknown;
+            encode(message: _136.App, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _136.App;
+            fromJSON(object: any): _136.App;
+            toJSON(message: _136.App): unknown;
             fromPartial(object: {
                 protocol?: any;
                 software?: string;
-            }): _145.App;
+            }): _136.App;
         };
         Consensus: {
-            encode(message: _145.Consensus, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _145.Consensus;
-            fromJSON(object: any): _145.Consensus;
-            toJSON(message: _145.Consensus): unknown;
+            encode(message: _136.Consensus, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+            decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _136.Consensus;
+            fromJSON(object: any): _136.Consensus;
+            toJSON(message: _136.Consensus): unknown;
             fromPartial(object: {
                 block?: any;
                 app?: any;
-            }): _145.Consensus;
+            }): _136.Consensus;
         };
     };
 }

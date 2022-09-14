@@ -2,7 +2,7 @@ import { LCDClient } from "@osmonauts/lcd";
 import { QueryProposalRequest, QueryProposalResponse, QueryProposalsRequest, QueryProposalsResponse, QueryVoteRequest, QueryVoteResponse, QueryVotesRequest, QueryVotesResponse, QueryParamsRequest, QueryParamsResponse, QueryDepositRequest, QueryDepositResponse, QueryDepositsRequest, QueryDepositsResponse, QueryTallyResultRequest, QueryTallyResultResponse } from "./query";
 export declare class LCDQueryClient extends LCDClient {
     constructor({ restEndpoint }: {
-        restEndpoint: any;
+        restEndpoint: string;
     });
     proposal(params: QueryProposalRequest): Promise<QueryProposalResponse>;
     proposals(params: QueryProposalsRequest): Promise<QueryProposalsResponse>;

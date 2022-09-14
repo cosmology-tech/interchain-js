@@ -2,7 +2,7 @@ import { LCDClient } from "@osmonauts/lcd";
 import { QueryAccountsRequest, QueryAccountsResponse, QueryAccountRequest, QueryAccountResponse, QueryParamsRequest, QueryParamsResponse, QueryModuleAccountsRequest, QueryModuleAccountsResponse, Bech32PrefixRequest, Bech32PrefixResponse, AddressBytesToStringRequest, AddressBytesToStringResponse, AddressStringToBytesRequest, AddressStringToBytesResponse } from "./query";
 export declare class LCDQueryClient extends LCDClient {
     constructor({ restEndpoint }: {
-        restEndpoint: any;
+        restEndpoint: string;
     });
     accounts(params?: QueryAccountsRequest): Promise<QueryAccountsResponse>;
     account(params: QueryAccountRequest): Promise<QueryAccountResponse>;
