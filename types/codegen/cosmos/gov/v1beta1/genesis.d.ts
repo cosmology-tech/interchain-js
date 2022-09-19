@@ -4,7 +4,7 @@ import { Long, DeepPartial } from "@osmonauts/helpers";
 /** GenesisState defines the gov module's genesis state. */
 export interface GenesisState {
     /** starting_proposal_id is the ID of the starting proposal. */
-    starting_proposal_id: Long;
+    startingProposalId: Long;
     /** deposits defines all the deposits present at genesis. */
     deposits: Deposit[];
     /** votes defines all the votes present at genesis. */
@@ -12,11 +12,11 @@ export interface GenesisState {
     /** proposals defines all the proposals present at genesis. */
     proposals: Proposal[];
     /** params defines all the paramaters of related to deposit. */
-    deposit_params: DepositParams;
+    depositParams: DepositParams;
     /** params defines all the paramaters of related to voting. */
-    voting_params: VotingParams;
+    votingParams: VotingParams;
     /** params defines all the paramaters of related to tally. */
-    tally_params: TallyParams;
+    tallyParams: TallyParams;
 }
 /** GenesisState defines the gov module's genesis state. */
 export interface GenesisStateSDKType {

@@ -23,7 +23,7 @@ export interface MultiSignatureSDKType {
  * This is not thread safe, and is not intended for concurrent usage.
  */
 export interface CompactBitArray {
-    extra_bits_stored: number;
+    extraBitsStored: number;
     elems: Uint8Array;
 }
 /**

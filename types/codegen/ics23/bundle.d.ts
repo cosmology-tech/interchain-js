@@ -16,8 +16,8 @@ export declare const ics23: {
             value?: Uint8Array;
             leaf?: {
                 hash?: _0.HashOp;
-                prehash_key?: _0.HashOp;
-                prehash_value?: _0.HashOp;
+                prehashKey?: _0.HashOp;
+                prehashValue?: _0.HashOp;
                 length?: _0.LengthOp;
                 prefix?: Uint8Array;
             };
@@ -38,8 +38,8 @@ export declare const ics23: {
                 value?: Uint8Array;
                 leaf?: {
                     hash?: _0.HashOp;
-                    prehash_key?: _0.HashOp;
-                    prehash_value?: _0.HashOp;
+                    prehashKey?: _0.HashOp;
+                    prehashValue?: _0.HashOp;
                     length?: _0.LengthOp;
                     prefix?: Uint8Array;
                 };
@@ -54,8 +54,8 @@ export declare const ics23: {
                 value?: Uint8Array;
                 leaf?: {
                     hash?: _0.HashOp;
-                    prehash_key?: _0.HashOp;
-                    prehash_value?: _0.HashOp;
+                    prehashKey?: _0.HashOp;
+                    prehashValue?: _0.HashOp;
                     length?: _0.LengthOp;
                     prefix?: Uint8Array;
                 };
@@ -76,8 +76,8 @@ export declare const ics23: {
                 value?: Uint8Array;
                 leaf?: {
                     hash?: _0.HashOp;
-                    prehash_key?: _0.HashOp;
-                    prehash_value?: _0.HashOp;
+                    prehashKey?: _0.HashOp;
+                    prehashValue?: _0.HashOp;
                     length?: _0.LengthOp;
                     prefix?: Uint8Array;
                 };
@@ -94,8 +94,8 @@ export declare const ics23: {
                     value?: Uint8Array;
                     leaf?: {
                         hash?: _0.HashOp;
-                        prehash_key?: _0.HashOp;
-                        prehash_value?: _0.HashOp;
+                        prehashKey?: _0.HashOp;
+                        prehashValue?: _0.HashOp;
                         length?: _0.LengthOp;
                         prefix?: Uint8Array;
                     };
@@ -110,8 +110,8 @@ export declare const ics23: {
                     value?: Uint8Array;
                     leaf?: {
                         hash?: _0.HashOp;
-                        prehash_key?: _0.HashOp;
-                        prehash_value?: _0.HashOp;
+                        prehashKey?: _0.HashOp;
+                        prehashValue?: _0.HashOp;
                         length?: _0.LengthOp;
                         prefix?: Uint8Array;
                     };
@@ -129,8 +129,8 @@ export declare const ics23: {
                         value?: Uint8Array;
                         leaf?: {
                             hash?: _0.HashOp;
-                            prehash_key?: _0.HashOp;
-                            prehash_value?: _0.HashOp;
+                            prehashKey?: _0.HashOp;
+                            prehashValue?: _0.HashOp;
                             length?: _0.LengthOp;
                             prefix?: Uint8Array;
                         };
@@ -147,8 +147,8 @@ export declare const ics23: {
                             value?: Uint8Array;
                             leaf?: {
                                 hash?: _0.HashOp;
-                                prehash_key?: _0.HashOp;
-                                prehash_value?: _0.HashOp;
+                                prehashKey?: _0.HashOp;
+                                prehashValue?: _0.HashOp;
                                 length?: _0.LengthOp;
                                 prefix?: Uint8Array;
                             };
@@ -163,8 +163,8 @@ export declare const ics23: {
                             value?: Uint8Array;
                             leaf?: {
                                 hash?: _0.HashOp;
-                                prehash_key?: _0.HashOp;
-                                prehash_value?: _0.HashOp;
+                                prehashKey?: _0.HashOp;
+                                prehashValue?: _0.HashOp;
                                 length?: _0.LengthOp;
                                 prefix?: Uint8Array;
                             };
@@ -184,8 +184,8 @@ export declare const ics23: {
                         value?: Uint8Array;
                         leaf?: {
                             hash?: _0.HashOp;
-                            prehash_key?: _0.HashOp;
-                            prehash_value?: _0.HashOp;
+                            prehashKey?: _0.HashOp;
+                            prehashValue?: _0.HashOp;
                             length?: _0.LengthOp;
                             prefix?: Uint8Array;
                         };
@@ -198,8 +198,8 @@ export declare const ics23: {
                             value?: Uint8Array;
                             leaf?: {
                                 hash?: _0.HashOp;
-                                prehash_key?: _0.HashOp;
-                                prehash_value?: _0.HashOp;
+                                prehashKey?: _0.HashOp;
+                                prehashValue?: _0.HashOp;
                                 length?: _0.LengthOp;
                                 prefix?: Uint8Array;
                             };
@@ -210,8 +210,8 @@ export declare const ics23: {
                             value?: Uint8Array;
                             leaf?: {
                                 hash?: _0.HashOp;
-                                prehash_key?: _0.HashOp;
-                                prehash_value?: _0.HashOp;
+                                prehashKey?: _0.HashOp;
+                                prehashValue?: _0.HashOp;
                                 length?: _0.LengthOp;
                                 prefix?: Uint8Array;
                             };
@@ -219,7 +219,7 @@ export declare const ics23: {
                         };
                     };
                 }[];
-                lookup_inners?: {
+                lookupInners?: {
                     hash?: _0.HashOp;
                     prefix?: Uint8Array;
                     suffix?: Uint8Array;
@@ -232,8 +232,8 @@ export declare const ics23: {
         decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _0.LeafOp;
         fromPartial(object: {
             hash?: _0.HashOp;
-            prehash_key?: _0.HashOp;
-            prehash_value?: _0.HashOp;
+            prehashKey?: _0.HashOp;
+            prehashValue?: _0.HashOp;
             length?: _0.LengthOp;
             prefix?: Uint8Array;
         }): _0.LeafOp;
@@ -251,34 +251,34 @@ export declare const ics23: {
         encode(message: _0.ProofSpec, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
         decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _0.ProofSpec;
         fromPartial(object: {
-            leaf_spec?: {
+            leafSpec?: {
                 hash?: _0.HashOp;
-                prehash_key?: _0.HashOp;
-                prehash_value?: _0.HashOp;
+                prehashKey?: _0.HashOp;
+                prehashValue?: _0.HashOp;
                 length?: _0.LengthOp;
                 prefix?: Uint8Array;
             };
-            inner_spec?: {
-                child_order?: number[];
-                child_size?: number;
-                min_prefix_length?: number;
-                max_prefix_length?: number;
-                empty_child?: Uint8Array;
+            innerSpec?: {
+                childOrder?: number[];
+                childSize?: number;
+                minPrefixLength?: number;
+                maxPrefixLength?: number;
+                emptyChild?: Uint8Array;
                 hash?: _0.HashOp;
             };
-            max_depth?: number;
-            min_depth?: number;
+            maxDepth?: number;
+            minDepth?: number;
         }): _0.ProofSpec;
     };
     InnerSpec: {
         encode(message: _0.InnerSpec, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
         decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _0.InnerSpec;
         fromPartial(object: {
-            child_order?: number[];
-            child_size?: number;
-            min_prefix_length?: number;
-            max_prefix_length?: number;
-            empty_child?: Uint8Array;
+            childOrder?: number[];
+            childSize?: number;
+            minPrefixLength?: number;
+            maxPrefixLength?: number;
+            emptyChild?: Uint8Array;
             hash?: _0.HashOp;
         }): _0.InnerSpec;
     };
@@ -292,8 +292,8 @@ export declare const ics23: {
                     value?: Uint8Array;
                     leaf?: {
                         hash?: _0.HashOp;
-                        prehash_key?: _0.HashOp;
-                        prehash_value?: _0.HashOp;
+                        prehashKey?: _0.HashOp;
+                        prehashValue?: _0.HashOp;
                         length?: _0.LengthOp;
                         prefix?: Uint8Array;
                     };
@@ -310,8 +310,8 @@ export declare const ics23: {
                         value?: Uint8Array;
                         leaf?: {
                             hash?: _0.HashOp;
-                            prehash_key?: _0.HashOp;
-                            prehash_value?: _0.HashOp;
+                            prehashKey?: _0.HashOp;
+                            prehashValue?: _0.HashOp;
                             length?: _0.LengthOp;
                             prefix?: Uint8Array;
                         };
@@ -326,8 +326,8 @@ export declare const ics23: {
                         value?: Uint8Array;
                         leaf?: {
                             hash?: _0.HashOp;
-                            prehash_key?: _0.HashOp;
-                            prehash_value?: _0.HashOp;
+                            prehashKey?: _0.HashOp;
+                            prehashValue?: _0.HashOp;
                             length?: _0.LengthOp;
                             prefix?: Uint8Array;
                         };
@@ -350,8 +350,8 @@ export declare const ics23: {
                 value?: Uint8Array;
                 leaf?: {
                     hash?: _0.HashOp;
-                    prehash_key?: _0.HashOp;
-                    prehash_value?: _0.HashOp;
+                    prehashKey?: _0.HashOp;
+                    prehashValue?: _0.HashOp;
                     length?: _0.LengthOp;
                     prefix?: Uint8Array;
                 };
@@ -368,8 +368,8 @@ export declare const ics23: {
                     value?: Uint8Array;
                     leaf?: {
                         hash?: _0.HashOp;
-                        prehash_key?: _0.HashOp;
-                        prehash_value?: _0.HashOp;
+                        prehashKey?: _0.HashOp;
+                        prehashValue?: _0.HashOp;
                         length?: _0.LengthOp;
                         prefix?: Uint8Array;
                     };
@@ -384,8 +384,8 @@ export declare const ics23: {
                     value?: Uint8Array;
                     leaf?: {
                         hash?: _0.HashOp;
-                        prehash_key?: _0.HashOp;
-                        prehash_value?: _0.HashOp;
+                        prehashKey?: _0.HashOp;
+                        prehashValue?: _0.HashOp;
                         length?: _0.LengthOp;
                         prefix?: Uint8Array;
                     };
@@ -408,8 +408,8 @@ export declare const ics23: {
                     value?: Uint8Array;
                     leaf?: {
                         hash?: _0.HashOp;
-                        prehash_key?: _0.HashOp;
-                        prehash_value?: _0.HashOp;
+                        prehashKey?: _0.HashOp;
+                        prehashValue?: _0.HashOp;
                         length?: _0.LengthOp;
                         prefix?: Uint8Array;
                     };
@@ -422,8 +422,8 @@ export declare const ics23: {
                         value?: Uint8Array;
                         leaf?: {
                             hash?: _0.HashOp;
-                            prehash_key?: _0.HashOp;
-                            prehash_value?: _0.HashOp;
+                            prehashKey?: _0.HashOp;
+                            prehashValue?: _0.HashOp;
                             length?: _0.LengthOp;
                             prefix?: Uint8Array;
                         };
@@ -434,8 +434,8 @@ export declare const ics23: {
                         value?: Uint8Array;
                         leaf?: {
                             hash?: _0.HashOp;
-                            prehash_key?: _0.HashOp;
-                            prehash_value?: _0.HashOp;
+                            prehashKey?: _0.HashOp;
+                            prehashValue?: _0.HashOp;
                             length?: _0.LengthOp;
                             prefix?: Uint8Array;
                         };
@@ -443,7 +443,7 @@ export declare const ics23: {
                     };
                 };
             }[];
-            lookup_inners?: {
+            lookupInners?: {
                 hash?: _0.HashOp;
                 prefix?: Uint8Array;
                 suffix?: Uint8Array;
@@ -459,8 +459,8 @@ export declare const ics23: {
                 value?: Uint8Array;
                 leaf?: {
                     hash?: _0.HashOp;
-                    prehash_key?: _0.HashOp;
-                    prehash_value?: _0.HashOp;
+                    prehashKey?: _0.HashOp;
+                    prehashValue?: _0.HashOp;
                     length?: _0.LengthOp;
                     prefix?: Uint8Array;
                 };
@@ -473,8 +473,8 @@ export declare const ics23: {
                     value?: Uint8Array;
                     leaf?: {
                         hash?: _0.HashOp;
-                        prehash_key?: _0.HashOp;
-                        prehash_value?: _0.HashOp;
+                        prehashKey?: _0.HashOp;
+                        prehashValue?: _0.HashOp;
                         length?: _0.LengthOp;
                         prefix?: Uint8Array;
                     };
@@ -485,8 +485,8 @@ export declare const ics23: {
                     value?: Uint8Array;
                     leaf?: {
                         hash?: _0.HashOp;
-                        prehash_key?: _0.HashOp;
-                        prehash_value?: _0.HashOp;
+                        prehashKey?: _0.HashOp;
+                        prehashValue?: _0.HashOp;
                         length?: _0.LengthOp;
                         prefix?: Uint8Array;
                     };
@@ -503,8 +503,8 @@ export declare const ics23: {
             value?: Uint8Array;
             leaf?: {
                 hash?: _0.HashOp;
-                prehash_key?: _0.HashOp;
-                prehash_value?: _0.HashOp;
+                prehashKey?: _0.HashOp;
+                prehashValue?: _0.HashOp;
                 length?: _0.LengthOp;
                 prefix?: Uint8Array;
             };
@@ -521,8 +521,8 @@ export declare const ics23: {
                 value?: Uint8Array;
                 leaf?: {
                     hash?: _0.HashOp;
-                    prehash_key?: _0.HashOp;
-                    prehash_value?: _0.HashOp;
+                    prehashKey?: _0.HashOp;
+                    prehashValue?: _0.HashOp;
                     length?: _0.LengthOp;
                     prefix?: Uint8Array;
                 };
@@ -533,8 +533,8 @@ export declare const ics23: {
                 value?: Uint8Array;
                 leaf?: {
                     hash?: _0.HashOp;
-                    prehash_key?: _0.HashOp;
-                    prehash_value?: _0.HashOp;
+                    prehashKey?: _0.HashOp;
+                    prehashValue?: _0.HashOp;
                     length?: _0.LengthOp;
                     prefix?: Uint8Array;
                 };

@@ -58,9 +58,9 @@ export interface CommissionRates {
     /** rate is the commission rate charged to delegators, as a fraction. */
     rate: string;
     /** max_rate defines the maximum commission rate which validator can ever charge, as a fraction. */
-    max_rate: string;
+    maxRate: string;
     /** max_change_rate defines the maximum daily increase of the validator commission, as a fraction. */
-    max_change_rate: string;
+    maxChangeRate: string;
 }
 /**
  * CommissionRates defines the initial commission rates to be used for creating
@@ -77,9 +77,9 @@ export interface CommissionRatesSDKType {
 /** Commission defines commission parameters for a given validator. */
 export interface Commission {
     /** commission_rates defines the initial commission rates to be used for creating a validator. */
-    commission_rates: CommissionRates;
+    commissionRates: CommissionRates;
     /** update_time is the last time the commission rate was changed. */
-    update_time: Date;
+    updateTime: Date;
 }
 /** Commission defines commission parameters for a given validator. */
 export interface CommissionSDKType {
@@ -97,7 +97,7 @@ export interface Description {
     /** website defines an optional website link. */
     website: string;
     /** security_contact defines an optional email for security contact. */
-    security_contact: string;
+    securityContact: string;
     /** details define other optional details. */
     details: string;
 }
@@ -126,9 +126,9 @@ export interface DescriptionSDKType {
  */
 export interface Validator {
     /** operator_address defines the address of the validator's operator; bech encoded in JSON. */
-    operator_address: string;
+    operatorAddress: string;
     /** consensus_pubkey is the consensus public key of the validator, as a Protobuf Any. */
-    consensus_pubkey: Any;
+    consensusPubkey: Any;
     /** jailed defined whether the validator has been jailed from bonded status or not. */
     jailed: boolean;
     /** status is the validator status (bonded/unbonding/unbonded). */
@@ -136,17 +136,17 @@ export interface Validator {
     /** tokens define the delegated tokens (incl. self-delegation). */
     tokens: string;
     /** delegator_shares defines total shares issued to a validator's delegators. */
-    delegator_shares: string;
+    delegatorShares: string;
     /** description defines the description terms for the validator. */
     description: Description;
     /** unbonding_height defines, if unbonding, the height at which this validator has begun unbonding. */
-    unbonding_height: Long;
+    unbondingHeight: Long;
     /** unbonding_time defines, if unbonding, the min time for the validator to complete unbonding. */
-    unbonding_time: Date;
+    unbondingTime: Date;
     /** commission defines the commission parameters. */
     commission: Commission;
     /** min_self_delegation is the validator's self declared minimum self delegation. */
-    min_self_delegation: string;
+    minSelfDelegation: string;
 }
 /**
  * Validator defines a validator, together with the total amount of the
@@ -196,8 +196,8 @@ export interface ValAddressesSDKType {
  * be used to construct the key to getting an UnbondingDelegation from state.
  */
 export interface DVPair {
-    delegator_address: string;
-    validator_address: string;
+    delegatorAddress: string;
+    validatorAddress: string;
 }
 /**
  * DVPair is struct that just has a delegator-validator pair with no other data.
@@ -223,9 +223,9 @@ export interface DVPairsSDKType {
  * Redelegation from state.
  */
 export interface DVVTriplet {
-    delegator_address: string;
-    validator_src_address: string;
-    validator_dst_address: string;
+    delegatorAddress: string;
+    validatorSrcAddress: string;
+    validatorDstAddress: string;
 }
 /**
  * DVVTriplet is struct that just has a delegator-validator-validator triplet
@@ -253,9 +253,9 @@ export interface DVVTripletsSDKType {
  */
 export interface Delegation {
     /** delegator_address is the bech32-encoded address of the delegator. */
-    delegator_address: string;
+    delegatorAddress: string;
     /** validator_address is the bech32-encoded address of the validator. */
-    validator_address: string;
+    validatorAddress: string;
     /** shares define the delegation shares received. */
     shares: string;
 }
@@ -278,9 +278,9 @@ export interface DelegationSDKType {
  */
 export interface UnbondingDelegation {
     /** delegator_address is the bech32-encoded address of the delegator. */
-    delegator_address: string;
+    delegatorAddress: string;
     /** validator_address is the bech32-encoded address of the validator. */
-    validator_address: string;
+    validatorAddress: string;
     /** entries are the unbonding delegation entries. */
     entries: UnbondingDelegationEntry[];
 }
@@ -299,11 +299,11 @@ export interface UnbondingDelegationSDKType {
 /** UnbondingDelegationEntry defines an unbonding object with relevant metadata. */
 export interface UnbondingDelegationEntry {
     /** creation_height is the height which the unbonding took place. */
-    creation_height: Long;
+    creationHeight: Long;
     /** completion_time is the unix time for unbonding completion. */
-    completion_time: Date;
+    completionTime: Date;
     /** initial_balance defines the tokens initially scheduled to receive at completion. */
-    initial_balance: string;
+    initialBalance: string;
     /** balance defines the tokens to receive at completion. */
     balance: string;
 }
@@ -321,13 +321,13 @@ export interface UnbondingDelegationEntrySDKType {
 /** RedelegationEntry defines a redelegation object with relevant metadata. */
 export interface RedelegationEntry {
     /** creation_height  defines the height which the redelegation took place. */
-    creation_height: Long;
+    creationHeight: Long;
     /** completion_time defines the unix time for redelegation completion. */
-    completion_time: Date;
+    completionTime: Date;
     /** initial_balance defines the initial balance when redelegation started. */
-    initial_balance: string;
+    initialBalance: string;
     /** shares_dst is the amount of destination-validator shares created by redelegation. */
-    shares_dst: string;
+    sharesDst: string;
 }
 /** RedelegationEntry defines a redelegation object with relevant metadata. */
 export interface RedelegationEntrySDKType {
@@ -346,11 +346,11 @@ export interface RedelegationEntrySDKType {
  */
 export interface Redelegation {
     /** delegator_address is the bech32-encoded address of the delegator. */
-    delegator_address: string;
+    delegatorAddress: string;
     /** validator_src_address is the validator redelegation source operator address. */
-    validator_src_address: string;
+    validatorSrcAddress: string;
     /** validator_dst_address is the validator redelegation destination operator address. */
-    validator_dst_address: string;
+    validatorDstAddress: string;
     /** entries are the redelegation entries. */
     entries: RedelegationEntry[];
 }
@@ -371,17 +371,17 @@ export interface RedelegationSDKType {
 /** Params defines the parameters for the staking module. */
 export interface Params {
     /** unbonding_time is the time duration of unbonding. */
-    unbonding_time: Duration;
+    unbondingTime: Duration;
     /** max_validators is the maximum number of validators. */
-    max_validators: number;
+    maxValidators: number;
     /** max_entries is the max entries for either unbonding delegation or redelegation (per pair/trio). */
-    max_entries: number;
+    maxEntries: number;
     /** historical_entries is the number of historical entries to persist. */
-    historical_entries: number;
+    historicalEntries: number;
     /** bond_denom defines the bondable coin denomination. */
-    bond_denom: string;
+    bondDenom: string;
     /** min_commission_rate is the chain-wide minimum commission rate that a validator can charge their delegators */
-    min_commission_rate: string;
+    minCommissionRate: string;
 }
 /** Params defines the parameters for the staking module. */
 export interface ParamsSDKType {
@@ -420,7 +420,7 @@ export interface DelegationResponseSDKType {
  * responses.
  */
 export interface RedelegationEntryResponse {
-    redelegation_entry: RedelegationEntry;
+    redelegationEntry: RedelegationEntry;
     balance: string;
 }
 /**
@@ -455,8 +455,8 @@ export interface RedelegationResponseSDKType {
  * denomination.
  */
 export interface Pool {
-    not_bonded_tokens: string;
-    bonded_tokens: string;
+    notBondedTokens: string;
+    bondedTokens: string;
 }
 /**
  * Pool is used for tracking bonded and not-bonded token supply of the bond

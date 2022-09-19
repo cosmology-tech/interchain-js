@@ -24,7 +24,7 @@ export interface MerkleRootSDKType {
  */
 
 export interface MerklePrefix {
-  key_prefix: Uint8Array;
+  keyPrefix: Uint8Array;
 }
 /**
  * MerklePrefix is merkle path prefixed to the key.
@@ -42,7 +42,7 @@ export interface MerklePrefixSDKType {
  */
 
 export interface MerklePath {
-  key_path: string[];
+  keyPath: string[];
 }
 /**
  * MerklePath is the path used to verify commitment proofs, which can be an
@@ -123,14 +123,14 @@ export const MerkleRoot = {
 
 function createBaseMerklePrefix(): MerklePrefix {
   return {
-    key_prefix: new Uint8Array()
+    keyPrefix: new Uint8Array()
   };
 }
 
 export const MerklePrefix = {
   encode(message: MerklePrefix, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.key_prefix.length !== 0) {
-      writer.uint32(10).bytes(message.key_prefix);
+    if (message.keyPrefix.length !== 0) {
+      writer.uint32(10).bytes(message.keyPrefix);
     }
 
     return writer;
@@ -146,7 +146,7 @@ export const MerklePrefix = {
 
       switch (tag >>> 3) {
         case 1:
-          message.key_prefix = reader.bytes();
+          message.keyPrefix = reader.bytes();
           break;
 
         default:
@@ -160,7 +160,7 @@ export const MerklePrefix = {
 
   fromPartial(object: DeepPartial<MerklePrefix>): MerklePrefix {
     const message = createBaseMerklePrefix();
-    message.key_prefix = object.key_prefix ?? new Uint8Array();
+    message.keyPrefix = object.keyPrefix ?? new Uint8Array();
     return message;
   }
 
@@ -168,13 +168,13 @@ export const MerklePrefix = {
 
 function createBaseMerklePath(): MerklePath {
   return {
-    key_path: []
+    keyPath: []
   };
 }
 
 export const MerklePath = {
   encode(message: MerklePath, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.key_path) {
+    for (const v of message.keyPath) {
       writer.uint32(10).string(v!);
     }
 
@@ -191,7 +191,7 @@ export const MerklePath = {
 
       switch (tag >>> 3) {
         case 1:
-          message.key_path.push(reader.string());
+          message.keyPath.push(reader.string());
           break;
 
         default:
@@ -205,7 +205,7 @@ export const MerklePath = {
 
   fromPartial(object: DeepPartial<MerklePath>): MerklePath {
     const message = createBaseMerklePath();
-    message.key_path = object.key_path?.map(e => e) || [];
+    message.keyPath = object.keyPath?.map(e => e) || [];
     return message;
   }
 

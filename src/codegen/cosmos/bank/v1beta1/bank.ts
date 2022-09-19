@@ -4,8 +4,8 @@ import { DeepPartial } from "@osmonauts/helpers";
 /** Params defines the parameters for the bank module. */
 
 export interface Params {
-  send_enabled: SendEnabled[];
-  default_send_enabled: boolean;
+  sendEnabled: SendEnabled[];
+  defaultSendEnabled: boolean;
 }
 /** Params defines the parameters for the bank module. */
 
@@ -128,7 +128,7 @@ export interface Metadata {
   description: string;
   /** denom_units represents the list of DenomUnit's for a given coin */
 
-  denom_units: DenomUnit[];
+  denomUnits: DenomUnit[];
   /** base represents the base denom (should be the DenomUnit with exponent = 0). */
 
   base: string;
@@ -167,7 +167,7 @@ export interface Metadata {
    * Since: cosmos-sdk 0.46
    */
 
-  uri_hash: string;
+  uriHash: string;
 }
 /**
  * Metadata represents a struct that describes
@@ -222,19 +222,19 @@ export interface MetadataSDKType {
 
 function createBaseParams(): Params {
   return {
-    send_enabled: [],
-    default_send_enabled: false
+    sendEnabled: [],
+    defaultSendEnabled: false
   };
 }
 
 export const Params = {
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.send_enabled) {
+    for (const v of message.sendEnabled) {
       SendEnabled.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
-    if (message.default_send_enabled === true) {
-      writer.uint32(16).bool(message.default_send_enabled);
+    if (message.defaultSendEnabled === true) {
+      writer.uint32(16).bool(message.defaultSendEnabled);
     }
 
     return writer;
@@ -250,11 +250,11 @@ export const Params = {
 
       switch (tag >>> 3) {
         case 1:
-          message.send_enabled.push(SendEnabled.decode(reader, reader.uint32()));
+          message.sendEnabled.push(SendEnabled.decode(reader, reader.uint32()));
           break;
 
         case 2:
-          message.default_send_enabled = reader.bool();
+          message.defaultSendEnabled = reader.bool();
           break;
 
         default:
@@ -268,8 +268,8 @@ export const Params = {
 
   fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
-    message.send_enabled = object.send_enabled?.map(e => SendEnabled.fromPartial(e)) || [];
-    message.default_send_enabled = object.default_send_enabled ?? false;
+    message.sendEnabled = object.sendEnabled?.map(e => SendEnabled.fromPartial(e)) || [];
+    message.defaultSendEnabled = object.defaultSendEnabled ?? false;
     return message;
   }
 
@@ -553,13 +553,13 @@ export const DenomUnit = {
 function createBaseMetadata(): Metadata {
   return {
     description: "",
-    denom_units: [],
+    denomUnits: [],
     base: "",
     display: "",
     name: "",
     symbol: "",
     uri: "",
-    uri_hash: ""
+    uriHash: ""
   };
 }
 
@@ -569,7 +569,7 @@ export const Metadata = {
       writer.uint32(10).string(message.description);
     }
 
-    for (const v of message.denom_units) {
+    for (const v of message.denomUnits) {
       DenomUnit.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
@@ -593,8 +593,8 @@ export const Metadata = {
       writer.uint32(58).string(message.uri);
     }
 
-    if (message.uri_hash !== "") {
-      writer.uint32(66).string(message.uri_hash);
+    if (message.uriHash !== "") {
+      writer.uint32(66).string(message.uriHash);
     }
 
     return writer;
@@ -614,7 +614,7 @@ export const Metadata = {
           break;
 
         case 2:
-          message.denom_units.push(DenomUnit.decode(reader, reader.uint32()));
+          message.denomUnits.push(DenomUnit.decode(reader, reader.uint32()));
           break;
 
         case 3:
@@ -638,7 +638,7 @@ export const Metadata = {
           break;
 
         case 8:
-          message.uri_hash = reader.string();
+          message.uriHash = reader.string();
           break;
 
         default:
@@ -653,13 +653,13 @@ export const Metadata = {
   fromPartial(object: DeepPartial<Metadata>): Metadata {
     const message = createBaseMetadata();
     message.description = object.description ?? "";
-    message.denom_units = object.denom_units?.map(e => DenomUnit.fromPartial(e)) || [];
+    message.denomUnits = object.denomUnits?.map(e => DenomUnit.fromPartial(e)) || [];
     message.base = object.base ?? "";
     message.display = object.display ?? "";
     message.name = object.name ?? "";
     message.symbol = object.symbol ?? "";
     message.uri = object.uri ?? "";
-    message.uri_hash = object.uri_hash ?? "";
+    message.uriHash = object.uriHash ?? "";
     return message;
   }
 

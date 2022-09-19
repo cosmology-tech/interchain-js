@@ -5,13 +5,13 @@ import { DeepPartial } from "@osmonauts/helpers";
 
 export interface MsgCreateClient {
   /** light client state */
-  client_state: Any;
+  clientState: Any;
   /**
    * consensus state associated with the client that corresponds to a given
    * height.
    */
 
-  consensus_state: Any;
+  consensusState: Any;
   /** signer address */
 
   signer: string;
@@ -44,7 +44,7 @@ export interface MsgCreateClientResponseSDKType {}
 
 export interface MsgUpdateClient {
   /** client unique identifier */
-  client_id: string;
+  clientId: string;
   /** header to update the light client */
 
   header: Any;
@@ -80,22 +80,22 @@ export interface MsgUpdateClientResponseSDKType {}
 
 export interface MsgUpgradeClient {
   /** client unique identifier */
-  client_id: string;
+  clientId: string;
   /** upgraded client state */
 
-  client_state: Any;
+  clientState: Any;
   /**
    * upgraded consensus state, only contains enough information to serve as a
    * basis of trust in update logic
    */
 
-  consensus_state: Any;
+  consensusState: Any;
   /** proof that old chain committed to new client */
 
-  proof_upgrade_client: Uint8Array;
+  proofUpgradeClient: Uint8Array;
   /** proof that old chain committed to new consensus state */
 
-  proof_upgrade_consensus_state: Uint8Array;
+  proofUpgradeConsensusState: Uint8Array;
   /** signer address */
 
   signer: string;
@@ -140,7 +140,7 @@ export interface MsgUpgradeClientResponseSDKType {}
 
 export interface MsgSubmitMisbehaviour {
   /** client unique identifier */
-  client_id: string;
+  clientId: string;
   /** misbehaviour used for freezing the light client */
 
   misbehaviour: Any;
@@ -178,20 +178,20 @@ export interface MsgSubmitMisbehaviourResponseSDKType {}
 
 function createBaseMsgCreateClient(): MsgCreateClient {
   return {
-    client_state: undefined,
-    consensus_state: undefined,
+    clientState: undefined,
+    consensusState: undefined,
     signer: ""
   };
 }
 
 export const MsgCreateClient = {
   encode(message: MsgCreateClient, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.client_state !== undefined) {
-      Any.encode(message.client_state, writer.uint32(10).fork()).ldelim();
+    if (message.clientState !== undefined) {
+      Any.encode(message.clientState, writer.uint32(10).fork()).ldelim();
     }
 
-    if (message.consensus_state !== undefined) {
-      Any.encode(message.consensus_state, writer.uint32(18).fork()).ldelim();
+    if (message.consensusState !== undefined) {
+      Any.encode(message.consensusState, writer.uint32(18).fork()).ldelim();
     }
 
     if (message.signer !== "") {
@@ -211,11 +211,11 @@ export const MsgCreateClient = {
 
       switch (tag >>> 3) {
         case 1:
-          message.client_state = Any.decode(reader, reader.uint32());
+          message.clientState = Any.decode(reader, reader.uint32());
           break;
 
         case 2:
-          message.consensus_state = Any.decode(reader, reader.uint32());
+          message.consensusState = Any.decode(reader, reader.uint32());
           break;
 
         case 3:
@@ -233,8 +233,8 @@ export const MsgCreateClient = {
 
   fromPartial(object: DeepPartial<MsgCreateClient>): MsgCreateClient {
     const message = createBaseMsgCreateClient();
-    message.client_state = object.client_state !== undefined && object.client_state !== null ? Any.fromPartial(object.client_state) : undefined;
-    message.consensus_state = object.consensus_state !== undefined && object.consensus_state !== null ? Any.fromPartial(object.consensus_state) : undefined;
+    message.clientState = object.clientState !== undefined && object.clientState !== null ? Any.fromPartial(object.clientState) : undefined;
+    message.consensusState = object.consensusState !== undefined && object.consensusState !== null ? Any.fromPartial(object.consensusState) : undefined;
     message.signer = object.signer ?? "";
     return message;
   }
@@ -277,7 +277,7 @@ export const MsgCreateClientResponse = {
 
 function createBaseMsgUpdateClient(): MsgUpdateClient {
   return {
-    client_id: "",
+    clientId: "",
     header: undefined,
     signer: ""
   };
@@ -285,8 +285,8 @@ function createBaseMsgUpdateClient(): MsgUpdateClient {
 
 export const MsgUpdateClient = {
   encode(message: MsgUpdateClient, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.client_id !== "") {
-      writer.uint32(10).string(message.client_id);
+    if (message.clientId !== "") {
+      writer.uint32(10).string(message.clientId);
     }
 
     if (message.header !== undefined) {
@@ -310,7 +310,7 @@ export const MsgUpdateClient = {
 
       switch (tag >>> 3) {
         case 1:
-          message.client_id = reader.string();
+          message.clientId = reader.string();
           break;
 
         case 2:
@@ -332,7 +332,7 @@ export const MsgUpdateClient = {
 
   fromPartial(object: DeepPartial<MsgUpdateClient>): MsgUpdateClient {
     const message = createBaseMsgUpdateClient();
-    message.client_id = object.client_id ?? "";
+    message.clientId = object.clientId ?? "";
     message.header = object.header !== undefined && object.header !== null ? Any.fromPartial(object.header) : undefined;
     message.signer = object.signer ?? "";
     return message;
@@ -376,35 +376,35 @@ export const MsgUpdateClientResponse = {
 
 function createBaseMsgUpgradeClient(): MsgUpgradeClient {
   return {
-    client_id: "",
-    client_state: undefined,
-    consensus_state: undefined,
-    proof_upgrade_client: new Uint8Array(),
-    proof_upgrade_consensus_state: new Uint8Array(),
+    clientId: "",
+    clientState: undefined,
+    consensusState: undefined,
+    proofUpgradeClient: new Uint8Array(),
+    proofUpgradeConsensusState: new Uint8Array(),
     signer: ""
   };
 }
 
 export const MsgUpgradeClient = {
   encode(message: MsgUpgradeClient, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.client_id !== "") {
-      writer.uint32(10).string(message.client_id);
+    if (message.clientId !== "") {
+      writer.uint32(10).string(message.clientId);
     }
 
-    if (message.client_state !== undefined) {
-      Any.encode(message.client_state, writer.uint32(18).fork()).ldelim();
+    if (message.clientState !== undefined) {
+      Any.encode(message.clientState, writer.uint32(18).fork()).ldelim();
     }
 
-    if (message.consensus_state !== undefined) {
-      Any.encode(message.consensus_state, writer.uint32(26).fork()).ldelim();
+    if (message.consensusState !== undefined) {
+      Any.encode(message.consensusState, writer.uint32(26).fork()).ldelim();
     }
 
-    if (message.proof_upgrade_client.length !== 0) {
-      writer.uint32(34).bytes(message.proof_upgrade_client);
+    if (message.proofUpgradeClient.length !== 0) {
+      writer.uint32(34).bytes(message.proofUpgradeClient);
     }
 
-    if (message.proof_upgrade_consensus_state.length !== 0) {
-      writer.uint32(42).bytes(message.proof_upgrade_consensus_state);
+    if (message.proofUpgradeConsensusState.length !== 0) {
+      writer.uint32(42).bytes(message.proofUpgradeConsensusState);
     }
 
     if (message.signer !== "") {
@@ -424,23 +424,23 @@ export const MsgUpgradeClient = {
 
       switch (tag >>> 3) {
         case 1:
-          message.client_id = reader.string();
+          message.clientId = reader.string();
           break;
 
         case 2:
-          message.client_state = Any.decode(reader, reader.uint32());
+          message.clientState = Any.decode(reader, reader.uint32());
           break;
 
         case 3:
-          message.consensus_state = Any.decode(reader, reader.uint32());
+          message.consensusState = Any.decode(reader, reader.uint32());
           break;
 
         case 4:
-          message.proof_upgrade_client = reader.bytes();
+          message.proofUpgradeClient = reader.bytes();
           break;
 
         case 5:
-          message.proof_upgrade_consensus_state = reader.bytes();
+          message.proofUpgradeConsensusState = reader.bytes();
           break;
 
         case 6:
@@ -458,11 +458,11 @@ export const MsgUpgradeClient = {
 
   fromPartial(object: DeepPartial<MsgUpgradeClient>): MsgUpgradeClient {
     const message = createBaseMsgUpgradeClient();
-    message.client_id = object.client_id ?? "";
-    message.client_state = object.client_state !== undefined && object.client_state !== null ? Any.fromPartial(object.client_state) : undefined;
-    message.consensus_state = object.consensus_state !== undefined && object.consensus_state !== null ? Any.fromPartial(object.consensus_state) : undefined;
-    message.proof_upgrade_client = object.proof_upgrade_client ?? new Uint8Array();
-    message.proof_upgrade_consensus_state = object.proof_upgrade_consensus_state ?? new Uint8Array();
+    message.clientId = object.clientId ?? "";
+    message.clientState = object.clientState !== undefined && object.clientState !== null ? Any.fromPartial(object.clientState) : undefined;
+    message.consensusState = object.consensusState !== undefined && object.consensusState !== null ? Any.fromPartial(object.consensusState) : undefined;
+    message.proofUpgradeClient = object.proofUpgradeClient ?? new Uint8Array();
+    message.proofUpgradeConsensusState = object.proofUpgradeConsensusState ?? new Uint8Array();
     message.signer = object.signer ?? "";
     return message;
   }
@@ -505,7 +505,7 @@ export const MsgUpgradeClientResponse = {
 
 function createBaseMsgSubmitMisbehaviour(): MsgSubmitMisbehaviour {
   return {
-    client_id: "",
+    clientId: "",
     misbehaviour: undefined,
     signer: ""
   };
@@ -513,8 +513,8 @@ function createBaseMsgSubmitMisbehaviour(): MsgSubmitMisbehaviour {
 
 export const MsgSubmitMisbehaviour = {
   encode(message: MsgSubmitMisbehaviour, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.client_id !== "") {
-      writer.uint32(10).string(message.client_id);
+    if (message.clientId !== "") {
+      writer.uint32(10).string(message.clientId);
     }
 
     if (message.misbehaviour !== undefined) {
@@ -538,7 +538,7 @@ export const MsgSubmitMisbehaviour = {
 
       switch (tag >>> 3) {
         case 1:
-          message.client_id = reader.string();
+          message.clientId = reader.string();
           break;
 
         case 2:
@@ -560,7 +560,7 @@ export const MsgSubmitMisbehaviour = {
 
   fromPartial(object: DeepPartial<MsgSubmitMisbehaviour>): MsgSubmitMisbehaviour {
     const message = createBaseMsgSubmitMisbehaviour();
-    message.client_id = object.client_id ?? "";
+    message.clientId = object.clientId ?? "";
     message.misbehaviour = object.misbehaviour !== undefined && object.misbehaviour !== null ? Any.fromPartial(object.misbehaviour) : undefined;
     message.signer = object.signer ?? "";
     return message;

@@ -10,7 +10,7 @@ export interface Equivocation {
   height: Long;
   time: Date;
   power: Long;
-  consensus_address: string;
+  consensusAddress: string;
 }
 /**
  * Equivocation implements the Evidence interface and defines evidence of double
@@ -29,7 +29,7 @@ function createBaseEquivocation(): Equivocation {
     height: Long.ZERO,
     time: undefined,
     power: Long.ZERO,
-    consensus_address: ""
+    consensusAddress: ""
   };
 }
 
@@ -47,8 +47,8 @@ export const Equivocation = {
       writer.uint32(24).int64(message.power);
     }
 
-    if (message.consensus_address !== "") {
-      writer.uint32(34).string(message.consensus_address);
+    if (message.consensusAddress !== "") {
+      writer.uint32(34).string(message.consensusAddress);
     }
 
     return writer;
@@ -76,7 +76,7 @@ export const Equivocation = {
           break;
 
         case 4:
-          message.consensus_address = reader.string();
+          message.consensusAddress = reader.string();
           break;
 
         default:
@@ -93,7 +93,7 @@ export const Equivocation = {
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
     message.time = object.time ?? undefined;
     message.power = object.power !== undefined && object.power !== null ? Long.fromValue(object.power) : Long.ZERO;
-    message.consensus_address = object.consensus_address ?? "";
+    message.consensusAddress = object.consensusAddress ?? "";
     return message;
   }
 

@@ -5,10 +5,10 @@ import { DeepPartial } from "@osmonauts/helpers";
 
 export interface QueryAppVersionRequest {
   /** port unique identifier */
-  port_id: string;
+  portId: string;
   /** connection unique identifier */
 
-  connection_id: string;
+  connectionId: string;
   /** whether the channel is ordered or unordered */
 
   ordering: Order;
@@ -17,7 +17,7 @@ export interface QueryAppVersionRequest {
   counterparty: Counterparty;
   /** proposed version */
 
-  proposed_version: string;
+  proposedVersion: string;
 }
 /** QueryAppVersionRequest is the request type for the Query/AppVersion RPC method */
 
@@ -41,7 +41,7 @@ export interface QueryAppVersionRequestSDKType {
 
 export interface QueryAppVersionResponse {
   /** port id associated with the request identifiers */
-  port_id: string;
+  portId: string;
   /** supported app version */
 
   version: string;
@@ -58,22 +58,22 @@ export interface QueryAppVersionResponseSDKType {
 
 function createBaseQueryAppVersionRequest(): QueryAppVersionRequest {
   return {
-    port_id: "",
-    connection_id: "",
+    portId: "",
+    connectionId: "",
     ordering: 0,
     counterparty: undefined,
-    proposed_version: ""
+    proposedVersion: ""
   };
 }
 
 export const QueryAppVersionRequest = {
   encode(message: QueryAppVersionRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.port_id !== "") {
-      writer.uint32(10).string(message.port_id);
+    if (message.portId !== "") {
+      writer.uint32(10).string(message.portId);
     }
 
-    if (message.connection_id !== "") {
-      writer.uint32(18).string(message.connection_id);
+    if (message.connectionId !== "") {
+      writer.uint32(18).string(message.connectionId);
     }
 
     if (message.ordering !== 0) {
@@ -84,8 +84,8 @@ export const QueryAppVersionRequest = {
       Counterparty.encode(message.counterparty, writer.uint32(34).fork()).ldelim();
     }
 
-    if (message.proposed_version !== "") {
-      writer.uint32(42).string(message.proposed_version);
+    if (message.proposedVersion !== "") {
+      writer.uint32(42).string(message.proposedVersion);
     }
 
     return writer;
@@ -101,11 +101,11 @@ export const QueryAppVersionRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.port_id = reader.string();
+          message.portId = reader.string();
           break;
 
         case 2:
-          message.connection_id = reader.string();
+          message.connectionId = reader.string();
           break;
 
         case 3:
@@ -117,7 +117,7 @@ export const QueryAppVersionRequest = {
           break;
 
         case 5:
-          message.proposed_version = reader.string();
+          message.proposedVersion = reader.string();
           break;
 
         default:
@@ -131,11 +131,11 @@ export const QueryAppVersionRequest = {
 
   fromPartial(object: DeepPartial<QueryAppVersionRequest>): QueryAppVersionRequest {
     const message = createBaseQueryAppVersionRequest();
-    message.port_id = object.port_id ?? "";
-    message.connection_id = object.connection_id ?? "";
+    message.portId = object.portId ?? "";
+    message.connectionId = object.connectionId ?? "";
     message.ordering = object.ordering ?? 0;
     message.counterparty = object.counterparty !== undefined && object.counterparty !== null ? Counterparty.fromPartial(object.counterparty) : undefined;
-    message.proposed_version = object.proposed_version ?? "";
+    message.proposedVersion = object.proposedVersion ?? "";
     return message;
   }
 
@@ -143,15 +143,15 @@ export const QueryAppVersionRequest = {
 
 function createBaseQueryAppVersionResponse(): QueryAppVersionResponse {
   return {
-    port_id: "",
+    portId: "",
     version: ""
   };
 }
 
 export const QueryAppVersionResponse = {
   encode(message: QueryAppVersionResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.port_id !== "") {
-      writer.uint32(10).string(message.port_id);
+    if (message.portId !== "") {
+      writer.uint32(10).string(message.portId);
     }
 
     if (message.version !== "") {
@@ -171,7 +171,7 @@ export const QueryAppVersionResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.port_id = reader.string();
+          message.portId = reader.string();
           break;
 
         case 2:
@@ -189,7 +189,7 @@ export const QueryAppVersionResponse = {
 
   fromPartial(object: DeepPartial<QueryAppVersionResponse>): QueryAppVersionResponse {
     const message = createBaseQueryAppVersionResponse();
-    message.port_id = object.port_id ?? "";
+    message.portId = object.portId ?? "";
     message.version = object.version ?? "";
     return message;
   }

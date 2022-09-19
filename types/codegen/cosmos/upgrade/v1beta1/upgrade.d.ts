@@ -36,7 +36,7 @@ export interface Plan {
      * If this field is not empty, an error will be thrown.
      */
     /** @deprecated */
-    upgraded_client_state: Any;
+    upgradedClientState: Any;
 }
 /** Plan specifies information about a planned upgrade and when it should occur. */
 export interface PlanSDKType {

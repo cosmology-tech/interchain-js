@@ -67,13 +67,13 @@ export interface ClientState {
     /** latest sequence of the client state */
     sequence: Long;
     /** frozen sequence of the solo machine */
-    is_frozen: boolean;
-    consensus_state: ConsensusState;
+    isFrozen: boolean;
+    consensusState: ConsensusState;
     /**
      * when set to true, will allow governance to update a solo machine client.
      * The client will be unfrozen if it is frozen.
      */
-    allow_update_after_proposal: boolean;
+    allowUpdateAfterProposal: boolean;
 }
 /**
  * ClientState defines a solo machine client that tracks the current consensus
@@ -98,7 +98,7 @@ export interface ClientStateSDKType {
  */
 export interface ConsensusState {
     /** public key of the solo machine */
-    public_key: Any;
+    publicKey: Any;
     /**
      * diversifier allows the same public key to be re-used across different solo
      * machine clients (potentially on different chains) without being considered
@@ -129,8 +129,8 @@ export interface Header {
     sequence: Long;
     timestamp: Long;
     signature: Uint8Array;
-    new_public_key: Any;
-    new_diversifier: string;
+    newPublicKey: Any;
+    newDiversifier: string;
 }
 /** Header defines a solo machine consensus header */
 export interface HeaderSDKType {
@@ -146,10 +146,10 @@ export interface HeaderSDKType {
  * of a sequence and two signatures over different messages at that sequence.
  */
 export interface Misbehaviour {
-    client_id: string;
+    clientId: string;
     sequence: Long;
-    signature_one: SignatureAndData;
-    signature_two: SignatureAndData;
+    signatureOne: SignatureAndData;
+    signatureTwo: SignatureAndData;
 }
 /**
  * Misbehaviour defines misbehaviour for a solo machine which consists
@@ -167,7 +167,7 @@ export interface MisbehaviourSDKType {
  */
 export interface SignatureAndData {
     signature: Uint8Array;
-    data_type: DataType;
+    dataType: DataType;
     data: Uint8Array;
     timestamp: Long;
 }
@@ -186,7 +186,7 @@ export interface SignatureAndDataSDKType {
  * signature.
  */
 export interface TimestampedSignatureData {
-    signature_data: Uint8Array;
+    signatureData: Uint8Array;
     timestamp: Long;
 }
 /**
@@ -203,7 +203,7 @@ export interface SignBytes {
     timestamp: Long;
     diversifier: string;
     /** type of the data used */
-    data_type: DataType;
+    dataType: DataType;
     /** marshaled data */
     data: Uint8Array;
 }
@@ -220,9 +220,9 @@ export interface SignBytesSDKType {
 /** HeaderData returns the SignBytes data for update verification. */
 export interface HeaderData {
     /** header public key */
-    new_pub_key: Any;
+    newPubKey: Any;
     /** header diversifier */
-    new_diversifier: string;
+    newDiversifier: string;
 }
 /** HeaderData returns the SignBytes data for update verification. */
 export interface HeaderDataSDKType {
@@ -234,7 +234,7 @@ export interface HeaderDataSDKType {
 /** ClientStateData returns the SignBytes data for client state verification. */
 export interface ClientStateData {
     path: Uint8Array;
-    client_state: Any;
+    clientState: Any;
 }
 /** ClientStateData returns the SignBytes data for client state verification. */
 export interface ClientStateDataSDKType {
@@ -247,7 +247,7 @@ export interface ClientStateDataSDKType {
  */
 export interface ConsensusStateData {
     path: Uint8Array;
-    consensus_state: Any;
+    consensusState: Any;
 }
 /**
  * ConsensusStateData returns the SignBytes data for consensus state
@@ -341,7 +341,7 @@ export interface PacketReceiptAbsenceDataSDKType {
  */
 export interface NextSequenceRecvData {
     path: Uint8Array;
-    next_seq_recv: Long;
+    nextSeqRecv: Long;
 }
 /**
  * NextSequenceRecvData returns the SignBytes data for verification of the next

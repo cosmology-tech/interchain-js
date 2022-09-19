@@ -8,9 +8,9 @@ import { DeepPartial, Long } from "@osmonauts/helpers";
  */
 export interface IdentifiedClientState {
     /** client identifier */
-    client_id: string;
+    clientId: string;
     /** client state */
-    client_state: Any;
+    clientState: Any;
 }
 /**
  * IdentifiedClientState defines a client state with an additional client
@@ -30,7 +30,7 @@ export interface ConsensusStateWithHeight {
     /** consensus state height */
     height: Height;
     /** consensus state */
-    consensus_state: Any;
+    consensusState: Any;
 }
 /**
  * ConsensusStateWithHeight defines a consensus state with an additional height
@@ -48,9 +48,9 @@ export interface ConsensusStateWithHeightSDKType {
  */
 export interface ClientConsensusStates {
     /** client identifier */
-    client_id: string;
+    clientId: string;
     /** consensus states and their heights associated with the client */
-    consensus_states: ConsensusStateWithHeight[];
+    consensusStates: ConsensusStateWithHeight[];
 }
 /**
  * ClientConsensusStates defines all the stored consensus states for a given
@@ -74,12 +74,12 @@ export interface ClientUpdateProposal {
     /** the description of the proposal */
     description: string;
     /** the client identifier for the client to be updated if the proposal passes */
-    subject_client_id: string;
+    subjectClientId: string;
     /**
      * the substitute client identifier for the client standing in for the subject
      * client
      */
-    substitute_client_id: string;
+    substituteClientId: string;
 }
 /**
  * ClientUpdateProposal is a governance proposal. If it passes, the substitute
@@ -116,7 +116,7 @@ export interface UpgradeProposal {
      * of the chain. This will allow IBC connections to persist smoothly across
      * planned chain upgrades
      */
-    upgraded_client_state: Any;
+    upgradedClientState: Any;
 }
 /**
  * UpgradeProposal is a gov Content type for initiating an IBC breaking
@@ -150,9 +150,9 @@ export interface UpgradeProposalSDKType {
  */
 export interface Height {
     /** the revision that the client is currently on */
-    revision_number: Long;
+    revisionNumber: Long;
     /** the height within the given revision */
-    revision_height: Long;
+    revisionHeight: Long;
 }
 /**
  * Height is a monotonically increasing data type
@@ -175,7 +175,7 @@ export interface HeightSDKType {
 /** Params defines the set of IBC light client parameters. */
 export interface Params {
     /** allowed_clients defines the list of allowed client state types. */
-    allowed_clients: string[];
+    allowedClients: string[];
 }
 /** Params defines the set of IBC light client parameters. */
 export interface ParamsSDKType {

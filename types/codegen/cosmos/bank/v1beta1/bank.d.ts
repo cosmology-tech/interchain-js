@@ -3,8 +3,8 @@ import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "@osmonauts/helpers";
 /** Params defines the parameters for the bank module. */
 export interface Params {
-    send_enabled: SendEnabled[];
-    default_send_enabled: boolean;
+    sendEnabled: SendEnabled[];
+    defaultSendEnabled: boolean;
 }
 /** Params defines the parameters for the bank module. */
 export interface ParamsSDKType {
@@ -108,7 +108,7 @@ export interface DenomUnitSDKType {
 export interface Metadata {
     description: string;
     /** denom_units represents the list of DenomUnit's for a given coin */
-    denom_units: DenomUnit[];
+    denomUnits: DenomUnit[];
     /** base represents the base denom (should be the DenomUnit with exponent = 0). */
     base: string;
     /**
@@ -141,7 +141,7 @@ export interface Metadata {
      *
      * Since: cosmos-sdk 0.46
      */
-    uri_hash: string;
+    uriHash: string;
 }
 /**
  * Metadata represents a struct that describes

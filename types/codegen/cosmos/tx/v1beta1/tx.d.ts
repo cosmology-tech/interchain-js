@@ -12,7 +12,7 @@ export interface Tx {
      * auth_info is the authorization related content of the transaction,
      * specifically signers, signer modes and fee
      */
-    auth_info: AuthInfo;
+    authInfo: AuthInfo;
     /**
      * signatures is a list of signatures that matches the length and order of
      * AuthInfo's signer_infos to allow connecting signature meta information like
@@ -48,12 +48,12 @@ export interface TxRaw {
      * body_bytes is a protobuf serialization of a TxBody that matches the
      * representation in SignDoc.
      */
-    body_bytes: Uint8Array;
+    bodyBytes: Uint8Array;
     /**
      * auth_info_bytes is a protobuf serialization of an AuthInfo that matches the
      * representation in SignDoc.
      */
-    auth_info_bytes: Uint8Array;
+    authInfoBytes: Uint8Array;
     /**
      * signatures is a list of signatures that matches the length and order of
      * AuthInfo's signer_infos to allow connecting signature meta information like
@@ -92,20 +92,20 @@ export interface SignDoc {
      * body_bytes is protobuf serialization of a TxBody that matches the
      * representation in TxRaw.
      */
-    body_bytes: Uint8Array;
+    bodyBytes: Uint8Array;
     /**
      * auth_info_bytes is a protobuf serialization of an AuthInfo that matches the
      * representation in TxRaw.
      */
-    auth_info_bytes: Uint8Array;
+    authInfoBytes: Uint8Array;
     /**
      * chain_id is the unique identifier of the chain this transaction targets.
      * It prevents signed transactions from being used on another chain by an
      * attacker
      */
-    chain_id: string;
+    chainId: string;
     /** account_number is the account number of the account in state */
-    account_number: Long;
+    accountNumber: Long;
 }
 /** SignDoc is the type used for generating sign bytes for SIGN_MODE_DIRECT. */
 export interface SignDocSDKType {
@@ -139,17 +139,17 @@ export interface SignDocDirectAux {
      * body_bytes is protobuf serialization of a TxBody that matches the
      * representation in TxRaw.
      */
-    body_bytes: Uint8Array;
+    bodyBytes: Uint8Array;
     /** public_key is the public key of the signing account. */
-    public_key: Any;
+    publicKey: Any;
     /**
      * chain_id is the identifier of the chain this transaction targets.
      * It prevents signed transactions from being used on another chain by an
      * attacker.
      */
-    chain_id: string;
+    chainId: string;
     /** account_number is the account number of the account in state. */
-    account_number: Long;
+    accountNumber: Long;
     /** sequence is the sequence number of the signing account. */
     sequence: Long;
     /**
@@ -210,19 +210,19 @@ export interface TxBody {
      * timeout is the block height after which this transaction will not
      * be processed by the chain
      */
-    timeout_height: Long;
+    timeoutHeight: Long;
     /**
      * extension_options are arbitrary options that can be added by chains
      * when the default options are not sufficient. If any of these are present
      * and can't be handled, the transaction will be rejected
      */
-    extension_options: Any[];
+    extensionOptions: Any[];
     /**
      * extension_options are arbitrary options that can be added by chains
      * when the default options are not sufficient. If any of these are present
      * and can't be handled, they will be ignored
      */
-    non_critical_extension_options: Any[];
+    nonCriticalExtensionOptions: Any[];
 }
 /** TxBody is the body of a transaction that all signers sign over. */
 export interface TxBodySDKType {
@@ -271,7 +271,7 @@ export interface AuthInfo {
      * messages. The first element is the primary signer and the one which pays
      * the fee.
      */
-    signer_infos: SignerInfo[];
+    signerInfos: SignerInfo[];
     /**
      * Fee is the fee and gas limit for the transaction. The first signer is the
      * primary signer and the one which pays the fee. The fee can be calculated
@@ -322,12 +322,12 @@ export interface SignerInfo {
      * that already exist in state. If unset, the verifier can use the required \
      * signer address for this position and lookup the public key.
      */
-    public_key: Any;
+    publicKey: Any;
     /**
      * mode_info describes the signing mode of the signer and is a nested
      * structure to support nested multisig pubkey's
      */
-    mode_info: ModeInfo;
+    modeInfo: ModeInfo;
     /**
      * sequence is the sequence of the account, which describes the
      * number of committed transactions signed by a given address. It is used to
@@ -398,7 +398,7 @@ export interface ModeInfo_Multi {
      * mode_infos is the corresponding modes of the signers of the multisig
      * which could include nested multisig public keys
      */
-    mode_infos: ModeInfo[];
+    modeInfos: ModeInfo[];
 }
 /** Multi is the mode info for a multisig public key */
 export interface ModeInfo_MultiSDKType {
@@ -422,7 +422,7 @@ export interface Fee {
      * gas_limit is the maximum gas that can be used in transaction processing
      * before an out of gas error occurs
      */
-    gas_limit: Long;
+    gasLimit: Long;
     /**
      * if unset, the first signer is responsible for paying the fees. If set, the specified account must pay the fees.
      * the payer must be a tx signer (and thus have signed this field in AuthInfo).
@@ -504,7 +504,7 @@ export interface AuxSignerData {
      * signs. Note: we use the same sign doc even if we're signing with
      * LEGACY_AMINO_JSON.
      */
-    sign_doc: SignDocDirectAux;
+    signDoc: SignDocDirectAux;
     /** mode is the signing mode of the single signer */
     mode: SignMode;
     /** sig is the signature of the sign doc. */

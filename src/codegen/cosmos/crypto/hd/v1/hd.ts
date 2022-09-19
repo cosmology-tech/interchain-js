@@ -7,7 +7,7 @@ export interface BIP44Params {
   purpose: number;
   /** coin_type is a constant that improves privacy */
 
-  coin_type: number;
+  coinType: number;
   /** account splits the key space into independent user identities */
 
   account: number;
@@ -19,7 +19,7 @@ export interface BIP44Params {
   change: boolean;
   /** address_index is used as child index in BIP32 derivation */
 
-  address_index: number;
+  addressIndex: number;
 }
 /** BIP44Params is used as path field in ledger item in Record. */
 
@@ -46,10 +46,10 @@ export interface BIP44ParamsSDKType {
 function createBaseBIP44Params(): BIP44Params {
   return {
     purpose: 0,
-    coin_type: 0,
+    coinType: 0,
     account: 0,
     change: false,
-    address_index: 0
+    addressIndex: 0
   };
 }
 
@@ -59,8 +59,8 @@ export const BIP44Params = {
       writer.uint32(8).uint32(message.purpose);
     }
 
-    if (message.coin_type !== 0) {
-      writer.uint32(16).uint32(message.coin_type);
+    if (message.coinType !== 0) {
+      writer.uint32(16).uint32(message.coinType);
     }
 
     if (message.account !== 0) {
@@ -71,8 +71,8 @@ export const BIP44Params = {
       writer.uint32(32).bool(message.change);
     }
 
-    if (message.address_index !== 0) {
-      writer.uint32(40).uint32(message.address_index);
+    if (message.addressIndex !== 0) {
+      writer.uint32(40).uint32(message.addressIndex);
     }
 
     return writer;
@@ -92,7 +92,7 @@ export const BIP44Params = {
           break;
 
         case 2:
-          message.coin_type = reader.uint32();
+          message.coinType = reader.uint32();
           break;
 
         case 3:
@@ -104,7 +104,7 @@ export const BIP44Params = {
           break;
 
         case 5:
-          message.address_index = reader.uint32();
+          message.addressIndex = reader.uint32();
           break;
 
         default:
@@ -119,10 +119,10 @@ export const BIP44Params = {
   fromPartial(object: DeepPartial<BIP44Params>): BIP44Params {
     const message = createBaseBIP44Params();
     message.purpose = object.purpose ?? 0;
-    message.coin_type = object.coin_type ?? 0;
+    message.coinType = object.coinType ?? 0;
     message.account = object.account ?? 0;
     message.change = object.change ?? false;
-    message.address_index = object.address_index ?? 0;
+    message.addressIndex = object.addressIndex ?? 0;
     return message;
   }
 

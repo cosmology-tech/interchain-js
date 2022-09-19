@@ -7,7 +7,7 @@ export interface Minter {
   inflation: string;
   /** current annual expected provisions */
 
-  annual_provisions: string;
+  annualProvisions: string;
 }
 /** Minter represents the minting state. */
 
@@ -22,22 +22,22 @@ export interface MinterSDKType {
 
 export interface Params {
   /** type of coin to mint */
-  mint_denom: string;
+  mintDenom: string;
   /** maximum annual change in inflation rate */
 
-  inflation_rate_change: string;
+  inflationRateChange: string;
   /** maximum inflation rate */
 
-  inflation_max: string;
+  inflationMax: string;
   /** minimum inflation rate */
 
-  inflation_min: string;
+  inflationMin: string;
   /** goal of percent bonded atoms */
 
-  goal_bonded: string;
+  goalBonded: string;
   /** expected blocks per year */
 
-  blocks_per_year: Long;
+  blocksPerYear: Long;
 }
 /** Params holds parameters for the mint module. */
 
@@ -64,7 +64,7 @@ export interface ParamsSDKType {
 function createBaseMinter(): Minter {
   return {
     inflation: "",
-    annual_provisions: ""
+    annualProvisions: ""
   };
 }
 
@@ -74,8 +74,8 @@ export const Minter = {
       writer.uint32(10).string(message.inflation);
     }
 
-    if (message.annual_provisions !== "") {
-      writer.uint32(18).string(message.annual_provisions);
+    if (message.annualProvisions !== "") {
+      writer.uint32(18).string(message.annualProvisions);
     }
 
     return writer;
@@ -95,7 +95,7 @@ export const Minter = {
           break;
 
         case 2:
-          message.annual_provisions = reader.string();
+          message.annualProvisions = reader.string();
           break;
 
         default:
@@ -110,7 +110,7 @@ export const Minter = {
   fromPartial(object: DeepPartial<Minter>): Minter {
     const message = createBaseMinter();
     message.inflation = object.inflation ?? "";
-    message.annual_provisions = object.annual_provisions ?? "";
+    message.annualProvisions = object.annualProvisions ?? "";
     return message;
   }
 
@@ -118,39 +118,39 @@ export const Minter = {
 
 function createBaseParams(): Params {
   return {
-    mint_denom: "",
-    inflation_rate_change: "",
-    inflation_max: "",
-    inflation_min: "",
-    goal_bonded: "",
-    blocks_per_year: Long.UZERO
+    mintDenom: "",
+    inflationRateChange: "",
+    inflationMax: "",
+    inflationMin: "",
+    goalBonded: "",
+    blocksPerYear: Long.UZERO
   };
 }
 
 export const Params = {
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.mint_denom !== "") {
-      writer.uint32(10).string(message.mint_denom);
+    if (message.mintDenom !== "") {
+      writer.uint32(10).string(message.mintDenom);
     }
 
-    if (message.inflation_rate_change !== "") {
-      writer.uint32(18).string(message.inflation_rate_change);
+    if (message.inflationRateChange !== "") {
+      writer.uint32(18).string(message.inflationRateChange);
     }
 
-    if (message.inflation_max !== "") {
-      writer.uint32(26).string(message.inflation_max);
+    if (message.inflationMax !== "") {
+      writer.uint32(26).string(message.inflationMax);
     }
 
-    if (message.inflation_min !== "") {
-      writer.uint32(34).string(message.inflation_min);
+    if (message.inflationMin !== "") {
+      writer.uint32(34).string(message.inflationMin);
     }
 
-    if (message.goal_bonded !== "") {
-      writer.uint32(42).string(message.goal_bonded);
+    if (message.goalBonded !== "") {
+      writer.uint32(42).string(message.goalBonded);
     }
 
-    if (!message.blocks_per_year.isZero()) {
-      writer.uint32(48).uint64(message.blocks_per_year);
+    if (!message.blocksPerYear.isZero()) {
+      writer.uint32(48).uint64(message.blocksPerYear);
     }
 
     return writer;
@@ -166,27 +166,27 @@ export const Params = {
 
       switch (tag >>> 3) {
         case 1:
-          message.mint_denom = reader.string();
+          message.mintDenom = reader.string();
           break;
 
         case 2:
-          message.inflation_rate_change = reader.string();
+          message.inflationRateChange = reader.string();
           break;
 
         case 3:
-          message.inflation_max = reader.string();
+          message.inflationMax = reader.string();
           break;
 
         case 4:
-          message.inflation_min = reader.string();
+          message.inflationMin = reader.string();
           break;
 
         case 5:
-          message.goal_bonded = reader.string();
+          message.goalBonded = reader.string();
           break;
 
         case 6:
-          message.blocks_per_year = (reader.uint64() as Long);
+          message.blocksPerYear = (reader.uint64() as Long);
           break;
 
         default:
@@ -200,12 +200,12 @@ export const Params = {
 
   fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
-    message.mint_denom = object.mint_denom ?? "";
-    message.inflation_rate_change = object.inflation_rate_change ?? "";
-    message.inflation_max = object.inflation_max ?? "";
-    message.inflation_min = object.inflation_min ?? "";
-    message.goal_bonded = object.goal_bonded ?? "";
-    message.blocks_per_year = object.blocks_per_year !== undefined && object.blocks_per_year !== null ? Long.fromValue(object.blocks_per_year) : Long.UZERO;
+    message.mintDenom = object.mintDenom ?? "";
+    message.inflationRateChange = object.inflationRateChange ?? "";
+    message.inflationMax = object.inflationMax ?? "";
+    message.inflationMin = object.inflationMin ?? "";
+    message.goalBonded = object.goalBonded ?? "";
+    message.blocksPerYear = object.blocksPerYear !== undefined && object.blocksPerYear !== null ? Long.fromValue(object.blocksPerYear) : Long.UZERO;
     return message;
   }
 

@@ -5,10 +5,10 @@ import { Long, DeepPartial } from "@osmonauts/helpers";
 
 export interface GenesisState {
   connections: IdentifiedConnection[];
-  client_connection_paths: ConnectionPaths[];
+  clientConnectionPaths: ConnectionPaths[];
   /** the sequence for the next generated connection identifier */
 
-  next_connection_sequence: Long;
+  nextConnectionSequence: Long;
   params: Params;
 }
 /** GenesisState defines the ibc connection submodule's genesis state. */
@@ -25,8 +25,8 @@ export interface GenesisStateSDKType {
 function createBaseGenesisState(): GenesisState {
   return {
     connections: [],
-    client_connection_paths: [],
-    next_connection_sequence: Long.UZERO,
+    clientConnectionPaths: [],
+    nextConnectionSequence: Long.UZERO,
     params: undefined
   };
 }
@@ -37,12 +37,12 @@ export const GenesisState = {
       IdentifiedConnection.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
-    for (const v of message.client_connection_paths) {
+    for (const v of message.clientConnectionPaths) {
       ConnectionPaths.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
-    if (!message.next_connection_sequence.isZero()) {
-      writer.uint32(24).uint64(message.next_connection_sequence);
+    if (!message.nextConnectionSequence.isZero()) {
+      writer.uint32(24).uint64(message.nextConnectionSequence);
     }
 
     if (message.params !== undefined) {
@@ -66,11 +66,11 @@ export const GenesisState = {
           break;
 
         case 2:
-          message.client_connection_paths.push(ConnectionPaths.decode(reader, reader.uint32()));
+          message.clientConnectionPaths.push(ConnectionPaths.decode(reader, reader.uint32()));
           break;
 
         case 3:
-          message.next_connection_sequence = (reader.uint64() as Long);
+          message.nextConnectionSequence = (reader.uint64() as Long);
           break;
 
         case 4:
@@ -89,8 +89,8 @@ export const GenesisState = {
   fromPartial(object: DeepPartial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.connections = object.connections?.map(e => IdentifiedConnection.fromPartial(e)) || [];
-    message.client_connection_paths = object.client_connection_paths?.map(e => ConnectionPaths.fromPartial(e)) || [];
-    message.next_connection_sequence = object.next_connection_sequence !== undefined && object.next_connection_sequence !== null ? Long.fromValue(object.next_connection_sequence) : Long.UZERO;
+    message.clientConnectionPaths = object.clientConnectionPaths?.map(e => ConnectionPaths.fromPartial(e)) || [];
+    message.nextConnectionSequence = object.nextConnectionSequence !== undefined && object.nextConnectionSequence !== null ? Long.fromValue(object.nextConnectionSequence) : Long.UZERO;
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
   }

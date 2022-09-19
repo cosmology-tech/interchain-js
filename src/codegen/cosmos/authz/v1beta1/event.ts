@@ -4,7 +4,7 @@ import { DeepPartial } from "@osmonauts/helpers";
 
 export interface EventGrant {
   /** Msg type URL for which an autorization is granted */
-  msg_type_url: string;
+  msgTypeUrl: string;
   /** Granter account address */
 
   granter: string;
@@ -28,7 +28,7 @@ export interface EventGrantSDKType {
 
 export interface EventRevoke {
   /** Msg type URL for which an autorization is revoked */
-  msg_type_url: string;
+  msgTypeUrl: string;
   /** Granter account address */
 
   granter: string;
@@ -51,7 +51,7 @@ export interface EventRevokeSDKType {
 
 function createBaseEventGrant(): EventGrant {
   return {
-    msg_type_url: "",
+    msgTypeUrl: "",
     granter: "",
     grantee: ""
   };
@@ -59,8 +59,8 @@ function createBaseEventGrant(): EventGrant {
 
 export const EventGrant = {
   encode(message: EventGrant, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.msg_type_url !== "") {
-      writer.uint32(18).string(message.msg_type_url);
+    if (message.msgTypeUrl !== "") {
+      writer.uint32(18).string(message.msgTypeUrl);
     }
 
     if (message.granter !== "") {
@@ -84,7 +84,7 @@ export const EventGrant = {
 
       switch (tag >>> 3) {
         case 2:
-          message.msg_type_url = reader.string();
+          message.msgTypeUrl = reader.string();
           break;
 
         case 3:
@@ -106,7 +106,7 @@ export const EventGrant = {
 
   fromPartial(object: DeepPartial<EventGrant>): EventGrant {
     const message = createBaseEventGrant();
-    message.msg_type_url = object.msg_type_url ?? "";
+    message.msgTypeUrl = object.msgTypeUrl ?? "";
     message.granter = object.granter ?? "";
     message.grantee = object.grantee ?? "";
     return message;
@@ -116,7 +116,7 @@ export const EventGrant = {
 
 function createBaseEventRevoke(): EventRevoke {
   return {
-    msg_type_url: "",
+    msgTypeUrl: "",
     granter: "",
     grantee: ""
   };
@@ -124,8 +124,8 @@ function createBaseEventRevoke(): EventRevoke {
 
 export const EventRevoke = {
   encode(message: EventRevoke, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.msg_type_url !== "") {
-      writer.uint32(18).string(message.msg_type_url);
+    if (message.msgTypeUrl !== "") {
+      writer.uint32(18).string(message.msgTypeUrl);
     }
 
     if (message.granter !== "") {
@@ -149,7 +149,7 @@ export const EventRevoke = {
 
       switch (tag >>> 3) {
         case 2:
-          message.msg_type_url = reader.string();
+          message.msgTypeUrl = reader.string();
           break;
 
         case 3:
@@ -171,7 +171,7 @@ export const EventRevoke = {
 
   fromPartial(object: DeepPartial<EventRevoke>): EventRevoke {
     const message = createBaseEventRevoke();
-    message.msg_type_url = object.msg_type_url ?? "";
+    message.msgTypeUrl = object.msgTypeUrl ?? "";
     message.granter = object.granter ?? "";
     message.grantee = object.grantee ?? "";
     return message;

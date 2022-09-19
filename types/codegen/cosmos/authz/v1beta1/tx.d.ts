@@ -69,7 +69,7 @@ export interface MsgGrantResponseSDKType {
 export interface MsgRevoke {
     granter: string;
     grantee: string;
-    msg_type_url: string;
+    msgTypeUrl: string;
 }
 /**
  * MsgRevoke revokes any authorization with the provided sdk.Msg type on the

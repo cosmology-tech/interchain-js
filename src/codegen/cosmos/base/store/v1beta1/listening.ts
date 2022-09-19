@@ -10,7 +10,7 @@ import { DeepPartial } from "@osmonauts/helpers";
 
 export interface StoreKVPair {
   /** the store key for the KVStore this pair originates from */
-  store_key: string;
+  storeKey: string;
   /** true indicates a delete operation, false indicates a set operation */
 
   delete: boolean;
@@ -37,7 +37,7 @@ export interface StoreKVPairSDKType {
 
 function createBaseStoreKVPair(): StoreKVPair {
   return {
-    store_key: "",
+    storeKey: "",
     delete: false,
     key: new Uint8Array(),
     value: new Uint8Array()
@@ -46,8 +46,8 @@ function createBaseStoreKVPair(): StoreKVPair {
 
 export const StoreKVPair = {
   encode(message: StoreKVPair, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.store_key !== "") {
-      writer.uint32(10).string(message.store_key);
+    if (message.storeKey !== "") {
+      writer.uint32(10).string(message.storeKey);
     }
 
     if (message.delete === true) {
@@ -75,7 +75,7 @@ export const StoreKVPair = {
 
       switch (tag >>> 3) {
         case 1:
-          message.store_key = reader.string();
+          message.storeKey = reader.string();
           break;
 
         case 2:
@@ -101,7 +101,7 @@ export const StoreKVPair = {
 
   fromPartial(object: DeepPartial<StoreKVPair>): StoreKVPair {
     const message = createBaseStoreKVPair();
-    message.store_key = object.store_key ?? "";
+    message.storeKey = object.storeKey ?? "";
     message.delete = object.delete ?? false;
     message.key = object.key ?? new Uint8Array();
     message.value = object.value ?? new Uint8Array();

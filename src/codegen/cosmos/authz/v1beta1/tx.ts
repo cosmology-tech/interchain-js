@@ -78,7 +78,7 @@ export interface MsgGrantResponseSDKType {}
 export interface MsgRevoke {
   granter: string;
   grantee: string;
-  msg_type_url: string;
+  msgTypeUrl: string;
 }
 /**
  * MsgRevoke revokes any authorization with the provided sdk.Msg type on the
@@ -300,7 +300,7 @@ function createBaseMsgRevoke(): MsgRevoke {
   return {
     granter: "",
     grantee: "",
-    msg_type_url: ""
+    msgTypeUrl: ""
   };
 }
 
@@ -314,8 +314,8 @@ export const MsgRevoke = {
       writer.uint32(18).string(message.grantee);
     }
 
-    if (message.msg_type_url !== "") {
-      writer.uint32(26).string(message.msg_type_url);
+    if (message.msgTypeUrl !== "") {
+      writer.uint32(26).string(message.msgTypeUrl);
     }
 
     return writer;
@@ -339,7 +339,7 @@ export const MsgRevoke = {
           break;
 
         case 3:
-          message.msg_type_url = reader.string();
+          message.msgTypeUrl = reader.string();
           break;
 
         default:
@@ -355,7 +355,7 @@ export const MsgRevoke = {
     const message = createBaseMsgRevoke();
     message.granter = object.granter ?? "";
     message.grantee = object.grantee ?? "";
-    message.msg_type_url = object.msg_type_url ?? "";
+    message.msgTypeUrl = object.msgTypeUrl ?? "";
     return message;
   }
 

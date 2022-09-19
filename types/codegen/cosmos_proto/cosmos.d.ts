@@ -79,7 +79,7 @@ export interface ScalarDescriptor {
      * encoding standards and simple and clear. Currently only string and
      * bytes fields are supported for scalars.
      */
-    field_type: ScalarType[];
+    fieldType: ScalarType[];
 }
 /**
  * ScalarDescriptor describes an scalar type to be used with

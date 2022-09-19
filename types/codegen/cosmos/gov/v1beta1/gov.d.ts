@@ -136,7 +136,7 @@ export interface TextProposalSDKType {
  * proposal.
  */
 export interface Deposit {
-    proposal_id: Long;
+    proposalId: Long;
     depositor: string;
     amount: Coin[];
 }
@@ -151,7 +151,7 @@ export interface DepositSDKType {
 }
 /** Proposal defines the core field members of a governance proposal. */
 export interface Proposal {
-    proposal_id: Long;
+    proposalId: Long;
     content: Any;
     status: ProposalStatus;
     /**
@@ -159,12 +159,12 @@ export interface Proposal {
      * querying a proposal via gRPC, this field is not populated until the
      * proposal's voting period has ended.
      */
-    final_tally_result: TallyResult;
-    submit_time: Date;
-    deposit_end_time: Date;
-    total_deposit: Coin[];
-    voting_start_time: Date;
-    voting_end_time: Date;
+    finalTallyResult: TallyResult;
+    submitTime: Date;
+    depositEndTime: Date;
+    totalDeposit: Coin[];
+    votingStartTime: Date;
+    votingEndTime: Date;
 }
 /** Proposal defines the core field members of a governance proposal. */
 export interface ProposalSDKType {
@@ -188,7 +188,7 @@ export interface TallyResult {
     yes: string;
     abstain: string;
     no: string;
-    no_with_veto: string;
+    noWithVeto: string;
 }
 /** TallyResult defines a standard tally for a governance proposal. */
 export interface TallyResultSDKType {
@@ -202,7 +202,7 @@ export interface TallyResultSDKType {
  * A Vote consists of a proposal ID, the voter, and the vote option.
  */
 export interface Vote {
-    proposal_id: Long;
+    proposalId: Long;
     voter: string;
     /**
      * Deprecated: Prefer to use `options` instead. This field is set in queries
@@ -234,12 +234,12 @@ export interface VoteSDKType {
 /** DepositParams defines the params for deposits on governance proposals. */
 export interface DepositParams {
     /** Minimum deposit for a proposal to enter voting period. */
-    min_deposit: Coin[];
+    minDeposit: Coin[];
     /**
      * Maximum period for Atom holders to deposit on a proposal. Initial value: 2
      * months.
      */
-    max_deposit_period: Duration;
+    maxDepositPeriod: Duration;
 }
 /** DepositParams defines the params for deposits on governance proposals. */
 export interface DepositParamsSDKType {
@@ -254,7 +254,7 @@ export interface DepositParamsSDKType {
 /** VotingParams defines the params for voting on governance proposals. */
 export interface VotingParams {
     /** Length of the voting period. */
-    voting_period: Duration;
+    votingPeriod: Duration;
 }
 /** VotingParams defines the params for voting on governance proposals. */
 export interface VotingParamsSDKType {
@@ -274,7 +274,7 @@ export interface TallyParams {
      * Minimum value of Veto votes to Total votes ratio for proposal to be
      * vetoed. Default value: 1/3.
      */
-    veto_threshold: Uint8Array;
+    vetoThreshold: Uint8Array;
 }
 /** TallyParams defines the params for tallying votes on governance proposals. */
 export interface TallyParamsSDKType {

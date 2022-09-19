@@ -148,7 +148,7 @@ export function storageTypeToJSON(object: StorageType): string {
 /** ModuleSchemaDescriptor describe's a module's ORM schema. */
 
 export interface ModuleSchemaDescriptor {
-  schema_file: ModuleSchemaDescriptor_FileEntry[];
+  schemaFile: ModuleSchemaDescriptor_FileEntry[];
   /**
    * prefix is an optional prefix that precedes all keys in this module's
    * store.
@@ -181,14 +181,14 @@ export interface ModuleSchemaDescriptor_FileEntry {
    * module has referenced using cosmos.app.v1.ModuleDescriptor.use_package.
    */
 
-  proto_file_name: string;
+  protoFileName: string;
   /**
    * storage_type optionally indicates the type of storage this file's
    * tables should used. If it is left unspecified, the default KV-storage
    * of the app will be used.
    */
 
-  storage_type: StorageType;
+  storageType: StorageType;
 }
 /** FileEntry describes an ORM file used in a module. */
 
@@ -216,14 +216,14 @@ export interface ModuleSchemaDescriptor_FileEntrySDKType {
 
 function createBaseModuleSchemaDescriptor(): ModuleSchemaDescriptor {
   return {
-    schema_file: [],
+    schemaFile: [],
     prefix: new Uint8Array()
   };
 }
 
 export const ModuleSchemaDescriptor = {
   encode(message: ModuleSchemaDescriptor, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.schema_file) {
+    for (const v of message.schemaFile) {
       ModuleSchemaDescriptor_FileEntry.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
@@ -244,7 +244,7 @@ export const ModuleSchemaDescriptor = {
 
       switch (tag >>> 3) {
         case 1:
-          message.schema_file.push(ModuleSchemaDescriptor_FileEntry.decode(reader, reader.uint32()));
+          message.schemaFile.push(ModuleSchemaDescriptor_FileEntry.decode(reader, reader.uint32()));
           break;
 
         case 2:
@@ -262,7 +262,7 @@ export const ModuleSchemaDescriptor = {
 
   fromPartial(object: DeepPartial<ModuleSchemaDescriptor>): ModuleSchemaDescriptor {
     const message = createBaseModuleSchemaDescriptor();
-    message.schema_file = object.schema_file?.map(e => ModuleSchemaDescriptor_FileEntry.fromPartial(e)) || [];
+    message.schemaFile = object.schemaFile?.map(e => ModuleSchemaDescriptor_FileEntry.fromPartial(e)) || [];
     message.prefix = object.prefix ?? new Uint8Array();
     return message;
   }
@@ -272,8 +272,8 @@ export const ModuleSchemaDescriptor = {
 function createBaseModuleSchemaDescriptor_FileEntry(): ModuleSchemaDescriptor_FileEntry {
   return {
     id: 0,
-    proto_file_name: "",
-    storage_type: 0
+    protoFileName: "",
+    storageType: 0
   };
 }
 
@@ -283,12 +283,12 @@ export const ModuleSchemaDescriptor_FileEntry = {
       writer.uint32(8).uint32(message.id);
     }
 
-    if (message.proto_file_name !== "") {
-      writer.uint32(18).string(message.proto_file_name);
+    if (message.protoFileName !== "") {
+      writer.uint32(18).string(message.protoFileName);
     }
 
-    if (message.storage_type !== 0) {
-      writer.uint32(24).int32(message.storage_type);
+    if (message.storageType !== 0) {
+      writer.uint32(24).int32(message.storageType);
     }
 
     return writer;
@@ -308,11 +308,11 @@ export const ModuleSchemaDescriptor_FileEntry = {
           break;
 
         case 2:
-          message.proto_file_name = reader.string();
+          message.protoFileName = reader.string();
           break;
 
         case 3:
-          message.storage_type = (reader.int32() as any);
+          message.storageType = (reader.int32() as any);
           break;
 
         default:
@@ -327,8 +327,8 @@ export const ModuleSchemaDescriptor_FileEntry = {
   fromPartial(object: DeepPartial<ModuleSchemaDescriptor_FileEntry>): ModuleSchemaDescriptor_FileEntry {
     const message = createBaseModuleSchemaDescriptor_FileEntry();
     message.id = object.id ?? 0;
-    message.proto_file_name = object.proto_file_name ?? "";
-    message.storage_type = object.storage_type ?? 0;
+    message.protoFileName = object.protoFileName ?? "";
+    message.storageType = object.storageType ?? 0;
     return message;
   }
 

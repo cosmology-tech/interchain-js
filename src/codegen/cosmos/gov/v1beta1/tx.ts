@@ -10,7 +10,7 @@ import { DeepPartial, Long } from "@osmonauts/helpers";
 
 export interface MsgSubmitProposal {
   content: Any;
-  initial_deposit: Coin[];
+  initialDeposit: Coin[];
   proposer: string;
 }
 /**
@@ -26,7 +26,7 @@ export interface MsgSubmitProposalSDKType {
 /** MsgSubmitProposalResponse defines the Msg/SubmitProposal response type. */
 
 export interface MsgSubmitProposalResponse {
-  proposal_id: Long;
+  proposalId: Long;
 }
 /** MsgSubmitProposalResponse defines the Msg/SubmitProposal response type. */
 
@@ -36,7 +36,7 @@ export interface MsgSubmitProposalResponseSDKType {
 /** MsgVote defines a message to cast a vote. */
 
 export interface MsgVote {
-  proposal_id: Long;
+  proposalId: Long;
   voter: string;
   option: VoteOption;
 }
@@ -60,7 +60,7 @@ export interface MsgVoteResponseSDKType {}
  */
 
 export interface MsgVoteWeighted {
-  proposal_id: Long;
+  proposalId: Long;
   voter: string;
   options: WeightedVoteOption[];
 }
@@ -92,7 +92,7 @@ export interface MsgVoteWeightedResponseSDKType {}
 /** MsgDeposit defines a message to submit a deposit to an existing proposal. */
 
 export interface MsgDeposit {
-  proposal_id: Long;
+  proposalId: Long;
   depositor: string;
   amount: Coin[];
 }
@@ -113,7 +113,7 @@ export interface MsgDepositResponseSDKType {}
 function createBaseMsgSubmitProposal(): MsgSubmitProposal {
   return {
     content: undefined,
-    initial_deposit: [],
+    initialDeposit: [],
     proposer: ""
   };
 }
@@ -124,7 +124,7 @@ export const MsgSubmitProposal = {
       Any.encode(message.content, writer.uint32(10).fork()).ldelim();
     }
 
-    for (const v of message.initial_deposit) {
+    for (const v of message.initialDeposit) {
       Coin.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
@@ -149,7 +149,7 @@ export const MsgSubmitProposal = {
           break;
 
         case 2:
-          message.initial_deposit.push(Coin.decode(reader, reader.uint32()));
+          message.initialDeposit.push(Coin.decode(reader, reader.uint32()));
           break;
 
         case 3:
@@ -168,7 +168,7 @@ export const MsgSubmitProposal = {
   fromPartial(object: DeepPartial<MsgSubmitProposal>): MsgSubmitProposal {
     const message = createBaseMsgSubmitProposal();
     message.content = object.content !== undefined && object.content !== null ? Any.fromPartial(object.content) : undefined;
-    message.initial_deposit = object.initial_deposit?.map(e => Coin.fromPartial(e)) || [];
+    message.initialDeposit = object.initialDeposit?.map(e => Coin.fromPartial(e)) || [];
     message.proposer = object.proposer ?? "";
     return message;
   }
@@ -177,14 +177,14 @@ export const MsgSubmitProposal = {
 
 function createBaseMsgSubmitProposalResponse(): MsgSubmitProposalResponse {
   return {
-    proposal_id: Long.UZERO
+    proposalId: Long.UZERO
   };
 }
 
 export const MsgSubmitProposalResponse = {
   encode(message: MsgSubmitProposalResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.proposal_id.isZero()) {
-      writer.uint32(8).uint64(message.proposal_id);
+    if (!message.proposalId.isZero()) {
+      writer.uint32(8).uint64(message.proposalId);
     }
 
     return writer;
@@ -200,7 +200,7 @@ export const MsgSubmitProposalResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.proposal_id = (reader.uint64() as Long);
+          message.proposalId = (reader.uint64() as Long);
           break;
 
         default:
@@ -214,7 +214,7 @@ export const MsgSubmitProposalResponse = {
 
   fromPartial(object: DeepPartial<MsgSubmitProposalResponse>): MsgSubmitProposalResponse {
     const message = createBaseMsgSubmitProposalResponse();
-    message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? Long.fromValue(object.proposal_id) : Long.UZERO;
+    message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
     return message;
   }
 
@@ -222,7 +222,7 @@ export const MsgSubmitProposalResponse = {
 
 function createBaseMsgVote(): MsgVote {
   return {
-    proposal_id: Long.UZERO,
+    proposalId: Long.UZERO,
     voter: "",
     option: 0
   };
@@ -230,8 +230,8 @@ function createBaseMsgVote(): MsgVote {
 
 export const MsgVote = {
   encode(message: MsgVote, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.proposal_id.isZero()) {
-      writer.uint32(8).uint64(message.proposal_id);
+    if (!message.proposalId.isZero()) {
+      writer.uint32(8).uint64(message.proposalId);
     }
 
     if (message.voter !== "") {
@@ -255,7 +255,7 @@ export const MsgVote = {
 
       switch (tag >>> 3) {
         case 1:
-          message.proposal_id = (reader.uint64() as Long);
+          message.proposalId = (reader.uint64() as Long);
           break;
 
         case 2:
@@ -277,7 +277,7 @@ export const MsgVote = {
 
   fromPartial(object: DeepPartial<MsgVote>): MsgVote {
     const message = createBaseMsgVote();
-    message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? Long.fromValue(object.proposal_id) : Long.UZERO;
+    message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
     message.voter = object.voter ?? "";
     message.option = object.option ?? 0;
     return message;
@@ -321,7 +321,7 @@ export const MsgVoteResponse = {
 
 function createBaseMsgVoteWeighted(): MsgVoteWeighted {
   return {
-    proposal_id: Long.UZERO,
+    proposalId: Long.UZERO,
     voter: "",
     options: []
   };
@@ -329,8 +329,8 @@ function createBaseMsgVoteWeighted(): MsgVoteWeighted {
 
 export const MsgVoteWeighted = {
   encode(message: MsgVoteWeighted, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.proposal_id.isZero()) {
-      writer.uint32(8).uint64(message.proposal_id);
+    if (!message.proposalId.isZero()) {
+      writer.uint32(8).uint64(message.proposalId);
     }
 
     if (message.voter !== "") {
@@ -354,7 +354,7 @@ export const MsgVoteWeighted = {
 
       switch (tag >>> 3) {
         case 1:
-          message.proposal_id = (reader.uint64() as Long);
+          message.proposalId = (reader.uint64() as Long);
           break;
 
         case 2:
@@ -376,7 +376,7 @@ export const MsgVoteWeighted = {
 
   fromPartial(object: DeepPartial<MsgVoteWeighted>): MsgVoteWeighted {
     const message = createBaseMsgVoteWeighted();
-    message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? Long.fromValue(object.proposal_id) : Long.UZERO;
+    message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
     message.voter = object.voter ?? "";
     message.options = object.options?.map(e => WeightedVoteOption.fromPartial(e)) || [];
     return message;
@@ -420,7 +420,7 @@ export const MsgVoteWeightedResponse = {
 
 function createBaseMsgDeposit(): MsgDeposit {
   return {
-    proposal_id: Long.UZERO,
+    proposalId: Long.UZERO,
     depositor: "",
     amount: []
   };
@@ -428,8 +428,8 @@ function createBaseMsgDeposit(): MsgDeposit {
 
 export const MsgDeposit = {
   encode(message: MsgDeposit, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.proposal_id.isZero()) {
-      writer.uint32(8).uint64(message.proposal_id);
+    if (!message.proposalId.isZero()) {
+      writer.uint32(8).uint64(message.proposalId);
     }
 
     if (message.depositor !== "") {
@@ -453,7 +453,7 @@ export const MsgDeposit = {
 
       switch (tag >>> 3) {
         case 1:
-          message.proposal_id = (reader.uint64() as Long);
+          message.proposalId = (reader.uint64() as Long);
           break;
 
         case 2:
@@ -475,7 +475,7 @@ export const MsgDeposit = {
 
   fromPartial(object: DeepPartial<MsgDeposit>): MsgDeposit {
     const message = createBaseMsgDeposit();
-    message.proposal_id = object.proposal_id !== undefined && object.proposal_id !== null ? Long.fromValue(object.proposal_id) : Long.UZERO;
+    message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
     message.depositor = object.depositor ?? "";
     message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
     return message;

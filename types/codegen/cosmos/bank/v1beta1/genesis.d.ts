@@ -14,7 +14,7 @@ export interface GenesisState {
      */
     supply: Coin[];
     /** denom_metadata defines the metadata of the differents coins. */
-    denom_metadata: Metadata[];
+    denomMetadata: Metadata[];
 }
 /** GenesisState defines the bank module's genesis state. */
 export interface GenesisStateSDKType {

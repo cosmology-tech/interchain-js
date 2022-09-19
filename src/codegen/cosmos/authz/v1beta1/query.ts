@@ -9,7 +9,7 @@ export interface QueryGrantsRequest {
   grantee?: string;
   /** Optional, msg_type_url, when set, will query only grants matching given msg type. */
 
-  msg_type_url?: string;
+  msgTypeUrl?: string;
   /** pagination defines an pagination for the request. */
 
   pagination?: PageRequest;
@@ -117,7 +117,7 @@ function createBaseQueryGrantsRequest(): QueryGrantsRequest {
   return {
     granter: "",
     grantee: "",
-    msg_type_url: "",
+    msgTypeUrl: "",
     pagination: undefined
   };
 }
@@ -132,8 +132,8 @@ export const QueryGrantsRequest = {
       writer.uint32(18).string(message.grantee);
     }
 
-    if (message.msg_type_url !== "") {
-      writer.uint32(26).string(message.msg_type_url);
+    if (message.msgTypeUrl !== "") {
+      writer.uint32(26).string(message.msgTypeUrl);
     }
 
     if (message.pagination !== undefined) {
@@ -161,7 +161,7 @@ export const QueryGrantsRequest = {
           break;
 
         case 3:
-          message.msg_type_url = reader.string();
+          message.msgTypeUrl = reader.string();
           break;
 
         case 4:
@@ -181,7 +181,7 @@ export const QueryGrantsRequest = {
     const message = createBaseQueryGrantsRequest();
     message.granter = object.granter ?? "";
     message.grantee = object.grantee ?? "";
-    message.msg_type_url = object.msg_type_url ?? "";
+    message.msgTypeUrl = object.msgTypeUrl ?? "";
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   }

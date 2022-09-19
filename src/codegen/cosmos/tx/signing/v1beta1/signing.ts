@@ -168,7 +168,7 @@ export interface SignatureDescriptorsSDKType {
 
 export interface SignatureDescriptor {
   /** public_key is the public key of the signer */
-  public_key: Any;
+  publicKey: Any;
   data: SignatureDescriptor_Data;
   /**
    * sequence is the sequence of the account, which describes the
@@ -299,7 +299,7 @@ export const SignatureDescriptors = {
 
 function createBaseSignatureDescriptor(): SignatureDescriptor {
   return {
-    public_key: undefined,
+    publicKey: undefined,
     data: undefined,
     sequence: Long.UZERO
   };
@@ -307,8 +307,8 @@ function createBaseSignatureDescriptor(): SignatureDescriptor {
 
 export const SignatureDescriptor = {
   encode(message: SignatureDescriptor, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.public_key !== undefined) {
-      Any.encode(message.public_key, writer.uint32(10).fork()).ldelim();
+    if (message.publicKey !== undefined) {
+      Any.encode(message.publicKey, writer.uint32(10).fork()).ldelim();
     }
 
     if (message.data !== undefined) {
@@ -332,7 +332,7 @@ export const SignatureDescriptor = {
 
       switch (tag >>> 3) {
         case 1:
-          message.public_key = Any.decode(reader, reader.uint32());
+          message.publicKey = Any.decode(reader, reader.uint32());
           break;
 
         case 2:
@@ -354,7 +354,7 @@ export const SignatureDescriptor = {
 
   fromPartial(object: DeepPartial<SignatureDescriptor>): SignatureDescriptor {
     const message = createBaseSignatureDescriptor();
-    message.public_key = object.public_key !== undefined && object.public_key !== null ? Any.fromPartial(object.public_key) : undefined;
+    message.publicKey = object.publicKey !== undefined && object.publicKey !== null ? Any.fromPartial(object.publicKey) : undefined;
     message.data = object.data !== undefined && object.data !== null ? SignatureDescriptor_Data.fromPartial(object.data) : undefined;
     message.sequence = object.sequence !== undefined && object.sequence !== null ? Long.fromValue(object.sequence) : Long.UZERO;
     return message;

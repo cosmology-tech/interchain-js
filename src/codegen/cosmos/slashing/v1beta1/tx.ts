@@ -3,7 +3,7 @@ import { DeepPartial } from "@osmonauts/helpers";
 /** MsgUnjail defines the Msg/Unjail request type */
 
 export interface MsgUnjail {
-  validator_addr: string;
+  validatorAddr: string;
 }
 /** MsgUnjail defines the Msg/Unjail request type */
 
@@ -19,14 +19,14 @@ export interface MsgUnjailResponseSDKType {}
 
 function createBaseMsgUnjail(): MsgUnjail {
   return {
-    validator_addr: ""
+    validatorAddr: ""
   };
 }
 
 export const MsgUnjail = {
   encode(message: MsgUnjail, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.validator_addr !== "") {
-      writer.uint32(10).string(message.validator_addr);
+    if (message.validatorAddr !== "") {
+      writer.uint32(10).string(message.validatorAddr);
     }
 
     return writer;
@@ -42,7 +42,7 @@ export const MsgUnjail = {
 
       switch (tag >>> 3) {
         case 1:
-          message.validator_addr = reader.string();
+          message.validatorAddr = reader.string();
           break;
 
         default:
@@ -56,7 +56,7 @@ export const MsgUnjail = {
 
   fromPartial(object: DeepPartial<MsgUnjail>): MsgUnjail {
     const message = createBaseMsgUnjail();
-    message.validator_addr = object.validator_addr ?? "";
+    message.validatorAddr = object.validatorAddr ?? "";
     return message;
   }
 

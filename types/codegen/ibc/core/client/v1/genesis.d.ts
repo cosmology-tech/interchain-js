@@ -6,14 +6,14 @@ export interface GenesisState {
     /** client states with their corresponding identifiers */
     clients: IdentifiedClientState[];
     /** consensus states from each client */
-    clients_consensus: ClientConsensusStates[];
+    clientsConsensus: ClientConsensusStates[];
     /** metadata from each client */
-    clients_metadata: IdentifiedGenesisMetadata[];
+    clientsMetadata: IdentifiedGenesisMetadata[];
     params: Params;
     /** create localhost on initialization */
-    create_localhost: boolean;
+    createLocalhost: boolean;
     /** the sequence for the next generated client identifier */
-    next_client_sequence: Long;
+    nextClientSequence: Long;
 }
 /** GenesisState defines the ibc client submodule's genesis state. */
 export interface GenesisStateSDKType {
@@ -54,8 +54,8 @@ export interface GenesisMetadataSDKType {
  * client id.
  */
 export interface IdentifiedGenesisMetadata {
-    client_id: string;
-    client_metadata: GenesisMetadata[];
+    clientId: string;
+    clientMetadata: GenesisMetadata[];
 }
 /**
  * IdentifiedGenesisMetadata has the client metadata with the corresponding

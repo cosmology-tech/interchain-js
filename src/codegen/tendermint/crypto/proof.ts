@@ -3,7 +3,7 @@ import { Long, DeepPartial } from "@osmonauts/helpers";
 export interface Proof {
   total: Long;
   index: Long;
-  leaf_hash: Uint8Array;
+  leafHash: Uint8Array;
   aunts: Uint8Array[];
 }
 export interface ProofSDKType {
@@ -73,7 +73,7 @@ function createBaseProof(): Proof {
   return {
     total: Long.ZERO,
     index: Long.ZERO,
-    leaf_hash: new Uint8Array(),
+    leafHash: new Uint8Array(),
     aunts: []
   };
 }
@@ -88,8 +88,8 @@ export const Proof = {
       writer.uint32(16).int64(message.index);
     }
 
-    if (message.leaf_hash.length !== 0) {
-      writer.uint32(26).bytes(message.leaf_hash);
+    if (message.leafHash.length !== 0) {
+      writer.uint32(26).bytes(message.leafHash);
     }
 
     for (const v of message.aunts) {
@@ -117,7 +117,7 @@ export const Proof = {
           break;
 
         case 3:
-          message.leaf_hash = reader.bytes();
+          message.leafHash = reader.bytes();
           break;
 
         case 4:
@@ -137,7 +137,7 @@ export const Proof = {
     const message = createBaseProof();
     message.total = object.total !== undefined && object.total !== null ? Long.fromValue(object.total) : Long.ZERO;
     message.index = object.index !== undefined && object.index !== null ? Long.fromValue(object.index) : Long.ZERO;
-    message.leaf_hash = object.leaf_hash ?? new Uint8Array();
+    message.leafHash = object.leafHash ?? new Uint8Array();
     message.aunts = object.aunts?.map(e => e) || [];
     return message;
   }

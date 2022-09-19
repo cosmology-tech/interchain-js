@@ -7,7 +7,7 @@ import { DeepPartial, Long } from "@osmonauts/helpers";
  * is called by a relayer on Chain A.
  */
 export interface MsgChannelOpenInit {
-    port_id: string;
+    portId: string;
     channel: Channel;
     signer: string;
 }
@@ -31,16 +31,16 @@ export interface MsgChannelOpenInitResponseSDKType {
  * on Chain B.
  */
 export interface MsgChannelOpenTry {
-    port_id: string;
+    portId: string;
     /**
      * in the case of crossing hello's, when both chains call OpenInit, we need
      * the channel identifier of the previous channel in state INIT
      */
-    previous_channel_id: string;
+    previousChannelId: string;
     channel: Channel;
-    counterparty_version: string;
-    proof_init: Uint8Array;
-    proof_height: Height;
+    counterpartyVersion: string;
+    proofInit: Uint8Array;
+    proofHeight: Height;
     signer: string;
 }
 /**
@@ -71,12 +71,12 @@ export interface MsgChannelOpenTryResponseSDKType {
  * the change of channel state to TRYOPEN on Chain B.
  */
 export interface MsgChannelOpenAck {
-    port_id: string;
-    channel_id: string;
-    counterparty_channel_id: string;
-    counterparty_version: string;
-    proof_try: Uint8Array;
-    proof_height: Height;
+    portId: string;
+    channelId: string;
+    counterpartyChannelId: string;
+    counterpartyVersion: string;
+    proofTry: Uint8Array;
+    proofHeight: Height;
     signer: string;
 }
 /**
@@ -103,10 +103,10 @@ export interface MsgChannelOpenAckResponseSDKType {
  * acknowledge the change of channel state to OPEN on Chain A.
  */
 export interface MsgChannelOpenConfirm {
-    port_id: string;
-    channel_id: string;
-    proof_ack: Uint8Array;
-    proof_height: Height;
+    portId: string;
+    channelId: string;
+    proofAck: Uint8Array;
+    proofHeight: Height;
     signer: string;
 }
 /**
@@ -137,8 +137,8 @@ export interface MsgChannelOpenConfirmResponseSDKType {
  * to close a channel with Chain B.
  */
 export interface MsgChannelCloseInit {
-    port_id: string;
-    channel_id: string;
+    portId: string;
+    channelId: string;
     signer: string;
 }
 /**
@@ -161,10 +161,10 @@ export interface MsgChannelCloseInitResponseSDKType {
  * to acknowledge the change of channel state to CLOSED on Chain A.
  */
 export interface MsgChannelCloseConfirm {
-    port_id: string;
-    channel_id: string;
-    proof_init: Uint8Array;
-    proof_height: Height;
+    portId: string;
+    channelId: string;
+    proofInit: Uint8Array;
+    proofHeight: Height;
     signer: string;
 }
 /**
@@ -193,8 +193,8 @@ export interface MsgChannelCloseConfirmResponseSDKType {
 /** MsgRecvPacket receives incoming IBC packet */
 export interface MsgRecvPacket {
     packet: Packet;
-    proof_commitment: Uint8Array;
-    proof_height: Height;
+    proofCommitment: Uint8Array;
+    proofHeight: Height;
     signer: string;
 }
 /** MsgRecvPacket receives incoming IBC packet */
@@ -213,9 +213,9 @@ export interface MsgRecvPacketResponseSDKType {
 /** MsgTimeout receives timed-out packet */
 export interface MsgTimeout {
     packet: Packet;
-    proof_unreceived: Uint8Array;
-    proof_height: Height;
-    next_sequence_recv: Long;
+    proofUnreceived: Uint8Array;
+    proofHeight: Height;
+    nextSequenceRecv: Long;
     signer: string;
 }
 /** MsgTimeout receives timed-out packet */
@@ -235,10 +235,10 @@ export interface MsgTimeoutResponseSDKType {
 /** MsgTimeoutOnClose timed-out packet upon counterparty channel closure. */
 export interface MsgTimeoutOnClose {
     packet: Packet;
-    proof_unreceived: Uint8Array;
-    proof_close: Uint8Array;
-    proof_height: Height;
-    next_sequence_recv: Long;
+    proofUnreceived: Uint8Array;
+    proofClose: Uint8Array;
+    proofHeight: Height;
+    nextSequenceRecv: Long;
     signer: string;
 }
 /** MsgTimeoutOnClose timed-out packet upon counterparty channel closure. */
@@ -260,8 +260,8 @@ export interface MsgTimeoutOnCloseResponseSDKType {
 export interface MsgAcknowledgement {
     packet: Packet;
     acknowledgement: Uint8Array;
-    proof_acked: Uint8Array;
-    proof_height: Height;
+    proofAcked: Uint8Array;
+    proofHeight: Height;
     signer: string;
 }
 /** MsgAcknowledgement receives incoming IBC acknowledgement */

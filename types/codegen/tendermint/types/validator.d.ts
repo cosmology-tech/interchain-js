@@ -4,7 +4,7 @@ import { Long, DeepPartial } from "@osmonauts/helpers";
 export interface ValidatorSet {
     validators: Validator[];
     proposer: Validator;
-    total_voting_power: Long;
+    totalVotingPower: Long;
 }
 export interface ValidatorSetSDKType {
     validators: ValidatorSDKType[];
@@ -13,9 +13,9 @@ export interface ValidatorSetSDKType {
 }
 export interface Validator {
     address: Uint8Array;
-    pub_key: PublicKey;
-    voting_power: Long;
-    proposer_priority: Long;
+    pubKey: PublicKey;
+    votingPower: Long;
+    proposerPriority: Long;
 }
 export interface ValidatorSDKType {
     address: Uint8Array;
@@ -24,8 +24,8 @@ export interface ValidatorSDKType {
     proposer_priority: Long;
 }
 export interface SimpleValidator {
-    pub_key: PublicKey;
-    voting_power: Long;
+    pubKey: PublicKey;
+    votingPower: Long;
 }
 export interface SimpleValidatorSDKType {
     pub_key: PublicKeySDKType;

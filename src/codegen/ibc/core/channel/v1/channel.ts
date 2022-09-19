@@ -193,7 +193,7 @@ export interface Channel {
    * this channel will travel
    */
 
-  connection_hops: string[];
+  connectionHops: string[];
   /** opaque channel version, which is agreed upon during the handshake */
 
   version: string;
@@ -242,16 +242,16 @@ export interface IdentifiedChannel {
    * this channel will travel
    */
 
-  connection_hops: string[];
+  connectionHops: string[];
   /** opaque channel version, which is agreed upon during the handshake */
 
   version: string;
   /** port identifier */
 
-  port_id: string;
+  portId: string;
   /** channel identifier */
 
-  channel_id: string;
+  channelId: string;
 }
 /**
  * IdentifiedChannel defines a channel with additional port and channel
@@ -287,10 +287,10 @@ export interface IdentifiedChannelSDKType {
 
 export interface Counterparty {
   /** port on the counterparty chain which owns the other end of the channel. */
-  port_id: string;
+  portId: string;
   /** channel end on the counterparty chain */
 
-  channel_id: string;
+  channelId: string;
 }
 /** Counterparty defines a channel end counterparty */
 
@@ -312,25 +312,25 @@ export interface Packet {
   sequence: Long;
   /** identifies the port on the sending chain. */
 
-  source_port: string;
+  sourcePort: string;
   /** identifies the channel end on the sending chain. */
 
-  source_channel: string;
+  sourceChannel: string;
   /** identifies the port on the receiving chain. */
 
-  destination_port: string;
+  destinationPort: string;
   /** identifies the channel end on the receiving chain. */
 
-  destination_channel: string;
+  destinationChannel: string;
   /** actual opaque bytes transferred directly to the application module */
 
   data: Uint8Array;
   /** block height after which the packet times out */
 
-  timeout_height: Height;
+  timeoutHeight: Height;
   /** block timestamp (in nanoseconds) after which the packet times out */
 
-  timeout_timestamp: Long;
+  timeoutTimestamp: Long;
 }
 /** Packet defines a type that carries data across different chains through IBC */
 
@@ -372,10 +372,10 @@ export interface PacketSDKType {
 
 export interface PacketState {
   /** channel port identifier. */
-  port_id: string;
+  portId: string;
   /** channel unique identifier. */
 
-  channel_id: string;
+  channelId: string;
   /** packet sequence. */
 
   sequence: Long;
@@ -437,7 +437,7 @@ function createBaseChannel(): Channel {
     state: 0,
     ordering: 0,
     counterparty: undefined,
-    connection_hops: [],
+    connectionHops: [],
     version: ""
   };
 }
@@ -456,7 +456,7 @@ export const Channel = {
       Counterparty.encode(message.counterparty, writer.uint32(26).fork()).ldelim();
     }
 
-    for (const v of message.connection_hops) {
+    for (const v of message.connectionHops) {
       writer.uint32(34).string(v!);
     }
 
@@ -489,7 +489,7 @@ export const Channel = {
           break;
 
         case 4:
-          message.connection_hops.push(reader.string());
+          message.connectionHops.push(reader.string());
           break;
 
         case 5:
@@ -510,7 +510,7 @@ export const Channel = {
     message.state = object.state ?? 0;
     message.ordering = object.ordering ?? 0;
     message.counterparty = object.counterparty !== undefined && object.counterparty !== null ? Counterparty.fromPartial(object.counterparty) : undefined;
-    message.connection_hops = object.connection_hops?.map(e => e) || [];
+    message.connectionHops = object.connectionHops?.map(e => e) || [];
     message.version = object.version ?? "";
     return message;
   }
@@ -522,10 +522,10 @@ function createBaseIdentifiedChannel(): IdentifiedChannel {
     state: 0,
     ordering: 0,
     counterparty: undefined,
-    connection_hops: [],
+    connectionHops: [],
     version: "",
-    port_id: "",
-    channel_id: ""
+    portId: "",
+    channelId: ""
   };
 }
 
@@ -543,7 +543,7 @@ export const IdentifiedChannel = {
       Counterparty.encode(message.counterparty, writer.uint32(26).fork()).ldelim();
     }
 
-    for (const v of message.connection_hops) {
+    for (const v of message.connectionHops) {
       writer.uint32(34).string(v!);
     }
 
@@ -551,12 +551,12 @@ export const IdentifiedChannel = {
       writer.uint32(42).string(message.version);
     }
 
-    if (message.port_id !== "") {
-      writer.uint32(50).string(message.port_id);
+    if (message.portId !== "") {
+      writer.uint32(50).string(message.portId);
     }
 
-    if (message.channel_id !== "") {
-      writer.uint32(58).string(message.channel_id);
+    if (message.channelId !== "") {
+      writer.uint32(58).string(message.channelId);
     }
 
     return writer;
@@ -584,7 +584,7 @@ export const IdentifiedChannel = {
           break;
 
         case 4:
-          message.connection_hops.push(reader.string());
+          message.connectionHops.push(reader.string());
           break;
 
         case 5:
@@ -592,11 +592,11 @@ export const IdentifiedChannel = {
           break;
 
         case 6:
-          message.port_id = reader.string();
+          message.portId = reader.string();
           break;
 
         case 7:
-          message.channel_id = reader.string();
+          message.channelId = reader.string();
           break;
 
         default:
@@ -613,10 +613,10 @@ export const IdentifiedChannel = {
     message.state = object.state ?? 0;
     message.ordering = object.ordering ?? 0;
     message.counterparty = object.counterparty !== undefined && object.counterparty !== null ? Counterparty.fromPartial(object.counterparty) : undefined;
-    message.connection_hops = object.connection_hops?.map(e => e) || [];
+    message.connectionHops = object.connectionHops?.map(e => e) || [];
     message.version = object.version ?? "";
-    message.port_id = object.port_id ?? "";
-    message.channel_id = object.channel_id ?? "";
+    message.portId = object.portId ?? "";
+    message.channelId = object.channelId ?? "";
     return message;
   }
 
@@ -624,19 +624,19 @@ export const IdentifiedChannel = {
 
 function createBaseCounterparty(): Counterparty {
   return {
-    port_id: "",
-    channel_id: ""
+    portId: "",
+    channelId: ""
   };
 }
 
 export const Counterparty = {
   encode(message: Counterparty, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.port_id !== "") {
-      writer.uint32(10).string(message.port_id);
+    if (message.portId !== "") {
+      writer.uint32(10).string(message.portId);
     }
 
-    if (message.channel_id !== "") {
-      writer.uint32(18).string(message.channel_id);
+    if (message.channelId !== "") {
+      writer.uint32(18).string(message.channelId);
     }
 
     return writer;
@@ -652,11 +652,11 @@ export const Counterparty = {
 
       switch (tag >>> 3) {
         case 1:
-          message.port_id = reader.string();
+          message.portId = reader.string();
           break;
 
         case 2:
-          message.channel_id = reader.string();
+          message.channelId = reader.string();
           break;
 
         default:
@@ -670,8 +670,8 @@ export const Counterparty = {
 
   fromPartial(object: DeepPartial<Counterparty>): Counterparty {
     const message = createBaseCounterparty();
-    message.port_id = object.port_id ?? "";
-    message.channel_id = object.channel_id ?? "";
+    message.portId = object.portId ?? "";
+    message.channelId = object.channelId ?? "";
     return message;
   }
 
@@ -680,13 +680,13 @@ export const Counterparty = {
 function createBasePacket(): Packet {
   return {
     sequence: Long.UZERO,
-    source_port: "",
-    source_channel: "",
-    destination_port: "",
-    destination_channel: "",
+    sourcePort: "",
+    sourceChannel: "",
+    destinationPort: "",
+    destinationChannel: "",
     data: new Uint8Array(),
-    timeout_height: undefined,
-    timeout_timestamp: Long.UZERO
+    timeoutHeight: undefined,
+    timeoutTimestamp: Long.UZERO
   };
 }
 
@@ -696,32 +696,32 @@ export const Packet = {
       writer.uint32(8).uint64(message.sequence);
     }
 
-    if (message.source_port !== "") {
-      writer.uint32(18).string(message.source_port);
+    if (message.sourcePort !== "") {
+      writer.uint32(18).string(message.sourcePort);
     }
 
-    if (message.source_channel !== "") {
-      writer.uint32(26).string(message.source_channel);
+    if (message.sourceChannel !== "") {
+      writer.uint32(26).string(message.sourceChannel);
     }
 
-    if (message.destination_port !== "") {
-      writer.uint32(34).string(message.destination_port);
+    if (message.destinationPort !== "") {
+      writer.uint32(34).string(message.destinationPort);
     }
 
-    if (message.destination_channel !== "") {
-      writer.uint32(42).string(message.destination_channel);
+    if (message.destinationChannel !== "") {
+      writer.uint32(42).string(message.destinationChannel);
     }
 
     if (message.data.length !== 0) {
       writer.uint32(50).bytes(message.data);
     }
 
-    if (message.timeout_height !== undefined) {
-      Height.encode(message.timeout_height, writer.uint32(58).fork()).ldelim();
+    if (message.timeoutHeight !== undefined) {
+      Height.encode(message.timeoutHeight, writer.uint32(58).fork()).ldelim();
     }
 
-    if (!message.timeout_timestamp.isZero()) {
-      writer.uint32(64).uint64(message.timeout_timestamp);
+    if (!message.timeoutTimestamp.isZero()) {
+      writer.uint32(64).uint64(message.timeoutTimestamp);
     }
 
     return writer;
@@ -741,19 +741,19 @@ export const Packet = {
           break;
 
         case 2:
-          message.source_port = reader.string();
+          message.sourcePort = reader.string();
           break;
 
         case 3:
-          message.source_channel = reader.string();
+          message.sourceChannel = reader.string();
           break;
 
         case 4:
-          message.destination_port = reader.string();
+          message.destinationPort = reader.string();
           break;
 
         case 5:
-          message.destination_channel = reader.string();
+          message.destinationChannel = reader.string();
           break;
 
         case 6:
@@ -761,11 +761,11 @@ export const Packet = {
           break;
 
         case 7:
-          message.timeout_height = Height.decode(reader, reader.uint32());
+          message.timeoutHeight = Height.decode(reader, reader.uint32());
           break;
 
         case 8:
-          message.timeout_timestamp = (reader.uint64() as Long);
+          message.timeoutTimestamp = (reader.uint64() as Long);
           break;
 
         default:
@@ -780,13 +780,13 @@ export const Packet = {
   fromPartial(object: DeepPartial<Packet>): Packet {
     const message = createBasePacket();
     message.sequence = object.sequence !== undefined && object.sequence !== null ? Long.fromValue(object.sequence) : Long.UZERO;
-    message.source_port = object.source_port ?? "";
-    message.source_channel = object.source_channel ?? "";
-    message.destination_port = object.destination_port ?? "";
-    message.destination_channel = object.destination_channel ?? "";
+    message.sourcePort = object.sourcePort ?? "";
+    message.sourceChannel = object.sourceChannel ?? "";
+    message.destinationPort = object.destinationPort ?? "";
+    message.destinationChannel = object.destinationChannel ?? "";
     message.data = object.data ?? new Uint8Array();
-    message.timeout_height = object.timeout_height !== undefined && object.timeout_height !== null ? Height.fromPartial(object.timeout_height) : undefined;
-    message.timeout_timestamp = object.timeout_timestamp !== undefined && object.timeout_timestamp !== null ? Long.fromValue(object.timeout_timestamp) : Long.UZERO;
+    message.timeoutHeight = object.timeoutHeight !== undefined && object.timeoutHeight !== null ? Height.fromPartial(object.timeoutHeight) : undefined;
+    message.timeoutTimestamp = object.timeoutTimestamp !== undefined && object.timeoutTimestamp !== null ? Long.fromValue(object.timeoutTimestamp) : Long.UZERO;
     return message;
   }
 
@@ -794,8 +794,8 @@ export const Packet = {
 
 function createBasePacketState(): PacketState {
   return {
-    port_id: "",
-    channel_id: "",
+    portId: "",
+    channelId: "",
     sequence: Long.UZERO,
     data: new Uint8Array()
   };
@@ -803,12 +803,12 @@ function createBasePacketState(): PacketState {
 
 export const PacketState = {
   encode(message: PacketState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.port_id !== "") {
-      writer.uint32(10).string(message.port_id);
+    if (message.portId !== "") {
+      writer.uint32(10).string(message.portId);
     }
 
-    if (message.channel_id !== "") {
-      writer.uint32(18).string(message.channel_id);
+    if (message.channelId !== "") {
+      writer.uint32(18).string(message.channelId);
     }
 
     if (!message.sequence.isZero()) {
@@ -832,11 +832,11 @@ export const PacketState = {
 
       switch (tag >>> 3) {
         case 1:
-          message.port_id = reader.string();
+          message.portId = reader.string();
           break;
 
         case 2:
-          message.channel_id = reader.string();
+          message.channelId = reader.string();
           break;
 
         case 3:
@@ -858,8 +858,8 @@ export const PacketState = {
 
   fromPartial(object: DeepPartial<PacketState>): PacketState {
     const message = createBasePacketState();
-    message.port_id = object.port_id ?? "";
-    message.channel_id = object.channel_id ?? "";
+    message.portId = object.portId ?? "";
+    message.channelId = object.channelId ?? "";
     message.sequence = object.sequence !== undefined && object.sequence !== null ? Long.fromValue(object.sequence) : Long.UZERO;
     message.data = object.data ?? new Uint8Array();
     return message;

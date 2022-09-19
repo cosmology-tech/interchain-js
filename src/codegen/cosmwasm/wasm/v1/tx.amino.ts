@@ -69,15 +69,15 @@ export const AminoConverter = {
     aminoType: "wasm/MsgStoreCode",
     toAmino: ({
       sender,
-      wasm_byte_code,
-      instantiate_permission
+      wasmByteCode,
+      instantiatePermission
     }: MsgStoreCode): AminoMsgStoreCode["value"] => {
       return {
         sender,
-        wasm_byte_code: toBase64(wasm_byte_code),
+        wasm_byte_code: toBase64(wasmByteCode),
         instantiate_permission: {
-          permission: instantiate_permission.permission,
-          address: instantiate_permission.address
+          permission: instantiatePermission.permission,
+          address: instantiatePermission.address
         }
       };
     },
@@ -88,8 +88,8 @@ export const AminoConverter = {
     }: AminoMsgStoreCode["value"]): MsgStoreCode => {
       return {
         sender,
-        wasm_byte_code: fromBase64(wasm_byte_code),
-        instantiate_permission: {
+        wasmByteCode: fromBase64(wasm_byte_code),
+        instantiatePermission: {
           permission: accessTypeFromJSON(instantiate_permission.permission),
           address: instantiate_permission.address
         }
@@ -101,7 +101,7 @@ export const AminoConverter = {
     toAmino: ({
       sender,
       admin,
-      code_id,
+      codeId,
       label,
       msg,
       funds
@@ -109,7 +109,7 @@ export const AminoConverter = {
       return {
         sender,
         admin,
-        code_id: code_id.toString(),
+        code_id: codeId.toString(),
         label,
         msg: JSON.parse(fromUtf8(msg)),
         funds: funds.map(el0 => ({
@@ -129,7 +129,7 @@ export const AminoConverter = {
       return {
         sender,
         admin,
-        code_id: Long.fromString(code_id),
+        codeId: Long.fromString(code_id),
         label,
         msg: toUtf8(JSON.stringify(msg)),
         funds: funds.map(el0 => ({
@@ -179,13 +179,13 @@ export const AminoConverter = {
     toAmino: ({
       sender,
       contract,
-      code_id,
+      codeId,
       msg
     }: MsgMigrateContract): AminoMsgMigrateContract["value"] => {
       return {
         sender,
         contract,
-        code_id: code_id.toString(),
+        code_id: codeId.toString(),
         msg: JSON.parse(fromUtf8(msg))
       };
     },
@@ -198,7 +198,7 @@ export const AminoConverter = {
       return {
         sender,
         contract,
-        code_id: Long.fromString(code_id),
+        codeId: Long.fromString(code_id),
         msg: toUtf8(JSON.stringify(msg))
       };
     }
@@ -207,12 +207,12 @@ export const AminoConverter = {
     aminoType: "wasm/MsgUpdateAdmin",
     toAmino: ({
       sender,
-      new_admin,
+      newAdmin,
       contract
     }: MsgUpdateAdmin): AminoMsgUpdateAdmin["value"] => {
       return {
         sender,
-        new_admin,
+        new_admin: newAdmin,
         contract
       };
     },
@@ -223,7 +223,7 @@ export const AminoConverter = {
     }: AminoMsgUpdateAdmin["value"]): MsgUpdateAdmin => {
       return {
         sender,
-        new_admin,
+        newAdmin: new_admin,
         contract
       };
     }

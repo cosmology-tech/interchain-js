@@ -9,9 +9,9 @@ import { Long, DeepPartial } from "@osmonauts/helpers";
  */
 export interface MsgTransfer {
     /** the port on which the packet will be sent */
-    source_port: string;
+    sourcePort: string;
     /** the channel by which the packet will be sent */
-    source_channel: string;
+    sourceChannel: string;
     /** the tokens to be transferred */
     token: Coin;
     /** the sender address */
@@ -22,12 +22,12 @@ export interface MsgTransfer {
      * Timeout height relative to the current block height.
      * The timeout is disabled when set to 0.
      */
-    timeout_height: Height;
+    timeoutHeight: Height;
     /**
      * Timeout timestamp (in nanoseconds) relative to the current block timestamp.
      * The timeout is disabled when set to 0.
      */
-    timeout_timestamp: Long;
+    timeoutTimestamp: Long;
 }
 /**
  * MsgTransfer defines a msg to transfer fungible tokens (i.e Coins) between

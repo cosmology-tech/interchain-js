@@ -8,10 +8,10 @@ import { Long, DeepPartial } from "@osmonauts/helpers";
  */
 
 export interface MsgCreateVestingAccount {
-  from_address: string;
-  to_address: string;
+  fromAddress: string;
+  toAddress: string;
   amount: Coin[];
-  end_time: Long;
+  endTime: Long;
   delayed: boolean;
 }
 /**
@@ -38,8 +38,8 @@ export interface MsgCreateVestingAccountResponseSDKType {}
  */
 
 export interface MsgCreatePermanentLockedAccount {
-  from_address: string;
-  to_address: string;
+  fromAddress: string;
+  toAddress: string;
   amount: Coin[];
 }
 /**
@@ -64,10 +64,10 @@ export interface MsgCreatePermanentLockedAccountResponseSDKType {}
  */
 
 export interface MsgCreatePeriodicVestingAccount {
-  from_address: string;
-  to_address: string;
-  start_time: Long;
-  vesting_periods: Period[];
+  fromAddress: string;
+  toAddress: string;
+  startTime: Long;
+  vestingPeriods: Period[];
 }
 /**
  * MsgCreateVestingAccount defines a message that enables creating a vesting
@@ -95,30 +95,30 @@ export interface MsgCreatePeriodicVestingAccountResponseSDKType {}
 
 function createBaseMsgCreateVestingAccount(): MsgCreateVestingAccount {
   return {
-    from_address: "",
-    to_address: "",
+    fromAddress: "",
+    toAddress: "",
     amount: [],
-    end_time: Long.ZERO,
+    endTime: Long.ZERO,
     delayed: false
   };
 }
 
 export const MsgCreateVestingAccount = {
   encode(message: MsgCreateVestingAccount, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.from_address !== "") {
-      writer.uint32(10).string(message.from_address);
+    if (message.fromAddress !== "") {
+      writer.uint32(10).string(message.fromAddress);
     }
 
-    if (message.to_address !== "") {
-      writer.uint32(18).string(message.to_address);
+    if (message.toAddress !== "") {
+      writer.uint32(18).string(message.toAddress);
     }
 
     for (const v of message.amount) {
       Coin.encode(v!, writer.uint32(26).fork()).ldelim();
     }
 
-    if (!message.end_time.isZero()) {
-      writer.uint32(32).int64(message.end_time);
+    if (!message.endTime.isZero()) {
+      writer.uint32(32).int64(message.endTime);
     }
 
     if (message.delayed === true) {
@@ -138,11 +138,11 @@ export const MsgCreateVestingAccount = {
 
       switch (tag >>> 3) {
         case 1:
-          message.from_address = reader.string();
+          message.fromAddress = reader.string();
           break;
 
         case 2:
-          message.to_address = reader.string();
+          message.toAddress = reader.string();
           break;
 
         case 3:
@@ -150,7 +150,7 @@ export const MsgCreateVestingAccount = {
           break;
 
         case 4:
-          message.end_time = (reader.int64() as Long);
+          message.endTime = (reader.int64() as Long);
           break;
 
         case 5:
@@ -168,10 +168,10 @@ export const MsgCreateVestingAccount = {
 
   fromPartial(object: DeepPartial<MsgCreateVestingAccount>): MsgCreateVestingAccount {
     const message = createBaseMsgCreateVestingAccount();
-    message.from_address = object.from_address ?? "";
-    message.to_address = object.to_address ?? "";
+    message.fromAddress = object.fromAddress ?? "";
+    message.toAddress = object.toAddress ?? "";
     message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
-    message.end_time = object.end_time !== undefined && object.end_time !== null ? Long.fromValue(object.end_time) : Long.ZERO;
+    message.endTime = object.endTime !== undefined && object.endTime !== null ? Long.fromValue(object.endTime) : Long.ZERO;
     message.delayed = object.delayed ?? false;
     return message;
   }
@@ -214,20 +214,20 @@ export const MsgCreateVestingAccountResponse = {
 
 function createBaseMsgCreatePermanentLockedAccount(): MsgCreatePermanentLockedAccount {
   return {
-    from_address: "",
-    to_address: "",
+    fromAddress: "",
+    toAddress: "",
     amount: []
   };
 }
 
 export const MsgCreatePermanentLockedAccount = {
   encode(message: MsgCreatePermanentLockedAccount, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.from_address !== "") {
-      writer.uint32(10).string(message.from_address);
+    if (message.fromAddress !== "") {
+      writer.uint32(10).string(message.fromAddress);
     }
 
-    if (message.to_address !== "") {
-      writer.uint32(18).string(message.to_address);
+    if (message.toAddress !== "") {
+      writer.uint32(18).string(message.toAddress);
     }
 
     for (const v of message.amount) {
@@ -247,11 +247,11 @@ export const MsgCreatePermanentLockedAccount = {
 
       switch (tag >>> 3) {
         case 1:
-          message.from_address = reader.string();
+          message.fromAddress = reader.string();
           break;
 
         case 2:
-          message.to_address = reader.string();
+          message.toAddress = reader.string();
           break;
 
         case 3:
@@ -269,8 +269,8 @@ export const MsgCreatePermanentLockedAccount = {
 
   fromPartial(object: DeepPartial<MsgCreatePermanentLockedAccount>): MsgCreatePermanentLockedAccount {
     const message = createBaseMsgCreatePermanentLockedAccount();
-    message.from_address = object.from_address ?? "";
-    message.to_address = object.to_address ?? "";
+    message.fromAddress = object.fromAddress ?? "";
+    message.toAddress = object.toAddress ?? "";
     message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
     return message;
   }
@@ -313,28 +313,28 @@ export const MsgCreatePermanentLockedAccountResponse = {
 
 function createBaseMsgCreatePeriodicVestingAccount(): MsgCreatePeriodicVestingAccount {
   return {
-    from_address: "",
-    to_address: "",
-    start_time: Long.ZERO,
-    vesting_periods: []
+    fromAddress: "",
+    toAddress: "",
+    startTime: Long.ZERO,
+    vestingPeriods: []
   };
 }
 
 export const MsgCreatePeriodicVestingAccount = {
   encode(message: MsgCreatePeriodicVestingAccount, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.from_address !== "") {
-      writer.uint32(10).string(message.from_address);
+    if (message.fromAddress !== "") {
+      writer.uint32(10).string(message.fromAddress);
     }
 
-    if (message.to_address !== "") {
-      writer.uint32(18).string(message.to_address);
+    if (message.toAddress !== "") {
+      writer.uint32(18).string(message.toAddress);
     }
 
-    if (!message.start_time.isZero()) {
-      writer.uint32(24).int64(message.start_time);
+    if (!message.startTime.isZero()) {
+      writer.uint32(24).int64(message.startTime);
     }
 
-    for (const v of message.vesting_periods) {
+    for (const v of message.vestingPeriods) {
       Period.encode(v!, writer.uint32(34).fork()).ldelim();
     }
 
@@ -351,19 +351,19 @@ export const MsgCreatePeriodicVestingAccount = {
 
       switch (tag >>> 3) {
         case 1:
-          message.from_address = reader.string();
+          message.fromAddress = reader.string();
           break;
 
         case 2:
-          message.to_address = reader.string();
+          message.toAddress = reader.string();
           break;
 
         case 3:
-          message.start_time = (reader.int64() as Long);
+          message.startTime = (reader.int64() as Long);
           break;
 
         case 4:
-          message.vesting_periods.push(Period.decode(reader, reader.uint32()));
+          message.vestingPeriods.push(Period.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -377,10 +377,10 @@ export const MsgCreatePeriodicVestingAccount = {
 
   fromPartial(object: DeepPartial<MsgCreatePeriodicVestingAccount>): MsgCreatePeriodicVestingAccount {
     const message = createBaseMsgCreatePeriodicVestingAccount();
-    message.from_address = object.from_address ?? "";
-    message.to_address = object.to_address ?? "";
-    message.start_time = object.start_time !== undefined && object.start_time !== null ? Long.fromValue(object.start_time) : Long.ZERO;
-    message.vesting_periods = object.vesting_periods?.map(e => Period.fromPartial(e)) || [];
+    message.fromAddress = object.fromAddress ?? "";
+    message.toAddress = object.toAddress ?? "";
+    message.startTime = object.startTime !== undefined && object.startTime !== null ? Long.fromValue(object.startTime) : Long.ZERO;
+    message.vestingPeriods = object.vestingPeriods?.map(e => Period.fromPartial(e)) || [];
     return message;
   }
 

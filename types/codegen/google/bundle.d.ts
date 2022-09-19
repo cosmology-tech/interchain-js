@@ -25,10 +25,10 @@ export declare namespace google {
                         path?: string;
                     };
                     body?: string;
-                    response_body?: string;
-                    additional_bindings?: any[];
+                    responseBody?: string;
+                    additionalBindings?: any[];
                 }[];
-                fully_decode_reserved_expansion?: boolean;
+                fullyDecodeReservedExpansion?: boolean;
             }): _93.Http;
         };
         HttpRule: {
@@ -46,8 +46,8 @@ export declare namespace google {
                     path?: string;
                 };
                 body?: string;
-                response_body?: string;
-                additional_bindings?: any[];
+                responseBody?: string;
+                additionalBindings?: any[];
             }): _93.HttpRule;
         };
         CustomHttpPattern: {
@@ -140,16 +140,16 @@ export declare namespace google {
             fromPartial(object: {
                 key?: string;
                 value?: {
-                    null_value?: _99.NullValue;
-                    number_value?: number;
-                    string_value?: string;
-                    bool_value?: boolean;
-                    struct_value?: {
+                    nullValue?: _99.NullValue;
+                    numberValue?: number;
+                    stringValue?: string;
+                    boolValue?: boolean;
+                    structValue?: {
                         fields?: {
                             [x: string]: any;
                         };
                     };
-                    list_value?: {
+                    listValue?: {
                         values?: any[];
                     };
                 };
@@ -168,16 +168,16 @@ export declare namespace google {
             encode(message: _99.Value, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.Value;
             fromPartial(object: {
-                null_value?: _99.NullValue;
-                number_value?: number;
-                string_value?: string;
-                bool_value?: boolean;
-                struct_value?: {
+                nullValue?: _99.NullValue;
+                numberValue?: number;
+                stringValue?: string;
+                boolValue?: boolean;
+                structValue?: {
                     fields?: {
                         [x: string]: any;
                     };
                 };
-                list_value?: {
+                listValue?: {
                     values?: any[];
                 };
             }): _99.Value;
@@ -242,20 +242,20 @@ export declare namespace google {
                     name?: string;
                     package?: string;
                     dependency?: string[];
-                    public_dependency?: number[];
-                    weak_dependency?: number[];
-                    message_type?: {
+                    publicDependency?: number[];
+                    weakDependency?: number[];
+                    messageType?: {
                         name?: string;
                         field?: {
                             name?: string;
                             number?: number;
                             label?: _95.FieldDescriptorProto_Label;
                             type?: _95.FieldDescriptorProto_Type;
-                            type_name?: string;
+                            typeName?: string;
                             extendee?: string;
-                            default_value?: string;
-                            oneof_index?: number;
-                            json_name?: string;
+                            defaultValue?: string;
+                            oneofIndex?: number;
+                            jsonName?: string;
                             options?: {
                                 ctype?: _95.FieldOptions_CType;
                                 packed?: boolean;
@@ -263,17 +263,17 @@ export declare namespace google {
                                 lazy?: boolean;
                                 deprecated?: boolean;
                                 weak?: boolean;
-                                uninterpreted_option?: {
+                                uninterpretedOption?: {
                                     name?: {
-                                        name_part?: string;
-                                        is_extension?: boolean;
+                                        namePart?: string;
+                                        isExtension?: boolean;
                                     }[];
-                                    identifier_value?: string;
-                                    positive_int_value?: any;
-                                    negative_int_value?: any;
-                                    double_value?: number;
-                                    string_value?: Uint8Array;
-                                    aggregate_value?: string;
+                                    identifierValue?: string;
+                                    positiveIntValue?: any;
+                                    negativeIntValue?: any;
+                                    doubleValue?: number;
+                                    stringValue?: Uint8Array;
+                                    aggregateValue?: string;
                                 }[];
                             };
                         }[];
@@ -282,11 +282,11 @@ export declare namespace google {
                             number?: number;
                             label?: _95.FieldDescriptorProto_Label;
                             type?: _95.FieldDescriptorProto_Type;
-                            type_name?: string;
+                            typeName?: string;
                             extendee?: string;
-                            default_value?: string;
-                            oneof_index?: number;
-                            json_name?: string;
+                            defaultValue?: string;
+                            oneofIndex?: number;
+                            jsonName?: string;
                             options?: {
                                 ctype?: _95.FieldOptions_CType;
                                 packed?: boolean;
@@ -294,204 +294,204 @@ export declare namespace google {
                                 lazy?: boolean;
                                 deprecated?: boolean;
                                 weak?: boolean;
-                                uninterpreted_option?: {
+                                uninterpretedOption?: {
                                     name?: {
-                                        name_part?: string;
-                                        is_extension?: boolean;
+                                        namePart?: string;
+                                        isExtension?: boolean;
                                     }[];
-                                    identifier_value?: string;
-                                    positive_int_value?: any;
-                                    negative_int_value?: any;
-                                    double_value?: number;
-                                    string_value?: Uint8Array;
-                                    aggregate_value?: string;
+                                    identifierValue?: string;
+                                    positiveIntValue?: any;
+                                    negativeIntValue?: any;
+                                    doubleValue?: number;
+                                    stringValue?: Uint8Array;
+                                    aggregateValue?: string;
                                 }[];
                             };
                         }[];
-                        nested_type?: any[];
-                        enum_type?: {
+                        nestedType?: any[];
+                        enumType?: {
                             name?: string;
                             value?: {
                                 name?: string;
                                 number?: number;
                                 options?: {
                                     deprecated?: boolean;
-                                    uninterpreted_option?: {
+                                    uninterpretedOption?: {
                                         name?: {
-                                            name_part?: string;
-                                            is_extension?: boolean;
+                                            namePart?: string;
+                                            isExtension?: boolean;
                                         }[];
-                                        identifier_value?: string;
-                                        positive_int_value?: any;
-                                        negative_int_value?: any;
-                                        double_value?: number;
-                                        string_value?: Uint8Array;
-                                        aggregate_value?: string;
+                                        identifierValue?: string;
+                                        positiveIntValue?: any;
+                                        negativeIntValue?: any;
+                                        doubleValue?: number;
+                                        stringValue?: Uint8Array;
+                                        aggregateValue?: string;
                                     }[];
                                 };
                             }[];
                             options?: {
-                                allow_alias?: boolean;
+                                allowAlias?: boolean;
                                 deprecated?: boolean;
-                                uninterpreted_option?: {
+                                uninterpretedOption?: {
                                     name?: {
-                                        name_part?: string;
-                                        is_extension?: boolean;
+                                        namePart?: string;
+                                        isExtension?: boolean;
                                     }[];
-                                    identifier_value?: string;
-                                    positive_int_value?: any;
-                                    negative_int_value?: any;
-                                    double_value?: number;
-                                    string_value?: Uint8Array;
-                                    aggregate_value?: string;
+                                    identifierValue?: string;
+                                    positiveIntValue?: any;
+                                    negativeIntValue?: any;
+                                    doubleValue?: number;
+                                    stringValue?: Uint8Array;
+                                    aggregateValue?: string;
                                 }[];
                             };
-                            reserved_range?: {
+                            reservedRange?: {
                                 start?: number;
                                 end?: number;
                             }[];
-                            reserved_name?: string[];
+                            reservedName?: string[];
                         }[];
-                        extension_range?: {
+                        extensionRange?: {
                             start?: number;
                             end?: number;
                             options?: {
-                                uninterpreted_option?: {
+                                uninterpretedOption?: {
                                     name?: {
-                                        name_part?: string;
-                                        is_extension?: boolean;
+                                        namePart?: string;
+                                        isExtension?: boolean;
                                     }[];
-                                    identifier_value?: string;
-                                    positive_int_value?: any;
-                                    negative_int_value?: any;
-                                    double_value?: number;
-                                    string_value?: Uint8Array;
-                                    aggregate_value?: string;
+                                    identifierValue?: string;
+                                    positiveIntValue?: any;
+                                    negativeIntValue?: any;
+                                    doubleValue?: number;
+                                    stringValue?: Uint8Array;
+                                    aggregateValue?: string;
                                 }[];
                             };
                         }[];
-                        oneof_decl?: {
+                        oneofDecl?: {
                             name?: string;
                             options?: {
-                                uninterpreted_option?: {
+                                uninterpretedOption?: {
                                     name?: {
-                                        name_part?: string;
-                                        is_extension?: boolean;
+                                        namePart?: string;
+                                        isExtension?: boolean;
                                     }[];
-                                    identifier_value?: string;
-                                    positive_int_value?: any;
-                                    negative_int_value?: any;
-                                    double_value?: number;
-                                    string_value?: Uint8Array;
-                                    aggregate_value?: string;
+                                    identifierValue?: string;
+                                    positiveIntValue?: any;
+                                    negativeIntValue?: any;
+                                    doubleValue?: number;
+                                    stringValue?: Uint8Array;
+                                    aggregateValue?: string;
                                 }[];
                             };
                         }[];
                         options?: {
-                            message_set_wire_format?: boolean;
-                            no_standard_descriptor_accessor?: boolean;
+                            messageSetWireFormat?: boolean;
+                            noStandardDescriptorAccessor?: boolean;
                             deprecated?: boolean;
-                            map_entry?: boolean;
-                            uninterpreted_option?: {
+                            mapEntry?: boolean;
+                            uninterpretedOption?: {
                                 name?: {
-                                    name_part?: string;
-                                    is_extension?: boolean;
+                                    namePart?: string;
+                                    isExtension?: boolean;
                                 }[];
-                                identifier_value?: string;
-                                positive_int_value?: any;
-                                negative_int_value?: any;
-                                double_value?: number;
-                                string_value?: Uint8Array;
-                                aggregate_value?: string;
+                                identifierValue?: string;
+                                positiveIntValue?: any;
+                                negativeIntValue?: any;
+                                doubleValue?: number;
+                                stringValue?: Uint8Array;
+                                aggregateValue?: string;
                             }[];
                         };
-                        reserved_range?: {
+                        reservedRange?: {
                             start?: number;
                             end?: number;
                         }[];
-                        reserved_name?: string[];
+                        reservedName?: string[];
                     }[];
-                    enum_type?: {
+                    enumType?: {
                         name?: string;
                         value?: {
                             name?: string;
                             number?: number;
                             options?: {
                                 deprecated?: boolean;
-                                uninterpreted_option?: {
+                                uninterpretedOption?: {
                                     name?: {
-                                        name_part?: string;
-                                        is_extension?: boolean;
+                                        namePart?: string;
+                                        isExtension?: boolean;
                                     }[];
-                                    identifier_value?: string;
-                                    positive_int_value?: any;
-                                    negative_int_value?: any;
-                                    double_value?: number;
-                                    string_value?: Uint8Array;
-                                    aggregate_value?: string;
+                                    identifierValue?: string;
+                                    positiveIntValue?: any;
+                                    negativeIntValue?: any;
+                                    doubleValue?: number;
+                                    stringValue?: Uint8Array;
+                                    aggregateValue?: string;
                                 }[];
                             };
                         }[];
                         options?: {
-                            allow_alias?: boolean;
+                            allowAlias?: boolean;
                             deprecated?: boolean;
-                            uninterpreted_option?: {
+                            uninterpretedOption?: {
                                 name?: {
-                                    name_part?: string;
-                                    is_extension?: boolean;
+                                    namePart?: string;
+                                    isExtension?: boolean;
                                 }[];
-                                identifier_value?: string;
-                                positive_int_value?: any;
-                                negative_int_value?: any;
-                                double_value?: number;
-                                string_value?: Uint8Array;
-                                aggregate_value?: string;
+                                identifierValue?: string;
+                                positiveIntValue?: any;
+                                negativeIntValue?: any;
+                                doubleValue?: number;
+                                stringValue?: Uint8Array;
+                                aggregateValue?: string;
                             }[];
                         };
-                        reserved_range?: {
+                        reservedRange?: {
                             start?: number;
                             end?: number;
                         }[];
-                        reserved_name?: string[];
+                        reservedName?: string[];
                     }[];
                     service?: {
                         name?: string;
                         method?: {
                             name?: string;
-                            input_type?: string;
-                            output_type?: string;
+                            inputType?: string;
+                            outputType?: string;
                             options?: {
                                 deprecated?: boolean;
-                                idempotency_level?: _95.MethodOptions_IdempotencyLevel;
-                                uninterpreted_option?: {
+                                idempotencyLevel?: _95.MethodOptions_IdempotencyLevel;
+                                uninterpretedOption?: {
                                     name?: {
-                                        name_part?: string;
-                                        is_extension?: boolean;
+                                        namePart?: string;
+                                        isExtension?: boolean;
                                     }[];
-                                    identifier_value?: string;
-                                    positive_int_value?: any;
-                                    negative_int_value?: any;
-                                    double_value?: number;
-                                    string_value?: Uint8Array;
-                                    aggregate_value?: string;
+                                    identifierValue?: string;
+                                    positiveIntValue?: any;
+                                    negativeIntValue?: any;
+                                    doubleValue?: number;
+                                    stringValue?: Uint8Array;
+                                    aggregateValue?: string;
                                 }[];
                             };
-                            client_streaming?: boolean;
-                            server_streaming?: boolean;
+                            clientStreaming?: boolean;
+                            serverStreaming?: boolean;
                         }[];
                         options?: {
                             deprecated?: boolean;
-                            uninterpreted_option?: {
+                            uninterpretedOption?: {
                                 name?: {
-                                    name_part?: string;
-                                    is_extension?: boolean;
+                                    namePart?: string;
+                                    isExtension?: boolean;
                                 }[];
-                                identifier_value?: string;
-                                positive_int_value?: any;
-                                negative_int_value?: any;
-                                double_value?: number;
-                                string_value?: Uint8Array;
-                                aggregate_value?: string;
+                                identifierValue?: string;
+                                positiveIntValue?: any;
+                                negativeIntValue?: any;
+                                doubleValue?: number;
+                                stringValue?: Uint8Array;
+                                aggregateValue?: string;
                             }[];
                         };
                     }[];
@@ -500,11 +500,11 @@ export declare namespace google {
                         number?: number;
                         label?: _95.FieldDescriptorProto_Label;
                         type?: _95.FieldDescriptorProto_Type;
-                        type_name?: string;
+                        typeName?: string;
                         extendee?: string;
-                        default_value?: string;
-                        oneof_index?: number;
-                        json_name?: string;
+                        defaultValue?: string;
+                        oneofIndex?: number;
+                        jsonName?: string;
                         options?: {
                             ctype?: _95.FieldOptions_CType;
                             packed?: boolean;
@@ -512,61 +512,61 @@ export declare namespace google {
                             lazy?: boolean;
                             deprecated?: boolean;
                             weak?: boolean;
-                            uninterpreted_option?: {
+                            uninterpretedOption?: {
                                 name?: {
-                                    name_part?: string;
-                                    is_extension?: boolean;
+                                    namePart?: string;
+                                    isExtension?: boolean;
                                 }[];
-                                identifier_value?: string;
-                                positive_int_value?: any;
-                                negative_int_value?: any;
-                                double_value?: number;
-                                string_value?: Uint8Array;
-                                aggregate_value?: string;
+                                identifierValue?: string;
+                                positiveIntValue?: any;
+                                negativeIntValue?: any;
+                                doubleValue?: number;
+                                stringValue?: Uint8Array;
+                                aggregateValue?: string;
                             }[];
                         };
                     }[];
                     options?: {
-                        java_package?: string;
-                        java_outer_classname?: string;
-                        java_multiple_files?: boolean;
-                        java_generate_equals_and_hash?: boolean;
-                        java_string_check_utf8?: boolean;
-                        optimize_for?: _95.FileOptions_OptimizeMode;
-                        go_package?: string;
-                        cc_generic_services?: boolean;
-                        java_generic_services?: boolean;
-                        py_generic_services?: boolean;
-                        php_generic_services?: boolean;
+                        javaPackage?: string;
+                        javaOuterClassname?: string;
+                        javaMultipleFiles?: boolean;
+                        javaGenerateEqualsAndHash?: boolean;
+                        javaStringCheckUtf8?: boolean;
+                        optimizeFor?: _95.FileOptions_OptimizeMode;
+                        goPackage?: string;
+                        ccGenericServices?: boolean;
+                        javaGenericServices?: boolean;
+                        pyGenericServices?: boolean;
+                        phpGenericServices?: boolean;
                         deprecated?: boolean;
-                        cc_enable_arenas?: boolean;
-                        objc_class_prefix?: string;
-                        csharp_namespace?: string;
-                        swift_prefix?: string;
-                        php_class_prefix?: string;
-                        php_namespace?: string;
-                        php_metadata_namespace?: string;
-                        ruby_package?: string;
-                        uninterpreted_option?: {
+                        ccEnableArenas?: boolean;
+                        objcClassPrefix?: string;
+                        csharpNamespace?: string;
+                        swiftPrefix?: string;
+                        phpClassPrefix?: string;
+                        phpNamespace?: string;
+                        phpMetadataNamespace?: string;
+                        rubyPackage?: string;
+                        uninterpretedOption?: {
                             name?: {
-                                name_part?: string;
-                                is_extension?: boolean;
+                                namePart?: string;
+                                isExtension?: boolean;
                             }[];
-                            identifier_value?: string;
-                            positive_int_value?: any;
-                            negative_int_value?: any;
-                            double_value?: number;
-                            string_value?: Uint8Array;
-                            aggregate_value?: string;
+                            identifierValue?: string;
+                            positiveIntValue?: any;
+                            negativeIntValue?: any;
+                            doubleValue?: number;
+                            stringValue?: Uint8Array;
+                            aggregateValue?: string;
                         }[];
                     };
-                    source_code_info?: {
+                    sourceCodeInfo?: {
                         location?: {
                             path?: number[];
                             span?: number[];
-                            leading_comments?: string;
-                            trailing_comments?: string;
-                            leading_detached_comments?: string[];
+                            leadingComments?: string;
+                            trailingComments?: string;
+                            leadingDetachedComments?: string[];
                         }[];
                     };
                     syntax?: string;
@@ -580,20 +580,20 @@ export declare namespace google {
                 name?: string;
                 package?: string;
                 dependency?: string[];
-                public_dependency?: number[];
-                weak_dependency?: number[];
-                message_type?: {
+                publicDependency?: number[];
+                weakDependency?: number[];
+                messageType?: {
                     name?: string;
                     field?: {
                         name?: string;
                         number?: number;
                         label?: _95.FieldDescriptorProto_Label;
                         type?: _95.FieldDescriptorProto_Type;
-                        type_name?: string;
+                        typeName?: string;
                         extendee?: string;
-                        default_value?: string;
-                        oneof_index?: number;
-                        json_name?: string;
+                        defaultValue?: string;
+                        oneofIndex?: number;
+                        jsonName?: string;
                         options?: {
                             ctype?: _95.FieldOptions_CType;
                             packed?: boolean;
@@ -601,17 +601,17 @@ export declare namespace google {
                             lazy?: boolean;
                             deprecated?: boolean;
                             weak?: boolean;
-                            uninterpreted_option?: {
+                            uninterpretedOption?: {
                                 name?: {
-                                    name_part?: string;
-                                    is_extension?: boolean;
+                                    namePart?: string;
+                                    isExtension?: boolean;
                                 }[];
-                                identifier_value?: string;
-                                positive_int_value?: any;
-                                negative_int_value?: any;
-                                double_value?: number;
-                                string_value?: Uint8Array;
-                                aggregate_value?: string;
+                                identifierValue?: string;
+                                positiveIntValue?: any;
+                                negativeIntValue?: any;
+                                doubleValue?: number;
+                                stringValue?: Uint8Array;
+                                aggregateValue?: string;
                             }[];
                         };
                     }[];
@@ -620,11 +620,11 @@ export declare namespace google {
                         number?: number;
                         label?: _95.FieldDescriptorProto_Label;
                         type?: _95.FieldDescriptorProto_Type;
-                        type_name?: string;
+                        typeName?: string;
                         extendee?: string;
-                        default_value?: string;
-                        oneof_index?: number;
-                        json_name?: string;
+                        defaultValue?: string;
+                        oneofIndex?: number;
+                        jsonName?: string;
                         options?: {
                             ctype?: _95.FieldOptions_CType;
                             packed?: boolean;
@@ -632,204 +632,204 @@ export declare namespace google {
                             lazy?: boolean;
                             deprecated?: boolean;
                             weak?: boolean;
-                            uninterpreted_option?: {
+                            uninterpretedOption?: {
                                 name?: {
-                                    name_part?: string;
-                                    is_extension?: boolean;
+                                    namePart?: string;
+                                    isExtension?: boolean;
                                 }[];
-                                identifier_value?: string;
-                                positive_int_value?: any;
-                                negative_int_value?: any;
-                                double_value?: number;
-                                string_value?: Uint8Array;
-                                aggregate_value?: string;
+                                identifierValue?: string;
+                                positiveIntValue?: any;
+                                negativeIntValue?: any;
+                                doubleValue?: number;
+                                stringValue?: Uint8Array;
+                                aggregateValue?: string;
                             }[];
                         };
                     }[];
-                    nested_type?: any[];
-                    enum_type?: {
+                    nestedType?: any[];
+                    enumType?: {
                         name?: string;
                         value?: {
                             name?: string;
                             number?: number;
                             options?: {
                                 deprecated?: boolean;
-                                uninterpreted_option?: {
+                                uninterpretedOption?: {
                                     name?: {
-                                        name_part?: string;
-                                        is_extension?: boolean;
+                                        namePart?: string;
+                                        isExtension?: boolean;
                                     }[];
-                                    identifier_value?: string;
-                                    positive_int_value?: any;
-                                    negative_int_value?: any;
-                                    double_value?: number;
-                                    string_value?: Uint8Array;
-                                    aggregate_value?: string;
+                                    identifierValue?: string;
+                                    positiveIntValue?: any;
+                                    negativeIntValue?: any;
+                                    doubleValue?: number;
+                                    stringValue?: Uint8Array;
+                                    aggregateValue?: string;
                                 }[];
                             };
                         }[];
                         options?: {
-                            allow_alias?: boolean;
+                            allowAlias?: boolean;
                             deprecated?: boolean;
-                            uninterpreted_option?: {
+                            uninterpretedOption?: {
                                 name?: {
-                                    name_part?: string;
-                                    is_extension?: boolean;
+                                    namePart?: string;
+                                    isExtension?: boolean;
                                 }[];
-                                identifier_value?: string;
-                                positive_int_value?: any;
-                                negative_int_value?: any;
-                                double_value?: number;
-                                string_value?: Uint8Array;
-                                aggregate_value?: string;
+                                identifierValue?: string;
+                                positiveIntValue?: any;
+                                negativeIntValue?: any;
+                                doubleValue?: number;
+                                stringValue?: Uint8Array;
+                                aggregateValue?: string;
                             }[];
                         };
-                        reserved_range?: {
+                        reservedRange?: {
                             start?: number;
                             end?: number;
                         }[];
-                        reserved_name?: string[];
+                        reservedName?: string[];
                     }[];
-                    extension_range?: {
+                    extensionRange?: {
                         start?: number;
                         end?: number;
                         options?: {
-                            uninterpreted_option?: {
+                            uninterpretedOption?: {
                                 name?: {
-                                    name_part?: string;
-                                    is_extension?: boolean;
+                                    namePart?: string;
+                                    isExtension?: boolean;
                                 }[];
-                                identifier_value?: string;
-                                positive_int_value?: any;
-                                negative_int_value?: any;
-                                double_value?: number;
-                                string_value?: Uint8Array;
-                                aggregate_value?: string;
+                                identifierValue?: string;
+                                positiveIntValue?: any;
+                                negativeIntValue?: any;
+                                doubleValue?: number;
+                                stringValue?: Uint8Array;
+                                aggregateValue?: string;
                             }[];
                         };
                     }[];
-                    oneof_decl?: {
+                    oneofDecl?: {
                         name?: string;
                         options?: {
-                            uninterpreted_option?: {
+                            uninterpretedOption?: {
                                 name?: {
-                                    name_part?: string;
-                                    is_extension?: boolean;
+                                    namePart?: string;
+                                    isExtension?: boolean;
                                 }[];
-                                identifier_value?: string;
-                                positive_int_value?: any;
-                                negative_int_value?: any;
-                                double_value?: number;
-                                string_value?: Uint8Array;
-                                aggregate_value?: string;
+                                identifierValue?: string;
+                                positiveIntValue?: any;
+                                negativeIntValue?: any;
+                                doubleValue?: number;
+                                stringValue?: Uint8Array;
+                                aggregateValue?: string;
                             }[];
                         };
                     }[];
                     options?: {
-                        message_set_wire_format?: boolean;
-                        no_standard_descriptor_accessor?: boolean;
+                        messageSetWireFormat?: boolean;
+                        noStandardDescriptorAccessor?: boolean;
                         deprecated?: boolean;
-                        map_entry?: boolean;
-                        uninterpreted_option?: {
+                        mapEntry?: boolean;
+                        uninterpretedOption?: {
                             name?: {
-                                name_part?: string;
-                                is_extension?: boolean;
+                                namePart?: string;
+                                isExtension?: boolean;
                             }[];
-                            identifier_value?: string;
-                            positive_int_value?: any;
-                            negative_int_value?: any;
-                            double_value?: number;
-                            string_value?: Uint8Array;
-                            aggregate_value?: string;
+                            identifierValue?: string;
+                            positiveIntValue?: any;
+                            negativeIntValue?: any;
+                            doubleValue?: number;
+                            stringValue?: Uint8Array;
+                            aggregateValue?: string;
                         }[];
                     };
-                    reserved_range?: {
+                    reservedRange?: {
                         start?: number;
                         end?: number;
                     }[];
-                    reserved_name?: string[];
+                    reservedName?: string[];
                 }[];
-                enum_type?: {
+                enumType?: {
                     name?: string;
                     value?: {
                         name?: string;
                         number?: number;
                         options?: {
                             deprecated?: boolean;
-                            uninterpreted_option?: {
+                            uninterpretedOption?: {
                                 name?: {
-                                    name_part?: string;
-                                    is_extension?: boolean;
+                                    namePart?: string;
+                                    isExtension?: boolean;
                                 }[];
-                                identifier_value?: string;
-                                positive_int_value?: any;
-                                negative_int_value?: any;
-                                double_value?: number;
-                                string_value?: Uint8Array;
-                                aggregate_value?: string;
+                                identifierValue?: string;
+                                positiveIntValue?: any;
+                                negativeIntValue?: any;
+                                doubleValue?: number;
+                                stringValue?: Uint8Array;
+                                aggregateValue?: string;
                             }[];
                         };
                     }[];
                     options?: {
-                        allow_alias?: boolean;
+                        allowAlias?: boolean;
                         deprecated?: boolean;
-                        uninterpreted_option?: {
+                        uninterpretedOption?: {
                             name?: {
-                                name_part?: string;
-                                is_extension?: boolean;
+                                namePart?: string;
+                                isExtension?: boolean;
                             }[];
-                            identifier_value?: string;
-                            positive_int_value?: any;
-                            negative_int_value?: any;
-                            double_value?: number;
-                            string_value?: Uint8Array;
-                            aggregate_value?: string;
+                            identifierValue?: string;
+                            positiveIntValue?: any;
+                            negativeIntValue?: any;
+                            doubleValue?: number;
+                            stringValue?: Uint8Array;
+                            aggregateValue?: string;
                         }[];
                     };
-                    reserved_range?: {
+                    reservedRange?: {
                         start?: number;
                         end?: number;
                     }[];
-                    reserved_name?: string[];
+                    reservedName?: string[];
                 }[];
                 service?: {
                     name?: string;
                     method?: {
                         name?: string;
-                        input_type?: string;
-                        output_type?: string;
+                        inputType?: string;
+                        outputType?: string;
                         options?: {
                             deprecated?: boolean;
-                            idempotency_level?: _95.MethodOptions_IdempotencyLevel;
-                            uninterpreted_option?: {
+                            idempotencyLevel?: _95.MethodOptions_IdempotencyLevel;
+                            uninterpretedOption?: {
                                 name?: {
-                                    name_part?: string;
-                                    is_extension?: boolean;
+                                    namePart?: string;
+                                    isExtension?: boolean;
                                 }[];
-                                identifier_value?: string;
-                                positive_int_value?: any;
-                                negative_int_value?: any;
-                                double_value?: number;
-                                string_value?: Uint8Array;
-                                aggregate_value?: string;
+                                identifierValue?: string;
+                                positiveIntValue?: any;
+                                negativeIntValue?: any;
+                                doubleValue?: number;
+                                stringValue?: Uint8Array;
+                                aggregateValue?: string;
                             }[];
                         };
-                        client_streaming?: boolean;
-                        server_streaming?: boolean;
+                        clientStreaming?: boolean;
+                        serverStreaming?: boolean;
                     }[];
                     options?: {
                         deprecated?: boolean;
-                        uninterpreted_option?: {
+                        uninterpretedOption?: {
                             name?: {
-                                name_part?: string;
-                                is_extension?: boolean;
+                                namePart?: string;
+                                isExtension?: boolean;
                             }[];
-                            identifier_value?: string;
-                            positive_int_value?: any;
-                            negative_int_value?: any;
-                            double_value?: number;
-                            string_value?: Uint8Array;
-                            aggregate_value?: string;
+                            identifierValue?: string;
+                            positiveIntValue?: any;
+                            negativeIntValue?: any;
+                            doubleValue?: number;
+                            stringValue?: Uint8Array;
+                            aggregateValue?: string;
                         }[];
                     };
                 }[];
@@ -838,11 +838,11 @@ export declare namespace google {
                     number?: number;
                     label?: _95.FieldDescriptorProto_Label;
                     type?: _95.FieldDescriptorProto_Type;
-                    type_name?: string;
+                    typeName?: string;
                     extendee?: string;
-                    default_value?: string;
-                    oneof_index?: number;
-                    json_name?: string;
+                    defaultValue?: string;
+                    oneofIndex?: number;
+                    jsonName?: string;
                     options?: {
                         ctype?: _95.FieldOptions_CType;
                         packed?: boolean;
@@ -850,61 +850,61 @@ export declare namespace google {
                         lazy?: boolean;
                         deprecated?: boolean;
                         weak?: boolean;
-                        uninterpreted_option?: {
+                        uninterpretedOption?: {
                             name?: {
-                                name_part?: string;
-                                is_extension?: boolean;
+                                namePart?: string;
+                                isExtension?: boolean;
                             }[];
-                            identifier_value?: string;
-                            positive_int_value?: any;
-                            negative_int_value?: any;
-                            double_value?: number;
-                            string_value?: Uint8Array;
-                            aggregate_value?: string;
+                            identifierValue?: string;
+                            positiveIntValue?: any;
+                            negativeIntValue?: any;
+                            doubleValue?: number;
+                            stringValue?: Uint8Array;
+                            aggregateValue?: string;
                         }[];
                     };
                 }[];
                 options?: {
-                    java_package?: string;
-                    java_outer_classname?: string;
-                    java_multiple_files?: boolean;
-                    java_generate_equals_and_hash?: boolean;
-                    java_string_check_utf8?: boolean;
-                    optimize_for?: _95.FileOptions_OptimizeMode;
-                    go_package?: string;
-                    cc_generic_services?: boolean;
-                    java_generic_services?: boolean;
-                    py_generic_services?: boolean;
-                    php_generic_services?: boolean;
+                    javaPackage?: string;
+                    javaOuterClassname?: string;
+                    javaMultipleFiles?: boolean;
+                    javaGenerateEqualsAndHash?: boolean;
+                    javaStringCheckUtf8?: boolean;
+                    optimizeFor?: _95.FileOptions_OptimizeMode;
+                    goPackage?: string;
+                    ccGenericServices?: boolean;
+                    javaGenericServices?: boolean;
+                    pyGenericServices?: boolean;
+                    phpGenericServices?: boolean;
                     deprecated?: boolean;
-                    cc_enable_arenas?: boolean;
-                    objc_class_prefix?: string;
-                    csharp_namespace?: string;
-                    swift_prefix?: string;
-                    php_class_prefix?: string;
-                    php_namespace?: string;
-                    php_metadata_namespace?: string;
-                    ruby_package?: string;
-                    uninterpreted_option?: {
+                    ccEnableArenas?: boolean;
+                    objcClassPrefix?: string;
+                    csharpNamespace?: string;
+                    swiftPrefix?: string;
+                    phpClassPrefix?: string;
+                    phpNamespace?: string;
+                    phpMetadataNamespace?: string;
+                    rubyPackage?: string;
+                    uninterpretedOption?: {
                         name?: {
-                            name_part?: string;
-                            is_extension?: boolean;
+                            namePart?: string;
+                            isExtension?: boolean;
                         }[];
-                        identifier_value?: string;
-                        positive_int_value?: any;
-                        negative_int_value?: any;
-                        double_value?: number;
-                        string_value?: Uint8Array;
-                        aggregate_value?: string;
+                        identifierValue?: string;
+                        positiveIntValue?: any;
+                        negativeIntValue?: any;
+                        doubleValue?: number;
+                        stringValue?: Uint8Array;
+                        aggregateValue?: string;
                     }[];
                 };
-                source_code_info?: {
+                sourceCodeInfo?: {
                     location?: {
                         path?: number[];
                         span?: number[];
-                        leading_comments?: string;
-                        trailing_comments?: string;
-                        leading_detached_comments?: string[];
+                        leadingComments?: string;
+                        trailingComments?: string;
+                        leadingDetachedComments?: string[];
                     }[];
                 };
                 syntax?: string;
@@ -920,11 +920,11 @@ export declare namespace google {
                     number?: number;
                     label?: _95.FieldDescriptorProto_Label;
                     type?: _95.FieldDescriptorProto_Type;
-                    type_name?: string;
+                    typeName?: string;
                     extendee?: string;
-                    default_value?: string;
-                    oneof_index?: number;
-                    json_name?: string;
+                    defaultValue?: string;
+                    oneofIndex?: number;
+                    jsonName?: string;
                     options?: {
                         ctype?: _95.FieldOptions_CType;
                         packed?: boolean;
@@ -932,17 +932,17 @@ export declare namespace google {
                         lazy?: boolean;
                         deprecated?: boolean;
                         weak?: boolean;
-                        uninterpreted_option?: {
+                        uninterpretedOption?: {
                             name?: {
-                                name_part?: string;
-                                is_extension?: boolean;
+                                namePart?: string;
+                                isExtension?: boolean;
                             }[];
-                            identifier_value?: string;
-                            positive_int_value?: any;
-                            negative_int_value?: any;
-                            double_value?: number;
-                            string_value?: Uint8Array;
-                            aggregate_value?: string;
+                            identifierValue?: string;
+                            positiveIntValue?: any;
+                            negativeIntValue?: any;
+                            doubleValue?: number;
+                            stringValue?: Uint8Array;
+                            aggregateValue?: string;
                         }[];
                     };
                 }[];
@@ -951,11 +951,11 @@ export declare namespace google {
                     number?: number;
                     label?: _95.FieldDescriptorProto_Label;
                     type?: _95.FieldDescriptorProto_Type;
-                    type_name?: string;
+                    typeName?: string;
                     extendee?: string;
-                    default_value?: string;
-                    oneof_index?: number;
-                    json_name?: string;
+                    defaultValue?: string;
+                    oneofIndex?: number;
+                    jsonName?: string;
                     options?: {
                         ctype?: _95.FieldOptions_CType;
                         packed?: boolean;
@@ -963,122 +963,122 @@ export declare namespace google {
                         lazy?: boolean;
                         deprecated?: boolean;
                         weak?: boolean;
-                        uninterpreted_option?: {
+                        uninterpretedOption?: {
                             name?: {
-                                name_part?: string;
-                                is_extension?: boolean;
+                                namePart?: string;
+                                isExtension?: boolean;
                             }[];
-                            identifier_value?: string;
-                            positive_int_value?: any;
-                            negative_int_value?: any;
-                            double_value?: number;
-                            string_value?: Uint8Array;
-                            aggregate_value?: string;
+                            identifierValue?: string;
+                            positiveIntValue?: any;
+                            negativeIntValue?: any;
+                            doubleValue?: number;
+                            stringValue?: Uint8Array;
+                            aggregateValue?: string;
                         }[];
                     };
                 }[];
-                nested_type?: any[];
-                enum_type?: {
+                nestedType?: any[];
+                enumType?: {
                     name?: string;
                     value?: {
                         name?: string;
                         number?: number;
                         options?: {
                             deprecated?: boolean;
-                            uninterpreted_option?: {
+                            uninterpretedOption?: {
                                 name?: {
-                                    name_part?: string;
-                                    is_extension?: boolean;
+                                    namePart?: string;
+                                    isExtension?: boolean;
                                 }[];
-                                identifier_value?: string;
-                                positive_int_value?: any;
-                                negative_int_value?: any;
-                                double_value?: number;
-                                string_value?: Uint8Array;
-                                aggregate_value?: string;
+                                identifierValue?: string;
+                                positiveIntValue?: any;
+                                negativeIntValue?: any;
+                                doubleValue?: number;
+                                stringValue?: Uint8Array;
+                                aggregateValue?: string;
                             }[];
                         };
                     }[];
                     options?: {
-                        allow_alias?: boolean;
+                        allowAlias?: boolean;
                         deprecated?: boolean;
-                        uninterpreted_option?: {
+                        uninterpretedOption?: {
                             name?: {
-                                name_part?: string;
-                                is_extension?: boolean;
+                                namePart?: string;
+                                isExtension?: boolean;
                             }[];
-                            identifier_value?: string;
-                            positive_int_value?: any;
-                            negative_int_value?: any;
-                            double_value?: number;
-                            string_value?: Uint8Array;
-                            aggregate_value?: string;
+                            identifierValue?: string;
+                            positiveIntValue?: any;
+                            negativeIntValue?: any;
+                            doubleValue?: number;
+                            stringValue?: Uint8Array;
+                            aggregateValue?: string;
                         }[];
                     };
-                    reserved_range?: {
+                    reservedRange?: {
                         start?: number;
                         end?: number;
                     }[];
-                    reserved_name?: string[];
+                    reservedName?: string[];
                 }[];
-                extension_range?: {
+                extensionRange?: {
                     start?: number;
                     end?: number;
                     options?: {
-                        uninterpreted_option?: {
+                        uninterpretedOption?: {
                             name?: {
-                                name_part?: string;
-                                is_extension?: boolean;
+                                namePart?: string;
+                                isExtension?: boolean;
                             }[];
-                            identifier_value?: string;
-                            positive_int_value?: any;
-                            negative_int_value?: any;
-                            double_value?: number;
-                            string_value?: Uint8Array;
-                            aggregate_value?: string;
+                            identifierValue?: string;
+                            positiveIntValue?: any;
+                            negativeIntValue?: any;
+                            doubleValue?: number;
+                            stringValue?: Uint8Array;
+                            aggregateValue?: string;
                         }[];
                     };
                 }[];
-                oneof_decl?: {
+                oneofDecl?: {
                     name?: string;
                     options?: {
-                        uninterpreted_option?: {
+                        uninterpretedOption?: {
                             name?: {
-                                name_part?: string;
-                                is_extension?: boolean;
+                                namePart?: string;
+                                isExtension?: boolean;
                             }[];
-                            identifier_value?: string;
-                            positive_int_value?: any;
-                            negative_int_value?: any;
-                            double_value?: number;
-                            string_value?: Uint8Array;
-                            aggregate_value?: string;
+                            identifierValue?: string;
+                            positiveIntValue?: any;
+                            negativeIntValue?: any;
+                            doubleValue?: number;
+                            stringValue?: Uint8Array;
+                            aggregateValue?: string;
                         }[];
                     };
                 }[];
                 options?: {
-                    message_set_wire_format?: boolean;
-                    no_standard_descriptor_accessor?: boolean;
+                    messageSetWireFormat?: boolean;
+                    noStandardDescriptorAccessor?: boolean;
                     deprecated?: boolean;
-                    map_entry?: boolean;
-                    uninterpreted_option?: {
+                    mapEntry?: boolean;
+                    uninterpretedOption?: {
                         name?: {
-                            name_part?: string;
-                            is_extension?: boolean;
+                            namePart?: string;
+                            isExtension?: boolean;
                         }[];
-                        identifier_value?: string;
-                        positive_int_value?: any;
-                        negative_int_value?: any;
-                        double_value?: number;
-                        string_value?: Uint8Array;
-                        aggregate_value?: string;
+                        identifierValue?: string;
+                        positiveIntValue?: any;
+                        negativeIntValue?: any;
+                        doubleValue?: number;
+                        stringValue?: Uint8Array;
+                        aggregateValue?: string;
                     }[];
                 };
-                reserved_range?: {
+                reservedRange?: {
                     start?: number;
                     end?: number;
                 }[];
-                reserved_name?: string[];
+                reservedName?: string[];
             }): _95.DescriptorProto;
         };
         DescriptorProto_ExtensionRange: {
@@ -1088,17 +1088,17 @@ export declare namespace google {
                 start?: number;
                 end?: number;
                 options?: {
-                    uninterpreted_option?: {
+                    uninterpretedOption?: {
                         name?: {
-                            name_part?: string;
-                            is_extension?: boolean;
+                            namePart?: string;
+                            isExtension?: boolean;
                         }[];
-                        identifier_value?: string;
-                        positive_int_value?: any;
-                        negative_int_value?: any;
-                        double_value?: number;
-                        string_value?: Uint8Array;
-                        aggregate_value?: string;
+                        identifierValue?: string;
+                        positiveIntValue?: any;
+                        negativeIntValue?: any;
+                        doubleValue?: number;
+                        stringValue?: Uint8Array;
+                        aggregateValue?: string;
                     }[];
                 };
             }): _95.DescriptorProto_ExtensionRange;
@@ -1115,17 +1115,17 @@ export declare namespace google {
             encode(message: _95.ExtensionRangeOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.ExtensionRangeOptions;
             fromPartial(object: {
-                uninterpreted_option?: {
+                uninterpretedOption?: {
                     name?: {
-                        name_part?: string;
-                        is_extension?: boolean;
+                        namePart?: string;
+                        isExtension?: boolean;
                     }[];
-                    identifier_value?: string;
-                    positive_int_value?: any;
-                    negative_int_value?: any;
-                    double_value?: number;
-                    string_value?: Uint8Array;
-                    aggregate_value?: string;
+                    identifierValue?: string;
+                    positiveIntValue?: any;
+                    negativeIntValue?: any;
+                    doubleValue?: number;
+                    stringValue?: Uint8Array;
+                    aggregateValue?: string;
                 }[];
             }): _95.ExtensionRangeOptions;
         };
@@ -1137,11 +1137,11 @@ export declare namespace google {
                 number?: number;
                 label?: _95.FieldDescriptorProto_Label;
                 type?: _95.FieldDescriptorProto_Type;
-                type_name?: string;
+                typeName?: string;
                 extendee?: string;
-                default_value?: string;
-                oneof_index?: number;
-                json_name?: string;
+                defaultValue?: string;
+                oneofIndex?: number;
+                jsonName?: string;
                 options?: {
                     ctype?: _95.FieldOptions_CType;
                     packed?: boolean;
@@ -1149,17 +1149,17 @@ export declare namespace google {
                     lazy?: boolean;
                     deprecated?: boolean;
                     weak?: boolean;
-                    uninterpreted_option?: {
+                    uninterpretedOption?: {
                         name?: {
-                            name_part?: string;
-                            is_extension?: boolean;
+                            namePart?: string;
+                            isExtension?: boolean;
                         }[];
-                        identifier_value?: string;
-                        positive_int_value?: any;
-                        negative_int_value?: any;
-                        double_value?: number;
-                        string_value?: Uint8Array;
-                        aggregate_value?: string;
+                        identifierValue?: string;
+                        positiveIntValue?: any;
+                        negativeIntValue?: any;
+                        doubleValue?: number;
+                        stringValue?: Uint8Array;
+                        aggregateValue?: string;
                     }[];
                 };
             }): _95.FieldDescriptorProto;
@@ -1170,17 +1170,17 @@ export declare namespace google {
             fromPartial(object: {
                 name?: string;
                 options?: {
-                    uninterpreted_option?: {
+                    uninterpretedOption?: {
                         name?: {
-                            name_part?: string;
-                            is_extension?: boolean;
+                            namePart?: string;
+                            isExtension?: boolean;
                         }[];
-                        identifier_value?: string;
-                        positive_int_value?: any;
-                        negative_int_value?: any;
-                        double_value?: number;
-                        string_value?: Uint8Array;
-                        aggregate_value?: string;
+                        identifierValue?: string;
+                        positiveIntValue?: any;
+                        negativeIntValue?: any;
+                        doubleValue?: number;
+                        stringValue?: Uint8Array;
+                        aggregateValue?: string;
                     }[];
                 };
             }): _95.OneofDescriptorProto;
@@ -1195,41 +1195,41 @@ export declare namespace google {
                     number?: number;
                     options?: {
                         deprecated?: boolean;
-                        uninterpreted_option?: {
+                        uninterpretedOption?: {
                             name?: {
-                                name_part?: string;
-                                is_extension?: boolean;
+                                namePart?: string;
+                                isExtension?: boolean;
                             }[];
-                            identifier_value?: string;
-                            positive_int_value?: any;
-                            negative_int_value?: any;
-                            double_value?: number;
-                            string_value?: Uint8Array;
-                            aggregate_value?: string;
+                            identifierValue?: string;
+                            positiveIntValue?: any;
+                            negativeIntValue?: any;
+                            doubleValue?: number;
+                            stringValue?: Uint8Array;
+                            aggregateValue?: string;
                         }[];
                     };
                 }[];
                 options?: {
-                    allow_alias?: boolean;
+                    allowAlias?: boolean;
                     deprecated?: boolean;
-                    uninterpreted_option?: {
+                    uninterpretedOption?: {
                         name?: {
-                            name_part?: string;
-                            is_extension?: boolean;
+                            namePart?: string;
+                            isExtension?: boolean;
                         }[];
-                        identifier_value?: string;
-                        positive_int_value?: any;
-                        negative_int_value?: any;
-                        double_value?: number;
-                        string_value?: Uint8Array;
-                        aggregate_value?: string;
+                        identifierValue?: string;
+                        positiveIntValue?: any;
+                        negativeIntValue?: any;
+                        doubleValue?: number;
+                        stringValue?: Uint8Array;
+                        aggregateValue?: string;
                     }[];
                 };
-                reserved_range?: {
+                reservedRange?: {
                     start?: number;
                     end?: number;
                 }[];
-                reserved_name?: string[];
+                reservedName?: string[];
             }): _95.EnumDescriptorProto;
         };
         EnumDescriptorProto_EnumReservedRange: {
@@ -1248,17 +1248,17 @@ export declare namespace google {
                 number?: number;
                 options?: {
                     deprecated?: boolean;
-                    uninterpreted_option?: {
+                    uninterpretedOption?: {
                         name?: {
-                            name_part?: string;
-                            is_extension?: boolean;
+                            namePart?: string;
+                            isExtension?: boolean;
                         }[];
-                        identifier_value?: string;
-                        positive_int_value?: any;
-                        negative_int_value?: any;
-                        double_value?: number;
-                        string_value?: Uint8Array;
-                        aggregate_value?: string;
+                        identifierValue?: string;
+                        positiveIntValue?: any;
+                        negativeIntValue?: any;
+                        doubleValue?: number;
+                        stringValue?: Uint8Array;
+                        aggregateValue?: string;
                     }[];
                 };
             }): _95.EnumValueDescriptorProto;
@@ -1270,40 +1270,40 @@ export declare namespace google {
                 name?: string;
                 method?: {
                     name?: string;
-                    input_type?: string;
-                    output_type?: string;
+                    inputType?: string;
+                    outputType?: string;
                     options?: {
                         deprecated?: boolean;
-                        idempotency_level?: _95.MethodOptions_IdempotencyLevel;
-                        uninterpreted_option?: {
+                        idempotencyLevel?: _95.MethodOptions_IdempotencyLevel;
+                        uninterpretedOption?: {
                             name?: {
-                                name_part?: string;
-                                is_extension?: boolean;
+                                namePart?: string;
+                                isExtension?: boolean;
                             }[];
-                            identifier_value?: string;
-                            positive_int_value?: any;
-                            negative_int_value?: any;
-                            double_value?: number;
-                            string_value?: Uint8Array;
-                            aggregate_value?: string;
+                            identifierValue?: string;
+                            positiveIntValue?: any;
+                            negativeIntValue?: any;
+                            doubleValue?: number;
+                            stringValue?: Uint8Array;
+                            aggregateValue?: string;
                         }[];
                     };
-                    client_streaming?: boolean;
-                    server_streaming?: boolean;
+                    clientStreaming?: boolean;
+                    serverStreaming?: boolean;
                 }[];
                 options?: {
                     deprecated?: boolean;
-                    uninterpreted_option?: {
+                    uninterpretedOption?: {
                         name?: {
-                            name_part?: string;
-                            is_extension?: boolean;
+                            namePart?: string;
+                            isExtension?: boolean;
                         }[];
-                        identifier_value?: string;
-                        positive_int_value?: any;
-                        negative_int_value?: any;
-                        double_value?: number;
-                        string_value?: Uint8Array;
-                        aggregate_value?: string;
+                        identifierValue?: string;
+                        positiveIntValue?: any;
+                        negativeIntValue?: any;
+                        doubleValue?: number;
+                        stringValue?: Uint8Array;
+                        aggregateValue?: string;
                     }[];
                 };
             }): _95.ServiceDescriptorProto;
@@ -1313,63 +1313,63 @@ export declare namespace google {
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.MethodDescriptorProto;
             fromPartial(object: {
                 name?: string;
-                input_type?: string;
-                output_type?: string;
+                inputType?: string;
+                outputType?: string;
                 options?: {
                     deprecated?: boolean;
-                    idempotency_level?: _95.MethodOptions_IdempotencyLevel;
-                    uninterpreted_option?: {
+                    idempotencyLevel?: _95.MethodOptions_IdempotencyLevel;
+                    uninterpretedOption?: {
                         name?: {
-                            name_part?: string;
-                            is_extension?: boolean;
+                            namePart?: string;
+                            isExtension?: boolean;
                         }[];
-                        identifier_value?: string;
-                        positive_int_value?: any;
-                        negative_int_value?: any;
-                        double_value?: number;
-                        string_value?: Uint8Array;
-                        aggregate_value?: string;
+                        identifierValue?: string;
+                        positiveIntValue?: any;
+                        negativeIntValue?: any;
+                        doubleValue?: number;
+                        stringValue?: Uint8Array;
+                        aggregateValue?: string;
                     }[];
                 };
-                client_streaming?: boolean;
-                server_streaming?: boolean;
+                clientStreaming?: boolean;
+                serverStreaming?: boolean;
             }): _95.MethodDescriptorProto;
         };
         FileOptions: {
             encode(message: _95.FileOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.FileOptions;
             fromPartial(object: {
-                java_package?: string;
-                java_outer_classname?: string;
-                java_multiple_files?: boolean;
-                java_generate_equals_and_hash?: boolean;
-                java_string_check_utf8?: boolean;
-                optimize_for?: _95.FileOptions_OptimizeMode;
-                go_package?: string;
-                cc_generic_services?: boolean;
-                java_generic_services?: boolean;
-                py_generic_services?: boolean;
-                php_generic_services?: boolean;
+                javaPackage?: string;
+                javaOuterClassname?: string;
+                javaMultipleFiles?: boolean;
+                javaGenerateEqualsAndHash?: boolean;
+                javaStringCheckUtf8?: boolean;
+                optimizeFor?: _95.FileOptions_OptimizeMode;
+                goPackage?: string;
+                ccGenericServices?: boolean;
+                javaGenericServices?: boolean;
+                pyGenericServices?: boolean;
+                phpGenericServices?: boolean;
                 deprecated?: boolean;
-                cc_enable_arenas?: boolean;
-                objc_class_prefix?: string;
-                csharp_namespace?: string;
-                swift_prefix?: string;
-                php_class_prefix?: string;
-                php_namespace?: string;
-                php_metadata_namespace?: string;
-                ruby_package?: string;
-                uninterpreted_option?: {
+                ccEnableArenas?: boolean;
+                objcClassPrefix?: string;
+                csharpNamespace?: string;
+                swiftPrefix?: string;
+                phpClassPrefix?: string;
+                phpNamespace?: string;
+                phpMetadataNamespace?: string;
+                rubyPackage?: string;
+                uninterpretedOption?: {
                     name?: {
-                        name_part?: string;
-                        is_extension?: boolean;
+                        namePart?: string;
+                        isExtension?: boolean;
                     }[];
-                    identifier_value?: string;
-                    positive_int_value?: any;
-                    negative_int_value?: any;
-                    double_value?: number;
-                    string_value?: Uint8Array;
-                    aggregate_value?: string;
+                    identifierValue?: string;
+                    positiveIntValue?: any;
+                    negativeIntValue?: any;
+                    doubleValue?: number;
+                    stringValue?: Uint8Array;
+                    aggregateValue?: string;
                 }[];
             }): _95.FileOptions;
         };
@@ -1377,21 +1377,21 @@ export declare namespace google {
             encode(message: _95.MessageOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.MessageOptions;
             fromPartial(object: {
-                message_set_wire_format?: boolean;
-                no_standard_descriptor_accessor?: boolean;
+                messageSetWireFormat?: boolean;
+                noStandardDescriptorAccessor?: boolean;
                 deprecated?: boolean;
-                map_entry?: boolean;
-                uninterpreted_option?: {
+                mapEntry?: boolean;
+                uninterpretedOption?: {
                     name?: {
-                        name_part?: string;
-                        is_extension?: boolean;
+                        namePart?: string;
+                        isExtension?: boolean;
                     }[];
-                    identifier_value?: string;
-                    positive_int_value?: any;
-                    negative_int_value?: any;
-                    double_value?: number;
-                    string_value?: Uint8Array;
-                    aggregate_value?: string;
+                    identifierValue?: string;
+                    positiveIntValue?: any;
+                    negativeIntValue?: any;
+                    doubleValue?: number;
+                    stringValue?: Uint8Array;
+                    aggregateValue?: string;
                 }[];
             }): _95.MessageOptions;
         };
@@ -1405,17 +1405,17 @@ export declare namespace google {
                 lazy?: boolean;
                 deprecated?: boolean;
                 weak?: boolean;
-                uninterpreted_option?: {
+                uninterpretedOption?: {
                     name?: {
-                        name_part?: string;
-                        is_extension?: boolean;
+                        namePart?: string;
+                        isExtension?: boolean;
                     }[];
-                    identifier_value?: string;
-                    positive_int_value?: any;
-                    negative_int_value?: any;
-                    double_value?: number;
-                    string_value?: Uint8Array;
-                    aggregate_value?: string;
+                    identifierValue?: string;
+                    positiveIntValue?: any;
+                    negativeIntValue?: any;
+                    doubleValue?: number;
+                    stringValue?: Uint8Array;
+                    aggregateValue?: string;
                 }[];
             }): _95.FieldOptions;
         };
@@ -1423,17 +1423,17 @@ export declare namespace google {
             encode(message: _95.OneofOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.OneofOptions;
             fromPartial(object: {
-                uninterpreted_option?: {
+                uninterpretedOption?: {
                     name?: {
-                        name_part?: string;
-                        is_extension?: boolean;
+                        namePart?: string;
+                        isExtension?: boolean;
                     }[];
-                    identifier_value?: string;
-                    positive_int_value?: any;
-                    negative_int_value?: any;
-                    double_value?: number;
-                    string_value?: Uint8Array;
-                    aggregate_value?: string;
+                    identifierValue?: string;
+                    positiveIntValue?: any;
+                    negativeIntValue?: any;
+                    doubleValue?: number;
+                    stringValue?: Uint8Array;
+                    aggregateValue?: string;
                 }[];
             }): _95.OneofOptions;
         };
@@ -1441,19 +1441,19 @@ export declare namespace google {
             encode(message: _95.EnumOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.EnumOptions;
             fromPartial(object: {
-                allow_alias?: boolean;
+                allowAlias?: boolean;
                 deprecated?: boolean;
-                uninterpreted_option?: {
+                uninterpretedOption?: {
                     name?: {
-                        name_part?: string;
-                        is_extension?: boolean;
+                        namePart?: string;
+                        isExtension?: boolean;
                     }[];
-                    identifier_value?: string;
-                    positive_int_value?: any;
-                    negative_int_value?: any;
-                    double_value?: number;
-                    string_value?: Uint8Array;
-                    aggregate_value?: string;
+                    identifierValue?: string;
+                    positiveIntValue?: any;
+                    negativeIntValue?: any;
+                    doubleValue?: number;
+                    stringValue?: Uint8Array;
+                    aggregateValue?: string;
                 }[];
             }): _95.EnumOptions;
         };
@@ -1462,17 +1462,17 @@ export declare namespace google {
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.EnumValueOptions;
             fromPartial(object: {
                 deprecated?: boolean;
-                uninterpreted_option?: {
+                uninterpretedOption?: {
                     name?: {
-                        name_part?: string;
-                        is_extension?: boolean;
+                        namePart?: string;
+                        isExtension?: boolean;
                     }[];
-                    identifier_value?: string;
-                    positive_int_value?: any;
-                    negative_int_value?: any;
-                    double_value?: number;
-                    string_value?: Uint8Array;
-                    aggregate_value?: string;
+                    identifierValue?: string;
+                    positiveIntValue?: any;
+                    negativeIntValue?: any;
+                    doubleValue?: number;
+                    stringValue?: Uint8Array;
+                    aggregateValue?: string;
                 }[];
             }): _95.EnumValueOptions;
         };
@@ -1481,17 +1481,17 @@ export declare namespace google {
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.ServiceOptions;
             fromPartial(object: {
                 deprecated?: boolean;
-                uninterpreted_option?: {
+                uninterpretedOption?: {
                     name?: {
-                        name_part?: string;
-                        is_extension?: boolean;
+                        namePart?: string;
+                        isExtension?: boolean;
                     }[];
-                    identifier_value?: string;
-                    positive_int_value?: any;
-                    negative_int_value?: any;
-                    double_value?: number;
-                    string_value?: Uint8Array;
-                    aggregate_value?: string;
+                    identifierValue?: string;
+                    positiveIntValue?: any;
+                    negativeIntValue?: any;
+                    doubleValue?: number;
+                    stringValue?: Uint8Array;
+                    aggregateValue?: string;
                 }[];
             }): _95.ServiceOptions;
         };
@@ -1500,18 +1500,18 @@ export declare namespace google {
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.MethodOptions;
             fromPartial(object: {
                 deprecated?: boolean;
-                idempotency_level?: _95.MethodOptions_IdempotencyLevel;
-                uninterpreted_option?: {
+                idempotencyLevel?: _95.MethodOptions_IdempotencyLevel;
+                uninterpretedOption?: {
                     name?: {
-                        name_part?: string;
-                        is_extension?: boolean;
+                        namePart?: string;
+                        isExtension?: boolean;
                     }[];
-                    identifier_value?: string;
-                    positive_int_value?: any;
-                    negative_int_value?: any;
-                    double_value?: number;
-                    string_value?: Uint8Array;
-                    aggregate_value?: string;
+                    identifierValue?: string;
+                    positiveIntValue?: any;
+                    negativeIntValue?: any;
+                    doubleValue?: number;
+                    stringValue?: Uint8Array;
+                    aggregateValue?: string;
                 }[];
             }): _95.MethodOptions;
         };
@@ -1520,23 +1520,23 @@ export declare namespace google {
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.UninterpretedOption;
             fromPartial(object: {
                 name?: {
-                    name_part?: string;
-                    is_extension?: boolean;
+                    namePart?: string;
+                    isExtension?: boolean;
                 }[];
-                identifier_value?: string;
-                positive_int_value?: any;
-                negative_int_value?: any;
-                double_value?: number;
-                string_value?: Uint8Array;
-                aggregate_value?: string;
+                identifierValue?: string;
+                positiveIntValue?: any;
+                negativeIntValue?: any;
+                doubleValue?: number;
+                stringValue?: Uint8Array;
+                aggregateValue?: string;
             }): _95.UninterpretedOption;
         };
         UninterpretedOption_NamePart: {
             encode(message: _95.UninterpretedOption_NamePart, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.UninterpretedOption_NamePart;
             fromPartial(object: {
-                name_part?: string;
-                is_extension?: boolean;
+                namePart?: string;
+                isExtension?: boolean;
             }): _95.UninterpretedOption_NamePart;
         };
         SourceCodeInfo: {
@@ -1546,9 +1546,9 @@ export declare namespace google {
                 location?: {
                     path?: number[];
                     span?: number[];
-                    leading_comments?: string;
-                    trailing_comments?: string;
-                    leading_detached_comments?: string[];
+                    leadingComments?: string;
+                    trailingComments?: string;
+                    leadingDetachedComments?: string[];
                 }[];
             }): _95.SourceCodeInfo;
         };
@@ -1558,9 +1558,9 @@ export declare namespace google {
             fromPartial(object: {
                 path?: number[];
                 span?: number[];
-                leading_comments?: string;
-                trailing_comments?: string;
-                leading_detached_comments?: string[];
+                leadingComments?: string;
+                trailingComments?: string;
+                leadingDetachedComments?: string[];
             }): _95.SourceCodeInfo_Location;
         };
         GeneratedCodeInfo: {
@@ -1569,7 +1569,7 @@ export declare namespace google {
             fromPartial(object: {
                 annotation?: {
                     path?: number[];
-                    source_file?: string;
+                    sourceFile?: string;
                     begin?: number;
                     end?: number;
                 }[];
@@ -1580,7 +1580,7 @@ export declare namespace google {
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.GeneratedCodeInfo_Annotation;
             fromPartial(object: {
                 path?: number[];
-                source_file?: string;
+                sourceFile?: string;
                 begin?: number;
                 end?: number;
             }): _95.GeneratedCodeInfo_Annotation;
@@ -1589,7 +1589,7 @@ export declare namespace google {
             encode(message: _94.Any, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.Any;
             fromPartial(object: {
-                type_url?: string;
+                typeUrl?: string;
                 value?: Uint8Array;
             }): _94.Any;
         };

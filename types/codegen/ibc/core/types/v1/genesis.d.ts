@@ -9,11 +9,11 @@ import { DeepPartial } from "@osmonauts/helpers";
 /** GenesisState defines the ibc module's genesis state. */
 export interface GenesisState {
     /** ICS002 - Clients genesis state */
-    client_genesis: GenesisState1;
+    clientGenesis: GenesisState1;
     /** ICS003 - Connections genesis state */
-    connection_genesis: GenesisState2;
+    connectionGenesis: GenesisState2;
     /** ICS004 - Channel genesis state */
-    channel_genesis: GenesisState3;
+    channelGenesis: GenesisState3;
 }
 /** GenesisState defines the ibc module's genesis state. */
 export interface GenesisStateSDKType {

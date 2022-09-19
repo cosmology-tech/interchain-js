@@ -8,7 +8,7 @@ export interface GenesisState {
     codes: Code[];
     contracts: Contract[];
     sequences: Sequence[];
-    gen_msgs: GenesisState_GenMsgs[];
+    genMsgs: GenesisState_GenMsgs[];
 }
 /** GenesisState - genesis state of x/wasm */
 export interface GenesisStateSDKType {
@@ -23,9 +23,9 @@ export interface GenesisStateSDKType {
  * order. The intention is to have more human readable data that is auditable.
  */
 export interface GenesisState_GenMsgs {
-    store_code?: MsgStoreCode;
-    instantiate_contract?: MsgInstantiateContract;
-    execute_contract?: MsgExecuteContract;
+    storeCode?: MsgStoreCode;
+    instantiateContract?: MsgInstantiateContract;
+    executeContract?: MsgExecuteContract;
 }
 /**
  * GenMsgs define the messages that can be executed during genesis phase in
@@ -38,9 +38,9 @@ export interface GenesisState_GenMsgsSDKType {
 }
 /** Code struct encompasses CodeInfo and CodeBytes */
 export interface Code {
-    code_id: Long;
-    code_info: CodeInfo;
-    code_bytes: Uint8Array;
+    codeId: Long;
+    codeInfo: CodeInfo;
+    codeBytes: Uint8Array;
     /** Pinned to wasmvm cache */
     pinned: boolean;
 }
@@ -54,9 +54,9 @@ export interface CodeSDKType {
 }
 /** Contract struct encompasses ContractAddress, ContractInfo, and ContractState */
 export interface Contract {
-    contract_address: string;
-    contract_info: ContractInfo;
-    contract_state: Model[];
+    contractAddress: string;
+    contractInfo: ContractInfo;
+    contractState: Model[];
 }
 /** Contract struct encompasses ContractAddress, ContractInfo, and ContractState */
 export interface ContractSDKType {
@@ -66,7 +66,7 @@ export interface ContractSDKType {
 }
 /** Sequence key and value of an id generation counter */
 export interface Sequence {
-    id_key: Uint8Array;
+    idKey: Uint8Array;
     value: Long;
 }
 /** Sequence key and value of an id generation counter */

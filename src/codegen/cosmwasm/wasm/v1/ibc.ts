@@ -10,13 +10,13 @@ export interface MsgIBCSend {
    * The timeout is disabled when set to 0.
    */
 
-  timeout_height: Long;
+  timeoutHeight: Long;
   /**
    * Timeout timestamp (in nanoseconds) relative to the current block timestamp.
    * The timeout is disabled when set to 0.
    */
 
-  timeout_timestamp: Long;
+  timeoutTimestamp: Long;
   /**
    * Data is the payload to transfer. We must not make assumption what format or
    * content is in here.
@@ -62,8 +62,8 @@ export interface MsgIBCCloseChannelSDKType {
 function createBaseMsgIBCSend(): MsgIBCSend {
   return {
     channel: "",
-    timeout_height: Long.UZERO,
-    timeout_timestamp: Long.UZERO,
+    timeoutHeight: Long.UZERO,
+    timeoutTimestamp: Long.UZERO,
     data: new Uint8Array()
   };
 }
@@ -74,12 +74,12 @@ export const MsgIBCSend = {
       writer.uint32(18).string(message.channel);
     }
 
-    if (!message.timeout_height.isZero()) {
-      writer.uint32(32).uint64(message.timeout_height);
+    if (!message.timeoutHeight.isZero()) {
+      writer.uint32(32).uint64(message.timeoutHeight);
     }
 
-    if (!message.timeout_timestamp.isZero()) {
-      writer.uint32(40).uint64(message.timeout_timestamp);
+    if (!message.timeoutTimestamp.isZero()) {
+      writer.uint32(40).uint64(message.timeoutTimestamp);
     }
 
     if (message.data.length !== 0) {
@@ -103,11 +103,11 @@ export const MsgIBCSend = {
           break;
 
         case 4:
-          message.timeout_height = (reader.uint64() as Long);
+          message.timeoutHeight = (reader.uint64() as Long);
           break;
 
         case 5:
-          message.timeout_timestamp = (reader.uint64() as Long);
+          message.timeoutTimestamp = (reader.uint64() as Long);
           break;
 
         case 6:
@@ -126,8 +126,8 @@ export const MsgIBCSend = {
   fromPartial(object: DeepPartial<MsgIBCSend>): MsgIBCSend {
     const message = createBaseMsgIBCSend();
     message.channel = object.channel ?? "";
-    message.timeout_height = object.timeout_height !== undefined && object.timeout_height !== null ? Long.fromValue(object.timeout_height) : Long.UZERO;
-    message.timeout_timestamp = object.timeout_timestamp !== undefined && object.timeout_timestamp !== null ? Long.fromValue(object.timeout_timestamp) : Long.UZERO;
+    message.timeoutHeight = object.timeoutHeight !== undefined && object.timeoutHeight !== null ? Long.fromValue(object.timeoutHeight) : Long.UZERO;
+    message.timeoutTimestamp = object.timeoutTimestamp !== undefined && object.timeoutTimestamp !== null ? Long.fromValue(object.timeoutTimestamp) : Long.UZERO;
     message.data = object.data ?? new Uint8Array();
     return message;
   }

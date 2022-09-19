@@ -24,7 +24,7 @@ export interface QueryDenomTraceRequestSDKType {
  */
 export interface QueryDenomTraceResponse {
     /** denom_trace returns the requested denomination trace information. */
-    denom_trace: DenomTrace;
+    denomTrace: DenomTrace;
 }
 /**
  * QueryDenomTraceResponse is the response type for the Query/DenomTrace RPC
@@ -56,7 +56,7 @@ export interface QueryDenomTracesRequestSDKType {
  */
 export interface QueryDenomTracesResponse {
     /** denom_traces returns all denominations trace information. */
-    denom_traces: DenomTrace[];
+    denomTraces: DenomTrace[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponse;
 }

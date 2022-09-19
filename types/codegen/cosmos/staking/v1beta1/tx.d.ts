@@ -7,9 +7,9 @@ import { DeepPartial } from "@osmonauts/helpers";
 export interface MsgCreateValidator {
     description: Description;
     commission: CommissionRates;
-    min_self_delegation: string;
-    delegator_address: string;
-    validator_address: string;
+    minSelfDelegation: string;
+    delegatorAddress: string;
+    validatorAddress: string;
     pubkey: Any;
     value: Coin;
 }
@@ -32,15 +32,15 @@ export interface MsgCreateValidatorResponseSDKType {
 /** MsgEditValidator defines a SDK message for editing an existing validator. */
 export interface MsgEditValidator {
     description: Description;
-    validator_address: string;
+    validatorAddress: string;
     /**
      * We pass a reference to the new commission rate and min self delegation as
      * it's not mandatory to update. If not updated, the deserialized rate will be
      * zero with no way to distinguish if an update was intended.
      * REF: #2373
      */
-    commission_rate: string;
-    min_self_delegation: string;
+    commissionRate: string;
+    minSelfDelegation: string;
 }
 /** MsgEditValidator defines a SDK message for editing an existing validator. */
 export interface MsgEditValidatorSDKType {
@@ -66,8 +66,8 @@ export interface MsgEditValidatorResponseSDKType {
  * from a delegator to a validator.
  */
 export interface MsgDelegate {
-    delegator_address: string;
-    validator_address: string;
+    delegatorAddress: string;
+    validatorAddress: string;
     amount: Coin;
 }
 /**
@@ -90,9 +90,9 @@ export interface MsgDelegateResponseSDKType {
  * of coins from a delegator and source validator to a destination validator.
  */
 export interface MsgBeginRedelegate {
-    delegator_address: string;
-    validator_src_address: string;
-    validator_dst_address: string;
+    delegatorAddress: string;
+    validatorSrcAddress: string;
+    validatorDstAddress: string;
     amount: Coin;
 }
 /**
@@ -107,7 +107,7 @@ export interface MsgBeginRedelegateSDKType {
 }
 /** MsgBeginRedelegateResponse defines the Msg/BeginRedelegate response type. */
 export interface MsgBeginRedelegateResponse {
-    completion_time: Date;
+    completionTime: Date;
 }
 /** MsgBeginRedelegateResponse defines the Msg/BeginRedelegate response type. */
 export interface MsgBeginRedelegateResponseSDKType {
@@ -118,8 +118,8 @@ export interface MsgBeginRedelegateResponseSDKType {
  * delegate and a validator.
  */
 export interface MsgUndelegate {
-    delegator_address: string;
-    validator_address: string;
+    delegatorAddress: string;
+    validatorAddress: string;
     amount: Coin;
 }
 /**
@@ -133,7 +133,7 @@ export interface MsgUndelegateSDKType {
 }
 /** MsgUndelegateResponse defines the Msg/Undelegate response type. */
 export interface MsgUndelegateResponse {
-    completion_time: Date;
+    completionTime: Date;
 }
 /** MsgUndelegateResponse defines the Msg/Undelegate response type. */
 export interface MsgUndelegateResponseSDKType {

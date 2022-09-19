@@ -15,7 +15,7 @@ export class LCDQueryClient extends LCDClient {
 
 
   async proposal(params: QueryProposalRequest): Promise<QueryProposalResponseSDKType> {
-    const endpoint = `cosmos/gov/v1beta1/proposals/${params.proposal_id}`;
+    const endpoint = `cosmos/gov/v1beta1/proposals/${params.proposalId}`;
     return await this.get<QueryProposalResponseSDKType>(endpoint);
   }
   /* Proposals queries all proposals based on given status. */
@@ -26,8 +26,8 @@ export class LCDQueryClient extends LCDClient {
       params: {}
     };
 
-    if (typeof params?.proposal_status !== "undefined") {
-      options.params.proposal_status = params.proposal_status;
+    if (typeof params?.proposalStatus !== "undefined") {
+      options.params.proposal_status = params.proposalStatus;
     }
 
     if (typeof params?.voter !== "undefined") {
@@ -49,7 +49,7 @@ export class LCDQueryClient extends LCDClient {
 
 
   async vote(params: QueryVoteRequest): Promise<QueryVoteResponseSDKType> {
-    const endpoint = `cosmos/gov/v1beta1/proposals/${params.proposal_id}votes/${params.voter}`;
+    const endpoint = `cosmos/gov/v1beta1/proposals/${params.proposalId}votes/${params.voter}`;
     return await this.get<QueryVoteResponseSDKType>(endpoint);
   }
   /* Votes queries votes of a given proposal. */
@@ -64,21 +64,21 @@ export class LCDQueryClient extends LCDClient {
       setPaginationParams(options, params.pagination);
     }
 
-    const endpoint = `cosmos/gov/v1beta1/proposals/${params.proposal_id}/votes`;
+    const endpoint = `cosmos/gov/v1beta1/proposals/${params.proposalId}/votes`;
     return await this.get<QueryVotesResponseSDKType>(endpoint, options);
   }
   /* Params queries all parameters of the gov module. */
 
 
   async params(params: QueryParamsRequest): Promise<QueryParamsResponseSDKType> {
-    const endpoint = `cosmos/gov/v1beta1/params/${params.params_type}`;
+    const endpoint = `cosmos/gov/v1beta1/params/${params.paramsType}`;
     return await this.get<QueryParamsResponseSDKType>(endpoint);
   }
   /* Deposit queries single deposit information based proposalID, depositAddr. */
 
 
   async deposit(params: QueryDepositRequest): Promise<QueryDepositResponseSDKType> {
-    const endpoint = `cosmos/gov/v1beta1/proposals/${params.proposal_id}deposits/${params.depositor}`;
+    const endpoint = `cosmos/gov/v1beta1/proposals/${params.proposalId}deposits/${params.depositor}`;
     return await this.get<QueryDepositResponseSDKType>(endpoint);
   }
   /* Deposits queries all deposits of a single proposal. */
@@ -93,14 +93,14 @@ export class LCDQueryClient extends LCDClient {
       setPaginationParams(options, params.pagination);
     }
 
-    const endpoint = `cosmos/gov/v1beta1/proposals/${params.proposal_id}/deposits`;
+    const endpoint = `cosmos/gov/v1beta1/proposals/${params.proposalId}/deposits`;
     return await this.get<QueryDepositsResponseSDKType>(endpoint, options);
   }
   /* TallyResult queries the tally of a proposal vote. */
 
 
   async tallyResult(params: QueryTallyResultRequest): Promise<QueryTallyResultResponseSDKType> {
-    const endpoint = `cosmos/gov/v1beta1/proposals/${params.proposal_id}/tally`;
+    const endpoint = `cosmos/gov/v1beta1/proposals/${params.proposalId}/tally`;
     return await this.get<QueryTallyResultResponseSDKType>(endpoint);
   }
 

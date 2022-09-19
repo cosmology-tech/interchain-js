@@ -27,7 +27,7 @@ export interface TxResponse {
    * non-deterministic.
    */
 
-  raw_log: string;
+  rawLog: string;
   /** The output of the application's logger (typed). May be non-deterministic. */
 
   logs: ABCIMessageLog[];
@@ -36,10 +36,10 @@ export interface TxResponse {
   info: string;
   /** Amount of gas requested for transaction. */
 
-  gas_wanted: Long;
+  gasWanted: Long;
   /** Amount of gas consumed by transaction. */
 
-  gas_used: Long;
+  gasUsed: Long;
   /** The request transaction bytes. */
 
   tx: Any;
@@ -123,7 +123,7 @@ export interface TxResponseSDKType {
 /** ABCIMessageLog defines a structure containing an indexed tx ABCI message log. */
 
 export interface ABCIMessageLog {
-  msg_index: number;
+  msgIndex: number;
   log: string;
   /**
    * Events contains a slice of Event objects that were emitted during some
@@ -184,10 +184,10 @@ export interface AttributeSDKType {
 
 export interface GasInfo {
   /** GasWanted is the maximum units of work we allow this tx to perform. */
-  gas_wanted: Long;
+  gasWanted: Long;
   /** GasUsed is the amount of gas actually consumed. */
 
-  gas_used: Long;
+  gasUsed: Long;
 }
 /** GasInfo defines tx execution gas context. */
 
@@ -225,7 +225,7 @@ export interface Result {
    * Since: cosmos-sdk 0.46
    */
 
-  msg_responses: Any[];
+  msgResponses: Any[];
 }
 /** Result is the union of ResponseFormat and ResponseCheckTx. */
 
@@ -262,7 +262,7 @@ export interface ResultSDKType {
  */
 
 export interface SimulationResponse {
-  gas_info: GasInfo;
+  gasInfo: GasInfo;
   result: Result;
 }
 /**
@@ -282,7 +282,7 @@ export interface SimulationResponseSDKType {
 /** @deprecated */
 
 export interface MsgData {
-  msg_type: string;
+  msgType: string;
   data: Uint8Array;
 }
 /**
@@ -312,7 +312,7 @@ export interface TxMsgData {
    * Since: cosmos-sdk 0.46
    */
 
-  msg_responses: Any[];
+  msgResponses: Any[];
 }
 /**
  * TxMsgData defines a list of MsgData. A transaction will have a MsgData object
@@ -336,16 +336,16 @@ export interface TxMsgDataSDKType {
 
 export interface SearchTxsResult {
   /** Count of all txs */
-  total_count: Long;
+  totalCount: Long;
   /** Count of txs in current page */
 
   count: Long;
   /** Index of current page, start from 1 */
 
-  page_number: Long;
+  pageNumber: Long;
   /** Count of total pages */
 
-  page_total: Long;
+  pageTotal: Long;
   /** Max count txs per page */
 
   limit: Long;
@@ -382,11 +382,11 @@ function createBaseTxResponse(): TxResponse {
     codespace: "",
     code: 0,
     data: "",
-    raw_log: "",
+    rawLog: "",
     logs: [],
     info: "",
-    gas_wanted: Long.ZERO,
-    gas_used: Long.ZERO,
+    gasWanted: Long.ZERO,
+    gasUsed: Long.ZERO,
     tx: undefined,
     timestamp: "",
     events: []
@@ -415,8 +415,8 @@ export const TxResponse = {
       writer.uint32(42).string(message.data);
     }
 
-    if (message.raw_log !== "") {
-      writer.uint32(50).string(message.raw_log);
+    if (message.rawLog !== "") {
+      writer.uint32(50).string(message.rawLog);
     }
 
     for (const v of message.logs) {
@@ -427,12 +427,12 @@ export const TxResponse = {
       writer.uint32(66).string(message.info);
     }
 
-    if (!message.gas_wanted.isZero()) {
-      writer.uint32(72).int64(message.gas_wanted);
+    if (!message.gasWanted.isZero()) {
+      writer.uint32(72).int64(message.gasWanted);
     }
 
-    if (!message.gas_used.isZero()) {
-      writer.uint32(80).int64(message.gas_used);
+    if (!message.gasUsed.isZero()) {
+      writer.uint32(80).int64(message.gasUsed);
     }
 
     if (message.tx !== undefined) {
@@ -480,7 +480,7 @@ export const TxResponse = {
           break;
 
         case 6:
-          message.raw_log = reader.string();
+          message.rawLog = reader.string();
           break;
 
         case 7:
@@ -492,11 +492,11 @@ export const TxResponse = {
           break;
 
         case 9:
-          message.gas_wanted = (reader.int64() as Long);
+          message.gasWanted = (reader.int64() as Long);
           break;
 
         case 10:
-          message.gas_used = (reader.int64() as Long);
+          message.gasUsed = (reader.int64() as Long);
           break;
 
         case 11:
@@ -527,11 +527,11 @@ export const TxResponse = {
     message.codespace = object.codespace ?? "";
     message.code = object.code ?? 0;
     message.data = object.data ?? "";
-    message.raw_log = object.raw_log ?? "";
+    message.rawLog = object.rawLog ?? "";
     message.logs = object.logs?.map(e => ABCIMessageLog.fromPartial(e)) || [];
     message.info = object.info ?? "";
-    message.gas_wanted = object.gas_wanted !== undefined && object.gas_wanted !== null ? Long.fromValue(object.gas_wanted) : Long.ZERO;
-    message.gas_used = object.gas_used !== undefined && object.gas_used !== null ? Long.fromValue(object.gas_used) : Long.ZERO;
+    message.gasWanted = object.gasWanted !== undefined && object.gasWanted !== null ? Long.fromValue(object.gasWanted) : Long.ZERO;
+    message.gasUsed = object.gasUsed !== undefined && object.gasUsed !== null ? Long.fromValue(object.gasUsed) : Long.ZERO;
     message.tx = object.tx !== undefined && object.tx !== null ? Any.fromPartial(object.tx) : undefined;
     message.timestamp = object.timestamp ?? "";
     message.events = object.events?.map(e => Event.fromPartial(e)) || [];
@@ -542,7 +542,7 @@ export const TxResponse = {
 
 function createBaseABCIMessageLog(): ABCIMessageLog {
   return {
-    msg_index: 0,
+    msgIndex: 0,
     log: "",
     events: []
   };
@@ -550,8 +550,8 @@ function createBaseABCIMessageLog(): ABCIMessageLog {
 
 export const ABCIMessageLog = {
   encode(message: ABCIMessageLog, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.msg_index !== 0) {
-      writer.uint32(8).uint32(message.msg_index);
+    if (message.msgIndex !== 0) {
+      writer.uint32(8).uint32(message.msgIndex);
     }
 
     if (message.log !== "") {
@@ -575,7 +575,7 @@ export const ABCIMessageLog = {
 
       switch (tag >>> 3) {
         case 1:
-          message.msg_index = reader.uint32();
+          message.msgIndex = reader.uint32();
           break;
 
         case 2:
@@ -597,7 +597,7 @@ export const ABCIMessageLog = {
 
   fromPartial(object: DeepPartial<ABCIMessageLog>): ABCIMessageLog {
     const message = createBaseABCIMessageLog();
-    message.msg_index = object.msg_index ?? 0;
+    message.msgIndex = object.msgIndex ?? 0;
     message.log = object.log ?? "";
     message.events = object.events?.map(e => StringEvent.fromPartial(e)) || [];
     return message;
@@ -717,19 +717,19 @@ export const Attribute = {
 
 function createBaseGasInfo(): GasInfo {
   return {
-    gas_wanted: Long.UZERO,
-    gas_used: Long.UZERO
+    gasWanted: Long.UZERO,
+    gasUsed: Long.UZERO
   };
 }
 
 export const GasInfo = {
   encode(message: GasInfo, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.gas_wanted.isZero()) {
-      writer.uint32(8).uint64(message.gas_wanted);
+    if (!message.gasWanted.isZero()) {
+      writer.uint32(8).uint64(message.gasWanted);
     }
 
-    if (!message.gas_used.isZero()) {
-      writer.uint32(16).uint64(message.gas_used);
+    if (!message.gasUsed.isZero()) {
+      writer.uint32(16).uint64(message.gasUsed);
     }
 
     return writer;
@@ -745,11 +745,11 @@ export const GasInfo = {
 
       switch (tag >>> 3) {
         case 1:
-          message.gas_wanted = (reader.uint64() as Long);
+          message.gasWanted = (reader.uint64() as Long);
           break;
 
         case 2:
-          message.gas_used = (reader.uint64() as Long);
+          message.gasUsed = (reader.uint64() as Long);
           break;
 
         default:
@@ -763,8 +763,8 @@ export const GasInfo = {
 
   fromPartial(object: DeepPartial<GasInfo>): GasInfo {
     const message = createBaseGasInfo();
-    message.gas_wanted = object.gas_wanted !== undefined && object.gas_wanted !== null ? Long.fromValue(object.gas_wanted) : Long.UZERO;
-    message.gas_used = object.gas_used !== undefined && object.gas_used !== null ? Long.fromValue(object.gas_used) : Long.UZERO;
+    message.gasWanted = object.gasWanted !== undefined && object.gasWanted !== null ? Long.fromValue(object.gasWanted) : Long.UZERO;
+    message.gasUsed = object.gasUsed !== undefined && object.gasUsed !== null ? Long.fromValue(object.gasUsed) : Long.UZERO;
     return message;
   }
 
@@ -775,7 +775,7 @@ function createBaseResult(): Result {
     data: new Uint8Array(),
     log: "",
     events: [],
-    msg_responses: []
+    msgResponses: []
   };
 }
 
@@ -793,7 +793,7 @@ export const Result = {
       Event.encode(v!, writer.uint32(26).fork()).ldelim();
     }
 
-    for (const v of message.msg_responses) {
+    for (const v of message.msgResponses) {
       Any.encode(v!, writer.uint32(34).fork()).ldelim();
     }
 
@@ -822,7 +822,7 @@ export const Result = {
           break;
 
         case 4:
-          message.msg_responses.push(Any.decode(reader, reader.uint32()));
+          message.msgResponses.push(Any.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -839,7 +839,7 @@ export const Result = {
     message.data = object.data ?? new Uint8Array();
     message.log = object.log ?? "";
     message.events = object.events?.map(e => Event.fromPartial(e)) || [];
-    message.msg_responses = object.msg_responses?.map(e => Any.fromPartial(e)) || [];
+    message.msgResponses = object.msgResponses?.map(e => Any.fromPartial(e)) || [];
     return message;
   }
 
@@ -847,15 +847,15 @@ export const Result = {
 
 function createBaseSimulationResponse(): SimulationResponse {
   return {
-    gas_info: undefined,
+    gasInfo: undefined,
     result: undefined
   };
 }
 
 export const SimulationResponse = {
   encode(message: SimulationResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.gas_info !== undefined) {
-      GasInfo.encode(message.gas_info, writer.uint32(10).fork()).ldelim();
+    if (message.gasInfo !== undefined) {
+      GasInfo.encode(message.gasInfo, writer.uint32(10).fork()).ldelim();
     }
 
     if (message.result !== undefined) {
@@ -875,7 +875,7 @@ export const SimulationResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.gas_info = GasInfo.decode(reader, reader.uint32());
+          message.gasInfo = GasInfo.decode(reader, reader.uint32());
           break;
 
         case 2:
@@ -893,7 +893,7 @@ export const SimulationResponse = {
 
   fromPartial(object: DeepPartial<SimulationResponse>): SimulationResponse {
     const message = createBaseSimulationResponse();
-    message.gas_info = object.gas_info !== undefined && object.gas_info !== null ? GasInfo.fromPartial(object.gas_info) : undefined;
+    message.gasInfo = object.gasInfo !== undefined && object.gasInfo !== null ? GasInfo.fromPartial(object.gasInfo) : undefined;
     message.result = object.result !== undefined && object.result !== null ? Result.fromPartial(object.result) : undefined;
     return message;
   }
@@ -902,15 +902,15 @@ export const SimulationResponse = {
 
 function createBaseMsgData(): MsgData {
   return {
-    msg_type: "",
+    msgType: "",
     data: new Uint8Array()
   };
 }
 
 export const MsgData = {
   encode(message: MsgData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.msg_type !== "") {
-      writer.uint32(10).string(message.msg_type);
+    if (message.msgType !== "") {
+      writer.uint32(10).string(message.msgType);
     }
 
     if (message.data.length !== 0) {
@@ -930,7 +930,7 @@ export const MsgData = {
 
       switch (tag >>> 3) {
         case 1:
-          message.msg_type = reader.string();
+          message.msgType = reader.string();
           break;
 
         case 2:
@@ -948,7 +948,7 @@ export const MsgData = {
 
   fromPartial(object: DeepPartial<MsgData>): MsgData {
     const message = createBaseMsgData();
-    message.msg_type = object.msg_type ?? "";
+    message.msgType = object.msgType ?? "";
     message.data = object.data ?? new Uint8Array();
     return message;
   }
@@ -958,7 +958,7 @@ export const MsgData = {
 function createBaseTxMsgData(): TxMsgData {
   return {
     data: [],
-    msg_responses: []
+    msgResponses: []
   };
 }
 
@@ -968,7 +968,7 @@ export const TxMsgData = {
       MsgData.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
-    for (const v of message.msg_responses) {
+    for (const v of message.msgResponses) {
       Any.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
@@ -989,7 +989,7 @@ export const TxMsgData = {
           break;
 
         case 2:
-          message.msg_responses.push(Any.decode(reader, reader.uint32()));
+          message.msgResponses.push(Any.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -1004,7 +1004,7 @@ export const TxMsgData = {
   fromPartial(object: DeepPartial<TxMsgData>): TxMsgData {
     const message = createBaseTxMsgData();
     message.data = object.data?.map(e => MsgData.fromPartial(e)) || [];
-    message.msg_responses = object.msg_responses?.map(e => Any.fromPartial(e)) || [];
+    message.msgResponses = object.msgResponses?.map(e => Any.fromPartial(e)) || [];
     return message;
   }
 
@@ -1012,10 +1012,10 @@ export const TxMsgData = {
 
 function createBaseSearchTxsResult(): SearchTxsResult {
   return {
-    total_count: Long.UZERO,
+    totalCount: Long.UZERO,
     count: Long.UZERO,
-    page_number: Long.UZERO,
-    page_total: Long.UZERO,
+    pageNumber: Long.UZERO,
+    pageTotal: Long.UZERO,
     limit: Long.UZERO,
     txs: []
   };
@@ -1023,20 +1023,20 @@ function createBaseSearchTxsResult(): SearchTxsResult {
 
 export const SearchTxsResult = {
   encode(message: SearchTxsResult, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.total_count.isZero()) {
-      writer.uint32(8).uint64(message.total_count);
+    if (!message.totalCount.isZero()) {
+      writer.uint32(8).uint64(message.totalCount);
     }
 
     if (!message.count.isZero()) {
       writer.uint32(16).uint64(message.count);
     }
 
-    if (!message.page_number.isZero()) {
-      writer.uint32(24).uint64(message.page_number);
+    if (!message.pageNumber.isZero()) {
+      writer.uint32(24).uint64(message.pageNumber);
     }
 
-    if (!message.page_total.isZero()) {
-      writer.uint32(32).uint64(message.page_total);
+    if (!message.pageTotal.isZero()) {
+      writer.uint32(32).uint64(message.pageTotal);
     }
 
     if (!message.limit.isZero()) {
@@ -1060,7 +1060,7 @@ export const SearchTxsResult = {
 
       switch (tag >>> 3) {
         case 1:
-          message.total_count = (reader.uint64() as Long);
+          message.totalCount = (reader.uint64() as Long);
           break;
 
         case 2:
@@ -1068,11 +1068,11 @@ export const SearchTxsResult = {
           break;
 
         case 3:
-          message.page_number = (reader.uint64() as Long);
+          message.pageNumber = (reader.uint64() as Long);
           break;
 
         case 4:
-          message.page_total = (reader.uint64() as Long);
+          message.pageTotal = (reader.uint64() as Long);
           break;
 
         case 5:
@@ -1094,10 +1094,10 @@ export const SearchTxsResult = {
 
   fromPartial(object: DeepPartial<SearchTxsResult>): SearchTxsResult {
     const message = createBaseSearchTxsResult();
-    message.total_count = object.total_count !== undefined && object.total_count !== null ? Long.fromValue(object.total_count) : Long.UZERO;
+    message.totalCount = object.totalCount !== undefined && object.totalCount !== null ? Long.fromValue(object.totalCount) : Long.UZERO;
     message.count = object.count !== undefined && object.count !== null ? Long.fromValue(object.count) : Long.UZERO;
-    message.page_number = object.page_number !== undefined && object.page_number !== null ? Long.fromValue(object.page_number) : Long.UZERO;
-    message.page_total = object.page_total !== undefined && object.page_total !== null ? Long.fromValue(object.page_total) : Long.UZERO;
+    message.pageNumber = object.pageNumber !== undefined && object.pageNumber !== null ? Long.fromValue(object.pageNumber) : Long.UZERO;
+    message.pageTotal = object.pageTotal !== undefined && object.pageTotal !== null ? Long.fromValue(object.pageTotal) : Long.UZERO;
     message.limit = object.limit !== undefined && object.limit !== null ? Long.fromValue(object.limit) : Long.UZERO;
     message.txs = object.txs?.map(e => TxResponse.fromPartial(e)) || [];
     return message;

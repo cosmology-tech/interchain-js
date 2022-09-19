@@ -10,10 +10,10 @@ import { DeepPartial, Long } from "@osmonauts/helpers";
 
 export interface DelegatorWithdrawInfo {
   /** delegator_address is the address of the delegator. */
-  delegator_address: string;
+  delegatorAddress: string;
   /** withdraw_address is the address to withdraw the delegation rewards to. */
 
-  withdraw_address: string;
+  withdrawAddress: string;
 }
 /**
  * DelegatorWithdrawInfo is the address for where distributions rewards are
@@ -32,10 +32,10 @@ export interface DelegatorWithdrawInfoSDKType {
 
 export interface ValidatorOutstandingRewardsRecord {
   /** validator_address is the address of the validator. */
-  validator_address: string;
+  validatorAddress: string;
   /** outstanding_rewards represents the oustanding rewards of a validator. */
 
-  outstanding_rewards: DecCoin[];
+  outstandingRewards: DecCoin[];
 }
 /** ValidatorOutstandingRewardsRecord is used for import/export via genesis json. */
 
@@ -53,7 +53,7 @@ export interface ValidatorOutstandingRewardsRecordSDKType {
 
 export interface ValidatorAccumulatedCommissionRecord {
   /** validator_address is the address of the validator. */
-  validator_address: string;
+  validatorAddress: string;
   /** accumulated is the accumulated commission of a validator. */
 
   accumulated: ValidatorAccumulatedCommission;
@@ -77,7 +77,7 @@ export interface ValidatorAccumulatedCommissionRecordSDKType {
 
 export interface ValidatorHistoricalRewardsRecord {
   /** validator_address is the address of the validator. */
-  validator_address: string;
+  validatorAddress: string;
   /** period defines the period the historical rewards apply to. */
 
   period: Long;
@@ -104,7 +104,7 @@ export interface ValidatorHistoricalRewardsRecordSDKType {
 
 export interface ValidatorCurrentRewardsRecord {
   /** validator_address is the address of the validator. */
-  validator_address: string;
+  validatorAddress: string;
   /** rewards defines the current rewards of a validator. */
 
   rewards: ValidatorCurrentRewards;
@@ -122,13 +122,13 @@ export interface ValidatorCurrentRewardsRecordSDKType {
 
 export interface DelegatorStartingInfoRecord {
   /** delegator_address is the address of the delegator. */
-  delegator_address: string;
+  delegatorAddress: string;
   /** validator_address is the address of the validator. */
 
-  validator_address: string;
+  validatorAddress: string;
   /** starting_info defines the starting info of a delegator. */
 
-  starting_info: DelegatorStartingInfo;
+  startingInfo: DelegatorStartingInfo;
 }
 /** DelegatorStartingInfoRecord used for import / export via genesis json. */
 
@@ -146,7 +146,7 @@ export interface DelegatorStartingInfoRecordSDKType {
 
 export interface ValidatorSlashEventRecord {
   /** validator_address is the address of the validator. */
-  validator_address: string;
+  validatorAddress: string;
   /** height defines the block height at which the slash event occured. */
 
   height: Long;
@@ -155,7 +155,7 @@ export interface ValidatorSlashEventRecord {
   period: Long;
   /** validator_slash_event describes the slash event. */
 
-  validator_slash_event: ValidatorSlashEvent;
+  validatorSlashEvent: ValidatorSlashEvent;
 }
 /** ValidatorSlashEventRecord is used for import / export via genesis json. */
 
@@ -179,31 +179,31 @@ export interface GenesisState {
   params: Params;
   /** fee_pool defines the fee pool at genesis. */
 
-  fee_pool: FeePool;
+  feePool: FeePool;
   /** fee_pool defines the delegator withdraw infos at genesis. */
 
-  delegator_withdraw_infos: DelegatorWithdrawInfo[];
+  delegatorWithdrawInfos: DelegatorWithdrawInfo[];
   /** fee_pool defines the previous proposer at genesis. */
 
-  previous_proposer: string;
+  previousProposer: string;
   /** fee_pool defines the outstanding rewards of all validators at genesis. */
 
-  outstanding_rewards: ValidatorOutstandingRewardsRecord[];
+  outstandingRewards: ValidatorOutstandingRewardsRecord[];
   /** fee_pool defines the accumulated commisions of all validators at genesis. */
 
-  validator_accumulated_commissions: ValidatorAccumulatedCommissionRecord[];
+  validatorAccumulatedCommissions: ValidatorAccumulatedCommissionRecord[];
   /** fee_pool defines the historical rewards of all validators at genesis. */
 
-  validator_historical_rewards: ValidatorHistoricalRewardsRecord[];
+  validatorHistoricalRewards: ValidatorHistoricalRewardsRecord[];
   /** fee_pool defines the current rewards of all validators at genesis. */
 
-  validator_current_rewards: ValidatorCurrentRewardsRecord[];
+  validatorCurrentRewards: ValidatorCurrentRewardsRecord[];
   /** fee_pool defines the delegator starting infos at genesis. */
 
-  delegator_starting_infos: DelegatorStartingInfoRecord[];
+  delegatorStartingInfos: DelegatorStartingInfoRecord[];
   /** fee_pool defines the validator slash events at genesis. */
 
-  validator_slash_events: ValidatorSlashEventRecord[];
+  validatorSlashEvents: ValidatorSlashEventRecord[];
 }
 /** GenesisState defines the distribution module's genesis state. */
 
@@ -241,19 +241,19 @@ export interface GenesisStateSDKType {
 
 function createBaseDelegatorWithdrawInfo(): DelegatorWithdrawInfo {
   return {
-    delegator_address: "",
-    withdraw_address: ""
+    delegatorAddress: "",
+    withdrawAddress: ""
   };
 }
 
 export const DelegatorWithdrawInfo = {
   encode(message: DelegatorWithdrawInfo, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.delegator_address !== "") {
-      writer.uint32(10).string(message.delegator_address);
+    if (message.delegatorAddress !== "") {
+      writer.uint32(10).string(message.delegatorAddress);
     }
 
-    if (message.withdraw_address !== "") {
-      writer.uint32(18).string(message.withdraw_address);
+    if (message.withdrawAddress !== "") {
+      writer.uint32(18).string(message.withdrawAddress);
     }
 
     return writer;
@@ -269,11 +269,11 @@ export const DelegatorWithdrawInfo = {
 
       switch (tag >>> 3) {
         case 1:
-          message.delegator_address = reader.string();
+          message.delegatorAddress = reader.string();
           break;
 
         case 2:
-          message.withdraw_address = reader.string();
+          message.withdrawAddress = reader.string();
           break;
 
         default:
@@ -287,8 +287,8 @@ export const DelegatorWithdrawInfo = {
 
   fromPartial(object: DeepPartial<DelegatorWithdrawInfo>): DelegatorWithdrawInfo {
     const message = createBaseDelegatorWithdrawInfo();
-    message.delegator_address = object.delegator_address ?? "";
-    message.withdraw_address = object.withdraw_address ?? "";
+    message.delegatorAddress = object.delegatorAddress ?? "";
+    message.withdrawAddress = object.withdrawAddress ?? "";
     return message;
   }
 
@@ -296,18 +296,18 @@ export const DelegatorWithdrawInfo = {
 
 function createBaseValidatorOutstandingRewardsRecord(): ValidatorOutstandingRewardsRecord {
   return {
-    validator_address: "",
-    outstanding_rewards: []
+    validatorAddress: "",
+    outstandingRewards: []
   };
 }
 
 export const ValidatorOutstandingRewardsRecord = {
   encode(message: ValidatorOutstandingRewardsRecord, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.validator_address !== "") {
-      writer.uint32(10).string(message.validator_address);
+    if (message.validatorAddress !== "") {
+      writer.uint32(10).string(message.validatorAddress);
     }
 
-    for (const v of message.outstanding_rewards) {
+    for (const v of message.outstandingRewards) {
       DecCoin.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
@@ -324,11 +324,11 @@ export const ValidatorOutstandingRewardsRecord = {
 
       switch (tag >>> 3) {
         case 1:
-          message.validator_address = reader.string();
+          message.validatorAddress = reader.string();
           break;
 
         case 2:
-          message.outstanding_rewards.push(DecCoin.decode(reader, reader.uint32()));
+          message.outstandingRewards.push(DecCoin.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -342,8 +342,8 @@ export const ValidatorOutstandingRewardsRecord = {
 
   fromPartial(object: DeepPartial<ValidatorOutstandingRewardsRecord>): ValidatorOutstandingRewardsRecord {
     const message = createBaseValidatorOutstandingRewardsRecord();
-    message.validator_address = object.validator_address ?? "";
-    message.outstanding_rewards = object.outstanding_rewards?.map(e => DecCoin.fromPartial(e)) || [];
+    message.validatorAddress = object.validatorAddress ?? "";
+    message.outstandingRewards = object.outstandingRewards?.map(e => DecCoin.fromPartial(e)) || [];
     return message;
   }
 
@@ -351,15 +351,15 @@ export const ValidatorOutstandingRewardsRecord = {
 
 function createBaseValidatorAccumulatedCommissionRecord(): ValidatorAccumulatedCommissionRecord {
   return {
-    validator_address: "",
+    validatorAddress: "",
     accumulated: undefined
   };
 }
 
 export const ValidatorAccumulatedCommissionRecord = {
   encode(message: ValidatorAccumulatedCommissionRecord, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.validator_address !== "") {
-      writer.uint32(10).string(message.validator_address);
+    if (message.validatorAddress !== "") {
+      writer.uint32(10).string(message.validatorAddress);
     }
 
     if (message.accumulated !== undefined) {
@@ -379,7 +379,7 @@ export const ValidatorAccumulatedCommissionRecord = {
 
       switch (tag >>> 3) {
         case 1:
-          message.validator_address = reader.string();
+          message.validatorAddress = reader.string();
           break;
 
         case 2:
@@ -397,7 +397,7 @@ export const ValidatorAccumulatedCommissionRecord = {
 
   fromPartial(object: DeepPartial<ValidatorAccumulatedCommissionRecord>): ValidatorAccumulatedCommissionRecord {
     const message = createBaseValidatorAccumulatedCommissionRecord();
-    message.validator_address = object.validator_address ?? "";
+    message.validatorAddress = object.validatorAddress ?? "";
     message.accumulated = object.accumulated !== undefined && object.accumulated !== null ? ValidatorAccumulatedCommission.fromPartial(object.accumulated) : undefined;
     return message;
   }
@@ -406,7 +406,7 @@ export const ValidatorAccumulatedCommissionRecord = {
 
 function createBaseValidatorHistoricalRewardsRecord(): ValidatorHistoricalRewardsRecord {
   return {
-    validator_address: "",
+    validatorAddress: "",
     period: Long.UZERO,
     rewards: undefined
   };
@@ -414,8 +414,8 @@ function createBaseValidatorHistoricalRewardsRecord(): ValidatorHistoricalReward
 
 export const ValidatorHistoricalRewardsRecord = {
   encode(message: ValidatorHistoricalRewardsRecord, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.validator_address !== "") {
-      writer.uint32(10).string(message.validator_address);
+    if (message.validatorAddress !== "") {
+      writer.uint32(10).string(message.validatorAddress);
     }
 
     if (!message.period.isZero()) {
@@ -439,7 +439,7 @@ export const ValidatorHistoricalRewardsRecord = {
 
       switch (tag >>> 3) {
         case 1:
-          message.validator_address = reader.string();
+          message.validatorAddress = reader.string();
           break;
 
         case 2:
@@ -461,7 +461,7 @@ export const ValidatorHistoricalRewardsRecord = {
 
   fromPartial(object: DeepPartial<ValidatorHistoricalRewardsRecord>): ValidatorHistoricalRewardsRecord {
     const message = createBaseValidatorHistoricalRewardsRecord();
-    message.validator_address = object.validator_address ?? "";
+    message.validatorAddress = object.validatorAddress ?? "";
     message.period = object.period !== undefined && object.period !== null ? Long.fromValue(object.period) : Long.UZERO;
     message.rewards = object.rewards !== undefined && object.rewards !== null ? ValidatorHistoricalRewards.fromPartial(object.rewards) : undefined;
     return message;
@@ -471,15 +471,15 @@ export const ValidatorHistoricalRewardsRecord = {
 
 function createBaseValidatorCurrentRewardsRecord(): ValidatorCurrentRewardsRecord {
   return {
-    validator_address: "",
+    validatorAddress: "",
     rewards: undefined
   };
 }
 
 export const ValidatorCurrentRewardsRecord = {
   encode(message: ValidatorCurrentRewardsRecord, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.validator_address !== "") {
-      writer.uint32(10).string(message.validator_address);
+    if (message.validatorAddress !== "") {
+      writer.uint32(10).string(message.validatorAddress);
     }
 
     if (message.rewards !== undefined) {
@@ -499,7 +499,7 @@ export const ValidatorCurrentRewardsRecord = {
 
       switch (tag >>> 3) {
         case 1:
-          message.validator_address = reader.string();
+          message.validatorAddress = reader.string();
           break;
 
         case 2:
@@ -517,7 +517,7 @@ export const ValidatorCurrentRewardsRecord = {
 
   fromPartial(object: DeepPartial<ValidatorCurrentRewardsRecord>): ValidatorCurrentRewardsRecord {
     const message = createBaseValidatorCurrentRewardsRecord();
-    message.validator_address = object.validator_address ?? "";
+    message.validatorAddress = object.validatorAddress ?? "";
     message.rewards = object.rewards !== undefined && object.rewards !== null ? ValidatorCurrentRewards.fromPartial(object.rewards) : undefined;
     return message;
   }
@@ -526,24 +526,24 @@ export const ValidatorCurrentRewardsRecord = {
 
 function createBaseDelegatorStartingInfoRecord(): DelegatorStartingInfoRecord {
   return {
-    delegator_address: "",
-    validator_address: "",
-    starting_info: undefined
+    delegatorAddress: "",
+    validatorAddress: "",
+    startingInfo: undefined
   };
 }
 
 export const DelegatorStartingInfoRecord = {
   encode(message: DelegatorStartingInfoRecord, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.delegator_address !== "") {
-      writer.uint32(10).string(message.delegator_address);
+    if (message.delegatorAddress !== "") {
+      writer.uint32(10).string(message.delegatorAddress);
     }
 
-    if (message.validator_address !== "") {
-      writer.uint32(18).string(message.validator_address);
+    if (message.validatorAddress !== "") {
+      writer.uint32(18).string(message.validatorAddress);
     }
 
-    if (message.starting_info !== undefined) {
-      DelegatorStartingInfo.encode(message.starting_info, writer.uint32(26).fork()).ldelim();
+    if (message.startingInfo !== undefined) {
+      DelegatorStartingInfo.encode(message.startingInfo, writer.uint32(26).fork()).ldelim();
     }
 
     return writer;
@@ -559,15 +559,15 @@ export const DelegatorStartingInfoRecord = {
 
       switch (tag >>> 3) {
         case 1:
-          message.delegator_address = reader.string();
+          message.delegatorAddress = reader.string();
           break;
 
         case 2:
-          message.validator_address = reader.string();
+          message.validatorAddress = reader.string();
           break;
 
         case 3:
-          message.starting_info = DelegatorStartingInfo.decode(reader, reader.uint32());
+          message.startingInfo = DelegatorStartingInfo.decode(reader, reader.uint32());
           break;
 
         default:
@@ -581,9 +581,9 @@ export const DelegatorStartingInfoRecord = {
 
   fromPartial(object: DeepPartial<DelegatorStartingInfoRecord>): DelegatorStartingInfoRecord {
     const message = createBaseDelegatorStartingInfoRecord();
-    message.delegator_address = object.delegator_address ?? "";
-    message.validator_address = object.validator_address ?? "";
-    message.starting_info = object.starting_info !== undefined && object.starting_info !== null ? DelegatorStartingInfo.fromPartial(object.starting_info) : undefined;
+    message.delegatorAddress = object.delegatorAddress ?? "";
+    message.validatorAddress = object.validatorAddress ?? "";
+    message.startingInfo = object.startingInfo !== undefined && object.startingInfo !== null ? DelegatorStartingInfo.fromPartial(object.startingInfo) : undefined;
     return message;
   }
 
@@ -591,17 +591,17 @@ export const DelegatorStartingInfoRecord = {
 
 function createBaseValidatorSlashEventRecord(): ValidatorSlashEventRecord {
   return {
-    validator_address: "",
+    validatorAddress: "",
     height: Long.UZERO,
     period: Long.UZERO,
-    validator_slash_event: undefined
+    validatorSlashEvent: undefined
   };
 }
 
 export const ValidatorSlashEventRecord = {
   encode(message: ValidatorSlashEventRecord, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.validator_address !== "") {
-      writer.uint32(10).string(message.validator_address);
+    if (message.validatorAddress !== "") {
+      writer.uint32(10).string(message.validatorAddress);
     }
 
     if (!message.height.isZero()) {
@@ -612,8 +612,8 @@ export const ValidatorSlashEventRecord = {
       writer.uint32(24).uint64(message.period);
     }
 
-    if (message.validator_slash_event !== undefined) {
-      ValidatorSlashEvent.encode(message.validator_slash_event, writer.uint32(34).fork()).ldelim();
+    if (message.validatorSlashEvent !== undefined) {
+      ValidatorSlashEvent.encode(message.validatorSlashEvent, writer.uint32(34).fork()).ldelim();
     }
 
     return writer;
@@ -629,7 +629,7 @@ export const ValidatorSlashEventRecord = {
 
       switch (tag >>> 3) {
         case 1:
-          message.validator_address = reader.string();
+          message.validatorAddress = reader.string();
           break;
 
         case 2:
@@ -641,7 +641,7 @@ export const ValidatorSlashEventRecord = {
           break;
 
         case 4:
-          message.validator_slash_event = ValidatorSlashEvent.decode(reader, reader.uint32());
+          message.validatorSlashEvent = ValidatorSlashEvent.decode(reader, reader.uint32());
           break;
 
         default:
@@ -655,10 +655,10 @@ export const ValidatorSlashEventRecord = {
 
   fromPartial(object: DeepPartial<ValidatorSlashEventRecord>): ValidatorSlashEventRecord {
     const message = createBaseValidatorSlashEventRecord();
-    message.validator_address = object.validator_address ?? "";
+    message.validatorAddress = object.validatorAddress ?? "";
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.UZERO;
     message.period = object.period !== undefined && object.period !== null ? Long.fromValue(object.period) : Long.UZERO;
-    message.validator_slash_event = object.validator_slash_event !== undefined && object.validator_slash_event !== null ? ValidatorSlashEvent.fromPartial(object.validator_slash_event) : undefined;
+    message.validatorSlashEvent = object.validatorSlashEvent !== undefined && object.validatorSlashEvent !== null ? ValidatorSlashEvent.fromPartial(object.validatorSlashEvent) : undefined;
     return message;
   }
 
@@ -667,15 +667,15 @@ export const ValidatorSlashEventRecord = {
 function createBaseGenesisState(): GenesisState {
   return {
     params: undefined,
-    fee_pool: undefined,
-    delegator_withdraw_infos: [],
-    previous_proposer: "",
-    outstanding_rewards: [],
-    validator_accumulated_commissions: [],
-    validator_historical_rewards: [],
-    validator_current_rewards: [],
-    delegator_starting_infos: [],
-    validator_slash_events: []
+    feePool: undefined,
+    delegatorWithdrawInfos: [],
+    previousProposer: "",
+    outstandingRewards: [],
+    validatorAccumulatedCommissions: [],
+    validatorHistoricalRewards: [],
+    validatorCurrentRewards: [],
+    delegatorStartingInfos: [],
+    validatorSlashEvents: []
   };
 }
 
@@ -685,39 +685,39 @@ export const GenesisState = {
       Params.encode(message.params, writer.uint32(10).fork()).ldelim();
     }
 
-    if (message.fee_pool !== undefined) {
-      FeePool.encode(message.fee_pool, writer.uint32(18).fork()).ldelim();
+    if (message.feePool !== undefined) {
+      FeePool.encode(message.feePool, writer.uint32(18).fork()).ldelim();
     }
 
-    for (const v of message.delegator_withdraw_infos) {
+    for (const v of message.delegatorWithdrawInfos) {
       DelegatorWithdrawInfo.encode(v!, writer.uint32(26).fork()).ldelim();
     }
 
-    if (message.previous_proposer !== "") {
-      writer.uint32(34).string(message.previous_proposer);
+    if (message.previousProposer !== "") {
+      writer.uint32(34).string(message.previousProposer);
     }
 
-    for (const v of message.outstanding_rewards) {
+    for (const v of message.outstandingRewards) {
       ValidatorOutstandingRewardsRecord.encode(v!, writer.uint32(42).fork()).ldelim();
     }
 
-    for (const v of message.validator_accumulated_commissions) {
+    for (const v of message.validatorAccumulatedCommissions) {
       ValidatorAccumulatedCommissionRecord.encode(v!, writer.uint32(50).fork()).ldelim();
     }
 
-    for (const v of message.validator_historical_rewards) {
+    for (const v of message.validatorHistoricalRewards) {
       ValidatorHistoricalRewardsRecord.encode(v!, writer.uint32(58).fork()).ldelim();
     }
 
-    for (const v of message.validator_current_rewards) {
+    for (const v of message.validatorCurrentRewards) {
       ValidatorCurrentRewardsRecord.encode(v!, writer.uint32(66).fork()).ldelim();
     }
 
-    for (const v of message.delegator_starting_infos) {
+    for (const v of message.delegatorStartingInfos) {
       DelegatorStartingInfoRecord.encode(v!, writer.uint32(74).fork()).ldelim();
     }
 
-    for (const v of message.validator_slash_events) {
+    for (const v of message.validatorSlashEvents) {
       ValidatorSlashEventRecord.encode(v!, writer.uint32(82).fork()).ldelim();
     }
 
@@ -738,39 +738,39 @@ export const GenesisState = {
           break;
 
         case 2:
-          message.fee_pool = FeePool.decode(reader, reader.uint32());
+          message.feePool = FeePool.decode(reader, reader.uint32());
           break;
 
         case 3:
-          message.delegator_withdraw_infos.push(DelegatorWithdrawInfo.decode(reader, reader.uint32()));
+          message.delegatorWithdrawInfos.push(DelegatorWithdrawInfo.decode(reader, reader.uint32()));
           break;
 
         case 4:
-          message.previous_proposer = reader.string();
+          message.previousProposer = reader.string();
           break;
 
         case 5:
-          message.outstanding_rewards.push(ValidatorOutstandingRewardsRecord.decode(reader, reader.uint32()));
+          message.outstandingRewards.push(ValidatorOutstandingRewardsRecord.decode(reader, reader.uint32()));
           break;
 
         case 6:
-          message.validator_accumulated_commissions.push(ValidatorAccumulatedCommissionRecord.decode(reader, reader.uint32()));
+          message.validatorAccumulatedCommissions.push(ValidatorAccumulatedCommissionRecord.decode(reader, reader.uint32()));
           break;
 
         case 7:
-          message.validator_historical_rewards.push(ValidatorHistoricalRewardsRecord.decode(reader, reader.uint32()));
+          message.validatorHistoricalRewards.push(ValidatorHistoricalRewardsRecord.decode(reader, reader.uint32()));
           break;
 
         case 8:
-          message.validator_current_rewards.push(ValidatorCurrentRewardsRecord.decode(reader, reader.uint32()));
+          message.validatorCurrentRewards.push(ValidatorCurrentRewardsRecord.decode(reader, reader.uint32()));
           break;
 
         case 9:
-          message.delegator_starting_infos.push(DelegatorStartingInfoRecord.decode(reader, reader.uint32()));
+          message.delegatorStartingInfos.push(DelegatorStartingInfoRecord.decode(reader, reader.uint32()));
           break;
 
         case 10:
-          message.validator_slash_events.push(ValidatorSlashEventRecord.decode(reader, reader.uint32()));
+          message.validatorSlashEvents.push(ValidatorSlashEventRecord.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -785,15 +785,15 @@ export const GenesisState = {
   fromPartial(object: DeepPartial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
-    message.fee_pool = object.fee_pool !== undefined && object.fee_pool !== null ? FeePool.fromPartial(object.fee_pool) : undefined;
-    message.delegator_withdraw_infos = object.delegator_withdraw_infos?.map(e => DelegatorWithdrawInfo.fromPartial(e)) || [];
-    message.previous_proposer = object.previous_proposer ?? "";
-    message.outstanding_rewards = object.outstanding_rewards?.map(e => ValidatorOutstandingRewardsRecord.fromPartial(e)) || [];
-    message.validator_accumulated_commissions = object.validator_accumulated_commissions?.map(e => ValidatorAccumulatedCommissionRecord.fromPartial(e)) || [];
-    message.validator_historical_rewards = object.validator_historical_rewards?.map(e => ValidatorHistoricalRewardsRecord.fromPartial(e)) || [];
-    message.validator_current_rewards = object.validator_current_rewards?.map(e => ValidatorCurrentRewardsRecord.fromPartial(e)) || [];
-    message.delegator_starting_infos = object.delegator_starting_infos?.map(e => DelegatorStartingInfoRecord.fromPartial(e)) || [];
-    message.validator_slash_events = object.validator_slash_events?.map(e => ValidatorSlashEventRecord.fromPartial(e)) || [];
+    message.feePool = object.feePool !== undefined && object.feePool !== null ? FeePool.fromPartial(object.feePool) : undefined;
+    message.delegatorWithdrawInfos = object.delegatorWithdrawInfos?.map(e => DelegatorWithdrawInfo.fromPartial(e)) || [];
+    message.previousProposer = object.previousProposer ?? "";
+    message.outstandingRewards = object.outstandingRewards?.map(e => ValidatorOutstandingRewardsRecord.fromPartial(e)) || [];
+    message.validatorAccumulatedCommissions = object.validatorAccumulatedCommissions?.map(e => ValidatorAccumulatedCommissionRecord.fromPartial(e)) || [];
+    message.validatorHistoricalRewards = object.validatorHistoricalRewards?.map(e => ValidatorHistoricalRewardsRecord.fromPartial(e)) || [];
+    message.validatorCurrentRewards = object.validatorCurrentRewards?.map(e => ValidatorCurrentRewardsRecord.fromPartial(e)) || [];
+    message.delegatorStartingInfos = object.delegatorStartingInfos?.map(e => DelegatorStartingInfoRecord.fromPartial(e)) || [];
+    message.validatorSlashEvents = object.validatorSlashEvents?.map(e => ValidatorSlashEventRecord.fromPartial(e)) || [];
     return message;
   }
 

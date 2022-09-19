@@ -174,9 +174,9 @@ export interface AccessConfigSDKType {
 /** Params defines the set of wasm parameters. */
 
 export interface Params {
-  code_upload_access: AccessConfig;
-  instantiate_default_permission: AccessType;
-  max_wasm_code_size: Long;
+  codeUploadAccess: AccessConfig;
+  instantiateDefaultPermission: AccessType;
+  maxWasmCodeSize: Long;
 }
 /** Params defines the set of wasm parameters. */
 
@@ -189,13 +189,13 @@ export interface ParamsSDKType {
 
 export interface CodeInfo {
   /** CodeHash is the unique identifier created by wasmvm */
-  code_hash: Uint8Array;
+  codeHash: Uint8Array;
   /** Creator address who initially stored the code */
 
   creator: string;
   /** InstantiateConfig access control to apply on contract creation, optional */
 
-  instantiate_config: AccessConfig;
+  instantiateConfig: AccessConfig;
 }
 /** CodeInfo is data for the uploaded contract WASM code */
 
@@ -213,7 +213,7 @@ export interface CodeInfoSDKType {
 
 export interface ContractInfo {
   /** CodeID is the reference to the stored Wasm code */
-  code_id: Long;
+  codeId: Long;
   /** Creator address who initially instantiated the contract */
 
   creator: string;
@@ -230,7 +230,7 @@ export interface ContractInfo {
    */
 
   created: AbsoluteTxPosition;
-  ibc_port_id: string;
+  ibcPortId: string;
   /**
    * Extension is an extension point to store custom metadata within the
    * persistence model.
@@ -273,7 +273,7 @@ export interface ContractCodeHistoryEntry {
   operation: ContractCodeHistoryOperationType;
   /** CodeID is the reference to the stored WASM code */
 
-  code_id: Long;
+  codeId: Long;
   /** Updated Tx position when the operation was executed. */
 
   updated: AbsoluteTxPosition;
@@ -298,13 +298,13 @@ export interface ContractCodeHistoryEntrySDKType {
 
 export interface AbsoluteTxPosition {
   /** BlockHeight is the block the contract was created at */
-  block_height: Long;
+  blockHeight: Long;
   /**
    * TxIndex is a monotonic counter within the block (actual transaction index,
    * or gas consumed)
    */
 
-  tx_index: Long;
+  txIndex: Long;
 }
 /**
  * AbsoluteTxPosition is a unique transaction position that allows for global
@@ -442,24 +442,24 @@ export const AccessConfig = {
 
 function createBaseParams(): Params {
   return {
-    code_upload_access: undefined,
-    instantiate_default_permission: 0,
-    max_wasm_code_size: Long.UZERO
+    codeUploadAccess: undefined,
+    instantiateDefaultPermission: 0,
+    maxWasmCodeSize: Long.UZERO
   };
 }
 
 export const Params = {
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.code_upload_access !== undefined) {
-      AccessConfig.encode(message.code_upload_access, writer.uint32(10).fork()).ldelim();
+    if (message.codeUploadAccess !== undefined) {
+      AccessConfig.encode(message.codeUploadAccess, writer.uint32(10).fork()).ldelim();
     }
 
-    if (message.instantiate_default_permission !== 0) {
-      writer.uint32(16).int32(message.instantiate_default_permission);
+    if (message.instantiateDefaultPermission !== 0) {
+      writer.uint32(16).int32(message.instantiateDefaultPermission);
     }
 
-    if (!message.max_wasm_code_size.isZero()) {
-      writer.uint32(24).uint64(message.max_wasm_code_size);
+    if (!message.maxWasmCodeSize.isZero()) {
+      writer.uint32(24).uint64(message.maxWasmCodeSize);
     }
 
     return writer;
@@ -475,15 +475,15 @@ export const Params = {
 
       switch (tag >>> 3) {
         case 1:
-          message.code_upload_access = AccessConfig.decode(reader, reader.uint32());
+          message.codeUploadAccess = AccessConfig.decode(reader, reader.uint32());
           break;
 
         case 2:
-          message.instantiate_default_permission = (reader.int32() as any);
+          message.instantiateDefaultPermission = (reader.int32() as any);
           break;
 
         case 3:
-          message.max_wasm_code_size = (reader.uint64() as Long);
+          message.maxWasmCodeSize = (reader.uint64() as Long);
           break;
 
         default:
@@ -497,9 +497,9 @@ export const Params = {
 
   fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
-    message.code_upload_access = object.code_upload_access !== undefined && object.code_upload_access !== null ? AccessConfig.fromPartial(object.code_upload_access) : undefined;
-    message.instantiate_default_permission = object.instantiate_default_permission ?? 0;
-    message.max_wasm_code_size = object.max_wasm_code_size !== undefined && object.max_wasm_code_size !== null ? Long.fromValue(object.max_wasm_code_size) : Long.UZERO;
+    message.codeUploadAccess = object.codeUploadAccess !== undefined && object.codeUploadAccess !== null ? AccessConfig.fromPartial(object.codeUploadAccess) : undefined;
+    message.instantiateDefaultPermission = object.instantiateDefaultPermission ?? 0;
+    message.maxWasmCodeSize = object.maxWasmCodeSize !== undefined && object.maxWasmCodeSize !== null ? Long.fromValue(object.maxWasmCodeSize) : Long.UZERO;
     return message;
   }
 
@@ -507,24 +507,24 @@ export const Params = {
 
 function createBaseCodeInfo(): CodeInfo {
   return {
-    code_hash: new Uint8Array(),
+    codeHash: new Uint8Array(),
     creator: "",
-    instantiate_config: undefined
+    instantiateConfig: undefined
   };
 }
 
 export const CodeInfo = {
   encode(message: CodeInfo, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.code_hash.length !== 0) {
-      writer.uint32(10).bytes(message.code_hash);
+    if (message.codeHash.length !== 0) {
+      writer.uint32(10).bytes(message.codeHash);
     }
 
     if (message.creator !== "") {
       writer.uint32(18).string(message.creator);
     }
 
-    if (message.instantiate_config !== undefined) {
-      AccessConfig.encode(message.instantiate_config, writer.uint32(42).fork()).ldelim();
+    if (message.instantiateConfig !== undefined) {
+      AccessConfig.encode(message.instantiateConfig, writer.uint32(42).fork()).ldelim();
     }
 
     return writer;
@@ -540,7 +540,7 @@ export const CodeInfo = {
 
       switch (tag >>> 3) {
         case 1:
-          message.code_hash = reader.bytes();
+          message.codeHash = reader.bytes();
           break;
 
         case 2:
@@ -548,7 +548,7 @@ export const CodeInfo = {
           break;
 
         case 5:
-          message.instantiate_config = AccessConfig.decode(reader, reader.uint32());
+          message.instantiateConfig = AccessConfig.decode(reader, reader.uint32());
           break;
 
         default:
@@ -562,9 +562,9 @@ export const CodeInfo = {
 
   fromPartial(object: DeepPartial<CodeInfo>): CodeInfo {
     const message = createBaseCodeInfo();
-    message.code_hash = object.code_hash ?? new Uint8Array();
+    message.codeHash = object.codeHash ?? new Uint8Array();
     message.creator = object.creator ?? "";
-    message.instantiate_config = object.instantiate_config !== undefined && object.instantiate_config !== null ? AccessConfig.fromPartial(object.instantiate_config) : undefined;
+    message.instantiateConfig = object.instantiateConfig !== undefined && object.instantiateConfig !== null ? AccessConfig.fromPartial(object.instantiateConfig) : undefined;
     return message;
   }
 
@@ -572,20 +572,20 @@ export const CodeInfo = {
 
 function createBaseContractInfo(): ContractInfo {
   return {
-    code_id: Long.UZERO,
+    codeId: Long.UZERO,
     creator: "",
     admin: "",
     label: "",
     created: undefined,
-    ibc_port_id: "",
+    ibcPortId: "",
     extension: undefined
   };
 }
 
 export const ContractInfo = {
   encode(message: ContractInfo, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.code_id.isZero()) {
-      writer.uint32(8).uint64(message.code_id);
+    if (!message.codeId.isZero()) {
+      writer.uint32(8).uint64(message.codeId);
     }
 
     if (message.creator !== "") {
@@ -604,8 +604,8 @@ export const ContractInfo = {
       AbsoluteTxPosition.encode(message.created, writer.uint32(42).fork()).ldelim();
     }
 
-    if (message.ibc_port_id !== "") {
-      writer.uint32(50).string(message.ibc_port_id);
+    if (message.ibcPortId !== "") {
+      writer.uint32(50).string(message.ibcPortId);
     }
 
     if (message.extension !== undefined) {
@@ -625,7 +625,7 @@ export const ContractInfo = {
 
       switch (tag >>> 3) {
         case 1:
-          message.code_id = (reader.uint64() as Long);
+          message.codeId = (reader.uint64() as Long);
           break;
 
         case 2:
@@ -645,7 +645,7 @@ export const ContractInfo = {
           break;
 
         case 6:
-          message.ibc_port_id = reader.string();
+          message.ibcPortId = reader.string();
           break;
 
         case 7:
@@ -663,12 +663,12 @@ export const ContractInfo = {
 
   fromPartial(object: DeepPartial<ContractInfo>): ContractInfo {
     const message = createBaseContractInfo();
-    message.code_id = object.code_id !== undefined && object.code_id !== null ? Long.fromValue(object.code_id) : Long.UZERO;
+    message.codeId = object.codeId !== undefined && object.codeId !== null ? Long.fromValue(object.codeId) : Long.UZERO;
     message.creator = object.creator ?? "";
     message.admin = object.admin ?? "";
     message.label = object.label ?? "";
     message.created = object.created !== undefined && object.created !== null ? AbsoluteTxPosition.fromPartial(object.created) : undefined;
-    message.ibc_port_id = object.ibc_port_id ?? "";
+    message.ibcPortId = object.ibcPortId ?? "";
     message.extension = object.extension !== undefined && object.extension !== null ? Any.fromPartial(object.extension) : undefined;
     return message;
   }
@@ -678,7 +678,7 @@ export const ContractInfo = {
 function createBaseContractCodeHistoryEntry(): ContractCodeHistoryEntry {
   return {
     operation: 0,
-    code_id: Long.UZERO,
+    codeId: Long.UZERO,
     updated: undefined,
     msg: new Uint8Array()
   };
@@ -690,8 +690,8 @@ export const ContractCodeHistoryEntry = {
       writer.uint32(8).int32(message.operation);
     }
 
-    if (!message.code_id.isZero()) {
-      writer.uint32(16).uint64(message.code_id);
+    if (!message.codeId.isZero()) {
+      writer.uint32(16).uint64(message.codeId);
     }
 
     if (message.updated !== undefined) {
@@ -719,7 +719,7 @@ export const ContractCodeHistoryEntry = {
           break;
 
         case 2:
-          message.code_id = (reader.uint64() as Long);
+          message.codeId = (reader.uint64() as Long);
           break;
 
         case 3:
@@ -742,7 +742,7 @@ export const ContractCodeHistoryEntry = {
   fromPartial(object: DeepPartial<ContractCodeHistoryEntry>): ContractCodeHistoryEntry {
     const message = createBaseContractCodeHistoryEntry();
     message.operation = object.operation ?? 0;
-    message.code_id = object.code_id !== undefined && object.code_id !== null ? Long.fromValue(object.code_id) : Long.UZERO;
+    message.codeId = object.codeId !== undefined && object.codeId !== null ? Long.fromValue(object.codeId) : Long.UZERO;
     message.updated = object.updated !== undefined && object.updated !== null ? AbsoluteTxPosition.fromPartial(object.updated) : undefined;
     message.msg = object.msg ?? new Uint8Array();
     return message;
@@ -752,19 +752,19 @@ export const ContractCodeHistoryEntry = {
 
 function createBaseAbsoluteTxPosition(): AbsoluteTxPosition {
   return {
-    block_height: Long.UZERO,
-    tx_index: Long.UZERO
+    blockHeight: Long.UZERO,
+    txIndex: Long.UZERO
   };
 }
 
 export const AbsoluteTxPosition = {
   encode(message: AbsoluteTxPosition, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.block_height.isZero()) {
-      writer.uint32(8).uint64(message.block_height);
+    if (!message.blockHeight.isZero()) {
+      writer.uint32(8).uint64(message.blockHeight);
     }
 
-    if (!message.tx_index.isZero()) {
-      writer.uint32(16).uint64(message.tx_index);
+    if (!message.txIndex.isZero()) {
+      writer.uint32(16).uint64(message.txIndex);
     }
 
     return writer;
@@ -780,11 +780,11 @@ export const AbsoluteTxPosition = {
 
       switch (tag >>> 3) {
         case 1:
-          message.block_height = (reader.uint64() as Long);
+          message.blockHeight = (reader.uint64() as Long);
           break;
 
         case 2:
-          message.tx_index = (reader.uint64() as Long);
+          message.txIndex = (reader.uint64() as Long);
           break;
 
         default:
@@ -798,8 +798,8 @@ export const AbsoluteTxPosition = {
 
   fromPartial(object: DeepPartial<AbsoluteTxPosition>): AbsoluteTxPosition {
     const message = createBaseAbsoluteTxPosition();
-    message.block_height = object.block_height !== undefined && object.block_height !== null ? Long.fromValue(object.block_height) : Long.UZERO;
-    message.tx_index = object.tx_index !== undefined && object.tx_index !== null ? Long.fromValue(object.tx_index) : Long.UZERO;
+    message.blockHeight = object.blockHeight !== undefined && object.blockHeight !== null ? Long.fromValue(object.blockHeight) : Long.UZERO;
+    message.txIndex = object.txIndex !== undefined && object.txIndex !== null ? Long.fromValue(object.txIndex) : Long.UZERO;
     return message;
   }
 

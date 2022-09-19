@@ -6,7 +6,7 @@ export interface Block {
     header: Header;
     data: Data;
     evidence: EvidenceList;
-    last_commit: Commit;
+    lastCommit: Commit;
 }
 export interface BlockSDKType {
     header: HeaderSDKType;

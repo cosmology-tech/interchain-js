@@ -15,7 +15,7 @@ export interface BasicAllowance {
    * by this allowance and will be updated as tokens are spent. If it is
    * empty, there is no spend limit and any amount of coins can be spent.
    */
-  spend_limit: Coin[];
+  spendLimit: Coin[];
   /** expiration specifies an optional time when this allowance expires */
 
   expiration: Date;
@@ -55,17 +55,17 @@ export interface PeriodicAllowance {
    * in the period
    */
 
-  period_spend_limit: Coin[];
+  periodSpendLimit: Coin[];
   /** period_can_spend is the number of coins left to be spent before the period_reset time */
 
-  period_can_spend: Coin[];
+  periodCanSpend: Coin[];
   /**
    * period_reset is the time at which this period resets and a new one begins,
    * it is calculated from the start time of the first transaction after the
    * last period ended
    */
 
-  period_reset: Date;
+  periodReset: Date;
 }
 /**
  * PeriodicAllowance extends Allowance to allow for both a maximum cap,
@@ -105,7 +105,7 @@ export interface AllowedMsgAllowance {
   allowance: Any;
   /** allowed_messages are the messages for which the grantee has the access. */
 
-  allowed_messages: string[];
+  allowedMessages: string[];
 }
 /** AllowedMsgAllowance creates allowance only for specified message types. */
 
@@ -143,14 +143,14 @@ export interface GrantSDKType {
 
 function createBaseBasicAllowance(): BasicAllowance {
   return {
-    spend_limit: [],
+    spendLimit: [],
     expiration: undefined
   };
 }
 
 export const BasicAllowance = {
   encode(message: BasicAllowance, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.spend_limit) {
+    for (const v of message.spendLimit) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
@@ -171,7 +171,7 @@ export const BasicAllowance = {
 
       switch (tag >>> 3) {
         case 1:
-          message.spend_limit.push(Coin.decode(reader, reader.uint32()));
+          message.spendLimit.push(Coin.decode(reader, reader.uint32()));
           break;
 
         case 2:
@@ -189,7 +189,7 @@ export const BasicAllowance = {
 
   fromPartial(object: DeepPartial<BasicAllowance>): BasicAllowance {
     const message = createBaseBasicAllowance();
-    message.spend_limit = object.spend_limit?.map(e => Coin.fromPartial(e)) || [];
+    message.spendLimit = object.spendLimit?.map(e => Coin.fromPartial(e)) || [];
     message.expiration = object.expiration ?? undefined;
     return message;
   }
@@ -200,9 +200,9 @@ function createBasePeriodicAllowance(): PeriodicAllowance {
   return {
     basic: undefined,
     period: undefined,
-    period_spend_limit: [],
-    period_can_spend: [],
-    period_reset: undefined
+    periodSpendLimit: [],
+    periodCanSpend: [],
+    periodReset: undefined
   };
 }
 
@@ -216,16 +216,16 @@ export const PeriodicAllowance = {
       Duration.encode(message.period, writer.uint32(18).fork()).ldelim();
     }
 
-    for (const v of message.period_spend_limit) {
+    for (const v of message.periodSpendLimit) {
       Coin.encode(v!, writer.uint32(26).fork()).ldelim();
     }
 
-    for (const v of message.period_can_spend) {
+    for (const v of message.periodCanSpend) {
       Coin.encode(v!, writer.uint32(34).fork()).ldelim();
     }
 
-    if (message.period_reset !== undefined) {
-      Timestamp.encode(toTimestamp(message.period_reset), writer.uint32(42).fork()).ldelim();
+    if (message.periodReset !== undefined) {
+      Timestamp.encode(toTimestamp(message.periodReset), writer.uint32(42).fork()).ldelim();
     }
 
     return writer;
@@ -249,15 +249,15 @@ export const PeriodicAllowance = {
           break;
 
         case 3:
-          message.period_spend_limit.push(Coin.decode(reader, reader.uint32()));
+          message.periodSpendLimit.push(Coin.decode(reader, reader.uint32()));
           break;
 
         case 4:
-          message.period_can_spend.push(Coin.decode(reader, reader.uint32()));
+          message.periodCanSpend.push(Coin.decode(reader, reader.uint32()));
           break;
 
         case 5:
-          message.period_reset = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.periodReset = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -273,9 +273,9 @@ export const PeriodicAllowance = {
     const message = createBasePeriodicAllowance();
     message.basic = object.basic !== undefined && object.basic !== null ? BasicAllowance.fromPartial(object.basic) : undefined;
     message.period = object.period ?? undefined;
-    message.period_spend_limit = object.period_spend_limit?.map(e => Coin.fromPartial(e)) || [];
-    message.period_can_spend = object.period_can_spend?.map(e => Coin.fromPartial(e)) || [];
-    message.period_reset = object.period_reset ?? undefined;
+    message.periodSpendLimit = object.periodSpendLimit?.map(e => Coin.fromPartial(e)) || [];
+    message.periodCanSpend = object.periodCanSpend?.map(e => Coin.fromPartial(e)) || [];
+    message.periodReset = object.periodReset ?? undefined;
     return message;
   }
 
@@ -284,7 +284,7 @@ export const PeriodicAllowance = {
 function createBaseAllowedMsgAllowance(): AllowedMsgAllowance {
   return {
     allowance: undefined,
-    allowed_messages: []
+    allowedMessages: []
   };
 }
 
@@ -294,7 +294,7 @@ export const AllowedMsgAllowance = {
       Any.encode(message.allowance, writer.uint32(10).fork()).ldelim();
     }
 
-    for (const v of message.allowed_messages) {
+    for (const v of message.allowedMessages) {
       writer.uint32(18).string(v!);
     }
 
@@ -315,7 +315,7 @@ export const AllowedMsgAllowance = {
           break;
 
         case 2:
-          message.allowed_messages.push(reader.string());
+          message.allowedMessages.push(reader.string());
           break;
 
         default:
@@ -330,7 +330,7 @@ export const AllowedMsgAllowance = {
   fromPartial(object: DeepPartial<AllowedMsgAllowance>): AllowedMsgAllowance {
     const message = createBaseAllowedMsgAllowance();
     message.allowance = object.allowance !== undefined && object.allowance !== null ? Any.fromPartial(object.allowance) : undefined;
-    message.allowed_messages = object.allowed_messages?.map(e => e) || [];
+    message.allowedMessages = object.allowedMessages?.map(e => e) || [];
     return message;
   }
 

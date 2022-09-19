@@ -6,7 +6,7 @@ import { DeepPartial } from "@osmonauts/helpers";
 
 export interface QueryEvidenceRequest {
   /** evidence_hash defines the hash of the requested evidence. */
-  evidence_hash: Uint8Array;
+  evidenceHash: Uint8Array;
 }
 /** QueryEvidenceRequest is the request type for the Query/Evidence RPC method. */
 
@@ -71,14 +71,14 @@ export interface QueryAllEvidenceResponseSDKType {
 
 function createBaseQueryEvidenceRequest(): QueryEvidenceRequest {
   return {
-    evidence_hash: new Uint8Array()
+    evidenceHash: new Uint8Array()
   };
 }
 
 export const QueryEvidenceRequest = {
   encode(message: QueryEvidenceRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.evidence_hash.length !== 0) {
-      writer.uint32(10).bytes(message.evidence_hash);
+    if (message.evidenceHash.length !== 0) {
+      writer.uint32(10).bytes(message.evidenceHash);
     }
 
     return writer;
@@ -94,7 +94,7 @@ export const QueryEvidenceRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.evidence_hash = reader.bytes();
+          message.evidenceHash = reader.bytes();
           break;
 
         default:
@@ -108,7 +108,7 @@ export const QueryEvidenceRequest = {
 
   fromPartial(object: DeepPartial<QueryEvidenceRequest>): QueryEvidenceRequest {
     const message = createBaseQueryEvidenceRequest();
-    message.evidence_hash = object.evidence_hash ?? new Uint8Array();
+    message.evidenceHash = object.evidenceHash ?? new Uint8Array();
     return message;
   }
 

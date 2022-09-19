@@ -8,7 +8,7 @@ export interface Equivocation {
     height: Long;
     time: Date;
     power: Long;
-    consensus_address: string;
+    consensusAddress: string;
 }
 /**
  * Equivocation implements the Evidence interface and defines evidence of double

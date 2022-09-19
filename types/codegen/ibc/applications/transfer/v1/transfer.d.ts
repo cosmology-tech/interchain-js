@@ -11,7 +11,7 @@ export interface DenomTrace {
      */
     path: string;
     /** base denomination of the relayed fungible token. */
-    base_denom: string;
+    baseDenom: string;
 }
 /**
  * DenomTrace contains the base denomination for ICS20 fungible tokens and the
@@ -37,12 +37,12 @@ export interface Params {
      * send_enabled enables or disables all cross-chain token transfers from this
      * chain.
      */
-    send_enabled: boolean;
+    sendEnabled: boolean;
     /**
      * receive_enabled enables or disables all cross-chain token transfers to this
      * chain.
      */
-    receive_enabled: boolean;
+    receiveEnabled: boolean;
 }
 /**
  * Params defines the set of IBC transfer parameters.

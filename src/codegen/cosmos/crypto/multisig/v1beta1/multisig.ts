@@ -26,7 +26,7 @@ export interface MultiSignatureSDKType {
  */
 
 export interface CompactBitArray {
-  extra_bits_stored: number;
+  extraBitsStored: number;
   elems: Uint8Array;
 }
 /**
@@ -88,15 +88,15 @@ export const MultiSignature = {
 
 function createBaseCompactBitArray(): CompactBitArray {
   return {
-    extra_bits_stored: 0,
+    extraBitsStored: 0,
     elems: new Uint8Array()
   };
 }
 
 export const CompactBitArray = {
   encode(message: CompactBitArray, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.extra_bits_stored !== 0) {
-      writer.uint32(8).uint32(message.extra_bits_stored);
+    if (message.extraBitsStored !== 0) {
+      writer.uint32(8).uint32(message.extraBitsStored);
     }
 
     if (message.elems.length !== 0) {
@@ -116,7 +116,7 @@ export const CompactBitArray = {
 
       switch (tag >>> 3) {
         case 1:
-          message.extra_bits_stored = reader.uint32();
+          message.extraBitsStored = reader.uint32();
           break;
 
         case 2:
@@ -134,7 +134,7 @@ export const CompactBitArray = {
 
   fromPartial(object: DeepPartial<CompactBitArray>): CompactBitArray {
     const message = createBaseCompactBitArray();
-    message.extra_bits_stored = object.extra_bits_stored ?? 0;
+    message.extraBitsStored = object.extraBitsStored ?? 0;
     message.elems = object.elems ?? new Uint8Array();
     return message;
   }

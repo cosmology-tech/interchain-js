@@ -15,7 +15,7 @@ export class LCDQueryClient extends LCDClient {
 
 
   async evidence(params: QueryEvidenceRequest): Promise<QueryEvidenceResponseSDKType> {
-    const endpoint = `cosmos/evidence/v1beta1/evidence/${params.evidence_hash}`;
+    const endpoint = `cosmos/evidence/v1beta1/evidence/${params.evidenceHash}`;
     return await this.get<QueryEvidenceResponseSDKType>(endpoint);
   }
   /* AllEvidence queries all evidence. */

@@ -3,10 +3,10 @@ import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, Long } from "@osmonauts/helpers";
 /** Params defines the set of params for the distribution module. */
 export interface Params {
-    community_tax: string;
-    base_proposer_reward: string;
-    bonus_proposer_reward: string;
-    withdraw_addr_enabled: boolean;
+    communityTax: string;
+    baseProposerReward: string;
+    bonusProposerReward: string;
+    withdrawAddrEnabled: boolean;
 }
 /** Params defines the set of params for the distribution module. */
 export interface ParamsSDKType {
@@ -30,8 +30,8 @@ export interface ParamsSDKType {
  * + one per validator for the zeroeth period, set on initialization
  */
 export interface ValidatorHistoricalRewards {
-    cumulative_reward_ratio: DecCoin[];
-    reference_count: number;
+    cumulativeRewardRatio: DecCoin[];
+    referenceCount: number;
 }
 /**
  * ValidatorHistoricalRewards represents historical rewards for a validator.
@@ -104,7 +104,7 @@ export interface ValidatorOutstandingRewardsSDKType {
  * for delegations which are withdrawn after a slash has occurred.
  */
 export interface ValidatorSlashEvent {
-    validator_period: Long;
+    validatorPeriod: Long;
     fraction: string;
 }
 /**
@@ -119,7 +119,7 @@ export interface ValidatorSlashEventSDKType {
 }
 /** ValidatorSlashEvents is a collection of ValidatorSlashEvent messages. */
 export interface ValidatorSlashEvents {
-    validator_slash_events: ValidatorSlashEvent[];
+    validatorSlashEvents: ValidatorSlashEvent[];
 }
 /** ValidatorSlashEvents is a collection of ValidatorSlashEvent messages. */
 export interface ValidatorSlashEventsSDKType {
@@ -127,7 +127,7 @@ export interface ValidatorSlashEventsSDKType {
 }
 /** FeePool is the global fee pool for distribution. */
 export interface FeePool {
-    community_pool: DecCoin[];
+    communityPool: DecCoin[];
 }
 /** FeePool is the global fee pool for distribution. */
 export interface FeePoolSDKType {
@@ -164,7 +164,7 @@ export interface CommunityPoolSpendProposalSDKType {
  * thus sdk.Dec is used.
  */
 export interface DelegatorStartingInfo {
-    previous_period: Long;
+    previousPeriod: Long;
     stake: string;
     height: Long;
 }
@@ -186,7 +186,7 @@ export interface DelegatorStartingInfoSDKType {
  * of a delegator's delegation reward.
  */
 export interface DelegationDelegatorReward {
-    validator_address: string;
+    validatorAddress: string;
     reward: DecCoin[];
 }
 /**

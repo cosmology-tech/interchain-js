@@ -21,7 +21,7 @@ export interface MerkleRootSDKType {
  * append(Path.KeyPrefix, key...))
  */
 export interface MerklePrefix {
-    key_prefix: Uint8Array;
+    keyPrefix: Uint8Array;
 }
 /**
  * MerklePrefix is merkle path prefixed to the key.
@@ -37,7 +37,7 @@ export interface MerklePrefixSDKType {
  * MerklePath is represented from root-to-leaf
  */
 export interface MerklePath {
-    key_path: string[];
+    keyPath: string[];
 }
 /**
  * MerklePath is the path used to verify commitment proofs, which can be an

@@ -30,7 +30,7 @@ export const AminoConverter = {
         granter,
         grantee,
         allowance: {
-          type_url: allowance.type_url,
+          type_url: allowance.typeUrl,
           value: allowance.value
         }
       };
@@ -44,7 +44,7 @@ export const AminoConverter = {
         granter,
         grantee,
         allowance: {
-          type_url: allowance.type_url,
+          typeUrl: allowance.type_url,
           value: allowance.value
         }
       };

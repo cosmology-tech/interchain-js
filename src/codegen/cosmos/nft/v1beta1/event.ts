@@ -3,7 +3,7 @@ import { DeepPartial } from "@osmonauts/helpers";
 /** EventSend is emitted on Msg/Send */
 
 export interface EventSend {
-  class_id: string;
+  classId: string;
   id: string;
   sender: string;
   receiver: string;
@@ -19,7 +19,7 @@ export interface EventSendSDKType {
 /** EventMint is emitted on Mint */
 
 export interface EventMint {
-  class_id: string;
+  classId: string;
   id: string;
   owner: string;
 }
@@ -33,7 +33,7 @@ export interface EventMintSDKType {
 /** EventBurn is emitted on Burn */
 
 export interface EventBurn {
-  class_id: string;
+  classId: string;
   id: string;
   owner: string;
 }
@@ -47,7 +47,7 @@ export interface EventBurnSDKType {
 
 function createBaseEventSend(): EventSend {
   return {
-    class_id: "",
+    classId: "",
     id: "",
     sender: "",
     receiver: ""
@@ -56,8 +56,8 @@ function createBaseEventSend(): EventSend {
 
 export const EventSend = {
   encode(message: EventSend, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.class_id !== "") {
-      writer.uint32(10).string(message.class_id);
+    if (message.classId !== "") {
+      writer.uint32(10).string(message.classId);
     }
 
     if (message.id !== "") {
@@ -85,7 +85,7 @@ export const EventSend = {
 
       switch (tag >>> 3) {
         case 1:
-          message.class_id = reader.string();
+          message.classId = reader.string();
           break;
 
         case 2:
@@ -111,7 +111,7 @@ export const EventSend = {
 
   fromPartial(object: DeepPartial<EventSend>): EventSend {
     const message = createBaseEventSend();
-    message.class_id = object.class_id ?? "";
+    message.classId = object.classId ?? "";
     message.id = object.id ?? "";
     message.sender = object.sender ?? "";
     message.receiver = object.receiver ?? "";
@@ -122,7 +122,7 @@ export const EventSend = {
 
 function createBaseEventMint(): EventMint {
   return {
-    class_id: "",
+    classId: "",
     id: "",
     owner: ""
   };
@@ -130,8 +130,8 @@ function createBaseEventMint(): EventMint {
 
 export const EventMint = {
   encode(message: EventMint, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.class_id !== "") {
-      writer.uint32(10).string(message.class_id);
+    if (message.classId !== "") {
+      writer.uint32(10).string(message.classId);
     }
 
     if (message.id !== "") {
@@ -155,7 +155,7 @@ export const EventMint = {
 
       switch (tag >>> 3) {
         case 1:
-          message.class_id = reader.string();
+          message.classId = reader.string();
           break;
 
         case 2:
@@ -177,7 +177,7 @@ export const EventMint = {
 
   fromPartial(object: DeepPartial<EventMint>): EventMint {
     const message = createBaseEventMint();
-    message.class_id = object.class_id ?? "";
+    message.classId = object.classId ?? "";
     message.id = object.id ?? "";
     message.owner = object.owner ?? "";
     return message;
@@ -187,7 +187,7 @@ export const EventMint = {
 
 function createBaseEventBurn(): EventBurn {
   return {
-    class_id: "",
+    classId: "",
     id: "",
     owner: ""
   };
@@ -195,8 +195,8 @@ function createBaseEventBurn(): EventBurn {
 
 export const EventBurn = {
   encode(message: EventBurn, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.class_id !== "") {
-      writer.uint32(10).string(message.class_id);
+    if (message.classId !== "") {
+      writer.uint32(10).string(message.classId);
     }
 
     if (message.id !== "") {
@@ -220,7 +220,7 @@ export const EventBurn = {
 
       switch (tag >>> 3) {
         case 1:
-          message.class_id = reader.string();
+          message.classId = reader.string();
           break;
 
         case 2:
@@ -242,7 +242,7 @@ export const EventBurn = {
 
   fromPartial(object: DeepPartial<EventBurn>): EventBurn {
     const message = createBaseEventBurn();
-    message.class_id = object.class_id ?? "";
+    message.classId = object.classId ?? "";
     message.id = object.id ?? "";
     message.owner = object.owner ?? "";
     return message;

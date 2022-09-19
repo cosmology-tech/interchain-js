@@ -9,7 +9,7 @@ import { DeepPartial } from "@osmonauts/helpers";
 
 export interface LegacyAminoPubKey {
   threshold: number;
-  public_keys: Any[];
+  publicKeys: Any[];
 }
 /**
  * LegacyAminoPubKey specifies a public key type
@@ -25,7 +25,7 @@ export interface LegacyAminoPubKeySDKType {
 function createBaseLegacyAminoPubKey(): LegacyAminoPubKey {
   return {
     threshold: 0,
-    public_keys: []
+    publicKeys: []
   };
 }
 
@@ -35,7 +35,7 @@ export const LegacyAminoPubKey = {
       writer.uint32(8).uint32(message.threshold);
     }
 
-    for (const v of message.public_keys) {
+    for (const v of message.publicKeys) {
       Any.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
@@ -56,7 +56,7 @@ export const LegacyAminoPubKey = {
           break;
 
         case 2:
-          message.public_keys.push(Any.decode(reader, reader.uint32()));
+          message.publicKeys.push(Any.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -71,7 +71,7 @@ export const LegacyAminoPubKey = {
   fromPartial(object: DeepPartial<LegacyAminoPubKey>): LegacyAminoPubKey {
     const message = createBaseLegacyAminoPubKey();
     message.threshold = object.threshold ?? 0;
-    message.public_keys = object.public_keys?.map(e => Any.fromPartial(e)) || [];
+    message.publicKeys = object.publicKeys?.map(e => Any.fromPartial(e)) || [];
     return message;
   }
 

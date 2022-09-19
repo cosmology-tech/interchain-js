@@ -33,7 +33,7 @@ export interface PageRequest {
      * count_total is only respected when offset is used. It is ignored when key
      * is set.
      */
-    count_total: boolean;
+    countTotal: boolean;
     /**
      * reverse is set to true if results are to be returned in the descending order.
      *
@@ -97,7 +97,7 @@ export interface PageResponse {
      * query the next page most efficiently. It will be empty if
      * there are no more results.
      */
-    next_key: Uint8Array;
+    nextKey: Uint8Array;
     /**
      * total is total number of results available if PageRequest.count_total
      * was set, its value is undefined otherwise

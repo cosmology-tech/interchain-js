@@ -9,7 +9,7 @@ export interface Record {
   name: string;
   /** pub_key represents a public key in any format */
 
-  pub_key: Any;
+  pubKey: Any;
   /** local stores the public information about a locally stored key */
 
   local?: Record_Local;
@@ -50,8 +50,8 @@ export interface RecordSDKType {
  */
 
 export interface Record_Local {
-  priv_key: Any;
-  priv_key_type: string;
+  privKey: Any;
+  privKeyType: string;
 }
 /**
  * Item is a keyring item stored in a keyring backend.
@@ -88,7 +88,7 @@ export interface Record_OfflineSDKType {}
 function createBaseRecord(): Record {
   return {
     name: "",
-    pub_key: undefined,
+    pubKey: undefined,
     local: undefined,
     ledger: undefined,
     multi: undefined,
@@ -102,8 +102,8 @@ export const Record = {
       writer.uint32(10).string(message.name);
     }
 
-    if (message.pub_key !== undefined) {
-      Any.encode(message.pub_key, writer.uint32(18).fork()).ldelim();
+    if (message.pubKey !== undefined) {
+      Any.encode(message.pubKey, writer.uint32(18).fork()).ldelim();
     }
 
     if (message.local !== undefined) {
@@ -139,7 +139,7 @@ export const Record = {
           break;
 
         case 2:
-          message.pub_key = Any.decode(reader, reader.uint32());
+          message.pubKey = Any.decode(reader, reader.uint32());
           break;
 
         case 3:
@@ -170,7 +170,7 @@ export const Record = {
   fromPartial(object: DeepPartial<Record>): Record {
     const message = createBaseRecord();
     message.name = object.name ?? "";
-    message.pub_key = object.pub_key !== undefined && object.pub_key !== null ? Any.fromPartial(object.pub_key) : undefined;
+    message.pubKey = object.pubKey !== undefined && object.pubKey !== null ? Any.fromPartial(object.pubKey) : undefined;
     message.local = object.local !== undefined && object.local !== null ? Record_Local.fromPartial(object.local) : undefined;
     message.ledger = object.ledger !== undefined && object.ledger !== null ? Record_Ledger.fromPartial(object.ledger) : undefined;
     message.multi = object.multi !== undefined && object.multi !== null ? Record_Multi.fromPartial(object.multi) : undefined;
@@ -182,19 +182,19 @@ export const Record = {
 
 function createBaseRecord_Local(): Record_Local {
   return {
-    priv_key: undefined,
-    priv_key_type: ""
+    privKey: undefined,
+    privKeyType: ""
   };
 }
 
 export const Record_Local = {
   encode(message: Record_Local, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.priv_key !== undefined) {
-      Any.encode(message.priv_key, writer.uint32(10).fork()).ldelim();
+    if (message.privKey !== undefined) {
+      Any.encode(message.privKey, writer.uint32(10).fork()).ldelim();
     }
 
-    if (message.priv_key_type !== "") {
-      writer.uint32(18).string(message.priv_key_type);
+    if (message.privKeyType !== "") {
+      writer.uint32(18).string(message.privKeyType);
     }
 
     return writer;
@@ -210,11 +210,11 @@ export const Record_Local = {
 
       switch (tag >>> 3) {
         case 1:
-          message.priv_key = Any.decode(reader, reader.uint32());
+          message.privKey = Any.decode(reader, reader.uint32());
           break;
 
         case 2:
-          message.priv_key_type = reader.string();
+          message.privKeyType = reader.string();
           break;
 
         default:
@@ -228,8 +228,8 @@ export const Record_Local = {
 
   fromPartial(object: DeepPartial<Record_Local>): Record_Local {
     const message = createBaseRecord_Local();
-    message.priv_key = object.priv_key !== undefined && object.priv_key !== null ? Any.fromPartial(object.priv_key) : undefined;
-    message.priv_key_type = object.priv_key_type ?? "";
+    message.privKey = object.privKey !== undefined && object.privKey !== null ? Any.fromPartial(object.privKey) : undefined;
+    message.privKeyType = object.privKeyType ?? "";
     return message;
   }
 

@@ -2,7 +2,7 @@ import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "@osmonauts/helpers";
 /** MsgUnjail defines the Msg/Unjail request type */
 export interface MsgUnjail {
-    validator_addr: string;
+    validatorAddr: string;
 }
 /** MsgUnjail defines the Msg/Unjail request type */
 export interface MsgUnjailSDKType {

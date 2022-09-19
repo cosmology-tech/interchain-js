@@ -34,8 +34,8 @@ export class LCDQueryClient extends LCDClient {
       setPaginationParams(options, params.pagination);
     }
 
-    if (typeof params?.order_by !== "undefined") {
-      options.params.order_by = params.order_by;
+    if (typeof params?.orderBy !== "undefined") {
+      options.params.order_by = params.orderBy;
     }
 
     const endpoint = `cosmos/tx/v1beta1/txs`;

@@ -11,7 +11,7 @@ import { DeepPartial, Long } from "@osmonauts/helpers";
 
 export interface QueryConnectionRequest {
   /** connection unique identifier */
-  connection_id: string;
+  connectionId: string;
 }
 /**
  * QueryConnectionRequest is the request type for the Query/Connection RPC
@@ -36,7 +36,7 @@ export interface QueryConnectionResponse {
   proof: Uint8Array;
   /** height at which the proof was retrieved */
 
-  proof_height: Height;
+  proofHeight: Height;
 }
 /**
  * QueryConnectionResponse is the response type for the Query/Connection RPC
@@ -107,7 +107,7 @@ export interface QueryConnectionsResponseSDKType {
 
 export interface QueryClientConnectionsRequest {
   /** client identifier associated with a connection */
-  client_id: string;
+  clientId: string;
 }
 /**
  * QueryClientConnectionsRequest is the request type for the
@@ -125,13 +125,13 @@ export interface QueryClientConnectionsRequestSDKType {
 
 export interface QueryClientConnectionsResponse {
   /** slice of all the connection paths associated with a client. */
-  connection_paths: string[];
+  connectionPaths: string[];
   /** merkle proof of existence */
 
   proof: Uint8Array;
   /** height at which the proof was generated */
 
-  proof_height: Height;
+  proofHeight: Height;
 }
 /**
  * QueryClientConnectionsResponse is the response type for the
@@ -155,7 +155,7 @@ export interface QueryClientConnectionsResponseSDKType {
 
 export interface QueryConnectionClientStateRequest {
   /** connection identifier */
-  connection_id: string;
+  connectionId: string;
 }
 /**
  * QueryConnectionClientStateRequest is the request type for the
@@ -173,13 +173,13 @@ export interface QueryConnectionClientStateRequestSDKType {
 
 export interface QueryConnectionClientStateResponse {
   /** client state associated with the channel */
-  identified_client_state: IdentifiedClientState;
+  identifiedClientState: IdentifiedClientState;
   /** merkle proof of existence */
 
   proof: Uint8Array;
   /** height at which the proof was retrieved */
 
-  proof_height: Height;
+  proofHeight: Height;
 }
 /**
  * QueryConnectionClientStateResponse is the response type for the
@@ -203,9 +203,9 @@ export interface QueryConnectionClientStateResponseSDKType {
 
 export interface QueryConnectionConsensusStateRequest {
   /** connection identifier */
-  connection_id: string;
-  revision_number: Long;
-  revision_height: Long;
+  connectionId: string;
+  revisionNumber: Long;
+  revisionHeight: Long;
 }
 /**
  * QueryConnectionConsensusStateRequest is the request type for the
@@ -225,16 +225,16 @@ export interface QueryConnectionConsensusStateRequestSDKType {
 
 export interface QueryConnectionConsensusStateResponse {
   /** consensus state associated with the channel */
-  consensus_state: Any;
+  consensusState: Any;
   /** client ID associated with the consensus state */
 
-  client_id: string;
+  clientId: string;
   /** merkle proof of existence */
 
   proof: Uint8Array;
   /** height at which the proof was retrieved */
 
-  proof_height: Height;
+  proofHeight: Height;
 }
 /**
  * QueryConnectionConsensusStateResponse is the response type for the
@@ -257,14 +257,14 @@ export interface QueryConnectionConsensusStateResponseSDKType {
 
 function createBaseQueryConnectionRequest(): QueryConnectionRequest {
   return {
-    connection_id: ""
+    connectionId: ""
   };
 }
 
 export const QueryConnectionRequest = {
   encode(message: QueryConnectionRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.connection_id !== "") {
-      writer.uint32(10).string(message.connection_id);
+    if (message.connectionId !== "") {
+      writer.uint32(10).string(message.connectionId);
     }
 
     return writer;
@@ -280,7 +280,7 @@ export const QueryConnectionRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.connection_id = reader.string();
+          message.connectionId = reader.string();
           break;
 
         default:
@@ -294,7 +294,7 @@ export const QueryConnectionRequest = {
 
   fromPartial(object: DeepPartial<QueryConnectionRequest>): QueryConnectionRequest {
     const message = createBaseQueryConnectionRequest();
-    message.connection_id = object.connection_id ?? "";
+    message.connectionId = object.connectionId ?? "";
     return message;
   }
 
@@ -304,7 +304,7 @@ function createBaseQueryConnectionResponse(): QueryConnectionResponse {
   return {
     connection: undefined,
     proof: new Uint8Array(),
-    proof_height: undefined
+    proofHeight: undefined
   };
 }
 
@@ -318,8 +318,8 @@ export const QueryConnectionResponse = {
       writer.uint32(18).bytes(message.proof);
     }
 
-    if (message.proof_height !== undefined) {
-      Height.encode(message.proof_height, writer.uint32(26).fork()).ldelim();
+    if (message.proofHeight !== undefined) {
+      Height.encode(message.proofHeight, writer.uint32(26).fork()).ldelim();
     }
 
     return writer;
@@ -343,7 +343,7 @@ export const QueryConnectionResponse = {
           break;
 
         case 3:
-          message.proof_height = Height.decode(reader, reader.uint32());
+          message.proofHeight = Height.decode(reader, reader.uint32());
           break;
 
         default:
@@ -359,7 +359,7 @@ export const QueryConnectionResponse = {
     const message = createBaseQueryConnectionResponse();
     message.connection = object.connection !== undefined && object.connection !== null ? ConnectionEnd.fromPartial(object.connection) : undefined;
     message.proof = object.proof ?? new Uint8Array();
-    message.proof_height = object.proof_height !== undefined && object.proof_height !== null ? Height.fromPartial(object.proof_height) : undefined;
+    message.proofHeight = object.proofHeight !== undefined && object.proofHeight !== null ? Height.fromPartial(object.proofHeight) : undefined;
     return message;
   }
 
@@ -477,14 +477,14 @@ export const QueryConnectionsResponse = {
 
 function createBaseQueryClientConnectionsRequest(): QueryClientConnectionsRequest {
   return {
-    client_id: ""
+    clientId: ""
   };
 }
 
 export const QueryClientConnectionsRequest = {
   encode(message: QueryClientConnectionsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.client_id !== "") {
-      writer.uint32(10).string(message.client_id);
+    if (message.clientId !== "") {
+      writer.uint32(10).string(message.clientId);
     }
 
     return writer;
@@ -500,7 +500,7 @@ export const QueryClientConnectionsRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.client_id = reader.string();
+          message.clientId = reader.string();
           break;
 
         default:
@@ -514,7 +514,7 @@ export const QueryClientConnectionsRequest = {
 
   fromPartial(object: DeepPartial<QueryClientConnectionsRequest>): QueryClientConnectionsRequest {
     const message = createBaseQueryClientConnectionsRequest();
-    message.client_id = object.client_id ?? "";
+    message.clientId = object.clientId ?? "";
     return message;
   }
 
@@ -522,15 +522,15 @@ export const QueryClientConnectionsRequest = {
 
 function createBaseQueryClientConnectionsResponse(): QueryClientConnectionsResponse {
   return {
-    connection_paths: [],
+    connectionPaths: [],
     proof: new Uint8Array(),
-    proof_height: undefined
+    proofHeight: undefined
   };
 }
 
 export const QueryClientConnectionsResponse = {
   encode(message: QueryClientConnectionsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.connection_paths) {
+    for (const v of message.connectionPaths) {
       writer.uint32(10).string(v!);
     }
 
@@ -538,8 +538,8 @@ export const QueryClientConnectionsResponse = {
       writer.uint32(18).bytes(message.proof);
     }
 
-    if (message.proof_height !== undefined) {
-      Height.encode(message.proof_height, writer.uint32(26).fork()).ldelim();
+    if (message.proofHeight !== undefined) {
+      Height.encode(message.proofHeight, writer.uint32(26).fork()).ldelim();
     }
 
     return writer;
@@ -555,7 +555,7 @@ export const QueryClientConnectionsResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.connection_paths.push(reader.string());
+          message.connectionPaths.push(reader.string());
           break;
 
         case 2:
@@ -563,7 +563,7 @@ export const QueryClientConnectionsResponse = {
           break;
 
         case 3:
-          message.proof_height = Height.decode(reader, reader.uint32());
+          message.proofHeight = Height.decode(reader, reader.uint32());
           break;
 
         default:
@@ -577,9 +577,9 @@ export const QueryClientConnectionsResponse = {
 
   fromPartial(object: DeepPartial<QueryClientConnectionsResponse>): QueryClientConnectionsResponse {
     const message = createBaseQueryClientConnectionsResponse();
-    message.connection_paths = object.connection_paths?.map(e => e) || [];
+    message.connectionPaths = object.connectionPaths?.map(e => e) || [];
     message.proof = object.proof ?? new Uint8Array();
-    message.proof_height = object.proof_height !== undefined && object.proof_height !== null ? Height.fromPartial(object.proof_height) : undefined;
+    message.proofHeight = object.proofHeight !== undefined && object.proofHeight !== null ? Height.fromPartial(object.proofHeight) : undefined;
     return message;
   }
 
@@ -587,14 +587,14 @@ export const QueryClientConnectionsResponse = {
 
 function createBaseQueryConnectionClientStateRequest(): QueryConnectionClientStateRequest {
   return {
-    connection_id: ""
+    connectionId: ""
   };
 }
 
 export const QueryConnectionClientStateRequest = {
   encode(message: QueryConnectionClientStateRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.connection_id !== "") {
-      writer.uint32(10).string(message.connection_id);
+    if (message.connectionId !== "") {
+      writer.uint32(10).string(message.connectionId);
     }
 
     return writer;
@@ -610,7 +610,7 @@ export const QueryConnectionClientStateRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.connection_id = reader.string();
+          message.connectionId = reader.string();
           break;
 
         default:
@@ -624,7 +624,7 @@ export const QueryConnectionClientStateRequest = {
 
   fromPartial(object: DeepPartial<QueryConnectionClientStateRequest>): QueryConnectionClientStateRequest {
     const message = createBaseQueryConnectionClientStateRequest();
-    message.connection_id = object.connection_id ?? "";
+    message.connectionId = object.connectionId ?? "";
     return message;
   }
 
@@ -632,24 +632,24 @@ export const QueryConnectionClientStateRequest = {
 
 function createBaseQueryConnectionClientStateResponse(): QueryConnectionClientStateResponse {
   return {
-    identified_client_state: undefined,
+    identifiedClientState: undefined,
     proof: new Uint8Array(),
-    proof_height: undefined
+    proofHeight: undefined
   };
 }
 
 export const QueryConnectionClientStateResponse = {
   encode(message: QueryConnectionClientStateResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.identified_client_state !== undefined) {
-      IdentifiedClientState.encode(message.identified_client_state, writer.uint32(10).fork()).ldelim();
+    if (message.identifiedClientState !== undefined) {
+      IdentifiedClientState.encode(message.identifiedClientState, writer.uint32(10).fork()).ldelim();
     }
 
     if (message.proof.length !== 0) {
       writer.uint32(18).bytes(message.proof);
     }
 
-    if (message.proof_height !== undefined) {
-      Height.encode(message.proof_height, writer.uint32(26).fork()).ldelim();
+    if (message.proofHeight !== undefined) {
+      Height.encode(message.proofHeight, writer.uint32(26).fork()).ldelim();
     }
 
     return writer;
@@ -665,7 +665,7 @@ export const QueryConnectionClientStateResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.identified_client_state = IdentifiedClientState.decode(reader, reader.uint32());
+          message.identifiedClientState = IdentifiedClientState.decode(reader, reader.uint32());
           break;
 
         case 2:
@@ -673,7 +673,7 @@ export const QueryConnectionClientStateResponse = {
           break;
 
         case 3:
-          message.proof_height = Height.decode(reader, reader.uint32());
+          message.proofHeight = Height.decode(reader, reader.uint32());
           break;
 
         default:
@@ -687,9 +687,9 @@ export const QueryConnectionClientStateResponse = {
 
   fromPartial(object: DeepPartial<QueryConnectionClientStateResponse>): QueryConnectionClientStateResponse {
     const message = createBaseQueryConnectionClientStateResponse();
-    message.identified_client_state = object.identified_client_state !== undefined && object.identified_client_state !== null ? IdentifiedClientState.fromPartial(object.identified_client_state) : undefined;
+    message.identifiedClientState = object.identifiedClientState !== undefined && object.identifiedClientState !== null ? IdentifiedClientState.fromPartial(object.identifiedClientState) : undefined;
     message.proof = object.proof ?? new Uint8Array();
-    message.proof_height = object.proof_height !== undefined && object.proof_height !== null ? Height.fromPartial(object.proof_height) : undefined;
+    message.proofHeight = object.proofHeight !== undefined && object.proofHeight !== null ? Height.fromPartial(object.proofHeight) : undefined;
     return message;
   }
 
@@ -697,24 +697,24 @@ export const QueryConnectionClientStateResponse = {
 
 function createBaseQueryConnectionConsensusStateRequest(): QueryConnectionConsensusStateRequest {
   return {
-    connection_id: "",
-    revision_number: Long.UZERO,
-    revision_height: Long.UZERO
+    connectionId: "",
+    revisionNumber: Long.UZERO,
+    revisionHeight: Long.UZERO
   };
 }
 
 export const QueryConnectionConsensusStateRequest = {
   encode(message: QueryConnectionConsensusStateRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.connection_id !== "") {
-      writer.uint32(10).string(message.connection_id);
+    if (message.connectionId !== "") {
+      writer.uint32(10).string(message.connectionId);
     }
 
-    if (!message.revision_number.isZero()) {
-      writer.uint32(16).uint64(message.revision_number);
+    if (!message.revisionNumber.isZero()) {
+      writer.uint32(16).uint64(message.revisionNumber);
     }
 
-    if (!message.revision_height.isZero()) {
-      writer.uint32(24).uint64(message.revision_height);
+    if (!message.revisionHeight.isZero()) {
+      writer.uint32(24).uint64(message.revisionHeight);
     }
 
     return writer;
@@ -730,15 +730,15 @@ export const QueryConnectionConsensusStateRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.connection_id = reader.string();
+          message.connectionId = reader.string();
           break;
 
         case 2:
-          message.revision_number = (reader.uint64() as Long);
+          message.revisionNumber = (reader.uint64() as Long);
           break;
 
         case 3:
-          message.revision_height = (reader.uint64() as Long);
+          message.revisionHeight = (reader.uint64() as Long);
           break;
 
         default:
@@ -752,9 +752,9 @@ export const QueryConnectionConsensusStateRequest = {
 
   fromPartial(object: DeepPartial<QueryConnectionConsensusStateRequest>): QueryConnectionConsensusStateRequest {
     const message = createBaseQueryConnectionConsensusStateRequest();
-    message.connection_id = object.connection_id ?? "";
-    message.revision_number = object.revision_number !== undefined && object.revision_number !== null ? Long.fromValue(object.revision_number) : Long.UZERO;
-    message.revision_height = object.revision_height !== undefined && object.revision_height !== null ? Long.fromValue(object.revision_height) : Long.UZERO;
+    message.connectionId = object.connectionId ?? "";
+    message.revisionNumber = object.revisionNumber !== undefined && object.revisionNumber !== null ? Long.fromValue(object.revisionNumber) : Long.UZERO;
+    message.revisionHeight = object.revisionHeight !== undefined && object.revisionHeight !== null ? Long.fromValue(object.revisionHeight) : Long.UZERO;
     return message;
   }
 
@@ -762,29 +762,29 @@ export const QueryConnectionConsensusStateRequest = {
 
 function createBaseQueryConnectionConsensusStateResponse(): QueryConnectionConsensusStateResponse {
   return {
-    consensus_state: undefined,
-    client_id: "",
+    consensusState: undefined,
+    clientId: "",
     proof: new Uint8Array(),
-    proof_height: undefined
+    proofHeight: undefined
   };
 }
 
 export const QueryConnectionConsensusStateResponse = {
   encode(message: QueryConnectionConsensusStateResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.consensus_state !== undefined) {
-      Any.encode(message.consensus_state, writer.uint32(10).fork()).ldelim();
+    if (message.consensusState !== undefined) {
+      Any.encode(message.consensusState, writer.uint32(10).fork()).ldelim();
     }
 
-    if (message.client_id !== "") {
-      writer.uint32(18).string(message.client_id);
+    if (message.clientId !== "") {
+      writer.uint32(18).string(message.clientId);
     }
 
     if (message.proof.length !== 0) {
       writer.uint32(26).bytes(message.proof);
     }
 
-    if (message.proof_height !== undefined) {
-      Height.encode(message.proof_height, writer.uint32(34).fork()).ldelim();
+    if (message.proofHeight !== undefined) {
+      Height.encode(message.proofHeight, writer.uint32(34).fork()).ldelim();
     }
 
     return writer;
@@ -800,11 +800,11 @@ export const QueryConnectionConsensusStateResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.consensus_state = Any.decode(reader, reader.uint32());
+          message.consensusState = Any.decode(reader, reader.uint32());
           break;
 
         case 2:
-          message.client_id = reader.string();
+          message.clientId = reader.string();
           break;
 
         case 3:
@@ -812,7 +812,7 @@ export const QueryConnectionConsensusStateResponse = {
           break;
 
         case 4:
-          message.proof_height = Height.decode(reader, reader.uint32());
+          message.proofHeight = Height.decode(reader, reader.uint32());
           break;
 
         default:
@@ -826,10 +826,10 @@ export const QueryConnectionConsensusStateResponse = {
 
   fromPartial(object: DeepPartial<QueryConnectionConsensusStateResponse>): QueryConnectionConsensusStateResponse {
     const message = createBaseQueryConnectionConsensusStateResponse();
-    message.consensus_state = object.consensus_state !== undefined && object.consensus_state !== null ? Any.fromPartial(object.consensus_state) : undefined;
-    message.client_id = object.client_id ?? "";
+    message.consensusState = object.consensusState !== undefined && object.consensusState !== null ? Any.fromPartial(object.consensusState) : undefined;
+    message.clientId = object.clientId ?? "";
     message.proof = object.proof ?? new Uint8Array();
-    message.proof_height = object.proof_height !== undefined && object.proof_height !== null ? Height.fromPartial(object.proof_height) : undefined;
+    message.proofHeight = object.proofHeight !== undefined && object.proofHeight !== null ? Height.fromPartial(object.proofHeight) : undefined;
     return message;
   }
 

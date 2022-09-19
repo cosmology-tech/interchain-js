@@ -45,16 +45,16 @@ export interface StakeAuthorization {
      * max_tokens specifies the maximum amount of tokens can be delegate to a validator. If it is
      * empty, there is no spend limit and any amount of coins can be delegated.
      */
-    max_tokens: Coin;
+    maxTokens: Coin;
     /**
      * allow_list specifies list of validator addresses to whom grantee can delegate tokens on behalf of granter's
      * account.
      */
-    allow_list?: StakeAuthorization_Validators;
+    allowList?: StakeAuthorization_Validators;
     /** deny_list specifies list of validator addresses to whom grantee can not delegate tokens. */
-    deny_list?: StakeAuthorization_Validators;
+    denyList?: StakeAuthorization_Validators;
     /** authorization_type defines one of AuthorizationType. */
-    authorization_type: AuthorizationType;
+    authorizationType: AuthorizationType;
 }
 /**
  * StakeAuthorization defines authorization for delegate/undelegate/redelegate.

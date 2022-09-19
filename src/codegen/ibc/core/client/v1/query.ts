@@ -10,7 +10,7 @@ import { DeepPartial, Long } from "@osmonauts/helpers";
 
 export interface QueryClientStateRequest {
   /** client state unique identifier */
-  client_id: string;
+  clientId: string;
 }
 /**
  * QueryClientStateRequest is the request type for the Query/ClientState RPC
@@ -29,13 +29,13 @@ export interface QueryClientStateRequestSDKType {
 
 export interface QueryClientStateResponse {
   /** client state associated with the request identifier */
-  client_state: Any;
+  clientState: Any;
   /** merkle proof of existence */
 
   proof: Uint8Array;
   /** height at which the proof was retrieved */
 
-  proof_height: Height;
+  proofHeight: Height;
 }
 /**
  * QueryClientStateResponse is the response type for the Query/ClientState RPC
@@ -78,7 +78,7 @@ export interface QueryClientStatesRequestSDKType {
 
 export interface QueryClientStatesResponse {
   /** list of stored ClientStates of the chain. */
-  client_states: IdentifiedClientState[];
+  clientStates: IdentifiedClientState[];
   /** pagination response */
 
   pagination?: PageResponse;
@@ -103,19 +103,19 @@ export interface QueryClientStatesResponseSDKType {
 
 export interface QueryConsensusStateRequest {
   /** client identifier */
-  client_id: string;
+  clientId: string;
   /** consensus state revision number */
 
-  revision_number: Long;
+  revisionNumber: Long;
   /** consensus state revision height */
 
-  revision_height: Long;
+  revisionHeight: Long;
   /**
    * latest_height overrrides the height field and queries the latest stored
    * ConsensusState
    */
 
-  latest_height?: boolean;
+  latestHeight?: boolean;
 }
 /**
  * QueryConsensusStateRequest is the request type for the Query/ConsensusState
@@ -146,13 +146,13 @@ export interface QueryConsensusStateRequestSDKType {
 
 export interface QueryConsensusStateResponse {
   /** consensus state associated with the client identifier at the given height */
-  consensus_state: Any;
+  consensusState: Any;
   /** merkle proof of existence */
 
   proof: Uint8Array;
   /** height at which the proof was retrieved */
 
-  proof_height: Height;
+  proofHeight: Height;
 }
 /**
  * QueryConsensusStateResponse is the response type for the Query/ConsensusState
@@ -176,7 +176,7 @@ export interface QueryConsensusStateResponseSDKType {
 
 export interface QueryConsensusStatesRequest {
   /** client identifier */
-  client_id: string;
+  clientId: string;
   /** pagination request */
 
   pagination?: PageRequest;
@@ -200,7 +200,7 @@ export interface QueryConsensusStatesRequestSDKType {
 
 export interface QueryConsensusStatesResponse {
   /** consensus states associated with the identifier */
-  consensus_states: ConsensusStateWithHeight[];
+  consensusStates: ConsensusStateWithHeight[];
   /** pagination response */
 
   pagination?: PageResponse;
@@ -224,7 +224,7 @@ export interface QueryConsensusStatesResponseSDKType {
 
 export interface QueryClientStatusRequest {
   /** client unique identifier */
-  client_id: string;
+  clientId: string;
 }
 /**
  * QueryClientStatusRequest is the request type for the Query/ClientStatus RPC
@@ -300,7 +300,7 @@ export interface QueryUpgradedClientStateRequestSDKType {}
 
 export interface QueryUpgradedClientStateResponse {
   /** client state associated with the request identifier */
-  upgraded_client_state: Any;
+  upgradedClientState: Any;
 }
 /**
  * QueryUpgradedClientStateResponse is the response type for the
@@ -330,7 +330,7 @@ export interface QueryUpgradedConsensusStateRequestSDKType {}
 
 export interface QueryUpgradedConsensusStateResponse {
   /** Consensus state associated with the request identifier */
-  upgraded_consensus_state: Any;
+  upgradedConsensusState: Any;
 }
 /**
  * QueryUpgradedConsensusStateResponse is the response type for the
@@ -344,14 +344,14 @@ export interface QueryUpgradedConsensusStateResponseSDKType {
 
 function createBaseQueryClientStateRequest(): QueryClientStateRequest {
   return {
-    client_id: ""
+    clientId: ""
   };
 }
 
 export const QueryClientStateRequest = {
   encode(message: QueryClientStateRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.client_id !== "") {
-      writer.uint32(10).string(message.client_id);
+    if (message.clientId !== "") {
+      writer.uint32(10).string(message.clientId);
     }
 
     return writer;
@@ -367,7 +367,7 @@ export const QueryClientStateRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.client_id = reader.string();
+          message.clientId = reader.string();
           break;
 
         default:
@@ -381,7 +381,7 @@ export const QueryClientStateRequest = {
 
   fromPartial(object: DeepPartial<QueryClientStateRequest>): QueryClientStateRequest {
     const message = createBaseQueryClientStateRequest();
-    message.client_id = object.client_id ?? "";
+    message.clientId = object.clientId ?? "";
     return message;
   }
 
@@ -389,24 +389,24 @@ export const QueryClientStateRequest = {
 
 function createBaseQueryClientStateResponse(): QueryClientStateResponse {
   return {
-    client_state: undefined,
+    clientState: undefined,
     proof: new Uint8Array(),
-    proof_height: undefined
+    proofHeight: undefined
   };
 }
 
 export const QueryClientStateResponse = {
   encode(message: QueryClientStateResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.client_state !== undefined) {
-      Any.encode(message.client_state, writer.uint32(10).fork()).ldelim();
+    if (message.clientState !== undefined) {
+      Any.encode(message.clientState, writer.uint32(10).fork()).ldelim();
     }
 
     if (message.proof.length !== 0) {
       writer.uint32(18).bytes(message.proof);
     }
 
-    if (message.proof_height !== undefined) {
-      Height.encode(message.proof_height, writer.uint32(26).fork()).ldelim();
+    if (message.proofHeight !== undefined) {
+      Height.encode(message.proofHeight, writer.uint32(26).fork()).ldelim();
     }
 
     return writer;
@@ -422,7 +422,7 @@ export const QueryClientStateResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.client_state = Any.decode(reader, reader.uint32());
+          message.clientState = Any.decode(reader, reader.uint32());
           break;
 
         case 2:
@@ -430,7 +430,7 @@ export const QueryClientStateResponse = {
           break;
 
         case 3:
-          message.proof_height = Height.decode(reader, reader.uint32());
+          message.proofHeight = Height.decode(reader, reader.uint32());
           break;
 
         default:
@@ -444,9 +444,9 @@ export const QueryClientStateResponse = {
 
   fromPartial(object: DeepPartial<QueryClientStateResponse>): QueryClientStateResponse {
     const message = createBaseQueryClientStateResponse();
-    message.client_state = object.client_state !== undefined && object.client_state !== null ? Any.fromPartial(object.client_state) : undefined;
+    message.clientState = object.clientState !== undefined && object.clientState !== null ? Any.fromPartial(object.clientState) : undefined;
     message.proof = object.proof ?? new Uint8Array();
-    message.proof_height = object.proof_height !== undefined && object.proof_height !== null ? Height.fromPartial(object.proof_height) : undefined;
+    message.proofHeight = object.proofHeight !== undefined && object.proofHeight !== null ? Height.fromPartial(object.proofHeight) : undefined;
     return message;
   }
 
@@ -499,14 +499,14 @@ export const QueryClientStatesRequest = {
 
 function createBaseQueryClientStatesResponse(): QueryClientStatesResponse {
   return {
-    client_states: [],
+    clientStates: [],
     pagination: undefined
   };
 }
 
 export const QueryClientStatesResponse = {
   encode(message: QueryClientStatesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.client_states) {
+    for (const v of message.clientStates) {
       IdentifiedClientState.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
@@ -527,7 +527,7 @@ export const QueryClientStatesResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.client_states.push(IdentifiedClientState.decode(reader, reader.uint32()));
+          message.clientStates.push(IdentifiedClientState.decode(reader, reader.uint32()));
           break;
 
         case 2:
@@ -545,7 +545,7 @@ export const QueryClientStatesResponse = {
 
   fromPartial(object: DeepPartial<QueryClientStatesResponse>): QueryClientStatesResponse {
     const message = createBaseQueryClientStatesResponse();
-    message.client_states = object.client_states?.map(e => IdentifiedClientState.fromPartial(e)) || [];
+    message.clientStates = object.clientStates?.map(e => IdentifiedClientState.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   }
@@ -554,29 +554,29 @@ export const QueryClientStatesResponse = {
 
 function createBaseQueryConsensusStateRequest(): QueryConsensusStateRequest {
   return {
-    client_id: "",
-    revision_number: Long.UZERO,
-    revision_height: Long.UZERO,
-    latest_height: false
+    clientId: "",
+    revisionNumber: Long.UZERO,
+    revisionHeight: Long.UZERO,
+    latestHeight: false
   };
 }
 
 export const QueryConsensusStateRequest = {
   encode(message: QueryConsensusStateRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.client_id !== "") {
-      writer.uint32(10).string(message.client_id);
+    if (message.clientId !== "") {
+      writer.uint32(10).string(message.clientId);
     }
 
-    if (!message.revision_number.isZero()) {
-      writer.uint32(16).uint64(message.revision_number);
+    if (!message.revisionNumber.isZero()) {
+      writer.uint32(16).uint64(message.revisionNumber);
     }
 
-    if (!message.revision_height.isZero()) {
-      writer.uint32(24).uint64(message.revision_height);
+    if (!message.revisionHeight.isZero()) {
+      writer.uint32(24).uint64(message.revisionHeight);
     }
 
-    if (message.latest_height === true) {
-      writer.uint32(32).bool(message.latest_height);
+    if (message.latestHeight === true) {
+      writer.uint32(32).bool(message.latestHeight);
     }
 
     return writer;
@@ -592,19 +592,19 @@ export const QueryConsensusStateRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.client_id = reader.string();
+          message.clientId = reader.string();
           break;
 
         case 2:
-          message.revision_number = (reader.uint64() as Long);
+          message.revisionNumber = (reader.uint64() as Long);
           break;
 
         case 3:
-          message.revision_height = (reader.uint64() as Long);
+          message.revisionHeight = (reader.uint64() as Long);
           break;
 
         case 4:
-          message.latest_height = reader.bool();
+          message.latestHeight = reader.bool();
           break;
 
         default:
@@ -618,10 +618,10 @@ export const QueryConsensusStateRequest = {
 
   fromPartial(object: DeepPartial<QueryConsensusStateRequest>): QueryConsensusStateRequest {
     const message = createBaseQueryConsensusStateRequest();
-    message.client_id = object.client_id ?? "";
-    message.revision_number = object.revision_number !== undefined && object.revision_number !== null ? Long.fromValue(object.revision_number) : Long.UZERO;
-    message.revision_height = object.revision_height !== undefined && object.revision_height !== null ? Long.fromValue(object.revision_height) : Long.UZERO;
-    message.latest_height = object.latest_height ?? false;
+    message.clientId = object.clientId ?? "";
+    message.revisionNumber = object.revisionNumber !== undefined && object.revisionNumber !== null ? Long.fromValue(object.revisionNumber) : Long.UZERO;
+    message.revisionHeight = object.revisionHeight !== undefined && object.revisionHeight !== null ? Long.fromValue(object.revisionHeight) : Long.UZERO;
+    message.latestHeight = object.latestHeight ?? false;
     return message;
   }
 
@@ -629,24 +629,24 @@ export const QueryConsensusStateRequest = {
 
 function createBaseQueryConsensusStateResponse(): QueryConsensusStateResponse {
   return {
-    consensus_state: undefined,
+    consensusState: undefined,
     proof: new Uint8Array(),
-    proof_height: undefined
+    proofHeight: undefined
   };
 }
 
 export const QueryConsensusStateResponse = {
   encode(message: QueryConsensusStateResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.consensus_state !== undefined) {
-      Any.encode(message.consensus_state, writer.uint32(10).fork()).ldelim();
+    if (message.consensusState !== undefined) {
+      Any.encode(message.consensusState, writer.uint32(10).fork()).ldelim();
     }
 
     if (message.proof.length !== 0) {
       writer.uint32(18).bytes(message.proof);
     }
 
-    if (message.proof_height !== undefined) {
-      Height.encode(message.proof_height, writer.uint32(26).fork()).ldelim();
+    if (message.proofHeight !== undefined) {
+      Height.encode(message.proofHeight, writer.uint32(26).fork()).ldelim();
     }
 
     return writer;
@@ -662,7 +662,7 @@ export const QueryConsensusStateResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.consensus_state = Any.decode(reader, reader.uint32());
+          message.consensusState = Any.decode(reader, reader.uint32());
           break;
 
         case 2:
@@ -670,7 +670,7 @@ export const QueryConsensusStateResponse = {
           break;
 
         case 3:
-          message.proof_height = Height.decode(reader, reader.uint32());
+          message.proofHeight = Height.decode(reader, reader.uint32());
           break;
 
         default:
@@ -684,9 +684,9 @@ export const QueryConsensusStateResponse = {
 
   fromPartial(object: DeepPartial<QueryConsensusStateResponse>): QueryConsensusStateResponse {
     const message = createBaseQueryConsensusStateResponse();
-    message.consensus_state = object.consensus_state !== undefined && object.consensus_state !== null ? Any.fromPartial(object.consensus_state) : undefined;
+    message.consensusState = object.consensusState !== undefined && object.consensusState !== null ? Any.fromPartial(object.consensusState) : undefined;
     message.proof = object.proof ?? new Uint8Array();
-    message.proof_height = object.proof_height !== undefined && object.proof_height !== null ? Height.fromPartial(object.proof_height) : undefined;
+    message.proofHeight = object.proofHeight !== undefined && object.proofHeight !== null ? Height.fromPartial(object.proofHeight) : undefined;
     return message;
   }
 
@@ -694,15 +694,15 @@ export const QueryConsensusStateResponse = {
 
 function createBaseQueryConsensusStatesRequest(): QueryConsensusStatesRequest {
   return {
-    client_id: "",
+    clientId: "",
     pagination: undefined
   };
 }
 
 export const QueryConsensusStatesRequest = {
   encode(message: QueryConsensusStatesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.client_id !== "") {
-      writer.uint32(10).string(message.client_id);
+    if (message.clientId !== "") {
+      writer.uint32(10).string(message.clientId);
     }
 
     if (message.pagination !== undefined) {
@@ -722,7 +722,7 @@ export const QueryConsensusStatesRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.client_id = reader.string();
+          message.clientId = reader.string();
           break;
 
         case 2:
@@ -740,7 +740,7 @@ export const QueryConsensusStatesRequest = {
 
   fromPartial(object: DeepPartial<QueryConsensusStatesRequest>): QueryConsensusStatesRequest {
     const message = createBaseQueryConsensusStatesRequest();
-    message.client_id = object.client_id ?? "";
+    message.clientId = object.clientId ?? "";
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   }
@@ -749,14 +749,14 @@ export const QueryConsensusStatesRequest = {
 
 function createBaseQueryConsensusStatesResponse(): QueryConsensusStatesResponse {
   return {
-    consensus_states: [],
+    consensusStates: [],
     pagination: undefined
   };
 }
 
 export const QueryConsensusStatesResponse = {
   encode(message: QueryConsensusStatesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.consensus_states) {
+    for (const v of message.consensusStates) {
       ConsensusStateWithHeight.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
@@ -777,7 +777,7 @@ export const QueryConsensusStatesResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.consensus_states.push(ConsensusStateWithHeight.decode(reader, reader.uint32()));
+          message.consensusStates.push(ConsensusStateWithHeight.decode(reader, reader.uint32()));
           break;
 
         case 2:
@@ -795,7 +795,7 @@ export const QueryConsensusStatesResponse = {
 
   fromPartial(object: DeepPartial<QueryConsensusStatesResponse>): QueryConsensusStatesResponse {
     const message = createBaseQueryConsensusStatesResponse();
-    message.consensus_states = object.consensus_states?.map(e => ConsensusStateWithHeight.fromPartial(e)) || [];
+    message.consensusStates = object.consensusStates?.map(e => ConsensusStateWithHeight.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   }
@@ -804,14 +804,14 @@ export const QueryConsensusStatesResponse = {
 
 function createBaseQueryClientStatusRequest(): QueryClientStatusRequest {
   return {
-    client_id: ""
+    clientId: ""
   };
 }
 
 export const QueryClientStatusRequest = {
   encode(message: QueryClientStatusRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.client_id !== "") {
-      writer.uint32(10).string(message.client_id);
+    if (message.clientId !== "") {
+      writer.uint32(10).string(message.clientId);
     }
 
     return writer;
@@ -827,7 +827,7 @@ export const QueryClientStatusRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.client_id = reader.string();
+          message.clientId = reader.string();
           break;
 
         default:
@@ -841,7 +841,7 @@ export const QueryClientStatusRequest = {
 
   fromPartial(object: DeepPartial<QueryClientStatusRequest>): QueryClientStatusRequest {
     const message = createBaseQueryClientStatusRequest();
-    message.client_id = object.client_id ?? "";
+    message.clientId = object.clientId ?? "";
     return message;
   }
 
@@ -1007,14 +1007,14 @@ export const QueryUpgradedClientStateRequest = {
 
 function createBaseQueryUpgradedClientStateResponse(): QueryUpgradedClientStateResponse {
   return {
-    upgraded_client_state: undefined
+    upgradedClientState: undefined
   };
 }
 
 export const QueryUpgradedClientStateResponse = {
   encode(message: QueryUpgradedClientStateResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.upgraded_client_state !== undefined) {
-      Any.encode(message.upgraded_client_state, writer.uint32(10).fork()).ldelim();
+    if (message.upgradedClientState !== undefined) {
+      Any.encode(message.upgradedClientState, writer.uint32(10).fork()).ldelim();
     }
 
     return writer;
@@ -1030,7 +1030,7 @@ export const QueryUpgradedClientStateResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.upgraded_client_state = Any.decode(reader, reader.uint32());
+          message.upgradedClientState = Any.decode(reader, reader.uint32());
           break;
 
         default:
@@ -1044,7 +1044,7 @@ export const QueryUpgradedClientStateResponse = {
 
   fromPartial(object: DeepPartial<QueryUpgradedClientStateResponse>): QueryUpgradedClientStateResponse {
     const message = createBaseQueryUpgradedClientStateResponse();
-    message.upgraded_client_state = object.upgraded_client_state !== undefined && object.upgraded_client_state !== null ? Any.fromPartial(object.upgraded_client_state) : undefined;
+    message.upgradedClientState = object.upgradedClientState !== undefined && object.upgradedClientState !== null ? Any.fromPartial(object.upgradedClientState) : undefined;
     return message;
   }
 
@@ -1086,14 +1086,14 @@ export const QueryUpgradedConsensusStateRequest = {
 
 function createBaseQueryUpgradedConsensusStateResponse(): QueryUpgradedConsensusStateResponse {
   return {
-    upgraded_consensus_state: undefined
+    upgradedConsensusState: undefined
   };
 }
 
 export const QueryUpgradedConsensusStateResponse = {
   encode(message: QueryUpgradedConsensusStateResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.upgraded_consensus_state !== undefined) {
-      Any.encode(message.upgraded_consensus_state, writer.uint32(10).fork()).ldelim();
+    if (message.upgradedConsensusState !== undefined) {
+      Any.encode(message.upgradedConsensusState, writer.uint32(10).fork()).ldelim();
     }
 
     return writer;
@@ -1109,7 +1109,7 @@ export const QueryUpgradedConsensusStateResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.upgraded_consensus_state = Any.decode(reader, reader.uint32());
+          message.upgradedConsensusState = Any.decode(reader, reader.uint32());
           break;
 
         default:
@@ -1123,7 +1123,7 @@ export const QueryUpgradedConsensusStateResponse = {
 
   fromPartial(object: DeepPartial<QueryUpgradedConsensusStateResponse>): QueryUpgradedConsensusStateResponse {
     const message = createBaseQueryUpgradedConsensusStateResponse();
-    message.upgraded_consensus_state = object.upgraded_consensus_state !== undefined && object.upgraded_consensus_state !== null ? Any.fromPartial(object.upgraded_consensus_state) : undefined;
+    message.upgradedConsensusState = object.upgradedConsensusState !== undefined && object.upgradedConsensusState !== null ? Any.fromPartial(object.upgradedConsensusState) : undefined;
     return message;
   }
 

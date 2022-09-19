@@ -11,23 +11,23 @@ import { DeepPartial, Long } from "@osmonauts/helpers";
  * and a possible frozen height.
  */
 export interface ClientState {
-    chain_id: string;
-    trust_level: Fraction;
+    chainId: string;
+    trustLevel: Fraction;
     /**
      * duration of the period since the LastestTimestamp during which the
      * submitted headers are valid for upgrade
      */
-    trusting_period: Duration;
+    trustingPeriod: Duration;
     /** duration of the staking unbonding period */
-    unbonding_period: Duration;
+    unbondingPeriod: Duration;
     /** defines how much new (untrusted) header's Time can drift into the future. */
-    max_clock_drift: Duration;
+    maxClockDrift: Duration;
     /** Block height when the client was frozen due to a misbehaviour */
-    frozen_height: Height;
+    frozenHeight: Height;
     /** Latest height the client was updated to */
-    latest_height: Height;
+    latestHeight: Height;
     /** Proof specifications used in verifying counterparty state */
-    proof_specs: ProofSpec[];
+    proofSpecs: ProofSpec[];
     /**
      * Path at which next upgraded client will be committed.
      * Each element corresponds to the key for a single CommitmentProof in the
@@ -37,17 +37,17 @@ export interface ClientState {
      * the default upgrade module, upgrade_path should be []string{"upgrade",
      * "upgradedIBCState"}`
      */
-    upgrade_path: string[];
+    upgradePath: string[];
     /**
      * This flag, when set to true, will allow governance to recover a client
      * which has expired
      */
-    allow_update_after_expiry: boolean;
+    allowUpdateAfterExpiry: boolean;
     /**
      * This flag, when set to true, will allow governance to unfreeze a client
      * whose chain has experienced a misbehaviour event
      */
-    allow_update_after_misbehaviour: boolean;
+    allowUpdateAfterMisbehaviour: boolean;
 }
 /**
  * ClientState from Tendermint tracks the current validator set, latest height,
@@ -101,7 +101,7 @@ export interface ConsensusState {
     timestamp: Date;
     /** commitment root (i.e app hash) */
     root: MerkleRoot;
-    next_validators_hash: Uint8Array;
+    nextValidatorsHash: Uint8Array;
 }
 /** ConsensusState defines the consensus state from Tendermint. */
 export interface ConsensusStateSDKType {
@@ -119,7 +119,7 @@ export interface ConsensusStateSDKType {
  * that implements Misbehaviour interface expected by ICS-02
  */
 export interface Misbehaviour {
-    client_id: string;
+    clientId: string;
     header_1: Header;
     header_2: Header;
 }
@@ -147,10 +147,10 @@ export interface MisbehaviourSDKType {
  * trusted validator set at the TrustedHeight.
  */
 export interface Header {
-    signed_header: SignedHeader;
-    validator_set: ValidatorSet;
-    trusted_height: Height;
-    trusted_validators: ValidatorSet;
+    signedHeader: SignedHeader;
+    validatorSet: ValidatorSet;
+    trustedHeight: Height;
+    trustedValidators: ValidatorSet;
 }
 /**
  * Header defines the Tendermint client consensus Header.

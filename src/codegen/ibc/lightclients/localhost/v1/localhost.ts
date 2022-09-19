@@ -8,7 +8,7 @@ import { DeepPartial } from "@osmonauts/helpers";
 
 export interface ClientState {
   /** self chain ID */
-  chain_id: string;
+  chainId: string;
   /** self latest block height */
 
   height: Height;
@@ -28,15 +28,15 @@ export interface ClientStateSDKType {
 
 function createBaseClientState(): ClientState {
   return {
-    chain_id: "",
+    chainId: "",
     height: undefined
   };
 }
 
 export const ClientState = {
   encode(message: ClientState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.chain_id !== "") {
-      writer.uint32(10).string(message.chain_id);
+    if (message.chainId !== "") {
+      writer.uint32(10).string(message.chainId);
     }
 
     if (message.height !== undefined) {
@@ -56,7 +56,7 @@ export const ClientState = {
 
       switch (tag >>> 3) {
         case 1:
-          message.chain_id = reader.string();
+          message.chainId = reader.string();
           break;
 
         case 2:
@@ -74,7 +74,7 @@ export const ClientState = {
 
   fromPartial(object: DeepPartial<ClientState>): ClientState {
     const message = createBaseClientState();
-    message.chain_id = object.chain_id ?? "";
+    message.chainId = object.chainId ?? "";
     message.height = object.height !== undefined && object.height !== null ? Height.fromPartial(object.height) : undefined;
     return message;
   }

@@ -13,7 +13,7 @@ export interface BasicAllowance {
      * by this allowance and will be updated as tokens are spent. If it is
      * empty, there is no spend limit and any amount of coins can be spent.
      */
-    spend_limit: Coin[];
+    spendLimit: Coin[];
     /** expiration specifies an optional time when this allowance expires */
     expiration: Date;
 }
@@ -47,15 +47,15 @@ export interface PeriodicAllowance {
      * period_spend_limit specifies the maximum number of coins that can be spent
      * in the period
      */
-    period_spend_limit: Coin[];
+    periodSpendLimit: Coin[];
     /** period_can_spend is the number of coins left to be spent before the period_reset time */
-    period_can_spend: Coin[];
+    periodCanSpend: Coin[];
     /**
      * period_reset is the time at which this period resets and a new one begins,
      * it is calculated from the start time of the first transaction after the
      * last period ended
      */
-    period_reset: Date;
+    periodReset: Date;
 }
 /**
  * PeriodicAllowance extends Allowance to allow for both a maximum cap,
@@ -88,7 +88,7 @@ export interface AllowedMsgAllowance {
     /** allowance can be any of basic and periodic fee allowance. */
     allowance: Any;
     /** allowed_messages are the messages for which the grantee has the access. */
-    allowed_messages: string[];
+    allowedMessages: string[];
 }
 /** AllowedMsgAllowance creates allowance only for specified message types. */
 export interface AllowedMsgAllowanceSDKType {

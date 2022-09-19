@@ -66,7 +66,7 @@ export interface GrantAuthorizationSDKType {
 /** GrantQueueItem contains the list of TypeURL of a sdk.Msg. */
 export interface GrantQueueItem {
     /** msg_type_urls contains the list of TypeURL of a sdk.Msg. */
-    msg_type_urls: string[];
+    msgTypeUrls: string[];
 }
 /** GrantQueueItem contains the list of TypeURL of a sdk.Msg. */
 export interface GrantQueueItemSDKType {

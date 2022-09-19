@@ -10,7 +10,7 @@ export interface ListAllInterfacesRequestSDKType {}
 
 export interface ListAllInterfacesResponse {
   /** interface_names is an array of all the registered interfaces. */
-  interface_names: string[];
+  interfaceNames: string[];
 }
 /** ListAllInterfacesResponse is the response type of the ListAllInterfaces RPC. */
 
@@ -25,7 +25,7 @@ export interface ListAllInterfacesResponseSDKType {
 
 export interface ListImplementationsRequest {
   /** interface_name defines the interface to query the implementations for. */
-  interface_name: string;
+  interfaceName: string;
 }
 /**
  * ListImplementationsRequest is the request type of the ListImplementations
@@ -42,7 +42,7 @@ export interface ListImplementationsRequestSDKType {
  */
 
 export interface ListImplementationsResponse {
-  implementation_message_names: string[];
+  implementationMessageNames: string[];
 }
 /**
  * ListImplementationsResponse is the response type of the ListImplementations
@@ -89,13 +89,13 @@ export const ListAllInterfacesRequest = {
 
 function createBaseListAllInterfacesResponse(): ListAllInterfacesResponse {
   return {
-    interface_names: []
+    interfaceNames: []
   };
 }
 
 export const ListAllInterfacesResponse = {
   encode(message: ListAllInterfacesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.interface_names) {
+    for (const v of message.interfaceNames) {
       writer.uint32(10).string(v!);
     }
 
@@ -112,7 +112,7 @@ export const ListAllInterfacesResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.interface_names.push(reader.string());
+          message.interfaceNames.push(reader.string());
           break;
 
         default:
@@ -126,7 +126,7 @@ export const ListAllInterfacesResponse = {
 
   fromPartial(object: DeepPartial<ListAllInterfacesResponse>): ListAllInterfacesResponse {
     const message = createBaseListAllInterfacesResponse();
-    message.interface_names = object.interface_names?.map(e => e) || [];
+    message.interfaceNames = object.interfaceNames?.map(e => e) || [];
     return message;
   }
 
@@ -134,14 +134,14 @@ export const ListAllInterfacesResponse = {
 
 function createBaseListImplementationsRequest(): ListImplementationsRequest {
   return {
-    interface_name: ""
+    interfaceName: ""
   };
 }
 
 export const ListImplementationsRequest = {
   encode(message: ListImplementationsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.interface_name !== "") {
-      writer.uint32(10).string(message.interface_name);
+    if (message.interfaceName !== "") {
+      writer.uint32(10).string(message.interfaceName);
     }
 
     return writer;
@@ -157,7 +157,7 @@ export const ListImplementationsRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.interface_name = reader.string();
+          message.interfaceName = reader.string();
           break;
 
         default:
@@ -171,7 +171,7 @@ export const ListImplementationsRequest = {
 
   fromPartial(object: DeepPartial<ListImplementationsRequest>): ListImplementationsRequest {
     const message = createBaseListImplementationsRequest();
-    message.interface_name = object.interface_name ?? "";
+    message.interfaceName = object.interfaceName ?? "";
     return message;
   }
 
@@ -179,13 +179,13 @@ export const ListImplementationsRequest = {
 
 function createBaseListImplementationsResponse(): ListImplementationsResponse {
   return {
-    implementation_message_names: []
+    implementationMessageNames: []
   };
 }
 
 export const ListImplementationsResponse = {
   encode(message: ListImplementationsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.implementation_message_names) {
+    for (const v of message.implementationMessageNames) {
       writer.uint32(10).string(v!);
     }
 
@@ -202,7 +202,7 @@ export const ListImplementationsResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.implementation_message_names.push(reader.string());
+          message.implementationMessageNames.push(reader.string());
           break;
 
         default:
@@ -216,7 +216,7 @@ export const ListImplementationsResponse = {
 
   fromPartial(object: DeepPartial<ListImplementationsResponse>): ListImplementationsResponse {
     const message = createBaseListImplementationsResponse();
-    message.implementation_message_names = object.implementation_message_names?.map(e => e) || [];
+    message.implementationMessageNames = object.implementationMessageNames?.map(e => e) || [];
     return message;
   }
 

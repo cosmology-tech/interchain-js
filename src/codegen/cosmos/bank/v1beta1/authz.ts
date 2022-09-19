@@ -9,7 +9,7 @@ import { DeepPartial } from "@osmonauts/helpers";
  */
 
 export interface SendAuthorization {
-  spend_limit: Coin[];
+  spendLimit: Coin[];
 }
 /**
  * SendAuthorization allows the grantee to spend up to spend_limit coins from
@@ -24,13 +24,13 @@ export interface SendAuthorizationSDKType {
 
 function createBaseSendAuthorization(): SendAuthorization {
   return {
-    spend_limit: []
+    spendLimit: []
   };
 }
 
 export const SendAuthorization = {
   encode(message: SendAuthorization, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.spend_limit) {
+    for (const v of message.spendLimit) {
       Coin.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
@@ -47,7 +47,7 @@ export const SendAuthorization = {
 
       switch (tag >>> 3) {
         case 1:
-          message.spend_limit.push(Coin.decode(reader, reader.uint32()));
+          message.spendLimit.push(Coin.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -61,7 +61,7 @@ export const SendAuthorization = {
 
   fromPartial(object: DeepPartial<SendAuthorization>): SendAuthorization {
     const message = createBaseSendAuthorization();
-    message.spend_limit = object.spend_limit?.map(e => Coin.fromPartial(e)) || [];
+    message.spendLimit = object.spendLimit?.map(e => Coin.fromPartial(e)) || [];
     return message;
   }
 

@@ -9,18 +9,18 @@ export interface GenesisState {
      * last_total_power tracks the total amounts of bonded tokens recorded during
      * the previous end block.
      */
-    last_total_power: Uint8Array;
+    lastTotalPower: Uint8Array;
     /**
      * last_validator_powers is a special index that provides a historical list
      * of the last-block's bonded validators.
      */
-    last_validator_powers: LastValidatorPower[];
+    lastValidatorPowers: LastValidatorPower[];
     /** delegations defines the validator set at genesis. */
     validators: Validator[];
     /** delegations defines the delegations active at genesis. */
     delegations: Delegation[];
     /** unbonding_delegations defines the unbonding delegations active at genesis. */
-    unbonding_delegations: UnbondingDelegation[];
+    unbondingDelegations: UnbondingDelegation[];
     /** redelegations defines the redelegations active at genesis. */
     redelegations: Redelegation[];
     exported: boolean;

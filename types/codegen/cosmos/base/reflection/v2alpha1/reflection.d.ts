@@ -14,7 +14,7 @@ export interface AppDescriptor {
     /** configuration provides metadata information regarding the sdk.Config type */
     configuration: ConfigurationDescriptor;
     /** query_services provides metadata information regarding the available queriable endpoints */
-    query_services: QueryServicesDescriptor;
+    queryServices: QueryServicesDescriptor;
     /** tx provides metadata information regarding how to send transactions to the given application */
     tx: TxDescriptor;
 }
@@ -64,7 +64,7 @@ export interface TxDescriptorSDKType {
  */
 export interface AuthnDescriptor {
     /** sign_modes defines the supported signature algorithm */
-    sign_modes: SigningModeDescriptor[];
+    signModes: SigningModeDescriptor[];
 }
 /**
  * AuthnDescriptor provides information on how to sign transactions without relying
@@ -89,7 +89,7 @@ export interface SigningModeDescriptor {
      * authn_info_provider_method_fullname defines the fullname of the method to call to get
      * the metadata required to authenticate using the provided sign_modes
      */
-    authn_info_provider_method_fullname: string;
+    authnInfoProviderMethodFullname: string;
 }
 /**
  * SigningModeDescriptor provides information on a signing flow of the application
@@ -136,9 +136,9 @@ export interface InterfaceDescriptor {
      * interface_accepting_messages contains information regarding the proto messages which contain the interface as
      * google.protobuf.Any field
      */
-    interface_accepting_messages: InterfaceAcceptingMessageDescriptor[];
+    interfaceAcceptingMessages: InterfaceAcceptingMessageDescriptor[];
     /** interface_implementers is a list of the descriptors of the interface implementers */
-    interface_implementers: InterfaceImplementerDescriptor[];
+    interfaceImplementers: InterfaceImplementerDescriptor[];
 }
 /** InterfaceDescriptor describes the implementation of an interface */
 export interface InterfaceDescriptorSDKType {
@@ -162,7 +162,7 @@ export interface InterfaceImplementerDescriptor {
      * unmarshalling, making sure that we don't accept just 'any' type
      * in our interface fields
      */
-    type_url: string;
+    typeUrl: string;
 }
 /** InterfaceImplementerDescriptor describes an interface implementer */
 export interface InterfaceImplementerDescriptorSDKType {
@@ -188,7 +188,7 @@ export interface InterfaceAcceptingMessageDescriptor {
      * which contains the interface as google.protobuf.Any (the interface is the same, but
      * it can be in multiple fields of the same proto message)
      */
-    field_descriptor_names: string[];
+    fieldDescriptorNames: string[];
 }
 /**
  * InterfaceAcceptingMessageDescriptor describes a protobuf message which contains
@@ -207,7 +207,7 @@ export interface InterfaceAcceptingMessageDescriptorSDKType {
 /** ConfigurationDescriptor contains metadata information on the sdk.Config */
 export interface ConfigurationDescriptor {
     /** bech32_account_address_prefix is the account address prefix */
-    bech32_account_address_prefix: string;
+    bech32AccountAddressPrefix: string;
 }
 /** ConfigurationDescriptor contains metadata information on the sdk.Config */
 export interface ConfigurationDescriptorSDKType {
@@ -217,7 +217,7 @@ export interface ConfigurationDescriptorSDKType {
 /** MsgDescriptor describes a cosmos-sdk message that can be delivered with a transaction */
 export interface MsgDescriptor {
     /** msg_type_url contains the TypeURL of a sdk.Msg. */
-    msg_type_url: string;
+    msgTypeUrl: string;
 }
 /** MsgDescriptor describes a cosmos-sdk message that can be delivered with a transaction */
 export interface MsgDescriptorSDKType {
@@ -329,7 +329,7 @@ export interface GetTxDescriptorResponseSDKType {
 /** QueryServicesDescriptor contains the list of cosmos-sdk queriable services */
 export interface QueryServicesDescriptor {
     /** query_services is a list of cosmos-sdk QueryServiceDescriptor */
-    query_services: QueryServiceDescriptor[];
+    queryServices: QueryServiceDescriptor[];
 }
 /** QueryServicesDescriptor contains the list of cosmos-sdk queriable services */
 export interface QueryServicesDescriptorSDKType {
@@ -341,7 +341,7 @@ export interface QueryServiceDescriptor {
     /** fullname is the protobuf fullname of the service descriptor */
     fullname: string;
     /** is_module describes if this service is actually exposed by an application's module */
-    is_module: boolean;
+    isModule: boolean;
     /** methods provides a list of query service methods */
     methods: QueryMethodDescriptor[];
 }
@@ -366,7 +366,7 @@ export interface QueryMethodDescriptor {
      * full_query_path is the path that can be used to query
      * this method via tendermint abci.Query
      */
-    full_query_path: string;
+    fullQueryPath: string;
 }
 /**
  * QueryMethodDescriptor describes a queryable method of a query service

@@ -9,7 +9,7 @@ import { DeepPartial, Long } from "@osmonauts/helpers";
  */
 export interface QueryClientStateRequest {
     /** client state unique identifier */
-    client_id: string;
+    clientId: string;
 }
 /**
  * QueryClientStateRequest is the request type for the Query/ClientState RPC
@@ -26,11 +26,11 @@ export interface QueryClientStateRequestSDKType {
  */
 export interface QueryClientStateResponse {
     /** client state associated with the request identifier */
-    client_state: Any;
+    clientState: Any;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proof_height: Height;
+    proofHeight: Height;
 }
 /**
  * QueryClientStateResponse is the response type for the Query/ClientState RPC
@@ -67,7 +67,7 @@ export interface QueryClientStatesRequestSDKType {
  */
 export interface QueryClientStatesResponse {
     /** list of stored ClientStates of the chain. */
-    client_states: IdentifiedClientState[];
+    clientStates: IdentifiedClientState[];
     /** pagination response */
     pagination?: PageResponse;
 }
@@ -88,16 +88,16 @@ export interface QueryClientStatesResponseSDKType {
  */
 export interface QueryConsensusStateRequest {
     /** client identifier */
-    client_id: string;
+    clientId: string;
     /** consensus state revision number */
-    revision_number: Long;
+    revisionNumber: Long;
     /** consensus state revision height */
-    revision_height: Long;
+    revisionHeight: Long;
     /**
      * latest_height overrrides the height field and queries the latest stored
      * ConsensusState
      */
-    latest_height?: boolean;
+    latestHeight?: boolean;
 }
 /**
  * QueryConsensusStateRequest is the request type for the Query/ConsensusState
@@ -123,11 +123,11 @@ export interface QueryConsensusStateRequestSDKType {
  */
 export interface QueryConsensusStateResponse {
     /** consensus state associated with the client identifier at the given height */
-    consensus_state: Any;
+    consensusState: Any;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proof_height: Height;
+    proofHeight: Height;
 }
 /**
  * QueryConsensusStateResponse is the response type for the Query/ConsensusState
@@ -147,7 +147,7 @@ export interface QueryConsensusStateResponseSDKType {
  */
 export interface QueryConsensusStatesRequest {
     /** client identifier */
-    client_id: string;
+    clientId: string;
     /** pagination request */
     pagination?: PageRequest;
 }
@@ -167,7 +167,7 @@ export interface QueryConsensusStatesRequestSDKType {
  */
 export interface QueryConsensusStatesResponse {
     /** consensus states associated with the identifier */
-    consensus_states: ConsensusStateWithHeight[];
+    consensusStates: ConsensusStateWithHeight[];
     /** pagination response */
     pagination?: PageResponse;
 }
@@ -187,7 +187,7 @@ export interface QueryConsensusStatesResponseSDKType {
  */
 export interface QueryClientStatusRequest {
     /** client unique identifier */
-    client_id: string;
+    clientId: string;
 }
 /**
  * QueryClientStatusRequest is the request type for the Query/ClientStatus RPC
@@ -257,7 +257,7 @@ export interface QueryUpgradedClientStateRequestSDKType {
  */
 export interface QueryUpgradedClientStateResponse {
     /** client state associated with the request identifier */
-    upgraded_client_state: Any;
+    upgradedClientState: Any;
 }
 /**
  * QueryUpgradedClientStateResponse is the response type for the
@@ -285,7 +285,7 @@ export interface QueryUpgradedConsensusStateRequestSDKType {
  */
 export interface QueryUpgradedConsensusStateResponse {
     /** Consensus state associated with the request identifier */
-    upgraded_consensus_state: Any;
+    upgradedConsensusState: Any;
 }
 /**
  * QueryUpgradedConsensusStateResponse is the response type for the

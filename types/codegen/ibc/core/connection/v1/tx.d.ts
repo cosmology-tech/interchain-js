@@ -8,10 +8,10 @@ import { Long, DeepPartial } from "@osmonauts/helpers";
  * initialize a connection with Chain B.
  */
 export interface MsgConnectionOpenInit {
-    client_id: string;
+    clientId: string;
     counterparty: Counterparty;
     version: Version;
-    delay_period: Long;
+    delayPeriod: Long;
     signer: string;
 }
 /**
@@ -42,27 +42,27 @@ export interface MsgConnectionOpenInitResponseSDKType {
  * connection on Chain B.
  */
 export interface MsgConnectionOpenTry {
-    client_id: string;
+    clientId: string;
     /**
      * in the case of crossing hello's, when both chains call OpenInit, we need
      * the connection identifier of the previous connection in state INIT
      */
-    previous_connection_id: string;
-    client_state: Any;
+    previousConnectionId: string;
+    clientState: Any;
     counterparty: Counterparty;
-    delay_period: Long;
-    counterparty_versions: Version[];
-    proof_height: Height;
+    delayPeriod: Long;
+    counterpartyVersions: Version[];
+    proofHeight: Height;
     /**
      * proof of the initialization the connection on Chain A: `UNITIALIZED ->
      * INIT`
      */
-    proof_init: Uint8Array;
+    proofInit: Uint8Array;
     /** proof of client state included in message */
-    proof_client: Uint8Array;
+    proofClient: Uint8Array;
     /** proof of client consensus state */
-    proof_consensus: Uint8Array;
-    consensus_height: Height;
+    proofConsensus: Uint8Array;
+    consensusHeight: Height;
     signer: string;
 }
 /**
@@ -104,21 +104,21 @@ export interface MsgConnectionOpenTryResponseSDKType {
  * acknowledge the change of connection state to TRYOPEN on Chain B.
  */
 export interface MsgConnectionOpenAck {
-    connection_id: string;
-    counterparty_connection_id: string;
+    connectionId: string;
+    counterpartyConnectionId: string;
     version: Version;
-    client_state: Any;
-    proof_height: Height;
+    clientState: Any;
+    proofHeight: Height;
     /**
      * proof of the initialization the connection on Chain B: `UNITIALIZED ->
      * TRYOPEN`
      */
-    proof_try: Uint8Array;
+    proofTry: Uint8Array;
     /** proof of client state included in message */
-    proof_client: Uint8Array;
+    proofClient: Uint8Array;
     /** proof of client consensus state */
-    proof_consensus: Uint8Array;
-    consensus_height: Height;
+    proofConsensus: Uint8Array;
+    consensusHeight: Height;
     signer: string;
 }
 /**
@@ -154,10 +154,10 @@ export interface MsgConnectionOpenAckResponseSDKType {
  * acknowledge the change of connection state to OPEN on Chain A.
  */
 export interface MsgConnectionOpenConfirm {
-    connection_id: string;
+    connectionId: string;
     /** proof for the change of the connection state on Chain A: `INIT -> OPEN` */
-    proof_ack: Uint8Array;
-    proof_height: Height;
+    proofAck: Uint8Array;
+    proofHeight: Height;
     signer: string;
 }
 /**

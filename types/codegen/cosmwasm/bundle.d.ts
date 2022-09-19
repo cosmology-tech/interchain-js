@@ -109,7 +109,7 @@ export declare namespace cosmwasm {
             AminoConverter: {
                 "/cosmwasm.wasm.v1.MsgStoreCode": {
                     aminoType: string;
-                    toAmino: ({ sender, wasm_byte_code, instantiate_permission }: _89.MsgStoreCode) => {
+                    toAmino: ({ sender, wasmByteCode, instantiatePermission }: _89.MsgStoreCode) => {
                         sender: string;
                         wasm_byte_code: string;
                         instantiate_permission: {
@@ -128,7 +128,7 @@ export declare namespace cosmwasm {
                 };
                 "/cosmwasm.wasm.v1.MsgInstantiateContract": {
                     aminoType: string;
-                    toAmino: ({ sender, admin, code_id, label, msg, funds }: _89.MsgInstantiateContract) => {
+                    toAmino: ({ sender, admin, codeId, label, msg, funds }: _89.MsgInstantiateContract) => {
                         sender: string;
                         admin: string;
                         code_id: string;
@@ -174,7 +174,7 @@ export declare namespace cosmwasm {
                 };
                 "/cosmwasm.wasm.v1.MsgMigrateContract": {
                     aminoType: string;
-                    toAmino: ({ sender, contract, code_id, msg }: _89.MsgMigrateContract) => {
+                    toAmino: ({ sender, contract, codeId, msg }: _89.MsgMigrateContract) => {
                         sender: string;
                         contract: string;
                         code_id: string;
@@ -189,7 +189,7 @@ export declare namespace cosmwasm {
                 };
                 "/cosmwasm.wasm.v1.MsgUpdateAdmin": {
                     aminoType: string;
-                    toAmino: ({ sender, new_admin, contract }: _89.MsgUpdateAdmin) => {
+                    toAmino: ({ sender, newAdmin, contract }: _89.MsgUpdateAdmin) => {
                         sender: string;
                         new_admin: string;
                         contract: string;
@@ -239,21 +239,21 @@ export declare namespace cosmwasm {
                 encode(message: _90.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _90.Params;
                 fromPartial(object: {
-                    code_upload_access?: {
+                    codeUploadAccess?: {
                         permission?: _90.AccessType;
                         address?: string;
                     };
-                    instantiate_default_permission?: _90.AccessType;
-                    max_wasm_code_size?: any;
+                    instantiateDefaultPermission?: _90.AccessType;
+                    maxWasmCodeSize?: any;
                 }): _90.Params;
             };
             CodeInfo: {
                 encode(message: _90.CodeInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _90.CodeInfo;
                 fromPartial(object: {
-                    code_hash?: Uint8Array;
+                    codeHash?: Uint8Array;
                     creator?: string;
-                    instantiate_config?: {
+                    instantiateConfig?: {
                         permission?: _90.AccessType;
                         address?: string;
                     };
@@ -263,17 +263,17 @@ export declare namespace cosmwasm {
                 encode(message: _90.ContractInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _90.ContractInfo;
                 fromPartial(object: {
-                    code_id?: any;
+                    codeId?: any;
                     creator?: string;
                     admin?: string;
                     label?: string;
                     created?: {
-                        block_height?: any;
-                        tx_index?: any;
+                        blockHeight?: any;
+                        txIndex?: any;
                     };
-                    ibc_port_id?: string;
+                    ibcPortId?: string;
                     extension?: {
-                        type_url?: string;
+                        typeUrl?: string;
                         value?: Uint8Array;
                     };
                 }): _90.ContractInfo;
@@ -283,10 +283,10 @@ export declare namespace cosmwasm {
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _90.ContractCodeHistoryEntry;
                 fromPartial(object: {
                     operation?: _90.ContractCodeHistoryOperationType;
-                    code_id?: any;
+                    codeId?: any;
                     updated?: {
-                        block_height?: any;
-                        tx_index?: any;
+                        blockHeight?: any;
+                        txIndex?: any;
                     };
                     msg?: Uint8Array;
                 }): _90.ContractCodeHistoryEntry;
@@ -295,8 +295,8 @@ export declare namespace cosmwasm {
                 encode(message: _90.AbsoluteTxPosition, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _90.AbsoluteTxPosition;
                 fromPartial(object: {
-                    block_height?: any;
-                    tx_index?: any;
+                    blockHeight?: any;
+                    txIndex?: any;
                 }): _90.AbsoluteTxPosition;
             };
             Model: {
@@ -312,8 +312,8 @@ export declare namespace cosmwasm {
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.MsgStoreCode;
                 fromPartial(object: {
                     sender?: string;
-                    wasm_byte_code?: Uint8Array;
-                    instantiate_permission?: {
+                    wasmByteCode?: Uint8Array;
+                    instantiatePermission?: {
                         permission?: _90.AccessType;
                         address?: string;
                     };
@@ -323,7 +323,7 @@ export declare namespace cosmwasm {
                 encode(message: _89.MsgStoreCodeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.MsgStoreCodeResponseSDKType;
                 fromPartial(object: {
-                    code_id?: any;
+                    codeId?: any;
                 }): _89.MsgStoreCodeResponse;
             };
             MsgInstantiateContract: {
@@ -332,7 +332,7 @@ export declare namespace cosmwasm {
                 fromPartial(object: {
                     sender?: string;
                     admin?: string;
-                    code_id?: any;
+                    codeId?: any;
                     label?: string;
                     msg?: Uint8Array;
                     funds?: {
@@ -375,7 +375,7 @@ export declare namespace cosmwasm {
                 fromPartial(object: {
                     sender?: string;
                     contract?: string;
-                    code_id?: any;
+                    codeId?: any;
                     msg?: Uint8Array;
                 }): _89.MsgMigrateContract;
             };
@@ -391,7 +391,7 @@ export declare namespace cosmwasm {
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _89.MsgUpdateAdmin;
                 fromPartial(object: {
                     sender?: string;
-                    new_admin?: string;
+                    newAdmin?: string;
                     contract?: string;
                 }): _89.MsgUpdateAdmin;
             };
@@ -425,18 +425,18 @@ export declare namespace cosmwasm {
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _88.QueryContractInfoResponseSDKType;
                 fromPartial(object: {
                     address?: string;
-                    contract_info?: {
-                        code_id?: any;
+                    contractInfo?: {
+                        codeId?: any;
                         creator?: string;
                         admin?: string;
                         label?: string;
                         created?: {
-                            block_height?: any;
-                            tx_index?: any;
+                            blockHeight?: any;
+                            txIndex?: any;
                         };
-                        ibc_port_id?: string;
+                        ibcPortId?: string;
                         extension?: {
-                            type_url?: string;
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
                     };
@@ -451,7 +451,7 @@ export declare namespace cosmwasm {
                         key?: Uint8Array;
                         offset?: any;
                         limit?: any;
-                        count_total?: boolean;
+                        countTotal?: boolean;
                         reverse?: boolean;
                     };
                 }): _88.QueryContractHistoryRequest;
@@ -462,15 +462,15 @@ export declare namespace cosmwasm {
                 fromPartial(object: {
                     entries?: {
                         operation?: _90.ContractCodeHistoryOperationType;
-                        code_id?: any;
+                        codeId?: any;
                         updated?: {
-                            block_height?: any;
-                            tx_index?: any;
+                            blockHeight?: any;
+                            txIndex?: any;
                         };
                         msg?: Uint8Array;
                     }[];
                     pagination?: {
-                        next_key?: Uint8Array;
+                        nextKey?: Uint8Array;
                         total?: any;
                     };
                 }): _88.QueryContractHistoryResponse;
@@ -479,12 +479,12 @@ export declare namespace cosmwasm {
                 encode(message: _88.QueryContractsByCodeRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _88.QueryContractsByCodeRequest;
                 fromPartial(object: {
-                    code_id?: any;
+                    codeId?: any;
                     pagination?: {
                         key?: Uint8Array;
                         offset?: any;
                         limit?: any;
-                        count_total?: boolean;
+                        countTotal?: boolean;
                         reverse?: boolean;
                     };
                 }): _88.QueryContractsByCodeRequest;
@@ -495,7 +495,7 @@ export declare namespace cosmwasm {
                 fromPartial(object: {
                     contracts?: string[];
                     pagination?: {
-                        next_key?: Uint8Array;
+                        nextKey?: Uint8Array;
                         total?: any;
                     };
                 }): _88.QueryContractsByCodeResponse;
@@ -509,7 +509,7 @@ export declare namespace cosmwasm {
                         key?: Uint8Array;
                         offset?: any;
                         limit?: any;
-                        count_total?: boolean;
+                        countTotal?: boolean;
                         reverse?: boolean;
                     };
                 }): _88.QueryAllContractStateRequest;
@@ -523,7 +523,7 @@ export declare namespace cosmwasm {
                         value?: Uint8Array;
                     }[];
                     pagination?: {
-                        next_key?: Uint8Array;
+                        nextKey?: Uint8Array;
                         total?: any;
                     };
                 }): _88.QueryAllContractStateResponse;
@@ -533,7 +533,7 @@ export declare namespace cosmwasm {
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _88.QueryRawContractStateRequest;
                 fromPartial(object: {
                     address?: string;
-                    query_data?: Uint8Array;
+                    queryData?: Uint8Array;
                 }): _88.QueryRawContractStateRequest;
             };
             QueryRawContractStateResponse: {
@@ -548,7 +548,7 @@ export declare namespace cosmwasm {
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _88.QuerySmartContractStateRequest;
                 fromPartial(object: {
                     address?: string;
-                    query_data?: Uint8Array;
+                    queryData?: Uint8Array;
                 }): _88.QuerySmartContractStateRequest;
             };
             QuerySmartContractStateResponse: {
@@ -562,26 +562,26 @@ export declare namespace cosmwasm {
                 encode(message: _88.QueryCodeRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _88.QueryCodeRequest;
                 fromPartial(object: {
-                    code_id?: any;
+                    codeId?: any;
                 }): _88.QueryCodeRequest;
             };
             CodeInfoResponse: {
                 encode(message: _88.CodeInfoResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _88.CodeInfoResponse;
                 fromPartial(object: {
-                    code_id?: any;
+                    codeId?: any;
                     creator?: string;
-                    data_hash?: Uint8Array;
+                    dataHash?: Uint8Array;
                 }): _88.CodeInfoResponse;
             };
             QueryCodeResponse: {
                 encode(message: _88.QueryCodeResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _88.QueryCodeResponseSDKType;
                 fromPartial(object: {
-                    code_info?: {
-                        code_id?: any;
+                    codeInfo?: {
+                        codeId?: any;
                         creator?: string;
-                        data_hash?: Uint8Array;
+                        dataHash?: Uint8Array;
                     };
                     data?: Uint8Array;
                 }): _88.QueryCodeResponse;
@@ -594,7 +594,7 @@ export declare namespace cosmwasm {
                         key?: Uint8Array;
                         offset?: any;
                         limit?: any;
-                        count_total?: boolean;
+                        countTotal?: boolean;
                         reverse?: boolean;
                     };
                 }): _88.QueryCodesRequest;
@@ -603,13 +603,13 @@ export declare namespace cosmwasm {
                 encode(message: _88.QueryCodesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _88.QueryCodesResponseSDKType;
                 fromPartial(object: {
-                    code_infos?: {
-                        code_id?: any;
+                    codeInfos?: {
+                        codeId?: any;
                         creator?: string;
-                        data_hash?: Uint8Array;
+                        dataHash?: Uint8Array;
                     }[];
                     pagination?: {
-                        next_key?: Uint8Array;
+                        nextKey?: Uint8Array;
                         total?: any;
                     };
                 }): _88.QueryCodesResponse;
@@ -622,7 +622,7 @@ export declare namespace cosmwasm {
                         key?: Uint8Array;
                         offset?: any;
                         limit?: any;
-                        count_total?: boolean;
+                        countTotal?: boolean;
                         reverse?: boolean;
                     };
                 }): _88.QueryPinnedCodesRequest;
@@ -631,9 +631,9 @@ export declare namespace cosmwasm {
                 encode(message: _88.QueryPinnedCodesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _88.QueryPinnedCodesResponseSDKType;
                 fromPartial(object: {
-                    code_ids?: any[];
+                    codeIds?: any[];
                     pagination?: {
-                        next_key?: Uint8Array;
+                        nextKey?: Uint8Array;
                         total?: any;
                     };
                 }): _88.QueryPinnedCodesResponse;
@@ -644,9 +644,9 @@ export declare namespace cosmwasm {
                 fromPartial(object: {
                     title?: string;
                     description?: string;
-                    run_as?: string;
-                    wasm_byte_code?: Uint8Array;
-                    instantiate_permission?: {
+                    runAs?: string;
+                    wasmByteCode?: Uint8Array;
+                    instantiatePermission?: {
                         permission?: _90.AccessType;
                         address?: string;
                     };
@@ -658,9 +658,9 @@ export declare namespace cosmwasm {
                 fromPartial(object: {
                     title?: string;
                     description?: string;
-                    run_as?: string;
+                    runAs?: string;
                     admin?: string;
-                    code_id?: any;
+                    codeId?: any;
                     label?: string;
                     msg?: Uint8Array;
                     funds?: {
@@ -676,7 +676,7 @@ export declare namespace cosmwasm {
                     title?: string;
                     description?: string;
                     contract?: string;
-                    code_id?: any;
+                    codeId?: any;
                     msg?: Uint8Array;
                 }): _87.MigrateContractProposal;
             };
@@ -696,7 +696,7 @@ export declare namespace cosmwasm {
                 fromPartial(object: {
                     title?: string;
                     description?: string;
-                    run_as?: string;
+                    runAs?: string;
                     contract?: string;
                     msg?: Uint8Array;
                     funds?: {
@@ -711,7 +711,7 @@ export declare namespace cosmwasm {
                 fromPartial(object: {
                     title?: string;
                     description?: string;
-                    new_admin?: string;
+                    newAdmin?: string;
                     contract?: string;
                 }): _87.UpdateAdminProposal;
             };
@@ -730,7 +730,7 @@ export declare namespace cosmwasm {
                 fromPartial(object: {
                     title?: string;
                     description?: string;
-                    code_ids?: any[];
+                    codeIds?: any[];
                 }): _87.PinCodesProposal;
             };
             UnpinCodesProposal: {
@@ -739,7 +739,7 @@ export declare namespace cosmwasm {
                 fromPartial(object: {
                     title?: string;
                     description?: string;
-                    code_ids?: any[];
+                    codeIds?: any[];
                 }): _87.UnpinCodesProposal;
             };
             MsgIBCSend: {
@@ -747,8 +747,8 @@ export declare namespace cosmwasm {
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _86.MsgIBCSend;
                 fromPartial(object: {
                     channel?: string;
-                    timeout_height?: any;
-                    timeout_timestamp?: any;
+                    timeoutHeight?: any;
+                    timeoutTimestamp?: any;
                     data?: Uint8Array;
                 }): _86.MsgIBCSend;
             };
@@ -764,65 +764,65 @@ export declare namespace cosmwasm {
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _85.GenesisState;
                 fromPartial(object: {
                     params?: {
-                        code_upload_access?: {
+                        codeUploadAccess?: {
                             permission?: _90.AccessType;
                             address?: string;
                         };
-                        instantiate_default_permission?: _90.AccessType;
-                        max_wasm_code_size?: any;
+                        instantiateDefaultPermission?: _90.AccessType;
+                        maxWasmCodeSize?: any;
                     };
                     codes?: {
-                        code_id?: any;
-                        code_info?: {
-                            code_hash?: Uint8Array;
+                        codeId?: any;
+                        codeInfo?: {
+                            codeHash?: Uint8Array;
                             creator?: string;
-                            instantiate_config?: {
+                            instantiateConfig?: {
                                 permission?: _90.AccessType;
                                 address?: string;
                             };
                         };
-                        code_bytes?: Uint8Array;
+                        codeBytes?: Uint8Array;
                         pinned?: boolean;
                     }[];
                     contracts?: {
-                        contract_address?: string;
-                        contract_info?: {
-                            code_id?: any;
+                        contractAddress?: string;
+                        contractInfo?: {
+                            codeId?: any;
                             creator?: string;
                             admin?: string;
                             label?: string;
                             created?: {
-                                block_height?: any;
-                                tx_index?: any;
+                                blockHeight?: any;
+                                txIndex?: any;
                             };
-                            ibc_port_id?: string;
+                            ibcPortId?: string;
                             extension?: {
-                                type_url?: string;
+                                typeUrl?: string;
                                 value?: Uint8Array;
                             };
                         };
-                        contract_state?: {
+                        contractState?: {
                             key?: Uint8Array;
                             value?: Uint8Array;
                         }[];
                     }[];
                     sequences?: {
-                        id_key?: Uint8Array;
+                        idKey?: Uint8Array;
                         value?: any;
                     }[];
-                    gen_msgs?: {
-                        store_code?: {
+                    genMsgs?: {
+                        storeCode?: {
                             sender?: string;
-                            wasm_byte_code?: Uint8Array;
-                            instantiate_permission?: {
+                            wasmByteCode?: Uint8Array;
+                            instantiatePermission?: {
                                 permission?: _90.AccessType;
                                 address?: string;
                             };
                         };
-                        instantiate_contract?: {
+                        instantiateContract?: {
                             sender?: string;
                             admin?: string;
-                            code_id?: any;
+                            codeId?: any;
                             label?: string;
                             msg?: Uint8Array;
                             funds?: {
@@ -830,7 +830,7 @@ export declare namespace cosmwasm {
                                 amount?: string;
                             }[];
                         };
-                        execute_contract?: {
+                        executeContract?: {
                             sender?: string;
                             contract?: string;
                             msg?: Uint8Array;
@@ -846,18 +846,18 @@ export declare namespace cosmwasm {
                 encode(message: _85.GenesisState_GenMsgs, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _85.GenesisState_GenMsgs;
                 fromPartial(object: {
-                    store_code?: {
+                    storeCode?: {
                         sender?: string;
-                        wasm_byte_code?: Uint8Array;
-                        instantiate_permission?: {
+                        wasmByteCode?: Uint8Array;
+                        instantiatePermission?: {
                             permission?: _90.AccessType;
                             address?: string;
                         };
                     };
-                    instantiate_contract?: {
+                    instantiateContract?: {
                         sender?: string;
                         admin?: string;
-                        code_id?: any;
+                        codeId?: any;
                         label?: string;
                         msg?: Uint8Array;
                         funds?: {
@@ -865,7 +865,7 @@ export declare namespace cosmwasm {
                             amount?: string;
                         }[];
                     };
-                    execute_contract?: {
+                    executeContract?: {
                         sender?: string;
                         contract?: string;
                         msg?: Uint8Array;
@@ -880,16 +880,16 @@ export declare namespace cosmwasm {
                 encode(message: _85.Code, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _85.Code;
                 fromPartial(object: {
-                    code_id?: any;
-                    code_info?: {
-                        code_hash?: Uint8Array;
+                    codeId?: any;
+                    codeInfo?: {
+                        codeHash?: Uint8Array;
                         creator?: string;
-                        instantiate_config?: {
+                        instantiateConfig?: {
                             permission?: _90.AccessType;
                             address?: string;
                         };
                     };
-                    code_bytes?: Uint8Array;
+                    codeBytes?: Uint8Array;
                     pinned?: boolean;
                 }): _85.Code;
             };
@@ -897,23 +897,23 @@ export declare namespace cosmwasm {
                 encode(message: _85.Contract, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _85.Contract;
                 fromPartial(object: {
-                    contract_address?: string;
-                    contract_info?: {
-                        code_id?: any;
+                    contractAddress?: string;
+                    contractInfo?: {
+                        codeId?: any;
                         creator?: string;
                         admin?: string;
                         label?: string;
                         created?: {
-                            block_height?: any;
-                            tx_index?: any;
+                            blockHeight?: any;
+                            txIndex?: any;
                         };
-                        ibc_port_id?: string;
+                        ibcPortId?: string;
                         extension?: {
-                            type_url?: string;
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
                     };
-                    contract_state?: {
+                    contractState?: {
                         key?: Uint8Array;
                         value?: Uint8Array;
                     }[];
@@ -923,7 +923,7 @@ export declare namespace cosmwasm {
                 encode(message: _85.Sequence, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _85.Sequence;
                 fromPartial(object: {
-                    id_key?: Uint8Array;
+                    idKey?: Uint8Array;
                     value?: any;
                 }): _85.Sequence;
             };

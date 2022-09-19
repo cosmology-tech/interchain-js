@@ -19,7 +19,7 @@ export interface GetValidatorSetByHeightRequestSDKType {
 }
 /** GetValidatorSetByHeightResponse is the response type for the Query/GetValidatorSetByHeight RPC method. */
 export interface GetValidatorSetByHeightResponse {
-    block_height: Long;
+    blockHeight: Long;
     validators: Validator[];
     /** pagination defines an pagination for the response. */
     pagination?: PageResponse;
@@ -43,7 +43,7 @@ export interface GetLatestValidatorSetRequestSDKType {
 }
 /** GetLatestValidatorSetResponse is the response type for the Query/GetValidatorSetByHeight RPC method. */
 export interface GetLatestValidatorSetResponse {
-    block_height: Long;
+    blockHeight: Long;
     validators: Validator[];
     /** pagination defines an pagination for the response. */
     pagination?: PageResponse;
@@ -58,9 +58,9 @@ export interface GetLatestValidatorSetResponseSDKType {
 /** Validator is the type for the validator-set. */
 export interface Validator {
     address: string;
-    pub_key: Any;
-    voting_power: Long;
-    proposer_priority: Long;
+    pubKey: Any;
+    votingPower: Long;
+    proposerPriority: Long;
 }
 /** Validator is the type for the validator-set. */
 export interface ValidatorSDKType {
@@ -79,7 +79,7 @@ export interface GetBlockByHeightRequestSDKType {
 }
 /** GetBlockByHeightResponse is the response type for the Query/GetBlockByHeight RPC method. */
 export interface GetBlockByHeightResponse {
-    block_id: BlockID;
+    blockId: BlockID;
     block: Block;
 }
 /** GetBlockByHeightResponse is the response type for the Query/GetBlockByHeight RPC method. */
@@ -95,7 +95,7 @@ export interface GetLatestBlockRequestSDKType {
 }
 /** GetLatestBlockResponse is the response type for the Query/GetLatestBlock RPC method. */
 export interface GetLatestBlockResponse {
-    block_id: BlockID;
+    blockId: BlockID;
     block: Block;
 }
 /** GetLatestBlockResponse is the response type for the Query/GetLatestBlock RPC method. */
@@ -125,8 +125,8 @@ export interface GetNodeInfoRequestSDKType {
 }
 /** GetNodeInfoResponse is the response type for the Query/GetNodeInfo RPC method. */
 export interface GetNodeInfoResponse {
-    node_info: NodeInfo;
-    application_version: VersionInfo;
+    nodeInfo: NodeInfo;
+    applicationVersion: VersionInfo;
 }
 /** GetNodeInfoResponse is the response type for the Query/GetNodeInfo RPC method. */
 export interface GetNodeInfoResponseSDKType {
@@ -136,14 +136,14 @@ export interface GetNodeInfoResponseSDKType {
 /** VersionInfo is the type for the GetNodeInfoResponse message. */
 export interface VersionInfo {
     name: string;
-    app_name: string;
+    appName: string;
     version: string;
-    git_commit: string;
-    build_tags: string;
-    go_version: string;
-    build_deps: Module[];
+    gitCommit: string;
+    buildTags: string;
+    goVersion: string;
+    buildDeps: Module[];
     /** Since: cosmos-sdk 0.43 */
-    cosmos_sdk_version: string;
+    cosmosSdkVersion: string;
 }
 /** VersionInfo is the type for the GetNodeInfoResponse message. */
 export interface VersionInfoSDKType {

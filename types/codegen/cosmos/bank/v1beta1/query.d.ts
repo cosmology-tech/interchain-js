@@ -289,7 +289,7 @@ export interface DenomOwnerSDKType {
 }
 /** QueryDenomOwnersResponse defines the RPC response of a DenomOwners RPC query. */
 export interface QueryDenomOwnersResponse {
-    denom_owners: DenomOwner[];
+    denomOwners: DenomOwner[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponse;
 }

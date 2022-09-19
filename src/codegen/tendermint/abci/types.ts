@@ -286,18 +286,18 @@ export interface Request {
   echo?: RequestEcho;
   flush?: RequestFlush;
   info?: RequestInfo;
-  set_option?: RequestSetOption;
-  init_chain?: RequestInitChain;
+  setOption?: RequestSetOption;
+  initChain?: RequestInitChain;
   query?: RequestQuery;
-  begin_block?: RequestBeginBlock;
-  check_tx?: RequestCheckTx;
-  deliver_tx?: RequestDeliverTx;
-  end_block?: RequestEndBlock;
+  beginBlock?: RequestBeginBlock;
+  checkTx?: RequestCheckTx;
+  deliverTx?: RequestDeliverTx;
+  endBlock?: RequestEndBlock;
   commit?: RequestCommit;
-  list_snapshots?: RequestListSnapshots;
-  offer_snapshot?: RequestOfferSnapshot;
-  load_snapshot_chunk?: RequestLoadSnapshotChunk;
-  apply_snapshot_chunk?: RequestApplySnapshotChunk;
+  listSnapshots?: RequestListSnapshots;
+  offerSnapshot?: RequestOfferSnapshot;
+  loadSnapshotChunk?: RequestLoadSnapshotChunk;
+  applySnapshotChunk?: RequestApplySnapshotChunk;
 }
 export interface RequestSDKType {
   echo?: RequestEchoSDKType;
@@ -326,8 +326,8 @@ export interface RequestFlush {}
 export interface RequestFlushSDKType {}
 export interface RequestInfo {
   version: string;
-  block_version: Long;
-  p2p_version: Long;
+  blockVersion: Long;
+  p2pVersion: Long;
 }
 export interface RequestInfoSDKType {
   version: string;
@@ -348,11 +348,11 @@ export interface RequestSetOptionSDKType {
 }
 export interface RequestInitChain {
   time: Date;
-  chain_id: string;
-  consensus_params: ConsensusParams;
+  chainId: string;
+  consensusParams: ConsensusParams;
   validators: ValidatorUpdate[];
-  app_state_bytes: Uint8Array;
-  initial_height: Long;
+  appStateBytes: Uint8Array;
+  initialHeight: Long;
 }
 export interface RequestInitChainSDKType {
   time: Date;
@@ -377,8 +377,8 @@ export interface RequestQuerySDKType {
 export interface RequestBeginBlock {
   hash: Uint8Array;
   header: Header;
-  last_commit_info: LastCommitInfo;
-  byzantine_validators: Evidence[];
+  lastCommitInfo: LastCommitInfo;
+  byzantineValidators: Evidence[];
 }
 export interface RequestBeginBlockSDKType {
   hash: Uint8Array;
@@ -421,7 +421,7 @@ export interface RequestOfferSnapshot {
   snapshot: Snapshot;
   /** light client-verified app hash for snapshot height */
 
-  app_hash: Uint8Array;
+  appHash: Uint8Array;
 }
 /** offers a snapshot to the application */
 
@@ -465,18 +465,18 @@ export interface Response {
   echo?: ResponseEcho;
   flush?: ResponseFlush;
   info?: ResponseInfo;
-  set_option?: ResponseSetOption;
-  init_chain?: ResponseInitChain;
+  setOption?: ResponseSetOption;
+  initChain?: ResponseInitChain;
   query?: ResponseQuery;
-  begin_block?: ResponseBeginBlock;
-  check_tx?: ResponseCheckTx;
-  deliver_tx?: ResponseDeliverTx;
-  end_block?: ResponseEndBlock;
+  beginBlock?: ResponseBeginBlock;
+  checkTx?: ResponseCheckTx;
+  deliverTx?: ResponseDeliverTx;
+  endBlock?: ResponseEndBlock;
   commit?: ResponseCommit;
-  list_snapshots?: ResponseListSnapshots;
-  offer_snapshot?: ResponseOfferSnapshot;
-  load_snapshot_chunk?: ResponseLoadSnapshotChunk;
-  apply_snapshot_chunk?: ResponseApplySnapshotChunk;
+  listSnapshots?: ResponseListSnapshots;
+  offerSnapshot?: ResponseOfferSnapshot;
+  loadSnapshotChunk?: ResponseLoadSnapshotChunk;
+  applySnapshotChunk?: ResponseApplySnapshotChunk;
 }
 export interface ResponseSDKType {
   exception?: ResponseExceptionSDKType;
@@ -517,9 +517,9 @@ export interface ResponseFlushSDKType {}
 export interface ResponseInfo {
   data: string;
   version: string;
-  app_version: Long;
-  last_block_height: Long;
-  last_block_app_hash: Uint8Array;
+  appVersion: Long;
+  lastBlockHeight: Long;
+  lastBlockAppHash: Uint8Array;
 }
 export interface ResponseInfoSDKType {
   data: string;
@@ -547,9 +547,9 @@ export interface ResponseSetOptionSDKType {
   info: string;
 }
 export interface ResponseInitChain {
-  consensus_params: ConsensusParams;
+  consensusParams: ConsensusParams;
   validators: ValidatorUpdate[];
-  app_hash: Uint8Array;
+  appHash: Uint8Array;
 }
 export interface ResponseInitChainSDKType {
   consensus_params: ConsensusParamsSDKType;
@@ -567,7 +567,7 @@ export interface ResponseQuery {
   index: Long;
   key: Uint8Array;
   value: Uint8Array;
-  proof_ops: ProofOps;
+  proofOps: ProofOps;
   height: Long;
   codespace: string;
 }
@@ -601,8 +601,8 @@ export interface ResponseCheckTx {
   /** nondeterministic */
 
   info: string;
-  gas_wanted: Long;
-  gas_used: Long;
+  gasWanted: Long;
+  gasUsed: Long;
   events: Event[];
   codespace: string;
 }
@@ -629,8 +629,8 @@ export interface ResponseDeliverTx {
   /** nondeterministic */
 
   info: string;
-  gas_wanted: Long;
-  gas_used: Long;
+  gasWanted: Long;
+  gasUsed: Long;
   events: Event[];
   codespace: string;
 }
@@ -649,8 +649,8 @@ export interface ResponseDeliverTxSDKType {
   codespace: string;
 }
 export interface ResponseEndBlock {
-  validator_updates: ValidatorUpdate[];
-  consensus_param_updates: ConsensusParams;
+  validatorUpdates: ValidatorUpdate[];
+  consensusParamUpdates: ConsensusParams;
   events: Event[];
 }
 export interface ResponseEndBlockSDKType {
@@ -661,7 +661,7 @@ export interface ResponseEndBlockSDKType {
 export interface ResponseCommit {
   /** reserve 1 */
   data: Uint8Array;
-  retain_height: Long;
+  retainHeight: Long;
 }
 export interface ResponseCommitSDKType {
   /** reserve 1 */
@@ -690,10 +690,10 @@ export interface ResponseApplySnapshotChunk {
   result: ResponseApplySnapshotChunk_Result;
   /** Chunks to refetch and reapply */
 
-  refetch_chunks: number[];
+  refetchChunks: number[];
   /** Chunk senders to reject and ban */
 
-  reject_senders: string[];
+  rejectSenders: string[];
 }
 export interface ResponseApplySnapshotChunkSDKType {
   result: ResponseApplySnapshotChunk_ResultSDKType;
@@ -730,10 +730,10 @@ export interface ConsensusParamsSDKType {
 
 export interface BlockParams {
   /** Note: must be greater than 0 */
-  max_bytes: Long;
+  maxBytes: Long;
   /** Note: must be greater or equal to -1 */
 
-  max_gas: Long;
+  maxGas: Long;
 }
 /** BlockParams contains limits on the block size. */
 
@@ -841,7 +841,7 @@ export interface ValidatorSDKType {
 /** ValidatorUpdate */
 
 export interface ValidatorUpdate {
-  pub_key: PublicKey;
+  pubKey: PublicKey;
   power: Long;
 }
 /** ValidatorUpdate */
@@ -854,7 +854,7 @@ export interface ValidatorUpdateSDKType {
 
 export interface VoteInfo {
   validator: Validator;
-  signed_last_block: boolean;
+  signedLastBlock: boolean;
 }
 /** VoteInfo */
 
@@ -879,7 +879,7 @@ export interface Evidence {
    * https://github.com/tendermint/tendermint/issues/4581
    */
 
-  total_voting_power: Long;
+  totalVotingPower: Long;
 }
 export interface EvidenceSDKType {
   type: EvidenceTypeSDKType;
@@ -938,18 +938,18 @@ function createBaseRequest(): Request {
     echo: undefined,
     flush: undefined,
     info: undefined,
-    set_option: undefined,
-    init_chain: undefined,
+    setOption: undefined,
+    initChain: undefined,
     query: undefined,
-    begin_block: undefined,
-    check_tx: undefined,
-    deliver_tx: undefined,
-    end_block: undefined,
+    beginBlock: undefined,
+    checkTx: undefined,
+    deliverTx: undefined,
+    endBlock: undefined,
     commit: undefined,
-    list_snapshots: undefined,
-    offer_snapshot: undefined,
-    load_snapshot_chunk: undefined,
-    apply_snapshot_chunk: undefined
+    listSnapshots: undefined,
+    offerSnapshot: undefined,
+    loadSnapshotChunk: undefined,
+    applySnapshotChunk: undefined
   };
 }
 
@@ -967,52 +967,52 @@ export const Request = {
       RequestInfo.encode(message.info, writer.uint32(26).fork()).ldelim();
     }
 
-    if (message.set_option !== undefined) {
-      RequestSetOption.encode(message.set_option, writer.uint32(34).fork()).ldelim();
+    if (message.setOption !== undefined) {
+      RequestSetOption.encode(message.setOption, writer.uint32(34).fork()).ldelim();
     }
 
-    if (message.init_chain !== undefined) {
-      RequestInitChain.encode(message.init_chain, writer.uint32(42).fork()).ldelim();
+    if (message.initChain !== undefined) {
+      RequestInitChain.encode(message.initChain, writer.uint32(42).fork()).ldelim();
     }
 
     if (message.query !== undefined) {
       RequestQuery.encode(message.query, writer.uint32(50).fork()).ldelim();
     }
 
-    if (message.begin_block !== undefined) {
-      RequestBeginBlock.encode(message.begin_block, writer.uint32(58).fork()).ldelim();
+    if (message.beginBlock !== undefined) {
+      RequestBeginBlock.encode(message.beginBlock, writer.uint32(58).fork()).ldelim();
     }
 
-    if (message.check_tx !== undefined) {
-      RequestCheckTx.encode(message.check_tx, writer.uint32(66).fork()).ldelim();
+    if (message.checkTx !== undefined) {
+      RequestCheckTx.encode(message.checkTx, writer.uint32(66).fork()).ldelim();
     }
 
-    if (message.deliver_tx !== undefined) {
-      RequestDeliverTx.encode(message.deliver_tx, writer.uint32(74).fork()).ldelim();
+    if (message.deliverTx !== undefined) {
+      RequestDeliverTx.encode(message.deliverTx, writer.uint32(74).fork()).ldelim();
     }
 
-    if (message.end_block !== undefined) {
-      RequestEndBlock.encode(message.end_block, writer.uint32(82).fork()).ldelim();
+    if (message.endBlock !== undefined) {
+      RequestEndBlock.encode(message.endBlock, writer.uint32(82).fork()).ldelim();
     }
 
     if (message.commit !== undefined) {
       RequestCommit.encode(message.commit, writer.uint32(90).fork()).ldelim();
     }
 
-    if (message.list_snapshots !== undefined) {
-      RequestListSnapshots.encode(message.list_snapshots, writer.uint32(98).fork()).ldelim();
+    if (message.listSnapshots !== undefined) {
+      RequestListSnapshots.encode(message.listSnapshots, writer.uint32(98).fork()).ldelim();
     }
 
-    if (message.offer_snapshot !== undefined) {
-      RequestOfferSnapshot.encode(message.offer_snapshot, writer.uint32(106).fork()).ldelim();
+    if (message.offerSnapshot !== undefined) {
+      RequestOfferSnapshot.encode(message.offerSnapshot, writer.uint32(106).fork()).ldelim();
     }
 
-    if (message.load_snapshot_chunk !== undefined) {
-      RequestLoadSnapshotChunk.encode(message.load_snapshot_chunk, writer.uint32(114).fork()).ldelim();
+    if (message.loadSnapshotChunk !== undefined) {
+      RequestLoadSnapshotChunk.encode(message.loadSnapshotChunk, writer.uint32(114).fork()).ldelim();
     }
 
-    if (message.apply_snapshot_chunk !== undefined) {
-      RequestApplySnapshotChunk.encode(message.apply_snapshot_chunk, writer.uint32(122).fork()).ldelim();
+    if (message.applySnapshotChunk !== undefined) {
+      RequestApplySnapshotChunk.encode(message.applySnapshotChunk, writer.uint32(122).fork()).ldelim();
     }
 
     return writer;
@@ -1040,11 +1040,11 @@ export const Request = {
           break;
 
         case 4:
-          message.set_option = RequestSetOption.decode(reader, reader.uint32());
+          message.setOption = RequestSetOption.decode(reader, reader.uint32());
           break;
 
         case 5:
-          message.init_chain = RequestInitChain.decode(reader, reader.uint32());
+          message.initChain = RequestInitChain.decode(reader, reader.uint32());
           break;
 
         case 6:
@@ -1052,19 +1052,19 @@ export const Request = {
           break;
 
         case 7:
-          message.begin_block = RequestBeginBlock.decode(reader, reader.uint32());
+          message.beginBlock = RequestBeginBlock.decode(reader, reader.uint32());
           break;
 
         case 8:
-          message.check_tx = RequestCheckTx.decode(reader, reader.uint32());
+          message.checkTx = RequestCheckTx.decode(reader, reader.uint32());
           break;
 
         case 9:
-          message.deliver_tx = RequestDeliverTx.decode(reader, reader.uint32());
+          message.deliverTx = RequestDeliverTx.decode(reader, reader.uint32());
           break;
 
         case 10:
-          message.end_block = RequestEndBlock.decode(reader, reader.uint32());
+          message.endBlock = RequestEndBlock.decode(reader, reader.uint32());
           break;
 
         case 11:
@@ -1072,19 +1072,19 @@ export const Request = {
           break;
 
         case 12:
-          message.list_snapshots = RequestListSnapshots.decode(reader, reader.uint32());
+          message.listSnapshots = RequestListSnapshots.decode(reader, reader.uint32());
           break;
 
         case 13:
-          message.offer_snapshot = RequestOfferSnapshot.decode(reader, reader.uint32());
+          message.offerSnapshot = RequestOfferSnapshot.decode(reader, reader.uint32());
           break;
 
         case 14:
-          message.load_snapshot_chunk = RequestLoadSnapshotChunk.decode(reader, reader.uint32());
+          message.loadSnapshotChunk = RequestLoadSnapshotChunk.decode(reader, reader.uint32());
           break;
 
         case 15:
-          message.apply_snapshot_chunk = RequestApplySnapshotChunk.decode(reader, reader.uint32());
+          message.applySnapshotChunk = RequestApplySnapshotChunk.decode(reader, reader.uint32());
           break;
 
         default:
@@ -1101,18 +1101,18 @@ export const Request = {
     message.echo = object.echo !== undefined && object.echo !== null ? RequestEcho.fromPartial(object.echo) : undefined;
     message.flush = object.flush !== undefined && object.flush !== null ? RequestFlush.fromPartial(object.flush) : undefined;
     message.info = object.info !== undefined && object.info !== null ? RequestInfo.fromPartial(object.info) : undefined;
-    message.set_option = object.set_option !== undefined && object.set_option !== null ? RequestSetOption.fromPartial(object.set_option) : undefined;
-    message.init_chain = object.init_chain !== undefined && object.init_chain !== null ? RequestInitChain.fromPartial(object.init_chain) : undefined;
+    message.setOption = object.setOption !== undefined && object.setOption !== null ? RequestSetOption.fromPartial(object.setOption) : undefined;
+    message.initChain = object.initChain !== undefined && object.initChain !== null ? RequestInitChain.fromPartial(object.initChain) : undefined;
     message.query = object.query !== undefined && object.query !== null ? RequestQuery.fromPartial(object.query) : undefined;
-    message.begin_block = object.begin_block !== undefined && object.begin_block !== null ? RequestBeginBlock.fromPartial(object.begin_block) : undefined;
-    message.check_tx = object.check_tx !== undefined && object.check_tx !== null ? RequestCheckTx.fromPartial(object.check_tx) : undefined;
-    message.deliver_tx = object.deliver_tx !== undefined && object.deliver_tx !== null ? RequestDeliverTx.fromPartial(object.deliver_tx) : undefined;
-    message.end_block = object.end_block !== undefined && object.end_block !== null ? RequestEndBlock.fromPartial(object.end_block) : undefined;
+    message.beginBlock = object.beginBlock !== undefined && object.beginBlock !== null ? RequestBeginBlock.fromPartial(object.beginBlock) : undefined;
+    message.checkTx = object.checkTx !== undefined && object.checkTx !== null ? RequestCheckTx.fromPartial(object.checkTx) : undefined;
+    message.deliverTx = object.deliverTx !== undefined && object.deliverTx !== null ? RequestDeliverTx.fromPartial(object.deliverTx) : undefined;
+    message.endBlock = object.endBlock !== undefined && object.endBlock !== null ? RequestEndBlock.fromPartial(object.endBlock) : undefined;
     message.commit = object.commit !== undefined && object.commit !== null ? RequestCommit.fromPartial(object.commit) : undefined;
-    message.list_snapshots = object.list_snapshots !== undefined && object.list_snapshots !== null ? RequestListSnapshots.fromPartial(object.list_snapshots) : undefined;
-    message.offer_snapshot = object.offer_snapshot !== undefined && object.offer_snapshot !== null ? RequestOfferSnapshot.fromPartial(object.offer_snapshot) : undefined;
-    message.load_snapshot_chunk = object.load_snapshot_chunk !== undefined && object.load_snapshot_chunk !== null ? RequestLoadSnapshotChunk.fromPartial(object.load_snapshot_chunk) : undefined;
-    message.apply_snapshot_chunk = object.apply_snapshot_chunk !== undefined && object.apply_snapshot_chunk !== null ? RequestApplySnapshotChunk.fromPartial(object.apply_snapshot_chunk) : undefined;
+    message.listSnapshots = object.listSnapshots !== undefined && object.listSnapshots !== null ? RequestListSnapshots.fromPartial(object.listSnapshots) : undefined;
+    message.offerSnapshot = object.offerSnapshot !== undefined && object.offerSnapshot !== null ? RequestOfferSnapshot.fromPartial(object.offerSnapshot) : undefined;
+    message.loadSnapshotChunk = object.loadSnapshotChunk !== undefined && object.loadSnapshotChunk !== null ? RequestLoadSnapshotChunk.fromPartial(object.loadSnapshotChunk) : undefined;
+    message.applySnapshotChunk = object.applySnapshotChunk !== undefined && object.applySnapshotChunk !== null ? RequestApplySnapshotChunk.fromPartial(object.applySnapshotChunk) : undefined;
     return message;
   }
 
@@ -1200,8 +1200,8 @@ export const RequestFlush = {
 function createBaseRequestInfo(): RequestInfo {
   return {
     version: "",
-    block_version: Long.UZERO,
-    p2p_version: Long.UZERO
+    blockVersion: Long.UZERO,
+    p2pVersion: Long.UZERO
   };
 }
 
@@ -1211,12 +1211,12 @@ export const RequestInfo = {
       writer.uint32(10).string(message.version);
     }
 
-    if (!message.block_version.isZero()) {
-      writer.uint32(16).uint64(message.block_version);
+    if (!message.blockVersion.isZero()) {
+      writer.uint32(16).uint64(message.blockVersion);
     }
 
-    if (!message.p2p_version.isZero()) {
-      writer.uint32(24).uint64(message.p2p_version);
+    if (!message.p2pVersion.isZero()) {
+      writer.uint32(24).uint64(message.p2pVersion);
     }
 
     return writer;
@@ -1236,11 +1236,11 @@ export const RequestInfo = {
           break;
 
         case 2:
-          message.block_version = (reader.uint64() as Long);
+          message.blockVersion = (reader.uint64() as Long);
           break;
 
         case 3:
-          message.p2p_version = (reader.uint64() as Long);
+          message.p2pVersion = (reader.uint64() as Long);
           break;
 
         default:
@@ -1255,8 +1255,8 @@ export const RequestInfo = {
   fromPartial(object: DeepPartial<RequestInfo>): RequestInfo {
     const message = createBaseRequestInfo();
     message.version = object.version ?? "";
-    message.block_version = object.block_version !== undefined && object.block_version !== null ? Long.fromValue(object.block_version) : Long.UZERO;
-    message.p2p_version = object.p2p_version !== undefined && object.p2p_version !== null ? Long.fromValue(object.p2p_version) : Long.UZERO;
+    message.blockVersion = object.blockVersion !== undefined && object.blockVersion !== null ? Long.fromValue(object.blockVersion) : Long.UZERO;
+    message.p2pVersion = object.p2pVersion !== undefined && object.p2pVersion !== null ? Long.fromValue(object.p2pVersion) : Long.UZERO;
     return message;
   }
 
@@ -1320,11 +1320,11 @@ export const RequestSetOption = {
 function createBaseRequestInitChain(): RequestInitChain {
   return {
     time: undefined,
-    chain_id: "",
-    consensus_params: undefined,
+    chainId: "",
+    consensusParams: undefined,
     validators: [],
-    app_state_bytes: new Uint8Array(),
-    initial_height: Long.ZERO
+    appStateBytes: new Uint8Array(),
+    initialHeight: Long.ZERO
   };
 }
 
@@ -1334,24 +1334,24 @@ export const RequestInitChain = {
       Timestamp.encode(toTimestamp(message.time), writer.uint32(10).fork()).ldelim();
     }
 
-    if (message.chain_id !== "") {
-      writer.uint32(18).string(message.chain_id);
+    if (message.chainId !== "") {
+      writer.uint32(18).string(message.chainId);
     }
 
-    if (message.consensus_params !== undefined) {
-      ConsensusParams.encode(message.consensus_params, writer.uint32(26).fork()).ldelim();
+    if (message.consensusParams !== undefined) {
+      ConsensusParams.encode(message.consensusParams, writer.uint32(26).fork()).ldelim();
     }
 
     for (const v of message.validators) {
       ValidatorUpdate.encode(v!, writer.uint32(34).fork()).ldelim();
     }
 
-    if (message.app_state_bytes.length !== 0) {
-      writer.uint32(42).bytes(message.app_state_bytes);
+    if (message.appStateBytes.length !== 0) {
+      writer.uint32(42).bytes(message.appStateBytes);
     }
 
-    if (!message.initial_height.isZero()) {
-      writer.uint32(48).int64(message.initial_height);
+    if (!message.initialHeight.isZero()) {
+      writer.uint32(48).int64(message.initialHeight);
     }
 
     return writer;
@@ -1371,11 +1371,11 @@ export const RequestInitChain = {
           break;
 
         case 2:
-          message.chain_id = reader.string();
+          message.chainId = reader.string();
           break;
 
         case 3:
-          message.consensus_params = ConsensusParams.decode(reader, reader.uint32());
+          message.consensusParams = ConsensusParams.decode(reader, reader.uint32());
           break;
 
         case 4:
@@ -1383,11 +1383,11 @@ export const RequestInitChain = {
           break;
 
         case 5:
-          message.app_state_bytes = reader.bytes();
+          message.appStateBytes = reader.bytes();
           break;
 
         case 6:
-          message.initial_height = (reader.int64() as Long);
+          message.initialHeight = (reader.int64() as Long);
           break;
 
         default:
@@ -1402,11 +1402,11 @@ export const RequestInitChain = {
   fromPartial(object: DeepPartial<RequestInitChain>): RequestInitChain {
     const message = createBaseRequestInitChain();
     message.time = object.time ?? undefined;
-    message.chain_id = object.chain_id ?? "";
-    message.consensus_params = object.consensus_params !== undefined && object.consensus_params !== null ? ConsensusParams.fromPartial(object.consensus_params) : undefined;
+    message.chainId = object.chainId ?? "";
+    message.consensusParams = object.consensusParams !== undefined && object.consensusParams !== null ? ConsensusParams.fromPartial(object.consensusParams) : undefined;
     message.validators = object.validators?.map(e => ValidatorUpdate.fromPartial(e)) || [];
-    message.app_state_bytes = object.app_state_bytes ?? new Uint8Array();
-    message.initial_height = object.initial_height !== undefined && object.initial_height !== null ? Long.fromValue(object.initial_height) : Long.ZERO;
+    message.appStateBytes = object.appStateBytes ?? new Uint8Array();
+    message.initialHeight = object.initialHeight !== undefined && object.initialHeight !== null ? Long.fromValue(object.initialHeight) : Long.ZERO;
     return message;
   }
 
@@ -1491,8 +1491,8 @@ function createBaseRequestBeginBlock(): RequestBeginBlock {
   return {
     hash: new Uint8Array(),
     header: undefined,
-    last_commit_info: undefined,
-    byzantine_validators: []
+    lastCommitInfo: undefined,
+    byzantineValidators: []
   };
 }
 
@@ -1506,11 +1506,11 @@ export const RequestBeginBlock = {
       Header.encode(message.header, writer.uint32(18).fork()).ldelim();
     }
 
-    if (message.last_commit_info !== undefined) {
-      LastCommitInfo.encode(message.last_commit_info, writer.uint32(26).fork()).ldelim();
+    if (message.lastCommitInfo !== undefined) {
+      LastCommitInfo.encode(message.lastCommitInfo, writer.uint32(26).fork()).ldelim();
     }
 
-    for (const v of message.byzantine_validators) {
+    for (const v of message.byzantineValidators) {
       Evidence.encode(v!, writer.uint32(34).fork()).ldelim();
     }
 
@@ -1535,11 +1535,11 @@ export const RequestBeginBlock = {
           break;
 
         case 3:
-          message.last_commit_info = LastCommitInfo.decode(reader, reader.uint32());
+          message.lastCommitInfo = LastCommitInfo.decode(reader, reader.uint32());
           break;
 
         case 4:
-          message.byzantine_validators.push(Evidence.decode(reader, reader.uint32()));
+          message.byzantineValidators.push(Evidence.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -1555,8 +1555,8 @@ export const RequestBeginBlock = {
     const message = createBaseRequestBeginBlock();
     message.hash = object.hash ?? new Uint8Array();
     message.header = object.header !== undefined && object.header !== null ? Header.fromPartial(object.header) : undefined;
-    message.last_commit_info = object.last_commit_info !== undefined && object.last_commit_info !== null ? LastCommitInfo.fromPartial(object.last_commit_info) : undefined;
-    message.byzantine_validators = object.byzantine_validators?.map(e => Evidence.fromPartial(e)) || [];
+    message.lastCommitInfo = object.lastCommitInfo !== undefined && object.lastCommitInfo !== null ? LastCommitInfo.fromPartial(object.lastCommitInfo) : undefined;
+    message.byzantineValidators = object.byzantineValidators?.map(e => Evidence.fromPartial(e)) || [];
     return message;
   }
 
@@ -1778,7 +1778,7 @@ export const RequestListSnapshots = {
 function createBaseRequestOfferSnapshot(): RequestOfferSnapshot {
   return {
     snapshot: undefined,
-    app_hash: new Uint8Array()
+    appHash: new Uint8Array()
   };
 }
 
@@ -1788,8 +1788,8 @@ export const RequestOfferSnapshot = {
       Snapshot.encode(message.snapshot, writer.uint32(10).fork()).ldelim();
     }
 
-    if (message.app_hash.length !== 0) {
-      writer.uint32(18).bytes(message.app_hash);
+    if (message.appHash.length !== 0) {
+      writer.uint32(18).bytes(message.appHash);
     }
 
     return writer;
@@ -1809,7 +1809,7 @@ export const RequestOfferSnapshot = {
           break;
 
         case 2:
-          message.app_hash = reader.bytes();
+          message.appHash = reader.bytes();
           break;
 
         default:
@@ -1824,7 +1824,7 @@ export const RequestOfferSnapshot = {
   fromPartial(object: DeepPartial<RequestOfferSnapshot>): RequestOfferSnapshot {
     const message = createBaseRequestOfferSnapshot();
     message.snapshot = object.snapshot !== undefined && object.snapshot !== null ? Snapshot.fromPartial(object.snapshot) : undefined;
-    message.app_hash = object.app_hash ?? new Uint8Array();
+    message.appHash = object.appHash ?? new Uint8Array();
     return message;
   }
 
@@ -1966,18 +1966,18 @@ function createBaseResponse(): Response {
     echo: undefined,
     flush: undefined,
     info: undefined,
-    set_option: undefined,
-    init_chain: undefined,
+    setOption: undefined,
+    initChain: undefined,
     query: undefined,
-    begin_block: undefined,
-    check_tx: undefined,
-    deliver_tx: undefined,
-    end_block: undefined,
+    beginBlock: undefined,
+    checkTx: undefined,
+    deliverTx: undefined,
+    endBlock: undefined,
     commit: undefined,
-    list_snapshots: undefined,
-    offer_snapshot: undefined,
-    load_snapshot_chunk: undefined,
-    apply_snapshot_chunk: undefined
+    listSnapshots: undefined,
+    offerSnapshot: undefined,
+    loadSnapshotChunk: undefined,
+    applySnapshotChunk: undefined
   };
 }
 
@@ -1999,52 +1999,52 @@ export const Response = {
       ResponseInfo.encode(message.info, writer.uint32(34).fork()).ldelim();
     }
 
-    if (message.set_option !== undefined) {
-      ResponseSetOption.encode(message.set_option, writer.uint32(42).fork()).ldelim();
+    if (message.setOption !== undefined) {
+      ResponseSetOption.encode(message.setOption, writer.uint32(42).fork()).ldelim();
     }
 
-    if (message.init_chain !== undefined) {
-      ResponseInitChain.encode(message.init_chain, writer.uint32(50).fork()).ldelim();
+    if (message.initChain !== undefined) {
+      ResponseInitChain.encode(message.initChain, writer.uint32(50).fork()).ldelim();
     }
 
     if (message.query !== undefined) {
       ResponseQuery.encode(message.query, writer.uint32(58).fork()).ldelim();
     }
 
-    if (message.begin_block !== undefined) {
-      ResponseBeginBlock.encode(message.begin_block, writer.uint32(66).fork()).ldelim();
+    if (message.beginBlock !== undefined) {
+      ResponseBeginBlock.encode(message.beginBlock, writer.uint32(66).fork()).ldelim();
     }
 
-    if (message.check_tx !== undefined) {
-      ResponseCheckTx.encode(message.check_tx, writer.uint32(74).fork()).ldelim();
+    if (message.checkTx !== undefined) {
+      ResponseCheckTx.encode(message.checkTx, writer.uint32(74).fork()).ldelim();
     }
 
-    if (message.deliver_tx !== undefined) {
-      ResponseDeliverTx.encode(message.deliver_tx, writer.uint32(82).fork()).ldelim();
+    if (message.deliverTx !== undefined) {
+      ResponseDeliverTx.encode(message.deliverTx, writer.uint32(82).fork()).ldelim();
     }
 
-    if (message.end_block !== undefined) {
-      ResponseEndBlock.encode(message.end_block, writer.uint32(90).fork()).ldelim();
+    if (message.endBlock !== undefined) {
+      ResponseEndBlock.encode(message.endBlock, writer.uint32(90).fork()).ldelim();
     }
 
     if (message.commit !== undefined) {
       ResponseCommit.encode(message.commit, writer.uint32(98).fork()).ldelim();
     }
 
-    if (message.list_snapshots !== undefined) {
-      ResponseListSnapshots.encode(message.list_snapshots, writer.uint32(106).fork()).ldelim();
+    if (message.listSnapshots !== undefined) {
+      ResponseListSnapshots.encode(message.listSnapshots, writer.uint32(106).fork()).ldelim();
     }
 
-    if (message.offer_snapshot !== undefined) {
-      ResponseOfferSnapshot.encode(message.offer_snapshot, writer.uint32(114).fork()).ldelim();
+    if (message.offerSnapshot !== undefined) {
+      ResponseOfferSnapshot.encode(message.offerSnapshot, writer.uint32(114).fork()).ldelim();
     }
 
-    if (message.load_snapshot_chunk !== undefined) {
-      ResponseLoadSnapshotChunk.encode(message.load_snapshot_chunk, writer.uint32(122).fork()).ldelim();
+    if (message.loadSnapshotChunk !== undefined) {
+      ResponseLoadSnapshotChunk.encode(message.loadSnapshotChunk, writer.uint32(122).fork()).ldelim();
     }
 
-    if (message.apply_snapshot_chunk !== undefined) {
-      ResponseApplySnapshotChunk.encode(message.apply_snapshot_chunk, writer.uint32(130).fork()).ldelim();
+    if (message.applySnapshotChunk !== undefined) {
+      ResponseApplySnapshotChunk.encode(message.applySnapshotChunk, writer.uint32(130).fork()).ldelim();
     }
 
     return writer;
@@ -2076,11 +2076,11 @@ export const Response = {
           break;
 
         case 5:
-          message.set_option = ResponseSetOption.decode(reader, reader.uint32());
+          message.setOption = ResponseSetOption.decode(reader, reader.uint32());
           break;
 
         case 6:
-          message.init_chain = ResponseInitChain.decode(reader, reader.uint32());
+          message.initChain = ResponseInitChain.decode(reader, reader.uint32());
           break;
 
         case 7:
@@ -2088,19 +2088,19 @@ export const Response = {
           break;
 
         case 8:
-          message.begin_block = ResponseBeginBlock.decode(reader, reader.uint32());
+          message.beginBlock = ResponseBeginBlock.decode(reader, reader.uint32());
           break;
 
         case 9:
-          message.check_tx = ResponseCheckTx.decode(reader, reader.uint32());
+          message.checkTx = ResponseCheckTx.decode(reader, reader.uint32());
           break;
 
         case 10:
-          message.deliver_tx = ResponseDeliverTx.decode(reader, reader.uint32());
+          message.deliverTx = ResponseDeliverTx.decode(reader, reader.uint32());
           break;
 
         case 11:
-          message.end_block = ResponseEndBlock.decode(reader, reader.uint32());
+          message.endBlock = ResponseEndBlock.decode(reader, reader.uint32());
           break;
 
         case 12:
@@ -2108,19 +2108,19 @@ export const Response = {
           break;
 
         case 13:
-          message.list_snapshots = ResponseListSnapshots.decode(reader, reader.uint32());
+          message.listSnapshots = ResponseListSnapshots.decode(reader, reader.uint32());
           break;
 
         case 14:
-          message.offer_snapshot = ResponseOfferSnapshot.decode(reader, reader.uint32());
+          message.offerSnapshot = ResponseOfferSnapshot.decode(reader, reader.uint32());
           break;
 
         case 15:
-          message.load_snapshot_chunk = ResponseLoadSnapshotChunk.decode(reader, reader.uint32());
+          message.loadSnapshotChunk = ResponseLoadSnapshotChunk.decode(reader, reader.uint32());
           break;
 
         case 16:
-          message.apply_snapshot_chunk = ResponseApplySnapshotChunk.decode(reader, reader.uint32());
+          message.applySnapshotChunk = ResponseApplySnapshotChunk.decode(reader, reader.uint32());
           break;
 
         default:
@@ -2138,18 +2138,18 @@ export const Response = {
     message.echo = object.echo !== undefined && object.echo !== null ? ResponseEcho.fromPartial(object.echo) : undefined;
     message.flush = object.flush !== undefined && object.flush !== null ? ResponseFlush.fromPartial(object.flush) : undefined;
     message.info = object.info !== undefined && object.info !== null ? ResponseInfo.fromPartial(object.info) : undefined;
-    message.set_option = object.set_option !== undefined && object.set_option !== null ? ResponseSetOption.fromPartial(object.set_option) : undefined;
-    message.init_chain = object.init_chain !== undefined && object.init_chain !== null ? ResponseInitChain.fromPartial(object.init_chain) : undefined;
+    message.setOption = object.setOption !== undefined && object.setOption !== null ? ResponseSetOption.fromPartial(object.setOption) : undefined;
+    message.initChain = object.initChain !== undefined && object.initChain !== null ? ResponseInitChain.fromPartial(object.initChain) : undefined;
     message.query = object.query !== undefined && object.query !== null ? ResponseQuery.fromPartial(object.query) : undefined;
-    message.begin_block = object.begin_block !== undefined && object.begin_block !== null ? ResponseBeginBlock.fromPartial(object.begin_block) : undefined;
-    message.check_tx = object.check_tx !== undefined && object.check_tx !== null ? ResponseCheckTx.fromPartial(object.check_tx) : undefined;
-    message.deliver_tx = object.deliver_tx !== undefined && object.deliver_tx !== null ? ResponseDeliverTx.fromPartial(object.deliver_tx) : undefined;
-    message.end_block = object.end_block !== undefined && object.end_block !== null ? ResponseEndBlock.fromPartial(object.end_block) : undefined;
+    message.beginBlock = object.beginBlock !== undefined && object.beginBlock !== null ? ResponseBeginBlock.fromPartial(object.beginBlock) : undefined;
+    message.checkTx = object.checkTx !== undefined && object.checkTx !== null ? ResponseCheckTx.fromPartial(object.checkTx) : undefined;
+    message.deliverTx = object.deliverTx !== undefined && object.deliverTx !== null ? ResponseDeliverTx.fromPartial(object.deliverTx) : undefined;
+    message.endBlock = object.endBlock !== undefined && object.endBlock !== null ? ResponseEndBlock.fromPartial(object.endBlock) : undefined;
     message.commit = object.commit !== undefined && object.commit !== null ? ResponseCommit.fromPartial(object.commit) : undefined;
-    message.list_snapshots = object.list_snapshots !== undefined && object.list_snapshots !== null ? ResponseListSnapshots.fromPartial(object.list_snapshots) : undefined;
-    message.offer_snapshot = object.offer_snapshot !== undefined && object.offer_snapshot !== null ? ResponseOfferSnapshot.fromPartial(object.offer_snapshot) : undefined;
-    message.load_snapshot_chunk = object.load_snapshot_chunk !== undefined && object.load_snapshot_chunk !== null ? ResponseLoadSnapshotChunk.fromPartial(object.load_snapshot_chunk) : undefined;
-    message.apply_snapshot_chunk = object.apply_snapshot_chunk !== undefined && object.apply_snapshot_chunk !== null ? ResponseApplySnapshotChunk.fromPartial(object.apply_snapshot_chunk) : undefined;
+    message.listSnapshots = object.listSnapshots !== undefined && object.listSnapshots !== null ? ResponseListSnapshots.fromPartial(object.listSnapshots) : undefined;
+    message.offerSnapshot = object.offerSnapshot !== undefined && object.offerSnapshot !== null ? ResponseOfferSnapshot.fromPartial(object.offerSnapshot) : undefined;
+    message.loadSnapshotChunk = object.loadSnapshotChunk !== undefined && object.loadSnapshotChunk !== null ? ResponseLoadSnapshotChunk.fromPartial(object.loadSnapshotChunk) : undefined;
+    message.applySnapshotChunk = object.applySnapshotChunk !== undefined && object.applySnapshotChunk !== null ? ResponseApplySnapshotChunk.fromPartial(object.applySnapshotChunk) : undefined;
     return message;
   }
 
@@ -2283,9 +2283,9 @@ function createBaseResponseInfo(): ResponseInfo {
   return {
     data: "",
     version: "",
-    app_version: Long.UZERO,
-    last_block_height: Long.ZERO,
-    last_block_app_hash: new Uint8Array()
+    appVersion: Long.UZERO,
+    lastBlockHeight: Long.ZERO,
+    lastBlockAppHash: new Uint8Array()
   };
 }
 
@@ -2299,16 +2299,16 @@ export const ResponseInfo = {
       writer.uint32(18).string(message.version);
     }
 
-    if (!message.app_version.isZero()) {
-      writer.uint32(24).uint64(message.app_version);
+    if (!message.appVersion.isZero()) {
+      writer.uint32(24).uint64(message.appVersion);
     }
 
-    if (!message.last_block_height.isZero()) {
-      writer.uint32(32).int64(message.last_block_height);
+    if (!message.lastBlockHeight.isZero()) {
+      writer.uint32(32).int64(message.lastBlockHeight);
     }
 
-    if (message.last_block_app_hash.length !== 0) {
-      writer.uint32(42).bytes(message.last_block_app_hash);
+    if (message.lastBlockAppHash.length !== 0) {
+      writer.uint32(42).bytes(message.lastBlockAppHash);
     }
 
     return writer;
@@ -2332,15 +2332,15 @@ export const ResponseInfo = {
           break;
 
         case 3:
-          message.app_version = (reader.uint64() as Long);
+          message.appVersion = (reader.uint64() as Long);
           break;
 
         case 4:
-          message.last_block_height = (reader.int64() as Long);
+          message.lastBlockHeight = (reader.int64() as Long);
           break;
 
         case 5:
-          message.last_block_app_hash = reader.bytes();
+          message.lastBlockAppHash = reader.bytes();
           break;
 
         default:
@@ -2356,9 +2356,9 @@ export const ResponseInfo = {
     const message = createBaseResponseInfo();
     message.data = object.data ?? "";
     message.version = object.version ?? "";
-    message.app_version = object.app_version !== undefined && object.app_version !== null ? Long.fromValue(object.app_version) : Long.UZERO;
-    message.last_block_height = object.last_block_height !== undefined && object.last_block_height !== null ? Long.fromValue(object.last_block_height) : Long.ZERO;
-    message.last_block_app_hash = object.last_block_app_hash ?? new Uint8Array();
+    message.appVersion = object.appVersion !== undefined && object.appVersion !== null ? Long.fromValue(object.appVersion) : Long.UZERO;
+    message.lastBlockHeight = object.lastBlockHeight !== undefined && object.lastBlockHeight !== null ? Long.fromValue(object.lastBlockHeight) : Long.ZERO;
+    message.lastBlockAppHash = object.lastBlockAppHash ?? new Uint8Array();
     return message;
   }
 
@@ -2431,24 +2431,24 @@ export const ResponseSetOption = {
 
 function createBaseResponseInitChain(): ResponseInitChain {
   return {
-    consensus_params: undefined,
+    consensusParams: undefined,
     validators: [],
-    app_hash: new Uint8Array()
+    appHash: new Uint8Array()
   };
 }
 
 export const ResponseInitChain = {
   encode(message: ResponseInitChain, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.consensus_params !== undefined) {
-      ConsensusParams.encode(message.consensus_params, writer.uint32(10).fork()).ldelim();
+    if (message.consensusParams !== undefined) {
+      ConsensusParams.encode(message.consensusParams, writer.uint32(10).fork()).ldelim();
     }
 
     for (const v of message.validators) {
       ValidatorUpdate.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
-    if (message.app_hash.length !== 0) {
-      writer.uint32(26).bytes(message.app_hash);
+    if (message.appHash.length !== 0) {
+      writer.uint32(26).bytes(message.appHash);
     }
 
     return writer;
@@ -2464,7 +2464,7 @@ export const ResponseInitChain = {
 
       switch (tag >>> 3) {
         case 1:
-          message.consensus_params = ConsensusParams.decode(reader, reader.uint32());
+          message.consensusParams = ConsensusParams.decode(reader, reader.uint32());
           break;
 
         case 2:
@@ -2472,7 +2472,7 @@ export const ResponseInitChain = {
           break;
 
         case 3:
-          message.app_hash = reader.bytes();
+          message.appHash = reader.bytes();
           break;
 
         default:
@@ -2486,9 +2486,9 @@ export const ResponseInitChain = {
 
   fromPartial(object: DeepPartial<ResponseInitChain>): ResponseInitChain {
     const message = createBaseResponseInitChain();
-    message.consensus_params = object.consensus_params !== undefined && object.consensus_params !== null ? ConsensusParams.fromPartial(object.consensus_params) : undefined;
+    message.consensusParams = object.consensusParams !== undefined && object.consensusParams !== null ? ConsensusParams.fromPartial(object.consensusParams) : undefined;
     message.validators = object.validators?.map(e => ValidatorUpdate.fromPartial(e)) || [];
-    message.app_hash = object.app_hash ?? new Uint8Array();
+    message.appHash = object.appHash ?? new Uint8Array();
     return message;
   }
 
@@ -2502,7 +2502,7 @@ function createBaseResponseQuery(): ResponseQuery {
     index: Long.ZERO,
     key: new Uint8Array(),
     value: new Uint8Array(),
-    proof_ops: undefined,
+    proofOps: undefined,
     height: Long.ZERO,
     codespace: ""
   };
@@ -2534,8 +2534,8 @@ export const ResponseQuery = {
       writer.uint32(58).bytes(message.value);
     }
 
-    if (message.proof_ops !== undefined) {
-      ProofOps.encode(message.proof_ops, writer.uint32(66).fork()).ldelim();
+    if (message.proofOps !== undefined) {
+      ProofOps.encode(message.proofOps, writer.uint32(66).fork()).ldelim();
     }
 
     if (!message.height.isZero()) {
@@ -2583,7 +2583,7 @@ export const ResponseQuery = {
           break;
 
         case 8:
-          message.proof_ops = ProofOps.decode(reader, reader.uint32());
+          message.proofOps = ProofOps.decode(reader, reader.uint32());
           break;
 
         case 9:
@@ -2611,7 +2611,7 @@ export const ResponseQuery = {
     message.index = object.index !== undefined && object.index !== null ? Long.fromValue(object.index) : Long.ZERO;
     message.key = object.key ?? new Uint8Array();
     message.value = object.value ?? new Uint8Array();
-    message.proof_ops = object.proof_ops !== undefined && object.proof_ops !== null ? ProofOps.fromPartial(object.proof_ops) : undefined;
+    message.proofOps = object.proofOps !== undefined && object.proofOps !== null ? ProofOps.fromPartial(object.proofOps) : undefined;
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
     message.codespace = object.codespace ?? "";
     return message;
@@ -2670,8 +2670,8 @@ function createBaseResponseCheckTx(): ResponseCheckTx {
     data: new Uint8Array(),
     log: "",
     info: "",
-    gas_wanted: Long.ZERO,
-    gas_used: Long.ZERO,
+    gasWanted: Long.ZERO,
+    gasUsed: Long.ZERO,
     events: [],
     codespace: ""
   };
@@ -2695,12 +2695,12 @@ export const ResponseCheckTx = {
       writer.uint32(34).string(message.info);
     }
 
-    if (!message.gas_wanted.isZero()) {
-      writer.uint32(40).int64(message.gas_wanted);
+    if (!message.gasWanted.isZero()) {
+      writer.uint32(40).int64(message.gasWanted);
     }
 
-    if (!message.gas_used.isZero()) {
-      writer.uint32(48).int64(message.gas_used);
+    if (!message.gasUsed.isZero()) {
+      writer.uint32(48).int64(message.gasUsed);
     }
 
     for (const v of message.events) {
@@ -2740,11 +2740,11 @@ export const ResponseCheckTx = {
           break;
 
         case 5:
-          message.gas_wanted = (reader.int64() as Long);
+          message.gasWanted = (reader.int64() as Long);
           break;
 
         case 6:
-          message.gas_used = (reader.int64() as Long);
+          message.gasUsed = (reader.int64() as Long);
           break;
 
         case 7:
@@ -2770,8 +2770,8 @@ export const ResponseCheckTx = {
     message.data = object.data ?? new Uint8Array();
     message.log = object.log ?? "";
     message.info = object.info ?? "";
-    message.gas_wanted = object.gas_wanted !== undefined && object.gas_wanted !== null ? Long.fromValue(object.gas_wanted) : Long.ZERO;
-    message.gas_used = object.gas_used !== undefined && object.gas_used !== null ? Long.fromValue(object.gas_used) : Long.ZERO;
+    message.gasWanted = object.gasWanted !== undefined && object.gasWanted !== null ? Long.fromValue(object.gasWanted) : Long.ZERO;
+    message.gasUsed = object.gasUsed !== undefined && object.gasUsed !== null ? Long.fromValue(object.gasUsed) : Long.ZERO;
     message.events = object.events?.map(e => Event.fromPartial(e)) || [];
     message.codespace = object.codespace ?? "";
     return message;
@@ -2785,8 +2785,8 @@ function createBaseResponseDeliverTx(): ResponseDeliverTx {
     data: new Uint8Array(),
     log: "",
     info: "",
-    gas_wanted: Long.ZERO,
-    gas_used: Long.ZERO,
+    gasWanted: Long.ZERO,
+    gasUsed: Long.ZERO,
     events: [],
     codespace: ""
   };
@@ -2810,12 +2810,12 @@ export const ResponseDeliverTx = {
       writer.uint32(34).string(message.info);
     }
 
-    if (!message.gas_wanted.isZero()) {
-      writer.uint32(40).int64(message.gas_wanted);
+    if (!message.gasWanted.isZero()) {
+      writer.uint32(40).int64(message.gasWanted);
     }
 
-    if (!message.gas_used.isZero()) {
-      writer.uint32(48).int64(message.gas_used);
+    if (!message.gasUsed.isZero()) {
+      writer.uint32(48).int64(message.gasUsed);
     }
 
     for (const v of message.events) {
@@ -2855,11 +2855,11 @@ export const ResponseDeliverTx = {
           break;
 
         case 5:
-          message.gas_wanted = (reader.int64() as Long);
+          message.gasWanted = (reader.int64() as Long);
           break;
 
         case 6:
-          message.gas_used = (reader.int64() as Long);
+          message.gasUsed = (reader.int64() as Long);
           break;
 
         case 7:
@@ -2885,8 +2885,8 @@ export const ResponseDeliverTx = {
     message.data = object.data ?? new Uint8Array();
     message.log = object.log ?? "";
     message.info = object.info ?? "";
-    message.gas_wanted = object.gas_wanted !== undefined && object.gas_wanted !== null ? Long.fromValue(object.gas_wanted) : Long.ZERO;
-    message.gas_used = object.gas_used !== undefined && object.gas_used !== null ? Long.fromValue(object.gas_used) : Long.ZERO;
+    message.gasWanted = object.gasWanted !== undefined && object.gasWanted !== null ? Long.fromValue(object.gasWanted) : Long.ZERO;
+    message.gasUsed = object.gasUsed !== undefined && object.gasUsed !== null ? Long.fromValue(object.gasUsed) : Long.ZERO;
     message.events = object.events?.map(e => Event.fromPartial(e)) || [];
     message.codespace = object.codespace ?? "";
     return message;
@@ -2896,20 +2896,20 @@ export const ResponseDeliverTx = {
 
 function createBaseResponseEndBlock(): ResponseEndBlock {
   return {
-    validator_updates: [],
-    consensus_param_updates: undefined,
+    validatorUpdates: [],
+    consensusParamUpdates: undefined,
     events: []
   };
 }
 
 export const ResponseEndBlock = {
   encode(message: ResponseEndBlock, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.validator_updates) {
+    for (const v of message.validatorUpdates) {
       ValidatorUpdate.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
-    if (message.consensus_param_updates !== undefined) {
-      ConsensusParams.encode(message.consensus_param_updates, writer.uint32(18).fork()).ldelim();
+    if (message.consensusParamUpdates !== undefined) {
+      ConsensusParams.encode(message.consensusParamUpdates, writer.uint32(18).fork()).ldelim();
     }
 
     for (const v of message.events) {
@@ -2929,11 +2929,11 @@ export const ResponseEndBlock = {
 
       switch (tag >>> 3) {
         case 1:
-          message.validator_updates.push(ValidatorUpdate.decode(reader, reader.uint32()));
+          message.validatorUpdates.push(ValidatorUpdate.decode(reader, reader.uint32()));
           break;
 
         case 2:
-          message.consensus_param_updates = ConsensusParams.decode(reader, reader.uint32());
+          message.consensusParamUpdates = ConsensusParams.decode(reader, reader.uint32());
           break;
 
         case 3:
@@ -2951,8 +2951,8 @@ export const ResponseEndBlock = {
 
   fromPartial(object: DeepPartial<ResponseEndBlock>): ResponseEndBlock {
     const message = createBaseResponseEndBlock();
-    message.validator_updates = object.validator_updates?.map(e => ValidatorUpdate.fromPartial(e)) || [];
-    message.consensus_param_updates = object.consensus_param_updates !== undefined && object.consensus_param_updates !== null ? ConsensusParams.fromPartial(object.consensus_param_updates) : undefined;
+    message.validatorUpdates = object.validatorUpdates?.map(e => ValidatorUpdate.fromPartial(e)) || [];
+    message.consensusParamUpdates = object.consensusParamUpdates !== undefined && object.consensusParamUpdates !== null ? ConsensusParams.fromPartial(object.consensusParamUpdates) : undefined;
     message.events = object.events?.map(e => Event.fromPartial(e)) || [];
     return message;
   }
@@ -2962,7 +2962,7 @@ export const ResponseEndBlock = {
 function createBaseResponseCommit(): ResponseCommit {
   return {
     data: new Uint8Array(),
-    retain_height: Long.ZERO
+    retainHeight: Long.ZERO
   };
 }
 
@@ -2972,8 +2972,8 @@ export const ResponseCommit = {
       writer.uint32(18).bytes(message.data);
     }
 
-    if (!message.retain_height.isZero()) {
-      writer.uint32(24).int64(message.retain_height);
+    if (!message.retainHeight.isZero()) {
+      writer.uint32(24).int64(message.retainHeight);
     }
 
     return writer;
@@ -2993,7 +2993,7 @@ export const ResponseCommit = {
           break;
 
         case 3:
-          message.retain_height = (reader.int64() as Long);
+          message.retainHeight = (reader.int64() as Long);
           break;
 
         default:
@@ -3008,7 +3008,7 @@ export const ResponseCommit = {
   fromPartial(object: DeepPartial<ResponseCommit>): ResponseCommit {
     const message = createBaseResponseCommit();
     message.data = object.data ?? new Uint8Array();
-    message.retain_height = object.retain_height !== undefined && object.retain_height !== null ? Long.fromValue(object.retain_height) : Long.ZERO;
+    message.retainHeight = object.retainHeight !== undefined && object.retainHeight !== null ? Long.fromValue(object.retainHeight) : Long.ZERO;
     return message;
   }
 
@@ -3152,8 +3152,8 @@ export const ResponseLoadSnapshotChunk = {
 function createBaseResponseApplySnapshotChunk(): ResponseApplySnapshotChunk {
   return {
     result: 0,
-    refetch_chunks: [],
-    reject_senders: []
+    refetchChunks: [],
+    rejectSenders: []
   };
 }
 
@@ -3165,13 +3165,13 @@ export const ResponseApplySnapshotChunk = {
 
     writer.uint32(18).fork();
 
-    for (const v of message.refetch_chunks) {
+    for (const v of message.refetchChunks) {
       writer.uint32(v);
     }
 
     writer.ldelim();
 
-    for (const v of message.reject_senders) {
+    for (const v of message.rejectSenders) {
       writer.uint32(26).string(v!);
     }
 
@@ -3196,16 +3196,16 @@ export const ResponseApplySnapshotChunk = {
             const end2 = reader.uint32() + reader.pos;
 
             while (reader.pos < end2) {
-              message.refetch_chunks.push(reader.uint32());
+              message.refetchChunks.push(reader.uint32());
             }
           } else {
-            message.refetch_chunks.push(reader.uint32());
+            message.refetchChunks.push(reader.uint32());
           }
 
           break;
 
         case 3:
-          message.reject_senders.push(reader.string());
+          message.rejectSenders.push(reader.string());
           break;
 
         default:
@@ -3220,8 +3220,8 @@ export const ResponseApplySnapshotChunk = {
   fromPartial(object: DeepPartial<ResponseApplySnapshotChunk>): ResponseApplySnapshotChunk {
     const message = createBaseResponseApplySnapshotChunk();
     message.result = object.result ?? 0;
-    message.refetch_chunks = object.refetch_chunks?.map(e => e) || [];
-    message.reject_senders = object.reject_senders?.map(e => e) || [];
+    message.refetchChunks = object.refetchChunks?.map(e => e) || [];
+    message.rejectSenders = object.rejectSenders?.map(e => e) || [];
     return message;
   }
 
@@ -3304,19 +3304,19 @@ export const ConsensusParams = {
 
 function createBaseBlockParams(): BlockParams {
   return {
-    max_bytes: Long.ZERO,
-    max_gas: Long.ZERO
+    maxBytes: Long.ZERO,
+    maxGas: Long.ZERO
   };
 }
 
 export const BlockParams = {
   encode(message: BlockParams, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.max_bytes.isZero()) {
-      writer.uint32(8).int64(message.max_bytes);
+    if (!message.maxBytes.isZero()) {
+      writer.uint32(8).int64(message.maxBytes);
     }
 
-    if (!message.max_gas.isZero()) {
-      writer.uint32(16).int64(message.max_gas);
+    if (!message.maxGas.isZero()) {
+      writer.uint32(16).int64(message.maxGas);
     }
 
     return writer;
@@ -3332,11 +3332,11 @@ export const BlockParams = {
 
       switch (tag >>> 3) {
         case 1:
-          message.max_bytes = (reader.int64() as Long);
+          message.maxBytes = (reader.int64() as Long);
           break;
 
         case 2:
-          message.max_gas = (reader.int64() as Long);
+          message.maxGas = (reader.int64() as Long);
           break;
 
         default:
@@ -3350,8 +3350,8 @@ export const BlockParams = {
 
   fromPartial(object: DeepPartial<BlockParams>): BlockParams {
     const message = createBaseBlockParams();
-    message.max_bytes = object.max_bytes !== undefined && object.max_bytes !== null ? Long.fromValue(object.max_bytes) : Long.ZERO;
-    message.max_gas = object.max_gas !== undefined && object.max_gas !== null ? Long.fromValue(object.max_gas) : Long.ZERO;
+    message.maxBytes = object.maxBytes !== undefined && object.maxBytes !== null ? Long.fromValue(object.maxBytes) : Long.ZERO;
+    message.maxGas = object.maxGas !== undefined && object.maxGas !== null ? Long.fromValue(object.maxGas) : Long.ZERO;
     return message;
   }
 
@@ -3664,15 +3664,15 @@ export const Validator = {
 
 function createBaseValidatorUpdate(): ValidatorUpdate {
   return {
-    pub_key: undefined,
+    pubKey: undefined,
     power: Long.ZERO
   };
 }
 
 export const ValidatorUpdate = {
   encode(message: ValidatorUpdate, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.pub_key !== undefined) {
-      PublicKey.encode(message.pub_key, writer.uint32(10).fork()).ldelim();
+    if (message.pubKey !== undefined) {
+      PublicKey.encode(message.pubKey, writer.uint32(10).fork()).ldelim();
     }
 
     if (!message.power.isZero()) {
@@ -3692,7 +3692,7 @@ export const ValidatorUpdate = {
 
       switch (tag >>> 3) {
         case 1:
-          message.pub_key = PublicKey.decode(reader, reader.uint32());
+          message.pubKey = PublicKey.decode(reader, reader.uint32());
           break;
 
         case 2:
@@ -3710,7 +3710,7 @@ export const ValidatorUpdate = {
 
   fromPartial(object: DeepPartial<ValidatorUpdate>): ValidatorUpdate {
     const message = createBaseValidatorUpdate();
-    message.pub_key = object.pub_key !== undefined && object.pub_key !== null ? PublicKey.fromPartial(object.pub_key) : undefined;
+    message.pubKey = object.pubKey !== undefined && object.pubKey !== null ? PublicKey.fromPartial(object.pubKey) : undefined;
     message.power = object.power !== undefined && object.power !== null ? Long.fromValue(object.power) : Long.ZERO;
     return message;
   }
@@ -3720,7 +3720,7 @@ export const ValidatorUpdate = {
 function createBaseVoteInfo(): VoteInfo {
   return {
     validator: undefined,
-    signed_last_block: false
+    signedLastBlock: false
   };
 }
 
@@ -3730,8 +3730,8 @@ export const VoteInfo = {
       Validator.encode(message.validator, writer.uint32(10).fork()).ldelim();
     }
 
-    if (message.signed_last_block === true) {
-      writer.uint32(16).bool(message.signed_last_block);
+    if (message.signedLastBlock === true) {
+      writer.uint32(16).bool(message.signedLastBlock);
     }
 
     return writer;
@@ -3751,7 +3751,7 @@ export const VoteInfo = {
           break;
 
         case 2:
-          message.signed_last_block = reader.bool();
+          message.signedLastBlock = reader.bool();
           break;
 
         default:
@@ -3766,7 +3766,7 @@ export const VoteInfo = {
   fromPartial(object: DeepPartial<VoteInfo>): VoteInfo {
     const message = createBaseVoteInfo();
     message.validator = object.validator !== undefined && object.validator !== null ? Validator.fromPartial(object.validator) : undefined;
-    message.signed_last_block = object.signed_last_block ?? false;
+    message.signedLastBlock = object.signedLastBlock ?? false;
     return message;
   }
 
@@ -3778,7 +3778,7 @@ function createBaseEvidence(): Evidence {
     validator: undefined,
     height: Long.ZERO,
     time: undefined,
-    total_voting_power: Long.ZERO
+    totalVotingPower: Long.ZERO
   };
 }
 
@@ -3800,8 +3800,8 @@ export const Evidence = {
       Timestamp.encode(toTimestamp(message.time), writer.uint32(34).fork()).ldelim();
     }
 
-    if (!message.total_voting_power.isZero()) {
-      writer.uint32(40).int64(message.total_voting_power);
+    if (!message.totalVotingPower.isZero()) {
+      writer.uint32(40).int64(message.totalVotingPower);
     }
 
     return writer;
@@ -3833,7 +3833,7 @@ export const Evidence = {
           break;
 
         case 5:
-          message.total_voting_power = (reader.int64() as Long);
+          message.totalVotingPower = (reader.int64() as Long);
           break;
 
         default:
@@ -3851,7 +3851,7 @@ export const Evidence = {
     message.validator = object.validator !== undefined && object.validator !== null ? Validator.fromPartial(object.validator) : undefined;
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
     message.time = object.time ?? undefined;
-    message.total_voting_power = object.total_voting_power !== undefined && object.total_voting_power !== null ? Long.fromValue(object.total_voting_power) : Long.ZERO;
+    message.totalVotingPower = object.totalVotingPower !== undefined && object.totalVotingPower !== null ? Long.fromValue(object.totalVotingPower) : Long.ZERO;
     return message;
   }
 

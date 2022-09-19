@@ -25,7 +25,7 @@ export interface QueryContractInfoRequestSDKType {
 export interface QueryContractInfoResponse {
     /** address is the address of the contract */
     address: string;
-    contract_info: ContractInfo;
+    contractInfo: ContractInfo;
 }
 /**
  * QueryContractInfoResponse is the response type for the Query/ContractInfo RPC
@@ -83,7 +83,7 @@ export interface QueryContractsByCodeRequest {
      * grpc-gateway_out does not support Go style CodID
      * pagination defines an optional pagination for the request.
      */
-    code_id: Long;
+    codeId: Long;
     pagination?: PageRequest;
 }
 /**
@@ -163,7 +163,7 @@ export interface QueryAllContractStateResponseSDKType {
 export interface QueryRawContractStateRequest {
     /** address is the address of the contract */
     address: string;
-    query_data: Uint8Array;
+    queryData: Uint8Array;
 }
 /**
  * QueryRawContractStateRequest is the request type for the
@@ -198,7 +198,7 @@ export interface QuerySmartContractStateRequest {
     /** address is the address of the contract */
     address: string;
     /** QueryData contains the query data passed to the contract */
-    query_data: Uint8Array;
+    queryData: Uint8Array;
 }
 /**
  * QuerySmartContractStateRequest is the request type for the
@@ -229,7 +229,7 @@ export interface QuerySmartContractStateResponseSDKType {
 /** QueryCodeRequest is the request type for the Query/Code RPC method */
 export interface QueryCodeRequest {
     /** grpc-gateway_out does not support Go style CodID */
-    code_id: Long;
+    codeId: Long;
 }
 /** QueryCodeRequest is the request type for the Query/Code RPC method */
 export interface QueryCodeRequestSDKType {
@@ -238,9 +238,9 @@ export interface QueryCodeRequestSDKType {
 }
 /** CodeInfoResponse contains code meta data from CodeInfo */
 export interface CodeInfoResponse {
-    code_id: Long;
+    codeId: Long;
     creator: string;
-    data_hash: Uint8Array;
+    dataHash: Uint8Array;
 }
 /** CodeInfoResponse contains code meta data from CodeInfo */
 export interface CodeInfoResponseSDKType {
@@ -250,7 +250,7 @@ export interface CodeInfoResponseSDKType {
 }
 /** QueryCodeResponse is the response type for the Query/Code RPC method */
 export interface QueryCodeResponse {
-    code_info: CodeInfoResponse;
+    codeInfo: CodeInfoResponse;
     data: Uint8Array;
 }
 /** QueryCodeResponse is the response type for the Query/Code RPC method */
@@ -270,7 +270,7 @@ export interface QueryCodesRequestSDKType {
 }
 /** QueryCodesResponse is the response type for the Query/Codes RPC method */
 export interface QueryCodesResponse {
-    code_infos: CodeInfoResponse[];
+    codeInfos: CodeInfoResponse[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponse;
 }
@@ -301,7 +301,7 @@ export interface QueryPinnedCodesRequestSDKType {
  * Query/PinnedCodes RPC method
  */
 export interface QueryPinnedCodesResponse {
-    code_ids: Long[];
+    codeIds: Long[];
     /** pagination defines the pagination in the response. */
     pagination?: PageResponse;
 }

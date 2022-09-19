@@ -22,7 +22,7 @@ export interface Http {
    * segment matches.
    */
 
-  fully_decode_reserved_expansion: boolean;
+  fullyDecodeReservedExpansion: boolean;
 }
 /**
  * Defines the HTTP configuration for an API service. It contains a list of
@@ -372,14 +372,14 @@ export interface HttpRule {
    * message type.
    */
 
-  response_body: string;
+  responseBody: string;
   /**
    * Additional HTTP bindings for the selector. Nested bindings must
    * not contain an `additional_bindings` field themselves (that is,
    * the nesting may only be one level deep).
    */
 
-  additional_bindings: HttpRule[];
+  additionalBindings: HttpRule[];
 }
 /**
  * # gRPC Transcoding
@@ -736,7 +736,7 @@ export interface CustomHttpPatternSDKType {
 function createBaseHttp(): Http {
   return {
     rules: [],
-    fully_decode_reserved_expansion: false
+    fullyDecodeReservedExpansion: false
   };
 }
 
@@ -746,8 +746,8 @@ export const Http = {
       HttpRule.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
-    if (message.fully_decode_reserved_expansion === true) {
-      writer.uint32(16).bool(message.fully_decode_reserved_expansion);
+    if (message.fullyDecodeReservedExpansion === true) {
+      writer.uint32(16).bool(message.fullyDecodeReservedExpansion);
     }
 
     return writer;
@@ -767,7 +767,7 @@ export const Http = {
           break;
 
         case 2:
-          message.fully_decode_reserved_expansion = reader.bool();
+          message.fullyDecodeReservedExpansion = reader.bool();
           break;
 
         default:
@@ -782,7 +782,7 @@ export const Http = {
   fromPartial(object: DeepPartial<Http>): Http {
     const message = createBaseHttp();
     message.rules = object.rules?.map(e => HttpRule.fromPartial(e)) || [];
-    message.fully_decode_reserved_expansion = object.fully_decode_reserved_expansion ?? false;
+    message.fullyDecodeReservedExpansion = object.fullyDecodeReservedExpansion ?? false;
     return message;
   }
 
@@ -798,8 +798,8 @@ function createBaseHttpRule(): HttpRule {
     patch: undefined,
     custom: undefined,
     body: "",
-    response_body: "",
-    additional_bindings: []
+    responseBody: "",
+    additionalBindings: []
   };
 }
 
@@ -837,11 +837,11 @@ export const HttpRule = {
       writer.uint32(58).string(message.body);
     }
 
-    if (message.response_body !== "") {
-      writer.uint32(98).string(message.response_body);
+    if (message.responseBody !== "") {
+      writer.uint32(98).string(message.responseBody);
     }
 
-    for (const v of message.additional_bindings) {
+    for (const v of message.additionalBindings) {
       HttpRule.encode(v!, writer.uint32(90).fork()).ldelim();
     }
 
@@ -890,11 +890,11 @@ export const HttpRule = {
           break;
 
         case 12:
-          message.response_body = reader.string();
+          message.responseBody = reader.string();
           break;
 
         case 11:
-          message.additional_bindings.push(HttpRule.decode(reader, reader.uint32()));
+          message.additionalBindings.push(HttpRule.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -916,8 +916,8 @@ export const HttpRule = {
     message.patch = object.patch ?? undefined;
     message.custom = object.custom !== undefined && object.custom !== null ? CustomHttpPattern.fromPartial(object.custom) : undefined;
     message.body = object.body ?? "";
-    message.response_body = object.response_body ?? "";
-    message.additional_bindings = object.additional_bindings?.map(e => HttpRule.fromPartial(e)) || [];
+    message.responseBody = object.responseBody ?? "";
+    message.additionalBindings = object.additionalBindings?.map(e => HttpRule.fromPartial(e)) || [];
     return message;
   }
 

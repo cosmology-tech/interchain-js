@@ -344,8 +344,8 @@ export interface CommitmentProofSDKType {
 
 export interface LeafOp {
   hash: HashOp;
-  prehash_key: HashOp;
-  prehash_value: HashOp;
+  prehashKey: HashOp;
+  prehashValue: HashOp;
   length: LengthOp;
   /**
    * prefix is a fixed bytes that may optionally be included at the beginning to differentiate
@@ -447,14 +447,14 @@ export interface ProofSpec {
    * any field in the ExistenceProof must be the same as in this spec.
    * except Prefix, which is just the first bytes of prefix (spec can be longer)
    */
-  leaf_spec: LeafOp;
-  inner_spec: InnerSpec;
+  leafSpec: LeafOp;
+  innerSpec: InnerSpec;
   /** max_depth (if > 0) is the maximum number of InnerOps allowed (mainly for fixed-depth tries) */
 
-  max_depth: number;
+  maxDepth: number;
   /** min_depth (if > 0) is the minimum number of InnerOps allowed (mainly for fixed-depth tries) */
 
-  min_depth: number;
+  minDepth: number;
 }
 /**
  * ProofSpec defines what the expected parameters are for a given proof type.
@@ -500,13 +500,13 @@ export interface InnerSpec {
    * iavl tree is [0, 1] (left then right)
    * merk is [0, 2, 1] (left, right, here)
    */
-  child_order: number[];
-  child_size: number;
-  min_prefix_length: number;
-  max_prefix_length: number;
+  childOrder: number[];
+  childSize: number;
+  minPrefixLength: number;
+  maxPrefixLength: number;
   /** empty child is the prehash image that is used when one child is nil (eg. 20 bytes of 0) */
 
-  empty_child: Uint8Array;
+  emptyChild: Uint8Array;
   /** hash is the algorithm that must be used for each InnerOp */
 
   hash: HashOp;
@@ -563,7 +563,7 @@ export interface BatchEntrySDKType {
 }
 export interface CompressedBatchProof {
   entries: CompressedBatchEntry[];
-  lookup_inners: InnerOp[];
+  lookupInners: InnerOp[];
 }
 export interface CompressedBatchProofSDKType {
   entries: CompressedBatchEntrySDKType[];
@@ -828,8 +828,8 @@ export const CommitmentProof = {
 function createBaseLeafOp(): LeafOp {
   return {
     hash: 0,
-    prehash_key: 0,
-    prehash_value: 0,
+    prehashKey: 0,
+    prehashValue: 0,
     length: 0,
     prefix: new Uint8Array()
   };
@@ -841,12 +841,12 @@ export const LeafOp = {
       writer.uint32(8).int32(message.hash);
     }
 
-    if (message.prehash_key !== 0) {
-      writer.uint32(16).int32(message.prehash_key);
+    if (message.prehashKey !== 0) {
+      writer.uint32(16).int32(message.prehashKey);
     }
 
-    if (message.prehash_value !== 0) {
-      writer.uint32(24).int32(message.prehash_value);
+    if (message.prehashValue !== 0) {
+      writer.uint32(24).int32(message.prehashValue);
     }
 
     if (message.length !== 0) {
@@ -874,11 +874,11 @@ export const LeafOp = {
           break;
 
         case 2:
-          message.prehash_key = (reader.int32() as any);
+          message.prehashKey = (reader.int32() as any);
           break;
 
         case 3:
-          message.prehash_value = (reader.int32() as any);
+          message.prehashValue = (reader.int32() as any);
           break;
 
         case 4:
@@ -901,8 +901,8 @@ export const LeafOp = {
   fromPartial(object: DeepPartial<LeafOp>): LeafOp {
     const message = createBaseLeafOp();
     message.hash = object.hash ?? 0;
-    message.prehash_key = object.prehash_key ?? 0;
-    message.prehash_value = object.prehash_value ?? 0;
+    message.prehashKey = object.prehashKey ?? 0;
+    message.prehashValue = object.prehashValue ?? 0;
     message.length = object.length ?? 0;
     message.prefix = object.prefix ?? new Uint8Array();
     return message;
@@ -977,29 +977,29 @@ export const InnerOp = {
 
 function createBaseProofSpec(): ProofSpec {
   return {
-    leaf_spec: undefined,
-    inner_spec: undefined,
-    max_depth: 0,
-    min_depth: 0
+    leafSpec: undefined,
+    innerSpec: undefined,
+    maxDepth: 0,
+    minDepth: 0
   };
 }
 
 export const ProofSpec = {
   encode(message: ProofSpec, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.leaf_spec !== undefined) {
-      LeafOp.encode(message.leaf_spec, writer.uint32(10).fork()).ldelim();
+    if (message.leafSpec !== undefined) {
+      LeafOp.encode(message.leafSpec, writer.uint32(10).fork()).ldelim();
     }
 
-    if (message.inner_spec !== undefined) {
-      InnerSpec.encode(message.inner_spec, writer.uint32(18).fork()).ldelim();
+    if (message.innerSpec !== undefined) {
+      InnerSpec.encode(message.innerSpec, writer.uint32(18).fork()).ldelim();
     }
 
-    if (message.max_depth !== 0) {
-      writer.uint32(24).int32(message.max_depth);
+    if (message.maxDepth !== 0) {
+      writer.uint32(24).int32(message.maxDepth);
     }
 
-    if (message.min_depth !== 0) {
-      writer.uint32(32).int32(message.min_depth);
+    if (message.minDepth !== 0) {
+      writer.uint32(32).int32(message.minDepth);
     }
 
     return writer;
@@ -1015,19 +1015,19 @@ export const ProofSpec = {
 
       switch (tag >>> 3) {
         case 1:
-          message.leaf_spec = LeafOp.decode(reader, reader.uint32());
+          message.leafSpec = LeafOp.decode(reader, reader.uint32());
           break;
 
         case 2:
-          message.inner_spec = InnerSpec.decode(reader, reader.uint32());
+          message.innerSpec = InnerSpec.decode(reader, reader.uint32());
           break;
 
         case 3:
-          message.max_depth = reader.int32();
+          message.maxDepth = reader.int32();
           break;
 
         case 4:
-          message.min_depth = reader.int32();
+          message.minDepth = reader.int32();
           break;
 
         default:
@@ -1041,10 +1041,10 @@ export const ProofSpec = {
 
   fromPartial(object: DeepPartial<ProofSpec>): ProofSpec {
     const message = createBaseProofSpec();
-    message.leaf_spec = object.leaf_spec !== undefined && object.leaf_spec !== null ? LeafOp.fromPartial(object.leaf_spec) : undefined;
-    message.inner_spec = object.inner_spec !== undefined && object.inner_spec !== null ? InnerSpec.fromPartial(object.inner_spec) : undefined;
-    message.max_depth = object.max_depth ?? 0;
-    message.min_depth = object.min_depth ?? 0;
+    message.leafSpec = object.leafSpec !== undefined && object.leafSpec !== null ? LeafOp.fromPartial(object.leafSpec) : undefined;
+    message.innerSpec = object.innerSpec !== undefined && object.innerSpec !== null ? InnerSpec.fromPartial(object.innerSpec) : undefined;
+    message.maxDepth = object.maxDepth ?? 0;
+    message.minDepth = object.minDepth ?? 0;
     return message;
   }
 
@@ -1052,11 +1052,11 @@ export const ProofSpec = {
 
 function createBaseInnerSpec(): InnerSpec {
   return {
-    child_order: [],
-    child_size: 0,
-    min_prefix_length: 0,
-    max_prefix_length: 0,
-    empty_child: new Uint8Array(),
+    childOrder: [],
+    childSize: 0,
+    minPrefixLength: 0,
+    maxPrefixLength: 0,
+    emptyChild: new Uint8Array(),
     hash: 0
   };
 }
@@ -1065,26 +1065,26 @@ export const InnerSpec = {
   encode(message: InnerSpec, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     writer.uint32(10).fork();
 
-    for (const v of message.child_order) {
+    for (const v of message.childOrder) {
       writer.int32(v);
     }
 
     writer.ldelim();
 
-    if (message.child_size !== 0) {
-      writer.uint32(16).int32(message.child_size);
+    if (message.childSize !== 0) {
+      writer.uint32(16).int32(message.childSize);
     }
 
-    if (message.min_prefix_length !== 0) {
-      writer.uint32(24).int32(message.min_prefix_length);
+    if (message.minPrefixLength !== 0) {
+      writer.uint32(24).int32(message.minPrefixLength);
     }
 
-    if (message.max_prefix_length !== 0) {
-      writer.uint32(32).int32(message.max_prefix_length);
+    if (message.maxPrefixLength !== 0) {
+      writer.uint32(32).int32(message.maxPrefixLength);
     }
 
-    if (message.empty_child.length !== 0) {
-      writer.uint32(42).bytes(message.empty_child);
+    if (message.emptyChild.length !== 0) {
+      writer.uint32(42).bytes(message.emptyChild);
     }
 
     if (message.hash !== 0) {
@@ -1108,28 +1108,28 @@ export const InnerSpec = {
             const end2 = reader.uint32() + reader.pos;
 
             while (reader.pos < end2) {
-              message.child_order.push(reader.int32());
+              message.childOrder.push(reader.int32());
             }
           } else {
-            message.child_order.push(reader.int32());
+            message.childOrder.push(reader.int32());
           }
 
           break;
 
         case 2:
-          message.child_size = reader.int32();
+          message.childSize = reader.int32();
           break;
 
         case 3:
-          message.min_prefix_length = reader.int32();
+          message.minPrefixLength = reader.int32();
           break;
 
         case 4:
-          message.max_prefix_length = reader.int32();
+          message.maxPrefixLength = reader.int32();
           break;
 
         case 5:
-          message.empty_child = reader.bytes();
+          message.emptyChild = reader.bytes();
           break;
 
         case 6:
@@ -1147,11 +1147,11 @@ export const InnerSpec = {
 
   fromPartial(object: DeepPartial<InnerSpec>): InnerSpec {
     const message = createBaseInnerSpec();
-    message.child_order = object.child_order?.map(e => e) || [];
-    message.child_size = object.child_size ?? 0;
-    message.min_prefix_length = object.min_prefix_length ?? 0;
-    message.max_prefix_length = object.max_prefix_length ?? 0;
-    message.empty_child = object.empty_child ?? new Uint8Array();
+    message.childOrder = object.childOrder?.map(e => e) || [];
+    message.childSize = object.childSize ?? 0;
+    message.minPrefixLength = object.minPrefixLength ?? 0;
+    message.maxPrefixLength = object.maxPrefixLength ?? 0;
+    message.emptyChild = object.emptyChild ?? new Uint8Array();
     message.hash = object.hash ?? 0;
     return message;
   }
@@ -1261,7 +1261,7 @@ export const BatchEntry = {
 function createBaseCompressedBatchProof(): CompressedBatchProof {
   return {
     entries: [],
-    lookup_inners: []
+    lookupInners: []
   };
 }
 
@@ -1271,7 +1271,7 @@ export const CompressedBatchProof = {
       CompressedBatchEntry.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
-    for (const v of message.lookup_inners) {
+    for (const v of message.lookupInners) {
       InnerOp.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
@@ -1292,7 +1292,7 @@ export const CompressedBatchProof = {
           break;
 
         case 2:
-          message.lookup_inners.push(InnerOp.decode(reader, reader.uint32()));
+          message.lookupInners.push(InnerOp.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -1307,7 +1307,7 @@ export const CompressedBatchProof = {
   fromPartial(object: DeepPartial<CompressedBatchProof>): CompressedBatchProof {
     const message = createBaseCompressedBatchProof();
     message.entries = object.entries?.map(e => CompressedBatchEntry.fromPartial(e)) || [];
-    message.lookup_inners = object.lookup_inners?.map(e => InnerOp.fromPartial(e)) || [];
+    message.lookupInners = object.lookupInners?.map(e => InnerOp.fromPartial(e)) || [];
     return message;
   }
 

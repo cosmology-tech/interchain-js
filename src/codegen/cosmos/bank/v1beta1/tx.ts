@@ -5,8 +5,8 @@ import { DeepPartial } from "@osmonauts/helpers";
 /** MsgSend represents a message to send coins from one account to another. */
 
 export interface MsgSend {
-  from_address: string;
-  to_address: string;
+  fromAddress: string;
+  toAddress: string;
   amount: Coin[];
 }
 /** MsgSend represents a message to send coins from one account to another. */
@@ -43,20 +43,20 @@ export interface MsgMultiSendResponseSDKType {}
 
 function createBaseMsgSend(): MsgSend {
   return {
-    from_address: "",
-    to_address: "",
+    fromAddress: "",
+    toAddress: "",
     amount: []
   };
 }
 
 export const MsgSend = {
   encode(message: MsgSend, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.from_address !== "") {
-      writer.uint32(10).string(message.from_address);
+    if (message.fromAddress !== "") {
+      writer.uint32(10).string(message.fromAddress);
     }
 
-    if (message.to_address !== "") {
-      writer.uint32(18).string(message.to_address);
+    if (message.toAddress !== "") {
+      writer.uint32(18).string(message.toAddress);
     }
 
     for (const v of message.amount) {
@@ -76,11 +76,11 @@ export const MsgSend = {
 
       switch (tag >>> 3) {
         case 1:
-          message.from_address = reader.string();
+          message.fromAddress = reader.string();
           break;
 
         case 2:
-          message.to_address = reader.string();
+          message.toAddress = reader.string();
           break;
 
         case 3:
@@ -98,8 +98,8 @@ export const MsgSend = {
 
   fromPartial(object: DeepPartial<MsgSend>): MsgSend {
     const message = createBaseMsgSend();
-    message.from_address = object.from_address ?? "";
-    message.to_address = object.to_address ?? "";
+    message.fromAddress = object.fromAddress ?? "";
+    message.toAddress = object.toAddress ?? "";
     message.amount = object.amount?.map(e => Coin.fromPartial(e)) || [];
     return message;
   }

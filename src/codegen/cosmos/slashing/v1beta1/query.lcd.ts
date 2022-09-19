@@ -22,7 +22,7 @@ export class LCDQueryClient extends LCDClient {
 
 
   async signingInfo(params: QuerySigningInfoRequest): Promise<QuerySigningInfoResponseSDKType> {
-    const endpoint = `cosmos/slashing/v1beta1/signing_infos/${params.cons_address}`;
+    const endpoint = `cosmos/slashing/v1beta1/signing_infos/${params.consAddress}`;
     return await this.get<QuerySigningInfoResponseSDKType>(endpoint);
   }
   /* SigningInfos queries signing info of all validators */

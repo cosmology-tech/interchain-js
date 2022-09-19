@@ -7,11 +7,11 @@ export interface GenesisState {
     acknowledgements: PacketState[];
     commitments: PacketState[];
     receipts: PacketState[];
-    send_sequences: PacketSequence[];
-    recv_sequences: PacketSequence[];
-    ack_sequences: PacketSequence[];
+    sendSequences: PacketSequence[];
+    recvSequences: PacketSequence[];
+    ackSequences: PacketSequence[];
     /** the sequence for the next generated channel identifier */
-    next_channel_sequence: Long;
+    nextChannelSequence: Long;
 }
 /** GenesisState defines the ibc channel submodule's genesis state. */
 export interface GenesisStateSDKType {
@@ -30,8 +30,8 @@ export interface GenesisStateSDKType {
  * next send and receive sequences.
  */
 export interface PacketSequence {
-    port_id: string;
-    channel_id: string;
+    portId: string;
+    channelId: string;
     sequence: Long;
 }
 /**

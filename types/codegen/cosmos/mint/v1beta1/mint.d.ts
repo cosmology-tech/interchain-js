@@ -5,7 +5,7 @@ export interface Minter {
     /** current annual inflation rate */
     inflation: string;
     /** current annual expected provisions */
-    annual_provisions: string;
+    annualProvisions: string;
 }
 /** Minter represents the minting state. */
 export interface MinterSDKType {
@@ -17,17 +17,17 @@ export interface MinterSDKType {
 /** Params holds parameters for the mint module. */
 export interface Params {
     /** type of coin to mint */
-    mint_denom: string;
+    mintDenom: string;
     /** maximum annual change in inflation rate */
-    inflation_rate_change: string;
+    inflationRateChange: string;
     /** maximum inflation rate */
-    inflation_max: string;
+    inflationMax: string;
     /** minimum inflation rate */
-    inflation_min: string;
+    inflationMin: string;
     /** goal of percent bonded atoms */
-    goal_bonded: string;
+    goalBonded: string;
     /** expected blocks per year */
-    blocks_per_year: Long;
+    blocksPerYear: Long;
 }
 /** Params holds parameters for the mint module. */
 export interface ParamsSDKType {

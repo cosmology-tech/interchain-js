@@ -4,8 +4,8 @@ import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "@osmonauts/helpers";
 /** MsgSend represents a message to send coins from one account to another. */
 export interface MsgSend {
-    from_address: string;
-    to_address: string;
+    fromAddress: string;
+    toAddress: string;
     amount: Coin[];
 }
 /** MsgSend represents a message to send coins from one account to another. */

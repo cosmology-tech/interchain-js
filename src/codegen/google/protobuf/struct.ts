@@ -98,22 +98,22 @@ export interface StructSDKType {
 
 export interface Value {
   /** Represents a null value. */
-  null_value?: NullValue;
+  nullValue?: NullValue;
   /** Represents a double value. */
 
-  number_value?: number;
+  numberValue?: number;
   /** Represents a string value. */
 
-  string_value?: string;
+  stringValue?: string;
   /** Represents a boolean value. */
 
-  bool_value?: boolean;
+  boolValue?: boolean;
   /** Represents a structured value. */
 
-  struct_value?: Struct;
+  structValue?: Struct;
   /** Represents a repeated `Value`. */
 
-  list_value?: ListValue;
+  listValue?: ListValue;
 }
 /**
  * `Value` represents a dynamically typed value which can be either
@@ -281,39 +281,39 @@ export const Struct = {
 
 function createBaseValue(): Value {
   return {
-    null_value: undefined,
-    number_value: undefined,
-    string_value: undefined,
-    bool_value: undefined,
-    struct_value: undefined,
-    list_value: undefined
+    nullValue: undefined,
+    numberValue: undefined,
+    stringValue: undefined,
+    boolValue: undefined,
+    structValue: undefined,
+    listValue: undefined
   };
 }
 
 export const Value = {
   encode(message: Value, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.null_value !== undefined) {
-      writer.uint32(8).int32(message.null_value);
+    if (message.nullValue !== undefined) {
+      writer.uint32(8).int32(message.nullValue);
     }
 
-    if (message.number_value !== undefined) {
-      writer.uint32(17).double(message.number_value);
+    if (message.numberValue !== undefined) {
+      writer.uint32(17).double(message.numberValue);
     }
 
-    if (message.string_value !== undefined) {
-      writer.uint32(26).string(message.string_value);
+    if (message.stringValue !== undefined) {
+      writer.uint32(26).string(message.stringValue);
     }
 
-    if (message.bool_value !== undefined) {
-      writer.uint32(32).bool(message.bool_value);
+    if (message.boolValue !== undefined) {
+      writer.uint32(32).bool(message.boolValue);
     }
 
-    if (message.struct_value !== undefined) {
-      Struct.encode(message.struct_value, writer.uint32(42).fork()).ldelim();
+    if (message.structValue !== undefined) {
+      Struct.encode(message.structValue, writer.uint32(42).fork()).ldelim();
     }
 
-    if (message.list_value !== undefined) {
-      ListValue.encode(message.list_value, writer.uint32(50).fork()).ldelim();
+    if (message.listValue !== undefined) {
+      ListValue.encode(message.listValue, writer.uint32(50).fork()).ldelim();
     }
 
     return writer;
@@ -329,27 +329,27 @@ export const Value = {
 
       switch (tag >>> 3) {
         case 1:
-          message.null_value = (reader.int32() as any);
+          message.nullValue = (reader.int32() as any);
           break;
 
         case 2:
-          message.number_value = reader.double();
+          message.numberValue = reader.double();
           break;
 
         case 3:
-          message.string_value = reader.string();
+          message.stringValue = reader.string();
           break;
 
         case 4:
-          message.bool_value = reader.bool();
+          message.boolValue = reader.bool();
           break;
 
         case 5:
-          message.struct_value = Struct.decode(reader, reader.uint32());
+          message.structValue = Struct.decode(reader, reader.uint32());
           break;
 
         case 6:
-          message.list_value = ListValue.decode(reader, reader.uint32());
+          message.listValue = ListValue.decode(reader, reader.uint32());
           break;
 
         default:
@@ -363,12 +363,12 @@ export const Value = {
 
   fromPartial(object: DeepPartial<Value>): Value {
     const message = createBaseValue();
-    message.null_value = object.null_value ?? undefined;
-    message.number_value = object.number_value ?? undefined;
-    message.string_value = object.string_value ?? undefined;
-    message.bool_value = object.bool_value ?? undefined;
-    message.struct_value = object.struct_value !== undefined && object.struct_value !== null ? Struct.fromPartial(object.struct_value) : undefined;
-    message.list_value = object.list_value !== undefined && object.list_value !== null ? ListValue.fromPartial(object.list_value) : undefined;
+    message.nullValue = object.nullValue ?? undefined;
+    message.numberValue = object.numberValue ?? undefined;
+    message.stringValue = object.stringValue ?? undefined;
+    message.boolValue = object.boolValue ?? undefined;
+    message.structValue = object.structValue !== undefined && object.structValue !== null ? Struct.fromPartial(object.structValue) : undefined;
+    message.listValue = object.listValue !== undefined && object.listValue !== null ? ListValue.fromPartial(object.listValue) : undefined;
     return message;
   }
 

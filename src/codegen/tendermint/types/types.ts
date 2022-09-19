@@ -158,7 +158,7 @@ export interface PartSDKType {
 
 export interface BlockID {
   hash: Uint8Array;
-  part_set_header: PartSetHeader;
+  partSetHeader: PartSetHeader;
 }
 /** BlockID */
 
@@ -171,35 +171,35 @@ export interface BlockIDSDKType {
 export interface Header {
   /** basic block info */
   version: Consensus;
-  chain_id: string;
+  chainId: string;
   height: Long;
   time: Date;
   /** prev block info */
 
-  last_block_id: BlockID;
+  lastBlockId: BlockID;
   /** hashes of block data */
 
-  last_commit_hash: Uint8Array;
-  data_hash: Uint8Array;
+  lastCommitHash: Uint8Array;
+  dataHash: Uint8Array;
   /** hashes from the app output from the prev block */
 
-  validators_hash: Uint8Array;
+  validatorsHash: Uint8Array;
   /** validators for the next block */
 
-  next_validators_hash: Uint8Array;
+  nextValidatorsHash: Uint8Array;
   /** consensus params for current block */
 
-  consensus_hash: Uint8Array;
+  consensusHash: Uint8Array;
   /** state after txs from the previous block */
 
-  app_hash: Uint8Array;
-  last_results_hash: Uint8Array;
+  appHash: Uint8Array;
+  lastResultsHash: Uint8Array;
   /** consensus info */
 
-  evidence_hash: Uint8Array;
+  evidenceHash: Uint8Array;
   /** original proposer of the block */
 
-  proposer_address: Uint8Array;
+  proposerAddress: Uint8Array;
 }
 /** Header defines the structure of a Tendermint block header. */
 
@@ -267,10 +267,10 @@ export interface Vote {
   round: number;
   /** zero if vote is nil. */
 
-  block_id: BlockID;
+  blockId: BlockID;
   timestamp: Date;
-  validator_address: Uint8Array;
-  validator_index: number;
+  validatorAddress: Uint8Array;
+  validatorIndex: number;
   signature: Uint8Array;
 }
 /**
@@ -295,7 +295,7 @@ export interface VoteSDKType {
 export interface Commit {
   height: Long;
   round: number;
-  block_id: BlockID;
+  blockId: BlockID;
   signatures: CommitSig[];
 }
 /** Commit contains the evidence that a block was committed by a set of validators. */
@@ -309,8 +309,8 @@ export interface CommitSDKType {
 /** CommitSig is a part of the Vote included in a Commit. */
 
 export interface CommitSig {
-  block_id_flag: BlockIDFlag;
-  validator_address: Uint8Array;
+  blockIdFlag: BlockIDFlag;
+  validatorAddress: Uint8Array;
   timestamp: Date;
   signature: Uint8Array;
 }
@@ -326,8 +326,8 @@ export interface Proposal {
   type: SignedMsgType;
   height: Long;
   round: number;
-  pol_round: number;
-  block_id: BlockID;
+  polRound: number;
+  blockId: BlockID;
   timestamp: Date;
   signature: Uint8Array;
 }
@@ -349,18 +349,18 @@ export interface SignedHeaderSDKType {
   commit: CommitSDKType;
 }
 export interface LightBlock {
-  signed_header: SignedHeader;
-  validator_set: ValidatorSet;
+  signedHeader: SignedHeader;
+  validatorSet: ValidatorSet;
 }
 export interface LightBlockSDKType {
   signed_header: SignedHeaderSDKType;
   validator_set: ValidatorSetSDKType;
 }
 export interface BlockMeta {
-  block_id: BlockID;
-  block_size: Long;
+  blockId: BlockID;
+  blockSize: Long;
   header: Header;
-  num_txs: Long;
+  numTxs: Long;
 }
 export interface BlockMetaSDKType {
   block_id: BlockIDSDKType;
@@ -371,7 +371,7 @@ export interface BlockMetaSDKType {
 /** TxProof represents a Merkle proof of the presence of a transaction in the Merkle tree. */
 
 export interface TxProof {
-  root_hash: Uint8Array;
+  rootHash: Uint8Array;
   data: Uint8Array;
   proof: Proof;
 }
@@ -506,7 +506,7 @@ export const Part = {
 function createBaseBlockID(): BlockID {
   return {
     hash: new Uint8Array(),
-    part_set_header: undefined
+    partSetHeader: undefined
   };
 }
 
@@ -516,8 +516,8 @@ export const BlockID = {
       writer.uint32(10).bytes(message.hash);
     }
 
-    if (message.part_set_header !== undefined) {
-      PartSetHeader.encode(message.part_set_header, writer.uint32(18).fork()).ldelim();
+    if (message.partSetHeader !== undefined) {
+      PartSetHeader.encode(message.partSetHeader, writer.uint32(18).fork()).ldelim();
     }
 
     return writer;
@@ -537,7 +537,7 @@ export const BlockID = {
           break;
 
         case 2:
-          message.part_set_header = PartSetHeader.decode(reader, reader.uint32());
+          message.partSetHeader = PartSetHeader.decode(reader, reader.uint32());
           break;
 
         default:
@@ -552,7 +552,7 @@ export const BlockID = {
   fromPartial(object: DeepPartial<BlockID>): BlockID {
     const message = createBaseBlockID();
     message.hash = object.hash ?? new Uint8Array();
-    message.part_set_header = object.part_set_header !== undefined && object.part_set_header !== null ? PartSetHeader.fromPartial(object.part_set_header) : undefined;
+    message.partSetHeader = object.partSetHeader !== undefined && object.partSetHeader !== null ? PartSetHeader.fromPartial(object.partSetHeader) : undefined;
     return message;
   }
 
@@ -561,19 +561,19 @@ export const BlockID = {
 function createBaseHeader(): Header {
   return {
     version: undefined,
-    chain_id: "",
+    chainId: "",
     height: Long.ZERO,
     time: undefined,
-    last_block_id: undefined,
-    last_commit_hash: new Uint8Array(),
-    data_hash: new Uint8Array(),
-    validators_hash: new Uint8Array(),
-    next_validators_hash: new Uint8Array(),
-    consensus_hash: new Uint8Array(),
-    app_hash: new Uint8Array(),
-    last_results_hash: new Uint8Array(),
-    evidence_hash: new Uint8Array(),
-    proposer_address: new Uint8Array()
+    lastBlockId: undefined,
+    lastCommitHash: new Uint8Array(),
+    dataHash: new Uint8Array(),
+    validatorsHash: new Uint8Array(),
+    nextValidatorsHash: new Uint8Array(),
+    consensusHash: new Uint8Array(),
+    appHash: new Uint8Array(),
+    lastResultsHash: new Uint8Array(),
+    evidenceHash: new Uint8Array(),
+    proposerAddress: new Uint8Array()
   };
 }
 
@@ -583,8 +583,8 @@ export const Header = {
       Consensus.encode(message.version, writer.uint32(10).fork()).ldelim();
     }
 
-    if (message.chain_id !== "") {
-      writer.uint32(18).string(message.chain_id);
+    if (message.chainId !== "") {
+      writer.uint32(18).string(message.chainId);
     }
 
     if (!message.height.isZero()) {
@@ -595,44 +595,44 @@ export const Header = {
       Timestamp.encode(toTimestamp(message.time), writer.uint32(34).fork()).ldelim();
     }
 
-    if (message.last_block_id !== undefined) {
-      BlockID.encode(message.last_block_id, writer.uint32(42).fork()).ldelim();
+    if (message.lastBlockId !== undefined) {
+      BlockID.encode(message.lastBlockId, writer.uint32(42).fork()).ldelim();
     }
 
-    if (message.last_commit_hash.length !== 0) {
-      writer.uint32(50).bytes(message.last_commit_hash);
+    if (message.lastCommitHash.length !== 0) {
+      writer.uint32(50).bytes(message.lastCommitHash);
     }
 
-    if (message.data_hash.length !== 0) {
-      writer.uint32(58).bytes(message.data_hash);
+    if (message.dataHash.length !== 0) {
+      writer.uint32(58).bytes(message.dataHash);
     }
 
-    if (message.validators_hash.length !== 0) {
-      writer.uint32(66).bytes(message.validators_hash);
+    if (message.validatorsHash.length !== 0) {
+      writer.uint32(66).bytes(message.validatorsHash);
     }
 
-    if (message.next_validators_hash.length !== 0) {
-      writer.uint32(74).bytes(message.next_validators_hash);
+    if (message.nextValidatorsHash.length !== 0) {
+      writer.uint32(74).bytes(message.nextValidatorsHash);
     }
 
-    if (message.consensus_hash.length !== 0) {
-      writer.uint32(82).bytes(message.consensus_hash);
+    if (message.consensusHash.length !== 0) {
+      writer.uint32(82).bytes(message.consensusHash);
     }
 
-    if (message.app_hash.length !== 0) {
-      writer.uint32(90).bytes(message.app_hash);
+    if (message.appHash.length !== 0) {
+      writer.uint32(90).bytes(message.appHash);
     }
 
-    if (message.last_results_hash.length !== 0) {
-      writer.uint32(98).bytes(message.last_results_hash);
+    if (message.lastResultsHash.length !== 0) {
+      writer.uint32(98).bytes(message.lastResultsHash);
     }
 
-    if (message.evidence_hash.length !== 0) {
-      writer.uint32(106).bytes(message.evidence_hash);
+    if (message.evidenceHash.length !== 0) {
+      writer.uint32(106).bytes(message.evidenceHash);
     }
 
-    if (message.proposer_address.length !== 0) {
-      writer.uint32(114).bytes(message.proposer_address);
+    if (message.proposerAddress.length !== 0) {
+      writer.uint32(114).bytes(message.proposerAddress);
     }
 
     return writer;
@@ -652,7 +652,7 @@ export const Header = {
           break;
 
         case 2:
-          message.chain_id = reader.string();
+          message.chainId = reader.string();
           break;
 
         case 3:
@@ -664,43 +664,43 @@ export const Header = {
           break;
 
         case 5:
-          message.last_block_id = BlockID.decode(reader, reader.uint32());
+          message.lastBlockId = BlockID.decode(reader, reader.uint32());
           break;
 
         case 6:
-          message.last_commit_hash = reader.bytes();
+          message.lastCommitHash = reader.bytes();
           break;
 
         case 7:
-          message.data_hash = reader.bytes();
+          message.dataHash = reader.bytes();
           break;
 
         case 8:
-          message.validators_hash = reader.bytes();
+          message.validatorsHash = reader.bytes();
           break;
 
         case 9:
-          message.next_validators_hash = reader.bytes();
+          message.nextValidatorsHash = reader.bytes();
           break;
 
         case 10:
-          message.consensus_hash = reader.bytes();
+          message.consensusHash = reader.bytes();
           break;
 
         case 11:
-          message.app_hash = reader.bytes();
+          message.appHash = reader.bytes();
           break;
 
         case 12:
-          message.last_results_hash = reader.bytes();
+          message.lastResultsHash = reader.bytes();
           break;
 
         case 13:
-          message.evidence_hash = reader.bytes();
+          message.evidenceHash = reader.bytes();
           break;
 
         case 14:
-          message.proposer_address = reader.bytes();
+          message.proposerAddress = reader.bytes();
           break;
 
         default:
@@ -715,19 +715,19 @@ export const Header = {
   fromPartial(object: DeepPartial<Header>): Header {
     const message = createBaseHeader();
     message.version = object.version !== undefined && object.version !== null ? Consensus.fromPartial(object.version) : undefined;
-    message.chain_id = object.chain_id ?? "";
+    message.chainId = object.chainId ?? "";
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
     message.time = object.time ?? undefined;
-    message.last_block_id = object.last_block_id !== undefined && object.last_block_id !== null ? BlockID.fromPartial(object.last_block_id) : undefined;
-    message.last_commit_hash = object.last_commit_hash ?? new Uint8Array();
-    message.data_hash = object.data_hash ?? new Uint8Array();
-    message.validators_hash = object.validators_hash ?? new Uint8Array();
-    message.next_validators_hash = object.next_validators_hash ?? new Uint8Array();
-    message.consensus_hash = object.consensus_hash ?? new Uint8Array();
-    message.app_hash = object.app_hash ?? new Uint8Array();
-    message.last_results_hash = object.last_results_hash ?? new Uint8Array();
-    message.evidence_hash = object.evidence_hash ?? new Uint8Array();
-    message.proposer_address = object.proposer_address ?? new Uint8Array();
+    message.lastBlockId = object.lastBlockId !== undefined && object.lastBlockId !== null ? BlockID.fromPartial(object.lastBlockId) : undefined;
+    message.lastCommitHash = object.lastCommitHash ?? new Uint8Array();
+    message.dataHash = object.dataHash ?? new Uint8Array();
+    message.validatorsHash = object.validatorsHash ?? new Uint8Array();
+    message.nextValidatorsHash = object.nextValidatorsHash ?? new Uint8Array();
+    message.consensusHash = object.consensusHash ?? new Uint8Array();
+    message.appHash = object.appHash ?? new Uint8Array();
+    message.lastResultsHash = object.lastResultsHash ?? new Uint8Array();
+    message.evidenceHash = object.evidenceHash ?? new Uint8Array();
+    message.proposerAddress = object.proposerAddress ?? new Uint8Array();
     return message;
   }
 
@@ -783,10 +783,10 @@ function createBaseVote(): Vote {
     type: 0,
     height: Long.ZERO,
     round: 0,
-    block_id: undefined,
+    blockId: undefined,
     timestamp: undefined,
-    validator_address: new Uint8Array(),
-    validator_index: 0,
+    validatorAddress: new Uint8Array(),
+    validatorIndex: 0,
     signature: new Uint8Array()
   };
 }
@@ -805,20 +805,20 @@ export const Vote = {
       writer.uint32(24).int32(message.round);
     }
 
-    if (message.block_id !== undefined) {
-      BlockID.encode(message.block_id, writer.uint32(34).fork()).ldelim();
+    if (message.blockId !== undefined) {
+      BlockID.encode(message.blockId, writer.uint32(34).fork()).ldelim();
     }
 
     if (message.timestamp !== undefined) {
       Timestamp.encode(toTimestamp(message.timestamp), writer.uint32(42).fork()).ldelim();
     }
 
-    if (message.validator_address.length !== 0) {
-      writer.uint32(50).bytes(message.validator_address);
+    if (message.validatorAddress.length !== 0) {
+      writer.uint32(50).bytes(message.validatorAddress);
     }
 
-    if (message.validator_index !== 0) {
-      writer.uint32(56).int32(message.validator_index);
+    if (message.validatorIndex !== 0) {
+      writer.uint32(56).int32(message.validatorIndex);
     }
 
     if (message.signature.length !== 0) {
@@ -850,7 +850,7 @@ export const Vote = {
           break;
 
         case 4:
-          message.block_id = BlockID.decode(reader, reader.uint32());
+          message.blockId = BlockID.decode(reader, reader.uint32());
           break;
 
         case 5:
@@ -858,11 +858,11 @@ export const Vote = {
           break;
 
         case 6:
-          message.validator_address = reader.bytes();
+          message.validatorAddress = reader.bytes();
           break;
 
         case 7:
-          message.validator_index = reader.int32();
+          message.validatorIndex = reader.int32();
           break;
 
         case 8:
@@ -883,10 +883,10 @@ export const Vote = {
     message.type = object.type ?? 0;
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
     message.round = object.round ?? 0;
-    message.block_id = object.block_id !== undefined && object.block_id !== null ? BlockID.fromPartial(object.block_id) : undefined;
+    message.blockId = object.blockId !== undefined && object.blockId !== null ? BlockID.fromPartial(object.blockId) : undefined;
     message.timestamp = object.timestamp ?? undefined;
-    message.validator_address = object.validator_address ?? new Uint8Array();
-    message.validator_index = object.validator_index ?? 0;
+    message.validatorAddress = object.validatorAddress ?? new Uint8Array();
+    message.validatorIndex = object.validatorIndex ?? 0;
     message.signature = object.signature ?? new Uint8Array();
     return message;
   }
@@ -897,7 +897,7 @@ function createBaseCommit(): Commit {
   return {
     height: Long.ZERO,
     round: 0,
-    block_id: undefined,
+    blockId: undefined,
     signatures: []
   };
 }
@@ -912,8 +912,8 @@ export const Commit = {
       writer.uint32(16).int32(message.round);
     }
 
-    if (message.block_id !== undefined) {
-      BlockID.encode(message.block_id, writer.uint32(26).fork()).ldelim();
+    if (message.blockId !== undefined) {
+      BlockID.encode(message.blockId, writer.uint32(26).fork()).ldelim();
     }
 
     for (const v of message.signatures) {
@@ -941,7 +941,7 @@ export const Commit = {
           break;
 
         case 3:
-          message.block_id = BlockID.decode(reader, reader.uint32());
+          message.blockId = BlockID.decode(reader, reader.uint32());
           break;
 
         case 4:
@@ -961,7 +961,7 @@ export const Commit = {
     const message = createBaseCommit();
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
     message.round = object.round ?? 0;
-    message.block_id = object.block_id !== undefined && object.block_id !== null ? BlockID.fromPartial(object.block_id) : undefined;
+    message.blockId = object.blockId !== undefined && object.blockId !== null ? BlockID.fromPartial(object.blockId) : undefined;
     message.signatures = object.signatures?.map(e => CommitSig.fromPartial(e)) || [];
     return message;
   }
@@ -970,8 +970,8 @@ export const Commit = {
 
 function createBaseCommitSig(): CommitSig {
   return {
-    block_id_flag: 0,
-    validator_address: new Uint8Array(),
+    blockIdFlag: 0,
+    validatorAddress: new Uint8Array(),
     timestamp: undefined,
     signature: new Uint8Array()
   };
@@ -979,12 +979,12 @@ function createBaseCommitSig(): CommitSig {
 
 export const CommitSig = {
   encode(message: CommitSig, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.block_id_flag !== 0) {
-      writer.uint32(8).int32(message.block_id_flag);
+    if (message.blockIdFlag !== 0) {
+      writer.uint32(8).int32(message.blockIdFlag);
     }
 
-    if (message.validator_address.length !== 0) {
-      writer.uint32(18).bytes(message.validator_address);
+    if (message.validatorAddress.length !== 0) {
+      writer.uint32(18).bytes(message.validatorAddress);
     }
 
     if (message.timestamp !== undefined) {
@@ -1008,11 +1008,11 @@ export const CommitSig = {
 
       switch (tag >>> 3) {
         case 1:
-          message.block_id_flag = (reader.int32() as any);
+          message.blockIdFlag = (reader.int32() as any);
           break;
 
         case 2:
-          message.validator_address = reader.bytes();
+          message.validatorAddress = reader.bytes();
           break;
 
         case 3:
@@ -1034,8 +1034,8 @@ export const CommitSig = {
 
   fromPartial(object: DeepPartial<CommitSig>): CommitSig {
     const message = createBaseCommitSig();
-    message.block_id_flag = object.block_id_flag ?? 0;
-    message.validator_address = object.validator_address ?? new Uint8Array();
+    message.blockIdFlag = object.blockIdFlag ?? 0;
+    message.validatorAddress = object.validatorAddress ?? new Uint8Array();
     message.timestamp = object.timestamp ?? undefined;
     message.signature = object.signature ?? new Uint8Array();
     return message;
@@ -1048,8 +1048,8 @@ function createBaseProposal(): Proposal {
     type: 0,
     height: Long.ZERO,
     round: 0,
-    pol_round: 0,
-    block_id: undefined,
+    polRound: 0,
+    blockId: undefined,
     timestamp: undefined,
     signature: new Uint8Array()
   };
@@ -1069,12 +1069,12 @@ export const Proposal = {
       writer.uint32(24).int32(message.round);
     }
 
-    if (message.pol_round !== 0) {
-      writer.uint32(32).int32(message.pol_round);
+    if (message.polRound !== 0) {
+      writer.uint32(32).int32(message.polRound);
     }
 
-    if (message.block_id !== undefined) {
-      BlockID.encode(message.block_id, writer.uint32(42).fork()).ldelim();
+    if (message.blockId !== undefined) {
+      BlockID.encode(message.blockId, writer.uint32(42).fork()).ldelim();
     }
 
     if (message.timestamp !== undefined) {
@@ -1110,11 +1110,11 @@ export const Proposal = {
           break;
 
         case 4:
-          message.pol_round = reader.int32();
+          message.polRound = reader.int32();
           break;
 
         case 5:
-          message.block_id = BlockID.decode(reader, reader.uint32());
+          message.blockId = BlockID.decode(reader, reader.uint32());
           break;
 
         case 6:
@@ -1139,8 +1139,8 @@ export const Proposal = {
     message.type = object.type ?? 0;
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
     message.round = object.round ?? 0;
-    message.pol_round = object.pol_round ?? 0;
-    message.block_id = object.block_id !== undefined && object.block_id !== null ? BlockID.fromPartial(object.block_id) : undefined;
+    message.polRound = object.polRound ?? 0;
+    message.blockId = object.blockId !== undefined && object.blockId !== null ? BlockID.fromPartial(object.blockId) : undefined;
     message.timestamp = object.timestamp ?? undefined;
     message.signature = object.signature ?? new Uint8Array();
     return message;
@@ -1205,19 +1205,19 @@ export const SignedHeader = {
 
 function createBaseLightBlock(): LightBlock {
   return {
-    signed_header: undefined,
-    validator_set: undefined
+    signedHeader: undefined,
+    validatorSet: undefined
   };
 }
 
 export const LightBlock = {
   encode(message: LightBlock, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.signed_header !== undefined) {
-      SignedHeader.encode(message.signed_header, writer.uint32(10).fork()).ldelim();
+    if (message.signedHeader !== undefined) {
+      SignedHeader.encode(message.signedHeader, writer.uint32(10).fork()).ldelim();
     }
 
-    if (message.validator_set !== undefined) {
-      ValidatorSet.encode(message.validator_set, writer.uint32(18).fork()).ldelim();
+    if (message.validatorSet !== undefined) {
+      ValidatorSet.encode(message.validatorSet, writer.uint32(18).fork()).ldelim();
     }
 
     return writer;
@@ -1233,11 +1233,11 @@ export const LightBlock = {
 
       switch (tag >>> 3) {
         case 1:
-          message.signed_header = SignedHeader.decode(reader, reader.uint32());
+          message.signedHeader = SignedHeader.decode(reader, reader.uint32());
           break;
 
         case 2:
-          message.validator_set = ValidatorSet.decode(reader, reader.uint32());
+          message.validatorSet = ValidatorSet.decode(reader, reader.uint32());
           break;
 
         default:
@@ -1251,8 +1251,8 @@ export const LightBlock = {
 
   fromPartial(object: DeepPartial<LightBlock>): LightBlock {
     const message = createBaseLightBlock();
-    message.signed_header = object.signed_header !== undefined && object.signed_header !== null ? SignedHeader.fromPartial(object.signed_header) : undefined;
-    message.validator_set = object.validator_set !== undefined && object.validator_set !== null ? ValidatorSet.fromPartial(object.validator_set) : undefined;
+    message.signedHeader = object.signedHeader !== undefined && object.signedHeader !== null ? SignedHeader.fromPartial(object.signedHeader) : undefined;
+    message.validatorSet = object.validatorSet !== undefined && object.validatorSet !== null ? ValidatorSet.fromPartial(object.validatorSet) : undefined;
     return message;
   }
 
@@ -1260,29 +1260,29 @@ export const LightBlock = {
 
 function createBaseBlockMeta(): BlockMeta {
   return {
-    block_id: undefined,
-    block_size: Long.ZERO,
+    blockId: undefined,
+    blockSize: Long.ZERO,
     header: undefined,
-    num_txs: Long.ZERO
+    numTxs: Long.ZERO
   };
 }
 
 export const BlockMeta = {
   encode(message: BlockMeta, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.block_id !== undefined) {
-      BlockID.encode(message.block_id, writer.uint32(10).fork()).ldelim();
+    if (message.blockId !== undefined) {
+      BlockID.encode(message.blockId, writer.uint32(10).fork()).ldelim();
     }
 
-    if (!message.block_size.isZero()) {
-      writer.uint32(16).int64(message.block_size);
+    if (!message.blockSize.isZero()) {
+      writer.uint32(16).int64(message.blockSize);
     }
 
     if (message.header !== undefined) {
       Header.encode(message.header, writer.uint32(26).fork()).ldelim();
     }
 
-    if (!message.num_txs.isZero()) {
-      writer.uint32(32).int64(message.num_txs);
+    if (!message.numTxs.isZero()) {
+      writer.uint32(32).int64(message.numTxs);
     }
 
     return writer;
@@ -1298,11 +1298,11 @@ export const BlockMeta = {
 
       switch (tag >>> 3) {
         case 1:
-          message.block_id = BlockID.decode(reader, reader.uint32());
+          message.blockId = BlockID.decode(reader, reader.uint32());
           break;
 
         case 2:
-          message.block_size = (reader.int64() as Long);
+          message.blockSize = (reader.int64() as Long);
           break;
 
         case 3:
@@ -1310,7 +1310,7 @@ export const BlockMeta = {
           break;
 
         case 4:
-          message.num_txs = (reader.int64() as Long);
+          message.numTxs = (reader.int64() as Long);
           break;
 
         default:
@@ -1324,10 +1324,10 @@ export const BlockMeta = {
 
   fromPartial(object: DeepPartial<BlockMeta>): BlockMeta {
     const message = createBaseBlockMeta();
-    message.block_id = object.block_id !== undefined && object.block_id !== null ? BlockID.fromPartial(object.block_id) : undefined;
-    message.block_size = object.block_size !== undefined && object.block_size !== null ? Long.fromValue(object.block_size) : Long.ZERO;
+    message.blockId = object.blockId !== undefined && object.blockId !== null ? BlockID.fromPartial(object.blockId) : undefined;
+    message.blockSize = object.blockSize !== undefined && object.blockSize !== null ? Long.fromValue(object.blockSize) : Long.ZERO;
     message.header = object.header !== undefined && object.header !== null ? Header.fromPartial(object.header) : undefined;
-    message.num_txs = object.num_txs !== undefined && object.num_txs !== null ? Long.fromValue(object.num_txs) : Long.ZERO;
+    message.numTxs = object.numTxs !== undefined && object.numTxs !== null ? Long.fromValue(object.numTxs) : Long.ZERO;
     return message;
   }
 
@@ -1335,7 +1335,7 @@ export const BlockMeta = {
 
 function createBaseTxProof(): TxProof {
   return {
-    root_hash: new Uint8Array(),
+    rootHash: new Uint8Array(),
     data: new Uint8Array(),
     proof: undefined
   };
@@ -1343,8 +1343,8 @@ function createBaseTxProof(): TxProof {
 
 export const TxProof = {
   encode(message: TxProof, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.root_hash.length !== 0) {
-      writer.uint32(10).bytes(message.root_hash);
+    if (message.rootHash.length !== 0) {
+      writer.uint32(10).bytes(message.rootHash);
     }
 
     if (message.data.length !== 0) {
@@ -1368,7 +1368,7 @@ export const TxProof = {
 
       switch (tag >>> 3) {
         case 1:
-          message.root_hash = reader.bytes();
+          message.rootHash = reader.bytes();
           break;
 
         case 2:
@@ -1390,7 +1390,7 @@ export const TxProof = {
 
   fromPartial(object: DeepPartial<TxProof>): TxProof {
     const message = createBaseTxProof();
-    message.root_hash = object.root_hash ?? new Uint8Array();
+    message.rootHash = object.rootHash ?? new Uint8Array();
     message.data = object.data ?? new Uint8Array();
     message.proof = object.proof !== undefined && object.proof !== null ? Proof.fromPartial(object.proof) : undefined;
     return message;

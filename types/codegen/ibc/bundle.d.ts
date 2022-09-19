@@ -72,7 +72,7 @@ export declare namespace ibc {
                 AminoConverter: {
                     "/ibc.applications.transfer.v1.MsgTransfer": {
                         aminoType: string;
-                        toAmino: ({ source_port, source_channel, token, sender, receiver, timeout_height, timeout_timestamp }: _105.MsgTransfer) => {
+                        toAmino: ({ sourcePort, sourceChannel, token, sender, receiver, timeoutHeight, timeoutTimestamp }: _105.MsgTransfer) => {
                             source_port: string;
                             source_channel: string;
                             token: {
@@ -102,19 +102,19 @@ export declare namespace ibc {
                     encode(message: _105.MsgTransfer, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _105.MsgTransfer;
                     fromPartial(object: {
-                        source_port?: string;
-                        source_channel?: string;
+                        sourcePort?: string;
+                        sourceChannel?: string;
                         token?: {
                             denom?: string;
                             amount?: string;
                         };
                         sender?: string;
                         receiver?: string;
-                        timeout_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        timeoutHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
-                        timeout_timestamp?: any;
+                        timeoutTimestamp?: any;
                     }): _105.MsgTransfer;
                 };
                 MsgTransferResponse: {
@@ -127,15 +127,15 @@ export declare namespace ibc {
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _104.DenomTrace;
                     fromPartial(object: {
                         path?: string;
-                        base_denom?: string;
+                        baseDenom?: string;
                     }): _104.DenomTrace;
                 };
                 Params: {
                     encode(message: _104.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _104.Params;
                     fromPartial(object: {
-                        send_enabled?: boolean;
-                        receive_enabled?: boolean;
+                        sendEnabled?: boolean;
+                        receiveEnabled?: boolean;
                     }): _104.Params;
                 };
                 QueryDenomTraceRequest: {
@@ -149,9 +149,9 @@ export declare namespace ibc {
                     encode(message: _103.QueryDenomTraceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _103.QueryDenomTraceResponseSDKType;
                     fromPartial(object: {
-                        denom_trace?: {
+                        denomTrace?: {
                             path?: string;
-                            base_denom?: string;
+                            baseDenom?: string;
                         };
                     }): _103.QueryDenomTraceResponse;
                 };
@@ -163,7 +163,7 @@ export declare namespace ibc {
                             key?: Uint8Array;
                             offset?: any;
                             limit?: any;
-                            count_total?: boolean;
+                            countTotal?: boolean;
                             reverse?: boolean;
                         };
                     }): _103.QueryDenomTracesRequest;
@@ -172,12 +172,12 @@ export declare namespace ibc {
                     encode(message: _103.QueryDenomTracesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _103.QueryDenomTracesResponseSDKType;
                     fromPartial(object: {
-                        denom_traces?: {
+                        denomTraces?: {
                             path?: string;
-                            base_denom?: string;
+                            baseDenom?: string;
                         }[];
                         pagination?: {
-                            next_key?: Uint8Array;
+                            nextKey?: Uint8Array;
                             total?: any;
                         };
                     }): _103.QueryDenomTracesResponse;
@@ -192,8 +192,8 @@ export declare namespace ibc {
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _103.QueryParamsResponseSDKType;
                     fromPartial(object: {
                         params?: {
-                            send_enabled?: boolean;
-                            receive_enabled?: boolean;
+                            sendEnabled?: boolean;
+                            receiveEnabled?: boolean;
                         };
                     }): _103.QueryParamsResponse;
                 };
@@ -201,14 +201,14 @@ export declare namespace ibc {
                     encode(message: _102.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _102.GenesisState;
                     fromPartial(object: {
-                        port_id?: string;
-                        denom_traces?: {
+                        portId?: string;
+                        denomTraces?: {
                             path?: string;
-                            base_denom?: string;
+                            baseDenom?: string;
                         }[];
                         params?: {
-                            send_enabled?: boolean;
-                            receive_enabled?: boolean;
+                            sendEnabled?: boolean;
+                            receiveEnabled?: boolean;
                         };
                     }): _102.GenesisState;
                 };
@@ -381,7 +381,7 @@ export declare namespace ibc {
                 AminoConverter: {
                     "/ibc.core.channel.v1.MsgChannelOpenInit": {
                         aminoType: string;
-                        toAmino: ({ port_id, channel, signer }: _110.MsgChannelOpenInit) => {
+                        toAmino: ({ portId, channel, signer }: _110.MsgChannelOpenInit) => {
                             port_id: string;
                             channel: {
                                 state: number;
@@ -412,7 +412,7 @@ export declare namespace ibc {
                     };
                     "/ibc.core.channel.v1.MsgChannelOpenTry": {
                         aminoType: string;
-                        toAmino: ({ port_id, previous_channel_id, channel, counterparty_version, proof_init, proof_height, signer }: _110.MsgChannelOpenTry) => {
+                        toAmino: ({ portId, previousChannelId, channel, counterpartyVersion, proofInit, proofHeight, signer }: _110.MsgChannelOpenTry) => {
                             port_id: string;
                             previous_channel_id: string;
                             channel: {
@@ -451,7 +451,7 @@ export declare namespace ibc {
                     };
                     "/ibc.core.channel.v1.MsgChannelOpenAck": {
                         aminoType: string;
-                        toAmino: ({ port_id, channel_id, counterparty_channel_id, counterparty_version, proof_try, proof_height, signer }: _110.MsgChannelOpenAck) => {
+                        toAmino: ({ portId, channelId, counterpartyChannelId, counterpartyVersion, proofTry, proofHeight, signer }: _110.MsgChannelOpenAck) => {
                             port_id: string;
                             channel_id: string;
                             counterparty_channel_id: string;
@@ -472,7 +472,7 @@ export declare namespace ibc {
                     };
                     "/ibc.core.channel.v1.MsgChannelOpenConfirm": {
                         aminoType: string;
-                        toAmino: ({ port_id, channel_id, proof_ack, proof_height, signer }: _110.MsgChannelOpenConfirm) => {
+                        toAmino: ({ portId, channelId, proofAck, proofHeight, signer }: _110.MsgChannelOpenConfirm) => {
                             port_id: string;
                             channel_id: string;
                             proof_ack: Uint8Array;
@@ -489,7 +489,7 @@ export declare namespace ibc {
                     };
                     "/ibc.core.channel.v1.MsgChannelCloseInit": {
                         aminoType: string;
-                        toAmino: ({ port_id, channel_id, signer }: _110.MsgChannelCloseInit) => {
+                        toAmino: ({ portId, channelId, signer }: _110.MsgChannelCloseInit) => {
                             port_id: string;
                             channel_id: string;
                             signer: string;
@@ -502,7 +502,7 @@ export declare namespace ibc {
                     };
                     "/ibc.core.channel.v1.MsgChannelCloseConfirm": {
                         aminoType: string;
-                        toAmino: ({ port_id, channel_id, proof_init, proof_height, signer }: _110.MsgChannelCloseConfirm) => {
+                        toAmino: ({ portId, channelId, proofInit, proofHeight, signer }: _110.MsgChannelCloseConfirm) => {
                             port_id: string;
                             channel_id: string;
                             proof_init: Uint8Array;
@@ -519,7 +519,7 @@ export declare namespace ibc {
                     };
                     "/ibc.core.channel.v1.MsgRecvPacket": {
                         aminoType: string;
-                        toAmino: ({ packet, proof_commitment, proof_height, signer }: _110.MsgRecvPacket) => {
+                        toAmino: ({ packet, proofCommitment, proofHeight, signer }: _110.MsgRecvPacket) => {
                             packet: {
                                 sequence: string;
                                 source_port: string;
@@ -552,7 +552,7 @@ export declare namespace ibc {
                     };
                     "/ibc.core.channel.v1.MsgTimeout": {
                         aminoType: string;
-                        toAmino: ({ packet, proof_unreceived, proof_height, next_sequence_recv, signer }: _110.MsgTimeout) => {
+                        toAmino: ({ packet, proofUnreceived, proofHeight, nextSequenceRecv, signer }: _110.MsgTimeout) => {
                             packet: {
                                 sequence: string;
                                 source_port: string;
@@ -587,7 +587,7 @@ export declare namespace ibc {
                     };
                     "/ibc.core.channel.v1.MsgTimeoutOnClose": {
                         aminoType: string;
-                        toAmino: ({ packet, proof_unreceived, proof_close, proof_height, next_sequence_recv, signer }: _110.MsgTimeoutOnClose) => {
+                        toAmino: ({ packet, proofUnreceived, proofClose, proofHeight, nextSequenceRecv, signer }: _110.MsgTimeoutOnClose) => {
                             packet: {
                                 sequence: string;
                                 source_port: string;
@@ -624,7 +624,7 @@ export declare namespace ibc {
                     };
                     "/ibc.core.channel.v1.MsgAcknowledgement": {
                         aminoType: string;
-                        toAmino: ({ packet, acknowledgement, proof_acked, proof_height, signer }: _110.MsgAcknowledgement) => {
+                        toAmino: ({ packet, acknowledgement, proofAcked, proofHeight, signer }: _110.MsgAcknowledgement) => {
                             packet: {
                                 sequence: string;
                                 source_port: string;
@@ -662,15 +662,15 @@ export declare namespace ibc {
                     encode(message: _110.MsgChannelOpenInit, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _110.MsgChannelOpenInit;
                     fromPartial(object: {
-                        port_id?: string;
+                        portId?: string;
                         channel?: {
                             state?: _107.State;
                             ordering?: _107.Order;
                             counterparty?: {
-                                port_id?: string;
-                                channel_id?: string;
+                                portId?: string;
+                                channelId?: string;
                             };
-                            connection_hops?: string[];
+                            connectionHops?: string[];
                             version?: string;
                         };
                         signer?: string;
@@ -685,23 +685,23 @@ export declare namespace ibc {
                     encode(message: _110.MsgChannelOpenTry, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _110.MsgChannelOpenTry;
                     fromPartial(object: {
-                        port_id?: string;
-                        previous_channel_id?: string;
+                        portId?: string;
+                        previousChannelId?: string;
                         channel?: {
                             state?: _107.State;
                             ordering?: _107.Order;
                             counterparty?: {
-                                port_id?: string;
-                                channel_id?: string;
+                                portId?: string;
+                                channelId?: string;
                             };
-                            connection_hops?: string[];
+                            connectionHops?: string[];
                             version?: string;
                         };
-                        counterparty_version?: string;
-                        proof_init?: Uint8Array;
-                        proof_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        counterpartyVersion?: string;
+                        proofInit?: Uint8Array;
+                        proofHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                         signer?: string;
                     }): _110.MsgChannelOpenTry;
@@ -715,14 +715,14 @@ export declare namespace ibc {
                     encode(message: _110.MsgChannelOpenAck, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _110.MsgChannelOpenAck;
                     fromPartial(object: {
-                        port_id?: string;
-                        channel_id?: string;
-                        counterparty_channel_id?: string;
-                        counterparty_version?: string;
-                        proof_try?: Uint8Array;
-                        proof_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        portId?: string;
+                        channelId?: string;
+                        counterpartyChannelId?: string;
+                        counterpartyVersion?: string;
+                        proofTry?: Uint8Array;
+                        proofHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                         signer?: string;
                     }): _110.MsgChannelOpenAck;
@@ -736,12 +736,12 @@ export declare namespace ibc {
                     encode(message: _110.MsgChannelOpenConfirm, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _110.MsgChannelOpenConfirm;
                     fromPartial(object: {
-                        port_id?: string;
-                        channel_id?: string;
-                        proof_ack?: Uint8Array;
-                        proof_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        portId?: string;
+                        channelId?: string;
+                        proofAck?: Uint8Array;
+                        proofHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                         signer?: string;
                     }): _110.MsgChannelOpenConfirm;
@@ -755,8 +755,8 @@ export declare namespace ibc {
                     encode(message: _110.MsgChannelCloseInit, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _110.MsgChannelCloseInit;
                     fromPartial(object: {
-                        port_id?: string;
-                        channel_id?: string;
+                        portId?: string;
+                        channelId?: string;
                         signer?: string;
                     }): _110.MsgChannelCloseInit;
                 };
@@ -769,12 +769,12 @@ export declare namespace ibc {
                     encode(message: _110.MsgChannelCloseConfirm, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _110.MsgChannelCloseConfirm;
                     fromPartial(object: {
-                        port_id?: string;
-                        channel_id?: string;
-                        proof_init?: Uint8Array;
-                        proof_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        portId?: string;
+                        channelId?: string;
+                        proofInit?: Uint8Array;
+                        proofHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                         signer?: string;
                     }): _110.MsgChannelCloseConfirm;
@@ -790,21 +790,21 @@ export declare namespace ibc {
                     fromPartial(object: {
                         packet?: {
                             sequence?: any;
-                            source_port?: string;
-                            source_channel?: string;
-                            destination_port?: string;
-                            destination_channel?: string;
+                            sourcePort?: string;
+                            sourceChannel?: string;
+                            destinationPort?: string;
+                            destinationChannel?: string;
                             data?: Uint8Array;
-                            timeout_height?: {
-                                revision_number?: any;
-                                revision_height?: any;
+                            timeoutHeight?: {
+                                revisionNumber?: any;
+                                revisionHeight?: any;
                             };
-                            timeout_timestamp?: any;
+                            timeoutTimestamp?: any;
                         };
-                        proof_commitment?: Uint8Array;
-                        proof_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        proofCommitment?: Uint8Array;
+                        proofHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                         signer?: string;
                     }): _110.MsgRecvPacket;
@@ -820,23 +820,23 @@ export declare namespace ibc {
                     fromPartial(object: {
                         packet?: {
                             sequence?: any;
-                            source_port?: string;
-                            source_channel?: string;
-                            destination_port?: string;
-                            destination_channel?: string;
+                            sourcePort?: string;
+                            sourceChannel?: string;
+                            destinationPort?: string;
+                            destinationChannel?: string;
                             data?: Uint8Array;
-                            timeout_height?: {
-                                revision_number?: any;
-                                revision_height?: any;
+                            timeoutHeight?: {
+                                revisionNumber?: any;
+                                revisionHeight?: any;
                             };
-                            timeout_timestamp?: any;
+                            timeoutTimestamp?: any;
                         };
-                        proof_unreceived?: Uint8Array;
-                        proof_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        proofUnreceived?: Uint8Array;
+                        proofHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
-                        next_sequence_recv?: any;
+                        nextSequenceRecv?: any;
                         signer?: string;
                     }): _110.MsgTimeout;
                 };
@@ -851,24 +851,24 @@ export declare namespace ibc {
                     fromPartial(object: {
                         packet?: {
                             sequence?: any;
-                            source_port?: string;
-                            source_channel?: string;
-                            destination_port?: string;
-                            destination_channel?: string;
+                            sourcePort?: string;
+                            sourceChannel?: string;
+                            destinationPort?: string;
+                            destinationChannel?: string;
                             data?: Uint8Array;
-                            timeout_height?: {
-                                revision_number?: any;
-                                revision_height?: any;
+                            timeoutHeight?: {
+                                revisionNumber?: any;
+                                revisionHeight?: any;
                             };
-                            timeout_timestamp?: any;
+                            timeoutTimestamp?: any;
                         };
-                        proof_unreceived?: Uint8Array;
-                        proof_close?: Uint8Array;
-                        proof_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        proofUnreceived?: Uint8Array;
+                        proofClose?: Uint8Array;
+                        proofHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
-                        next_sequence_recv?: any;
+                        nextSequenceRecv?: any;
                         signer?: string;
                     }): _110.MsgTimeoutOnClose;
                 };
@@ -883,22 +883,22 @@ export declare namespace ibc {
                     fromPartial(object: {
                         packet?: {
                             sequence?: any;
-                            source_port?: string;
-                            source_channel?: string;
-                            destination_port?: string;
-                            destination_channel?: string;
+                            sourcePort?: string;
+                            sourceChannel?: string;
+                            destinationPort?: string;
+                            destinationChannel?: string;
                             data?: Uint8Array;
-                            timeout_height?: {
-                                revision_number?: any;
-                                revision_height?: any;
+                            timeoutHeight?: {
+                                revisionNumber?: any;
+                                revisionHeight?: any;
                             };
-                            timeout_timestamp?: any;
+                            timeoutTimestamp?: any;
                         };
                         acknowledgement?: Uint8Array;
-                        proof_acked?: Uint8Array;
-                        proof_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        proofAcked?: Uint8Array;
+                        proofHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                         signer?: string;
                     }): _110.MsgAcknowledgement;
@@ -912,8 +912,8 @@ export declare namespace ibc {
                     encode(message: _109.QueryChannelRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.QueryChannelRequest;
                     fromPartial(object: {
-                        port_id?: string;
-                        channel_id?: string;
+                        portId?: string;
+                        channelId?: string;
                     }): _109.QueryChannelRequest;
                 };
                 QueryChannelResponse: {
@@ -924,16 +924,16 @@ export declare namespace ibc {
                             state?: _107.State;
                             ordering?: _107.Order;
                             counterparty?: {
-                                port_id?: string;
-                                channel_id?: string;
+                                portId?: string;
+                                channelId?: string;
                             };
-                            connection_hops?: string[];
+                            connectionHops?: string[];
                             version?: string;
                         };
                         proof?: Uint8Array;
-                        proof_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        proofHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                     }): _109.QueryChannelResponse;
                 };
@@ -945,7 +945,7 @@ export declare namespace ibc {
                             key?: Uint8Array;
                             offset?: any;
                             limit?: any;
-                            count_total?: boolean;
+                            countTotal?: boolean;
                             reverse?: boolean;
                         };
                     }): _109.QueryChannelsRequest;
@@ -958,21 +958,21 @@ export declare namespace ibc {
                             state?: _107.State;
                             ordering?: _107.Order;
                             counterparty?: {
-                                port_id?: string;
-                                channel_id?: string;
+                                portId?: string;
+                                channelId?: string;
                             };
-                            connection_hops?: string[];
+                            connectionHops?: string[];
                             version?: string;
-                            port_id?: string;
-                            channel_id?: string;
+                            portId?: string;
+                            channelId?: string;
                         }[];
                         pagination?: {
-                            next_key?: Uint8Array;
+                            nextKey?: Uint8Array;
                             total?: any;
                         };
                         height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                     }): _109.QueryChannelsResponse;
                 };
@@ -985,7 +985,7 @@ export declare namespace ibc {
                             key?: Uint8Array;
                             offset?: any;
                             limit?: any;
-                            count_total?: boolean;
+                            countTotal?: boolean;
                             reverse?: boolean;
                         };
                     }): _109.QueryConnectionChannelsRequest;
@@ -998,21 +998,21 @@ export declare namespace ibc {
                             state?: _107.State;
                             ordering?: _107.Order;
                             counterparty?: {
-                                port_id?: string;
-                                channel_id?: string;
+                                portId?: string;
+                                channelId?: string;
                             };
-                            connection_hops?: string[];
+                            connectionHops?: string[];
                             version?: string;
-                            port_id?: string;
-                            channel_id?: string;
+                            portId?: string;
+                            channelId?: string;
                         }[];
                         pagination?: {
-                            next_key?: Uint8Array;
+                            nextKey?: Uint8Array;
                             total?: any;
                         };
                         height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                     }): _109.QueryConnectionChannelsResponse;
                 };
@@ -1020,25 +1020,25 @@ export declare namespace ibc {
                     encode(message: _109.QueryChannelClientStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.QueryChannelClientStateRequest;
                     fromPartial(object: {
-                        port_id?: string;
-                        channel_id?: string;
+                        portId?: string;
+                        channelId?: string;
                     }): _109.QueryChannelClientStateRequest;
                 };
                 QueryChannelClientStateResponse: {
                     encode(message: _109.QueryChannelClientStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.QueryChannelClientStateResponseSDKType;
                     fromPartial(object: {
-                        identified_client_state?: {
-                            client_id?: string;
-                            client_state?: {
-                                type_url?: string;
+                        identifiedClientState?: {
+                            clientId?: string;
+                            clientState?: {
+                                typeUrl?: string;
                                 value?: Uint8Array;
                             };
                         };
                         proof?: Uint8Array;
-                        proof_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        proofHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                     }): _109.QueryChannelClientStateResponse;
                 };
@@ -1046,25 +1046,25 @@ export declare namespace ibc {
                     encode(message: _109.QueryChannelConsensusStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.QueryChannelConsensusStateRequest;
                     fromPartial(object: {
-                        port_id?: string;
-                        channel_id?: string;
-                        revision_number?: any;
-                        revision_height?: any;
+                        portId?: string;
+                        channelId?: string;
+                        revisionNumber?: any;
+                        revisionHeight?: any;
                     }): _109.QueryChannelConsensusStateRequest;
                 };
                 QueryChannelConsensusStateResponse: {
                     encode(message: _109.QueryChannelConsensusStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.QueryChannelConsensusStateResponseSDKType;
                     fromPartial(object: {
-                        consensus_state?: {
-                            type_url?: string;
+                        consensusState?: {
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
-                        client_id?: string;
+                        clientId?: string;
                         proof?: Uint8Array;
-                        proof_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        proofHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                     }): _109.QueryChannelConsensusStateResponse;
                 };
@@ -1072,8 +1072,8 @@ export declare namespace ibc {
                     encode(message: _109.QueryPacketCommitmentRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.QueryPacketCommitmentRequest;
                     fromPartial(object: {
-                        port_id?: string;
-                        channel_id?: string;
+                        portId?: string;
+                        channelId?: string;
                         sequence?: any;
                     }): _109.QueryPacketCommitmentRequest;
                 };
@@ -1083,9 +1083,9 @@ export declare namespace ibc {
                     fromPartial(object: {
                         commitment?: Uint8Array;
                         proof?: Uint8Array;
-                        proof_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        proofHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                     }): _109.QueryPacketCommitmentResponse;
                 };
@@ -1093,13 +1093,13 @@ export declare namespace ibc {
                     encode(message: _109.QueryPacketCommitmentsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.QueryPacketCommitmentsRequest;
                     fromPartial(object: {
-                        port_id?: string;
-                        channel_id?: string;
+                        portId?: string;
+                        channelId?: string;
                         pagination?: {
                             key?: Uint8Array;
                             offset?: any;
                             limit?: any;
-                            count_total?: boolean;
+                            countTotal?: boolean;
                             reverse?: boolean;
                         };
                     }): _109.QueryPacketCommitmentsRequest;
@@ -1109,18 +1109,18 @@ export declare namespace ibc {
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.QueryPacketCommitmentsResponseSDKType;
                     fromPartial(object: {
                         commitments?: {
-                            port_id?: string;
-                            channel_id?: string;
+                            portId?: string;
+                            channelId?: string;
                             sequence?: any;
                             data?: Uint8Array;
                         }[];
                         pagination?: {
-                            next_key?: Uint8Array;
+                            nextKey?: Uint8Array;
                             total?: any;
                         };
                         height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                     }): _109.QueryPacketCommitmentsResponse;
                 };
@@ -1128,8 +1128,8 @@ export declare namespace ibc {
                     encode(message: _109.QueryPacketReceiptRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.QueryPacketReceiptRequest;
                     fromPartial(object: {
-                        port_id?: string;
-                        channel_id?: string;
+                        portId?: string;
+                        channelId?: string;
                         sequence?: any;
                     }): _109.QueryPacketReceiptRequest;
                 };
@@ -1139,9 +1139,9 @@ export declare namespace ibc {
                     fromPartial(object: {
                         received?: boolean;
                         proof?: Uint8Array;
-                        proof_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        proofHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                     }): _109.QueryPacketReceiptResponse;
                 };
@@ -1149,8 +1149,8 @@ export declare namespace ibc {
                     encode(message: _109.QueryPacketAcknowledgementRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.QueryPacketAcknowledgementRequest;
                     fromPartial(object: {
-                        port_id?: string;
-                        channel_id?: string;
+                        portId?: string;
+                        channelId?: string;
                         sequence?: any;
                     }): _109.QueryPacketAcknowledgementRequest;
                 };
@@ -1160,9 +1160,9 @@ export declare namespace ibc {
                     fromPartial(object: {
                         acknowledgement?: Uint8Array;
                         proof?: Uint8Array;
-                        proof_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        proofHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                     }): _109.QueryPacketAcknowledgementResponse;
                 };
@@ -1170,16 +1170,16 @@ export declare namespace ibc {
                     encode(message: _109.QueryPacketAcknowledgementsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.QueryPacketAcknowledgementsRequest;
                     fromPartial(object: {
-                        port_id?: string;
-                        channel_id?: string;
+                        portId?: string;
+                        channelId?: string;
                         pagination?: {
                             key?: Uint8Array;
                             offset?: any;
                             limit?: any;
-                            count_total?: boolean;
+                            countTotal?: boolean;
                             reverse?: boolean;
                         };
-                        packet_commitment_sequences?: any[];
+                        packetCommitmentSequences?: any[];
                     }): _109.QueryPacketAcknowledgementsRequest;
                 };
                 QueryPacketAcknowledgementsResponse: {
@@ -1187,18 +1187,18 @@ export declare namespace ibc {
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.QueryPacketAcknowledgementsResponseSDKType;
                     fromPartial(object: {
                         acknowledgements?: {
-                            port_id?: string;
-                            channel_id?: string;
+                            portId?: string;
+                            channelId?: string;
                             sequence?: any;
                             data?: Uint8Array;
                         }[];
                         pagination?: {
-                            next_key?: Uint8Array;
+                            nextKey?: Uint8Array;
                             total?: any;
                         };
                         height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                     }): _109.QueryPacketAcknowledgementsResponse;
                 };
@@ -1206,9 +1206,9 @@ export declare namespace ibc {
                     encode(message: _109.QueryUnreceivedPacketsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.QueryUnreceivedPacketsRequest;
                     fromPartial(object: {
-                        port_id?: string;
-                        channel_id?: string;
-                        packet_commitment_sequences?: any[];
+                        portId?: string;
+                        channelId?: string;
+                        packetCommitmentSequences?: any[];
                     }): _109.QueryUnreceivedPacketsRequest;
                 };
                 QueryUnreceivedPacketsResponse: {
@@ -1217,8 +1217,8 @@ export declare namespace ibc {
                     fromPartial(object: {
                         sequences?: any[];
                         height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                     }): _109.QueryUnreceivedPacketsResponse;
                 };
@@ -1226,9 +1226,9 @@ export declare namespace ibc {
                     encode(message: _109.QueryUnreceivedAcksRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.QueryUnreceivedAcksRequest;
                     fromPartial(object: {
-                        port_id?: string;
-                        channel_id?: string;
-                        packet_ack_sequences?: any[];
+                        portId?: string;
+                        channelId?: string;
+                        packetAckSequences?: any[];
                     }): _109.QueryUnreceivedAcksRequest;
                 };
                 QueryUnreceivedAcksResponse: {
@@ -1237,8 +1237,8 @@ export declare namespace ibc {
                     fromPartial(object: {
                         sequences?: any[];
                         height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                     }): _109.QueryUnreceivedAcksResponse;
                 };
@@ -1246,19 +1246,19 @@ export declare namespace ibc {
                     encode(message: _109.QueryNextSequenceReceiveRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.QueryNextSequenceReceiveRequest;
                     fromPartial(object: {
-                        port_id?: string;
-                        channel_id?: string;
+                        portId?: string;
+                        channelId?: string;
                     }): _109.QueryNextSequenceReceiveRequest;
                 };
                 QueryNextSequenceReceiveResponse: {
                     encode(message: _109.QueryNextSequenceReceiveResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _109.QueryNextSequenceReceiveResponseSDKType;
                     fromPartial(object: {
-                        next_sequence_receive?: any;
+                        nextSequenceReceive?: any;
                         proof?: Uint8Array;
-                        proof_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        proofHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                     }): _109.QueryNextSequenceReceiveResponse;
                 };
@@ -1270,56 +1270,56 @@ export declare namespace ibc {
                             state?: _107.State;
                             ordering?: _107.Order;
                             counterparty?: {
-                                port_id?: string;
-                                channel_id?: string;
+                                portId?: string;
+                                channelId?: string;
                             };
-                            connection_hops?: string[];
+                            connectionHops?: string[];
                             version?: string;
-                            port_id?: string;
-                            channel_id?: string;
+                            portId?: string;
+                            channelId?: string;
                         }[];
                         acknowledgements?: {
-                            port_id?: string;
-                            channel_id?: string;
+                            portId?: string;
+                            channelId?: string;
                             sequence?: any;
                             data?: Uint8Array;
                         }[];
                         commitments?: {
-                            port_id?: string;
-                            channel_id?: string;
+                            portId?: string;
+                            channelId?: string;
                             sequence?: any;
                             data?: Uint8Array;
                         }[];
                         receipts?: {
-                            port_id?: string;
-                            channel_id?: string;
+                            portId?: string;
+                            channelId?: string;
                             sequence?: any;
                             data?: Uint8Array;
                         }[];
-                        send_sequences?: {
-                            port_id?: string;
-                            channel_id?: string;
+                        sendSequences?: {
+                            portId?: string;
+                            channelId?: string;
                             sequence?: any;
                         }[];
-                        recv_sequences?: {
-                            port_id?: string;
-                            channel_id?: string;
+                        recvSequences?: {
+                            portId?: string;
+                            channelId?: string;
                             sequence?: any;
                         }[];
-                        ack_sequences?: {
-                            port_id?: string;
-                            channel_id?: string;
+                        ackSequences?: {
+                            portId?: string;
+                            channelId?: string;
                             sequence?: any;
                         }[];
-                        next_channel_sequence?: any;
+                        nextChannelSequence?: any;
                     }): _108.GenesisState;
                 };
                 PacketSequence: {
                     encode(message: _108.PacketSequence, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _108.PacketSequence;
                     fromPartial(object: {
-                        port_id?: string;
-                        channel_id?: string;
+                        portId?: string;
+                        channelId?: string;
                         sequence?: any;
                     }): _108.PacketSequence;
                 };
@@ -1338,10 +1338,10 @@ export declare namespace ibc {
                         state?: _107.State;
                         ordering?: _107.Order;
                         counterparty?: {
-                            port_id?: string;
-                            channel_id?: string;
+                            portId?: string;
+                            channelId?: string;
                         };
-                        connection_hops?: string[];
+                        connectionHops?: string[];
                         version?: string;
                     }): _107.Channel;
                 };
@@ -1352,21 +1352,21 @@ export declare namespace ibc {
                         state?: _107.State;
                         ordering?: _107.Order;
                         counterparty?: {
-                            port_id?: string;
-                            channel_id?: string;
+                            portId?: string;
+                            channelId?: string;
                         };
-                        connection_hops?: string[];
+                        connectionHops?: string[];
                         version?: string;
-                        port_id?: string;
-                        channel_id?: string;
+                        portId?: string;
+                        channelId?: string;
                     }): _107.IdentifiedChannel;
                 };
                 Counterparty: {
                     encode(message: _107.Counterparty, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _107.Counterparty;
                     fromPartial(object: {
-                        port_id?: string;
-                        channel_id?: string;
+                        portId?: string;
+                        channelId?: string;
                     }): _107.Counterparty;
                 };
                 Packet: {
@@ -1374,24 +1374,24 @@ export declare namespace ibc {
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _107.Packet;
                     fromPartial(object: {
                         sequence?: any;
-                        source_port?: string;
-                        source_channel?: string;
-                        destination_port?: string;
-                        destination_channel?: string;
+                        sourcePort?: string;
+                        sourceChannel?: string;
+                        destinationPort?: string;
+                        destinationChannel?: string;
                         data?: Uint8Array;
-                        timeout_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        timeoutHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
-                        timeout_timestamp?: any;
+                        timeoutTimestamp?: any;
                     }): _107.Packet;
                 };
                 PacketState: {
                     encode(message: _107.PacketState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _107.PacketState;
                     fromPartial(object: {
-                        port_id?: string;
-                        channel_id?: string;
+                        portId?: string;
+                        channelId?: string;
                         sequence?: any;
                         data?: Uint8Array;
                     }): _107.PacketState;
@@ -1482,7 +1482,7 @@ export declare namespace ibc {
                 AminoConverter: {
                     "/ibc.core.client.v1.MsgCreateClient": {
                         aminoType: string;
-                        toAmino: ({ client_state, consensus_state, signer }: _114.MsgCreateClient) => {
+                        toAmino: ({ clientState, consensusState, signer }: _114.MsgCreateClient) => {
                             client_state: {
                                 type_url: string;
                                 value: Uint8Array;
@@ -1507,7 +1507,7 @@ export declare namespace ibc {
                     };
                     "/ibc.core.client.v1.MsgUpdateClient": {
                         aminoType: string;
-                        toAmino: ({ client_id, header, signer }: _114.MsgUpdateClient) => {
+                        toAmino: ({ clientId, header, signer }: _114.MsgUpdateClient) => {
                             client_id: string;
                             header: {
                                 type_url: string;
@@ -1526,7 +1526,7 @@ export declare namespace ibc {
                     };
                     "/ibc.core.client.v1.MsgUpgradeClient": {
                         aminoType: string;
-                        toAmino: ({ client_id, client_state, consensus_state, proof_upgrade_client, proof_upgrade_consensus_state, signer }: _114.MsgUpgradeClient) => {
+                        toAmino: ({ clientId, clientState, consensusState, proofUpgradeClient, proofUpgradeConsensusState, signer }: _114.MsgUpgradeClient) => {
                             client_id: string;
                             client_state: {
                                 type_url: string;
@@ -1557,7 +1557,7 @@ export declare namespace ibc {
                     };
                     "/ibc.core.client.v1.MsgSubmitMisbehaviour": {
                         aminoType: string;
-                        toAmino: ({ client_id, misbehaviour, signer }: _114.MsgSubmitMisbehaviour) => {
+                        toAmino: ({ clientId, misbehaviour, signer }: _114.MsgSubmitMisbehaviour) => {
                             client_id: string;
                             misbehaviour: {
                                 type_url: string;
@@ -1579,12 +1579,12 @@ export declare namespace ibc {
                     encode(message: _114.MsgCreateClient, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _114.MsgCreateClient;
                     fromPartial(object: {
-                        client_state?: {
-                            type_url?: string;
+                        clientState?: {
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
-                        consensus_state?: {
-                            type_url?: string;
+                        consensusState?: {
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
                         signer?: string;
@@ -1599,9 +1599,9 @@ export declare namespace ibc {
                     encode(message: _114.MsgUpdateClient, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _114.MsgUpdateClient;
                     fromPartial(object: {
-                        client_id?: string;
+                        clientId?: string;
                         header?: {
-                            type_url?: string;
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
                         signer?: string;
@@ -1616,17 +1616,17 @@ export declare namespace ibc {
                     encode(message: _114.MsgUpgradeClient, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _114.MsgUpgradeClient;
                     fromPartial(object: {
-                        client_id?: string;
-                        client_state?: {
-                            type_url?: string;
+                        clientId?: string;
+                        clientState?: {
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
-                        consensus_state?: {
-                            type_url?: string;
+                        consensusState?: {
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
-                        proof_upgrade_client?: Uint8Array;
-                        proof_upgrade_consensus_state?: Uint8Array;
+                        proofUpgradeClient?: Uint8Array;
+                        proofUpgradeConsensusState?: Uint8Array;
                         signer?: string;
                     }): _114.MsgUpgradeClient;
                 };
@@ -1639,9 +1639,9 @@ export declare namespace ibc {
                     encode(message: _114.MsgSubmitMisbehaviour, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _114.MsgSubmitMisbehaviour;
                     fromPartial(object: {
-                        client_id?: string;
+                        clientId?: string;
                         misbehaviour?: {
-                            type_url?: string;
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
                         signer?: string;
@@ -1656,21 +1656,21 @@ export declare namespace ibc {
                     encode(message: _113.QueryClientStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryClientStateRequest;
                     fromPartial(object: {
-                        client_id?: string;
+                        clientId?: string;
                     }): _113.QueryClientStateRequest;
                 };
                 QueryClientStateResponse: {
                     encode(message: _113.QueryClientStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryClientStateResponseSDKType;
                     fromPartial(object: {
-                        client_state?: {
-                            type_url?: string;
+                        clientState?: {
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
                         proof?: Uint8Array;
-                        proof_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        proofHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                     }): _113.QueryClientStateResponse;
                 };
@@ -1682,7 +1682,7 @@ export declare namespace ibc {
                             key?: Uint8Array;
                             offset?: any;
                             limit?: any;
-                            count_total?: boolean;
+                            countTotal?: boolean;
                             reverse?: boolean;
                         };
                     }): _113.QueryClientStatesRequest;
@@ -1691,15 +1691,15 @@ export declare namespace ibc {
                     encode(message: _113.QueryClientStatesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryClientStatesResponseSDKType;
                     fromPartial(object: {
-                        client_states?: {
-                            client_id?: string;
-                            client_state?: {
-                                type_url?: string;
+                        clientStates?: {
+                            clientId?: string;
+                            clientState?: {
+                                typeUrl?: string;
                                 value?: Uint8Array;
                             };
                         }[];
                         pagination?: {
-                            next_key?: Uint8Array;
+                            nextKey?: Uint8Array;
                             total?: any;
                         };
                     }): _113.QueryClientStatesResponse;
@@ -1708,24 +1708,24 @@ export declare namespace ibc {
                     encode(message: _113.QueryConsensusStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryConsensusStateRequest;
                     fromPartial(object: {
-                        client_id?: string;
-                        revision_number?: any;
-                        revision_height?: any;
-                        latest_height?: boolean;
+                        clientId?: string;
+                        revisionNumber?: any;
+                        revisionHeight?: any;
+                        latestHeight?: boolean;
                     }): _113.QueryConsensusStateRequest;
                 };
                 QueryConsensusStateResponse: {
                     encode(message: _113.QueryConsensusStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryConsensusStateResponseSDKType;
                     fromPartial(object: {
-                        consensus_state?: {
-                            type_url?: string;
+                        consensusState?: {
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
                         proof?: Uint8Array;
-                        proof_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        proofHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                     }): _113.QueryConsensusStateResponse;
                 };
@@ -1733,12 +1733,12 @@ export declare namespace ibc {
                     encode(message: _113.QueryConsensusStatesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryConsensusStatesRequest;
                     fromPartial(object: {
-                        client_id?: string;
+                        clientId?: string;
                         pagination?: {
                             key?: Uint8Array;
                             offset?: any;
                             limit?: any;
-                            count_total?: boolean;
+                            countTotal?: boolean;
                             reverse?: boolean;
                         };
                     }): _113.QueryConsensusStatesRequest;
@@ -1747,18 +1747,18 @@ export declare namespace ibc {
                     encode(message: _113.QueryConsensusStatesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryConsensusStatesResponseSDKType;
                     fromPartial(object: {
-                        consensus_states?: {
+                        consensusStates?: {
                             height?: {
-                                revision_number?: any;
-                                revision_height?: any;
+                                revisionNumber?: any;
+                                revisionHeight?: any;
                             };
-                            consensus_state?: {
-                                type_url?: string;
+                            consensusState?: {
+                                typeUrl?: string;
                                 value?: Uint8Array;
                             };
                         }[];
                         pagination?: {
-                            next_key?: Uint8Array;
+                            nextKey?: Uint8Array;
                             total?: any;
                         };
                     }): _113.QueryConsensusStatesResponse;
@@ -1767,7 +1767,7 @@ export declare namespace ibc {
                     encode(message: _113.QueryClientStatusRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryClientStatusRequest;
                     fromPartial(object: {
-                        client_id?: string;
+                        clientId?: string;
                     }): _113.QueryClientStatusRequest;
                 };
                 QueryClientStatusResponse: {
@@ -1787,7 +1787,7 @@ export declare namespace ibc {
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryClientParamsResponseSDKType;
                     fromPartial(object: {
                         params?: {
-                            allowed_clients?: string[];
+                            allowedClients?: string[];
                         };
                     }): _113.QueryClientParamsResponse;
                 };
@@ -1800,8 +1800,8 @@ export declare namespace ibc {
                     encode(message: _113.QueryUpgradedClientStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryUpgradedClientStateResponseSDKType;
                     fromPartial(object: {
-                        upgraded_client_state?: {
-                            type_url?: string;
+                        upgradedClientState?: {
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
                     }): _113.QueryUpgradedClientStateResponse;
@@ -1815,8 +1815,8 @@ export declare namespace ibc {
                     encode(message: _113.QueryUpgradedConsensusStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _113.QueryUpgradedConsensusStateResponseSDKType;
                     fromPartial(object: {
-                        upgraded_consensus_state?: {
-                            type_url?: string;
+                        upgradedConsensusState?: {
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
                     }): _113.QueryUpgradedConsensusStateResponse;
@@ -1826,37 +1826,37 @@ export declare namespace ibc {
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _112.GenesisState;
                     fromPartial(object: {
                         clients?: {
-                            client_id?: string;
-                            client_state?: {
-                                type_url?: string;
+                            clientId?: string;
+                            clientState?: {
+                                typeUrl?: string;
                                 value?: Uint8Array;
                             };
                         }[];
-                        clients_consensus?: {
-                            client_id?: string;
-                            consensus_states?: {
+                        clientsConsensus?: {
+                            clientId?: string;
+                            consensusStates?: {
                                 height?: {
-                                    revision_number?: any;
-                                    revision_height?: any;
+                                    revisionNumber?: any;
+                                    revisionHeight?: any;
                                 };
-                                consensus_state?: {
-                                    type_url?: string;
+                                consensusState?: {
+                                    typeUrl?: string;
                                     value?: Uint8Array;
                                 };
                             }[];
                         }[];
-                        clients_metadata?: {
-                            client_id?: string;
-                            client_metadata?: {
+                        clientsMetadata?: {
+                            clientId?: string;
+                            clientMetadata?: {
                                 key?: Uint8Array;
                                 value?: Uint8Array;
                             }[];
                         }[];
                         params?: {
-                            allowed_clients?: string[];
+                            allowedClients?: string[];
                         };
-                        create_localhost?: boolean;
-                        next_client_sequence?: any;
+                        createLocalhost?: boolean;
+                        nextClientSequence?: any;
                     }): _112.GenesisState;
                 };
                 GenesisMetadata: {
@@ -1871,8 +1871,8 @@ export declare namespace ibc {
                     encode(message: _112.IdentifiedGenesisMetadata, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _112.IdentifiedGenesisMetadata;
                     fromPartial(object: {
-                        client_id?: string;
-                        client_metadata?: {
+                        clientId?: string;
+                        clientMetadata?: {
                             key?: Uint8Array;
                             value?: Uint8Array;
                         }[];
@@ -1882,9 +1882,9 @@ export declare namespace ibc {
                     encode(message: _111.IdentifiedClientState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.IdentifiedClientState;
                     fromPartial(object: {
-                        client_id?: string;
-                        client_state?: {
-                            type_url?: string;
+                        clientId?: string;
+                        clientState?: {
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
                     }): _111.IdentifiedClientState;
@@ -1894,11 +1894,11 @@ export declare namespace ibc {
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.ConsensusStateWithHeight;
                     fromPartial(object: {
                         height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
-                        consensus_state?: {
-                            type_url?: string;
+                        consensusState?: {
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
                     }): _111.ConsensusStateWithHeight;
@@ -1907,14 +1907,14 @@ export declare namespace ibc {
                     encode(message: _111.ClientConsensusStates, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.ClientConsensusStates;
                     fromPartial(object: {
-                        client_id?: string;
-                        consensus_states?: {
+                        clientId?: string;
+                        consensusStates?: {
                             height?: {
-                                revision_number?: any;
-                                revision_height?: any;
+                                revisionNumber?: any;
+                                revisionHeight?: any;
                             };
-                            consensus_state?: {
-                                type_url?: string;
+                            consensusState?: {
+                                typeUrl?: string;
                                 value?: Uint8Array;
                             };
                         }[];
@@ -1926,8 +1926,8 @@ export declare namespace ibc {
                     fromPartial(object: {
                         title?: string;
                         description?: string;
-                        subject_client_id?: string;
-                        substitute_client_id?: string;
+                        subjectClientId?: string;
+                        substituteClientId?: string;
                     }): _111.ClientUpdateProposal;
                 };
                 UpgradeProposal: {
@@ -1941,13 +1941,13 @@ export declare namespace ibc {
                             time?: Date;
                             height?: any;
                             info?: string;
-                            upgraded_client_state?: {
-                                type_url?: string;
+                            upgradedClientState?: {
+                                typeUrl?: string;
                                 value?: Uint8Array;
                             };
                         };
-                        upgraded_client_state?: {
-                            type_url?: string;
+                        upgradedClientState?: {
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
                     }): _111.UpgradeProposal;
@@ -1956,15 +1956,15 @@ export declare namespace ibc {
                     encode(message: _111.Height, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.Height;
                     fromPartial(object: {
-                        revision_number?: any;
-                        revision_height?: any;
+                        revisionNumber?: any;
+                        revisionHeight?: any;
                     }): _111.Height;
                 };
                 Params: {
                     encode(message: _111.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.Params;
                     fromPartial(object: {
-                        allowed_clients?: string[];
+                        allowedClients?: string[];
                     }): _111.Params;
                 };
             };
@@ -1982,14 +1982,14 @@ export declare namespace ibc {
                     encode(message: _115.MerklePrefix, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _115.MerklePrefix;
                     fromPartial(object: {
-                        key_prefix?: Uint8Array;
+                        keyPrefix?: Uint8Array;
                     }): _115.MerklePrefix;
                 };
                 MerklePath: {
                     encode(message: _115.MerklePath, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _115.MerklePath;
                     fromPartial(object: {
-                        key_path?: string[];
+                        keyPath?: string[];
                     }): _115.MerklePath;
                 };
                 MerkleProof: {
@@ -2002,8 +2002,8 @@ export declare namespace ibc {
                                 value?: Uint8Array;
                                 leaf?: {
                                     hash?: import("../confio/proofs").HashOp;
-                                    prehash_key?: import("../confio/proofs").HashOp;
-                                    prehash_value?: import("../confio/proofs").HashOp;
+                                    prehashKey?: import("../confio/proofs").HashOp;
+                                    prehashValue?: import("../confio/proofs").HashOp;
                                     length?: import("../confio/proofs").LengthOp;
                                     prefix?: Uint8Array;
                                 };
@@ -2020,8 +2020,8 @@ export declare namespace ibc {
                                     value?: Uint8Array;
                                     leaf?: {
                                         hash?: import("../confio/proofs").HashOp;
-                                        prehash_key?: import("../confio/proofs").HashOp;
-                                        prehash_value?: import("../confio/proofs").HashOp;
+                                        prehashKey?: import("../confio/proofs").HashOp;
+                                        prehashValue?: import("../confio/proofs").HashOp;
                                         length?: import("../confio/proofs").LengthOp;
                                         prefix?: Uint8Array;
                                     };
@@ -2036,8 +2036,8 @@ export declare namespace ibc {
                                     value?: Uint8Array;
                                     leaf?: {
                                         hash?: import("../confio/proofs").HashOp;
-                                        prehash_key?: import("../confio/proofs").HashOp;
-                                        prehash_value?: import("../confio/proofs").HashOp;
+                                        prehashKey?: import("../confio/proofs").HashOp;
+                                        prehashValue?: import("../confio/proofs").HashOp;
                                         length?: import("../confio/proofs").LengthOp;
                                         prefix?: Uint8Array;
                                     };
@@ -2055,8 +2055,8 @@ export declare namespace ibc {
                                         value?: Uint8Array;
                                         leaf?: {
                                             hash?: import("../confio/proofs").HashOp;
-                                            prehash_key?: import("../confio/proofs").HashOp;
-                                            prehash_value?: import("../confio/proofs").HashOp;
+                                            prehashKey?: import("../confio/proofs").HashOp;
+                                            prehashValue?: import("../confio/proofs").HashOp;
                                             length?: import("../confio/proofs").LengthOp;
                                             prefix?: Uint8Array;
                                         };
@@ -2073,8 +2073,8 @@ export declare namespace ibc {
                                             value?: Uint8Array;
                                             leaf?: {
                                                 hash?: import("../confio/proofs").HashOp;
-                                                prehash_key?: import("../confio/proofs").HashOp;
-                                                prehash_value?: import("../confio/proofs").HashOp;
+                                                prehashKey?: import("../confio/proofs").HashOp;
+                                                prehashValue?: import("../confio/proofs").HashOp;
                                                 length?: import("../confio/proofs").LengthOp;
                                                 prefix?: Uint8Array;
                                             };
@@ -2089,8 +2089,8 @@ export declare namespace ibc {
                                             value?: Uint8Array;
                                             leaf?: {
                                                 hash?: import("../confio/proofs").HashOp;
-                                                prehash_key?: import("../confio/proofs").HashOp;
-                                                prehash_value?: import("../confio/proofs").HashOp;
+                                                prehashKey?: import("../confio/proofs").HashOp;
+                                                prehashValue?: import("../confio/proofs").HashOp;
                                                 length?: import("../confio/proofs").LengthOp;
                                                 prefix?: Uint8Array;
                                             };
@@ -2110,8 +2110,8 @@ export declare namespace ibc {
                                         value?: Uint8Array;
                                         leaf?: {
                                             hash?: import("../confio/proofs").HashOp;
-                                            prehash_key?: import("../confio/proofs").HashOp;
-                                            prehash_value?: import("../confio/proofs").HashOp;
+                                            prehashKey?: import("../confio/proofs").HashOp;
+                                            prehashValue?: import("../confio/proofs").HashOp;
                                             length?: import("../confio/proofs").LengthOp;
                                             prefix?: Uint8Array;
                                         };
@@ -2124,8 +2124,8 @@ export declare namespace ibc {
                                             value?: Uint8Array;
                                             leaf?: {
                                                 hash?: import("../confio/proofs").HashOp;
-                                                prehash_key?: import("../confio/proofs").HashOp;
-                                                prehash_value?: import("../confio/proofs").HashOp;
+                                                prehashKey?: import("../confio/proofs").HashOp;
+                                                prehashValue?: import("../confio/proofs").HashOp;
                                                 length?: import("../confio/proofs").LengthOp;
                                                 prefix?: Uint8Array;
                                             };
@@ -2136,8 +2136,8 @@ export declare namespace ibc {
                                             value?: Uint8Array;
                                             leaf?: {
                                                 hash?: import("../confio/proofs").HashOp;
-                                                prehash_key?: import("../confio/proofs").HashOp;
-                                                prehash_value?: import("../confio/proofs").HashOp;
+                                                prehashKey?: import("../confio/proofs").HashOp;
+                                                prehashValue?: import("../confio/proofs").HashOp;
                                                 length?: import("../confio/proofs").LengthOp;
                                                 prefix?: Uint8Array;
                                             };
@@ -2145,7 +2145,7 @@ export declare namespace ibc {
                                         };
                                     };
                                 }[];
-                                lookup_inners?: {
+                                lookupInners?: {
                                     hash?: import("../confio/proofs").HashOp;
                                     prefix?: Uint8Array;
                                     suffix?: Uint8Array;
@@ -2229,7 +2229,7 @@ export declare namespace ibc {
                 AminoConverter: {
                     "/ibc.core.connection.v1.MsgConnectionOpenInit": {
                         aminoType: string;
-                        toAmino: ({ client_id, counterparty, version, delay_period, signer }: _119.MsgConnectionOpenInit) => {
+                        toAmino: ({ clientId, counterparty, version, delayPeriod, signer }: _119.MsgConnectionOpenInit) => {
                             client_id: string;
                             counterparty: {
                                 client_id: string;
@@ -2264,7 +2264,7 @@ export declare namespace ibc {
                     };
                     "/ibc.core.connection.v1.MsgConnectionOpenTry": {
                         aminoType: string;
-                        toAmino: ({ client_id, previous_connection_id, client_state, counterparty, delay_period, counterparty_versions, proof_height, proof_init, proof_client, proof_consensus, consensus_height, signer }: _119.MsgConnectionOpenTry) => {
+                        toAmino: ({ clientId, previousConnectionId, clientState, counterparty, delayPeriod, counterpartyVersions, proofHeight, proofInit, proofClient, proofConsensus, consensusHeight, signer }: _119.MsgConnectionOpenTry) => {
                             client_id: string;
                             previous_connection_id: string;
                             client_state: {
@@ -2319,7 +2319,7 @@ export declare namespace ibc {
                     };
                     "/ibc.core.connection.v1.MsgConnectionOpenAck": {
                         aminoType: string;
-                        toAmino: ({ connection_id, counterparty_connection_id, version, client_state, proof_height, proof_try, proof_client, proof_consensus, consensus_height, signer }: _119.MsgConnectionOpenAck) => {
+                        toAmino: ({ connectionId, counterpartyConnectionId, version, clientState, proofHeight, proofTry, proofClient, proofConsensus, consensusHeight, signer }: _119.MsgConnectionOpenAck) => {
                             connection_id: string;
                             counterparty_connection_id: string;
                             version: {
@@ -2358,7 +2358,7 @@ export declare namespace ibc {
                     };
                     "/ibc.core.connection.v1.MsgConnectionOpenConfirm": {
                         aminoType: string;
-                        toAmino: ({ connection_id, proof_ack, proof_height, signer }: _119.MsgConnectionOpenConfirm) => {
+                        toAmino: ({ connectionId, proofAck, proofHeight, signer }: _119.MsgConnectionOpenConfirm) => {
                             connection_id: string;
                             proof_ack: Uint8Array;
                             proof_height: import("@osmonauts/helpers").AminoHeight;
@@ -2376,19 +2376,19 @@ export declare namespace ibc {
                     encode(message: _119.MsgConnectionOpenInit, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _119.MsgConnectionOpenInit;
                     fromPartial(object: {
-                        client_id?: string;
+                        clientId?: string;
                         counterparty?: {
-                            client_id?: string;
-                            connection_id?: string;
+                            clientId?: string;
+                            connectionId?: string;
                             prefix?: {
-                                key_prefix?: Uint8Array;
+                                keyPrefix?: Uint8Array;
                             };
                         };
                         version?: {
                             identifier?: string;
                             features?: string[];
                         };
-                        delay_period?: any;
+                        delayPeriod?: any;
                         signer?: string;
                     }): _119.MsgConnectionOpenInit;
                 };
@@ -2401,34 +2401,34 @@ export declare namespace ibc {
                     encode(message: _119.MsgConnectionOpenTry, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _119.MsgConnectionOpenTry;
                     fromPartial(object: {
-                        client_id?: string;
-                        previous_connection_id?: string;
-                        client_state?: {
-                            type_url?: string;
+                        clientId?: string;
+                        previousConnectionId?: string;
+                        clientState?: {
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
                         counterparty?: {
-                            client_id?: string;
-                            connection_id?: string;
+                            clientId?: string;
+                            connectionId?: string;
                             prefix?: {
-                                key_prefix?: Uint8Array;
+                                keyPrefix?: Uint8Array;
                             };
                         };
-                        delay_period?: any;
-                        counterparty_versions?: {
+                        delayPeriod?: any;
+                        counterpartyVersions?: {
                             identifier?: string;
                             features?: string[];
                         }[];
-                        proof_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        proofHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
-                        proof_init?: Uint8Array;
-                        proof_client?: Uint8Array;
-                        proof_consensus?: Uint8Array;
-                        consensus_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        proofInit?: Uint8Array;
+                        proofClient?: Uint8Array;
+                        proofConsensus?: Uint8Array;
+                        consensusHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                         signer?: string;
                     }): _119.MsgConnectionOpenTry;
@@ -2442,26 +2442,26 @@ export declare namespace ibc {
                     encode(message: _119.MsgConnectionOpenAck, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _119.MsgConnectionOpenAck;
                     fromPartial(object: {
-                        connection_id?: string;
-                        counterparty_connection_id?: string;
+                        connectionId?: string;
+                        counterpartyConnectionId?: string;
                         version?: {
                             identifier?: string;
                             features?: string[];
                         };
-                        client_state?: {
-                            type_url?: string;
+                        clientState?: {
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
-                        proof_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        proofHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
-                        proof_try?: Uint8Array;
-                        proof_client?: Uint8Array;
-                        proof_consensus?: Uint8Array;
-                        consensus_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        proofTry?: Uint8Array;
+                        proofClient?: Uint8Array;
+                        proofConsensus?: Uint8Array;
+                        consensusHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                         signer?: string;
                     }): _119.MsgConnectionOpenAck;
@@ -2475,11 +2475,11 @@ export declare namespace ibc {
                     encode(message: _119.MsgConnectionOpenConfirm, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _119.MsgConnectionOpenConfirm;
                     fromPartial(object: {
-                        connection_id?: string;
-                        proof_ack?: Uint8Array;
-                        proof_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        connectionId?: string;
+                        proofAck?: Uint8Array;
+                        proofHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                         signer?: string;
                     }): _119.MsgConnectionOpenConfirm;
@@ -2493,7 +2493,7 @@ export declare namespace ibc {
                     encode(message: _118.QueryConnectionRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.QueryConnectionRequest;
                     fromPartial(object: {
-                        connection_id?: string;
+                        connectionId?: string;
                     }): _118.QueryConnectionRequest;
                 };
                 QueryConnectionResponse: {
@@ -2501,25 +2501,25 @@ export declare namespace ibc {
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.QueryConnectionResponseSDKType;
                     fromPartial(object: {
                         connection?: {
-                            client_id?: string;
+                            clientId?: string;
                             versions?: {
                                 identifier?: string;
                                 features?: string[];
                             }[];
                             state?: _116.State;
                             counterparty?: {
-                                client_id?: string;
-                                connection_id?: string;
+                                clientId?: string;
+                                connectionId?: string;
                                 prefix?: {
-                                    key_prefix?: Uint8Array;
+                                    keyPrefix?: Uint8Array;
                                 };
                             };
-                            delay_period?: any;
+                            delayPeriod?: any;
                         };
                         proof?: Uint8Array;
-                        proof_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        proofHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                     }): _118.QueryConnectionResponse;
                 };
@@ -2531,7 +2531,7 @@ export declare namespace ibc {
                             key?: Uint8Array;
                             offset?: any;
                             limit?: any;
-                            count_total?: boolean;
+                            countTotal?: boolean;
                             reverse?: boolean;
                         };
                     }): _118.QueryConnectionsRequest;
@@ -2542,28 +2542,28 @@ export declare namespace ibc {
                     fromPartial(object: {
                         connections?: {
                             id?: string;
-                            client_id?: string;
+                            clientId?: string;
                             versions?: {
                                 identifier?: string;
                                 features?: string[];
                             }[];
                             state?: _116.State;
                             counterparty?: {
-                                client_id?: string;
-                                connection_id?: string;
+                                clientId?: string;
+                                connectionId?: string;
                                 prefix?: {
-                                    key_prefix?: Uint8Array;
+                                    keyPrefix?: Uint8Array;
                                 };
                             };
-                            delay_period?: any;
+                            delayPeriod?: any;
                         }[];
                         pagination?: {
-                            next_key?: Uint8Array;
+                            nextKey?: Uint8Array;
                             total?: any;
                         };
                         height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                     }): _118.QueryConnectionsResponse;
                 };
@@ -2571,18 +2571,18 @@ export declare namespace ibc {
                     encode(message: _118.QueryClientConnectionsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.QueryClientConnectionsRequest;
                     fromPartial(object: {
-                        client_id?: string;
+                        clientId?: string;
                     }): _118.QueryClientConnectionsRequest;
                 };
                 QueryClientConnectionsResponse: {
                     encode(message: _118.QueryClientConnectionsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.QueryClientConnectionsResponseSDKType;
                     fromPartial(object: {
-                        connection_paths?: string[];
+                        connectionPaths?: string[];
                         proof?: Uint8Array;
-                        proof_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        proofHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                     }): _118.QueryClientConnectionsResponse;
                 };
@@ -2590,24 +2590,24 @@ export declare namespace ibc {
                     encode(message: _118.QueryConnectionClientStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.QueryConnectionClientStateRequest;
                     fromPartial(object: {
-                        connection_id?: string;
+                        connectionId?: string;
                     }): _118.QueryConnectionClientStateRequest;
                 };
                 QueryConnectionClientStateResponse: {
                     encode(message: _118.QueryConnectionClientStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.QueryConnectionClientStateResponseSDKType;
                     fromPartial(object: {
-                        identified_client_state?: {
-                            client_id?: string;
-                            client_state?: {
-                                type_url?: string;
+                        identifiedClientState?: {
+                            clientId?: string;
+                            clientState?: {
+                                typeUrl?: string;
                                 value?: Uint8Array;
                             };
                         };
                         proof?: Uint8Array;
-                        proof_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        proofHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                     }): _118.QueryConnectionClientStateResponse;
                 };
@@ -2615,24 +2615,24 @@ export declare namespace ibc {
                     encode(message: _118.QueryConnectionConsensusStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.QueryConnectionConsensusStateRequest;
                     fromPartial(object: {
-                        connection_id?: string;
-                        revision_number?: any;
-                        revision_height?: any;
+                        connectionId?: string;
+                        revisionNumber?: any;
+                        revisionHeight?: any;
                     }): _118.QueryConnectionConsensusStateRequest;
                 };
                 QueryConnectionConsensusStateResponse: {
                     encode(message: _118.QueryConnectionConsensusStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _118.QueryConnectionConsensusStateResponseSDKType;
                     fromPartial(object: {
-                        consensus_state?: {
-                            type_url?: string;
+                        consensusState?: {
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
-                        client_id?: string;
+                        clientId?: string;
                         proof?: Uint8Array;
-                        proof_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        proofHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                     }): _118.QueryConnectionConsensusStateResponse;
                 };
@@ -2642,28 +2642,28 @@ export declare namespace ibc {
                     fromPartial(object: {
                         connections?: {
                             id?: string;
-                            client_id?: string;
+                            clientId?: string;
                             versions?: {
                                 identifier?: string;
                                 features?: string[];
                             }[];
                             state?: _116.State;
                             counterparty?: {
-                                client_id?: string;
-                                connection_id?: string;
+                                clientId?: string;
+                                connectionId?: string;
                                 prefix?: {
-                                    key_prefix?: Uint8Array;
+                                    keyPrefix?: Uint8Array;
                                 };
                             };
-                            delay_period?: any;
+                            delayPeriod?: any;
                         }[];
-                        client_connection_paths?: {
-                            client_id?: string;
+                        clientConnectionPaths?: {
+                            clientId?: string;
                             paths?: string[];
                         }[];
-                        next_connection_sequence?: any;
+                        nextConnectionSequence?: any;
                         params?: {
-                            max_expected_time_per_block?: any;
+                            maxExpectedTimePerBlock?: any;
                         };
                     }): _117.GenesisState;
                 };
@@ -2675,20 +2675,20 @@ export declare namespace ibc {
                     encode(message: _116.ConnectionEnd, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.ConnectionEnd;
                     fromPartial(object: {
-                        client_id?: string;
+                        clientId?: string;
                         versions?: {
                             identifier?: string;
                             features?: string[];
                         }[];
                         state?: _116.State;
                         counterparty?: {
-                            client_id?: string;
-                            connection_id?: string;
+                            clientId?: string;
+                            connectionId?: string;
                             prefix?: {
-                                key_prefix?: Uint8Array;
+                                keyPrefix?: Uint8Array;
                             };
                         };
-                        delay_period?: any;
+                        delayPeriod?: any;
                     }): _116.ConnectionEnd;
                 };
                 IdentifiedConnection: {
@@ -2696,30 +2696,30 @@ export declare namespace ibc {
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.IdentifiedConnection;
                     fromPartial(object: {
                         id?: string;
-                        client_id?: string;
+                        clientId?: string;
                         versions?: {
                             identifier?: string;
                             features?: string[];
                         }[];
                         state?: _116.State;
                         counterparty?: {
-                            client_id?: string;
-                            connection_id?: string;
+                            clientId?: string;
+                            connectionId?: string;
                             prefix?: {
-                                key_prefix?: Uint8Array;
+                                keyPrefix?: Uint8Array;
                             };
                         };
-                        delay_period?: any;
+                        delayPeriod?: any;
                     }): _116.IdentifiedConnection;
                 };
                 Counterparty: {
                     encode(message: _116.Counterparty, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.Counterparty;
                     fromPartial(object: {
-                        client_id?: string;
-                        connection_id?: string;
+                        clientId?: string;
+                        connectionId?: string;
                         prefix?: {
-                            key_prefix?: Uint8Array;
+                            keyPrefix?: Uint8Array;
                         };
                     }): _116.Counterparty;
                 };
@@ -2734,7 +2734,7 @@ export declare namespace ibc {
                     encode(message: _116.ConnectionPaths, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.ConnectionPaths;
                     fromPartial(object: {
-                        client_id?: string;
+                        clientId?: string;
                         paths?: string[];
                     }): _116.ConnectionPaths;
                 };
@@ -2750,7 +2750,7 @@ export declare namespace ibc {
                     encode(message: _116.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.Params;
                     fromPartial(object: {
-                        max_expected_time_per_block?: any;
+                        maxExpectedTimePerBlock?: any;
                     }): _116.Params;
                 };
             };
@@ -2765,21 +2765,21 @@ export declare namespace ibc {
                     encode(message: _120.QueryAppVersionRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _120.QueryAppVersionRequest;
                     fromPartial(object: {
-                        port_id?: string;
-                        connection_id?: string;
+                        portId?: string;
+                        connectionId?: string;
                         ordering?: _107.Order;
                         counterparty?: {
-                            port_id?: string;
-                            channel_id?: string;
+                            portId?: string;
+                            channelId?: string;
                         };
-                        proposed_version?: string;
+                        proposedVersion?: string;
                     }): _120.QueryAppVersionRequest;
                 };
                 QueryAppVersionResponse: {
                     encode(message: _120.QueryAppVersionResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _120.QueryAppVersionResponseSDKType;
                     fromPartial(object: {
-                        port_id?: string;
+                        portId?: string;
                         version?: string;
                     }): _120.QueryAppVersionResponse;
                 };
@@ -2791,114 +2791,114 @@ export declare namespace ibc {
                     encode(message: _121.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _121.GenesisState;
                     fromPartial(object: {
-                        client_genesis?: {
+                        clientGenesis?: {
                             clients?: {
-                                client_id?: string;
-                                client_state?: {
-                                    type_url?: string;
+                                clientId?: string;
+                                clientState?: {
+                                    typeUrl?: string;
                                     value?: Uint8Array;
                                 };
                             }[];
-                            clients_consensus?: {
-                                client_id?: string;
-                                consensus_states?: {
+                            clientsConsensus?: {
+                                clientId?: string;
+                                consensusStates?: {
                                     height?: {
-                                        revision_number?: any;
-                                        revision_height?: any;
+                                        revisionNumber?: any;
+                                        revisionHeight?: any;
                                     };
-                                    consensus_state?: {
-                                        type_url?: string;
+                                    consensusState?: {
+                                        typeUrl?: string;
                                         value?: Uint8Array;
                                     };
                                 }[];
                             }[];
-                            clients_metadata?: {
-                                client_id?: string;
-                                client_metadata?: {
+                            clientsMetadata?: {
+                                clientId?: string;
+                                clientMetadata?: {
                                     key?: Uint8Array;
                                     value?: Uint8Array;
                                 }[];
                             }[];
                             params?: {
-                                allowed_clients?: string[];
+                                allowedClients?: string[];
                             };
-                            create_localhost?: boolean;
-                            next_client_sequence?: any;
+                            createLocalhost?: boolean;
+                            nextClientSequence?: any;
                         };
-                        connection_genesis?: {
+                        connectionGenesis?: {
                             connections?: {
                                 id?: string;
-                                client_id?: string;
+                                clientId?: string;
                                 versions?: {
                                     identifier?: string;
                                     features?: string[];
                                 }[];
                                 state?: _116.State;
                                 counterparty?: {
-                                    client_id?: string;
-                                    connection_id?: string;
+                                    clientId?: string;
+                                    connectionId?: string;
                                     prefix?: {
-                                        key_prefix?: Uint8Array;
+                                        keyPrefix?: Uint8Array;
                                     };
                                 };
-                                delay_period?: any;
+                                delayPeriod?: any;
                             }[];
-                            client_connection_paths?: {
-                                client_id?: string;
+                            clientConnectionPaths?: {
+                                clientId?: string;
                                 paths?: string[];
                             }[];
-                            next_connection_sequence?: any;
+                            nextConnectionSequence?: any;
                             params?: {
-                                max_expected_time_per_block?: any;
+                                maxExpectedTimePerBlock?: any;
                             };
                         };
-                        channel_genesis?: {
+                        channelGenesis?: {
                             channels?: {
                                 state?: _107.State;
                                 ordering?: _107.Order;
                                 counterparty?: {
-                                    port_id?: string;
-                                    channel_id?: string;
+                                    portId?: string;
+                                    channelId?: string;
                                 };
-                                connection_hops?: string[];
+                                connectionHops?: string[];
                                 version?: string;
-                                port_id?: string;
-                                channel_id?: string;
+                                portId?: string;
+                                channelId?: string;
                             }[];
                             acknowledgements?: {
-                                port_id?: string;
-                                channel_id?: string;
+                                portId?: string;
+                                channelId?: string;
                                 sequence?: any;
                                 data?: Uint8Array;
                             }[];
                             commitments?: {
-                                port_id?: string;
-                                channel_id?: string;
+                                portId?: string;
+                                channelId?: string;
                                 sequence?: any;
                                 data?: Uint8Array;
                             }[];
                             receipts?: {
-                                port_id?: string;
-                                channel_id?: string;
+                                portId?: string;
+                                channelId?: string;
                                 sequence?: any;
                                 data?: Uint8Array;
                             }[];
-                            send_sequences?: {
-                                port_id?: string;
-                                channel_id?: string;
+                            sendSequences?: {
+                                portId?: string;
+                                channelId?: string;
                                 sequence?: any;
                             }[];
-                            recv_sequences?: {
-                                port_id?: string;
-                                channel_id?: string;
+                            recvSequences?: {
+                                portId?: string;
+                                channelId?: string;
                                 sequence?: any;
                             }[];
-                            ack_sequences?: {
-                                port_id?: string;
-                                channel_id?: string;
+                            ackSequences?: {
+                                portId?: string;
+                                channelId?: string;
                                 sequence?: any;
                             }[];
-                            next_channel_sequence?: any;
+                            nextChannelSequence?: any;
                         };
                     }): _121.GenesisState;
                 };
@@ -2912,10 +2912,10 @@ export declare namespace ibc {
                     encode(message: _122.ClientState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _122.ClientState;
                     fromPartial(object: {
-                        chain_id?: string;
+                        chainId?: string;
                         height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
                     }): _122.ClientState;
                 };
@@ -2932,24 +2932,24 @@ export declare namespace ibc {
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.ClientState;
                     fromPartial(object: {
                         sequence?: any;
-                        frozen_sequence?: any;
-                        consensus_state?: {
-                            public_key?: {
-                                type_url?: string;
+                        frozenSequence?: any;
+                        consensusState?: {
+                            publicKey?: {
+                                typeUrl?: string;
                                 value?: Uint8Array;
                             };
                             diversifier?: string;
                             timestamp?: any;
                         };
-                        allow_update_after_proposal?: boolean;
+                        allowUpdateAfterProposal?: boolean;
                     }): _123.ClientState;
                 };
                 ConsensusState: {
                     encode(message: _123.ConsensusState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.ConsensusState;
                     fromPartial(object: {
-                        public_key?: {
-                            type_url?: string;
+                        publicKey?: {
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
                         diversifier?: string;
@@ -2963,28 +2963,28 @@ export declare namespace ibc {
                         sequence?: any;
                         timestamp?: any;
                         signature?: Uint8Array;
-                        new_public_key?: {
-                            type_url?: string;
+                        newPublicKey?: {
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
-                        new_diversifier?: string;
+                        newDiversifier?: string;
                     }): _123.Header;
                 };
                 Misbehaviour: {
                     encode(message: _123.Misbehaviour, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.Misbehaviour;
                     fromPartial(object: {
-                        client_id?: string;
+                        clientId?: string;
                         sequence?: any;
-                        signature_one?: {
+                        signatureOne?: {
                             signature?: Uint8Array;
-                            data_type?: _123.DataType;
+                            dataType?: _123.DataType;
                             data?: Uint8Array;
                             timestamp?: any;
                         };
-                        signature_two?: {
+                        signatureTwo?: {
                             signature?: Uint8Array;
-                            data_type?: _123.DataType;
+                            dataType?: _123.DataType;
                             data?: Uint8Array;
                             timestamp?: any;
                         };
@@ -2995,7 +2995,7 @@ export declare namespace ibc {
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.SignatureAndData;
                     fromPartial(object: {
                         signature?: Uint8Array;
-                        data_type?: _123.DataType;
+                        dataType?: _123.DataType;
                         data?: Uint8Array;
                         timestamp?: any;
                     }): _123.SignatureAndData;
@@ -3004,7 +3004,7 @@ export declare namespace ibc {
                     encode(message: _123.TimestampedSignatureData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.TimestampedSignatureData;
                     fromPartial(object: {
-                        signature_data?: Uint8Array;
+                        signatureData?: Uint8Array;
                         timestamp?: any;
                     }): _123.TimestampedSignatureData;
                 };
@@ -3015,7 +3015,7 @@ export declare namespace ibc {
                         sequence?: any;
                         timestamp?: any;
                         diversifier?: string;
-                        data_type?: _123.DataType;
+                        dataType?: _123.DataType;
                         data?: Uint8Array;
                     }): _123.SignBytes;
                 };
@@ -3023,11 +3023,11 @@ export declare namespace ibc {
                     encode(message: _123.HeaderData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.HeaderData;
                     fromPartial(object: {
-                        new_pub_key?: {
-                            type_url?: string;
+                        newPubKey?: {
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
-                        new_diversifier?: string;
+                        newDiversifier?: string;
                     }): _123.HeaderData;
                 };
                 ClientStateData: {
@@ -3035,8 +3035,8 @@ export declare namespace ibc {
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.ClientStateData;
                     fromPartial(object: {
                         path?: Uint8Array;
-                        client_state?: {
-                            type_url?: string;
+                        clientState?: {
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
                     }): _123.ClientStateData;
@@ -3046,8 +3046,8 @@ export declare namespace ibc {
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.ConsensusStateData;
                     fromPartial(object: {
                         path?: Uint8Array;
-                        consensus_state?: {
-                            type_url?: string;
+                        consensusState?: {
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
                     }): _123.ConsensusStateData;
@@ -3058,20 +3058,20 @@ export declare namespace ibc {
                     fromPartial(object: {
                         path?: Uint8Array;
                         connection?: {
-                            client_id?: string;
+                            clientId?: string;
                             versions?: {
                                 identifier?: string;
                                 features?: string[];
                             }[];
                             state?: _116.State;
                             counterparty?: {
-                                client_id?: string;
-                                connection_id?: string;
+                                clientId?: string;
+                                connectionId?: string;
                                 prefix?: {
-                                    key_prefix?: Uint8Array;
+                                    keyPrefix?: Uint8Array;
                                 };
                             };
-                            delay_period?: any;
+                            delayPeriod?: any;
                         };
                     }): _123.ConnectionStateData;
                 };
@@ -3084,10 +3084,10 @@ export declare namespace ibc {
                             state?: _107.State;
                             ordering?: _107.Order;
                             counterparty?: {
-                                port_id?: string;
-                                channel_id?: string;
+                                portId?: string;
+                                channelId?: string;
                             };
-                            connection_hops?: string[];
+                            connectionHops?: string[];
                             version?: string;
                         };
                     }): _123.ChannelStateData;
@@ -3120,7 +3120,7 @@ export declare namespace ibc {
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _123.NextSequenceRecvData;
                     fromPartial(object: {
                         path?: Uint8Array;
-                        next_seq_recv?: any;
+                        nextSeqRecv?: any;
                     }): _123.NextSequenceRecvData;
                 };
             };
@@ -3134,24 +3134,24 @@ export declare namespace ibc {
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.ClientState;
                     fromPartial(object: {
                         sequence?: any;
-                        is_frozen?: boolean;
-                        consensus_state?: {
-                            public_key?: {
-                                type_url?: string;
+                        isFrozen?: boolean;
+                        consensusState?: {
+                            publicKey?: {
+                                typeUrl?: string;
                                 value?: Uint8Array;
                             };
                             diversifier?: string;
                             timestamp?: any;
                         };
-                        allow_update_after_proposal?: boolean;
+                        allowUpdateAfterProposal?: boolean;
                     }): _124.ClientState;
                 };
                 ConsensusState: {
                     encode(message: _124.ConsensusState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.ConsensusState;
                     fromPartial(object: {
-                        public_key?: {
-                            type_url?: string;
+                        publicKey?: {
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
                         diversifier?: string;
@@ -3165,28 +3165,28 @@ export declare namespace ibc {
                         sequence?: any;
                         timestamp?: any;
                         signature?: Uint8Array;
-                        new_public_key?: {
-                            type_url?: string;
+                        newPublicKey?: {
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
-                        new_diversifier?: string;
+                        newDiversifier?: string;
                     }): _124.Header;
                 };
                 Misbehaviour: {
                     encode(message: _124.Misbehaviour, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.Misbehaviour;
                     fromPartial(object: {
-                        client_id?: string;
+                        clientId?: string;
                         sequence?: any;
-                        signature_one?: {
+                        signatureOne?: {
                             signature?: Uint8Array;
-                            data_type?: _124.DataType;
+                            dataType?: _124.DataType;
                             data?: Uint8Array;
                             timestamp?: any;
                         };
-                        signature_two?: {
+                        signatureTwo?: {
                             signature?: Uint8Array;
-                            data_type?: _124.DataType;
+                            dataType?: _124.DataType;
                             data?: Uint8Array;
                             timestamp?: any;
                         };
@@ -3197,7 +3197,7 @@ export declare namespace ibc {
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.SignatureAndData;
                     fromPartial(object: {
                         signature?: Uint8Array;
-                        data_type?: _124.DataType;
+                        dataType?: _124.DataType;
                         data?: Uint8Array;
                         timestamp?: any;
                     }): _124.SignatureAndData;
@@ -3206,7 +3206,7 @@ export declare namespace ibc {
                     encode(message: _124.TimestampedSignatureData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.TimestampedSignatureData;
                     fromPartial(object: {
-                        signature_data?: Uint8Array;
+                        signatureData?: Uint8Array;
                         timestamp?: any;
                     }): _124.TimestampedSignatureData;
                 };
@@ -3217,7 +3217,7 @@ export declare namespace ibc {
                         sequence?: any;
                         timestamp?: any;
                         diversifier?: string;
-                        data_type?: _124.DataType;
+                        dataType?: _124.DataType;
                         data?: Uint8Array;
                     }): _124.SignBytes;
                 };
@@ -3225,11 +3225,11 @@ export declare namespace ibc {
                     encode(message: _124.HeaderData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.HeaderData;
                     fromPartial(object: {
-                        new_pub_key?: {
-                            type_url?: string;
+                        newPubKey?: {
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
-                        new_diversifier?: string;
+                        newDiversifier?: string;
                     }): _124.HeaderData;
                 };
                 ClientStateData: {
@@ -3237,8 +3237,8 @@ export declare namespace ibc {
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.ClientStateData;
                     fromPartial(object: {
                         path?: Uint8Array;
-                        client_state?: {
-                            type_url?: string;
+                        clientState?: {
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
                     }): _124.ClientStateData;
@@ -3248,8 +3248,8 @@ export declare namespace ibc {
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.ConsensusStateData;
                     fromPartial(object: {
                         path?: Uint8Array;
-                        consensus_state?: {
-                            type_url?: string;
+                        consensusState?: {
+                            typeUrl?: string;
                             value?: Uint8Array;
                         };
                     }): _124.ConsensusStateData;
@@ -3260,20 +3260,20 @@ export declare namespace ibc {
                     fromPartial(object: {
                         path?: Uint8Array;
                         connection?: {
-                            client_id?: string;
+                            clientId?: string;
                             versions?: {
                                 identifier?: string;
                                 features?: string[];
                             }[];
                             state?: _116.State;
                             counterparty?: {
-                                client_id?: string;
-                                connection_id?: string;
+                                clientId?: string;
+                                connectionId?: string;
                                 prefix?: {
-                                    key_prefix?: Uint8Array;
+                                    keyPrefix?: Uint8Array;
                                 };
                             };
-                            delay_period?: any;
+                            delayPeriod?: any;
                         };
                     }): _124.ConnectionStateData;
                 };
@@ -3286,10 +3286,10 @@ export declare namespace ibc {
                             state?: _107.State;
                             ordering?: _107.Order;
                             counterparty?: {
-                                port_id?: string;
-                                channel_id?: string;
+                                portId?: string;
+                                channelId?: string;
                             };
-                            connection_hops?: string[];
+                            connectionHops?: string[];
                             version?: string;
                         };
                     }): _124.ChannelStateData;
@@ -3322,7 +3322,7 @@ export declare namespace ibc {
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _124.NextSequenceRecvData;
                     fromPartial(object: {
                         path?: Uint8Array;
-                        next_seq_recv?: any;
+                        nextSeqRecv?: any;
                     }): _124.NextSequenceRecvData;
                 };
             };
@@ -3333,53 +3333,53 @@ export declare namespace ibc {
                     encode(message: _125.ClientState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _125.ClientState;
                     fromPartial(object: {
-                        chain_id?: string;
-                        trust_level?: {
+                        chainId?: string;
+                        trustLevel?: {
                             numerator?: any;
                             denominator?: any;
                         };
-                        trusting_period?: {
+                        trustingPeriod?: {
                             seconds?: any;
                             nanos?: number;
                         };
-                        unbonding_period?: {
+                        unbondingPeriod?: {
                             seconds?: any;
                             nanos?: number;
                         };
-                        max_clock_drift?: {
+                        maxClockDrift?: {
                             seconds?: any;
                             nanos?: number;
                         };
-                        frozen_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        frozenHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
-                        latest_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        latestHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
-                        proof_specs?: {
-                            leaf_spec?: {
+                        proofSpecs?: {
+                            leafSpec?: {
                                 hash?: import("../confio/proofs").HashOp;
-                                prehash_key?: import("../confio/proofs").HashOp;
-                                prehash_value?: import("../confio/proofs").HashOp;
+                                prehashKey?: import("../confio/proofs").HashOp;
+                                prehashValue?: import("../confio/proofs").HashOp;
                                 length?: import("../confio/proofs").LengthOp;
                                 prefix?: Uint8Array;
                             };
-                            inner_spec?: {
-                                child_order?: number[];
-                                child_size?: number;
-                                min_prefix_length?: number;
-                                max_prefix_length?: number;
-                                empty_child?: Uint8Array;
+                            innerSpec?: {
+                                childOrder?: number[];
+                                childSize?: number;
+                                minPrefixLength?: number;
+                                maxPrefixLength?: number;
+                                emptyChild?: Uint8Array;
                                 hash?: import("../confio/proofs").HashOp;
                             };
-                            max_depth?: number;
-                            min_depth?: number;
+                            maxDepth?: number;
+                            minDepth?: number;
                         }[];
-                        upgrade_path?: string[];
-                        allow_update_after_expiry?: boolean;
-                        allow_update_after_misbehaviour?: boolean;
+                        upgradePath?: string[];
+                        allowUpdateAfterExpiry?: boolean;
+                        allowUpdateAfterMisbehaviour?: boolean;
                     }): _125.ClientState;
                 };
                 ConsensusState: {
@@ -3390,196 +3390,196 @@ export declare namespace ibc {
                         root?: {
                             hash?: Uint8Array;
                         };
-                        next_validators_hash?: Uint8Array;
+                        nextValidatorsHash?: Uint8Array;
                     }): _125.ConsensusState;
                 };
                 Misbehaviour: {
                     encode(message: _125.Misbehaviour, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _125.Misbehaviour;
                     fromPartial(object: {
-                        client_id?: string;
+                        clientId?: string;
                         header_1?: {
-                            signed_header?: {
+                            signedHeader?: {
                                 header?: {
                                     version?: {
                                         block?: any;
                                         app?: any;
                                     };
-                                    chain_id?: string;
+                                    chainId?: string;
                                     height?: any;
                                     time?: Date;
-                                    last_block_id?: {
+                                    lastBlockId?: {
                                         hash?: Uint8Array;
-                                        part_set_header?: {
+                                        partSetHeader?: {
                                             total?: number;
                                             hash?: Uint8Array;
                                         };
                                     };
-                                    last_commit_hash?: Uint8Array;
-                                    data_hash?: Uint8Array;
-                                    validators_hash?: Uint8Array;
-                                    next_validators_hash?: Uint8Array;
-                                    consensus_hash?: Uint8Array;
-                                    app_hash?: Uint8Array;
-                                    last_results_hash?: Uint8Array;
-                                    evidence_hash?: Uint8Array;
-                                    proposer_address?: Uint8Array;
+                                    lastCommitHash?: Uint8Array;
+                                    dataHash?: Uint8Array;
+                                    validatorsHash?: Uint8Array;
+                                    nextValidatorsHash?: Uint8Array;
+                                    consensusHash?: Uint8Array;
+                                    appHash?: Uint8Array;
+                                    lastResultsHash?: Uint8Array;
+                                    evidenceHash?: Uint8Array;
+                                    proposerAddress?: Uint8Array;
                                 };
                                 commit?: {
                                     height?: any;
                                     round?: number;
-                                    block_id?: {
+                                    blockId?: {
                                         hash?: Uint8Array;
-                                        part_set_header?: {
+                                        partSetHeader?: {
                                             total?: number;
                                             hash?: Uint8Array;
                                         };
                                     };
                                     signatures?: {
-                                        block_id_flag?: import("../tendermint/types/types").BlockIDFlag;
-                                        validator_address?: Uint8Array;
+                                        blockIdFlag?: import("../tendermint/types/types").BlockIDFlag;
+                                        validatorAddress?: Uint8Array;
                                         timestamp?: Date;
                                         signature?: Uint8Array;
                                     }[];
                                 };
                             };
-                            validator_set?: {
+                            validatorSet?: {
                                 validators?: {
                                     address?: Uint8Array;
-                                    pub_key?: {
+                                    pubKey?: {
                                         ed25519?: Uint8Array;
                                         secp256k1?: Uint8Array;
                                     };
-                                    voting_power?: any;
-                                    proposer_priority?: any;
+                                    votingPower?: any;
+                                    proposerPriority?: any;
                                 }[];
                                 proposer?: {
                                     address?: Uint8Array;
-                                    pub_key?: {
+                                    pubKey?: {
                                         ed25519?: Uint8Array;
                                         secp256k1?: Uint8Array;
                                     };
-                                    voting_power?: any;
-                                    proposer_priority?: any;
+                                    votingPower?: any;
+                                    proposerPriority?: any;
                                 };
-                                total_voting_power?: any;
+                                totalVotingPower?: any;
                             };
-                            trusted_height?: {
-                                revision_number?: any;
-                                revision_height?: any;
+                            trustedHeight?: {
+                                revisionNumber?: any;
+                                revisionHeight?: any;
                             };
-                            trusted_validators?: {
+                            trustedValidators?: {
                                 validators?: {
                                     address?: Uint8Array;
-                                    pub_key?: {
+                                    pubKey?: {
                                         ed25519?: Uint8Array;
                                         secp256k1?: Uint8Array;
                                     };
-                                    voting_power?: any;
-                                    proposer_priority?: any;
+                                    votingPower?: any;
+                                    proposerPriority?: any;
                                 }[];
                                 proposer?: {
                                     address?: Uint8Array;
-                                    pub_key?: {
+                                    pubKey?: {
                                         ed25519?: Uint8Array;
                                         secp256k1?: Uint8Array;
                                     };
-                                    voting_power?: any;
-                                    proposer_priority?: any;
+                                    votingPower?: any;
+                                    proposerPriority?: any;
                                 };
-                                total_voting_power?: any;
+                                totalVotingPower?: any;
                             };
                         };
                         header_2?: {
-                            signed_header?: {
+                            signedHeader?: {
                                 header?: {
                                     version?: {
                                         block?: any;
                                         app?: any;
                                     };
-                                    chain_id?: string;
+                                    chainId?: string;
                                     height?: any;
                                     time?: Date;
-                                    last_block_id?: {
+                                    lastBlockId?: {
                                         hash?: Uint8Array;
-                                        part_set_header?: {
+                                        partSetHeader?: {
                                             total?: number;
                                             hash?: Uint8Array;
                                         };
                                     };
-                                    last_commit_hash?: Uint8Array;
-                                    data_hash?: Uint8Array;
-                                    validators_hash?: Uint8Array;
-                                    next_validators_hash?: Uint8Array;
-                                    consensus_hash?: Uint8Array;
-                                    app_hash?: Uint8Array;
-                                    last_results_hash?: Uint8Array;
-                                    evidence_hash?: Uint8Array;
-                                    proposer_address?: Uint8Array;
+                                    lastCommitHash?: Uint8Array;
+                                    dataHash?: Uint8Array;
+                                    validatorsHash?: Uint8Array;
+                                    nextValidatorsHash?: Uint8Array;
+                                    consensusHash?: Uint8Array;
+                                    appHash?: Uint8Array;
+                                    lastResultsHash?: Uint8Array;
+                                    evidenceHash?: Uint8Array;
+                                    proposerAddress?: Uint8Array;
                                 };
                                 commit?: {
                                     height?: any;
                                     round?: number;
-                                    block_id?: {
+                                    blockId?: {
                                         hash?: Uint8Array;
-                                        part_set_header?: {
+                                        partSetHeader?: {
                                             total?: number;
                                             hash?: Uint8Array;
                                         };
                                     };
                                     signatures?: {
-                                        block_id_flag?: import("../tendermint/types/types").BlockIDFlag;
-                                        validator_address?: Uint8Array;
+                                        blockIdFlag?: import("../tendermint/types/types").BlockIDFlag;
+                                        validatorAddress?: Uint8Array;
                                         timestamp?: Date;
                                         signature?: Uint8Array;
                                     }[];
                                 };
                             };
-                            validator_set?: {
+                            validatorSet?: {
                                 validators?: {
                                     address?: Uint8Array;
-                                    pub_key?: {
+                                    pubKey?: {
                                         ed25519?: Uint8Array;
                                         secp256k1?: Uint8Array;
                                     };
-                                    voting_power?: any;
-                                    proposer_priority?: any;
+                                    votingPower?: any;
+                                    proposerPriority?: any;
                                 }[];
                                 proposer?: {
                                     address?: Uint8Array;
-                                    pub_key?: {
+                                    pubKey?: {
                                         ed25519?: Uint8Array;
                                         secp256k1?: Uint8Array;
                                     };
-                                    voting_power?: any;
-                                    proposer_priority?: any;
+                                    votingPower?: any;
+                                    proposerPriority?: any;
                                 };
-                                total_voting_power?: any;
+                                totalVotingPower?: any;
                             };
-                            trusted_height?: {
-                                revision_number?: any;
-                                revision_height?: any;
+                            trustedHeight?: {
+                                revisionNumber?: any;
+                                revisionHeight?: any;
                             };
-                            trusted_validators?: {
+                            trustedValidators?: {
                                 validators?: {
                                     address?: Uint8Array;
-                                    pub_key?: {
+                                    pubKey?: {
                                         ed25519?: Uint8Array;
                                         secp256k1?: Uint8Array;
                                     };
-                                    voting_power?: any;
-                                    proposer_priority?: any;
+                                    votingPower?: any;
+                                    proposerPriority?: any;
                                 }[];
                                 proposer?: {
                                     address?: Uint8Array;
-                                    pub_key?: {
+                                    pubKey?: {
                                         ed25519?: Uint8Array;
                                         secp256k1?: Uint8Array;
                                     };
-                                    voting_power?: any;
-                                    proposer_priority?: any;
+                                    votingPower?: any;
+                                    proposerPriority?: any;
                                 };
-                                total_voting_power?: any;
+                                totalVotingPower?: any;
                             };
                         };
                     }): _125.Misbehaviour;
@@ -3588,95 +3588,95 @@ export declare namespace ibc {
                     encode(message: _125.Header, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _125.Header;
                     fromPartial(object: {
-                        signed_header?: {
+                        signedHeader?: {
                             header?: {
                                 version?: {
                                     block?: any;
                                     app?: any;
                                 };
-                                chain_id?: string;
+                                chainId?: string;
                                 height?: any;
                                 time?: Date;
-                                last_block_id?: {
+                                lastBlockId?: {
                                     hash?: Uint8Array;
-                                    part_set_header?: {
+                                    partSetHeader?: {
                                         total?: number;
                                         hash?: Uint8Array;
                                     };
                                 };
-                                last_commit_hash?: Uint8Array;
-                                data_hash?: Uint8Array;
-                                validators_hash?: Uint8Array;
-                                next_validators_hash?: Uint8Array;
-                                consensus_hash?: Uint8Array;
-                                app_hash?: Uint8Array;
-                                last_results_hash?: Uint8Array;
-                                evidence_hash?: Uint8Array;
-                                proposer_address?: Uint8Array;
+                                lastCommitHash?: Uint8Array;
+                                dataHash?: Uint8Array;
+                                validatorsHash?: Uint8Array;
+                                nextValidatorsHash?: Uint8Array;
+                                consensusHash?: Uint8Array;
+                                appHash?: Uint8Array;
+                                lastResultsHash?: Uint8Array;
+                                evidenceHash?: Uint8Array;
+                                proposerAddress?: Uint8Array;
                             };
                             commit?: {
                                 height?: any;
                                 round?: number;
-                                block_id?: {
+                                blockId?: {
                                     hash?: Uint8Array;
-                                    part_set_header?: {
+                                    partSetHeader?: {
                                         total?: number;
                                         hash?: Uint8Array;
                                     };
                                 };
                                 signatures?: {
-                                    block_id_flag?: import("../tendermint/types/types").BlockIDFlag;
-                                    validator_address?: Uint8Array;
+                                    blockIdFlag?: import("../tendermint/types/types").BlockIDFlag;
+                                    validatorAddress?: Uint8Array;
                                     timestamp?: Date;
                                     signature?: Uint8Array;
                                 }[];
                             };
                         };
-                        validator_set?: {
+                        validatorSet?: {
                             validators?: {
                                 address?: Uint8Array;
-                                pub_key?: {
+                                pubKey?: {
                                     ed25519?: Uint8Array;
                                     secp256k1?: Uint8Array;
                                 };
-                                voting_power?: any;
-                                proposer_priority?: any;
+                                votingPower?: any;
+                                proposerPriority?: any;
                             }[];
                             proposer?: {
                                 address?: Uint8Array;
-                                pub_key?: {
+                                pubKey?: {
                                     ed25519?: Uint8Array;
                                     secp256k1?: Uint8Array;
                                 };
-                                voting_power?: any;
-                                proposer_priority?: any;
+                                votingPower?: any;
+                                proposerPriority?: any;
                             };
-                            total_voting_power?: any;
+                            totalVotingPower?: any;
                         };
-                        trusted_height?: {
-                            revision_number?: any;
-                            revision_height?: any;
+                        trustedHeight?: {
+                            revisionNumber?: any;
+                            revisionHeight?: any;
                         };
-                        trusted_validators?: {
+                        trustedValidators?: {
                             validators?: {
                                 address?: Uint8Array;
-                                pub_key?: {
+                                pubKey?: {
                                     ed25519?: Uint8Array;
                                     secp256k1?: Uint8Array;
                                 };
-                                voting_power?: any;
-                                proposer_priority?: any;
+                                votingPower?: any;
+                                proposerPriority?: any;
                             }[];
                             proposer?: {
                                 address?: Uint8Array;
-                                pub_key?: {
+                                pubKey?: {
                                     ed25519?: Uint8Array;
                                     secp256k1?: Uint8Array;
                                 };
-                                voting_power?: any;
-                                proposer_priority?: any;
+                                votingPower?: any;
+                                proposerPriority?: any;
                             };
-                            total_voting_power?: any;
+                            totalVotingPower?: any;
                         };
                     }): _125.Header;
                 };

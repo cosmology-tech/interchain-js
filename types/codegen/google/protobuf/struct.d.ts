@@ -74,17 +74,17 @@ export interface StructSDKType {
  */
 export interface Value {
     /** Represents a null value. */
-    null_value?: NullValue;
+    nullValue?: NullValue;
     /** Represents a double value. */
-    number_value?: number;
+    numberValue?: number;
     /** Represents a string value. */
-    string_value?: string;
+    stringValue?: string;
     /** Represents a boolean value. */
-    bool_value?: boolean;
+    boolValue?: boolean;
     /** Represents a structured value. */
-    struct_value?: Struct;
+    structValue?: Struct;
     /** Represents a repeated `Value`. */
-    list_value?: ListValue;
+    listValue?: ListValue;
 }
 /**
  * `Value` represents a dynamically typed value which can be either

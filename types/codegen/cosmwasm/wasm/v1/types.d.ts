@@ -73,9 +73,9 @@ export interface AccessConfigSDKType {
 }
 /** Params defines the set of wasm parameters. */
 export interface Params {
-    code_upload_access: AccessConfig;
-    instantiate_default_permission: AccessType;
-    max_wasm_code_size: Long;
+    codeUploadAccess: AccessConfig;
+    instantiateDefaultPermission: AccessType;
+    maxWasmCodeSize: Long;
 }
 /** Params defines the set of wasm parameters. */
 export interface ParamsSDKType {
@@ -86,11 +86,11 @@ export interface ParamsSDKType {
 /** CodeInfo is data for the uploaded contract WASM code */
 export interface CodeInfo {
     /** CodeHash is the unique identifier created by wasmvm */
-    code_hash: Uint8Array;
+    codeHash: Uint8Array;
     /** Creator address who initially stored the code */
     creator: string;
     /** InstantiateConfig access control to apply on contract creation, optional */
-    instantiate_config: AccessConfig;
+    instantiateConfig: AccessConfig;
 }
 /** CodeInfo is data for the uploaded contract WASM code */
 export interface CodeInfoSDKType {
@@ -104,7 +104,7 @@ export interface CodeInfoSDKType {
 /** ContractInfo stores a WASM contract instance */
 export interface ContractInfo {
     /** CodeID is the reference to the stored Wasm code */
-    code_id: Long;
+    codeId: Long;
     /** Creator address who initially instantiated the contract */
     creator: string;
     /** Admin is an optional address that can execute migrations */
@@ -117,7 +117,7 @@ export interface ContractInfo {
      * use for sorting
      */
     created: AbsoluteTxPosition;
-    ibc_port_id: string;
+    ibcPortId: string;
     /**
      * Extension is an extension point to store custom metadata within the
      * persistence model.
@@ -151,7 +151,7 @@ export interface ContractInfoSDKType {
 export interface ContractCodeHistoryEntry {
     operation: ContractCodeHistoryOperationType;
     /** CodeID is the reference to the stored WASM code */
-    code_id: Long;
+    codeId: Long;
     /** Updated Tx position when the operation was executed. */
     updated: AbsoluteTxPosition;
     msg: Uint8Array;
@@ -171,12 +171,12 @@ export interface ContractCodeHistoryEntrySDKType {
  */
 export interface AbsoluteTxPosition {
     /** BlockHeight is the block the contract was created at */
-    block_height: Long;
+    blockHeight: Long;
     /**
      * TxIndex is a monotonic counter within the block (actual transaction index,
      * or gas consumed)
      */
-    tx_index: Long;
+    txIndex: Long;
 }
 /**
  * AbsoluteTxPosition is a unique transaction position that allows for global

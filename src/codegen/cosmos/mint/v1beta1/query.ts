@@ -62,7 +62,7 @@ export interface QueryAnnualProvisionsRequestSDKType {}
 
 export interface QueryAnnualProvisionsResponse {
   /** annual_provisions is the current minting annual provisions value. */
-  annual_provisions: Uint8Array;
+  annualProvisions: Uint8Array;
 }
 /**
  * QueryAnnualProvisionsResponse is the response type for the
@@ -268,14 +268,14 @@ export const QueryAnnualProvisionsRequest = {
 
 function createBaseQueryAnnualProvisionsResponse(): QueryAnnualProvisionsResponse {
   return {
-    annual_provisions: new Uint8Array()
+    annualProvisions: new Uint8Array()
   };
 }
 
 export const QueryAnnualProvisionsResponse = {
   encode(message: QueryAnnualProvisionsResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.annual_provisions.length !== 0) {
-      writer.uint32(10).bytes(message.annual_provisions);
+    if (message.annualProvisions.length !== 0) {
+      writer.uint32(10).bytes(message.annualProvisions);
     }
 
     return writer;
@@ -291,7 +291,7 @@ export const QueryAnnualProvisionsResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.annual_provisions = reader.bytes();
+          message.annualProvisions = reader.bytes();
           break;
 
         default:
@@ -305,7 +305,7 @@ export const QueryAnnualProvisionsResponse = {
 
   fromPartial(object: DeepPartial<QueryAnnualProvisionsResponse>): QueryAnnualProvisionsResponse {
     const message = createBaseQueryAnnualProvisionsResponse();
-    message.annual_provisions = object.annual_provisions ?? new Uint8Array();
+    message.annualProvisions = object.annualProvisions ?? new Uint8Array();
     return message;
   }
 

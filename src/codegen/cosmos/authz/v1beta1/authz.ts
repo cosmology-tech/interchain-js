@@ -76,7 +76,7 @@ export interface GrantAuthorizationSDKType {
 
 export interface GrantQueueItem {
   /** msg_type_urls contains the list of TypeURL of a sdk.Msg. */
-  msg_type_urls: string[];
+  msgTypeUrls: string[];
 }
 /** GrantQueueItem contains the list of TypeURL of a sdk.Msg. */
 
@@ -262,13 +262,13 @@ export const GrantAuthorization = {
 
 function createBaseGrantQueueItem(): GrantQueueItem {
   return {
-    msg_type_urls: []
+    msgTypeUrls: []
   };
 }
 
 export const GrantQueueItem = {
   encode(message: GrantQueueItem, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.msg_type_urls) {
+    for (const v of message.msgTypeUrls) {
       writer.uint32(10).string(v!);
     }
 
@@ -285,7 +285,7 @@ export const GrantQueueItem = {
 
       switch (tag >>> 3) {
         case 1:
-          message.msg_type_urls.push(reader.string());
+          message.msgTypeUrls.push(reader.string());
           break;
 
         default:
@@ -299,7 +299,7 @@ export const GrantQueueItem = {
 
   fromPartial(object: DeepPartial<GrantQueueItem>): GrantQueueItem {
     const message = createBaseGrantQueueItem();
-    message.msg_type_urls = object.msg_type_urls?.map(e => e) || [];
+    message.msgTypeUrls = object.msgTypeUrls?.map(e => e) || [];
     return message;
   }
 

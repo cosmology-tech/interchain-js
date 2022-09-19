@@ -14,7 +14,7 @@ export interface Class {
     /** uri for the class metadata stored off chain. It can define schema for Class and NFT `Data` attributes. Optional */
     uri: string;
     /** uri_hash is a hash of the document pointed by uri. Optional */
-    uri_hash: string;
+    uriHash: string;
     /** data is the app specific metadata of the NFT class. Optional */
     data: Any;
 }
@@ -38,13 +38,13 @@ export interface ClassSDKType {
 /** NFT defines the NFT. */
 export interface NFT {
     /** class_id associated with the NFT, similar to the contract address of ERC721 */
-    class_id: string;
+    classId: string;
     /** id is a unique identifier of the NFT */
     id: string;
     /** uri for the NFT metadata stored off chain */
     uri: string;
     /** uri_hash is a hash of the document pointed by uri */
-    uri_hash: string;
+    uriHash: string;
     /** data is an app specific data of the NFT. Optional */
     data: Any;
 }

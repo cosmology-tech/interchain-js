@@ -8,8 +8,8 @@ import { Long, DeepPartial } from "@osmonauts/helpers";
  */
 export interface BaseAccount {
     address: string;
-    pub_key: Any;
-    account_number: Long;
+    pubKey: Any;
+    accountNumber: Long;
     sequence: Long;
 }
 /**
@@ -25,7 +25,7 @@ export interface BaseAccountSDKType {
 }
 /** ModuleAccount defines an account for modules that holds coins on a pool. */
 export interface ModuleAccount {
-    base_account: BaseAccount;
+    baseAccount: BaseAccount;
     name: string;
     permissions: string[];
 }
@@ -37,11 +37,11 @@ export interface ModuleAccountSDKType {
 }
 /** Params defines the parameters for the auth module. */
 export interface Params {
-    max_memo_characters: Long;
-    tx_sig_limit: Long;
-    tx_size_cost_per_byte: Long;
-    sig_verify_cost_ed25519: Long;
-    sig_verify_cost_secp256k1: Long;
+    maxMemoCharacters: Long;
+    txSigLimit: Long;
+    txSizeCostPerByte: Long;
+    sigVerifyCostEd25519: Long;
+    sigVerifyCostSecp256k1: Long;
 }
 /** Params defines the parameters for the auth module. */
 export interface ParamsSDKType {

@@ -7,12 +7,12 @@ export interface MsgStoreCode {
     /** Sender is the that actor that signed the messages */
     sender: string;
     /** WASMByteCode can be raw or gzip compressed */
-    wasm_byte_code: Uint8Array;
+    wasmByteCode: Uint8Array;
     /**
      * InstantiatePermission access control to apply on contract creation,
      * optional
      */
-    instantiate_permission: AccessConfig;
+    instantiatePermission: AccessConfig;
 }
 /** MsgStoreCode submit Wasm code to the system */
 export interface MsgStoreCodeSDKType {
@@ -29,7 +29,7 @@ export interface MsgStoreCodeSDKType {
 /** MsgStoreCodeResponse returns store result data. */
 export interface MsgStoreCodeResponse {
     /** CodeID is the reference to the stored WASM code */
-    code_id: Long;
+    codeId: Long;
 }
 /** MsgStoreCodeResponse returns store result data. */
 export interface MsgStoreCodeResponseSDKType {
@@ -46,7 +46,7 @@ export interface MsgInstantiateContract {
     /** Admin is an optional address that can execute migrations */
     admin: string;
     /** CodeID is the reference to the stored WASM code */
-    code_id: Long;
+    codeId: Long;
     /** Label is optional metadata to be stored with a contract instance. */
     label: string;
     /** Msg json encoded message to be passed to the contract on instantiation */
@@ -125,7 +125,7 @@ export interface MsgMigrateContract {
     /** Contract is the address of the smart contract */
     contract: string;
     /** CodeID references the new WASM code */
-    code_id: Long;
+    codeId: Long;
     /** Msg json encoded message to be passed to the contract on migration */
     msg: Uint8Array;
 }
@@ -161,7 +161,7 @@ export interface MsgUpdateAdmin {
     /** Sender is the that actor that signed the messages */
     sender: string;
     /** NewAdmin address to be set */
-    new_admin: string;
+    newAdmin: string;
     /** Contract is the address of the smart contract */
     contract: string;
 }

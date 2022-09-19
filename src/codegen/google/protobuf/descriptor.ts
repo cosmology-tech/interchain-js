@@ -552,17 +552,17 @@ export interface FileDescriptorProto {
   dependency: string[];
   /** Indexes of the public imported files in the dependency list above. */
 
-  public_dependency: number[];
+  publicDependency: number[];
   /**
    * Indexes of the weak imported files in the dependency list.
    * For Google-internal migration only. Do not use.
    */
 
-  weak_dependency: number[];
+  weakDependency: number[];
   /** All top-level definitions in this file. */
 
-  message_type: DescriptorProto[];
-  enum_type: EnumDescriptorProto[];
+  messageType: DescriptorProto[];
+  enumType: EnumDescriptorProto[];
   service: ServiceDescriptorProto[];
   extension: FieldDescriptorProto[];
   options: FileOptions;
@@ -573,7 +573,7 @@ export interface FileDescriptorProto {
    * development tools.
    */
 
-  source_code_info: SourceCodeInfo;
+  sourceCodeInfo: SourceCodeInfo;
   /**
    * The syntax of the proto file.
    * The supported values are "proto2" and "proto3".
@@ -627,18 +627,18 @@ export interface DescriptorProto {
   name: string;
   field: FieldDescriptorProto[];
   extension: FieldDescriptorProto[];
-  nested_type: DescriptorProto[];
-  enum_type: EnumDescriptorProto[];
-  extension_range: DescriptorProto_ExtensionRange[];
-  oneof_decl: OneofDescriptorProto[];
+  nestedType: DescriptorProto[];
+  enumType: EnumDescriptorProto[];
+  extensionRange: DescriptorProto_ExtensionRange[];
+  oneofDecl: OneofDescriptorProto[];
   options: MessageOptions;
-  reserved_range: DescriptorProto_ReservedRange[];
+  reservedRange: DescriptorProto_ReservedRange[];
   /**
    * Reserved field names, which may not be used by fields in the same message.
    * A given name may only be reserved once.
    */
 
-  reserved_name: string[];
+  reservedName: string[];
 }
 /** Describes a message type. */
 
@@ -703,7 +703,7 @@ export interface DescriptorProto_ReservedRangeSDKType {
 }
 export interface ExtensionRangeOptions {
   /** The parser stores options it doesn't recognize here. See above. */
-  uninterpreted_option: UninterpretedOption[];
+  uninterpretedOption: UninterpretedOption[];
 }
 export interface ExtensionRangeOptionsSDKType {
   /** The parser stores options it doesn't recognize here. See above. */
@@ -729,7 +729,7 @@ export interface FieldDescriptorProto {
    * namespace).
    */
 
-  type_name: string;
+  typeName: string;
   /**
    * For extensions, this is the name of the type being extended.  It is
    * resolved in the same manner as type_name.
@@ -744,13 +744,13 @@ export interface FieldDescriptorProto {
    * TODO(kenton):  Base-64 encode?
    */
 
-  default_value: string;
+  defaultValue: string;
   /**
    * If set, gives the index of a oneof in the containing type's oneof_decl
    * list.  This field is a member of that oneof.
    */
 
-  oneof_index: number;
+  oneofIndex: number;
   /**
    * JSON name of this field. The value is set by protocol compiler. If the
    * user has set a "json_name" option on this field, that option's value
@@ -758,7 +758,7 @@ export interface FieldDescriptorProto {
    * it to camelCase.
    */
 
-  json_name: string;
+  jsonName: string;
   options: FieldOptions;
 }
 /** Describes a field within a message. */
@@ -837,13 +837,13 @@ export interface EnumDescriptorProto {
    * overlap.
    */
 
-  reserved_range: EnumDescriptorProto_EnumReservedRange[];
+  reservedRange: EnumDescriptorProto_EnumReservedRange[];
   /**
    * Reserved enum value names, which may not be reused. A given name may only
    * be reserved once.
    */
 
-  reserved_name: string[];
+  reservedName: string[];
 }
 /** Describes an enum type. */
 
@@ -934,15 +934,15 @@ export interface MethodDescriptorProto {
    * FieldDescriptorProto.type_name, but must refer to a message type.
    */
 
-  input_type: string;
-  output_type: string;
+  inputType: string;
+  outputType: string;
   options: MethodOptions;
   /** Identifies if client streams multiple client messages */
 
-  client_streaming: boolean;
+  clientStreaming: boolean;
   /** Identifies if server streams multiple server messages */
 
-  server_streaming: boolean;
+  serverStreaming: boolean;
 }
 /** Describes a method of a service. */
 
@@ -970,7 +970,7 @@ export interface FileOptions {
    * inappropriate because proto packages do not normally start with backwards
    * domain names.
    */
-  java_package: string;
+  javaPackage: string;
   /**
    * If set, all the classes from the .proto file are wrapped in a single
    * outer class with the given name.  This applies to both Proto1
@@ -979,7 +979,7 @@ export interface FileOptions {
    * explicitly choose the class name).
    */
 
-  java_outer_classname: string;
+  javaOuterClassname: string;
   /**
    * If set true, then the Java code generator will generate a separate .java
    * file for each top-level message, enum, and service defined in the .proto
@@ -989,12 +989,12 @@ export interface FileOptions {
    * top-level extensions defined in the file.
    */
 
-  java_multiple_files: boolean;
+  javaMultipleFiles: boolean;
   /** This option does nothing. */
 
   /** @deprecated */
 
-  java_generate_equals_and_hash: boolean;
+  javaGenerateEqualsAndHash: boolean;
   /**
    * If set true, then the Java2 code generator will generate code that
    * throws an exception whenever an attempt is made to assign a non-UTF-8
@@ -1004,8 +1004,8 @@ export interface FileOptions {
    * This option has no effect on when used with the lite runtime.
    */
 
-  java_string_check_utf8: boolean;
-  optimize_for: FileOptions_OptimizeMode;
+  javaStringCheckUtf8: boolean;
+  optimizeFor: FileOptions_OptimizeMode;
   /**
    * Sets the Go package where structs generated from this .proto will be
    * placed. If omitted, the Go package will be derived from the following:
@@ -1014,7 +1014,7 @@ export interface FileOptions {
    * - Otherwise, the basename of the .proto file, without extension.
    */
 
-  go_package: string;
+  goPackage: string;
   /**
    * Should generic services be generated in each language?  "Generic" services
    * are not specific to any particular RPC system.  They are generated by the
@@ -1028,10 +1028,10 @@ export interface FileOptions {
    * explicitly set them to true.
    */
 
-  cc_generic_services: boolean;
-  java_generic_services: boolean;
-  py_generic_services: boolean;
-  php_generic_services: boolean;
+  ccGenericServices: boolean;
+  javaGenericServices: boolean;
+  pyGenericServices: boolean;
+  phpGenericServices: boolean;
   /**
    * Is this file deprecated?
    * Depending on the target platform, this can emit Deprecated annotations
@@ -1045,16 +1045,16 @@ export interface FileOptions {
    * only to generated classes for C++.
    */
 
-  cc_enable_arenas: boolean;
+  ccEnableArenas: boolean;
   /**
    * Sets the objective c class prefix which is prepended to all objective c
    * generated classes from this .proto. There is no default.
    */
 
-  objc_class_prefix: string;
+  objcClassPrefix: string;
   /** Namespace for generated classes; defaults to the package. */
 
-  csharp_namespace: string;
+  csharpNamespace: string;
   /**
    * By default Swift generators will take the proto package and CamelCase it
    * replacing '.' with underscore and use that to prefix the types/symbols
@@ -1062,40 +1062,40 @@ export interface FileOptions {
    * to prefix the types/symbols defined.
    */
 
-  swift_prefix: string;
+  swiftPrefix: string;
   /**
    * Sets the php class prefix which is prepended to all php generated classes
    * from this .proto. Default is empty.
    */
 
-  php_class_prefix: string;
+  phpClassPrefix: string;
   /**
    * Use this option to change the namespace of php generated classes. Default
    * is empty. When this option is empty, the package name will be used for
    * determining the namespace.
    */
 
-  php_namespace: string;
+  phpNamespace: string;
   /**
    * Use this option to change the namespace of php generated metadata classes.
    * Default is empty. When this option is empty, the proto file name will be
    * used for determining the namespace.
    */
 
-  php_metadata_namespace: string;
+  phpMetadataNamespace: string;
   /**
    * Use this option to change the package of ruby generated classes. Default
    * is empty. When this option is not set, the package name will be used for
    * determining the ruby package.
    */
 
-  ruby_package: string;
+  rubyPackage: string;
   /**
    * The parser stores options it doesn't recognize here.
    * See the documentation for the "Options" section above.
    */
 
-  uninterpreted_option: UninterpretedOption[];
+  uninterpretedOption: UninterpretedOption[];
 }
 export interface FileOptionsSDKType {
   /**
@@ -1252,14 +1252,14 @@ export interface MessageOptions {
    * Because this is an option, the above two restrictions are not enforced by
    * the protocol compiler.
    */
-  message_set_wire_format: boolean;
+  messageSetWireFormat: boolean;
   /**
    * Disables the generation of the standard "descriptor()" accessor, which can
    * conflict with a field of the same name.  This is meant to make migration
    * from proto1 easier; new code should avoid fields named "descriptor".
    */
 
-  no_standard_descriptor_accessor: boolean;
+  noStandardDescriptorAccessor: boolean;
   /**
    * Is this message deprecated?
    * Depending on the target platform, this can emit Deprecated annotations
@@ -1292,10 +1292,10 @@ export interface MessageOptions {
    * parser.
    */
 
-  map_entry: boolean;
+  mapEntry: boolean;
   /** The parser stores options it doesn't recognize here. See above. */
 
-  uninterpreted_option: UninterpretedOption[];
+  uninterpretedOption: UninterpretedOption[];
 }
 export interface MessageOptionsSDKType {
   /**
@@ -1440,7 +1440,7 @@ export interface FieldOptions {
   weak: boolean;
   /** The parser stores options it doesn't recognize here. See above. */
 
-  uninterpreted_option: UninterpretedOption[];
+  uninterpretedOption: UninterpretedOption[];
 }
 export interface FieldOptionsSDKType {
   /**
@@ -1523,7 +1523,7 @@ export interface FieldOptionsSDKType {
 }
 export interface OneofOptions {
   /** The parser stores options it doesn't recognize here. See above. */
-  uninterpreted_option: UninterpretedOption[];
+  uninterpretedOption: UninterpretedOption[];
 }
 export interface OneofOptionsSDKType {
   /** The parser stores options it doesn't recognize here. See above. */
@@ -1534,7 +1534,7 @@ export interface EnumOptions {
    * Set this option to true to allow mapping different tag names to the same
    * value.
    */
-  allow_alias: boolean;
+  allowAlias: boolean;
   /**
    * Is this enum deprecated?
    * Depending on the target platform, this can emit Deprecated annotations
@@ -1545,7 +1545,7 @@ export interface EnumOptions {
   deprecated: boolean;
   /** The parser stores options it doesn't recognize here. See above. */
 
-  uninterpreted_option: UninterpretedOption[];
+  uninterpretedOption: UninterpretedOption[];
 }
 export interface EnumOptionsSDKType {
   /**
@@ -1575,7 +1575,7 @@ export interface EnumValueOptions {
   deprecated: boolean;
   /** The parser stores options it doesn't recognize here. See above. */
 
-  uninterpreted_option: UninterpretedOption[];
+  uninterpretedOption: UninterpretedOption[];
 }
 export interface EnumValueOptionsSDKType {
   /**
@@ -1599,7 +1599,7 @@ export interface ServiceOptions {
   deprecated: boolean;
   /** The parser stores options it doesn't recognize here. See above. */
 
-  uninterpreted_option: UninterpretedOption[];
+  uninterpretedOption: UninterpretedOption[];
 }
 export interface ServiceOptionsSDKType {
   /**
@@ -1621,10 +1621,10 @@ export interface MethodOptions {
    * this is a formalization for deprecating methods.
    */
   deprecated: boolean;
-  idempotency_level: MethodOptions_IdempotencyLevel;
+  idempotencyLevel: MethodOptions_IdempotencyLevel;
   /** The parser stores options it doesn't recognize here. See above. */
 
-  uninterpreted_option: UninterpretedOption[];
+  uninterpretedOption: UninterpretedOption[];
 }
 export interface MethodOptionsSDKType {
   /**
@@ -1655,12 +1655,12 @@ export interface UninterpretedOption {
    * identified it as during parsing. Exactly one of these should be set.
    */
 
-  identifier_value: string;
-  positive_int_value: Long;
-  negative_int_value: Long;
-  double_value: number;
-  string_value: Uint8Array;
-  aggregate_value: string;
+  identifierValue: string;
+  positiveIntValue: Long;
+  negativeIntValue: Long;
+  doubleValue: number;
+  stringValue: Uint8Array;
+  aggregateValue: string;
 }
 /**
  * A message representing a option the parser does not recognize. This only
@@ -1694,8 +1694,8 @@ export interface UninterpretedOptionSDKType {
  */
 
 export interface UninterpretedOption_NamePart {
-  name_part: string;
-  is_extension: boolean;
+  namePart: string;
+  isExtension: boolean;
 }
 /**
  * The name of the uninterpreted option.  Each string represents a segment in
@@ -1901,9 +1901,9 @@ export interface SourceCodeInfo_Location {
    * // ignored detached comments.
    */
 
-  leading_comments: string;
-  trailing_comments: string;
-  leading_detached_comments: string[];
+  leadingComments: string;
+  trailingComments: string;
+  leadingDetachedComments: string[];
 }
 export interface SourceCodeInfo_LocationSDKType {
   /**
@@ -2029,7 +2029,7 @@ export interface GeneratedCodeInfo_Annotation {
   path: number[];
   /** Identifies the filesystem path to the original source .proto. */
 
-  source_file: string;
+  sourceFile: string;
   /**
    * Identifies the starting offset in bytes in the generated code
    * that relates to the identified object.
@@ -2118,14 +2118,14 @@ function createBaseFileDescriptorProto(): FileDescriptorProto {
     name: "",
     package: "",
     dependency: [],
-    public_dependency: [],
-    weak_dependency: [],
-    message_type: [],
-    enum_type: [],
+    publicDependency: [],
+    weakDependency: [],
+    messageType: [],
+    enumType: [],
     service: [],
     extension: [],
     options: undefined,
-    source_code_info: undefined,
+    sourceCodeInfo: undefined,
     syntax: ""
   };
 }
@@ -2146,24 +2146,24 @@ export const FileDescriptorProto = {
 
     writer.uint32(82).fork();
 
-    for (const v of message.public_dependency) {
+    for (const v of message.publicDependency) {
       writer.int32(v);
     }
 
     writer.ldelim();
     writer.uint32(90).fork();
 
-    for (const v of message.weak_dependency) {
+    for (const v of message.weakDependency) {
       writer.int32(v);
     }
 
     writer.ldelim();
 
-    for (const v of message.message_type) {
+    for (const v of message.messageType) {
       DescriptorProto.encode(v!, writer.uint32(34).fork()).ldelim();
     }
 
-    for (const v of message.enum_type) {
+    for (const v of message.enumType) {
       EnumDescriptorProto.encode(v!, writer.uint32(42).fork()).ldelim();
     }
 
@@ -2179,8 +2179,8 @@ export const FileDescriptorProto = {
       FileOptions.encode(message.options, writer.uint32(66).fork()).ldelim();
     }
 
-    if (message.source_code_info !== undefined) {
-      SourceCodeInfo.encode(message.source_code_info, writer.uint32(74).fork()).ldelim();
+    if (message.sourceCodeInfo !== undefined) {
+      SourceCodeInfo.encode(message.sourceCodeInfo, writer.uint32(74).fork()).ldelim();
     }
 
     if (message.syntax !== "") {
@@ -2216,10 +2216,10 @@ export const FileDescriptorProto = {
             const end2 = reader.uint32() + reader.pos;
 
             while (reader.pos < end2) {
-              message.public_dependency.push(reader.int32());
+              message.publicDependency.push(reader.int32());
             }
           } else {
-            message.public_dependency.push(reader.int32());
+            message.publicDependency.push(reader.int32());
           }
 
           break;
@@ -2229,20 +2229,20 @@ export const FileDescriptorProto = {
             const end2 = reader.uint32() + reader.pos;
 
             while (reader.pos < end2) {
-              message.weak_dependency.push(reader.int32());
+              message.weakDependency.push(reader.int32());
             }
           } else {
-            message.weak_dependency.push(reader.int32());
+            message.weakDependency.push(reader.int32());
           }
 
           break;
 
         case 4:
-          message.message_type.push(DescriptorProto.decode(reader, reader.uint32()));
+          message.messageType.push(DescriptorProto.decode(reader, reader.uint32()));
           break;
 
         case 5:
-          message.enum_type.push(EnumDescriptorProto.decode(reader, reader.uint32()));
+          message.enumType.push(EnumDescriptorProto.decode(reader, reader.uint32()));
           break;
 
         case 6:
@@ -2258,7 +2258,7 @@ export const FileDescriptorProto = {
           break;
 
         case 9:
-          message.source_code_info = SourceCodeInfo.decode(reader, reader.uint32());
+          message.sourceCodeInfo = SourceCodeInfo.decode(reader, reader.uint32());
           break;
 
         case 12:
@@ -2279,14 +2279,14 @@ export const FileDescriptorProto = {
     message.name = object.name ?? "";
     message.package = object.package ?? "";
     message.dependency = object.dependency?.map(e => e) || [];
-    message.public_dependency = object.public_dependency?.map(e => e) || [];
-    message.weak_dependency = object.weak_dependency?.map(e => e) || [];
-    message.message_type = object.message_type?.map(e => DescriptorProto.fromPartial(e)) || [];
-    message.enum_type = object.enum_type?.map(e => EnumDescriptorProto.fromPartial(e)) || [];
+    message.publicDependency = object.publicDependency?.map(e => e) || [];
+    message.weakDependency = object.weakDependency?.map(e => e) || [];
+    message.messageType = object.messageType?.map(e => DescriptorProto.fromPartial(e)) || [];
+    message.enumType = object.enumType?.map(e => EnumDescriptorProto.fromPartial(e)) || [];
     message.service = object.service?.map(e => ServiceDescriptorProto.fromPartial(e)) || [];
     message.extension = object.extension?.map(e => FieldDescriptorProto.fromPartial(e)) || [];
     message.options = object.options !== undefined && object.options !== null ? FileOptions.fromPartial(object.options) : undefined;
-    message.source_code_info = object.source_code_info !== undefined && object.source_code_info !== null ? SourceCodeInfo.fromPartial(object.source_code_info) : undefined;
+    message.sourceCodeInfo = object.sourceCodeInfo !== undefined && object.sourceCodeInfo !== null ? SourceCodeInfo.fromPartial(object.sourceCodeInfo) : undefined;
     message.syntax = object.syntax ?? "";
     return message;
   }
@@ -2298,13 +2298,13 @@ function createBaseDescriptorProto(): DescriptorProto {
     name: "",
     field: [],
     extension: [],
-    nested_type: [],
-    enum_type: [],
-    extension_range: [],
-    oneof_decl: [],
+    nestedType: [],
+    enumType: [],
+    extensionRange: [],
+    oneofDecl: [],
     options: undefined,
-    reserved_range: [],
-    reserved_name: []
+    reservedRange: [],
+    reservedName: []
   };
 }
 
@@ -2322,19 +2322,19 @@ export const DescriptorProto = {
       FieldDescriptorProto.encode(v!, writer.uint32(50).fork()).ldelim();
     }
 
-    for (const v of message.nested_type) {
+    for (const v of message.nestedType) {
       DescriptorProto.encode(v!, writer.uint32(26).fork()).ldelim();
     }
 
-    for (const v of message.enum_type) {
+    for (const v of message.enumType) {
       EnumDescriptorProto.encode(v!, writer.uint32(34).fork()).ldelim();
     }
 
-    for (const v of message.extension_range) {
+    for (const v of message.extensionRange) {
       DescriptorProto_ExtensionRange.encode(v!, writer.uint32(42).fork()).ldelim();
     }
 
-    for (const v of message.oneof_decl) {
+    for (const v of message.oneofDecl) {
       OneofDescriptorProto.encode(v!, writer.uint32(66).fork()).ldelim();
     }
 
@@ -2342,11 +2342,11 @@ export const DescriptorProto = {
       MessageOptions.encode(message.options, writer.uint32(58).fork()).ldelim();
     }
 
-    for (const v of message.reserved_range) {
+    for (const v of message.reservedRange) {
       DescriptorProto_ReservedRange.encode(v!, writer.uint32(74).fork()).ldelim();
     }
 
-    for (const v of message.reserved_name) {
+    for (const v of message.reservedName) {
       writer.uint32(82).string(v!);
     }
 
@@ -2375,19 +2375,19 @@ export const DescriptorProto = {
           break;
 
         case 3:
-          message.nested_type.push(DescriptorProto.decode(reader, reader.uint32()));
+          message.nestedType.push(DescriptorProto.decode(reader, reader.uint32()));
           break;
 
         case 4:
-          message.enum_type.push(EnumDescriptorProto.decode(reader, reader.uint32()));
+          message.enumType.push(EnumDescriptorProto.decode(reader, reader.uint32()));
           break;
 
         case 5:
-          message.extension_range.push(DescriptorProto_ExtensionRange.decode(reader, reader.uint32()));
+          message.extensionRange.push(DescriptorProto_ExtensionRange.decode(reader, reader.uint32()));
           break;
 
         case 8:
-          message.oneof_decl.push(OneofDescriptorProto.decode(reader, reader.uint32()));
+          message.oneofDecl.push(OneofDescriptorProto.decode(reader, reader.uint32()));
           break;
 
         case 7:
@@ -2395,11 +2395,11 @@ export const DescriptorProto = {
           break;
 
         case 9:
-          message.reserved_range.push(DescriptorProto_ReservedRange.decode(reader, reader.uint32()));
+          message.reservedRange.push(DescriptorProto_ReservedRange.decode(reader, reader.uint32()));
           break;
 
         case 10:
-          message.reserved_name.push(reader.string());
+          message.reservedName.push(reader.string());
           break;
 
         default:
@@ -2416,13 +2416,13 @@ export const DescriptorProto = {
     message.name = object.name ?? "";
     message.field = object.field?.map(e => FieldDescriptorProto.fromPartial(e)) || [];
     message.extension = object.extension?.map(e => FieldDescriptorProto.fromPartial(e)) || [];
-    message.nested_type = object.nested_type?.map(e => DescriptorProto.fromPartial(e)) || [];
-    message.enum_type = object.enum_type?.map(e => EnumDescriptorProto.fromPartial(e)) || [];
-    message.extension_range = object.extension_range?.map(e => DescriptorProto_ExtensionRange.fromPartial(e)) || [];
-    message.oneof_decl = object.oneof_decl?.map(e => OneofDescriptorProto.fromPartial(e)) || [];
+    message.nestedType = object.nestedType?.map(e => DescriptorProto.fromPartial(e)) || [];
+    message.enumType = object.enumType?.map(e => EnumDescriptorProto.fromPartial(e)) || [];
+    message.extensionRange = object.extensionRange?.map(e => DescriptorProto_ExtensionRange.fromPartial(e)) || [];
+    message.oneofDecl = object.oneofDecl?.map(e => OneofDescriptorProto.fromPartial(e)) || [];
     message.options = object.options !== undefined && object.options !== null ? MessageOptions.fromPartial(object.options) : undefined;
-    message.reserved_range = object.reserved_range?.map(e => DescriptorProto_ReservedRange.fromPartial(e)) || [];
-    message.reserved_name = object.reserved_name?.map(e => e) || [];
+    message.reservedRange = object.reservedRange?.map(e => DescriptorProto_ReservedRange.fromPartial(e)) || [];
+    message.reservedName = object.reservedName?.map(e => e) || [];
     return message;
   }
 
@@ -2550,13 +2550,13 @@ export const DescriptorProto_ReservedRange = {
 
 function createBaseExtensionRangeOptions(): ExtensionRangeOptions {
   return {
-    uninterpreted_option: []
+    uninterpretedOption: []
   };
 }
 
 export const ExtensionRangeOptions = {
   encode(message: ExtensionRangeOptions, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.uninterpreted_option) {
+    for (const v of message.uninterpretedOption) {
       UninterpretedOption.encode(v!, writer.uint32(7994).fork()).ldelim();
     }
 
@@ -2573,7 +2573,7 @@ export const ExtensionRangeOptions = {
 
       switch (tag >>> 3) {
         case 999:
-          message.uninterpreted_option.push(UninterpretedOption.decode(reader, reader.uint32()));
+          message.uninterpretedOption.push(UninterpretedOption.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -2587,7 +2587,7 @@ export const ExtensionRangeOptions = {
 
   fromPartial(object: DeepPartial<ExtensionRangeOptions>): ExtensionRangeOptions {
     const message = createBaseExtensionRangeOptions();
-    message.uninterpreted_option = object.uninterpreted_option?.map(e => UninterpretedOption.fromPartial(e)) || [];
+    message.uninterpretedOption = object.uninterpretedOption?.map(e => UninterpretedOption.fromPartial(e)) || [];
     return message;
   }
 
@@ -2599,11 +2599,11 @@ function createBaseFieldDescriptorProto(): FieldDescriptorProto {
     number: 0,
     label: 0,
     type: 0,
-    type_name: "",
+    typeName: "",
     extendee: "",
-    default_value: "",
-    oneof_index: 0,
-    json_name: "",
+    defaultValue: "",
+    oneofIndex: 0,
+    jsonName: "",
     options: undefined
   };
 }
@@ -2626,24 +2626,24 @@ export const FieldDescriptorProto = {
       writer.uint32(40).int32(message.type);
     }
 
-    if (message.type_name !== "") {
-      writer.uint32(50).string(message.type_name);
+    if (message.typeName !== "") {
+      writer.uint32(50).string(message.typeName);
     }
 
     if (message.extendee !== "") {
       writer.uint32(18).string(message.extendee);
     }
 
-    if (message.default_value !== "") {
-      writer.uint32(58).string(message.default_value);
+    if (message.defaultValue !== "") {
+      writer.uint32(58).string(message.defaultValue);
     }
 
-    if (message.oneof_index !== 0) {
-      writer.uint32(72).int32(message.oneof_index);
+    if (message.oneofIndex !== 0) {
+      writer.uint32(72).int32(message.oneofIndex);
     }
 
-    if (message.json_name !== "") {
-      writer.uint32(82).string(message.json_name);
+    if (message.jsonName !== "") {
+      writer.uint32(82).string(message.jsonName);
     }
 
     if (message.options !== undefined) {
@@ -2679,7 +2679,7 @@ export const FieldDescriptorProto = {
           break;
 
         case 6:
-          message.type_name = reader.string();
+          message.typeName = reader.string();
           break;
 
         case 2:
@@ -2687,15 +2687,15 @@ export const FieldDescriptorProto = {
           break;
 
         case 7:
-          message.default_value = reader.string();
+          message.defaultValue = reader.string();
           break;
 
         case 9:
-          message.oneof_index = reader.int32();
+          message.oneofIndex = reader.int32();
           break;
 
         case 10:
-          message.json_name = reader.string();
+          message.jsonName = reader.string();
           break;
 
         case 8:
@@ -2717,11 +2717,11 @@ export const FieldDescriptorProto = {
     message.number = object.number ?? 0;
     message.label = object.label ?? 0;
     message.type = object.type ?? 0;
-    message.type_name = object.type_name ?? "";
+    message.typeName = object.typeName ?? "";
     message.extendee = object.extendee ?? "";
-    message.default_value = object.default_value ?? "";
-    message.oneof_index = object.oneof_index ?? 0;
-    message.json_name = object.json_name ?? "";
+    message.defaultValue = object.defaultValue ?? "";
+    message.oneofIndex = object.oneofIndex ?? 0;
+    message.jsonName = object.jsonName ?? "";
     message.options = object.options !== undefined && object.options !== null ? FieldOptions.fromPartial(object.options) : undefined;
     return message;
   }
@@ -2788,8 +2788,8 @@ function createBaseEnumDescriptorProto(): EnumDescriptorProto {
     name: "",
     value: [],
     options: undefined,
-    reserved_range: [],
-    reserved_name: []
+    reservedRange: [],
+    reservedName: []
   };
 }
 
@@ -2807,11 +2807,11 @@ export const EnumDescriptorProto = {
       EnumOptions.encode(message.options, writer.uint32(26).fork()).ldelim();
     }
 
-    for (const v of message.reserved_range) {
+    for (const v of message.reservedRange) {
       EnumDescriptorProto_EnumReservedRange.encode(v!, writer.uint32(34).fork()).ldelim();
     }
 
-    for (const v of message.reserved_name) {
+    for (const v of message.reservedName) {
       writer.uint32(42).string(v!);
     }
 
@@ -2840,11 +2840,11 @@ export const EnumDescriptorProto = {
           break;
 
         case 4:
-          message.reserved_range.push(EnumDescriptorProto_EnumReservedRange.decode(reader, reader.uint32()));
+          message.reservedRange.push(EnumDescriptorProto_EnumReservedRange.decode(reader, reader.uint32()));
           break;
 
         case 5:
-          message.reserved_name.push(reader.string());
+          message.reservedName.push(reader.string());
           break;
 
         default:
@@ -2861,8 +2861,8 @@ export const EnumDescriptorProto = {
     message.name = object.name ?? "";
     message.value = object.value?.map(e => EnumValueDescriptorProto.fromPartial(e)) || [];
     message.options = object.options !== undefined && object.options !== null ? EnumOptions.fromPartial(object.options) : undefined;
-    message.reserved_range = object.reserved_range?.map(e => EnumDescriptorProto_EnumReservedRange.fromPartial(e)) || [];
-    message.reserved_name = object.reserved_name?.map(e => e) || [];
+    message.reservedRange = object.reservedRange?.map(e => EnumDescriptorProto_EnumReservedRange.fromPartial(e)) || [];
+    message.reservedName = object.reservedName?.map(e => e) || [];
     return message;
   }
 
@@ -3056,11 +3056,11 @@ export const ServiceDescriptorProto = {
 function createBaseMethodDescriptorProto(): MethodDescriptorProto {
   return {
     name: "",
-    input_type: "",
-    output_type: "",
+    inputType: "",
+    outputType: "",
     options: undefined,
-    client_streaming: false,
-    server_streaming: false
+    clientStreaming: false,
+    serverStreaming: false
   };
 }
 
@@ -3070,24 +3070,24 @@ export const MethodDescriptorProto = {
       writer.uint32(10).string(message.name);
     }
 
-    if (message.input_type !== "") {
-      writer.uint32(18).string(message.input_type);
+    if (message.inputType !== "") {
+      writer.uint32(18).string(message.inputType);
     }
 
-    if (message.output_type !== "") {
-      writer.uint32(26).string(message.output_type);
+    if (message.outputType !== "") {
+      writer.uint32(26).string(message.outputType);
     }
 
     if (message.options !== undefined) {
       MethodOptions.encode(message.options, writer.uint32(34).fork()).ldelim();
     }
 
-    if (message.client_streaming === true) {
-      writer.uint32(40).bool(message.client_streaming);
+    if (message.clientStreaming === true) {
+      writer.uint32(40).bool(message.clientStreaming);
     }
 
-    if (message.server_streaming === true) {
-      writer.uint32(48).bool(message.server_streaming);
+    if (message.serverStreaming === true) {
+      writer.uint32(48).bool(message.serverStreaming);
     }
 
     return writer;
@@ -3107,11 +3107,11 @@ export const MethodDescriptorProto = {
           break;
 
         case 2:
-          message.input_type = reader.string();
+          message.inputType = reader.string();
           break;
 
         case 3:
-          message.output_type = reader.string();
+          message.outputType = reader.string();
           break;
 
         case 4:
@@ -3119,11 +3119,11 @@ export const MethodDescriptorProto = {
           break;
 
         case 5:
-          message.client_streaming = reader.bool();
+          message.clientStreaming = reader.bool();
           break;
 
         case 6:
-          message.server_streaming = reader.bool();
+          message.serverStreaming = reader.bool();
           break;
 
         default:
@@ -3138,11 +3138,11 @@ export const MethodDescriptorProto = {
   fromPartial(object: DeepPartial<MethodDescriptorProto>): MethodDescriptorProto {
     const message = createBaseMethodDescriptorProto();
     message.name = object.name ?? "";
-    message.input_type = object.input_type ?? "";
-    message.output_type = object.output_type ?? "";
+    message.inputType = object.inputType ?? "";
+    message.outputType = object.outputType ?? "";
     message.options = object.options !== undefined && object.options !== null ? MethodOptions.fromPartial(object.options) : undefined;
-    message.client_streaming = object.client_streaming ?? false;
-    message.server_streaming = object.server_streaming ?? false;
+    message.clientStreaming = object.clientStreaming ?? false;
+    message.serverStreaming = object.serverStreaming ?? false;
     return message;
   }
 
@@ -3150,113 +3150,113 @@ export const MethodDescriptorProto = {
 
 function createBaseFileOptions(): FileOptions {
   return {
-    java_package: "",
-    java_outer_classname: "",
-    java_multiple_files: false,
-    java_generate_equals_and_hash: false,
-    java_string_check_utf8: false,
-    optimize_for: 0,
-    go_package: "",
-    cc_generic_services: false,
-    java_generic_services: false,
-    py_generic_services: false,
-    php_generic_services: false,
+    javaPackage: "",
+    javaOuterClassname: "",
+    javaMultipleFiles: false,
+    javaGenerateEqualsAndHash: false,
+    javaStringCheckUtf8: false,
+    optimizeFor: 0,
+    goPackage: "",
+    ccGenericServices: false,
+    javaGenericServices: false,
+    pyGenericServices: false,
+    phpGenericServices: false,
     deprecated: false,
-    cc_enable_arenas: false,
-    objc_class_prefix: "",
-    csharp_namespace: "",
-    swift_prefix: "",
-    php_class_prefix: "",
-    php_namespace: "",
-    php_metadata_namespace: "",
-    ruby_package: "",
-    uninterpreted_option: []
+    ccEnableArenas: false,
+    objcClassPrefix: "",
+    csharpNamespace: "",
+    swiftPrefix: "",
+    phpClassPrefix: "",
+    phpNamespace: "",
+    phpMetadataNamespace: "",
+    rubyPackage: "",
+    uninterpretedOption: []
   };
 }
 
 export const FileOptions = {
   encode(message: FileOptions, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.java_package !== "") {
-      writer.uint32(10).string(message.java_package);
+    if (message.javaPackage !== "") {
+      writer.uint32(10).string(message.javaPackage);
     }
 
-    if (message.java_outer_classname !== "") {
-      writer.uint32(66).string(message.java_outer_classname);
+    if (message.javaOuterClassname !== "") {
+      writer.uint32(66).string(message.javaOuterClassname);
     }
 
-    if (message.java_multiple_files === true) {
-      writer.uint32(80).bool(message.java_multiple_files);
+    if (message.javaMultipleFiles === true) {
+      writer.uint32(80).bool(message.javaMultipleFiles);
     }
 
-    if (message.java_generate_equals_and_hash === true) {
-      writer.uint32(160).bool(message.java_generate_equals_and_hash);
+    if (message.javaGenerateEqualsAndHash === true) {
+      writer.uint32(160).bool(message.javaGenerateEqualsAndHash);
     }
 
-    if (message.java_string_check_utf8 === true) {
-      writer.uint32(216).bool(message.java_string_check_utf8);
+    if (message.javaStringCheckUtf8 === true) {
+      writer.uint32(216).bool(message.javaStringCheckUtf8);
     }
 
-    if (message.optimize_for !== 0) {
-      writer.uint32(72).int32(message.optimize_for);
+    if (message.optimizeFor !== 0) {
+      writer.uint32(72).int32(message.optimizeFor);
     }
 
-    if (message.go_package !== "") {
-      writer.uint32(90).string(message.go_package);
+    if (message.goPackage !== "") {
+      writer.uint32(90).string(message.goPackage);
     }
 
-    if (message.cc_generic_services === true) {
-      writer.uint32(128).bool(message.cc_generic_services);
+    if (message.ccGenericServices === true) {
+      writer.uint32(128).bool(message.ccGenericServices);
     }
 
-    if (message.java_generic_services === true) {
-      writer.uint32(136).bool(message.java_generic_services);
+    if (message.javaGenericServices === true) {
+      writer.uint32(136).bool(message.javaGenericServices);
     }
 
-    if (message.py_generic_services === true) {
-      writer.uint32(144).bool(message.py_generic_services);
+    if (message.pyGenericServices === true) {
+      writer.uint32(144).bool(message.pyGenericServices);
     }
 
-    if (message.php_generic_services === true) {
-      writer.uint32(336).bool(message.php_generic_services);
+    if (message.phpGenericServices === true) {
+      writer.uint32(336).bool(message.phpGenericServices);
     }
 
     if (message.deprecated === true) {
       writer.uint32(184).bool(message.deprecated);
     }
 
-    if (message.cc_enable_arenas === true) {
-      writer.uint32(248).bool(message.cc_enable_arenas);
+    if (message.ccEnableArenas === true) {
+      writer.uint32(248).bool(message.ccEnableArenas);
     }
 
-    if (message.objc_class_prefix !== "") {
-      writer.uint32(290).string(message.objc_class_prefix);
+    if (message.objcClassPrefix !== "") {
+      writer.uint32(290).string(message.objcClassPrefix);
     }
 
-    if (message.csharp_namespace !== "") {
-      writer.uint32(298).string(message.csharp_namespace);
+    if (message.csharpNamespace !== "") {
+      writer.uint32(298).string(message.csharpNamespace);
     }
 
-    if (message.swift_prefix !== "") {
-      writer.uint32(314).string(message.swift_prefix);
+    if (message.swiftPrefix !== "") {
+      writer.uint32(314).string(message.swiftPrefix);
     }
 
-    if (message.php_class_prefix !== "") {
-      writer.uint32(322).string(message.php_class_prefix);
+    if (message.phpClassPrefix !== "") {
+      writer.uint32(322).string(message.phpClassPrefix);
     }
 
-    if (message.php_namespace !== "") {
-      writer.uint32(330).string(message.php_namespace);
+    if (message.phpNamespace !== "") {
+      writer.uint32(330).string(message.phpNamespace);
     }
 
-    if (message.php_metadata_namespace !== "") {
-      writer.uint32(354).string(message.php_metadata_namespace);
+    if (message.phpMetadataNamespace !== "") {
+      writer.uint32(354).string(message.phpMetadataNamespace);
     }
 
-    if (message.ruby_package !== "") {
-      writer.uint32(362).string(message.ruby_package);
+    if (message.rubyPackage !== "") {
+      writer.uint32(362).string(message.rubyPackage);
     }
 
-    for (const v of message.uninterpreted_option) {
+    for (const v of message.uninterpretedOption) {
       UninterpretedOption.encode(v!, writer.uint32(7994).fork()).ldelim();
     }
 
@@ -3273,47 +3273,47 @@ export const FileOptions = {
 
       switch (tag >>> 3) {
         case 1:
-          message.java_package = reader.string();
+          message.javaPackage = reader.string();
           break;
 
         case 8:
-          message.java_outer_classname = reader.string();
+          message.javaOuterClassname = reader.string();
           break;
 
         case 10:
-          message.java_multiple_files = reader.bool();
+          message.javaMultipleFiles = reader.bool();
           break;
 
         case 20:
-          message.java_generate_equals_and_hash = reader.bool();
+          message.javaGenerateEqualsAndHash = reader.bool();
           break;
 
         case 27:
-          message.java_string_check_utf8 = reader.bool();
+          message.javaStringCheckUtf8 = reader.bool();
           break;
 
         case 9:
-          message.optimize_for = (reader.int32() as any);
+          message.optimizeFor = (reader.int32() as any);
           break;
 
         case 11:
-          message.go_package = reader.string();
+          message.goPackage = reader.string();
           break;
 
         case 16:
-          message.cc_generic_services = reader.bool();
+          message.ccGenericServices = reader.bool();
           break;
 
         case 17:
-          message.java_generic_services = reader.bool();
+          message.javaGenericServices = reader.bool();
           break;
 
         case 18:
-          message.py_generic_services = reader.bool();
+          message.pyGenericServices = reader.bool();
           break;
 
         case 42:
-          message.php_generic_services = reader.bool();
+          message.phpGenericServices = reader.bool();
           break;
 
         case 23:
@@ -3321,39 +3321,39 @@ export const FileOptions = {
           break;
 
         case 31:
-          message.cc_enable_arenas = reader.bool();
+          message.ccEnableArenas = reader.bool();
           break;
 
         case 36:
-          message.objc_class_prefix = reader.string();
+          message.objcClassPrefix = reader.string();
           break;
 
         case 37:
-          message.csharp_namespace = reader.string();
+          message.csharpNamespace = reader.string();
           break;
 
         case 39:
-          message.swift_prefix = reader.string();
+          message.swiftPrefix = reader.string();
           break;
 
         case 40:
-          message.php_class_prefix = reader.string();
+          message.phpClassPrefix = reader.string();
           break;
 
         case 41:
-          message.php_namespace = reader.string();
+          message.phpNamespace = reader.string();
           break;
 
         case 44:
-          message.php_metadata_namespace = reader.string();
+          message.phpMetadataNamespace = reader.string();
           break;
 
         case 45:
-          message.ruby_package = reader.string();
+          message.rubyPackage = reader.string();
           break;
 
         case 999:
-          message.uninterpreted_option.push(UninterpretedOption.decode(reader, reader.uint32()));
+          message.uninterpretedOption.push(UninterpretedOption.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -3367,27 +3367,27 @@ export const FileOptions = {
 
   fromPartial(object: DeepPartial<FileOptions>): FileOptions {
     const message = createBaseFileOptions();
-    message.java_package = object.java_package ?? "";
-    message.java_outer_classname = object.java_outer_classname ?? "";
-    message.java_multiple_files = object.java_multiple_files ?? false;
-    message.java_generate_equals_and_hash = object.java_generate_equals_and_hash ?? false;
-    message.java_string_check_utf8 = object.java_string_check_utf8 ?? false;
-    message.optimize_for = object.optimize_for ?? 0;
-    message.go_package = object.go_package ?? "";
-    message.cc_generic_services = object.cc_generic_services ?? false;
-    message.java_generic_services = object.java_generic_services ?? false;
-    message.py_generic_services = object.py_generic_services ?? false;
-    message.php_generic_services = object.php_generic_services ?? false;
+    message.javaPackage = object.javaPackage ?? "";
+    message.javaOuterClassname = object.javaOuterClassname ?? "";
+    message.javaMultipleFiles = object.javaMultipleFiles ?? false;
+    message.javaGenerateEqualsAndHash = object.javaGenerateEqualsAndHash ?? false;
+    message.javaStringCheckUtf8 = object.javaStringCheckUtf8 ?? false;
+    message.optimizeFor = object.optimizeFor ?? 0;
+    message.goPackage = object.goPackage ?? "";
+    message.ccGenericServices = object.ccGenericServices ?? false;
+    message.javaGenericServices = object.javaGenericServices ?? false;
+    message.pyGenericServices = object.pyGenericServices ?? false;
+    message.phpGenericServices = object.phpGenericServices ?? false;
     message.deprecated = object.deprecated ?? false;
-    message.cc_enable_arenas = object.cc_enable_arenas ?? false;
-    message.objc_class_prefix = object.objc_class_prefix ?? "";
-    message.csharp_namespace = object.csharp_namespace ?? "";
-    message.swift_prefix = object.swift_prefix ?? "";
-    message.php_class_prefix = object.php_class_prefix ?? "";
-    message.php_namespace = object.php_namespace ?? "";
-    message.php_metadata_namespace = object.php_metadata_namespace ?? "";
-    message.ruby_package = object.ruby_package ?? "";
-    message.uninterpreted_option = object.uninterpreted_option?.map(e => UninterpretedOption.fromPartial(e)) || [];
+    message.ccEnableArenas = object.ccEnableArenas ?? false;
+    message.objcClassPrefix = object.objcClassPrefix ?? "";
+    message.csharpNamespace = object.csharpNamespace ?? "";
+    message.swiftPrefix = object.swiftPrefix ?? "";
+    message.phpClassPrefix = object.phpClassPrefix ?? "";
+    message.phpNamespace = object.phpNamespace ?? "";
+    message.phpMetadataNamespace = object.phpMetadataNamespace ?? "";
+    message.rubyPackage = object.rubyPackage ?? "";
+    message.uninterpretedOption = object.uninterpretedOption?.map(e => UninterpretedOption.fromPartial(e)) || [];
     return message;
   }
 
@@ -3395,33 +3395,33 @@ export const FileOptions = {
 
 function createBaseMessageOptions(): MessageOptions {
   return {
-    message_set_wire_format: false,
-    no_standard_descriptor_accessor: false,
+    messageSetWireFormat: false,
+    noStandardDescriptorAccessor: false,
     deprecated: false,
-    map_entry: false,
-    uninterpreted_option: []
+    mapEntry: false,
+    uninterpretedOption: []
   };
 }
 
 export const MessageOptions = {
   encode(message: MessageOptions, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.message_set_wire_format === true) {
-      writer.uint32(8).bool(message.message_set_wire_format);
+    if (message.messageSetWireFormat === true) {
+      writer.uint32(8).bool(message.messageSetWireFormat);
     }
 
-    if (message.no_standard_descriptor_accessor === true) {
-      writer.uint32(16).bool(message.no_standard_descriptor_accessor);
+    if (message.noStandardDescriptorAccessor === true) {
+      writer.uint32(16).bool(message.noStandardDescriptorAccessor);
     }
 
     if (message.deprecated === true) {
       writer.uint32(24).bool(message.deprecated);
     }
 
-    if (message.map_entry === true) {
-      writer.uint32(56).bool(message.map_entry);
+    if (message.mapEntry === true) {
+      writer.uint32(56).bool(message.mapEntry);
     }
 
-    for (const v of message.uninterpreted_option) {
+    for (const v of message.uninterpretedOption) {
       UninterpretedOption.encode(v!, writer.uint32(7994).fork()).ldelim();
     }
 
@@ -3438,11 +3438,11 @@ export const MessageOptions = {
 
       switch (tag >>> 3) {
         case 1:
-          message.message_set_wire_format = reader.bool();
+          message.messageSetWireFormat = reader.bool();
           break;
 
         case 2:
-          message.no_standard_descriptor_accessor = reader.bool();
+          message.noStandardDescriptorAccessor = reader.bool();
           break;
 
         case 3:
@@ -3450,11 +3450,11 @@ export const MessageOptions = {
           break;
 
         case 7:
-          message.map_entry = reader.bool();
+          message.mapEntry = reader.bool();
           break;
 
         case 999:
-          message.uninterpreted_option.push(UninterpretedOption.decode(reader, reader.uint32()));
+          message.uninterpretedOption.push(UninterpretedOption.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -3468,11 +3468,11 @@ export const MessageOptions = {
 
   fromPartial(object: DeepPartial<MessageOptions>): MessageOptions {
     const message = createBaseMessageOptions();
-    message.message_set_wire_format = object.message_set_wire_format ?? false;
-    message.no_standard_descriptor_accessor = object.no_standard_descriptor_accessor ?? false;
+    message.messageSetWireFormat = object.messageSetWireFormat ?? false;
+    message.noStandardDescriptorAccessor = object.noStandardDescriptorAccessor ?? false;
     message.deprecated = object.deprecated ?? false;
-    message.map_entry = object.map_entry ?? false;
-    message.uninterpreted_option = object.uninterpreted_option?.map(e => UninterpretedOption.fromPartial(e)) || [];
+    message.mapEntry = object.mapEntry ?? false;
+    message.uninterpretedOption = object.uninterpretedOption?.map(e => UninterpretedOption.fromPartial(e)) || [];
     return message;
   }
 
@@ -3486,7 +3486,7 @@ function createBaseFieldOptions(): FieldOptions {
     lazy: false,
     deprecated: false,
     weak: false,
-    uninterpreted_option: []
+    uninterpretedOption: []
   };
 }
 
@@ -3516,7 +3516,7 @@ export const FieldOptions = {
       writer.uint32(80).bool(message.weak);
     }
 
-    for (const v of message.uninterpreted_option) {
+    for (const v of message.uninterpretedOption) {
       UninterpretedOption.encode(v!, writer.uint32(7994).fork()).ldelim();
     }
 
@@ -3557,7 +3557,7 @@ export const FieldOptions = {
           break;
 
         case 999:
-          message.uninterpreted_option.push(UninterpretedOption.decode(reader, reader.uint32()));
+          message.uninterpretedOption.push(UninterpretedOption.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -3577,7 +3577,7 @@ export const FieldOptions = {
     message.lazy = object.lazy ?? false;
     message.deprecated = object.deprecated ?? false;
     message.weak = object.weak ?? false;
-    message.uninterpreted_option = object.uninterpreted_option?.map(e => UninterpretedOption.fromPartial(e)) || [];
+    message.uninterpretedOption = object.uninterpretedOption?.map(e => UninterpretedOption.fromPartial(e)) || [];
     return message;
   }
 
@@ -3585,13 +3585,13 @@ export const FieldOptions = {
 
 function createBaseOneofOptions(): OneofOptions {
   return {
-    uninterpreted_option: []
+    uninterpretedOption: []
   };
 }
 
 export const OneofOptions = {
   encode(message: OneofOptions, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.uninterpreted_option) {
+    for (const v of message.uninterpretedOption) {
       UninterpretedOption.encode(v!, writer.uint32(7994).fork()).ldelim();
     }
 
@@ -3608,7 +3608,7 @@ export const OneofOptions = {
 
       switch (tag >>> 3) {
         case 999:
-          message.uninterpreted_option.push(UninterpretedOption.decode(reader, reader.uint32()));
+          message.uninterpretedOption.push(UninterpretedOption.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -3622,7 +3622,7 @@ export const OneofOptions = {
 
   fromPartial(object: DeepPartial<OneofOptions>): OneofOptions {
     const message = createBaseOneofOptions();
-    message.uninterpreted_option = object.uninterpreted_option?.map(e => UninterpretedOption.fromPartial(e)) || [];
+    message.uninterpretedOption = object.uninterpretedOption?.map(e => UninterpretedOption.fromPartial(e)) || [];
     return message;
   }
 
@@ -3630,23 +3630,23 @@ export const OneofOptions = {
 
 function createBaseEnumOptions(): EnumOptions {
   return {
-    allow_alias: false,
+    allowAlias: false,
     deprecated: false,
-    uninterpreted_option: []
+    uninterpretedOption: []
   };
 }
 
 export const EnumOptions = {
   encode(message: EnumOptions, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.allow_alias === true) {
-      writer.uint32(16).bool(message.allow_alias);
+    if (message.allowAlias === true) {
+      writer.uint32(16).bool(message.allowAlias);
     }
 
     if (message.deprecated === true) {
       writer.uint32(24).bool(message.deprecated);
     }
 
-    for (const v of message.uninterpreted_option) {
+    for (const v of message.uninterpretedOption) {
       UninterpretedOption.encode(v!, writer.uint32(7994).fork()).ldelim();
     }
 
@@ -3663,7 +3663,7 @@ export const EnumOptions = {
 
       switch (tag >>> 3) {
         case 2:
-          message.allow_alias = reader.bool();
+          message.allowAlias = reader.bool();
           break;
 
         case 3:
@@ -3671,7 +3671,7 @@ export const EnumOptions = {
           break;
 
         case 999:
-          message.uninterpreted_option.push(UninterpretedOption.decode(reader, reader.uint32()));
+          message.uninterpretedOption.push(UninterpretedOption.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -3685,9 +3685,9 @@ export const EnumOptions = {
 
   fromPartial(object: DeepPartial<EnumOptions>): EnumOptions {
     const message = createBaseEnumOptions();
-    message.allow_alias = object.allow_alias ?? false;
+    message.allowAlias = object.allowAlias ?? false;
     message.deprecated = object.deprecated ?? false;
-    message.uninterpreted_option = object.uninterpreted_option?.map(e => UninterpretedOption.fromPartial(e)) || [];
+    message.uninterpretedOption = object.uninterpretedOption?.map(e => UninterpretedOption.fromPartial(e)) || [];
     return message;
   }
 
@@ -3696,7 +3696,7 @@ export const EnumOptions = {
 function createBaseEnumValueOptions(): EnumValueOptions {
   return {
     deprecated: false,
-    uninterpreted_option: []
+    uninterpretedOption: []
   };
 }
 
@@ -3706,7 +3706,7 @@ export const EnumValueOptions = {
       writer.uint32(8).bool(message.deprecated);
     }
 
-    for (const v of message.uninterpreted_option) {
+    for (const v of message.uninterpretedOption) {
       UninterpretedOption.encode(v!, writer.uint32(7994).fork()).ldelim();
     }
 
@@ -3727,7 +3727,7 @@ export const EnumValueOptions = {
           break;
 
         case 999:
-          message.uninterpreted_option.push(UninterpretedOption.decode(reader, reader.uint32()));
+          message.uninterpretedOption.push(UninterpretedOption.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -3742,7 +3742,7 @@ export const EnumValueOptions = {
   fromPartial(object: DeepPartial<EnumValueOptions>): EnumValueOptions {
     const message = createBaseEnumValueOptions();
     message.deprecated = object.deprecated ?? false;
-    message.uninterpreted_option = object.uninterpreted_option?.map(e => UninterpretedOption.fromPartial(e)) || [];
+    message.uninterpretedOption = object.uninterpretedOption?.map(e => UninterpretedOption.fromPartial(e)) || [];
     return message;
   }
 
@@ -3751,7 +3751,7 @@ export const EnumValueOptions = {
 function createBaseServiceOptions(): ServiceOptions {
   return {
     deprecated: false,
-    uninterpreted_option: []
+    uninterpretedOption: []
   };
 }
 
@@ -3761,7 +3761,7 @@ export const ServiceOptions = {
       writer.uint32(264).bool(message.deprecated);
     }
 
-    for (const v of message.uninterpreted_option) {
+    for (const v of message.uninterpretedOption) {
       UninterpretedOption.encode(v!, writer.uint32(7994).fork()).ldelim();
     }
 
@@ -3782,7 +3782,7 @@ export const ServiceOptions = {
           break;
 
         case 999:
-          message.uninterpreted_option.push(UninterpretedOption.decode(reader, reader.uint32()));
+          message.uninterpretedOption.push(UninterpretedOption.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -3797,7 +3797,7 @@ export const ServiceOptions = {
   fromPartial(object: DeepPartial<ServiceOptions>): ServiceOptions {
     const message = createBaseServiceOptions();
     message.deprecated = object.deprecated ?? false;
-    message.uninterpreted_option = object.uninterpreted_option?.map(e => UninterpretedOption.fromPartial(e)) || [];
+    message.uninterpretedOption = object.uninterpretedOption?.map(e => UninterpretedOption.fromPartial(e)) || [];
     return message;
   }
 
@@ -3806,8 +3806,8 @@ export const ServiceOptions = {
 function createBaseMethodOptions(): MethodOptions {
   return {
     deprecated: false,
-    idempotency_level: 0,
-    uninterpreted_option: []
+    idempotencyLevel: 0,
+    uninterpretedOption: []
   };
 }
 
@@ -3817,11 +3817,11 @@ export const MethodOptions = {
       writer.uint32(264).bool(message.deprecated);
     }
 
-    if (message.idempotency_level !== 0) {
-      writer.uint32(272).int32(message.idempotency_level);
+    if (message.idempotencyLevel !== 0) {
+      writer.uint32(272).int32(message.idempotencyLevel);
     }
 
-    for (const v of message.uninterpreted_option) {
+    for (const v of message.uninterpretedOption) {
       UninterpretedOption.encode(v!, writer.uint32(7994).fork()).ldelim();
     }
 
@@ -3842,11 +3842,11 @@ export const MethodOptions = {
           break;
 
         case 34:
-          message.idempotency_level = (reader.int32() as any);
+          message.idempotencyLevel = (reader.int32() as any);
           break;
 
         case 999:
-          message.uninterpreted_option.push(UninterpretedOption.decode(reader, reader.uint32()));
+          message.uninterpretedOption.push(UninterpretedOption.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -3861,8 +3861,8 @@ export const MethodOptions = {
   fromPartial(object: DeepPartial<MethodOptions>): MethodOptions {
     const message = createBaseMethodOptions();
     message.deprecated = object.deprecated ?? false;
-    message.idempotency_level = object.idempotency_level ?? 0;
-    message.uninterpreted_option = object.uninterpreted_option?.map(e => UninterpretedOption.fromPartial(e)) || [];
+    message.idempotencyLevel = object.idempotencyLevel ?? 0;
+    message.uninterpretedOption = object.uninterpretedOption?.map(e => UninterpretedOption.fromPartial(e)) || [];
     return message;
   }
 
@@ -3871,12 +3871,12 @@ export const MethodOptions = {
 function createBaseUninterpretedOption(): UninterpretedOption {
   return {
     name: [],
-    identifier_value: "",
-    positive_int_value: Long.UZERO,
-    negative_int_value: Long.ZERO,
-    double_value: 0,
-    string_value: new Uint8Array(),
-    aggregate_value: ""
+    identifierValue: "",
+    positiveIntValue: Long.UZERO,
+    negativeIntValue: Long.ZERO,
+    doubleValue: 0,
+    stringValue: new Uint8Array(),
+    aggregateValue: ""
   };
 }
 
@@ -3886,28 +3886,28 @@ export const UninterpretedOption = {
       UninterpretedOption_NamePart.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
-    if (message.identifier_value !== "") {
-      writer.uint32(26).string(message.identifier_value);
+    if (message.identifierValue !== "") {
+      writer.uint32(26).string(message.identifierValue);
     }
 
-    if (!message.positive_int_value.isZero()) {
-      writer.uint32(32).uint64(message.positive_int_value);
+    if (!message.positiveIntValue.isZero()) {
+      writer.uint32(32).uint64(message.positiveIntValue);
     }
 
-    if (!message.negative_int_value.isZero()) {
-      writer.uint32(40).int64(message.negative_int_value);
+    if (!message.negativeIntValue.isZero()) {
+      writer.uint32(40).int64(message.negativeIntValue);
     }
 
-    if (message.double_value !== 0) {
-      writer.uint32(49).double(message.double_value);
+    if (message.doubleValue !== 0) {
+      writer.uint32(49).double(message.doubleValue);
     }
 
-    if (message.string_value.length !== 0) {
-      writer.uint32(58).bytes(message.string_value);
+    if (message.stringValue.length !== 0) {
+      writer.uint32(58).bytes(message.stringValue);
     }
 
-    if (message.aggregate_value !== "") {
-      writer.uint32(66).string(message.aggregate_value);
+    if (message.aggregateValue !== "") {
+      writer.uint32(66).string(message.aggregateValue);
     }
 
     return writer;
@@ -3927,27 +3927,27 @@ export const UninterpretedOption = {
           break;
 
         case 3:
-          message.identifier_value = reader.string();
+          message.identifierValue = reader.string();
           break;
 
         case 4:
-          message.positive_int_value = (reader.uint64() as Long);
+          message.positiveIntValue = (reader.uint64() as Long);
           break;
 
         case 5:
-          message.negative_int_value = (reader.int64() as Long);
+          message.negativeIntValue = (reader.int64() as Long);
           break;
 
         case 6:
-          message.double_value = reader.double();
+          message.doubleValue = reader.double();
           break;
 
         case 7:
-          message.string_value = reader.bytes();
+          message.stringValue = reader.bytes();
           break;
 
         case 8:
-          message.aggregate_value = reader.string();
+          message.aggregateValue = reader.string();
           break;
 
         default:
@@ -3962,12 +3962,12 @@ export const UninterpretedOption = {
   fromPartial(object: DeepPartial<UninterpretedOption>): UninterpretedOption {
     const message = createBaseUninterpretedOption();
     message.name = object.name?.map(e => UninterpretedOption_NamePart.fromPartial(e)) || [];
-    message.identifier_value = object.identifier_value ?? "";
-    message.positive_int_value = object.positive_int_value !== undefined && object.positive_int_value !== null ? Long.fromValue(object.positive_int_value) : Long.UZERO;
-    message.negative_int_value = object.negative_int_value !== undefined && object.negative_int_value !== null ? Long.fromValue(object.negative_int_value) : Long.ZERO;
-    message.double_value = object.double_value ?? 0;
-    message.string_value = object.string_value ?? new Uint8Array();
-    message.aggregate_value = object.aggregate_value ?? "";
+    message.identifierValue = object.identifierValue ?? "";
+    message.positiveIntValue = object.positiveIntValue !== undefined && object.positiveIntValue !== null ? Long.fromValue(object.positiveIntValue) : Long.UZERO;
+    message.negativeIntValue = object.negativeIntValue !== undefined && object.negativeIntValue !== null ? Long.fromValue(object.negativeIntValue) : Long.ZERO;
+    message.doubleValue = object.doubleValue ?? 0;
+    message.stringValue = object.stringValue ?? new Uint8Array();
+    message.aggregateValue = object.aggregateValue ?? "";
     return message;
   }
 
@@ -3975,19 +3975,19 @@ export const UninterpretedOption = {
 
 function createBaseUninterpretedOption_NamePart(): UninterpretedOption_NamePart {
   return {
-    name_part: "",
-    is_extension: false
+    namePart: "",
+    isExtension: false
   };
 }
 
 export const UninterpretedOption_NamePart = {
   encode(message: UninterpretedOption_NamePart, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.name_part !== "") {
-      writer.uint32(10).string(message.name_part);
+    if (message.namePart !== "") {
+      writer.uint32(10).string(message.namePart);
     }
 
-    if (message.is_extension === true) {
-      writer.uint32(16).bool(message.is_extension);
+    if (message.isExtension === true) {
+      writer.uint32(16).bool(message.isExtension);
     }
 
     return writer;
@@ -4003,11 +4003,11 @@ export const UninterpretedOption_NamePart = {
 
       switch (tag >>> 3) {
         case 1:
-          message.name_part = reader.string();
+          message.namePart = reader.string();
           break;
 
         case 2:
-          message.is_extension = reader.bool();
+          message.isExtension = reader.bool();
           break;
 
         default:
@@ -4021,8 +4021,8 @@ export const UninterpretedOption_NamePart = {
 
   fromPartial(object: DeepPartial<UninterpretedOption_NamePart>): UninterpretedOption_NamePart {
     const message = createBaseUninterpretedOption_NamePart();
-    message.name_part = object.name_part ?? "";
-    message.is_extension = object.is_extension ?? false;
+    message.namePart = object.namePart ?? "";
+    message.isExtension = object.isExtension ?? false;
     return message;
   }
 
@@ -4077,9 +4077,9 @@ function createBaseSourceCodeInfo_Location(): SourceCodeInfo_Location {
   return {
     path: [],
     span: [],
-    leading_comments: "",
-    trailing_comments: "",
-    leading_detached_comments: []
+    leadingComments: "",
+    trailingComments: "",
+    leadingDetachedComments: []
   };
 }
 
@@ -4100,15 +4100,15 @@ export const SourceCodeInfo_Location = {
 
     writer.ldelim();
 
-    if (message.leading_comments !== "") {
-      writer.uint32(26).string(message.leading_comments);
+    if (message.leadingComments !== "") {
+      writer.uint32(26).string(message.leadingComments);
     }
 
-    if (message.trailing_comments !== "") {
-      writer.uint32(34).string(message.trailing_comments);
+    if (message.trailingComments !== "") {
+      writer.uint32(34).string(message.trailingComments);
     }
 
-    for (const v of message.leading_detached_comments) {
+    for (const v of message.leadingDetachedComments) {
       writer.uint32(50).string(v!);
     }
 
@@ -4151,15 +4151,15 @@ export const SourceCodeInfo_Location = {
           break;
 
         case 3:
-          message.leading_comments = reader.string();
+          message.leadingComments = reader.string();
           break;
 
         case 4:
-          message.trailing_comments = reader.string();
+          message.trailingComments = reader.string();
           break;
 
         case 6:
-          message.leading_detached_comments.push(reader.string());
+          message.leadingDetachedComments.push(reader.string());
           break;
 
         default:
@@ -4175,9 +4175,9 @@ export const SourceCodeInfo_Location = {
     const message = createBaseSourceCodeInfo_Location();
     message.path = object.path?.map(e => e) || [];
     message.span = object.span?.map(e => e) || [];
-    message.leading_comments = object.leading_comments ?? "";
-    message.trailing_comments = object.trailing_comments ?? "";
-    message.leading_detached_comments = object.leading_detached_comments?.map(e => e) || [];
+    message.leadingComments = object.leadingComments ?? "";
+    message.trailingComments = object.trailingComments ?? "";
+    message.leadingDetachedComments = object.leadingDetachedComments?.map(e => e) || [];
     return message;
   }
 
@@ -4231,7 +4231,7 @@ export const GeneratedCodeInfo = {
 function createBaseGeneratedCodeInfo_Annotation(): GeneratedCodeInfo_Annotation {
   return {
     path: [],
-    source_file: "",
+    sourceFile: "",
     begin: 0,
     end: 0
   };
@@ -4247,8 +4247,8 @@ export const GeneratedCodeInfo_Annotation = {
 
     writer.ldelim();
 
-    if (message.source_file !== "") {
-      writer.uint32(18).string(message.source_file);
+    if (message.sourceFile !== "") {
+      writer.uint32(18).string(message.sourceFile);
     }
 
     if (message.begin !== 0) {
@@ -4285,7 +4285,7 @@ export const GeneratedCodeInfo_Annotation = {
           break;
 
         case 2:
-          message.source_file = reader.string();
+          message.sourceFile = reader.string();
           break;
 
         case 3:
@@ -4308,7 +4308,7 @@ export const GeneratedCodeInfo_Annotation = {
   fromPartial(object: DeepPartial<GeneratedCodeInfo_Annotation>): GeneratedCodeInfo_Annotation {
     const message = createBaseGeneratedCodeInfo_Annotation();
     message.path = object.path?.map(e => e) || [];
-    message.source_file = object.source_file ?? "";
+    message.sourceFile = object.sourceFile ?? "";
     message.begin = object.begin ?? 0;
     message.end = object.end ?? 0;
     return message;

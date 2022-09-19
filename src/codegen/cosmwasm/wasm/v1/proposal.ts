@@ -12,13 +12,13 @@ export interface StoreCodeProposal {
   description: string;
   /** RunAs is the address that is passed to the contract's environment as sender */
 
-  run_as: string;
+  runAs: string;
   /** WASMByteCode can be raw or gzip compressed */
 
-  wasm_byte_code: Uint8Array;
+  wasmByteCode: Uint8Array;
   /** InstantiatePermission to apply on contract creation, optional */
 
-  instantiate_permission: AccessConfig;
+  instantiatePermission: AccessConfig;
 }
 /** StoreCodeProposal gov proposal content type to submit WASM code to the system */
 
@@ -51,13 +51,13 @@ export interface InstantiateContractProposal {
   description: string;
   /** RunAs is the address that is passed to the contract's environment as sender */
 
-  run_as: string;
+  runAs: string;
   /** Admin is an optional address that can execute migrations */
 
   admin: string;
   /** CodeID is the reference to the stored WASM code */
 
-  code_id: Long;
+  codeId: Long;
   /** Label is optional metadata to be stored with a constract instance. */
 
   label: string;
@@ -111,7 +111,7 @@ export interface MigrateContractProposal {
   contract: string;
   /** CodeID references the new WASM codesudo */
 
-  code_id: Long;
+  codeId: Long;
   /** Msg json encoded message to be passed to the contract on migration */
 
   msg: Uint8Array;
@@ -177,7 +177,7 @@ export interface ExecuteContractProposal {
   description: string;
   /** RunAs is the address that is passed to the contract's environment as sender */
 
-  run_as: string;
+  runAs: string;
   /** Contract is the address of the smart contract */
 
   contract: string;
@@ -222,7 +222,7 @@ export interface UpdateAdminProposal {
   description: string;
   /** NewAdmin address to be set */
 
-  new_admin: string;
+  newAdmin: string;
   /** Contract is the address of the smart contract */
 
   contract: string;
@@ -285,7 +285,7 @@ export interface PinCodesProposal {
   description: string;
   /** CodeIDs references the new WASM codes */
 
-  code_ids: Long[];
+  codeIds: Long[];
 }
 /**
  * PinCodesProposal gov proposal content type to pin a set of code ids in the
@@ -315,7 +315,7 @@ export interface UnpinCodesProposal {
   description: string;
   /** CodeIDs references the WASM codes */
 
-  code_ids: Long[];
+  codeIds: Long[];
 }
 /**
  * UnpinCodesProposal gov proposal content type to unpin a set of code ids in
@@ -337,9 +337,9 @@ function createBaseStoreCodeProposal(): StoreCodeProposal {
   return {
     title: "",
     description: "",
-    run_as: "",
-    wasm_byte_code: new Uint8Array(),
-    instantiate_permission: undefined
+    runAs: "",
+    wasmByteCode: new Uint8Array(),
+    instantiatePermission: undefined
   };
 }
 
@@ -353,16 +353,16 @@ export const StoreCodeProposal = {
       writer.uint32(18).string(message.description);
     }
 
-    if (message.run_as !== "") {
-      writer.uint32(26).string(message.run_as);
+    if (message.runAs !== "") {
+      writer.uint32(26).string(message.runAs);
     }
 
-    if (message.wasm_byte_code.length !== 0) {
-      writer.uint32(34).bytes(message.wasm_byte_code);
+    if (message.wasmByteCode.length !== 0) {
+      writer.uint32(34).bytes(message.wasmByteCode);
     }
 
-    if (message.instantiate_permission !== undefined) {
-      AccessConfig.encode(message.instantiate_permission, writer.uint32(58).fork()).ldelim();
+    if (message.instantiatePermission !== undefined) {
+      AccessConfig.encode(message.instantiatePermission, writer.uint32(58).fork()).ldelim();
     }
 
     return writer;
@@ -386,15 +386,15 @@ export const StoreCodeProposal = {
           break;
 
         case 3:
-          message.run_as = reader.string();
+          message.runAs = reader.string();
           break;
 
         case 4:
-          message.wasm_byte_code = reader.bytes();
+          message.wasmByteCode = reader.bytes();
           break;
 
         case 7:
-          message.instantiate_permission = AccessConfig.decode(reader, reader.uint32());
+          message.instantiatePermission = AccessConfig.decode(reader, reader.uint32());
           break;
 
         default:
@@ -410,9 +410,9 @@ export const StoreCodeProposal = {
     const message = createBaseStoreCodeProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
-    message.run_as = object.run_as ?? "";
-    message.wasm_byte_code = object.wasm_byte_code ?? new Uint8Array();
-    message.instantiate_permission = object.instantiate_permission !== undefined && object.instantiate_permission !== null ? AccessConfig.fromPartial(object.instantiate_permission) : undefined;
+    message.runAs = object.runAs ?? "";
+    message.wasmByteCode = object.wasmByteCode ?? new Uint8Array();
+    message.instantiatePermission = object.instantiatePermission !== undefined && object.instantiatePermission !== null ? AccessConfig.fromPartial(object.instantiatePermission) : undefined;
     return message;
   }
 
@@ -422,9 +422,9 @@ function createBaseInstantiateContractProposal(): InstantiateContractProposal {
   return {
     title: "",
     description: "",
-    run_as: "",
+    runAs: "",
     admin: "",
-    code_id: Long.UZERO,
+    codeId: Long.UZERO,
     label: "",
     msg: new Uint8Array(),
     funds: []
@@ -441,16 +441,16 @@ export const InstantiateContractProposal = {
       writer.uint32(18).string(message.description);
     }
 
-    if (message.run_as !== "") {
-      writer.uint32(26).string(message.run_as);
+    if (message.runAs !== "") {
+      writer.uint32(26).string(message.runAs);
     }
 
     if (message.admin !== "") {
       writer.uint32(34).string(message.admin);
     }
 
-    if (!message.code_id.isZero()) {
-      writer.uint32(40).uint64(message.code_id);
+    if (!message.codeId.isZero()) {
+      writer.uint32(40).uint64(message.codeId);
     }
 
     if (message.label !== "") {
@@ -486,7 +486,7 @@ export const InstantiateContractProposal = {
           break;
 
         case 3:
-          message.run_as = reader.string();
+          message.runAs = reader.string();
           break;
 
         case 4:
@@ -494,7 +494,7 @@ export const InstantiateContractProposal = {
           break;
 
         case 5:
-          message.code_id = (reader.uint64() as Long);
+          message.codeId = (reader.uint64() as Long);
           break;
 
         case 6:
@@ -522,9 +522,9 @@ export const InstantiateContractProposal = {
     const message = createBaseInstantiateContractProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
-    message.run_as = object.run_as ?? "";
+    message.runAs = object.runAs ?? "";
     message.admin = object.admin ?? "";
-    message.code_id = object.code_id !== undefined && object.code_id !== null ? Long.fromValue(object.code_id) : Long.UZERO;
+    message.codeId = object.codeId !== undefined && object.codeId !== null ? Long.fromValue(object.codeId) : Long.UZERO;
     message.label = object.label ?? "";
     message.msg = object.msg ?? new Uint8Array();
     message.funds = object.funds?.map(e => Coin.fromPartial(e)) || [];
@@ -538,7 +538,7 @@ function createBaseMigrateContractProposal(): MigrateContractProposal {
     title: "",
     description: "",
     contract: "",
-    code_id: Long.UZERO,
+    codeId: Long.UZERO,
     msg: new Uint8Array()
   };
 }
@@ -557,8 +557,8 @@ export const MigrateContractProposal = {
       writer.uint32(34).string(message.contract);
     }
 
-    if (!message.code_id.isZero()) {
-      writer.uint32(40).uint64(message.code_id);
+    if (!message.codeId.isZero()) {
+      writer.uint32(40).uint64(message.codeId);
     }
 
     if (message.msg.length !== 0) {
@@ -590,7 +590,7 @@ export const MigrateContractProposal = {
           break;
 
         case 5:
-          message.code_id = (reader.uint64() as Long);
+          message.codeId = (reader.uint64() as Long);
           break;
 
         case 6:
@@ -611,7 +611,7 @@ export const MigrateContractProposal = {
     message.title = object.title ?? "";
     message.description = object.description ?? "";
     message.contract = object.contract ?? "";
-    message.code_id = object.code_id !== undefined && object.code_id !== null ? Long.fromValue(object.code_id) : Long.UZERO;
+    message.codeId = object.codeId !== undefined && object.codeId !== null ? Long.fromValue(object.codeId) : Long.UZERO;
     message.msg = object.msg ?? new Uint8Array();
     return message;
   }
@@ -697,7 +697,7 @@ function createBaseExecuteContractProposal(): ExecuteContractProposal {
   return {
     title: "",
     description: "",
-    run_as: "",
+    runAs: "",
     contract: "",
     msg: new Uint8Array(),
     funds: []
@@ -714,8 +714,8 @@ export const ExecuteContractProposal = {
       writer.uint32(18).string(message.description);
     }
 
-    if (message.run_as !== "") {
-      writer.uint32(26).string(message.run_as);
+    if (message.runAs !== "") {
+      writer.uint32(26).string(message.runAs);
     }
 
     if (message.contract !== "") {
@@ -751,7 +751,7 @@ export const ExecuteContractProposal = {
           break;
 
         case 3:
-          message.run_as = reader.string();
+          message.runAs = reader.string();
           break;
 
         case 4:
@@ -779,7 +779,7 @@ export const ExecuteContractProposal = {
     const message = createBaseExecuteContractProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
-    message.run_as = object.run_as ?? "";
+    message.runAs = object.runAs ?? "";
     message.contract = object.contract ?? "";
     message.msg = object.msg ?? new Uint8Array();
     message.funds = object.funds?.map(e => Coin.fromPartial(e)) || [];
@@ -792,7 +792,7 @@ function createBaseUpdateAdminProposal(): UpdateAdminProposal {
   return {
     title: "",
     description: "",
-    new_admin: "",
+    newAdmin: "",
     contract: ""
   };
 }
@@ -807,8 +807,8 @@ export const UpdateAdminProposal = {
       writer.uint32(18).string(message.description);
     }
 
-    if (message.new_admin !== "") {
-      writer.uint32(26).string(message.new_admin);
+    if (message.newAdmin !== "") {
+      writer.uint32(26).string(message.newAdmin);
     }
 
     if (message.contract !== "") {
@@ -836,7 +836,7 @@ export const UpdateAdminProposal = {
           break;
 
         case 3:
-          message.new_admin = reader.string();
+          message.newAdmin = reader.string();
           break;
 
         case 4:
@@ -856,7 +856,7 @@ export const UpdateAdminProposal = {
     const message = createBaseUpdateAdminProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
-    message.new_admin = object.new_admin ?? "";
+    message.newAdmin = object.newAdmin ?? "";
     message.contract = object.contract ?? "";
     return message;
   }
@@ -932,7 +932,7 @@ function createBasePinCodesProposal(): PinCodesProposal {
   return {
     title: "",
     description: "",
-    code_ids: []
+    codeIds: []
   };
 }
 
@@ -948,7 +948,7 @@ export const PinCodesProposal = {
 
     writer.uint32(26).fork();
 
-    for (const v of message.code_ids) {
+    for (const v of message.codeIds) {
       writer.uint64(v);
     }
 
@@ -978,10 +978,10 @@ export const PinCodesProposal = {
             const end2 = reader.uint32() + reader.pos;
 
             while (reader.pos < end2) {
-              message.code_ids.push((reader.uint64() as Long));
+              message.codeIds.push((reader.uint64() as Long));
             }
           } else {
-            message.code_ids.push((reader.uint64() as Long));
+            message.codeIds.push((reader.uint64() as Long));
           }
 
           break;
@@ -999,7 +999,7 @@ export const PinCodesProposal = {
     const message = createBasePinCodesProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
-    message.code_ids = object.code_ids?.map(e => Long.fromValue(e)) || [];
+    message.codeIds = object.codeIds?.map(e => Long.fromValue(e)) || [];
     return message;
   }
 
@@ -1009,7 +1009,7 @@ function createBaseUnpinCodesProposal(): UnpinCodesProposal {
   return {
     title: "",
     description: "",
-    code_ids: []
+    codeIds: []
   };
 }
 
@@ -1025,7 +1025,7 @@ export const UnpinCodesProposal = {
 
     writer.uint32(26).fork();
 
-    for (const v of message.code_ids) {
+    for (const v of message.codeIds) {
       writer.uint64(v);
     }
 
@@ -1055,10 +1055,10 @@ export const UnpinCodesProposal = {
             const end2 = reader.uint32() + reader.pos;
 
             while (reader.pos < end2) {
-              message.code_ids.push((reader.uint64() as Long));
+              message.codeIds.push((reader.uint64() as Long));
             }
           } else {
-            message.code_ids.push((reader.uint64() as Long));
+            message.codeIds.push((reader.uint64() as Long));
           }
 
           break;
@@ -1076,7 +1076,7 @@ export const UnpinCodesProposal = {
     const message = createBaseUnpinCodesProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
-    message.code_ids = object.code_ids?.map(e => Long.fromValue(e)) || [];
+    message.codeIds = object.codeIds?.map(e => Long.fromValue(e)) || [];
     return message;
   }
 

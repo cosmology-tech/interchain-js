@@ -188,8 +188,8 @@ export interface CommitmentProofSDKType {
  */
 export interface LeafOp {
     hash: HashOp;
-    prehash_key: HashOp;
-    prehash_value: HashOp;
+    prehashKey: HashOp;
+    prehashValue: HashOp;
     length: LengthOp;
     /**
      * prefix is a fixed bytes that may optionally be included at the beginning to differentiate
@@ -285,12 +285,12 @@ export interface ProofSpec {
      * any field in the ExistenceProof must be the same as in this spec.
      * except Prefix, which is just the first bytes of prefix (spec can be longer)
      */
-    leaf_spec: LeafOp;
-    inner_spec: InnerSpec;
+    leafSpec: LeafOp;
+    innerSpec: InnerSpec;
     /** max_depth (if > 0) is the maximum number of InnerOps allowed (mainly for fixed-depth tries) */
-    max_depth: number;
+    maxDepth: number;
     /** min_depth (if > 0) is the minimum number of InnerOps allowed (mainly for fixed-depth tries) */
-    min_depth: number;
+    minDepth: number;
 }
 /**
  * ProofSpec defines what the expected parameters are for a given proof type.
@@ -332,12 +332,12 @@ export interface InnerSpec {
      * iavl tree is [0, 1] (left then right)
      * merk is [0, 2, 1] (left, right, here)
      */
-    child_order: number[];
-    child_size: number;
-    min_prefix_length: number;
-    max_prefix_length: number;
+    childOrder: number[];
+    childSize: number;
+    minPrefixLength: number;
+    maxPrefixLength: number;
     /** empty child is the prehash image that is used when one child is nil (eg. 20 bytes of 0) */
-    empty_child: Uint8Array;
+    emptyChild: Uint8Array;
     /** hash is the algorithm that must be used for each InnerOp */
     hash: HashOp;
 }
@@ -386,7 +386,7 @@ export interface BatchEntrySDKType {
 }
 export interface CompressedBatchProof {
     entries: CompressedBatchEntry[];
-    lookup_inners: InnerOp[];
+    lookupInners: InnerOp[];
 }
 export interface CompressedBatchProofSDKType {
     entries: CompressedBatchEntrySDKType[];

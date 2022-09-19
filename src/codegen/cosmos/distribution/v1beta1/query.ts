@@ -28,7 +28,7 @@ export interface QueryParamsResponseSDKType {
 
 export interface QueryValidatorOutstandingRewardsRequest {
   /** validator_address defines the validator address to query for. */
-  validator_address: string;
+  validatorAddress: string;
 }
 /**
  * QueryValidatorOutstandingRewardsRequest is the request type for the
@@ -62,7 +62,7 @@ export interface QueryValidatorOutstandingRewardsResponseSDKType {
 
 export interface QueryValidatorCommissionRequest {
   /** validator_address defines the validator address to query for. */
-  validator_address: string;
+  validatorAddress: string;
 }
 /**
  * QueryValidatorCommissionRequest is the request type for the
@@ -98,13 +98,13 @@ export interface QueryValidatorCommissionResponseSDKType {
 
 export interface QueryValidatorSlashesRequest {
   /** validator_address defines the validator address to query for. */
-  validator_address: string;
+  validatorAddress: string;
   /** starting_height defines the optional starting height to query the slashes. */
 
-  starting_height?: Long;
+  startingHeight?: Long;
   /** starting_height defines the optional ending height to query the slashes. */
 
-  ending_height?: Long;
+  endingHeight?: Long;
   /** pagination defines an optional pagination for the request. */
 
   pagination?: PageRequest;
@@ -158,10 +158,10 @@ export interface QueryValidatorSlashesResponseSDKType {
 
 export interface QueryDelegationRewardsRequest {
   /** delegator_address defines the delegator address to query for. */
-  delegator_address: string;
+  delegatorAddress: string;
   /** validator_address defines the validator address to query for. */
 
-  validator_address: string;
+  validatorAddress: string;
 }
 /**
  * QueryDelegationRewardsRequest is the request type for the
@@ -200,7 +200,7 @@ export interface QueryDelegationRewardsResponseSDKType {
 
 export interface QueryDelegationTotalRewardsRequest {
   /** delegator_address defines the delegator address to query for. */
-  delegator_address: string;
+  delegatorAddress: string;
 }
 /**
  * QueryDelegationTotalRewardsRequest is the request type for the
@@ -242,7 +242,7 @@ export interface QueryDelegationTotalRewardsResponseSDKType {
 
 export interface QueryDelegatorValidatorsRequest {
   /** delegator_address defines the delegator address to query for. */
-  delegator_address: string;
+  delegatorAddress: string;
 }
 /**
  * QueryDelegatorValidatorsRequest is the request type for the
@@ -278,7 +278,7 @@ export interface QueryDelegatorValidatorsResponseSDKType {
 
 export interface QueryDelegatorWithdrawAddressRequest {
   /** delegator_address defines the delegator address to query for. */
-  delegator_address: string;
+  delegatorAddress: string;
 }
 /**
  * QueryDelegatorWithdrawAddressRequest is the request type for the
@@ -296,7 +296,7 @@ export interface QueryDelegatorWithdrawAddressRequestSDKType {
 
 export interface QueryDelegatorWithdrawAddressResponse {
   /** withdraw_address defines the delegator address to query for. */
-  withdraw_address: string;
+  withdrawAddress: string;
 }
 /**
  * QueryDelegatorWithdrawAddressResponse is the response type for the
@@ -419,14 +419,14 @@ export const QueryParamsResponse = {
 
 function createBaseQueryValidatorOutstandingRewardsRequest(): QueryValidatorOutstandingRewardsRequest {
   return {
-    validator_address: ""
+    validatorAddress: ""
   };
 }
 
 export const QueryValidatorOutstandingRewardsRequest = {
   encode(message: QueryValidatorOutstandingRewardsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.validator_address !== "") {
-      writer.uint32(10).string(message.validator_address);
+    if (message.validatorAddress !== "") {
+      writer.uint32(10).string(message.validatorAddress);
     }
 
     return writer;
@@ -442,7 +442,7 @@ export const QueryValidatorOutstandingRewardsRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.validator_address = reader.string();
+          message.validatorAddress = reader.string();
           break;
 
         default:
@@ -456,7 +456,7 @@ export const QueryValidatorOutstandingRewardsRequest = {
 
   fromPartial(object: DeepPartial<QueryValidatorOutstandingRewardsRequest>): QueryValidatorOutstandingRewardsRequest {
     const message = createBaseQueryValidatorOutstandingRewardsRequest();
-    message.validator_address = object.validator_address ?? "";
+    message.validatorAddress = object.validatorAddress ?? "";
     return message;
   }
 
@@ -509,14 +509,14 @@ export const QueryValidatorOutstandingRewardsResponse = {
 
 function createBaseQueryValidatorCommissionRequest(): QueryValidatorCommissionRequest {
   return {
-    validator_address: ""
+    validatorAddress: ""
   };
 }
 
 export const QueryValidatorCommissionRequest = {
   encode(message: QueryValidatorCommissionRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.validator_address !== "") {
-      writer.uint32(10).string(message.validator_address);
+    if (message.validatorAddress !== "") {
+      writer.uint32(10).string(message.validatorAddress);
     }
 
     return writer;
@@ -532,7 +532,7 @@ export const QueryValidatorCommissionRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.validator_address = reader.string();
+          message.validatorAddress = reader.string();
           break;
 
         default:
@@ -546,7 +546,7 @@ export const QueryValidatorCommissionRequest = {
 
   fromPartial(object: DeepPartial<QueryValidatorCommissionRequest>): QueryValidatorCommissionRequest {
     const message = createBaseQueryValidatorCommissionRequest();
-    message.validator_address = object.validator_address ?? "";
+    message.validatorAddress = object.validatorAddress ?? "";
     return message;
   }
 
@@ -599,25 +599,25 @@ export const QueryValidatorCommissionResponse = {
 
 function createBaseQueryValidatorSlashesRequest(): QueryValidatorSlashesRequest {
   return {
-    validator_address: "",
-    starting_height: Long.UZERO,
-    ending_height: Long.UZERO,
+    validatorAddress: "",
+    startingHeight: Long.UZERO,
+    endingHeight: Long.UZERO,
     pagination: undefined
   };
 }
 
 export const QueryValidatorSlashesRequest = {
   encode(message: QueryValidatorSlashesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.validator_address !== "") {
-      writer.uint32(10).string(message.validator_address);
+    if (message.validatorAddress !== "") {
+      writer.uint32(10).string(message.validatorAddress);
     }
 
-    if (!message.starting_height.isZero()) {
-      writer.uint32(16).uint64(message.starting_height);
+    if (!message.startingHeight.isZero()) {
+      writer.uint32(16).uint64(message.startingHeight);
     }
 
-    if (!message.ending_height.isZero()) {
-      writer.uint32(24).uint64(message.ending_height);
+    if (!message.endingHeight.isZero()) {
+      writer.uint32(24).uint64(message.endingHeight);
     }
 
     if (message.pagination !== undefined) {
@@ -637,15 +637,15 @@ export const QueryValidatorSlashesRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.validator_address = reader.string();
+          message.validatorAddress = reader.string();
           break;
 
         case 2:
-          message.starting_height = (reader.uint64() as Long);
+          message.startingHeight = (reader.uint64() as Long);
           break;
 
         case 3:
-          message.ending_height = (reader.uint64() as Long);
+          message.endingHeight = (reader.uint64() as Long);
           break;
 
         case 4:
@@ -663,9 +663,9 @@ export const QueryValidatorSlashesRequest = {
 
   fromPartial(object: DeepPartial<QueryValidatorSlashesRequest>): QueryValidatorSlashesRequest {
     const message = createBaseQueryValidatorSlashesRequest();
-    message.validator_address = object.validator_address ?? "";
-    message.starting_height = object.starting_height !== undefined && object.starting_height !== null ? Long.fromValue(object.starting_height) : Long.UZERO;
-    message.ending_height = object.ending_height !== undefined && object.ending_height !== null ? Long.fromValue(object.ending_height) : Long.UZERO;
+    message.validatorAddress = object.validatorAddress ?? "";
+    message.startingHeight = object.startingHeight !== undefined && object.startingHeight !== null ? Long.fromValue(object.startingHeight) : Long.UZERO;
+    message.endingHeight = object.endingHeight !== undefined && object.endingHeight !== null ? Long.fromValue(object.endingHeight) : Long.UZERO;
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
   }
@@ -729,19 +729,19 @@ export const QueryValidatorSlashesResponse = {
 
 function createBaseQueryDelegationRewardsRequest(): QueryDelegationRewardsRequest {
   return {
-    delegator_address: "",
-    validator_address: ""
+    delegatorAddress: "",
+    validatorAddress: ""
   };
 }
 
 export const QueryDelegationRewardsRequest = {
   encode(message: QueryDelegationRewardsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.delegator_address !== "") {
-      writer.uint32(10).string(message.delegator_address);
+    if (message.delegatorAddress !== "") {
+      writer.uint32(10).string(message.delegatorAddress);
     }
 
-    if (message.validator_address !== "") {
-      writer.uint32(18).string(message.validator_address);
+    if (message.validatorAddress !== "") {
+      writer.uint32(18).string(message.validatorAddress);
     }
 
     return writer;
@@ -757,11 +757,11 @@ export const QueryDelegationRewardsRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.delegator_address = reader.string();
+          message.delegatorAddress = reader.string();
           break;
 
         case 2:
-          message.validator_address = reader.string();
+          message.validatorAddress = reader.string();
           break;
 
         default:
@@ -775,8 +775,8 @@ export const QueryDelegationRewardsRequest = {
 
   fromPartial(object: DeepPartial<QueryDelegationRewardsRequest>): QueryDelegationRewardsRequest {
     const message = createBaseQueryDelegationRewardsRequest();
-    message.delegator_address = object.delegator_address ?? "";
-    message.validator_address = object.validator_address ?? "";
+    message.delegatorAddress = object.delegatorAddress ?? "";
+    message.validatorAddress = object.validatorAddress ?? "";
     return message;
   }
 
@@ -829,14 +829,14 @@ export const QueryDelegationRewardsResponse = {
 
 function createBaseQueryDelegationTotalRewardsRequest(): QueryDelegationTotalRewardsRequest {
   return {
-    delegator_address: ""
+    delegatorAddress: ""
   };
 }
 
 export const QueryDelegationTotalRewardsRequest = {
   encode(message: QueryDelegationTotalRewardsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.delegator_address !== "") {
-      writer.uint32(10).string(message.delegator_address);
+    if (message.delegatorAddress !== "") {
+      writer.uint32(10).string(message.delegatorAddress);
     }
 
     return writer;
@@ -852,7 +852,7 @@ export const QueryDelegationTotalRewardsRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.delegator_address = reader.string();
+          message.delegatorAddress = reader.string();
           break;
 
         default:
@@ -866,7 +866,7 @@ export const QueryDelegationTotalRewardsRequest = {
 
   fromPartial(object: DeepPartial<QueryDelegationTotalRewardsRequest>): QueryDelegationTotalRewardsRequest {
     const message = createBaseQueryDelegationTotalRewardsRequest();
-    message.delegator_address = object.delegator_address ?? "";
+    message.delegatorAddress = object.delegatorAddress ?? "";
     return message;
   }
 
@@ -929,14 +929,14 @@ export const QueryDelegationTotalRewardsResponse = {
 
 function createBaseQueryDelegatorValidatorsRequest(): QueryDelegatorValidatorsRequest {
   return {
-    delegator_address: ""
+    delegatorAddress: ""
   };
 }
 
 export const QueryDelegatorValidatorsRequest = {
   encode(message: QueryDelegatorValidatorsRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.delegator_address !== "") {
-      writer.uint32(10).string(message.delegator_address);
+    if (message.delegatorAddress !== "") {
+      writer.uint32(10).string(message.delegatorAddress);
     }
 
     return writer;
@@ -952,7 +952,7 @@ export const QueryDelegatorValidatorsRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.delegator_address = reader.string();
+          message.delegatorAddress = reader.string();
           break;
 
         default:
@@ -966,7 +966,7 @@ export const QueryDelegatorValidatorsRequest = {
 
   fromPartial(object: DeepPartial<QueryDelegatorValidatorsRequest>): QueryDelegatorValidatorsRequest {
     const message = createBaseQueryDelegatorValidatorsRequest();
-    message.delegator_address = object.delegator_address ?? "";
+    message.delegatorAddress = object.delegatorAddress ?? "";
     return message;
   }
 
@@ -1019,14 +1019,14 @@ export const QueryDelegatorValidatorsResponse = {
 
 function createBaseQueryDelegatorWithdrawAddressRequest(): QueryDelegatorWithdrawAddressRequest {
   return {
-    delegator_address: ""
+    delegatorAddress: ""
   };
 }
 
 export const QueryDelegatorWithdrawAddressRequest = {
   encode(message: QueryDelegatorWithdrawAddressRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.delegator_address !== "") {
-      writer.uint32(10).string(message.delegator_address);
+    if (message.delegatorAddress !== "") {
+      writer.uint32(10).string(message.delegatorAddress);
     }
 
     return writer;
@@ -1042,7 +1042,7 @@ export const QueryDelegatorWithdrawAddressRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.delegator_address = reader.string();
+          message.delegatorAddress = reader.string();
           break;
 
         default:
@@ -1056,7 +1056,7 @@ export const QueryDelegatorWithdrawAddressRequest = {
 
   fromPartial(object: DeepPartial<QueryDelegatorWithdrawAddressRequest>): QueryDelegatorWithdrawAddressRequest {
     const message = createBaseQueryDelegatorWithdrawAddressRequest();
-    message.delegator_address = object.delegator_address ?? "";
+    message.delegatorAddress = object.delegatorAddress ?? "";
     return message;
   }
 
@@ -1064,14 +1064,14 @@ export const QueryDelegatorWithdrawAddressRequest = {
 
 function createBaseQueryDelegatorWithdrawAddressResponse(): QueryDelegatorWithdrawAddressResponse {
   return {
-    withdraw_address: ""
+    withdrawAddress: ""
   };
 }
 
 export const QueryDelegatorWithdrawAddressResponse = {
   encode(message: QueryDelegatorWithdrawAddressResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.withdraw_address !== "") {
-      writer.uint32(10).string(message.withdraw_address);
+    if (message.withdrawAddress !== "") {
+      writer.uint32(10).string(message.withdrawAddress);
     }
 
     return writer;
@@ -1087,7 +1087,7 @@ export const QueryDelegatorWithdrawAddressResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.withdraw_address = reader.string();
+          message.withdrawAddress = reader.string();
           break;
 
         default:
@@ -1101,7 +1101,7 @@ export const QueryDelegatorWithdrawAddressResponse = {
 
   fromPartial(object: DeepPartial<QueryDelegatorWithdrawAddressResponse>): QueryDelegatorWithdrawAddressResponse {
     const message = createBaseQueryDelegatorWithdrawAddressResponse();
-    message.withdraw_address = object.withdraw_address ?? "";
+    message.withdrawAddress = object.withdrawAddress ?? "";
     return message;
   }
 

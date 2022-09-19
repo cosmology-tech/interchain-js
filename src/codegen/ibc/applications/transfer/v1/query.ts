@@ -27,7 +27,7 @@ export interface QueryDenomTraceRequestSDKType {
 
 export interface QueryDenomTraceResponse {
   /** denom_trace returns the requested denomination trace information. */
-  denom_trace: DenomTrace;
+  denomTrace: DenomTrace;
 }
 /**
  * QueryDenomTraceResponse is the response type for the Query/DenomTrace RPC
@@ -63,7 +63,7 @@ export interface QueryDenomTracesRequestSDKType {
 
 export interface QueryDenomTracesResponse {
   /** denom_traces returns all denominations trace information. */
-  denom_traces: DenomTrace[];
+  denomTraces: DenomTrace[];
   /** pagination defines the pagination in the response. */
 
   pagination?: PageResponse;
@@ -146,14 +146,14 @@ export const QueryDenomTraceRequest = {
 
 function createBaseQueryDenomTraceResponse(): QueryDenomTraceResponse {
   return {
-    denom_trace: undefined
+    denomTrace: undefined
   };
 }
 
 export const QueryDenomTraceResponse = {
   encode(message: QueryDenomTraceResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.denom_trace !== undefined) {
-      DenomTrace.encode(message.denom_trace, writer.uint32(10).fork()).ldelim();
+    if (message.denomTrace !== undefined) {
+      DenomTrace.encode(message.denomTrace, writer.uint32(10).fork()).ldelim();
     }
 
     return writer;
@@ -169,7 +169,7 @@ export const QueryDenomTraceResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.denom_trace = DenomTrace.decode(reader, reader.uint32());
+          message.denomTrace = DenomTrace.decode(reader, reader.uint32());
           break;
 
         default:
@@ -183,7 +183,7 @@ export const QueryDenomTraceResponse = {
 
   fromPartial(object: DeepPartial<QueryDenomTraceResponse>): QueryDenomTraceResponse {
     const message = createBaseQueryDenomTraceResponse();
-    message.denom_trace = object.denom_trace !== undefined && object.denom_trace !== null ? DenomTrace.fromPartial(object.denom_trace) : undefined;
+    message.denomTrace = object.denomTrace !== undefined && object.denomTrace !== null ? DenomTrace.fromPartial(object.denomTrace) : undefined;
     return message;
   }
 
@@ -236,14 +236,14 @@ export const QueryDenomTracesRequest = {
 
 function createBaseQueryDenomTracesResponse(): QueryDenomTracesResponse {
   return {
-    denom_traces: [],
+    denomTraces: [],
     pagination: undefined
   };
 }
 
 export const QueryDenomTracesResponse = {
   encode(message: QueryDenomTracesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.denom_traces) {
+    for (const v of message.denomTraces) {
       DenomTrace.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
@@ -264,7 +264,7 @@ export const QueryDenomTracesResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.denom_traces.push(DenomTrace.decode(reader, reader.uint32()));
+          message.denomTraces.push(DenomTrace.decode(reader, reader.uint32()));
           break;
 
         case 2:
@@ -282,7 +282,7 @@ export const QueryDenomTracesResponse = {
 
   fromPartial(object: DeepPartial<QueryDenomTracesResponse>): QueryDenomTracesResponse {
     const message = createBaseQueryDenomTracesResponse();
-    message.denom_traces = object.denom_traces?.map(e => DenomTrace.fromPartial(e)) || [];
+    message.denomTraces = object.denomTraces?.map(e => DenomTrace.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   }

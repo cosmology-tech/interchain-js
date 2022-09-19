@@ -4,7 +4,7 @@ import { DeepPartial } from "@osmonauts/helpers";
 
 export interface MsgSend {
   /** class_id defines the unique identifier of the nft classification, similar to the contract address of ERC721 */
-  class_id: string;
+  classId: string;
   /** id defines the unique identification of nft */
 
   id: string;
@@ -39,7 +39,7 @@ export interface MsgSendResponseSDKType {}
 
 function createBaseMsgSend(): MsgSend {
   return {
-    class_id: "",
+    classId: "",
     id: "",
     sender: "",
     receiver: ""
@@ -48,8 +48,8 @@ function createBaseMsgSend(): MsgSend {
 
 export const MsgSend = {
   encode(message: MsgSend, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.class_id !== "") {
-      writer.uint32(10).string(message.class_id);
+    if (message.classId !== "") {
+      writer.uint32(10).string(message.classId);
     }
 
     if (message.id !== "") {
@@ -77,7 +77,7 @@ export const MsgSend = {
 
       switch (tag >>> 3) {
         case 1:
-          message.class_id = reader.string();
+          message.classId = reader.string();
           break;
 
         case 2:
@@ -103,7 +103,7 @@ export const MsgSend = {
 
   fromPartial(object: DeepPartial<MsgSend>): MsgSend {
     const message = createBaseMsgSend();
-    message.class_id = object.class_id ?? "";
+    message.classId = object.classId ?? "";
     message.id = object.id ?? "";
     message.sender = object.sender ?? "";
     message.receiver = object.receiver ?? "";

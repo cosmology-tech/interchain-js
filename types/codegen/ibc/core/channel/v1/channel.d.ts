@@ -93,7 +93,7 @@ export interface Channel {
      * list of connection identifiers, in order, along which packets sent on
      * this channel will travel
      */
-    connection_hops: string[];
+    connectionHops: string[];
     /** opaque channel version, which is agreed upon during the handshake */
     version: string;
 }
@@ -132,13 +132,13 @@ export interface IdentifiedChannel {
      * list of connection identifiers, in order, along which packets sent on
      * this channel will travel
      */
-    connection_hops: string[];
+    connectionHops: string[];
     /** opaque channel version, which is agreed upon during the handshake */
     version: string;
     /** port identifier */
-    port_id: string;
+    portId: string;
     /** channel identifier */
-    channel_id: string;
+    channelId: string;
 }
 /**
  * IdentifiedChannel defines a channel with additional port and channel
@@ -166,9 +166,9 @@ export interface IdentifiedChannelSDKType {
 /** Counterparty defines a channel end counterparty */
 export interface Counterparty {
     /** port on the counterparty chain which owns the other end of the channel. */
-    port_id: string;
+    portId: string;
     /** channel end on the counterparty chain */
-    channel_id: string;
+    channelId: string;
 }
 /** Counterparty defines a channel end counterparty */
 export interface CounterpartySDKType {
@@ -186,19 +186,19 @@ export interface Packet {
      */
     sequence: Long;
     /** identifies the port on the sending chain. */
-    source_port: string;
+    sourcePort: string;
     /** identifies the channel end on the sending chain. */
-    source_channel: string;
+    sourceChannel: string;
     /** identifies the port on the receiving chain. */
-    destination_port: string;
+    destinationPort: string;
     /** identifies the channel end on the receiving chain. */
-    destination_channel: string;
+    destinationChannel: string;
     /** actual opaque bytes transferred directly to the application module */
     data: Uint8Array;
     /** block height after which the packet times out */
-    timeout_height: Height;
+    timeoutHeight: Height;
     /** block timestamp (in nanoseconds) after which the packet times out */
-    timeout_timestamp: Long;
+    timeoutTimestamp: Long;
 }
 /** Packet defines a type that carries data across different chains through IBC */
 export interface PacketSDKType {
@@ -231,9 +231,9 @@ export interface PacketSDKType {
  */
 export interface PacketState {
     /** channel port identifier. */
-    port_id: string;
+    portId: string;
     /** channel unique identifier. */
-    channel_id: string;
+    channelId: string;
     /** packet sequence. */
     sequence: Long;
     /** embedded data that represents packet state. */

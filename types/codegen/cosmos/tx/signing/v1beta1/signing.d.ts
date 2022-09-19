@@ -108,7 +108,7 @@ export interface SignatureDescriptorsSDKType {
  */
 export interface SignatureDescriptor {
     /** public_key is the public key of the signer */
-    public_key: Any;
+    publicKey: Any;
     data: SignatureDescriptor_Data;
     /**
      * sequence is the sequence of the account, which describes the

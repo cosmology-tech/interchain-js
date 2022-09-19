@@ -9,8 +9,8 @@ import { Long, DeepPartial } from "@osmonauts/helpers";
 
 export interface BaseAccount {
   address: string;
-  pub_key: Any;
-  account_number: Long;
+  pubKey: Any;
+  accountNumber: Long;
   sequence: Long;
 }
 /**
@@ -28,7 +28,7 @@ export interface BaseAccountSDKType {
 /** ModuleAccount defines an account for modules that holds coins on a pool. */
 
 export interface ModuleAccount {
-  base_account: BaseAccount;
+  baseAccount: BaseAccount;
   name: string;
   permissions: string[];
 }
@@ -42,11 +42,11 @@ export interface ModuleAccountSDKType {
 /** Params defines the parameters for the auth module. */
 
 export interface Params {
-  max_memo_characters: Long;
-  tx_sig_limit: Long;
-  tx_size_cost_per_byte: Long;
-  sig_verify_cost_ed25519: Long;
-  sig_verify_cost_secp256k1: Long;
+  maxMemoCharacters: Long;
+  txSigLimit: Long;
+  txSizeCostPerByte: Long;
+  sigVerifyCostEd25519: Long;
+  sigVerifyCostSecp256k1: Long;
 }
 /** Params defines the parameters for the auth module. */
 
@@ -61,8 +61,8 @@ export interface ParamsSDKType {
 function createBaseBaseAccount(): BaseAccount {
   return {
     address: "",
-    pub_key: undefined,
-    account_number: Long.UZERO,
+    pubKey: undefined,
+    accountNumber: Long.UZERO,
     sequence: Long.UZERO
   };
 }
@@ -73,12 +73,12 @@ export const BaseAccount = {
       writer.uint32(10).string(message.address);
     }
 
-    if (message.pub_key !== undefined) {
-      Any.encode(message.pub_key, writer.uint32(18).fork()).ldelim();
+    if (message.pubKey !== undefined) {
+      Any.encode(message.pubKey, writer.uint32(18).fork()).ldelim();
     }
 
-    if (!message.account_number.isZero()) {
-      writer.uint32(24).uint64(message.account_number);
+    if (!message.accountNumber.isZero()) {
+      writer.uint32(24).uint64(message.accountNumber);
     }
 
     if (!message.sequence.isZero()) {
@@ -102,11 +102,11 @@ export const BaseAccount = {
           break;
 
         case 2:
-          message.pub_key = Any.decode(reader, reader.uint32());
+          message.pubKey = Any.decode(reader, reader.uint32());
           break;
 
         case 3:
-          message.account_number = (reader.uint64() as Long);
+          message.accountNumber = (reader.uint64() as Long);
           break;
 
         case 4:
@@ -125,8 +125,8 @@ export const BaseAccount = {
   fromPartial(object: DeepPartial<BaseAccount>): BaseAccount {
     const message = createBaseBaseAccount();
     message.address = object.address ?? "";
-    message.pub_key = object.pub_key !== undefined && object.pub_key !== null ? Any.fromPartial(object.pub_key) : undefined;
-    message.account_number = object.account_number !== undefined && object.account_number !== null ? Long.fromValue(object.account_number) : Long.UZERO;
+    message.pubKey = object.pubKey !== undefined && object.pubKey !== null ? Any.fromPartial(object.pubKey) : undefined;
+    message.accountNumber = object.accountNumber !== undefined && object.accountNumber !== null ? Long.fromValue(object.accountNumber) : Long.UZERO;
     message.sequence = object.sequence !== undefined && object.sequence !== null ? Long.fromValue(object.sequence) : Long.UZERO;
     return message;
   }
@@ -135,7 +135,7 @@ export const BaseAccount = {
 
 function createBaseModuleAccount(): ModuleAccount {
   return {
-    base_account: undefined,
+    baseAccount: undefined,
     name: "",
     permissions: []
   };
@@ -143,8 +143,8 @@ function createBaseModuleAccount(): ModuleAccount {
 
 export const ModuleAccount = {
   encode(message: ModuleAccount, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.base_account !== undefined) {
-      BaseAccount.encode(message.base_account, writer.uint32(10).fork()).ldelim();
+    if (message.baseAccount !== undefined) {
+      BaseAccount.encode(message.baseAccount, writer.uint32(10).fork()).ldelim();
     }
 
     if (message.name !== "") {
@@ -168,7 +168,7 @@ export const ModuleAccount = {
 
       switch (tag >>> 3) {
         case 1:
-          message.base_account = BaseAccount.decode(reader, reader.uint32());
+          message.baseAccount = BaseAccount.decode(reader, reader.uint32());
           break;
 
         case 2:
@@ -190,7 +190,7 @@ export const ModuleAccount = {
 
   fromPartial(object: DeepPartial<ModuleAccount>): ModuleAccount {
     const message = createBaseModuleAccount();
-    message.base_account = object.base_account !== undefined && object.base_account !== null ? BaseAccount.fromPartial(object.base_account) : undefined;
+    message.baseAccount = object.baseAccount !== undefined && object.baseAccount !== null ? BaseAccount.fromPartial(object.baseAccount) : undefined;
     message.name = object.name ?? "";
     message.permissions = object.permissions?.map(e => e) || [];
     return message;
@@ -200,34 +200,34 @@ export const ModuleAccount = {
 
 function createBaseParams(): Params {
   return {
-    max_memo_characters: Long.UZERO,
-    tx_sig_limit: Long.UZERO,
-    tx_size_cost_per_byte: Long.UZERO,
-    sig_verify_cost_ed25519: Long.UZERO,
-    sig_verify_cost_secp256k1: Long.UZERO
+    maxMemoCharacters: Long.UZERO,
+    txSigLimit: Long.UZERO,
+    txSizeCostPerByte: Long.UZERO,
+    sigVerifyCostEd25519: Long.UZERO,
+    sigVerifyCostSecp256k1: Long.UZERO
   };
 }
 
 export const Params = {
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.max_memo_characters.isZero()) {
-      writer.uint32(8).uint64(message.max_memo_characters);
+    if (!message.maxMemoCharacters.isZero()) {
+      writer.uint32(8).uint64(message.maxMemoCharacters);
     }
 
-    if (!message.tx_sig_limit.isZero()) {
-      writer.uint32(16).uint64(message.tx_sig_limit);
+    if (!message.txSigLimit.isZero()) {
+      writer.uint32(16).uint64(message.txSigLimit);
     }
 
-    if (!message.tx_size_cost_per_byte.isZero()) {
-      writer.uint32(24).uint64(message.tx_size_cost_per_byte);
+    if (!message.txSizeCostPerByte.isZero()) {
+      writer.uint32(24).uint64(message.txSizeCostPerByte);
     }
 
-    if (!message.sig_verify_cost_ed25519.isZero()) {
-      writer.uint32(32).uint64(message.sig_verify_cost_ed25519);
+    if (!message.sigVerifyCostEd25519.isZero()) {
+      writer.uint32(32).uint64(message.sigVerifyCostEd25519);
     }
 
-    if (!message.sig_verify_cost_secp256k1.isZero()) {
-      writer.uint32(40).uint64(message.sig_verify_cost_secp256k1);
+    if (!message.sigVerifyCostSecp256k1.isZero()) {
+      writer.uint32(40).uint64(message.sigVerifyCostSecp256k1);
     }
 
     return writer;
@@ -243,23 +243,23 @@ export const Params = {
 
       switch (tag >>> 3) {
         case 1:
-          message.max_memo_characters = (reader.uint64() as Long);
+          message.maxMemoCharacters = (reader.uint64() as Long);
           break;
 
         case 2:
-          message.tx_sig_limit = (reader.uint64() as Long);
+          message.txSigLimit = (reader.uint64() as Long);
           break;
 
         case 3:
-          message.tx_size_cost_per_byte = (reader.uint64() as Long);
+          message.txSizeCostPerByte = (reader.uint64() as Long);
           break;
 
         case 4:
-          message.sig_verify_cost_ed25519 = (reader.uint64() as Long);
+          message.sigVerifyCostEd25519 = (reader.uint64() as Long);
           break;
 
         case 5:
-          message.sig_verify_cost_secp256k1 = (reader.uint64() as Long);
+          message.sigVerifyCostSecp256k1 = (reader.uint64() as Long);
           break;
 
         default:
@@ -273,11 +273,11 @@ export const Params = {
 
   fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
-    message.max_memo_characters = object.max_memo_characters !== undefined && object.max_memo_characters !== null ? Long.fromValue(object.max_memo_characters) : Long.UZERO;
-    message.tx_sig_limit = object.tx_sig_limit !== undefined && object.tx_sig_limit !== null ? Long.fromValue(object.tx_sig_limit) : Long.UZERO;
-    message.tx_size_cost_per_byte = object.tx_size_cost_per_byte !== undefined && object.tx_size_cost_per_byte !== null ? Long.fromValue(object.tx_size_cost_per_byte) : Long.UZERO;
-    message.sig_verify_cost_ed25519 = object.sig_verify_cost_ed25519 !== undefined && object.sig_verify_cost_ed25519 !== null ? Long.fromValue(object.sig_verify_cost_ed25519) : Long.UZERO;
-    message.sig_verify_cost_secp256k1 = object.sig_verify_cost_secp256k1 !== undefined && object.sig_verify_cost_secp256k1 !== null ? Long.fromValue(object.sig_verify_cost_secp256k1) : Long.UZERO;
+    message.maxMemoCharacters = object.maxMemoCharacters !== undefined && object.maxMemoCharacters !== null ? Long.fromValue(object.maxMemoCharacters) : Long.UZERO;
+    message.txSigLimit = object.txSigLimit !== undefined && object.txSigLimit !== null ? Long.fromValue(object.txSigLimit) : Long.UZERO;
+    message.txSizeCostPerByte = object.txSizeCostPerByte !== undefined && object.txSizeCostPerByte !== null ? Long.fromValue(object.txSizeCostPerByte) : Long.UZERO;
+    message.sigVerifyCostEd25519 = object.sigVerifyCostEd25519 !== undefined && object.sigVerifyCostEd25519 !== null ? Long.fromValue(object.sigVerifyCostEd25519) : Long.UZERO;
+    message.sigVerifyCostSecp256k1 = object.sigVerifyCostSecp256k1 !== undefined && object.sigVerifyCostSecp256k1 !== null ? Long.fromValue(object.sigVerifyCostSecp256k1) : Long.UZERO;
     return message;
   }
 

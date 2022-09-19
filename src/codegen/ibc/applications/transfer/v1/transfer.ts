@@ -13,7 +13,7 @@ export interface DenomTrace {
   path: string;
   /** base denomination of the relayed fungible token. */
 
-  base_denom: string;
+  baseDenom: string;
 }
 /**
  * DenomTrace contains the base denomination for ICS20 fungible tokens and the
@@ -42,13 +42,13 @@ export interface Params {
    * send_enabled enables or disables all cross-chain token transfers from this
    * chain.
    */
-  send_enabled: boolean;
+  sendEnabled: boolean;
   /**
    * receive_enabled enables or disables all cross-chain token transfers to this
    * chain.
    */
 
-  receive_enabled: boolean;
+  receiveEnabled: boolean;
 }
 /**
  * Params defines the set of IBC transfer parameters.
@@ -74,7 +74,7 @@ export interface ParamsSDKType {
 function createBaseDenomTrace(): DenomTrace {
   return {
     path: "",
-    base_denom: ""
+    baseDenom: ""
   };
 }
 
@@ -84,8 +84,8 @@ export const DenomTrace = {
       writer.uint32(10).string(message.path);
     }
 
-    if (message.base_denom !== "") {
-      writer.uint32(18).string(message.base_denom);
+    if (message.baseDenom !== "") {
+      writer.uint32(18).string(message.baseDenom);
     }
 
     return writer;
@@ -105,7 +105,7 @@ export const DenomTrace = {
           break;
 
         case 2:
-          message.base_denom = reader.string();
+          message.baseDenom = reader.string();
           break;
 
         default:
@@ -120,7 +120,7 @@ export const DenomTrace = {
   fromPartial(object: DeepPartial<DenomTrace>): DenomTrace {
     const message = createBaseDenomTrace();
     message.path = object.path ?? "";
-    message.base_denom = object.base_denom ?? "";
+    message.baseDenom = object.baseDenom ?? "";
     return message;
   }
 
@@ -128,19 +128,19 @@ export const DenomTrace = {
 
 function createBaseParams(): Params {
   return {
-    send_enabled: false,
-    receive_enabled: false
+    sendEnabled: false,
+    receiveEnabled: false
   };
 }
 
 export const Params = {
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.send_enabled === true) {
-      writer.uint32(8).bool(message.send_enabled);
+    if (message.sendEnabled === true) {
+      writer.uint32(8).bool(message.sendEnabled);
     }
 
-    if (message.receive_enabled === true) {
-      writer.uint32(16).bool(message.receive_enabled);
+    if (message.receiveEnabled === true) {
+      writer.uint32(16).bool(message.receiveEnabled);
     }
 
     return writer;
@@ -156,11 +156,11 @@ export const Params = {
 
       switch (tag >>> 3) {
         case 1:
-          message.send_enabled = reader.bool();
+          message.sendEnabled = reader.bool();
           break;
 
         case 2:
-          message.receive_enabled = reader.bool();
+          message.receiveEnabled = reader.bool();
           break;
 
         default:
@@ -174,8 +174,8 @@ export const Params = {
 
   fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
-    message.send_enabled = object.send_enabled ?? false;
-    message.receive_enabled = object.receive_enabled ?? false;
+    message.sendEnabled = object.sendEnabled ?? false;
+    message.receiveEnabled = object.receiveEnabled ?? false;
     return message;
   }
 

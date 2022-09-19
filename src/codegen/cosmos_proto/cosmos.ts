@@ -119,7 +119,7 @@ export interface ScalarDescriptor {
    * bytes fields are supported for scalars.
    */
 
-  field_type: ScalarType[];
+  fieldType: ScalarType[];
 }
 /**
  * ScalarDescriptor describes an scalar type to be used with
@@ -215,7 +215,7 @@ function createBaseScalarDescriptor(): ScalarDescriptor {
   return {
     name: "",
     description: "",
-    field_type: []
+    fieldType: []
   };
 }
 
@@ -231,7 +231,7 @@ export const ScalarDescriptor = {
 
     writer.uint32(26).fork();
 
-    for (const v of message.field_type) {
+    for (const v of message.fieldType) {
       writer.int32(v);
     }
 
@@ -261,10 +261,10 @@ export const ScalarDescriptor = {
             const end2 = reader.uint32() + reader.pos;
 
             while (reader.pos < end2) {
-              message.field_type.push((reader.int32() as any));
+              message.fieldType.push((reader.int32() as any));
             }
           } else {
-            message.field_type.push((reader.int32() as any));
+            message.fieldType.push((reader.int32() as any));
           }
 
           break;
@@ -282,7 +282,7 @@ export const ScalarDescriptor = {
     const message = createBaseScalarDescriptor();
     message.name = object.name ?? "";
     message.description = object.description ?? "";
-    message.field_type = object.field_type?.map(e => e) || [];
+    message.fieldType = object.fieldType?.map(e => e) || [];
     return message;
   }
 

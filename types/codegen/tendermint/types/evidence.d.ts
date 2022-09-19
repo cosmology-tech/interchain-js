@@ -3,8 +3,8 @@ import { Validator, ValidatorSDKType } from "./validator";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, Long } from "@osmonauts/helpers";
 export interface Evidence {
-    duplicate_vote_evidence?: DuplicateVoteEvidence;
-    light_client_attack_evidence?: LightClientAttackEvidence;
+    duplicateVoteEvidence?: DuplicateVoteEvidence;
+    lightClientAttackEvidence?: LightClientAttackEvidence;
 }
 export interface EvidenceSDKType {
     duplicate_vote_evidence?: DuplicateVoteEvidenceSDKType;
@@ -12,10 +12,10 @@ export interface EvidenceSDKType {
 }
 /** DuplicateVoteEvidence contains evidence of a validator signed two conflicting votes. */
 export interface DuplicateVoteEvidence {
-    vote_a: Vote;
-    vote_b: Vote;
-    total_voting_power: Long;
-    validator_power: Long;
+    voteA: Vote;
+    voteB: Vote;
+    totalVotingPower: Long;
+    validatorPower: Long;
     timestamp: Date;
 }
 /** DuplicateVoteEvidence contains evidence of a validator signed two conflicting votes. */
@@ -28,10 +28,10 @@ export interface DuplicateVoteEvidenceSDKType {
 }
 /** LightClientAttackEvidence contains evidence of a set of validators attempting to mislead a light client. */
 export interface LightClientAttackEvidence {
-    conflicting_block: LightBlock;
-    common_height: Long;
-    byzantine_validators: Validator[];
-    total_voting_power: Long;
+    conflictingBlock: LightBlock;
+    commonHeight: Long;
+    byzantineValidators: Validator[];
+    totalVotingPower: Long;
     timestamp: Date;
 }
 /** LightClientAttackEvidence contains evidence of a set of validators attempting to mislead a light client. */

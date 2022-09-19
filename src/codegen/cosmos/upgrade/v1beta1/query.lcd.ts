@@ -33,7 +33,7 @@ export class LCDQueryClient extends LCDClient {
 
 
   async upgradedConsensusState(params: QueryUpgradedConsensusStateRequest): Promise<QueryUpgradedConsensusStateResponseSDKType> {
-    const endpoint = `cosmos/upgrade/v1beta1/upgraded_consensus_state/${params.last_height}`;
+    const endpoint = `cosmos/upgrade/v1beta1/upgraded_consensus_state/${params.lastHeight}`;
     return await this.get<QueryUpgradedConsensusStateResponseSDKType>(endpoint);
   }
   /* ModuleVersions queries the list of module versions from state.
@@ -46,8 +46,8 @@ export class LCDQueryClient extends LCDClient {
       params: {}
     };
 
-    if (typeof params?.module_name !== "undefined") {
-      options.params.module_name = params.module_name;
+    if (typeof params?.moduleName !== "undefined") {
+      options.params.module_name = params.moduleName;
     }
 
     const endpoint = `cosmos/upgrade/v1beta1/module_versions`;

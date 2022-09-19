@@ -216,15 +216,15 @@ export interface FileDescriptorProto {
     /** Names of files imported by this file. */
     dependency: string[];
     /** Indexes of the public imported files in the dependency list above. */
-    public_dependency: number[];
+    publicDependency: number[];
     /**
      * Indexes of the weak imported files in the dependency list.
      * For Google-internal migration only. Do not use.
      */
-    weak_dependency: number[];
+    weakDependency: number[];
     /** All top-level definitions in this file. */
-    message_type: DescriptorProto[];
-    enum_type: EnumDescriptorProto[];
+    messageType: DescriptorProto[];
+    enumType: EnumDescriptorProto[];
     service: ServiceDescriptorProto[];
     extension: FieldDescriptorProto[];
     options: FileOptions;
@@ -234,7 +234,7 @@ export interface FileDescriptorProto {
      * functionality of the descriptors -- the information is needed only by
      * development tools.
      */
-    source_code_info: SourceCodeInfo;
+    sourceCodeInfo: SourceCodeInfo;
     /**
      * The syntax of the proto file.
      * The supported values are "proto2" and "proto3".
@@ -279,17 +279,17 @@ export interface DescriptorProto {
     name: string;
     field: FieldDescriptorProto[];
     extension: FieldDescriptorProto[];
-    nested_type: DescriptorProto[];
-    enum_type: EnumDescriptorProto[];
-    extension_range: DescriptorProto_ExtensionRange[];
-    oneof_decl: OneofDescriptorProto[];
+    nestedType: DescriptorProto[];
+    enumType: EnumDescriptorProto[];
+    extensionRange: DescriptorProto_ExtensionRange[];
+    oneofDecl: OneofDescriptorProto[];
     options: MessageOptions;
-    reserved_range: DescriptorProto_ReservedRange[];
+    reservedRange: DescriptorProto_ReservedRange[];
     /**
      * Reserved field names, which may not be used by fields in the same message.
      * A given name may only be reserved once.
      */
-    reserved_name: string[];
+    reservedName: string[];
 }
 /** Describes a message type. */
 export interface DescriptorProtoSDKType {
@@ -346,7 +346,7 @@ export interface DescriptorProto_ReservedRangeSDKType {
 }
 export interface ExtensionRangeOptions {
     /** The parser stores options it doesn't recognize here. See above. */
-    uninterpreted_option: UninterpretedOption[];
+    uninterpretedOption: UninterpretedOption[];
 }
 export interface ExtensionRangeOptionsSDKType {
     /** The parser stores options it doesn't recognize here. See above. */
@@ -369,7 +369,7 @@ export interface FieldDescriptorProto {
      * message are searched, then within the parent, on up to the root
      * namespace).
      */
-    type_name: string;
+    typeName: string;
     /**
      * For extensions, this is the name of the type being extended.  It is
      * resolved in the same manner as type_name.
@@ -382,19 +382,19 @@ export interface FieldDescriptorProto {
      * For bytes, contains the C escaped value.  All bytes >= 128 are escaped.
      * TODO(kenton):  Base-64 encode?
      */
-    default_value: string;
+    defaultValue: string;
     /**
      * If set, gives the index of a oneof in the containing type's oneof_decl
      * list.  This field is a member of that oneof.
      */
-    oneof_index: number;
+    oneofIndex: number;
     /**
      * JSON name of this field. The value is set by protocol compiler. If the
      * user has set a "json_name" option on this field, that option's value
      * will be used. Otherwise, it's deduced from the field's name by converting
      * it to camelCase.
      */
-    json_name: string;
+    jsonName: string;
     options: FieldOptions;
 }
 /** Describes a field within a message. */
@@ -462,12 +462,12 @@ export interface EnumDescriptorProto {
      * by enum values in the same enum declaration. Reserved ranges may not
      * overlap.
      */
-    reserved_range: EnumDescriptorProto_EnumReservedRange[];
+    reservedRange: EnumDescriptorProto_EnumReservedRange[];
     /**
      * Reserved enum value names, which may not be reused. A given name may only
      * be reserved once.
      */
-    reserved_name: string[];
+    reservedName: string[];
 }
 /** Describes an enum type. */
 export interface EnumDescriptorProtoSDKType {
@@ -545,13 +545,13 @@ export interface MethodDescriptorProto {
      * Input and output type names.  These are resolved in the same way as
      * FieldDescriptorProto.type_name, but must refer to a message type.
      */
-    input_type: string;
-    output_type: string;
+    inputType: string;
+    outputType: string;
     options: MethodOptions;
     /** Identifies if client streams multiple client messages */
-    client_streaming: boolean;
+    clientStreaming: boolean;
     /** Identifies if server streams multiple server messages */
-    server_streaming: boolean;
+    serverStreaming: boolean;
 }
 /** Describes a method of a service. */
 export interface MethodDescriptorProtoSDKType {
@@ -575,7 +575,7 @@ export interface FileOptions {
      * inappropriate because proto packages do not normally start with backwards
      * domain names.
      */
-    java_package: string;
+    javaPackage: string;
     /**
      * If set, all the classes from the .proto file are wrapped in a single
      * outer class with the given name.  This applies to both Proto1
@@ -583,7 +583,7 @@ export interface FileOptions {
      * a .proto always translates to a single class, but you may want to
      * explicitly choose the class name).
      */
-    java_outer_classname: string;
+    javaOuterClassname: string;
     /**
      * If set true, then the Java code generator will generate a separate .java
      * file for each top-level message, enum, and service defined in the .proto
@@ -592,10 +592,10 @@ export interface FileOptions {
      * generated to contain the file's getDescriptor() method as well as any
      * top-level extensions defined in the file.
      */
-    java_multiple_files: boolean;
+    javaMultipleFiles: boolean;
     /** This option does nothing. */
     /** @deprecated */
-    java_generate_equals_and_hash: boolean;
+    javaGenerateEqualsAndHash: boolean;
     /**
      * If set true, then the Java2 code generator will generate code that
      * throws an exception whenever an attempt is made to assign a non-UTF-8
@@ -604,8 +604,8 @@ export interface FileOptions {
      * However, an extension field still accepts non-UTF-8 byte sequences.
      * This option has no effect on when used with the lite runtime.
      */
-    java_string_check_utf8: boolean;
-    optimize_for: FileOptions_OptimizeMode;
+    javaStringCheckUtf8: boolean;
+    optimizeFor: FileOptions_OptimizeMode;
     /**
      * Sets the Go package where structs generated from this .proto will be
      * placed. If omitted, the Go package will be derived from the following:
@@ -613,7 +613,7 @@ export interface FileOptions {
      * - Otherwise, the package statement in the .proto file, if present.
      * - Otherwise, the basename of the .proto file, without extension.
      */
-    go_package: string;
+    goPackage: string;
     /**
      * Should generic services be generated in each language?  "Generic" services
      * are not specific to any particular RPC system.  They are generated by the
@@ -626,10 +626,10 @@ export interface FileOptions {
      * these default to false.  Old code which depends on generic services should
      * explicitly set them to true.
      */
-    cc_generic_services: boolean;
-    java_generic_services: boolean;
-    py_generic_services: boolean;
-    php_generic_services: boolean;
+    ccGenericServices: boolean;
+    javaGenericServices: boolean;
+    pyGenericServices: boolean;
+    phpGenericServices: boolean;
     /**
      * Is this file deprecated?
      * Depending on the target platform, this can emit Deprecated annotations
@@ -641,49 +641,49 @@ export interface FileOptions {
      * Enables the use of arenas for the proto messages in this file. This applies
      * only to generated classes for C++.
      */
-    cc_enable_arenas: boolean;
+    ccEnableArenas: boolean;
     /**
      * Sets the objective c class prefix which is prepended to all objective c
      * generated classes from this .proto. There is no default.
      */
-    objc_class_prefix: string;
+    objcClassPrefix: string;
     /** Namespace for generated classes; defaults to the package. */
-    csharp_namespace: string;
+    csharpNamespace: string;
     /**
      * By default Swift generators will take the proto package and CamelCase it
      * replacing '.' with underscore and use that to prefix the types/symbols
      * defined. When this options is provided, they will use this value instead
      * to prefix the types/symbols defined.
      */
-    swift_prefix: string;
+    swiftPrefix: string;
     /**
      * Sets the php class prefix which is prepended to all php generated classes
      * from this .proto. Default is empty.
      */
-    php_class_prefix: string;
+    phpClassPrefix: string;
     /**
      * Use this option to change the namespace of php generated classes. Default
      * is empty. When this option is empty, the package name will be used for
      * determining the namespace.
      */
-    php_namespace: string;
+    phpNamespace: string;
     /**
      * Use this option to change the namespace of php generated metadata classes.
      * Default is empty. When this option is empty, the proto file name will be
      * used for determining the namespace.
      */
-    php_metadata_namespace: string;
+    phpMetadataNamespace: string;
     /**
      * Use this option to change the package of ruby generated classes. Default
      * is empty. When this option is not set, the package name will be used for
      * determining the ruby package.
      */
-    ruby_package: string;
+    rubyPackage: string;
     /**
      * The parser stores options it doesn't recognize here.
      * See the documentation for the "Options" section above.
      */
-    uninterpreted_option: UninterpretedOption[];
+    uninterpretedOption: UninterpretedOption[];
 }
 export interface FileOptionsSDKType {
     /**
@@ -823,13 +823,13 @@ export interface MessageOptions {
      * Because this is an option, the above two restrictions are not enforced by
      * the protocol compiler.
      */
-    message_set_wire_format: boolean;
+    messageSetWireFormat: boolean;
     /**
      * Disables the generation of the standard "descriptor()" accessor, which can
      * conflict with a field of the same name.  This is meant to make migration
      * from proto1 easier; new code should avoid fields named "descriptor".
      */
-    no_standard_descriptor_accessor: boolean;
+    noStandardDescriptorAccessor: boolean;
     /**
      * Is this message deprecated?
      * Depending on the target platform, this can emit Deprecated annotations
@@ -860,9 +860,9 @@ export interface MessageOptions {
      * instead. The option should only be implicitly set by the proto compiler
      * parser.
      */
-    map_entry: boolean;
+    mapEntry: boolean;
     /** The parser stores options it doesn't recognize here. See above. */
-    uninterpreted_option: UninterpretedOption[];
+    uninterpretedOption: UninterpretedOption[];
 }
 export interface MessageOptionsSDKType {
     /**
@@ -997,7 +997,7 @@ export interface FieldOptions {
     /** For Google-internal migration only. Do not use. */
     weak: boolean;
     /** The parser stores options it doesn't recognize here. See above. */
-    uninterpreted_option: UninterpretedOption[];
+    uninterpretedOption: UninterpretedOption[];
 }
 export interface FieldOptionsSDKType {
     /**
@@ -1074,7 +1074,7 @@ export interface FieldOptionsSDKType {
 }
 export interface OneofOptions {
     /** The parser stores options it doesn't recognize here. See above. */
-    uninterpreted_option: UninterpretedOption[];
+    uninterpretedOption: UninterpretedOption[];
 }
 export interface OneofOptionsSDKType {
     /** The parser stores options it doesn't recognize here. See above. */
@@ -1085,7 +1085,7 @@ export interface EnumOptions {
      * Set this option to true to allow mapping different tag names to the same
      * value.
      */
-    allow_alias: boolean;
+    allowAlias: boolean;
     /**
      * Is this enum deprecated?
      * Depending on the target platform, this can emit Deprecated annotations
@@ -1094,7 +1094,7 @@ export interface EnumOptions {
      */
     deprecated: boolean;
     /** The parser stores options it doesn't recognize here. See above. */
-    uninterpreted_option: UninterpretedOption[];
+    uninterpretedOption: UninterpretedOption[];
 }
 export interface EnumOptionsSDKType {
     /**
@@ -1121,7 +1121,7 @@ export interface EnumValueOptions {
      */
     deprecated: boolean;
     /** The parser stores options it doesn't recognize here. See above. */
-    uninterpreted_option: UninterpretedOption[];
+    uninterpretedOption: UninterpretedOption[];
 }
 export interface EnumValueOptionsSDKType {
     /**
@@ -1143,7 +1143,7 @@ export interface ServiceOptions {
      */
     deprecated: boolean;
     /** The parser stores options it doesn't recognize here. See above. */
-    uninterpreted_option: UninterpretedOption[];
+    uninterpretedOption: UninterpretedOption[];
 }
 export interface ServiceOptionsSDKType {
     /**
@@ -1164,9 +1164,9 @@ export interface MethodOptions {
      * this is a formalization for deprecating methods.
      */
     deprecated: boolean;
-    idempotency_level: MethodOptions_IdempotencyLevel;
+    idempotencyLevel: MethodOptions_IdempotencyLevel;
     /** The parser stores options it doesn't recognize here. See above. */
-    uninterpreted_option: UninterpretedOption[];
+    uninterpretedOption: UninterpretedOption[];
 }
 export interface MethodOptionsSDKType {
     /**
@@ -1194,12 +1194,12 @@ export interface UninterpretedOption {
      * The value of the uninterpreted option, in whatever type the tokenizer
      * identified it as during parsing. Exactly one of these should be set.
      */
-    identifier_value: string;
-    positive_int_value: Long;
-    negative_int_value: Long;
-    double_value: number;
-    string_value: Uint8Array;
-    aggregate_value: string;
+    identifierValue: string;
+    positiveIntValue: Long;
+    negativeIntValue: Long;
+    doubleValue: number;
+    stringValue: Uint8Array;
+    aggregateValue: string;
 }
 /**
  * A message representing a option the parser does not recognize. This only
@@ -1230,8 +1230,8 @@ export interface UninterpretedOptionSDKType {
  * "foo.(bar.baz).qux".
  */
 export interface UninterpretedOption_NamePart {
-    name_part: string;
-    is_extension: boolean;
+    namePart: string;
+    isExtension: boolean;
 }
 /**
  * The name of the uninterpreted option.  Each string represents a segment in
@@ -1432,9 +1432,9 @@ export interface SourceCodeInfo_Location {
      *
      * // ignored detached comments.
      */
-    leading_comments: string;
-    trailing_comments: string;
-    leading_detached_comments: string[];
+    leadingComments: string;
+    trailingComments: string;
+    leadingDetachedComments: string[];
 }
 export interface SourceCodeInfo_LocationSDKType {
     /**
@@ -1555,7 +1555,7 @@ export interface GeneratedCodeInfo_Annotation {
      */
     path: number[];
     /** Identifies the filesystem path to the original source .proto. */
-    source_file: string;
+    sourceFile: string;
     /**
      * Identifies the starting offset in bytes in the generated code
      * that relates to the identified object.

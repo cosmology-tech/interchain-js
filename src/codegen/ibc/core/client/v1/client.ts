@@ -9,10 +9,10 @@ import { DeepPartial, Long } from "@osmonauts/helpers";
 
 export interface IdentifiedClientState {
   /** client identifier */
-  client_id: string;
+  clientId: string;
   /** client state */
 
-  client_state: Any;
+  clientState: Any;
 }
 /**
  * IdentifiedClientState defines a client state with an additional client
@@ -36,7 +36,7 @@ export interface ConsensusStateWithHeight {
   height: Height;
   /** consensus state */
 
-  consensus_state: Any;
+  consensusState: Any;
 }
 /**
  * ConsensusStateWithHeight defines a consensus state with an additional height
@@ -57,10 +57,10 @@ export interface ConsensusStateWithHeightSDKType {
 
 export interface ClientConsensusStates {
   /** client identifier */
-  client_id: string;
+  clientId: string;
   /** consensus states and their heights associated with the client */
 
-  consensus_states: ConsensusStateWithHeight[];
+  consensusStates: ConsensusStateWithHeight[];
 }
 /**
  * ClientConsensusStates defines all the stored consensus states for a given
@@ -89,13 +89,13 @@ export interface ClientUpdateProposal {
   description: string;
   /** the client identifier for the client to be updated if the proposal passes */
 
-  subject_client_id: string;
+  subjectClientId: string;
   /**
    * the substitute client identifier for the client standing in for the subject
    * client
    */
 
-  substitute_client_id: string;
+  substituteClientId: string;
 }
 /**
  * ClientUpdateProposal is a governance proposal. If it passes, the substitute
@@ -138,7 +138,7 @@ export interface UpgradeProposal {
    * planned chain upgrades
    */
 
-  upgraded_client_state: Any;
+  upgradedClientState: Any;
 }
 /**
  * UpgradeProposal is a gov Content type for initiating an IBC breaking
@@ -175,10 +175,10 @@ export interface UpgradeProposalSDKType {
 
 export interface Height {
   /** the revision that the client is currently on */
-  revision_number: Long;
+  revisionNumber: Long;
   /** the height within the given revision */
 
-  revision_height: Long;
+  revisionHeight: Long;
 }
 /**
  * Height is a monotonically increasing data type
@@ -204,7 +204,7 @@ export interface HeightSDKType {
 
 export interface Params {
   /** allowed_clients defines the list of allowed client state types. */
-  allowed_clients: string[];
+  allowedClients: string[];
 }
 /** Params defines the set of IBC light client parameters. */
 
@@ -215,19 +215,19 @@ export interface ParamsSDKType {
 
 function createBaseIdentifiedClientState(): IdentifiedClientState {
   return {
-    client_id: "",
-    client_state: undefined
+    clientId: "",
+    clientState: undefined
   };
 }
 
 export const IdentifiedClientState = {
   encode(message: IdentifiedClientState, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.client_id !== "") {
-      writer.uint32(10).string(message.client_id);
+    if (message.clientId !== "") {
+      writer.uint32(10).string(message.clientId);
     }
 
-    if (message.client_state !== undefined) {
-      Any.encode(message.client_state, writer.uint32(18).fork()).ldelim();
+    if (message.clientState !== undefined) {
+      Any.encode(message.clientState, writer.uint32(18).fork()).ldelim();
     }
 
     return writer;
@@ -243,11 +243,11 @@ export const IdentifiedClientState = {
 
       switch (tag >>> 3) {
         case 1:
-          message.client_id = reader.string();
+          message.clientId = reader.string();
           break;
 
         case 2:
-          message.client_state = Any.decode(reader, reader.uint32());
+          message.clientState = Any.decode(reader, reader.uint32());
           break;
 
         default:
@@ -261,8 +261,8 @@ export const IdentifiedClientState = {
 
   fromPartial(object: DeepPartial<IdentifiedClientState>): IdentifiedClientState {
     const message = createBaseIdentifiedClientState();
-    message.client_id = object.client_id ?? "";
-    message.client_state = object.client_state !== undefined && object.client_state !== null ? Any.fromPartial(object.client_state) : undefined;
+    message.clientId = object.clientId ?? "";
+    message.clientState = object.clientState !== undefined && object.clientState !== null ? Any.fromPartial(object.clientState) : undefined;
     return message;
   }
 
@@ -271,7 +271,7 @@ export const IdentifiedClientState = {
 function createBaseConsensusStateWithHeight(): ConsensusStateWithHeight {
   return {
     height: undefined,
-    consensus_state: undefined
+    consensusState: undefined
   };
 }
 
@@ -281,8 +281,8 @@ export const ConsensusStateWithHeight = {
       Height.encode(message.height, writer.uint32(10).fork()).ldelim();
     }
 
-    if (message.consensus_state !== undefined) {
-      Any.encode(message.consensus_state, writer.uint32(18).fork()).ldelim();
+    if (message.consensusState !== undefined) {
+      Any.encode(message.consensusState, writer.uint32(18).fork()).ldelim();
     }
 
     return writer;
@@ -302,7 +302,7 @@ export const ConsensusStateWithHeight = {
           break;
 
         case 2:
-          message.consensus_state = Any.decode(reader, reader.uint32());
+          message.consensusState = Any.decode(reader, reader.uint32());
           break;
 
         default:
@@ -317,7 +317,7 @@ export const ConsensusStateWithHeight = {
   fromPartial(object: DeepPartial<ConsensusStateWithHeight>): ConsensusStateWithHeight {
     const message = createBaseConsensusStateWithHeight();
     message.height = object.height !== undefined && object.height !== null ? Height.fromPartial(object.height) : undefined;
-    message.consensus_state = object.consensus_state !== undefined && object.consensus_state !== null ? Any.fromPartial(object.consensus_state) : undefined;
+    message.consensusState = object.consensusState !== undefined && object.consensusState !== null ? Any.fromPartial(object.consensusState) : undefined;
     return message;
   }
 
@@ -325,18 +325,18 @@ export const ConsensusStateWithHeight = {
 
 function createBaseClientConsensusStates(): ClientConsensusStates {
   return {
-    client_id: "",
-    consensus_states: []
+    clientId: "",
+    consensusStates: []
   };
 }
 
 export const ClientConsensusStates = {
   encode(message: ClientConsensusStates, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.client_id !== "") {
-      writer.uint32(10).string(message.client_id);
+    if (message.clientId !== "") {
+      writer.uint32(10).string(message.clientId);
     }
 
-    for (const v of message.consensus_states) {
+    for (const v of message.consensusStates) {
       ConsensusStateWithHeight.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
@@ -353,11 +353,11 @@ export const ClientConsensusStates = {
 
       switch (tag >>> 3) {
         case 1:
-          message.client_id = reader.string();
+          message.clientId = reader.string();
           break;
 
         case 2:
-          message.consensus_states.push(ConsensusStateWithHeight.decode(reader, reader.uint32()));
+          message.consensusStates.push(ConsensusStateWithHeight.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -371,8 +371,8 @@ export const ClientConsensusStates = {
 
   fromPartial(object: DeepPartial<ClientConsensusStates>): ClientConsensusStates {
     const message = createBaseClientConsensusStates();
-    message.client_id = object.client_id ?? "";
-    message.consensus_states = object.consensus_states?.map(e => ConsensusStateWithHeight.fromPartial(e)) || [];
+    message.clientId = object.clientId ?? "";
+    message.consensusStates = object.consensusStates?.map(e => ConsensusStateWithHeight.fromPartial(e)) || [];
     return message;
   }
 
@@ -382,8 +382,8 @@ function createBaseClientUpdateProposal(): ClientUpdateProposal {
   return {
     title: "",
     description: "",
-    subject_client_id: "",
-    substitute_client_id: ""
+    subjectClientId: "",
+    substituteClientId: ""
   };
 }
 
@@ -397,12 +397,12 @@ export const ClientUpdateProposal = {
       writer.uint32(18).string(message.description);
     }
 
-    if (message.subject_client_id !== "") {
-      writer.uint32(26).string(message.subject_client_id);
+    if (message.subjectClientId !== "") {
+      writer.uint32(26).string(message.subjectClientId);
     }
 
-    if (message.substitute_client_id !== "") {
-      writer.uint32(34).string(message.substitute_client_id);
+    if (message.substituteClientId !== "") {
+      writer.uint32(34).string(message.substituteClientId);
     }
 
     return writer;
@@ -426,11 +426,11 @@ export const ClientUpdateProposal = {
           break;
 
         case 3:
-          message.subject_client_id = reader.string();
+          message.subjectClientId = reader.string();
           break;
 
         case 4:
-          message.substitute_client_id = reader.string();
+          message.substituteClientId = reader.string();
           break;
 
         default:
@@ -446,8 +446,8 @@ export const ClientUpdateProposal = {
     const message = createBaseClientUpdateProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
-    message.subject_client_id = object.subject_client_id ?? "";
-    message.substitute_client_id = object.substitute_client_id ?? "";
+    message.subjectClientId = object.subjectClientId ?? "";
+    message.substituteClientId = object.substituteClientId ?? "";
     return message;
   }
 
@@ -458,7 +458,7 @@ function createBaseUpgradeProposal(): UpgradeProposal {
     title: "",
     description: "",
     plan: undefined,
-    upgraded_client_state: undefined
+    upgradedClientState: undefined
   };
 }
 
@@ -476,8 +476,8 @@ export const UpgradeProposal = {
       Plan.encode(message.plan, writer.uint32(26).fork()).ldelim();
     }
 
-    if (message.upgraded_client_state !== undefined) {
-      Any.encode(message.upgraded_client_state, writer.uint32(34).fork()).ldelim();
+    if (message.upgradedClientState !== undefined) {
+      Any.encode(message.upgradedClientState, writer.uint32(34).fork()).ldelim();
     }
 
     return writer;
@@ -505,7 +505,7 @@ export const UpgradeProposal = {
           break;
 
         case 4:
-          message.upgraded_client_state = Any.decode(reader, reader.uint32());
+          message.upgradedClientState = Any.decode(reader, reader.uint32());
           break;
 
         default:
@@ -522,7 +522,7 @@ export const UpgradeProposal = {
     message.title = object.title ?? "";
     message.description = object.description ?? "";
     message.plan = object.plan !== undefined && object.plan !== null ? Plan.fromPartial(object.plan) : undefined;
-    message.upgraded_client_state = object.upgraded_client_state !== undefined && object.upgraded_client_state !== null ? Any.fromPartial(object.upgraded_client_state) : undefined;
+    message.upgradedClientState = object.upgradedClientState !== undefined && object.upgradedClientState !== null ? Any.fromPartial(object.upgradedClientState) : undefined;
     return message;
   }
 
@@ -530,19 +530,19 @@ export const UpgradeProposal = {
 
 function createBaseHeight(): Height {
   return {
-    revision_number: Long.UZERO,
-    revision_height: Long.UZERO
+    revisionNumber: Long.UZERO,
+    revisionHeight: Long.UZERO
   };
 }
 
 export const Height = {
   encode(message: Height, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.revision_number.isZero()) {
-      writer.uint32(8).uint64(message.revision_number);
+    if (!message.revisionNumber.isZero()) {
+      writer.uint32(8).uint64(message.revisionNumber);
     }
 
-    if (!message.revision_height.isZero()) {
-      writer.uint32(16).uint64(message.revision_height);
+    if (!message.revisionHeight.isZero()) {
+      writer.uint32(16).uint64(message.revisionHeight);
     }
 
     return writer;
@@ -558,11 +558,11 @@ export const Height = {
 
       switch (tag >>> 3) {
         case 1:
-          message.revision_number = (reader.uint64() as Long);
+          message.revisionNumber = (reader.uint64() as Long);
           break;
 
         case 2:
-          message.revision_height = (reader.uint64() as Long);
+          message.revisionHeight = (reader.uint64() as Long);
           break;
 
         default:
@@ -576,8 +576,8 @@ export const Height = {
 
   fromPartial(object: DeepPartial<Height>): Height {
     const message = createBaseHeight();
-    message.revision_number = object.revision_number !== undefined && object.revision_number !== null ? Long.fromValue(object.revision_number) : Long.UZERO;
-    message.revision_height = object.revision_height !== undefined && object.revision_height !== null ? Long.fromValue(object.revision_height) : Long.UZERO;
+    message.revisionNumber = object.revisionNumber !== undefined && object.revisionNumber !== null ? Long.fromValue(object.revisionNumber) : Long.UZERO;
+    message.revisionHeight = object.revisionHeight !== undefined && object.revisionHeight !== null ? Long.fromValue(object.revisionHeight) : Long.UZERO;
     return message;
   }
 
@@ -585,13 +585,13 @@ export const Height = {
 
 function createBaseParams(): Params {
   return {
-    allowed_clients: []
+    allowedClients: []
   };
 }
 
 export const Params = {
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.allowed_clients) {
+    for (const v of message.allowedClients) {
       writer.uint32(10).string(v!);
     }
 
@@ -608,7 +608,7 @@ export const Params = {
 
       switch (tag >>> 3) {
         case 1:
-          message.allowed_clients.push(reader.string());
+          message.allowedClients.push(reader.string());
           break;
 
         default:
@@ -622,7 +622,7 @@ export const Params = {
 
   fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
-    message.allowed_clients = object.allowed_clients?.map(e => e) || [];
+    message.allowedClients = object.allowedClients?.map(e => e) || [];
     return message;
   }
 

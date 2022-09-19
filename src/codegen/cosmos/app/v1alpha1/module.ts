@@ -10,7 +10,7 @@ export interface ModuleDescriptor {
    * to users where to location the module implementation. go_import takes
    * precedence over go_package when both are defined.
    */
-  go_import: string;
+  goImport: string;
   /**
    * use_package refers to a protobuf package that this module
    * uses and exposes to the world. In an app, only one module should "use"
@@ -18,7 +18,7 @@ export interface ModuleDescriptor {
    * all of the .proto files in a single package.
    */
 
-  use_package: PackageReference[];
+  usePackage: PackageReference[];
   /**
    * can_migrate_from defines which module versions this module can migrate
    * state from. The framework will check that one module version is able to
@@ -29,7 +29,7 @@ export interface ModuleDescriptor {
    * from v1 to v3, assuming all 3 module versions are registered at runtime.
    */
 
-  can_migrate_from: MigrateFromInfo[];
+  canMigrateFrom: MigrateFromInfo[];
 }
 /** ModuleDescriptor describes an app module. */
 
@@ -179,23 +179,23 @@ export interface MigrateFromInfoSDKType {
 
 function createBaseModuleDescriptor(): ModuleDescriptor {
   return {
-    go_import: "",
-    use_package: [],
-    can_migrate_from: []
+    goImport: "",
+    usePackage: [],
+    canMigrateFrom: []
   };
 }
 
 export const ModuleDescriptor = {
   encode(message: ModuleDescriptor, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.go_import !== "") {
-      writer.uint32(10).string(message.go_import);
+    if (message.goImport !== "") {
+      writer.uint32(10).string(message.goImport);
     }
 
-    for (const v of message.use_package) {
+    for (const v of message.usePackage) {
       PackageReference.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
-    for (const v of message.can_migrate_from) {
+    for (const v of message.canMigrateFrom) {
       MigrateFromInfo.encode(v!, writer.uint32(26).fork()).ldelim();
     }
 
@@ -212,15 +212,15 @@ export const ModuleDescriptor = {
 
       switch (tag >>> 3) {
         case 1:
-          message.go_import = reader.string();
+          message.goImport = reader.string();
           break;
 
         case 2:
-          message.use_package.push(PackageReference.decode(reader, reader.uint32()));
+          message.usePackage.push(PackageReference.decode(reader, reader.uint32()));
           break;
 
         case 3:
-          message.can_migrate_from.push(MigrateFromInfo.decode(reader, reader.uint32()));
+          message.canMigrateFrom.push(MigrateFromInfo.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -234,9 +234,9 @@ export const ModuleDescriptor = {
 
   fromPartial(object: DeepPartial<ModuleDescriptor>): ModuleDescriptor {
     const message = createBaseModuleDescriptor();
-    message.go_import = object.go_import ?? "";
-    message.use_package = object.use_package?.map(e => PackageReference.fromPartial(e)) || [];
-    message.can_migrate_from = object.can_migrate_from?.map(e => MigrateFromInfo.fromPartial(e)) || [];
+    message.goImport = object.goImport ?? "";
+    message.usePackage = object.usePackage?.map(e => PackageReference.fromPartial(e)) || [];
+    message.canMigrateFrom = object.canMigrateFrom?.map(e => MigrateFromInfo.fromPartial(e)) || [];
     return message;
   }
 

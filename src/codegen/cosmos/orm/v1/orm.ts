@@ -4,7 +4,7 @@ import { DeepPartial } from "@osmonauts/helpers";
 
 export interface TableDescriptor {
   /** primary_key defines the primary key for the table. */
-  primary_key: PrimaryKeyDescriptor;
+  primaryKey: PrimaryKeyDescriptor;
   /** index defines one or more secondary indexes. */
 
   index: SecondaryIndexDescriptor[];
@@ -74,7 +74,7 @@ export interface PrimaryKeyDescriptor {
    * contain one field of that is of type uint64.
    */
 
-  auto_increment: boolean;
+  autoIncrement: boolean;
 }
 /** PrimaryKeyDescriptor describes a table primary key. */
 
@@ -195,7 +195,7 @@ export interface SingletonDescriptorSDKType {
 
 function createBaseTableDescriptor(): TableDescriptor {
   return {
-    primary_key: undefined,
+    primaryKey: undefined,
     index: [],
     id: 0
   };
@@ -203,8 +203,8 @@ function createBaseTableDescriptor(): TableDescriptor {
 
 export const TableDescriptor = {
   encode(message: TableDescriptor, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.primary_key !== undefined) {
-      PrimaryKeyDescriptor.encode(message.primary_key, writer.uint32(10).fork()).ldelim();
+    if (message.primaryKey !== undefined) {
+      PrimaryKeyDescriptor.encode(message.primaryKey, writer.uint32(10).fork()).ldelim();
     }
 
     for (const v of message.index) {
@@ -228,7 +228,7 @@ export const TableDescriptor = {
 
       switch (tag >>> 3) {
         case 1:
-          message.primary_key = PrimaryKeyDescriptor.decode(reader, reader.uint32());
+          message.primaryKey = PrimaryKeyDescriptor.decode(reader, reader.uint32());
           break;
 
         case 2:
@@ -250,7 +250,7 @@ export const TableDescriptor = {
 
   fromPartial(object: DeepPartial<TableDescriptor>): TableDescriptor {
     const message = createBaseTableDescriptor();
-    message.primary_key = object.primary_key !== undefined && object.primary_key !== null ? PrimaryKeyDescriptor.fromPartial(object.primary_key) : undefined;
+    message.primaryKey = object.primaryKey !== undefined && object.primaryKey !== null ? PrimaryKeyDescriptor.fromPartial(object.primaryKey) : undefined;
     message.index = object.index?.map(e => SecondaryIndexDescriptor.fromPartial(e)) || [];
     message.id = object.id ?? 0;
     return message;
@@ -261,7 +261,7 @@ export const TableDescriptor = {
 function createBasePrimaryKeyDescriptor(): PrimaryKeyDescriptor {
   return {
     fields: "",
-    auto_increment: false
+    autoIncrement: false
   };
 }
 
@@ -271,8 +271,8 @@ export const PrimaryKeyDescriptor = {
       writer.uint32(10).string(message.fields);
     }
 
-    if (message.auto_increment === true) {
-      writer.uint32(16).bool(message.auto_increment);
+    if (message.autoIncrement === true) {
+      writer.uint32(16).bool(message.autoIncrement);
     }
 
     return writer;
@@ -292,7 +292,7 @@ export const PrimaryKeyDescriptor = {
           break;
 
         case 2:
-          message.auto_increment = reader.bool();
+          message.autoIncrement = reader.bool();
           break;
 
         default:
@@ -307,7 +307,7 @@ export const PrimaryKeyDescriptor = {
   fromPartial(object: DeepPartial<PrimaryKeyDescriptor>): PrimaryKeyDescriptor {
     const message = createBasePrimaryKeyDescriptor();
     message.fields = object.fields ?? "";
-    message.auto_increment = object.auto_increment ?? false;
+    message.autoIncrement = object.autoIncrement ?? false;
     return message;
   }
 

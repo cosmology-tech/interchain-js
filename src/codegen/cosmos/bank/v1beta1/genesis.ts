@@ -18,7 +18,7 @@ export interface GenesisState {
   supply: Coin[];
   /** denom_metadata defines the metadata of the differents coins. */
 
-  denom_metadata: Metadata[];
+  denomMetadata: Metadata[];
 }
 /** GenesisState defines the bank module's genesis state. */
 
@@ -68,7 +68,7 @@ function createBaseGenesisState(): GenesisState {
     params: undefined,
     balances: [],
     supply: [],
-    denom_metadata: []
+    denomMetadata: []
   };
 }
 
@@ -86,7 +86,7 @@ export const GenesisState = {
       Coin.encode(v!, writer.uint32(26).fork()).ldelim();
     }
 
-    for (const v of message.denom_metadata) {
+    for (const v of message.denomMetadata) {
       Metadata.encode(v!, writer.uint32(34).fork()).ldelim();
     }
 
@@ -115,7 +115,7 @@ export const GenesisState = {
           break;
 
         case 4:
-          message.denom_metadata.push(Metadata.decode(reader, reader.uint32()));
+          message.denomMetadata.push(Metadata.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -132,7 +132,7 @@ export const GenesisState = {
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     message.balances = object.balances?.map(e => Balance.fromPartial(e)) || [];
     message.supply = object.supply?.map(e => Coin.fromPartial(e)) || [];
-    message.denom_metadata = object.denom_metadata?.map(e => Metadata.fromPartial(e)) || [];
+    message.denomMetadata = object.denomMetadata?.map(e => Metadata.fromPartial(e)) || [];
     return message;
   }
 

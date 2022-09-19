@@ -44,7 +44,7 @@ export interface Plan {
 
   /** @deprecated */
 
-  upgraded_client_state: Any;
+  upgradedClientState: Any;
 }
 /** Plan specifies information about a planned upgrade and when it should occur. */
 
@@ -177,7 +177,7 @@ function createBasePlan(): Plan {
     time: undefined,
     height: Long.ZERO,
     info: "",
-    upgraded_client_state: undefined
+    upgradedClientState: undefined
   };
 }
 
@@ -199,8 +199,8 @@ export const Plan = {
       writer.uint32(34).string(message.info);
     }
 
-    if (message.upgraded_client_state !== undefined) {
-      Any.encode(message.upgraded_client_state, writer.uint32(42).fork()).ldelim();
+    if (message.upgradedClientState !== undefined) {
+      Any.encode(message.upgradedClientState, writer.uint32(42).fork()).ldelim();
     }
 
     return writer;
@@ -232,7 +232,7 @@ export const Plan = {
           break;
 
         case 5:
-          message.upgraded_client_state = Any.decode(reader, reader.uint32());
+          message.upgradedClientState = Any.decode(reader, reader.uint32());
           break;
 
         default:
@@ -250,7 +250,7 @@ export const Plan = {
     message.time = object.time ?? undefined;
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
     message.info = object.info ?? "";
-    message.upgraded_client_state = object.upgraded_client_state !== undefined && object.upgraded_client_state !== null ? Any.fromPartial(object.upgraded_client_state) : undefined;
+    message.upgradedClientState = object.upgradedClientState !== undefined && object.upgradedClientState !== null ? Any.fromPartial(object.upgradedClientState) : undefined;
     return message;
   }
 

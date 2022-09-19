@@ -8,7 +8,7 @@ import { DeepPartial } from "@osmonauts/helpers";
  */
 export interface LegacyAminoPubKey {
     threshold: number;
-    public_keys: Any[];
+    publicKeys: Any[];
 }
 /**
  * LegacyAminoPubKey specifies a public key type

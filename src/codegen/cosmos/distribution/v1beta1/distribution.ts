@@ -4,10 +4,10 @@ import { DeepPartial, Long } from "@osmonauts/helpers";
 /** Params defines the set of params for the distribution module. */
 
 export interface Params {
-  community_tax: string;
-  base_proposer_reward: string;
-  bonus_proposer_reward: string;
-  withdraw_addr_enabled: boolean;
+  communityTax: string;
+  baseProposerReward: string;
+  bonusProposerReward: string;
+  withdrawAddrEnabled: boolean;
 }
 /** Params defines the set of params for the distribution module. */
 
@@ -33,8 +33,8 @@ export interface ParamsSDKType {
  */
 
 export interface ValidatorHistoricalRewards {
-  cumulative_reward_ratio: DecCoin[];
-  reference_count: number;
+  cumulativeRewardRatio: DecCoin[];
+  referenceCount: number;
 }
 /**
  * ValidatorHistoricalRewards represents historical rewards for a validator.
@@ -115,7 +115,7 @@ export interface ValidatorOutstandingRewardsSDKType {
  */
 
 export interface ValidatorSlashEvent {
-  validator_period: Long;
+  validatorPeriod: Long;
   fraction: string;
 }
 /**
@@ -132,7 +132,7 @@ export interface ValidatorSlashEventSDKType {
 /** ValidatorSlashEvents is a collection of ValidatorSlashEvent messages. */
 
 export interface ValidatorSlashEvents {
-  validator_slash_events: ValidatorSlashEvent[];
+  validatorSlashEvents: ValidatorSlashEvent[];
 }
 /** ValidatorSlashEvents is a collection of ValidatorSlashEvent messages. */
 
@@ -142,7 +142,7 @@ export interface ValidatorSlashEventsSDKType {
 /** FeePool is the global fee pool for distribution. */
 
 export interface FeePool {
-  community_pool: DecCoin[];
+  communityPool: DecCoin[];
 }
 /** FeePool is the global fee pool for distribution. */
 
@@ -183,7 +183,7 @@ export interface CommunityPoolSpendProposalSDKType {
  */
 
 export interface DelegatorStartingInfo {
-  previous_period: Long;
+  previousPeriod: Long;
   stake: string;
   height: Long;
 }
@@ -207,7 +207,7 @@ export interface DelegatorStartingInfoSDKType {
  */
 
 export interface DelegationDelegatorReward {
-  validator_address: string;
+  validatorAddress: string;
   reward: DecCoin[];
 }
 /**
@@ -246,29 +246,29 @@ export interface CommunityPoolSpendProposalWithDepositSDKType {
 
 function createBaseParams(): Params {
   return {
-    community_tax: "",
-    base_proposer_reward: "",
-    bonus_proposer_reward: "",
-    withdraw_addr_enabled: false
+    communityTax: "",
+    baseProposerReward: "",
+    bonusProposerReward: "",
+    withdrawAddrEnabled: false
   };
 }
 
 export const Params = {
   encode(message: Params, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.community_tax !== "") {
-      writer.uint32(10).string(message.community_tax);
+    if (message.communityTax !== "") {
+      writer.uint32(10).string(message.communityTax);
     }
 
-    if (message.base_proposer_reward !== "") {
-      writer.uint32(18).string(message.base_proposer_reward);
+    if (message.baseProposerReward !== "") {
+      writer.uint32(18).string(message.baseProposerReward);
     }
 
-    if (message.bonus_proposer_reward !== "") {
-      writer.uint32(26).string(message.bonus_proposer_reward);
+    if (message.bonusProposerReward !== "") {
+      writer.uint32(26).string(message.bonusProposerReward);
     }
 
-    if (message.withdraw_addr_enabled === true) {
-      writer.uint32(32).bool(message.withdraw_addr_enabled);
+    if (message.withdrawAddrEnabled === true) {
+      writer.uint32(32).bool(message.withdrawAddrEnabled);
     }
 
     return writer;
@@ -284,19 +284,19 @@ export const Params = {
 
       switch (tag >>> 3) {
         case 1:
-          message.community_tax = reader.string();
+          message.communityTax = reader.string();
           break;
 
         case 2:
-          message.base_proposer_reward = reader.string();
+          message.baseProposerReward = reader.string();
           break;
 
         case 3:
-          message.bonus_proposer_reward = reader.string();
+          message.bonusProposerReward = reader.string();
           break;
 
         case 4:
-          message.withdraw_addr_enabled = reader.bool();
+          message.withdrawAddrEnabled = reader.bool();
           break;
 
         default:
@@ -310,10 +310,10 @@ export const Params = {
 
   fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
-    message.community_tax = object.community_tax ?? "";
-    message.base_proposer_reward = object.base_proposer_reward ?? "";
-    message.bonus_proposer_reward = object.bonus_proposer_reward ?? "";
-    message.withdraw_addr_enabled = object.withdraw_addr_enabled ?? false;
+    message.communityTax = object.communityTax ?? "";
+    message.baseProposerReward = object.baseProposerReward ?? "";
+    message.bonusProposerReward = object.bonusProposerReward ?? "";
+    message.withdrawAddrEnabled = object.withdrawAddrEnabled ?? false;
     return message;
   }
 
@@ -321,19 +321,19 @@ export const Params = {
 
 function createBaseValidatorHistoricalRewards(): ValidatorHistoricalRewards {
   return {
-    cumulative_reward_ratio: [],
-    reference_count: 0
+    cumulativeRewardRatio: [],
+    referenceCount: 0
   };
 }
 
 export const ValidatorHistoricalRewards = {
   encode(message: ValidatorHistoricalRewards, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.cumulative_reward_ratio) {
+    for (const v of message.cumulativeRewardRatio) {
       DecCoin.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
-    if (message.reference_count !== 0) {
-      writer.uint32(16).uint32(message.reference_count);
+    if (message.referenceCount !== 0) {
+      writer.uint32(16).uint32(message.referenceCount);
     }
 
     return writer;
@@ -349,11 +349,11 @@ export const ValidatorHistoricalRewards = {
 
       switch (tag >>> 3) {
         case 1:
-          message.cumulative_reward_ratio.push(DecCoin.decode(reader, reader.uint32()));
+          message.cumulativeRewardRatio.push(DecCoin.decode(reader, reader.uint32()));
           break;
 
         case 2:
-          message.reference_count = reader.uint32();
+          message.referenceCount = reader.uint32();
           break;
 
         default:
@@ -367,8 +367,8 @@ export const ValidatorHistoricalRewards = {
 
   fromPartial(object: DeepPartial<ValidatorHistoricalRewards>): ValidatorHistoricalRewards {
     const message = createBaseValidatorHistoricalRewards();
-    message.cumulative_reward_ratio = object.cumulative_reward_ratio?.map(e => DecCoin.fromPartial(e)) || [];
-    message.reference_count = object.reference_count ?? 0;
+    message.cumulativeRewardRatio = object.cumulativeRewardRatio?.map(e => DecCoin.fromPartial(e)) || [];
+    message.referenceCount = object.referenceCount ?? 0;
     return message;
   }
 
@@ -521,15 +521,15 @@ export const ValidatorOutstandingRewards = {
 
 function createBaseValidatorSlashEvent(): ValidatorSlashEvent {
   return {
-    validator_period: Long.UZERO,
+    validatorPeriod: Long.UZERO,
     fraction: ""
   };
 }
 
 export const ValidatorSlashEvent = {
   encode(message: ValidatorSlashEvent, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.validator_period.isZero()) {
-      writer.uint32(8).uint64(message.validator_period);
+    if (!message.validatorPeriod.isZero()) {
+      writer.uint32(8).uint64(message.validatorPeriod);
     }
 
     if (message.fraction !== "") {
@@ -549,7 +549,7 @@ export const ValidatorSlashEvent = {
 
       switch (tag >>> 3) {
         case 1:
-          message.validator_period = (reader.uint64() as Long);
+          message.validatorPeriod = (reader.uint64() as Long);
           break;
 
         case 2:
@@ -567,7 +567,7 @@ export const ValidatorSlashEvent = {
 
   fromPartial(object: DeepPartial<ValidatorSlashEvent>): ValidatorSlashEvent {
     const message = createBaseValidatorSlashEvent();
-    message.validator_period = object.validator_period !== undefined && object.validator_period !== null ? Long.fromValue(object.validator_period) : Long.UZERO;
+    message.validatorPeriod = object.validatorPeriod !== undefined && object.validatorPeriod !== null ? Long.fromValue(object.validatorPeriod) : Long.UZERO;
     message.fraction = object.fraction ?? "";
     return message;
   }
@@ -576,13 +576,13 @@ export const ValidatorSlashEvent = {
 
 function createBaseValidatorSlashEvents(): ValidatorSlashEvents {
   return {
-    validator_slash_events: []
+    validatorSlashEvents: []
   };
 }
 
 export const ValidatorSlashEvents = {
   encode(message: ValidatorSlashEvents, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.validator_slash_events) {
+    for (const v of message.validatorSlashEvents) {
       ValidatorSlashEvent.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
@@ -599,7 +599,7 @@ export const ValidatorSlashEvents = {
 
       switch (tag >>> 3) {
         case 1:
-          message.validator_slash_events.push(ValidatorSlashEvent.decode(reader, reader.uint32()));
+          message.validatorSlashEvents.push(ValidatorSlashEvent.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -613,7 +613,7 @@ export const ValidatorSlashEvents = {
 
   fromPartial(object: DeepPartial<ValidatorSlashEvents>): ValidatorSlashEvents {
     const message = createBaseValidatorSlashEvents();
-    message.validator_slash_events = object.validator_slash_events?.map(e => ValidatorSlashEvent.fromPartial(e)) || [];
+    message.validatorSlashEvents = object.validatorSlashEvents?.map(e => ValidatorSlashEvent.fromPartial(e)) || [];
     return message;
   }
 
@@ -621,13 +621,13 @@ export const ValidatorSlashEvents = {
 
 function createBaseFeePool(): FeePool {
   return {
-    community_pool: []
+    communityPool: []
   };
 }
 
 export const FeePool = {
   encode(message: FeePool, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    for (const v of message.community_pool) {
+    for (const v of message.communityPool) {
       DecCoin.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
@@ -644,7 +644,7 @@ export const FeePool = {
 
       switch (tag >>> 3) {
         case 1:
-          message.community_pool.push(DecCoin.decode(reader, reader.uint32()));
+          message.communityPool.push(DecCoin.decode(reader, reader.uint32()));
           break;
 
         default:
@@ -658,7 +658,7 @@ export const FeePool = {
 
   fromPartial(object: DeepPartial<FeePool>): FeePool {
     const message = createBaseFeePool();
-    message.community_pool = object.community_pool?.map(e => DecCoin.fromPartial(e)) || [];
+    message.communityPool = object.communityPool?.map(e => DecCoin.fromPartial(e)) || [];
     return message;
   }
 
@@ -741,7 +741,7 @@ export const CommunityPoolSpendProposal = {
 
 function createBaseDelegatorStartingInfo(): DelegatorStartingInfo {
   return {
-    previous_period: Long.UZERO,
+    previousPeriod: Long.UZERO,
     stake: "",
     height: Long.UZERO
   };
@@ -749,8 +749,8 @@ function createBaseDelegatorStartingInfo(): DelegatorStartingInfo {
 
 export const DelegatorStartingInfo = {
   encode(message: DelegatorStartingInfo, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (!message.previous_period.isZero()) {
-      writer.uint32(8).uint64(message.previous_period);
+    if (!message.previousPeriod.isZero()) {
+      writer.uint32(8).uint64(message.previousPeriod);
     }
 
     if (message.stake !== "") {
@@ -774,7 +774,7 @@ export const DelegatorStartingInfo = {
 
       switch (tag >>> 3) {
         case 1:
-          message.previous_period = (reader.uint64() as Long);
+          message.previousPeriod = (reader.uint64() as Long);
           break;
 
         case 2:
@@ -796,7 +796,7 @@ export const DelegatorStartingInfo = {
 
   fromPartial(object: DeepPartial<DelegatorStartingInfo>): DelegatorStartingInfo {
     const message = createBaseDelegatorStartingInfo();
-    message.previous_period = object.previous_period !== undefined && object.previous_period !== null ? Long.fromValue(object.previous_period) : Long.UZERO;
+    message.previousPeriod = object.previousPeriod !== undefined && object.previousPeriod !== null ? Long.fromValue(object.previousPeriod) : Long.UZERO;
     message.stake = object.stake ?? "";
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.UZERO;
     return message;
@@ -806,15 +806,15 @@ export const DelegatorStartingInfo = {
 
 function createBaseDelegationDelegatorReward(): DelegationDelegatorReward {
   return {
-    validator_address: "",
+    validatorAddress: "",
     reward: []
   };
 }
 
 export const DelegationDelegatorReward = {
   encode(message: DelegationDelegatorReward, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.validator_address !== "") {
-      writer.uint32(10).string(message.validator_address);
+    if (message.validatorAddress !== "") {
+      writer.uint32(10).string(message.validatorAddress);
     }
 
     for (const v of message.reward) {
@@ -834,7 +834,7 @@ export const DelegationDelegatorReward = {
 
       switch (tag >>> 3) {
         case 1:
-          message.validator_address = reader.string();
+          message.validatorAddress = reader.string();
           break;
 
         case 2:
@@ -852,7 +852,7 @@ export const DelegationDelegatorReward = {
 
   fromPartial(object: DeepPartial<DelegationDelegatorReward>): DelegationDelegatorReward {
     const message = createBaseDelegationDelegatorReward();
-    message.validator_address = object.validator_address ?? "";
+    message.validatorAddress = object.validatorAddress ?? "";
     message.reward = object.reward?.map(e => DecCoin.fromPartial(e)) || [];
     return message;
   }

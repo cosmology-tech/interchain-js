@@ -169,7 +169,7 @@ export interface GetTxsEventRequest {
   /** pagination defines a pagination for the request. */
 
   pagination?: PageRequest;
-  order_by?: OrderBy;
+  orderBy?: OrderBy;
 }
 /**
  * GetTxsEventRequest is the request type for the Service.TxsByEvents
@@ -194,7 +194,7 @@ export interface GetTxsEventResponse {
   txs: Tx[];
   /** tx_responses is the list of queried TxResponses. */
 
-  tx_responses: TxResponse[];
+  txResponses: TxResponse[];
   /** pagination defines a pagination for the response. */
 
   pagination?: PageResponse;
@@ -221,7 +221,7 @@ export interface GetTxsEventResponseSDKType {
 
 export interface BroadcastTxRequest {
   /** tx_bytes is the raw transaction. */
-  tx_bytes: Uint8Array;
+  txBytes: Uint8Array;
   mode: BroadcastMode;
 }
 /**
@@ -241,7 +241,7 @@ export interface BroadcastTxRequestSDKType {
 
 export interface BroadcastTxResponse {
   /** tx_response is the queried TxResponses. */
-  tx_response: TxResponse;
+  txResponse: TxResponse;
 }
 /**
  * BroadcastTxResponse is the response type for the
@@ -271,7 +271,7 @@ export interface SimulateRequest {
    * Since: cosmos-sdk 0.43
    */
 
-  tx_bytes: Uint8Array;
+  txBytes: Uint8Array;
 }
 /**
  * SimulateRequest is the request type for the Service.Simulate
@@ -301,7 +301,7 @@ export interface SimulateRequestSDKType {
 
 export interface SimulateResponse {
   /** gas_info is the information about gas used in the simulation. */
-  gas_info: GasInfo;
+  gasInfo: GasInfo;
   /** result is the result of the simulation. */
 
   result: Result;
@@ -343,7 +343,7 @@ export interface GetTxResponse {
   tx: Tx;
   /** tx_response is the queried TxResponses. */
 
-  tx_response: TxResponse;
+  txResponse: TxResponse;
 }
 /** GetTxResponse is the response type for the Service.GetTx method. */
 
@@ -391,7 +391,7 @@ export interface GetBlockWithTxsRequestSDKType {
 export interface GetBlockWithTxsResponse {
   /** txs are the transactions in the block. */
   txs: Tx[];
-  block_id: BlockID;
+  blockId: BlockID;
   block: Block;
   /** pagination defines a pagination for the response. */
 
@@ -417,7 +417,7 @@ function createBaseGetTxsEventRequest(): GetTxsEventRequest {
   return {
     events: [],
     pagination: undefined,
-    order_by: 0
+    orderBy: 0
   };
 }
 
@@ -431,8 +431,8 @@ export const GetTxsEventRequest = {
       PageRequest.encode(message.pagination, writer.uint32(18).fork()).ldelim();
     }
 
-    if (message.order_by !== 0) {
-      writer.uint32(24).int32(message.order_by);
+    if (message.orderBy !== 0) {
+      writer.uint32(24).int32(message.orderBy);
     }
 
     return writer;
@@ -456,7 +456,7 @@ export const GetTxsEventRequest = {
           break;
 
         case 3:
-          message.order_by = (reader.int32() as any);
+          message.orderBy = (reader.int32() as any);
           break;
 
         default:
@@ -472,7 +472,7 @@ export const GetTxsEventRequest = {
     const message = createBaseGetTxsEventRequest();
     message.events = object.events?.map(e => e) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
-    message.order_by = object.order_by ?? 0;
+    message.orderBy = object.orderBy ?? 0;
     return message;
   }
 
@@ -481,7 +481,7 @@ export const GetTxsEventRequest = {
 function createBaseGetTxsEventResponse(): GetTxsEventResponse {
   return {
     txs: [],
-    tx_responses: [],
+    txResponses: [],
     pagination: undefined
   };
 }
@@ -492,7 +492,7 @@ export const GetTxsEventResponse = {
       Tx.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
-    for (const v of message.tx_responses) {
+    for (const v of message.txResponses) {
       TxResponse.encode(v!, writer.uint32(18).fork()).ldelim();
     }
 
@@ -517,7 +517,7 @@ export const GetTxsEventResponse = {
           break;
 
         case 2:
-          message.tx_responses.push(TxResponse.decode(reader, reader.uint32()));
+          message.txResponses.push(TxResponse.decode(reader, reader.uint32()));
           break;
 
         case 3:
@@ -536,7 +536,7 @@ export const GetTxsEventResponse = {
   fromPartial(object: DeepPartial<GetTxsEventResponse>): GetTxsEventResponse {
     const message = createBaseGetTxsEventResponse();
     message.txs = object.txs?.map(e => Tx.fromPartial(e)) || [];
-    message.tx_responses = object.tx_responses?.map(e => TxResponse.fromPartial(e)) || [];
+    message.txResponses = object.txResponses?.map(e => TxResponse.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   }
@@ -545,15 +545,15 @@ export const GetTxsEventResponse = {
 
 function createBaseBroadcastTxRequest(): BroadcastTxRequest {
   return {
-    tx_bytes: new Uint8Array(),
+    txBytes: new Uint8Array(),
     mode: 0
   };
 }
 
 export const BroadcastTxRequest = {
   encode(message: BroadcastTxRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.tx_bytes.length !== 0) {
-      writer.uint32(10).bytes(message.tx_bytes);
+    if (message.txBytes.length !== 0) {
+      writer.uint32(10).bytes(message.txBytes);
     }
 
     if (message.mode !== 0) {
@@ -573,7 +573,7 @@ export const BroadcastTxRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.tx_bytes = reader.bytes();
+          message.txBytes = reader.bytes();
           break;
 
         case 2:
@@ -591,7 +591,7 @@ export const BroadcastTxRequest = {
 
   fromPartial(object: DeepPartial<BroadcastTxRequest>): BroadcastTxRequest {
     const message = createBaseBroadcastTxRequest();
-    message.tx_bytes = object.tx_bytes ?? new Uint8Array();
+    message.txBytes = object.txBytes ?? new Uint8Array();
     message.mode = object.mode ?? 0;
     return message;
   }
@@ -600,14 +600,14 @@ export const BroadcastTxRequest = {
 
 function createBaseBroadcastTxResponse(): BroadcastTxResponse {
   return {
-    tx_response: undefined
+    txResponse: undefined
   };
 }
 
 export const BroadcastTxResponse = {
   encode(message: BroadcastTxResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.tx_response !== undefined) {
-      TxResponse.encode(message.tx_response, writer.uint32(10).fork()).ldelim();
+    if (message.txResponse !== undefined) {
+      TxResponse.encode(message.txResponse, writer.uint32(10).fork()).ldelim();
     }
 
     return writer;
@@ -623,7 +623,7 @@ export const BroadcastTxResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.tx_response = TxResponse.decode(reader, reader.uint32());
+          message.txResponse = TxResponse.decode(reader, reader.uint32());
           break;
 
         default:
@@ -637,7 +637,7 @@ export const BroadcastTxResponse = {
 
   fromPartial(object: DeepPartial<BroadcastTxResponse>): BroadcastTxResponse {
     const message = createBaseBroadcastTxResponse();
-    message.tx_response = object.tx_response !== undefined && object.tx_response !== null ? TxResponse.fromPartial(object.tx_response) : undefined;
+    message.txResponse = object.txResponse !== undefined && object.txResponse !== null ? TxResponse.fromPartial(object.txResponse) : undefined;
     return message;
   }
 
@@ -646,7 +646,7 @@ export const BroadcastTxResponse = {
 function createBaseSimulateRequest(): SimulateRequest {
   return {
     tx: undefined,
-    tx_bytes: new Uint8Array()
+    txBytes: new Uint8Array()
   };
 }
 
@@ -656,8 +656,8 @@ export const SimulateRequest = {
       Tx.encode(message.tx, writer.uint32(10).fork()).ldelim();
     }
 
-    if (message.tx_bytes.length !== 0) {
-      writer.uint32(18).bytes(message.tx_bytes);
+    if (message.txBytes.length !== 0) {
+      writer.uint32(18).bytes(message.txBytes);
     }
 
     return writer;
@@ -677,7 +677,7 @@ export const SimulateRequest = {
           break;
 
         case 2:
-          message.tx_bytes = reader.bytes();
+          message.txBytes = reader.bytes();
           break;
 
         default:
@@ -692,7 +692,7 @@ export const SimulateRequest = {
   fromPartial(object: DeepPartial<SimulateRequest>): SimulateRequest {
     const message = createBaseSimulateRequest();
     message.tx = object.tx !== undefined && object.tx !== null ? Tx.fromPartial(object.tx) : undefined;
-    message.tx_bytes = object.tx_bytes ?? new Uint8Array();
+    message.txBytes = object.txBytes ?? new Uint8Array();
     return message;
   }
 
@@ -700,15 +700,15 @@ export const SimulateRequest = {
 
 function createBaseSimulateResponse(): SimulateResponse {
   return {
-    gas_info: undefined,
+    gasInfo: undefined,
     result: undefined
   };
 }
 
 export const SimulateResponse = {
   encode(message: SimulateResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.gas_info !== undefined) {
-      GasInfo.encode(message.gas_info, writer.uint32(10).fork()).ldelim();
+    if (message.gasInfo !== undefined) {
+      GasInfo.encode(message.gasInfo, writer.uint32(10).fork()).ldelim();
     }
 
     if (message.result !== undefined) {
@@ -728,7 +728,7 @@ export const SimulateResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.gas_info = GasInfo.decode(reader, reader.uint32());
+          message.gasInfo = GasInfo.decode(reader, reader.uint32());
           break;
 
         case 2:
@@ -746,7 +746,7 @@ export const SimulateResponse = {
 
   fromPartial(object: DeepPartial<SimulateResponse>): SimulateResponse {
     const message = createBaseSimulateResponse();
-    message.gas_info = object.gas_info !== undefined && object.gas_info !== null ? GasInfo.fromPartial(object.gas_info) : undefined;
+    message.gasInfo = object.gasInfo !== undefined && object.gasInfo !== null ? GasInfo.fromPartial(object.gasInfo) : undefined;
     message.result = object.result !== undefined && object.result !== null ? Result.fromPartial(object.result) : undefined;
     return message;
   }
@@ -801,7 +801,7 @@ export const GetTxRequest = {
 function createBaseGetTxResponse(): GetTxResponse {
   return {
     tx: undefined,
-    tx_response: undefined
+    txResponse: undefined
   };
 }
 
@@ -811,8 +811,8 @@ export const GetTxResponse = {
       Tx.encode(message.tx, writer.uint32(10).fork()).ldelim();
     }
 
-    if (message.tx_response !== undefined) {
-      TxResponse.encode(message.tx_response, writer.uint32(18).fork()).ldelim();
+    if (message.txResponse !== undefined) {
+      TxResponse.encode(message.txResponse, writer.uint32(18).fork()).ldelim();
     }
 
     return writer;
@@ -832,7 +832,7 @@ export const GetTxResponse = {
           break;
 
         case 2:
-          message.tx_response = TxResponse.decode(reader, reader.uint32());
+          message.txResponse = TxResponse.decode(reader, reader.uint32());
           break;
 
         default:
@@ -847,7 +847,7 @@ export const GetTxResponse = {
   fromPartial(object: DeepPartial<GetTxResponse>): GetTxResponse {
     const message = createBaseGetTxResponse();
     message.tx = object.tx !== undefined && object.tx !== null ? Tx.fromPartial(object.tx) : undefined;
-    message.tx_response = object.tx_response !== undefined && object.tx_response !== null ? TxResponse.fromPartial(object.tx_response) : undefined;
+    message.txResponse = object.txResponse !== undefined && object.txResponse !== null ? TxResponse.fromPartial(object.txResponse) : undefined;
     return message;
   }
 
@@ -911,7 +911,7 @@ export const GetBlockWithTxsRequest = {
 function createBaseGetBlockWithTxsResponse(): GetBlockWithTxsResponse {
   return {
     txs: [],
-    block_id: undefined,
+    blockId: undefined,
     block: undefined,
     pagination: undefined
   };
@@ -923,8 +923,8 @@ export const GetBlockWithTxsResponse = {
       Tx.encode(v!, writer.uint32(10).fork()).ldelim();
     }
 
-    if (message.block_id !== undefined) {
-      BlockID.encode(message.block_id, writer.uint32(18).fork()).ldelim();
+    if (message.blockId !== undefined) {
+      BlockID.encode(message.blockId, writer.uint32(18).fork()).ldelim();
     }
 
     if (message.block !== undefined) {
@@ -952,7 +952,7 @@ export const GetBlockWithTxsResponse = {
           break;
 
         case 2:
-          message.block_id = BlockID.decode(reader, reader.uint32());
+          message.blockId = BlockID.decode(reader, reader.uint32());
           break;
 
         case 3:
@@ -975,7 +975,7 @@ export const GetBlockWithTxsResponse = {
   fromPartial(object: DeepPartial<GetBlockWithTxsResponse>): GetBlockWithTxsResponse {
     const message = createBaseGetBlockWithTxsResponse();
     message.txs = object.txs?.map(e => Tx.fromPartial(e)) || [];
-    message.block_id = object.block_id !== undefined && object.block_id !== null ? BlockID.fromPartial(object.block_id) : undefined;
+    message.blockId = object.blockId !== undefined && object.blockId !== null ? BlockID.fromPartial(object.blockId) : undefined;
     message.block = object.block !== undefined && object.block !== null ? Block.fromPartial(object.block) : undefined;
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;

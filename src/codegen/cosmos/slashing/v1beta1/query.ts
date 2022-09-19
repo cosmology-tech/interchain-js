@@ -25,7 +25,7 @@ export interface QueryParamsResponseSDKType {
 
 export interface QuerySigningInfoRequest {
   /** cons_address is the address to query signing info of */
-  cons_address: string;
+  consAddress: string;
 }
 /**
  * QuerySigningInfoRequest is the request type for the Query/SigningInfo RPC
@@ -43,7 +43,7 @@ export interface QuerySigningInfoRequestSDKType {
 
 export interface QuerySigningInfoResponse {
   /** val_signing_info is the signing info of requested val cons address */
-  val_signing_info: ValidatorSigningInfo;
+  valSigningInfo: ValidatorSigningInfo;
 }
 /**
  * QuerySigningInfoResponse is the response type for the Query/SigningInfo RPC
@@ -172,14 +172,14 @@ export const QueryParamsResponse = {
 
 function createBaseQuerySigningInfoRequest(): QuerySigningInfoRequest {
   return {
-    cons_address: ""
+    consAddress: ""
   };
 }
 
 export const QuerySigningInfoRequest = {
   encode(message: QuerySigningInfoRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.cons_address !== "") {
-      writer.uint32(10).string(message.cons_address);
+    if (message.consAddress !== "") {
+      writer.uint32(10).string(message.consAddress);
     }
 
     return writer;
@@ -195,7 +195,7 @@ export const QuerySigningInfoRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.cons_address = reader.string();
+          message.consAddress = reader.string();
           break;
 
         default:
@@ -209,7 +209,7 @@ export const QuerySigningInfoRequest = {
 
   fromPartial(object: DeepPartial<QuerySigningInfoRequest>): QuerySigningInfoRequest {
     const message = createBaseQuerySigningInfoRequest();
-    message.cons_address = object.cons_address ?? "";
+    message.consAddress = object.consAddress ?? "";
     return message;
   }
 
@@ -217,14 +217,14 @@ export const QuerySigningInfoRequest = {
 
 function createBaseQuerySigningInfoResponse(): QuerySigningInfoResponse {
   return {
-    val_signing_info: undefined
+    valSigningInfo: undefined
   };
 }
 
 export const QuerySigningInfoResponse = {
   encode(message: QuerySigningInfoResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.val_signing_info !== undefined) {
-      ValidatorSigningInfo.encode(message.val_signing_info, writer.uint32(10).fork()).ldelim();
+    if (message.valSigningInfo !== undefined) {
+      ValidatorSigningInfo.encode(message.valSigningInfo, writer.uint32(10).fork()).ldelim();
     }
 
     return writer;
@@ -240,7 +240,7 @@ export const QuerySigningInfoResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.val_signing_info = ValidatorSigningInfo.decode(reader, reader.uint32());
+          message.valSigningInfo = ValidatorSigningInfo.decode(reader, reader.uint32());
           break;
 
         default:
@@ -254,7 +254,7 @@ export const QuerySigningInfoResponse = {
 
   fromPartial(object: DeepPartial<QuerySigningInfoResponse>): QuerySigningInfoResponse {
     const message = createBaseQuerySigningInfoResponse();
-    message.val_signing_info = object.val_signing_info !== undefined && object.val_signing_info !== null ? ValidatorSigningInfo.fromPartial(object.val_signing_info) : undefined;
+    message.valSigningInfo = object.valSigningInfo !== undefined && object.valSigningInfo !== null ? ValidatorSigningInfo.fromPartial(object.valSigningInfo) : undefined;
     return message;
   }
 

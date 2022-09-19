@@ -57,7 +57,7 @@ export interface QueryAnnualProvisionsRequestSDKType {
  */
 export interface QueryAnnualProvisionsResponse {
     /** annual_provisions is the current minting annual provisions value. */
-    annual_provisions: Uint8Array;
+    annualProvisions: Uint8Array;
 }
 /**
  * QueryAnnualProvisionsResponse is the response type for the

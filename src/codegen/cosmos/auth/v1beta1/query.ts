@@ -116,7 +116,7 @@ export interface Bech32PrefixRequestSDKType {}
 /** Bech32PrefixResponse is the response type for Bech32Prefix rpc method */
 
 export interface Bech32PrefixResponse {
-  bech32_prefix: string;
+  bech32Prefix: string;
 }
 /** Bech32PrefixResponse is the response type for Bech32Prefix rpc method */
 
@@ -126,7 +126,7 @@ export interface Bech32PrefixResponseSDKType {
 /** AddressBytesToStringRequest is the request type for AddressString rpc method */
 
 export interface AddressBytesToStringRequest {
-  address_bytes: Uint8Array;
+  addressBytes: Uint8Array;
 }
 /** AddressBytesToStringRequest is the request type for AddressString rpc method */
 
@@ -136,7 +136,7 @@ export interface AddressBytesToStringRequestSDKType {
 /** AddressBytesToStringResponse is the response type for AddressString rpc method */
 
 export interface AddressBytesToStringResponse {
-  address_string: string;
+  addressString: string;
 }
 /** AddressBytesToStringResponse is the response type for AddressString rpc method */
 
@@ -146,7 +146,7 @@ export interface AddressBytesToStringResponseSDKType {
 /** AddressStringToBytesRequest is the request type for AccountBytes rpc method */
 
 export interface AddressStringToBytesRequest {
-  address_string: string;
+  addressString: string;
 }
 /** AddressStringToBytesRequest is the request type for AccountBytes rpc method */
 
@@ -156,7 +156,7 @@ export interface AddressStringToBytesRequestSDKType {
 /** AddressStringToBytesResponse is the response type for AddressBytes rpc method */
 
 export interface AddressStringToBytesResponse {
-  address_bytes: Uint8Array;
+  addressBytes: Uint8Array;
 }
 /** AddressStringToBytesResponse is the response type for AddressBytes rpc method */
 
@@ -548,14 +548,14 @@ export const Bech32PrefixRequest = {
 
 function createBaseBech32PrefixResponse(): Bech32PrefixResponse {
   return {
-    bech32_prefix: ""
+    bech32Prefix: ""
   };
 }
 
 export const Bech32PrefixResponse = {
   encode(message: Bech32PrefixResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.bech32_prefix !== "") {
-      writer.uint32(10).string(message.bech32_prefix);
+    if (message.bech32Prefix !== "") {
+      writer.uint32(10).string(message.bech32Prefix);
     }
 
     return writer;
@@ -571,7 +571,7 @@ export const Bech32PrefixResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.bech32_prefix = reader.string();
+          message.bech32Prefix = reader.string();
           break;
 
         default:
@@ -585,7 +585,7 @@ export const Bech32PrefixResponse = {
 
   fromPartial(object: DeepPartial<Bech32PrefixResponse>): Bech32PrefixResponse {
     const message = createBaseBech32PrefixResponse();
-    message.bech32_prefix = object.bech32_prefix ?? "";
+    message.bech32Prefix = object.bech32Prefix ?? "";
     return message;
   }
 
@@ -593,14 +593,14 @@ export const Bech32PrefixResponse = {
 
 function createBaseAddressBytesToStringRequest(): AddressBytesToStringRequest {
   return {
-    address_bytes: new Uint8Array()
+    addressBytes: new Uint8Array()
   };
 }
 
 export const AddressBytesToStringRequest = {
   encode(message: AddressBytesToStringRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.address_bytes.length !== 0) {
-      writer.uint32(10).bytes(message.address_bytes);
+    if (message.addressBytes.length !== 0) {
+      writer.uint32(10).bytes(message.addressBytes);
     }
 
     return writer;
@@ -616,7 +616,7 @@ export const AddressBytesToStringRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.address_bytes = reader.bytes();
+          message.addressBytes = reader.bytes();
           break;
 
         default:
@@ -630,7 +630,7 @@ export const AddressBytesToStringRequest = {
 
   fromPartial(object: DeepPartial<AddressBytesToStringRequest>): AddressBytesToStringRequest {
     const message = createBaseAddressBytesToStringRequest();
-    message.address_bytes = object.address_bytes ?? new Uint8Array();
+    message.addressBytes = object.addressBytes ?? new Uint8Array();
     return message;
   }
 
@@ -638,14 +638,14 @@ export const AddressBytesToStringRequest = {
 
 function createBaseAddressBytesToStringResponse(): AddressBytesToStringResponse {
   return {
-    address_string: ""
+    addressString: ""
   };
 }
 
 export const AddressBytesToStringResponse = {
   encode(message: AddressBytesToStringResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.address_string !== "") {
-      writer.uint32(10).string(message.address_string);
+    if (message.addressString !== "") {
+      writer.uint32(10).string(message.addressString);
     }
 
     return writer;
@@ -661,7 +661,7 @@ export const AddressBytesToStringResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.address_string = reader.string();
+          message.addressString = reader.string();
           break;
 
         default:
@@ -675,7 +675,7 @@ export const AddressBytesToStringResponse = {
 
   fromPartial(object: DeepPartial<AddressBytesToStringResponse>): AddressBytesToStringResponse {
     const message = createBaseAddressBytesToStringResponse();
-    message.address_string = object.address_string ?? "";
+    message.addressString = object.addressString ?? "";
     return message;
   }
 
@@ -683,14 +683,14 @@ export const AddressBytesToStringResponse = {
 
 function createBaseAddressStringToBytesRequest(): AddressStringToBytesRequest {
   return {
-    address_string: ""
+    addressString: ""
   };
 }
 
 export const AddressStringToBytesRequest = {
   encode(message: AddressStringToBytesRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.address_string !== "") {
-      writer.uint32(10).string(message.address_string);
+    if (message.addressString !== "") {
+      writer.uint32(10).string(message.addressString);
     }
 
     return writer;
@@ -706,7 +706,7 @@ export const AddressStringToBytesRequest = {
 
       switch (tag >>> 3) {
         case 1:
-          message.address_string = reader.string();
+          message.addressString = reader.string();
           break;
 
         default:
@@ -720,7 +720,7 @@ export const AddressStringToBytesRequest = {
 
   fromPartial(object: DeepPartial<AddressStringToBytesRequest>): AddressStringToBytesRequest {
     const message = createBaseAddressStringToBytesRequest();
-    message.address_string = object.address_string ?? "";
+    message.addressString = object.addressString ?? "";
     return message;
   }
 
@@ -728,14 +728,14 @@ export const AddressStringToBytesRequest = {
 
 function createBaseAddressStringToBytesResponse(): AddressStringToBytesResponse {
   return {
-    address_bytes: new Uint8Array()
+    addressBytes: new Uint8Array()
   };
 }
 
 export const AddressStringToBytesResponse = {
   encode(message: AddressStringToBytesResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.address_bytes.length !== 0) {
-      writer.uint32(10).bytes(message.address_bytes);
+    if (message.addressBytes.length !== 0) {
+      writer.uint32(10).bytes(message.addressBytes);
     }
 
     return writer;
@@ -751,7 +751,7 @@ export const AddressStringToBytesResponse = {
 
       switch (tag >>> 3) {
         case 1:
-          message.address_bytes = reader.bytes();
+          message.addressBytes = reader.bytes();
           break;
 
         default:
@@ -765,7 +765,7 @@ export const AddressStringToBytesResponse = {
 
   fromPartial(object: DeepPartial<AddressStringToBytesResponse>): AddressStringToBytesResponse {
     const message = createBaseAddressStringToBytesResponse();
-    message.address_bytes = object.address_bytes ?? new Uint8Array();
+    message.addressBytes = object.addressBytes ?? new Uint8Array();
     return message;
   }
 
