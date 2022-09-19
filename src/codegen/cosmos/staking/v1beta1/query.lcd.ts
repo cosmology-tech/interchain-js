@@ -1,8 +1,6 @@
-import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
-import { Validator, DelegationResponse, UnbondingDelegation, RedelegationResponse, HistoricalInfo, Pool, Params } from "./staking";
-import { LCDClient } from "@osmonauts/lcd";
 import { setPaginationParams } from "@osmonauts/helpers";
-import { QueryValidatorsRequest, QueryValidatorsResponse, QueryValidatorRequest, QueryValidatorResponse, QueryValidatorDelegationsRequest, QueryValidatorDelegationsResponse, QueryValidatorUnbondingDelegationsRequest, QueryValidatorUnbondingDelegationsResponse, QueryDelegationRequest, QueryDelegationResponse, QueryUnbondingDelegationRequest, QueryUnbondingDelegationResponse, QueryDelegatorDelegationsRequest, QueryDelegatorDelegationsResponse, QueryDelegatorUnbondingDelegationsRequest, QueryDelegatorUnbondingDelegationsResponse, QueryRedelegationsRequest, QueryRedelegationsResponse, QueryDelegatorValidatorsRequest, QueryDelegatorValidatorsResponse, QueryDelegatorValidatorRequest, QueryDelegatorValidatorResponse, QueryHistoricalInfoRequest, QueryHistoricalInfoResponse, QueryPoolRequest, QueryPoolResponse, QueryParamsRequest, QueryParamsResponse } from "./query";
+import { LCDClient } from "@osmonauts/lcd";
+import { QueryValidatorsRequest, QueryValidatorsResponseSDKType, QueryValidatorRequest, QueryValidatorResponseSDKType, QueryValidatorDelegationsRequest, QueryValidatorDelegationsResponseSDKType, QueryValidatorUnbondingDelegationsRequest, QueryValidatorUnbondingDelegationsResponseSDKType, QueryDelegationRequest, QueryDelegationResponseSDKType, QueryUnbondingDelegationRequest, QueryUnbondingDelegationResponseSDKType, QueryDelegatorDelegationsRequest, QueryDelegatorDelegationsResponseSDKType, QueryDelegatorUnbondingDelegationsRequest, QueryDelegatorUnbondingDelegationsResponseSDKType, QueryRedelegationsRequest, QueryRedelegationsResponseSDKType, QueryDelegatorValidatorsRequest, QueryDelegatorValidatorsResponseSDKType, QueryDelegatorValidatorRequest, QueryDelegatorValidatorResponseSDKType, QueryHistoricalInfoRequest, QueryHistoricalInfoResponseSDKType, QueryPoolRequest, QueryPoolResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType } from "./query";
 export class LCDQueryClient extends LCDClient {
   constructor({
     restEndpoint
@@ -13,9 +11,10 @@ export class LCDQueryClient extends LCDClient {
       restEndpoint
     });
   }
-
   /* Validators queries all validators that match the given status. */
-  async validators(params: QueryValidatorsRequest): Promise<QueryValidatorsResponse> {
+
+
+  async validators(params: QueryValidatorsRequest): Promise<QueryValidatorsResponseSDKType> {
     const options: any = {
       params: {}
     };
@@ -29,17 +28,19 @@ export class LCDQueryClient extends LCDClient {
     }
 
     const endpoint = `cosmos/staking/v1beta1/validators`;
-    return await this.request<QueryValidatorsResponse>(endpoint, options);
+    return await this.get<QueryValidatorsResponseSDKType>(endpoint, options);
   }
-
   /* Validator queries validator info for given validator address. */
-  async validator(params: QueryValidatorRequest): Promise<QueryValidatorResponse> {
-    const endpoint = `cosmos/staking/v1beta1/validators/${params.validator_addr}`;
-    return await this.request<QueryValidatorResponse>(endpoint);
-  }
 
+
+  async validator(params: QueryValidatorRequest): Promise<QueryValidatorResponseSDKType> {
+    const endpoint = `cosmos/staking/v1beta1/validators/${params.validator_addr}`;
+    return await this.get<QueryValidatorResponseSDKType>(endpoint);
+  }
   /* ValidatorDelegations queries delegate info for given validator. */
-  async validatorDelegations(params: QueryValidatorDelegationsRequest): Promise<QueryValidatorDelegationsResponse> {
+
+
+  async validatorDelegations(params: QueryValidatorDelegationsRequest): Promise<QueryValidatorDelegationsResponseSDKType> {
     const options: any = {
       params: {}
     };
@@ -49,11 +50,12 @@ export class LCDQueryClient extends LCDClient {
     }
 
     const endpoint = `cosmos/staking/v1beta1/validators/${params.validator_addr}/delegations`;
-    return await this.request<QueryValidatorDelegationsResponse>(endpoint, options);
+    return await this.get<QueryValidatorDelegationsResponseSDKType>(endpoint, options);
   }
-
   /* ValidatorUnbondingDelegations queries unbonding delegations of a validator. */
-  async validatorUnbondingDelegations(params: QueryValidatorUnbondingDelegationsRequest): Promise<QueryValidatorUnbondingDelegationsResponse> {
+
+
+  async validatorUnbondingDelegations(params: QueryValidatorUnbondingDelegationsRequest): Promise<QueryValidatorUnbondingDelegationsResponseSDKType> {
     const options: any = {
       params: {}
     };
@@ -63,24 +65,27 @@ export class LCDQueryClient extends LCDClient {
     }
 
     const endpoint = `cosmos/staking/v1beta1/validators/${params.validator_addr}/unbonding_delegations`;
-    return await this.request<QueryValidatorUnbondingDelegationsResponse>(endpoint, options);
+    return await this.get<QueryValidatorUnbondingDelegationsResponseSDKType>(endpoint, options);
   }
-
   /* Delegation queries delegate info for given validator delegator pair. */
-  async delegation(params: QueryDelegationRequest): Promise<QueryDelegationResponse> {
-    const endpoint = `cosmos/staking/v1beta1/validators/${params.validator_addr}delegations/${params.delegator_addr}`;
-    return await this.request<QueryDelegationResponse>(endpoint);
-  }
 
+
+  async delegation(params: QueryDelegationRequest): Promise<QueryDelegationResponseSDKType> {
+    const endpoint = `cosmos/staking/v1beta1/validators/${params.validator_addr}delegations/${params.delegator_addr}`;
+    return await this.get<QueryDelegationResponseSDKType>(endpoint);
+  }
   /* UnbondingDelegation queries unbonding info for given validator delegator
   pair. */
-  async unbondingDelegation(params: QueryUnbondingDelegationRequest): Promise<QueryUnbondingDelegationResponse> {
-    const endpoint = `cosmos/staking/v1beta1/validators/${params.validator_addr}/delegations/${params.delegator_addr}/unbonding_delegation`;
-    return await this.request<QueryUnbondingDelegationResponse>(endpoint);
-  }
 
+
+  async unbondingDelegation(params: QueryUnbondingDelegationRequest): Promise<QueryUnbondingDelegationResponseSDKType> {
+    const endpoint = `cosmos/staking/v1beta1/validators/${params.validator_addr}/delegations/${params.delegator_addr}/unbonding_delegation`;
+    return await this.get<QueryUnbondingDelegationResponseSDKType>(endpoint);
+  }
   /* DelegatorDelegations queries all delegations of a given delegator address. */
-  async delegatorDelegations(params: QueryDelegatorDelegationsRequest): Promise<QueryDelegatorDelegationsResponse> {
+
+
+  async delegatorDelegations(params: QueryDelegatorDelegationsRequest): Promise<QueryDelegatorDelegationsResponseSDKType> {
     const options: any = {
       params: {}
     };
@@ -90,12 +95,13 @@ export class LCDQueryClient extends LCDClient {
     }
 
     const endpoint = `cosmos/staking/v1beta1/delegations/${params.delegator_addr}`;
-    return await this.request<QueryDelegatorDelegationsResponse>(endpoint, options);
+    return await this.get<QueryDelegatorDelegationsResponseSDKType>(endpoint, options);
   }
-
   /* DelegatorUnbondingDelegations queries all unbonding delegations of a given
   delegator address. */
-  async delegatorUnbondingDelegations(params: QueryDelegatorUnbondingDelegationsRequest): Promise<QueryDelegatorUnbondingDelegationsResponse> {
+
+
+  async delegatorUnbondingDelegations(params: QueryDelegatorUnbondingDelegationsRequest): Promise<QueryDelegatorUnbondingDelegationsResponseSDKType> {
     const options: any = {
       params: {}
     };
@@ -105,11 +111,12 @@ export class LCDQueryClient extends LCDClient {
     }
 
     const endpoint = `cosmos/staking/v1beta1/delegators/${params.delegator_addr}/unbonding_delegations`;
-    return await this.request<QueryDelegatorUnbondingDelegationsResponse>(endpoint, options);
+    return await this.get<QueryDelegatorUnbondingDelegationsResponseSDKType>(endpoint, options);
   }
-
   /* Redelegations queries redelegations of given address. */
-  async redelegations(params: QueryRedelegationsRequest): Promise<QueryRedelegationsResponse> {
+
+
+  async redelegations(params: QueryRedelegationsRequest): Promise<QueryRedelegationsResponseSDKType> {
     const options: any = {
       params: {}
     };
@@ -127,12 +134,13 @@ export class LCDQueryClient extends LCDClient {
     }
 
     const endpoint = `cosmos/staking/v1beta1/delegators/${params.delegator_addr}/redelegations`;
-    return await this.request<QueryRedelegationsResponse>(endpoint, options);
+    return await this.get<QueryRedelegationsResponseSDKType>(endpoint, options);
   }
-
   /* DelegatorValidators queries all validators info for given delegator
   address. */
-  async delegatorValidators(params: QueryDelegatorValidatorsRequest): Promise<QueryDelegatorValidatorsResponse> {
+
+
+  async delegatorValidators(params: QueryDelegatorValidatorsRequest): Promise<QueryDelegatorValidatorsResponseSDKType> {
     const options: any = {
       params: {}
     };
@@ -142,32 +150,36 @@ export class LCDQueryClient extends LCDClient {
     }
 
     const endpoint = `cosmos/staking/v1beta1/delegators/${params.delegator_addr}/validators`;
-    return await this.request<QueryDelegatorValidatorsResponse>(endpoint, options);
+    return await this.get<QueryDelegatorValidatorsResponseSDKType>(endpoint, options);
   }
-
   /* DelegatorValidator queries validator info for given delegator validator
   pair. */
-  async delegatorValidator(params: QueryDelegatorValidatorRequest): Promise<QueryDelegatorValidatorResponse> {
+
+
+  async delegatorValidator(params: QueryDelegatorValidatorRequest): Promise<QueryDelegatorValidatorResponseSDKType> {
     const endpoint = `cosmos/staking/v1beta1/delegators/${params.delegator_addr}validators/${params.validator_addr}`;
-    return await this.request<QueryDelegatorValidatorResponse>(endpoint);
+    return await this.get<QueryDelegatorValidatorResponseSDKType>(endpoint);
   }
-
   /* HistoricalInfo queries the historical info for given height. */
-  async historicalInfo(params: QueryHistoricalInfoRequest): Promise<QueryHistoricalInfoResponse> {
+
+
+  async historicalInfo(params: QueryHistoricalInfoRequest): Promise<QueryHistoricalInfoResponseSDKType> {
     const endpoint = `cosmos/staking/v1beta1/historical_info/${params.height}`;
-    return await this.request<QueryHistoricalInfoResponse>(endpoint);
+    return await this.get<QueryHistoricalInfoResponseSDKType>(endpoint);
   }
-
   /* Pool queries the pool info. */
-  async pool(_params: QueryPoolRequest = {}): Promise<QueryPoolResponse> {
-    const endpoint = `cosmos/staking/v1beta1/pool`;
-    return await this.request<QueryPoolResponse>(endpoint);
-  }
 
+
+  async pool(_params: QueryPoolRequest = {}): Promise<QueryPoolResponseSDKType> {
+    const endpoint = `cosmos/staking/v1beta1/pool`;
+    return await this.get<QueryPoolResponseSDKType>(endpoint);
+  }
   /* Parameters queries the staking parameters. */
-  async params(_params: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
+
+
+  async params(_params: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> {
     const endpoint = `cosmos/staking/v1beta1/params`;
-    return await this.request<QueryParamsResponse>(endpoint);
+    return await this.get<QueryParamsResponseSDKType>(endpoint);
   }
 
 }

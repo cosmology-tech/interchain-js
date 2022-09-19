@@ -1,12 +1,12 @@
-import { BaseAccount } from "../../auth/v1beta1/auth";
-import { Coin } from "../../base/v1beta1/coin";
+import { BaseAccount, BaseAccountSDKType } from "../../auth/v1beta1/auth";
+import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, DeepPartial } from "@osmonauts/helpers";
-
+import { Long, DeepPartial } from "@osmonauts/helpers";
 /**
  * BaseVestingAccount implements the VestingAccount interface. It contains all
  * the necessary fields needed for any vesting account implementation.
  */
+
 export interface BaseVestingAccount {
   base_account: BaseAccount;
   original_vesting: Coin[];
@@ -14,41 +14,86 @@ export interface BaseVestingAccount {
   delegated_vesting: Coin[];
   end_time: Long;
 }
+/**
+ * BaseVestingAccount implements the VestingAccount interface. It contains all
+ * the necessary fields needed for any vesting account implementation.
+ */
 
+export interface BaseVestingAccountSDKType {
+  base_account: BaseAccountSDKType;
+  original_vesting: CoinSDKType[];
+  delegated_free: CoinSDKType[];
+  delegated_vesting: CoinSDKType[];
+  end_time: Long;
+}
 /**
  * ContinuousVestingAccount implements the VestingAccount interface. It
  * continuously vests by unlocking coins linearly with respect to time.
  */
+
 export interface ContinuousVestingAccount {
   base_vesting_account: BaseVestingAccount;
   start_time: Long;
 }
+/**
+ * ContinuousVestingAccount implements the VestingAccount interface. It
+ * continuously vests by unlocking coins linearly with respect to time.
+ */
 
+export interface ContinuousVestingAccountSDKType {
+  base_vesting_account: BaseVestingAccountSDKType;
+  start_time: Long;
+}
 /**
  * DelayedVestingAccount implements the VestingAccount interface. It vests all
  * coins after a specific time, but non prior. In other words, it keeps them
  * locked until a specified time.
  */
+
 export interface DelayedVestingAccount {
   base_vesting_account: BaseVestingAccount;
 }
+/**
+ * DelayedVestingAccount implements the VestingAccount interface. It vests all
+ * coins after a specific time, but non prior. In other words, it keeps them
+ * locked until a specified time.
+ */
 
+export interface DelayedVestingAccountSDKType {
+  base_vesting_account: BaseVestingAccountSDKType;
+}
 /** Period defines a length of time and amount of coins that will vest. */
+
 export interface Period {
   length: Long;
   amount: Coin[];
 }
+/** Period defines a length of time and amount of coins that will vest. */
 
+export interface PeriodSDKType {
+  length: Long;
+  amount: CoinSDKType[];
+}
 /**
  * PeriodicVestingAccount implements the VestingAccount interface. It
  * periodically vests by unlocking coins during each specified period.
  */
+
 export interface PeriodicVestingAccount {
   base_vesting_account: BaseVestingAccount;
   start_time: Long;
   vesting_periods: Period[];
 }
+/**
+ * PeriodicVestingAccount implements the VestingAccount interface. It
+ * periodically vests by unlocking coins during each specified period.
+ */
 
+export interface PeriodicVestingAccountSDKType {
+  base_vesting_account: BaseVestingAccountSDKType;
+  start_time: Long;
+  vesting_periods: PeriodSDKType[];
+}
 /**
  * PermanentLockedAccount implements the VestingAccount interface. It does
  * not ever release coins, locking them indefinitely. Coins in this account can
@@ -56,8 +101,20 @@ export interface PeriodicVestingAccount {
  * 
  * Since: cosmos-sdk 0.43
  */
+
 export interface PermanentLockedAccount {
   base_vesting_account: BaseVestingAccount;
+}
+/**
+ * PermanentLockedAccount implements the VestingAccount interface. It does
+ * not ever release coins, locking them indefinitely. Coins in this account can
+ * still be used for delegating and for governance votes even while locked.
+ * 
+ * Since: cosmos-sdk 0.43
+ */
+
+export interface PermanentLockedAccountSDKType {
+  base_vesting_account: BaseVestingAccountSDKType;
 }
 
 function createBaseBaseVestingAccount(): BaseVestingAccount {
@@ -133,42 +190,6 @@ export const BaseVestingAccount = {
     return message;
   },
 
-  fromJSON(object: any): BaseVestingAccount {
-    return {
-      base_account: isSet(object.base_account) ? BaseAccount.fromJSON(object.base_account) : undefined,
-      original_vesting: Array.isArray(object?.original_vesting) ? object.original_vesting.map((e: any) => Coin.fromJSON(e)) : [],
-      delegated_free: Array.isArray(object?.delegated_free) ? object.delegated_free.map((e: any) => Coin.fromJSON(e)) : [],
-      delegated_vesting: Array.isArray(object?.delegated_vesting) ? object.delegated_vesting.map((e: any) => Coin.fromJSON(e)) : [],
-      end_time: isSet(object.end_time) ? Long.fromString(object.end_time) : Long.ZERO
-    };
-  },
-
-  toJSON(message: BaseVestingAccount): unknown {
-    const obj: any = {};
-    message.base_account !== undefined && (obj.base_account = message.base_account ? BaseAccount.toJSON(message.base_account) : undefined);
-
-    if (message.original_vesting) {
-      obj.original_vesting = message.original_vesting.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.original_vesting = [];
-    }
-
-    if (message.delegated_free) {
-      obj.delegated_free = message.delegated_free.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.delegated_free = [];
-    }
-
-    if (message.delegated_vesting) {
-      obj.delegated_vesting = message.delegated_vesting.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.delegated_vesting = [];
-    }
-
-    message.end_time !== undefined && (obj.end_time = (message.end_time || Long.ZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<BaseVestingAccount>): BaseVestingAccount {
     const message = createBaseBaseVestingAccount();
     message.base_account = object.base_account !== undefined && object.base_account !== null ? BaseAccount.fromPartial(object.base_account) : undefined;
@@ -227,20 +248,6 @@ export const ContinuousVestingAccount = {
     return message;
   },
 
-  fromJSON(object: any): ContinuousVestingAccount {
-    return {
-      base_vesting_account: isSet(object.base_vesting_account) ? BaseVestingAccount.fromJSON(object.base_vesting_account) : undefined,
-      start_time: isSet(object.start_time) ? Long.fromString(object.start_time) : Long.ZERO
-    };
-  },
-
-  toJSON(message: ContinuousVestingAccount): unknown {
-    const obj: any = {};
-    message.base_vesting_account !== undefined && (obj.base_vesting_account = message.base_vesting_account ? BaseVestingAccount.toJSON(message.base_vesting_account) : undefined);
-    message.start_time !== undefined && (obj.start_time = (message.start_time || Long.ZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ContinuousVestingAccount>): ContinuousVestingAccount {
     const message = createBaseContinuousVestingAccount();
     message.base_vesting_account = object.base_vesting_account !== undefined && object.base_vesting_account !== null ? BaseVestingAccount.fromPartial(object.base_vesting_account) : undefined;
@@ -285,18 +292,6 @@ export const DelayedVestingAccount = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): DelayedVestingAccount {
-    return {
-      base_vesting_account: isSet(object.base_vesting_account) ? BaseVestingAccount.fromJSON(object.base_vesting_account) : undefined
-    };
-  },
-
-  toJSON(message: DelayedVestingAccount): unknown {
-    const obj: any = {};
-    message.base_vesting_account !== undefined && (obj.base_vesting_account = message.base_vesting_account ? BaseVestingAccount.toJSON(message.base_vesting_account) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<DelayedVestingAccount>): DelayedVestingAccount {
@@ -351,26 +346,6 @@ export const Period = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): Period {
-    return {
-      length: isSet(object.length) ? Long.fromString(object.length) : Long.ZERO,
-      amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: Period): unknown {
-    const obj: any = {};
-    message.length !== undefined && (obj.length = (message.length || Long.ZERO).toString());
-
-    if (message.amount) {
-      obj.amount = message.amount.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.amount = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<Period>): Period {
@@ -437,28 +412,6 @@ export const PeriodicVestingAccount = {
     return message;
   },
 
-  fromJSON(object: any): PeriodicVestingAccount {
-    return {
-      base_vesting_account: isSet(object.base_vesting_account) ? BaseVestingAccount.fromJSON(object.base_vesting_account) : undefined,
-      start_time: isSet(object.start_time) ? Long.fromString(object.start_time) : Long.ZERO,
-      vesting_periods: Array.isArray(object?.vesting_periods) ? object.vesting_periods.map((e: any) => Period.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: PeriodicVestingAccount): unknown {
-    const obj: any = {};
-    message.base_vesting_account !== undefined && (obj.base_vesting_account = message.base_vesting_account ? BaseVestingAccount.toJSON(message.base_vesting_account) : undefined);
-    message.start_time !== undefined && (obj.start_time = (message.start_time || Long.ZERO).toString());
-
-    if (message.vesting_periods) {
-      obj.vesting_periods = message.vesting_periods.map(e => e ? Period.toJSON(e) : undefined);
-    } else {
-      obj.vesting_periods = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<PeriodicVestingAccount>): PeriodicVestingAccount {
     const message = createBasePeriodicVestingAccount();
     message.base_vesting_account = object.base_vesting_account !== undefined && object.base_vesting_account !== null ? BaseVestingAccount.fromPartial(object.base_vesting_account) : undefined;
@@ -504,18 +457,6 @@ export const PermanentLockedAccount = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): PermanentLockedAccount {
-    return {
-      base_vesting_account: isSet(object.base_vesting_account) ? BaseVestingAccount.fromJSON(object.base_vesting_account) : undefined
-    };
-  },
-
-  toJSON(message: PermanentLockedAccount): unknown {
-    const obj: any = {};
-    message.base_vesting_account !== undefined && (obj.base_vesting_account = message.base_vesting_account ? BaseVestingAccount.toJSON(message.base_vesting_account) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<PermanentLockedAccount>): PermanentLockedAccount {

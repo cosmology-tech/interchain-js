@@ -1,54 +1,102 @@
-import { PageRequest, PageResponse } from "../../../../cosmos/base/query/v1beta1/pagination";
-import { DenomTrace, Params } from "./transfer";
+import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../../../cosmos/base/query/v1beta1/pagination";
+import { DenomTrace, DenomTraceSDKType, Params, ParamsSDKType } from "./transfer";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
-
+import { DeepPartial } from "@osmonauts/helpers";
 /**
  * QueryDenomTraceRequest is the request type for the Query/DenomTrace RPC
  * method
  */
+
 export interface QueryDenomTraceRequest {
   /** hash (in hex format) of the denomination trace information. */
   hash: string;
 }
+/**
+ * QueryDenomTraceRequest is the request type for the Query/DenomTrace RPC
+ * method
+ */
 
+export interface QueryDenomTraceRequestSDKType {
+  /** hash (in hex format) of the denomination trace information. */
+  hash: string;
+}
 /**
  * QueryDenomTraceResponse is the response type for the Query/DenomTrace RPC
  * method.
  */
+
 export interface QueryDenomTraceResponse {
   /** denom_trace returns the requested denomination trace information. */
   denom_trace: DenomTrace;
 }
+/**
+ * QueryDenomTraceResponse is the response type for the Query/DenomTrace RPC
+ * method.
+ */
 
+export interface QueryDenomTraceResponseSDKType {
+  /** denom_trace returns the requested denomination trace information. */
+  denom_trace: DenomTraceSDKType;
+}
 /**
  * QueryConnectionsRequest is the request type for the Query/DenomTraces RPC
  * method
  */
+
 export interface QueryDenomTracesRequest {
   /** pagination defines an optional pagination for the request. */
   pagination?: PageRequest;
 }
+/**
+ * QueryConnectionsRequest is the request type for the Query/DenomTraces RPC
+ * method
+ */
 
+export interface QueryDenomTracesRequestSDKType {
+  /** pagination defines an optional pagination for the request. */
+  pagination?: PageRequestSDKType;
+}
 /**
  * QueryConnectionsResponse is the response type for the Query/DenomTraces RPC
  * method.
  */
+
 export interface QueryDenomTracesResponse {
   /** denom_traces returns all denominations trace information. */
   denom_traces: DenomTrace[];
-
   /** pagination defines the pagination in the response. */
+
   pagination?: PageResponse;
 }
+/**
+ * QueryConnectionsResponse is the response type for the Query/DenomTraces RPC
+ * method.
+ */
 
+export interface QueryDenomTracesResponseSDKType {
+  /** denom_traces returns all denominations trace information. */
+  denom_traces: DenomTraceSDKType[];
+  /** pagination defines the pagination in the response. */
+
+  pagination?: PageResponseSDKType;
+}
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
-export interface QueryParamsRequest {}
 
+export interface QueryParamsRequest {}
+/** QueryParamsRequest is the request type for the Query/Params RPC method. */
+
+export interface QueryParamsRequestSDKType {}
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
+
 export interface QueryParamsResponse {
   /** params defines the parameters of the module. */
   params: Params;
+}
+/** QueryParamsResponse is the response type for the Query/Params RPC method. */
+
+export interface QueryParamsResponseSDKType {
+  /** params defines the parameters of the module. */
+  params: ParamsSDKType;
 }
 
 function createBaseQueryDenomTraceRequest(): QueryDenomTraceRequest {
@@ -88,18 +136,6 @@ export const QueryDenomTraceRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryDenomTraceRequest {
-    return {
-      hash: isSet(object.hash) ? String(object.hash) : ""
-    };
-  },
-
-  toJSON(message: QueryDenomTraceRequest): unknown {
-    const obj: any = {};
-    message.hash !== undefined && (obj.hash = message.hash);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryDenomTraceRequest>): QueryDenomTraceRequest {
     const message = createBaseQueryDenomTraceRequest();
     message.hash = object.hash ?? "";
@@ -123,7 +159,7 @@ export const QueryDenomTraceResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomTraceResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomTraceResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryDenomTraceResponse();
@@ -143,18 +179,6 @@ export const QueryDenomTraceResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): QueryDenomTraceResponse {
-    return {
-      denom_trace: isSet(object.denom_trace) ? DenomTrace.fromJSON(object.denom_trace) : undefined
-    };
-  },
-
-  toJSON(message: QueryDenomTraceResponse): unknown {
-    const obj: any = {};
-    message.denom_trace !== undefined && (obj.denom_trace = message.denom_trace ? DenomTrace.toJSON(message.denom_trace) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<QueryDenomTraceResponse>): QueryDenomTraceResponse {
@@ -202,18 +226,6 @@ export const QueryDenomTracesRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryDenomTracesRequest {
-    return {
-      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: QueryDenomTracesRequest): unknown {
-    const obj: any = {};
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryDenomTracesRequest>): QueryDenomTracesRequest {
     const message = createBaseQueryDenomTracesRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
@@ -242,7 +254,7 @@ export const QueryDenomTracesResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomTracesResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomTracesResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryDenomTracesResponse();
@@ -266,26 +278,6 @@ export const QueryDenomTracesResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): QueryDenomTracesResponse {
-    return {
-      denom_traces: Array.isArray(object?.denom_traces) ? object.denom_traces.map((e: any) => DenomTrace.fromJSON(e)) : [],
-      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: QueryDenomTracesResponse): unknown {
-    const obj: any = {};
-
-    if (message.denom_traces) {
-      obj.denom_traces = message.denom_traces.map(e => e ? DenomTrace.toJSON(e) : undefined);
-    } else {
-      obj.denom_traces = [];
-    }
-
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<QueryDenomTracesResponse>): QueryDenomTracesResponse {
@@ -324,15 +316,6 @@ export const QueryParamsRequest = {
     return message;
   },
 
-  fromJSON(_: any): QueryParamsRequest {
-    return {};
-  },
-
-  toJSON(_: QueryParamsRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest {
     const message = createBaseQueryParamsRequest();
     return message;
@@ -355,7 +338,7 @@ export const QueryParamsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryParamsResponse();
@@ -375,18 +358,6 @@ export const QueryParamsResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): QueryParamsResponse {
-    return {
-      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
-    };
-  },
-
-  toJSON(message: QueryParamsResponse): unknown {
-    const obj: any = {};
-    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse {

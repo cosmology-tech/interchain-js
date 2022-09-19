@@ -1,12 +1,18 @@
-import { Header, Data, Commit } from "./types";
-import { EvidenceList } from "./evidence";
+import { Header, HeaderSDKType, Data, DataSDKType, Commit, CommitSDKType } from "./types";
+import { EvidenceList, EvidenceListSDKType } from "./evidence";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial } from "@osmonauts/helpers";
 export interface Block {
   header: Header;
   data: Data;
   evidence: EvidenceList;
   last_commit: Commit;
+}
+export interface BlockSDKType {
+  header: HeaderSDKType;
+  data: DataSDKType;
+  evidence: EvidenceListSDKType;
+  last_commit: CommitSDKType;
 }
 
 function createBaseBlock(): Block {
@@ -71,24 +77,6 @@ export const Block = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): Block {
-    return {
-      header: isSet(object.header) ? Header.fromJSON(object.header) : undefined,
-      data: isSet(object.data) ? Data.fromJSON(object.data) : undefined,
-      evidence: isSet(object.evidence) ? EvidenceList.fromJSON(object.evidence) : undefined,
-      last_commit: isSet(object.last_commit) ? Commit.fromJSON(object.last_commit) : undefined
-    };
-  },
-
-  toJSON(message: Block): unknown {
-    const obj: any = {};
-    message.header !== undefined && (obj.header = message.header ? Header.toJSON(message.header) : undefined);
-    message.data !== undefined && (obj.data = message.data ? Data.toJSON(message.data) : undefined);
-    message.evidence !== undefined && (obj.evidence = message.evidence ? EvidenceList.toJSON(message.evidence) : undefined);
-    message.last_commit !== undefined && (obj.last_commit = message.last_commit ? Commit.toJSON(message.last_commit) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<Block>): Block {

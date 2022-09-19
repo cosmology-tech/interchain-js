@@ -1,6 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet, bytesFromBase64, base64FromBytes, DeepPartial } from "@osmonauts/helpers";
-
+import { DeepPartial } from "@osmonauts/helpers";
 /**
  * StoreKVPair is a KVStore KVPair used for listening to state changes (Sets and Deletes)
  * It optionally includes the StoreKey for the originating KVStore and a Boolean flag to distinguish between Sets and
@@ -8,11 +7,29 @@ import { isSet, bytesFromBase64, base64FromBytes, DeepPartial } from "@osmonauts
  * 
  * Since: cosmos-sdk 0.43
  */
+
 export interface StoreKVPair {
   /** the store key for the KVStore this pair originates from */
   store_key: string;
-
   /** true indicates a delete operation, false indicates a set operation */
+
+  delete: boolean;
+  key: Uint8Array;
+  value: Uint8Array;
+}
+/**
+ * StoreKVPair is a KVStore KVPair used for listening to state changes (Sets and Deletes)
+ * It optionally includes the StoreKey for the originating KVStore and a Boolean flag to distinguish between Sets and
+ * Deletes
+ * 
+ * Since: cosmos-sdk 0.43
+ */
+
+export interface StoreKVPairSDKType {
+  /** the store key for the KVStore this pair originates from */
+  store_key: string;
+  /** true indicates a delete operation, false indicates a set operation */
+
   delete: boolean;
   key: Uint8Array;
   value: Uint8Array;
@@ -80,24 +97,6 @@ export const StoreKVPair = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): StoreKVPair {
-    return {
-      store_key: isSet(object.store_key) ? String(object.store_key) : "",
-      delete: isSet(object.delete) ? Boolean(object.delete) : false,
-      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(),
-      value: isSet(object.value) ? bytesFromBase64(object.value) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: StoreKVPair): unknown {
-    const obj: any = {};
-    message.store_key !== undefined && (obj.store_key = message.store_key);
-    message.delete !== undefined && (obj.delete = message.delete);
-    message.key !== undefined && (obj.key = base64FromBytes(message.key !== undefined ? message.key : new Uint8Array()));
-    message.value !== undefined && (obj.value = base64FromBytes(message.value !== undefined ? message.value : new Uint8Array()));
-    return obj;
   },
 
   fromPartial(object: DeepPartial<StoreKVPair>): StoreKVPair {

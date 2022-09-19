@@ -1,15 +1,25 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
-
+import { DeepPartial } from "@osmonauts/helpers";
 /** MsgVerifyInvariant represents a message to verify a particular invariance. */
+
 export interface MsgVerifyInvariant {
   sender: string;
   invariant_module_name: string;
   invariant_route: string;
 }
+/** MsgVerifyInvariant represents a message to verify a particular invariance. */
 
+export interface MsgVerifyInvariantSDKType {
+  sender: string;
+  invariant_module_name: string;
+  invariant_route: string;
+}
 /** MsgVerifyInvariantResponse defines the Msg/VerifyInvariant response type. */
+
 export interface MsgVerifyInvariantResponse {}
+/** MsgVerifyInvariantResponse defines the Msg/VerifyInvariant response type. */
+
+export interface MsgVerifyInvariantResponseSDKType {}
 
 function createBaseMsgVerifyInvariant(): MsgVerifyInvariant {
   return {
@@ -66,22 +76,6 @@ export const MsgVerifyInvariant = {
     return message;
   },
 
-  fromJSON(object: any): MsgVerifyInvariant {
-    return {
-      sender: isSet(object.sender) ? String(object.sender) : "",
-      invariant_module_name: isSet(object.invariant_module_name) ? String(object.invariant_module_name) : "",
-      invariant_route: isSet(object.invariant_route) ? String(object.invariant_route) : ""
-    };
-  },
-
-  toJSON(message: MsgVerifyInvariant): unknown {
-    const obj: any = {};
-    message.sender !== undefined && (obj.sender = message.sender);
-    message.invariant_module_name !== undefined && (obj.invariant_module_name = message.invariant_module_name);
-    message.invariant_route !== undefined && (obj.invariant_route = message.invariant_route);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgVerifyInvariant>): MsgVerifyInvariant {
     const message = createBaseMsgVerifyInvariant();
     message.sender = object.sender ?? "";
@@ -101,7 +95,7 @@ export const MsgVerifyInvariantResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgVerifyInvariantResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgVerifyInvariantResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgVerifyInvariantResponse();
@@ -117,15 +111,6 @@ export const MsgVerifyInvariantResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(_: any): MsgVerifyInvariantResponse {
-    return {};
-  },
-
-  toJSON(_: MsgVerifyInvariantResponse): unknown {
-    const obj: any = {};
-    return obj;
   },
 
   fromPartial(_: DeepPartial<MsgVerifyInvariantResponse>): MsgVerifyInvariantResponse {

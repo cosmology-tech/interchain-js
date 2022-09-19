@@ -1,29 +1,56 @@
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, DeepPartial, bytesFromBase64, base64FromBytes } from "@osmonauts/helpers";
-
+import { Long, DeepPartial } from "@osmonauts/helpers";
 /**
  * CommitInfo defines commit information used by the multi-store when committing
  * a version/height.
  */
+
 export interface CommitInfo {
   version: Long;
   store_infos: StoreInfo[];
 }
+/**
+ * CommitInfo defines commit information used by the multi-store when committing
+ * a version/height.
+ */
 
+export interface CommitInfoSDKType {
+  version: Long;
+  store_infos: StoreInfoSDKType[];
+}
 /**
  * StoreInfo defines store-specific commit information. It contains a reference
  * between a store name and the commit ID.
  */
+
 export interface StoreInfo {
   name: string;
   commit_id: CommitID;
 }
+/**
+ * StoreInfo defines store-specific commit information. It contains a reference
+ * between a store name and the commit ID.
+ */
 
+export interface StoreInfoSDKType {
+  name: string;
+  commit_id: CommitIDSDKType;
+}
 /**
  * CommitID defines the committment information when a specific store is
  * committed.
  */
+
 export interface CommitID {
+  version: Long;
+  hash: Uint8Array;
+}
+/**
+ * CommitID defines the committment information when a specific store is
+ * committed.
+ */
+
+export interface CommitIDSDKType {
   version: Long;
   hash: Uint8Array;
 }
@@ -72,26 +99,6 @@ export const CommitInfo = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): CommitInfo {
-    return {
-      version: isSet(object.version) ? Long.fromString(object.version) : Long.ZERO,
-      store_infos: Array.isArray(object?.store_infos) ? object.store_infos.map((e: any) => StoreInfo.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: CommitInfo): unknown {
-    const obj: any = {};
-    message.version !== undefined && (obj.version = (message.version || Long.ZERO).toString());
-
-    if (message.store_infos) {
-      obj.store_infos = message.store_infos.map(e => e ? StoreInfo.toJSON(e) : undefined);
-    } else {
-      obj.store_infos = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<CommitInfo>): CommitInfo {
@@ -149,20 +156,6 @@ export const StoreInfo = {
     return message;
   },
 
-  fromJSON(object: any): StoreInfo {
-    return {
-      name: isSet(object.name) ? String(object.name) : "",
-      commit_id: isSet(object.commit_id) ? CommitID.fromJSON(object.commit_id) : undefined
-    };
-  },
-
-  toJSON(message: StoreInfo): unknown {
-    const obj: any = {};
-    message.name !== undefined && (obj.name = message.name);
-    message.commit_id !== undefined && (obj.commit_id = message.commit_id ? CommitID.toJSON(message.commit_id) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<StoreInfo>): StoreInfo {
     const message = createBaseStoreInfo();
     message.name = object.name ?? "";
@@ -216,20 +209,6 @@ export const CommitID = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): CommitID {
-    return {
-      version: isSet(object.version) ? Long.fromString(object.version) : Long.ZERO,
-      hash: isSet(object.hash) ? bytesFromBase64(object.hash) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: CommitID): unknown {
-    const obj: any = {};
-    message.version !== undefined && (obj.version = (message.version || Long.ZERO).toString());
-    message.hash !== undefined && (obj.hash = base64FromBytes(message.hash !== undefined ? message.hash : new Uint8Array()));
-    return obj;
   },
 
   fromPartial(object: DeepPartial<CommitID>): CommitID {

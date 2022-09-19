@@ -1,56 +1,55 @@
-import { Any } from "../../../../google/protobuf/any";
-import { Event } from "../../../../tendermint/abci/types";
+import { Any, AnySDKType } from "../../../../google/protobuf/any";
+import { Event, EventSDKType } from "../../../../tendermint/abci/types";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, DeepPartial, bytesFromBase64, base64FromBytes } from "@osmonauts/helpers";
-
+import { Long, DeepPartial } from "@osmonauts/helpers";
 /**
  * TxResponse defines a structure containing relevant tx data and metadata. The
  * tags are stringified and the log is JSON decoded.
  */
+
 export interface TxResponse {
   /** The block height */
   height: Long;
-
   /** The transaction hash. */
+
   txhash: string;
-
   /** Namespace for the Code */
+
   codespace: string;
-
   /** Response code. */
+
   code: number;
-
   /** Result bytes, if any. */
-  data: string;
 
+  data: string;
   /**
    * The output of the application's logger (raw string). May be
    * non-deterministic.
    */
+
   raw_log: string;
-
   /** The output of the application's logger (typed). May be non-deterministic. */
+
   logs: ABCIMessageLog[];
-
   /** Additional information. May be non-deterministic. */
+
   info: string;
-
   /** Amount of gas requested for transaction. */
+
   gas_wanted: Long;
-
   /** Amount of gas consumed by transaction. */
+
   gas_used: Long;
-
   /** The request transaction bytes. */
-  tx: Any;
 
+  tx: Any;
   /**
    * Time of the previous block. For heights > 1, it's the weighted median of
    * the timestamps of the valid votes in the block.LastCommit. For height == 1,
    * it's genesis time.
    */
-  timestamp: string;
 
+  timestamp: string;
   /**
    * Events defines all the events emitted by processing a transaction. Note,
    * these events include those emitted by processing all the messages and those
@@ -59,49 +58,148 @@ export interface TxResponse {
    * 
    * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
    */
+
   events: Event[];
 }
+/**
+ * TxResponse defines a structure containing relevant tx data and metadata. The
+ * tags are stringified and the log is JSON decoded.
+ */
 
+export interface TxResponseSDKType {
+  /** The block height */
+  height: Long;
+  /** The transaction hash. */
+
+  txhash: string;
+  /** Namespace for the Code */
+
+  codespace: string;
+  /** Response code. */
+
+  code: number;
+  /** Result bytes, if any. */
+
+  data: string;
+  /**
+   * The output of the application's logger (raw string). May be
+   * non-deterministic.
+   */
+
+  raw_log: string;
+  /** The output of the application's logger (typed). May be non-deterministic. */
+
+  logs: ABCIMessageLogSDKType[];
+  /** Additional information. May be non-deterministic. */
+
+  info: string;
+  /** Amount of gas requested for transaction. */
+
+  gas_wanted: Long;
+  /** Amount of gas consumed by transaction. */
+
+  gas_used: Long;
+  /** The request transaction bytes. */
+
+  tx: AnySDKType;
+  /**
+   * Time of the previous block. For heights > 1, it's the weighted median of
+   * the timestamps of the valid votes in the block.LastCommit. For height == 1,
+   * it's genesis time.
+   */
+
+  timestamp: string;
+  /**
+   * Events defines all the events emitted by processing a transaction. Note,
+   * these events include those emitted by processing all the messages and those
+   * emitted from the ante handler. Whereas Logs contains the events, with
+   * additional metadata, emitted only by processing the messages.
+   * 
+   * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
+   */
+
+  events: EventSDKType[];
+}
 /** ABCIMessageLog defines a structure containing an indexed tx ABCI message log. */
+
 export interface ABCIMessageLog {
   msg_index: number;
   log: string;
-
   /**
    * Events contains a slice of Event objects that were emitted during some
    * execution.
    */
+
   events: StringEvent[];
 }
+/** ABCIMessageLog defines a structure containing an indexed tx ABCI message log. */
 
+export interface ABCIMessageLogSDKType {
+  msg_index: number;
+  log: string;
+  /**
+   * Events contains a slice of Event objects that were emitted during some
+   * execution.
+   */
+
+  events: StringEventSDKType[];
+}
 /**
  * StringEvent defines en Event object wrapper where all the attributes
  * contain key/value pairs that are strings instead of raw bytes.
  */
+
 export interface StringEvent {
   type: string;
   attributes: Attribute[];
 }
+/**
+ * StringEvent defines en Event object wrapper where all the attributes
+ * contain key/value pairs that are strings instead of raw bytes.
+ */
 
+export interface StringEventSDKType {
+  type: string;
+  attributes: AttributeSDKType[];
+}
 /**
  * Attribute defines an attribute wrapper where the key and value are
  * strings instead of raw bytes.
  */
+
 export interface Attribute {
   key: string;
   value: string;
 }
+/**
+ * Attribute defines an attribute wrapper where the key and value are
+ * strings instead of raw bytes.
+ */
 
+export interface AttributeSDKType {
+  key: string;
+  value: string;
+}
 /** GasInfo defines tx execution gas context. */
+
 export interface GasInfo {
   /** GasWanted is the maximum units of work we allow this tx to perform. */
   gas_wanted: Long;
-
   /** GasUsed is the amount of gas actually consumed. */
+
   gas_used: Long;
 }
+/** GasInfo defines tx execution gas context. */
 
+export interface GasInfoSDKType {
+  /** GasWanted is the maximum units of work we allow this tx to perform. */
+  gas_wanted: Long;
+  /** GasUsed is the amount of gas actually consumed. */
+
+  gas_used: Long;
+}
 /** Result is the union of ResponseFormat and ResponseCheckTx. */
+
 export interface Result {
   /**
    * Data is any data returned from message or handler execution. It MUST be
@@ -112,81 +210,169 @@ export interface Result {
 
   /** @deprecated */
   data: Uint8Array;
-
   /** Log contains the log information from message or handler execution. */
-  log: string;
 
+  log: string;
   /**
    * Events contains a slice of Event objects that were emitted during message
    * or handler execution.
    */
-  events: Event[];
 
+  events: Event[];
   /**
    * msg_responses contains the Msg handler responses type packed in Anys.
    * 
    * Since: cosmos-sdk 0.46
    */
+
   msg_responses: Any[];
 }
+/** Result is the union of ResponseFormat and ResponseCheckTx. */
 
+export interface ResultSDKType {
+  /**
+   * Data is any data returned from message or handler execution. It MUST be
+   * length prefixed in order to separate data from multiple message executions.
+   * Deprecated. This field is still populated, but prefer msg_response instead
+   * because it also contains the Msg response typeURL.
+   */
+
+  /** @deprecated */
+  data: Uint8Array;
+  /** Log contains the log information from message or handler execution. */
+
+  log: string;
+  /**
+   * Events contains a slice of Event objects that were emitted during message
+   * or handler execution.
+   */
+
+  events: EventSDKType[];
+  /**
+   * msg_responses contains the Msg handler responses type packed in Anys.
+   * 
+   * Since: cosmos-sdk 0.46
+   */
+
+  msg_responses: AnySDKType[];
+}
 /**
  * SimulationResponse defines the response generated when a transaction is
  * successfully simulated.
  */
+
 export interface SimulationResponse {
   gas_info: GasInfo;
   result: Result;
 }
+/**
+ * SimulationResponse defines the response generated when a transaction is
+ * successfully simulated.
+ */
 
+export interface SimulationResponseSDKType {
+  gas_info: GasInfoSDKType;
+  result: ResultSDKType;
+}
 /**
  * MsgData defines the data returned in a Result object during message
  * execution.
  */
 
 /** @deprecated */
+
 export interface MsgData {
   msg_type: string;
   data: Uint8Array;
 }
+/**
+ * MsgData defines the data returned in a Result object during message
+ * execution.
+ */
 
+/** @deprecated */
+
+export interface MsgDataSDKType {
+  msg_type: string;
+  data: Uint8Array;
+}
 /**
  * TxMsgData defines a list of MsgData. A transaction will have a MsgData object
  * for each message.
  */
+
 export interface TxMsgData {
   /** data field is deprecated and not populated. */
 
   /** @deprecated */
   data: MsgData[];
-
   /**
    * msg_responses contains the Msg handler responses packed into Anys.
    * 
    * Since: cosmos-sdk 0.46
    */
+
   msg_responses: Any[];
 }
+/**
+ * TxMsgData defines a list of MsgData. A transaction will have a MsgData object
+ * for each message.
+ */
 
+export interface TxMsgDataSDKType {
+  /** data field is deprecated and not populated. */
+
+  /** @deprecated */
+  data: MsgDataSDKType[];
+  /**
+   * msg_responses contains the Msg handler responses packed into Anys.
+   * 
+   * Since: cosmos-sdk 0.46
+   */
+
+  msg_responses: AnySDKType[];
+}
 /** SearchTxsResult defines a structure for querying txs pageable */
+
 export interface SearchTxsResult {
   /** Count of all txs */
   total_count: Long;
-
   /** Count of txs in current page */
+
   count: Long;
-
   /** Index of current page, start from 1 */
+
   page_number: Long;
-
   /** Count of total pages */
+
   page_total: Long;
-
   /** Max count txs per page */
-  limit: Long;
 
+  limit: Long;
   /** List of txs in current page */
+
   txs: TxResponse[];
+}
+/** SearchTxsResult defines a structure for querying txs pageable */
+
+export interface SearchTxsResultSDKType {
+  /** Count of all txs */
+  total_count: Long;
+  /** Count of txs in current page */
+
+  count: Long;
+  /** Index of current page, start from 1 */
+
+  page_number: Long;
+  /** Count of total pages */
+
+  page_total: Long;
+  /** Max count txs per page */
+
+  limit: Long;
+  /** List of txs in current page */
+
+  txs: TxResponseSDKType[];
 }
 
 function createBaseTxResponse(): TxResponse {
@@ -334,54 +520,6 @@ export const TxResponse = {
     return message;
   },
 
-  fromJSON(object: any): TxResponse {
-    return {
-      height: isSet(object.height) ? Long.fromString(object.height) : Long.ZERO,
-      txhash: isSet(object.txhash) ? String(object.txhash) : "",
-      codespace: isSet(object.codespace) ? String(object.codespace) : "",
-      code: isSet(object.code) ? Number(object.code) : 0,
-      data: isSet(object.data) ? String(object.data) : "",
-      raw_log: isSet(object.raw_log) ? String(object.raw_log) : "",
-      logs: Array.isArray(object?.logs) ? object.logs.map((e: any) => ABCIMessageLog.fromJSON(e)) : [],
-      info: isSet(object.info) ? String(object.info) : "",
-      gas_wanted: isSet(object.gas_wanted) ? Long.fromString(object.gas_wanted) : Long.ZERO,
-      gas_used: isSet(object.gas_used) ? Long.fromString(object.gas_used) : Long.ZERO,
-      tx: isSet(object.tx) ? Any.fromJSON(object.tx) : undefined,
-      timestamp: isSet(object.timestamp) ? String(object.timestamp) : "",
-      events: Array.isArray(object?.events) ? object.events.map((e: any) => Event.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: TxResponse): unknown {
-    const obj: any = {};
-    message.height !== undefined && (obj.height = (message.height || Long.ZERO).toString());
-    message.txhash !== undefined && (obj.txhash = message.txhash);
-    message.codespace !== undefined && (obj.codespace = message.codespace);
-    message.code !== undefined && (obj.code = Math.round(message.code));
-    message.data !== undefined && (obj.data = message.data);
-    message.raw_log !== undefined && (obj.raw_log = message.raw_log);
-
-    if (message.logs) {
-      obj.logs = message.logs.map(e => e ? ABCIMessageLog.toJSON(e) : undefined);
-    } else {
-      obj.logs = [];
-    }
-
-    message.info !== undefined && (obj.info = message.info);
-    message.gas_wanted !== undefined && (obj.gas_wanted = (message.gas_wanted || Long.ZERO).toString());
-    message.gas_used !== undefined && (obj.gas_used = (message.gas_used || Long.ZERO).toString());
-    message.tx !== undefined && (obj.tx = message.tx ? Any.toJSON(message.tx) : undefined);
-    message.timestamp !== undefined && (obj.timestamp = message.timestamp);
-
-    if (message.events) {
-      obj.events = message.events.map(e => e ? Event.toJSON(e) : undefined);
-    } else {
-      obj.events = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<TxResponse>): TxResponse {
     const message = createBaseTxResponse();
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
@@ -457,28 +595,6 @@ export const ABCIMessageLog = {
     return message;
   },
 
-  fromJSON(object: any): ABCIMessageLog {
-    return {
-      msg_index: isSet(object.msg_index) ? Number(object.msg_index) : 0,
-      log: isSet(object.log) ? String(object.log) : "",
-      events: Array.isArray(object?.events) ? object.events.map((e: any) => StringEvent.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: ABCIMessageLog): unknown {
-    const obj: any = {};
-    message.msg_index !== undefined && (obj.msg_index = Math.round(message.msg_index));
-    message.log !== undefined && (obj.log = message.log);
-
-    if (message.events) {
-      obj.events = message.events.map(e => e ? StringEvent.toJSON(e) : undefined);
-    } else {
-      obj.events = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ABCIMessageLog>): ABCIMessageLog {
     const message = createBaseABCIMessageLog();
     message.msg_index = object.msg_index ?? 0;
@@ -533,26 +649,6 @@ export const StringEvent = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): StringEvent {
-    return {
-      type: isSet(object.type) ? String(object.type) : "",
-      attributes: Array.isArray(object?.attributes) ? object.attributes.map((e: any) => Attribute.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: StringEvent): unknown {
-    const obj: any = {};
-    message.type !== undefined && (obj.type = message.type);
-
-    if (message.attributes) {
-      obj.attributes = message.attributes.map(e => e ? Attribute.toJSON(e) : undefined);
-    } else {
-      obj.attributes = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<StringEvent>): StringEvent {
@@ -610,20 +706,6 @@ export const Attribute = {
     return message;
   },
 
-  fromJSON(object: any): Attribute {
-    return {
-      key: isSet(object.key) ? String(object.key) : "",
-      value: isSet(object.value) ? String(object.value) : ""
-    };
-  },
-
-  toJSON(message: Attribute): unknown {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.value !== undefined && (obj.value = message.value);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Attribute>): Attribute {
     const message = createBaseAttribute();
     message.key = object.key ?? "";
@@ -677,20 +759,6 @@ export const GasInfo = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): GasInfo {
-    return {
-      gas_wanted: isSet(object.gas_wanted) ? Long.fromString(object.gas_wanted) : Long.UZERO,
-      gas_used: isSet(object.gas_used) ? Long.fromString(object.gas_used) : Long.UZERO
-    };
-  },
-
-  toJSON(message: GasInfo): unknown {
-    const obj: any = {};
-    message.gas_wanted !== undefined && (obj.gas_wanted = (message.gas_wanted || Long.UZERO).toString());
-    message.gas_used !== undefined && (obj.gas_used = (message.gas_used || Long.UZERO).toString());
-    return obj;
   },
 
   fromPartial(object: DeepPartial<GasInfo>): GasInfo {
@@ -766,35 +834,6 @@ export const Result = {
     return message;
   },
 
-  fromJSON(object: any): Result {
-    return {
-      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(),
-      log: isSet(object.log) ? String(object.log) : "",
-      events: Array.isArray(object?.events) ? object.events.map((e: any) => Event.fromJSON(e)) : [],
-      msg_responses: Array.isArray(object?.msg_responses) ? object.msg_responses.map((e: any) => Any.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: Result): unknown {
-    const obj: any = {};
-    message.data !== undefined && (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
-    message.log !== undefined && (obj.log = message.log);
-
-    if (message.events) {
-      obj.events = message.events.map(e => e ? Event.toJSON(e) : undefined);
-    } else {
-      obj.events = [];
-    }
-
-    if (message.msg_responses) {
-      obj.msg_responses = message.msg_responses.map(e => e ? Any.toJSON(e) : undefined);
-    } else {
-      obj.msg_responses = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Result>): Result {
     const message = createBaseResult();
     message.data = object.data ?? new Uint8Array();
@@ -852,20 +891,6 @@ export const SimulationResponse = {
     return message;
   },
 
-  fromJSON(object: any): SimulationResponse {
-    return {
-      gas_info: isSet(object.gas_info) ? GasInfo.fromJSON(object.gas_info) : undefined,
-      result: isSet(object.result) ? Result.fromJSON(object.result) : undefined
-    };
-  },
-
-  toJSON(message: SimulationResponse): unknown {
-    const obj: any = {};
-    message.gas_info !== undefined && (obj.gas_info = message.gas_info ? GasInfo.toJSON(message.gas_info) : undefined);
-    message.result !== undefined && (obj.result = message.result ? Result.toJSON(message.result) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<SimulationResponse>): SimulationResponse {
     const message = createBaseSimulationResponse();
     message.gas_info = object.gas_info !== undefined && object.gas_info !== null ? GasInfo.fromPartial(object.gas_info) : undefined;
@@ -921,20 +946,6 @@ export const MsgData = {
     return message;
   },
 
-  fromJSON(object: any): MsgData {
-    return {
-      msg_type: isSet(object.msg_type) ? String(object.msg_type) : "",
-      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: MsgData): unknown {
-    const obj: any = {};
-    message.msg_type !== undefined && (obj.msg_type = message.msg_type);
-    message.data !== undefined && (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgData>): MsgData {
     const message = createBaseMsgData();
     message.msg_type = object.msg_type ?? "";
@@ -988,31 +999,6 @@ export const TxMsgData = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): TxMsgData {
-    return {
-      data: Array.isArray(object?.data) ? object.data.map((e: any) => MsgData.fromJSON(e)) : [],
-      msg_responses: Array.isArray(object?.msg_responses) ? object.msg_responses.map((e: any) => Any.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: TxMsgData): unknown {
-    const obj: any = {};
-
-    if (message.data) {
-      obj.data = message.data.map(e => e ? MsgData.toJSON(e) : undefined);
-    } else {
-      obj.data = [];
-    }
-
-    if (message.msg_responses) {
-      obj.msg_responses = message.msg_responses.map(e => e ? Any.toJSON(e) : undefined);
-    } else {
-      obj.msg_responses = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<TxMsgData>): TxMsgData {
@@ -1104,34 +1090,6 @@ export const SearchTxsResult = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): SearchTxsResult {
-    return {
-      total_count: isSet(object.total_count) ? Long.fromString(object.total_count) : Long.UZERO,
-      count: isSet(object.count) ? Long.fromString(object.count) : Long.UZERO,
-      page_number: isSet(object.page_number) ? Long.fromString(object.page_number) : Long.UZERO,
-      page_total: isSet(object.page_total) ? Long.fromString(object.page_total) : Long.UZERO,
-      limit: isSet(object.limit) ? Long.fromString(object.limit) : Long.UZERO,
-      txs: Array.isArray(object?.txs) ? object.txs.map((e: any) => TxResponse.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: SearchTxsResult): unknown {
-    const obj: any = {};
-    message.total_count !== undefined && (obj.total_count = (message.total_count || Long.UZERO).toString());
-    message.count !== undefined && (obj.count = (message.count || Long.UZERO).toString());
-    message.page_number !== undefined && (obj.page_number = (message.page_number || Long.UZERO).toString());
-    message.page_total !== undefined && (obj.page_total = (message.page_total || Long.UZERO).toString());
-    message.limit !== undefined && (obj.limit = (message.limit || Long.UZERO).toString());
-
-    if (message.txs) {
-      obj.txs = message.txs.map(e => e ? TxResponse.toJSON(e) : undefined);
-    } else {
-      obj.txs = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<SearchTxsResult>): SearchTxsResult {

@@ -1,7 +1,7 @@
-import { PageRequest, PageResponse } from "../../../../cosmos/base/query/v1beta1/pagination";
-import { ConnectionEnd, IdentifiedConnection } from "./connection";
-import { Height, IdentifiedClientState } from "../../client/v1/client";
-import { Any } from "../../../../google/protobuf/any";
+import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../../../cosmos/base/query/v1beta1/pagination";
+import { ConnectionEnd, ConnectionEndSDKType, IdentifiedConnection, IdentifiedConnectionSDKType } from "./connection";
+import { Height, HeightSDKType, IdentifiedClientState, IdentifiedClientStateSDKType } from "../../client/v1/client";
+import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial, Long } from "@osmonauts/helpers";
 /**
@@ -9,6 +9,14 @@ import { DeepPartial, Long } from "@osmonauts/helpers";
  * method
  */
 export interface QueryConnectionRequest {
+    /** connection unique identifier */
+    connection_id: string;
+}
+/**
+ * QueryConnectionRequest is the request type for the Query/Connection RPC
+ * method
+ */
+export interface QueryConnectionRequestSDKType {
     /** connection unique identifier */
     connection_id: string;
 }
@@ -26,11 +34,31 @@ export interface QueryConnectionResponse {
     proof_height: Height;
 }
 /**
+ * QueryConnectionResponse is the response type for the Query/Connection RPC
+ * method. Besides the connection end, it includes a proof and the height from
+ * which the proof was retrieved.
+ */
+export interface QueryConnectionResponseSDKType {
+    /** connection associated with the request identifier */
+    connection: ConnectionEndSDKType;
+    /** merkle proof of existence */
+    proof: Uint8Array;
+    /** height at which the proof was retrieved */
+    proof_height: HeightSDKType;
+}
+/**
  * QueryConnectionsRequest is the request type for the Query/Connections RPC
  * method
  */
 export interface QueryConnectionsRequest {
     pagination?: PageRequest;
+}
+/**
+ * QueryConnectionsRequest is the request type for the Query/Connections RPC
+ * method
+ */
+export interface QueryConnectionsRequestSDKType {
+    pagination?: PageRequestSDKType;
 }
 /**
  * QueryConnectionsResponse is the response type for the Query/Connections RPC
@@ -45,10 +73,30 @@ export interface QueryConnectionsResponse {
     height: Height;
 }
 /**
+ * QueryConnectionsResponse is the response type for the Query/Connections RPC
+ * method.
+ */
+export interface QueryConnectionsResponseSDKType {
+    /** list of stored connections of the chain. */
+    connections: IdentifiedConnectionSDKType[];
+    /** pagination response */
+    pagination?: PageResponseSDKType;
+    /** query block height */
+    height: HeightSDKType;
+}
+/**
  * QueryClientConnectionsRequest is the request type for the
  * Query/ClientConnections RPC method
  */
 export interface QueryClientConnectionsRequest {
+    /** client identifier associated with a connection */
+    client_id: string;
+}
+/**
+ * QueryClientConnectionsRequest is the request type for the
+ * Query/ClientConnections RPC method
+ */
+export interface QueryClientConnectionsRequestSDKType {
     /** client identifier associated with a connection */
     client_id: string;
 }
@@ -65,10 +113,30 @@ export interface QueryClientConnectionsResponse {
     proof_height: Height;
 }
 /**
+ * QueryClientConnectionsResponse is the response type for the
+ * Query/ClientConnections RPC method
+ */
+export interface QueryClientConnectionsResponseSDKType {
+    /** slice of all the connection paths associated with a client. */
+    connection_paths: string[];
+    /** merkle proof of existence */
+    proof: Uint8Array;
+    /** height at which the proof was generated */
+    proof_height: HeightSDKType;
+}
+/**
  * QueryConnectionClientStateRequest is the request type for the
  * Query/ConnectionClientState RPC method
  */
 export interface QueryConnectionClientStateRequest {
+    /** connection identifier */
+    connection_id: string;
+}
+/**
+ * QueryConnectionClientStateRequest is the request type for the
+ * Query/ConnectionClientState RPC method
+ */
+export interface QueryConnectionClientStateRequestSDKType {
     /** connection identifier */
     connection_id: string;
 }
@@ -85,10 +153,32 @@ export interface QueryConnectionClientStateResponse {
     proof_height: Height;
 }
 /**
+ * QueryConnectionClientStateResponse is the response type for the
+ * Query/ConnectionClientState RPC method
+ */
+export interface QueryConnectionClientStateResponseSDKType {
+    /** client state associated with the channel */
+    identified_client_state: IdentifiedClientStateSDKType;
+    /** merkle proof of existence */
+    proof: Uint8Array;
+    /** height at which the proof was retrieved */
+    proof_height: HeightSDKType;
+}
+/**
  * QueryConnectionConsensusStateRequest is the request type for the
  * Query/ConnectionConsensusState RPC method
  */
 export interface QueryConnectionConsensusStateRequest {
+    /** connection identifier */
+    connection_id: string;
+    revision_number: Long;
+    revision_height: Long;
+}
+/**
+ * QueryConnectionConsensusStateRequest is the request type for the
+ * Query/ConnectionConsensusState RPC method
+ */
+export interface QueryConnectionConsensusStateRequestSDKType {
     /** connection identifier */
     connection_id: string;
     revision_number: Long;
@@ -108,73 +198,67 @@ export interface QueryConnectionConsensusStateResponse {
     /** height at which the proof was retrieved */
     proof_height: Height;
 }
+/**
+ * QueryConnectionConsensusStateResponse is the response type for the
+ * Query/ConnectionConsensusState RPC method
+ */
+export interface QueryConnectionConsensusStateResponseSDKType {
+    /** consensus state associated with the channel */
+    consensus_state: AnySDKType;
+    /** client ID associated with the consensus state */
+    client_id: string;
+    /** merkle proof of existence */
+    proof: Uint8Array;
+    /** height at which the proof was retrieved */
+    proof_height: HeightSDKType;
+}
 export declare const QueryConnectionRequest: {
     encode(message: QueryConnectionRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionRequest;
-    fromJSON(object: any): QueryConnectionRequest;
-    toJSON(message: QueryConnectionRequest): unknown;
     fromPartial(object: DeepPartial<QueryConnectionRequest>): QueryConnectionRequest;
 };
 export declare const QueryConnectionResponse: {
     encode(message: QueryConnectionResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionResponse;
-    fromJSON(object: any): QueryConnectionResponse;
-    toJSON(message: QueryConnectionResponse): unknown;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionResponseSDKType;
     fromPartial(object: DeepPartial<QueryConnectionResponse>): QueryConnectionResponse;
 };
 export declare const QueryConnectionsRequest: {
     encode(message: QueryConnectionsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionsRequest;
-    fromJSON(object: any): QueryConnectionsRequest;
-    toJSON(message: QueryConnectionsRequest): unknown;
     fromPartial(object: DeepPartial<QueryConnectionsRequest>): QueryConnectionsRequest;
 };
 export declare const QueryConnectionsResponse: {
     encode(message: QueryConnectionsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionsResponse;
-    fromJSON(object: any): QueryConnectionsResponse;
-    toJSON(message: QueryConnectionsResponse): unknown;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionsResponseSDKType;
     fromPartial(object: DeepPartial<QueryConnectionsResponse>): QueryConnectionsResponse;
 };
 export declare const QueryClientConnectionsRequest: {
     encode(message: QueryClientConnectionsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientConnectionsRequest;
-    fromJSON(object: any): QueryClientConnectionsRequest;
-    toJSON(message: QueryClientConnectionsRequest): unknown;
     fromPartial(object: DeepPartial<QueryClientConnectionsRequest>): QueryClientConnectionsRequest;
 };
 export declare const QueryClientConnectionsResponse: {
     encode(message: QueryClientConnectionsResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientConnectionsResponse;
-    fromJSON(object: any): QueryClientConnectionsResponse;
-    toJSON(message: QueryClientConnectionsResponse): unknown;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientConnectionsResponseSDKType;
     fromPartial(object: DeepPartial<QueryClientConnectionsResponse>): QueryClientConnectionsResponse;
 };
 export declare const QueryConnectionClientStateRequest: {
     encode(message: QueryConnectionClientStateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionClientStateRequest;
-    fromJSON(object: any): QueryConnectionClientStateRequest;
-    toJSON(message: QueryConnectionClientStateRequest): unknown;
     fromPartial(object: DeepPartial<QueryConnectionClientStateRequest>): QueryConnectionClientStateRequest;
 };
 export declare const QueryConnectionClientStateResponse: {
     encode(message: QueryConnectionClientStateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionClientStateResponse;
-    fromJSON(object: any): QueryConnectionClientStateResponse;
-    toJSON(message: QueryConnectionClientStateResponse): unknown;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionClientStateResponseSDKType;
     fromPartial(object: DeepPartial<QueryConnectionClientStateResponse>): QueryConnectionClientStateResponse;
 };
 export declare const QueryConnectionConsensusStateRequest: {
     encode(message: QueryConnectionConsensusStateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionConsensusStateRequest;
-    fromJSON(object: any): QueryConnectionConsensusStateRequest;
-    toJSON(message: QueryConnectionConsensusStateRequest): unknown;
     fromPartial(object: DeepPartial<QueryConnectionConsensusStateRequest>): QueryConnectionConsensusStateRequest;
 };
 export declare const QueryConnectionConsensusStateResponse: {
     encode(message: QueryConnectionConsensusStateResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionConsensusStateResponse;
-    fromJSON(object: any): QueryConnectionConsensusStateResponse;
-    toJSON(message: QueryConnectionConsensusStateResponse): unknown;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryConnectionConsensusStateResponseSDKType;
     fromPartial(object: DeepPartial<QueryConnectionConsensusStateResponse>): QueryConnectionConsensusStateResponse;
 };

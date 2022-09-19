@@ -1,15 +1,25 @@
-import { IdentifiedConnection, ConnectionPaths, Params } from "./connection";
+import { IdentifiedConnection, IdentifiedConnectionSDKType, ConnectionPaths, ConnectionPathsSDKType, Params, ParamsSDKType } from "./connection";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, DeepPartial } from "@osmonauts/helpers";
-
+import { Long, DeepPartial } from "@osmonauts/helpers";
 /** GenesisState defines the ibc connection submodule's genesis state. */
+
 export interface GenesisState {
   connections: IdentifiedConnection[];
   client_connection_paths: ConnectionPaths[];
-
   /** the sequence for the next generated connection identifier */
+
   next_connection_sequence: Long;
   params: Params;
+}
+/** GenesisState defines the ibc connection submodule's genesis state. */
+
+export interface GenesisStateSDKType {
+  connections: IdentifiedConnectionSDKType[];
+  client_connection_paths: ConnectionPathsSDKType[];
+  /** the sequence for the next generated connection identifier */
+
+  next_connection_sequence: Long;
+  params: ParamsSDKType;
 }
 
 function createBaseGenesisState(): GenesisState {
@@ -74,35 +84,6 @@ export const GenesisState = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): GenesisState {
-    return {
-      connections: Array.isArray(object?.connections) ? object.connections.map((e: any) => IdentifiedConnection.fromJSON(e)) : [],
-      client_connection_paths: Array.isArray(object?.client_connection_paths) ? object.client_connection_paths.map((e: any) => ConnectionPaths.fromJSON(e)) : [],
-      next_connection_sequence: isSet(object.next_connection_sequence) ? Long.fromString(object.next_connection_sequence) : Long.UZERO,
-      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
-    };
-  },
-
-  toJSON(message: GenesisState): unknown {
-    const obj: any = {};
-
-    if (message.connections) {
-      obj.connections = message.connections.map(e => e ? IdentifiedConnection.toJSON(e) : undefined);
-    } else {
-      obj.connections = [];
-    }
-
-    if (message.client_connection_paths) {
-      obj.client_connection_paths = message.client_connection_paths.map(e => e ? ConnectionPaths.toJSON(e) : undefined);
-    } else {
-      obj.client_connection_paths = [];
-    }
-
-    message.next_connection_sequence !== undefined && (obj.next_connection_sequence = (message.next_connection_sequence || Long.UZERO).toString());
-    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<GenesisState>): GenesisState {

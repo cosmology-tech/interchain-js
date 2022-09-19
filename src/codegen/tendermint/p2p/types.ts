@@ -1,7 +1,12 @@
 import { Timestamp } from "../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, DeepPartial, bytesFromBase64, base64FromBytes, toTimestamp, fromTimestamp, fromJsonTimestamp } from "@osmonauts/helpers";
+import { Long, DeepPartial, toTimestamp, fromTimestamp } from "@osmonauts/helpers";
 export interface ProtocolVersion {
+  p2p: Long;
+  block: Long;
+  app: Long;
+}
+export interface ProtocolVersionSDKType {
   p2p: Long;
   block: Long;
   app: Long;
@@ -16,7 +21,21 @@ export interface NodeInfo {
   moniker: string;
   other: NodeInfoOther;
 }
+export interface NodeInfoSDKType {
+  protocol_version: ProtocolVersionSDKType;
+  node_id: string;
+  listen_addr: string;
+  network: string;
+  version: string;
+  channels: Uint8Array;
+  moniker: string;
+  other: NodeInfoOtherSDKType;
+}
 export interface NodeInfoOther {
+  tx_index: string;
+  rpc_address: string;
+}
+export interface NodeInfoOtherSDKType {
   tx_index: string;
   rpc_address: string;
 }
@@ -25,7 +44,18 @@ export interface PeerInfo {
   address_info: PeerAddressInfo[];
   last_connected: Date;
 }
+export interface PeerInfoSDKType {
+  id: string;
+  address_info: PeerAddressInfoSDKType[];
+  last_connected: Date;
+}
 export interface PeerAddressInfo {
+  address: string;
+  last_dial_success: Date;
+  last_dial_failure: Date;
+  dial_failures: number;
+}
+export interface PeerAddressInfoSDKType {
   address: string;
   last_dial_success: Date;
   last_dial_failure: Date;
@@ -85,22 +115,6 @@ export const ProtocolVersion = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): ProtocolVersion {
-    return {
-      p2p: isSet(object.p2p) ? Long.fromString(object.p2p) : Long.UZERO,
-      block: isSet(object.block) ? Long.fromString(object.block) : Long.UZERO,
-      app: isSet(object.app) ? Long.fromString(object.app) : Long.UZERO
-    };
-  },
-
-  toJSON(message: ProtocolVersion): unknown {
-    const obj: any = {};
-    message.p2p !== undefined && (obj.p2p = (message.p2p || Long.UZERO).toString());
-    message.block !== undefined && (obj.block = (message.block || Long.UZERO).toString());
-    message.app !== undefined && (obj.app = (message.app || Long.UZERO).toString());
-    return obj;
   },
 
   fromPartial(object: DeepPartial<ProtocolVersion>): ProtocolVersion {
@@ -213,32 +227,6 @@ export const NodeInfo = {
     return message;
   },
 
-  fromJSON(object: any): NodeInfo {
-    return {
-      protocol_version: isSet(object.protocol_version) ? ProtocolVersion.fromJSON(object.protocol_version) : undefined,
-      node_id: isSet(object.node_id) ? String(object.node_id) : "",
-      listen_addr: isSet(object.listen_addr) ? String(object.listen_addr) : "",
-      network: isSet(object.network) ? String(object.network) : "",
-      version: isSet(object.version) ? String(object.version) : "",
-      channels: isSet(object.channels) ? bytesFromBase64(object.channels) : new Uint8Array(),
-      moniker: isSet(object.moniker) ? String(object.moniker) : "",
-      other: isSet(object.other) ? NodeInfoOther.fromJSON(object.other) : undefined
-    };
-  },
-
-  toJSON(message: NodeInfo): unknown {
-    const obj: any = {};
-    message.protocol_version !== undefined && (obj.protocol_version = message.protocol_version ? ProtocolVersion.toJSON(message.protocol_version) : undefined);
-    message.node_id !== undefined && (obj.node_id = message.node_id);
-    message.listen_addr !== undefined && (obj.listen_addr = message.listen_addr);
-    message.network !== undefined && (obj.network = message.network);
-    message.version !== undefined && (obj.version = message.version);
-    message.channels !== undefined && (obj.channels = base64FromBytes(message.channels !== undefined ? message.channels : new Uint8Array()));
-    message.moniker !== undefined && (obj.moniker = message.moniker);
-    message.other !== undefined && (obj.other = message.other ? NodeInfoOther.toJSON(message.other) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<NodeInfo>): NodeInfo {
     const message = createBaseNodeInfo();
     message.protocol_version = object.protocol_version !== undefined && object.protocol_version !== null ? ProtocolVersion.fromPartial(object.protocol_version) : undefined;
@@ -298,20 +286,6 @@ export const NodeInfoOther = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): NodeInfoOther {
-    return {
-      tx_index: isSet(object.tx_index) ? String(object.tx_index) : "",
-      rpc_address: isSet(object.rpc_address) ? String(object.rpc_address) : ""
-    };
-  },
-
-  toJSON(message: NodeInfoOther): unknown {
-    const obj: any = {};
-    message.tx_index !== undefined && (obj.tx_index = message.tx_index);
-    message.rpc_address !== undefined && (obj.rpc_address = message.rpc_address);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<NodeInfoOther>): NodeInfoOther {
@@ -376,28 +350,6 @@ export const PeerInfo = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): PeerInfo {
-    return {
-      id: isSet(object.id) ? String(object.id) : "",
-      address_info: Array.isArray(object?.address_info) ? object.address_info.map((e: any) => PeerAddressInfo.fromJSON(e)) : [],
-      last_connected: isSet(object.last_connected) ? fromJsonTimestamp(object.last_connected) : undefined
-    };
-  },
-
-  toJSON(message: PeerInfo): unknown {
-    const obj: any = {};
-    message.id !== undefined && (obj.id = message.id);
-
-    if (message.address_info) {
-      obj.address_info = message.address_info.map(e => e ? PeerAddressInfo.toJSON(e) : undefined);
-    } else {
-      obj.address_info = [];
-    }
-
-    message.last_connected !== undefined && (obj.last_connected = message.last_connected.toISOString());
-    return obj;
   },
 
   fromPartial(object: DeepPartial<PeerInfo>): PeerInfo {
@@ -472,24 +424,6 @@ export const PeerAddressInfo = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): PeerAddressInfo {
-    return {
-      address: isSet(object.address) ? String(object.address) : "",
-      last_dial_success: isSet(object.last_dial_success) ? fromJsonTimestamp(object.last_dial_success) : undefined,
-      last_dial_failure: isSet(object.last_dial_failure) ? fromJsonTimestamp(object.last_dial_failure) : undefined,
-      dial_failures: isSet(object.dial_failures) ? Number(object.dial_failures) : 0
-    };
-  },
-
-  toJSON(message: PeerAddressInfo): unknown {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = message.address);
-    message.last_dial_success !== undefined && (obj.last_dial_success = message.last_dial_success.toISOString());
-    message.last_dial_failure !== undefined && (obj.last_dial_failure = message.last_dial_failure.toISOString());
-    message.dial_failures !== undefined && (obj.dial_failures = Math.round(message.dial_failures));
-    return obj;
   },
 
   fromPartial(object: DeepPartial<PeerAddressInfo>): PeerAddressInfo {

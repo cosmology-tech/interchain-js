@@ -1,23 +1,45 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
-
+import { DeepPartial } from "@osmonauts/helpers";
 /** EventSend is emitted on Msg/Send */
+
 export interface EventSend {
   class_id: string;
   id: string;
   sender: string;
   receiver: string;
 }
+/** EventSend is emitted on Msg/Send */
 
+export interface EventSendSDKType {
+  class_id: string;
+  id: string;
+  sender: string;
+  receiver: string;
+}
 /** EventMint is emitted on Mint */
+
 export interface EventMint {
   class_id: string;
   id: string;
   owner: string;
 }
+/** EventMint is emitted on Mint */
 
+export interface EventMintSDKType {
+  class_id: string;
+  id: string;
+  owner: string;
+}
 /** EventBurn is emitted on Burn */
+
 export interface EventBurn {
+  class_id: string;
+  id: string;
+  owner: string;
+}
+/** EventBurn is emitted on Burn */
+
+export interface EventBurnSDKType {
   class_id: string;
   id: string;
   owner: string;
@@ -87,24 +109,6 @@ export const EventSend = {
     return message;
   },
 
-  fromJSON(object: any): EventSend {
-    return {
-      class_id: isSet(object.class_id) ? String(object.class_id) : "",
-      id: isSet(object.id) ? String(object.id) : "",
-      sender: isSet(object.sender) ? String(object.sender) : "",
-      receiver: isSet(object.receiver) ? String(object.receiver) : ""
-    };
-  },
-
-  toJSON(message: EventSend): unknown {
-    const obj: any = {};
-    message.class_id !== undefined && (obj.class_id = message.class_id);
-    message.id !== undefined && (obj.id = message.id);
-    message.sender !== undefined && (obj.sender = message.sender);
-    message.receiver !== undefined && (obj.receiver = message.receiver);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<EventSend>): EventSend {
     const message = createBaseEventSend();
     message.class_id = object.class_id ?? "";
@@ -171,22 +175,6 @@ export const EventMint = {
     return message;
   },
 
-  fromJSON(object: any): EventMint {
-    return {
-      class_id: isSet(object.class_id) ? String(object.class_id) : "",
-      id: isSet(object.id) ? String(object.id) : "",
-      owner: isSet(object.owner) ? String(object.owner) : ""
-    };
-  },
-
-  toJSON(message: EventMint): unknown {
-    const obj: any = {};
-    message.class_id !== undefined && (obj.class_id = message.class_id);
-    message.id !== undefined && (obj.id = message.id);
-    message.owner !== undefined && (obj.owner = message.owner);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<EventMint>): EventMint {
     const message = createBaseEventMint();
     message.class_id = object.class_id ?? "";
@@ -250,22 +238,6 @@ export const EventBurn = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): EventBurn {
-    return {
-      class_id: isSet(object.class_id) ? String(object.class_id) : "",
-      id: isSet(object.id) ? String(object.id) : "",
-      owner: isSet(object.owner) ? String(object.owner) : ""
-    };
-  },
-
-  toJSON(message: EventBurn): unknown {
-    const obj: any = {};
-    message.class_id !== undefined && (obj.class_id = message.class_id);
-    message.id !== undefined && (obj.id = message.id);
-    message.owner !== undefined && (obj.owner = message.owner);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<EventBurn>): EventBurn {

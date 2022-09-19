@@ -1,33 +1,58 @@
-import { CommitmentProof } from "../../../../confio/proofs";
+import { CommitmentProof, CommitmentProofSDKType } from "../../../../confio/proofs";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, bytesFromBase64, base64FromBytes, DeepPartial } from "@osmonauts/helpers";
-
+import { DeepPartial } from "@osmonauts/helpers";
 /**
  * MerkleRoot defines a merkle root hash.
  * In the Cosmos SDK, the AppHash of a block header becomes the root.
  */
+
 export interface MerkleRoot {
   hash: Uint8Array;
 }
+/**
+ * MerkleRoot defines a merkle root hash.
+ * In the Cosmos SDK, the AppHash of a block header becomes the root.
+ */
 
+export interface MerkleRootSDKType {
+  hash: Uint8Array;
+}
 /**
  * MerklePrefix is merkle path prefixed to the key.
  * The constructed key from the Path and the key will be append(Path.KeyPath,
  * append(Path.KeyPrefix, key...))
  */
+
 export interface MerklePrefix {
   key_prefix: Uint8Array;
 }
+/**
+ * MerklePrefix is merkle path prefixed to the key.
+ * The constructed key from the Path and the key will be append(Path.KeyPath,
+ * append(Path.KeyPrefix, key...))
+ */
 
+export interface MerklePrefixSDKType {
+  key_prefix: Uint8Array;
+}
 /**
  * MerklePath is the path used to verify commitment proofs, which can be an
  * arbitrary structured object (defined by a commitment type).
  * MerklePath is represented from root-to-leaf
  */
+
 export interface MerklePath {
   key_path: string[];
 }
+/**
+ * MerklePath is the path used to verify commitment proofs, which can be an
+ * arbitrary structured object (defined by a commitment type).
+ * MerklePath is represented from root-to-leaf
+ */
 
+export interface MerklePathSDKType {
+  key_path: string[];
+}
 /**
  * MerkleProof is a wrapper type over a chain of CommitmentProofs.
  * It demonstrates membership or non-membership for an element or set of
@@ -35,8 +60,20 @@ export interface MerklePath {
  * should be succinct.
  * MerkleProofs are ordered from leaf-to-root
  */
+
 export interface MerkleProof {
   proofs: CommitmentProof[];
+}
+/**
+ * MerkleProof is a wrapper type over a chain of CommitmentProofs.
+ * It demonstrates membership or non-membership for an element or set of
+ * elements, verifiable in conjunction with a known commitment root. Proofs
+ * should be succinct.
+ * MerkleProofs are ordered from leaf-to-root
+ */
+
+export interface MerkleProofSDKType {
+  proofs: CommitmentProofSDKType[];
 }
 
 function createBaseMerkleRoot(): MerkleRoot {
@@ -74,18 +111,6 @@ export const MerkleRoot = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): MerkleRoot {
-    return {
-      hash: isSet(object.hash) ? bytesFromBase64(object.hash) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: MerkleRoot): unknown {
-    const obj: any = {};
-    message.hash !== undefined && (obj.hash = base64FromBytes(message.hash !== undefined ? message.hash : new Uint8Array()));
-    return obj;
   },
 
   fromPartial(object: DeepPartial<MerkleRoot>): MerkleRoot {
@@ -133,18 +158,6 @@ export const MerklePrefix = {
     return message;
   },
 
-  fromJSON(object: any): MerklePrefix {
-    return {
-      key_prefix: isSet(object.key_prefix) ? bytesFromBase64(object.key_prefix) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: MerklePrefix): unknown {
-    const obj: any = {};
-    message.key_prefix !== undefined && (obj.key_prefix = base64FromBytes(message.key_prefix !== undefined ? message.key_prefix : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MerklePrefix>): MerklePrefix {
     const message = createBaseMerklePrefix();
     message.key_prefix = object.key_prefix ?? new Uint8Array();
@@ -190,24 +203,6 @@ export const MerklePath = {
     return message;
   },
 
-  fromJSON(object: any): MerklePath {
-    return {
-      key_path: Array.isArray(object?.key_path) ? object.key_path.map((e: any) => String(e)) : []
-    };
-  },
-
-  toJSON(message: MerklePath): unknown {
-    const obj: any = {};
-
-    if (message.key_path) {
-      obj.key_path = message.key_path.map(e => e);
-    } else {
-      obj.key_path = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MerklePath>): MerklePath {
     const message = createBaseMerklePath();
     message.key_path = object.key_path?.map(e => e) || [];
@@ -251,24 +246,6 @@ export const MerkleProof = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): MerkleProof {
-    return {
-      proofs: Array.isArray(object?.proofs) ? object.proofs.map((e: any) => CommitmentProof.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: MerkleProof): unknown {
-    const obj: any = {};
-
-    if (message.proofs) {
-      obj.proofs = message.proofs.map(e => e ? CommitmentProof.toJSON(e) : undefined);
-    } else {
-      obj.proofs = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<MerkleProof>): MerkleProof {

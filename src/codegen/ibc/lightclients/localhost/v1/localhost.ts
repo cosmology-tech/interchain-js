@@ -1,17 +1,29 @@
-import { Height } from "../../../core/client/v1/client";
+import { Height, HeightSDKType } from "../../../core/client/v1/client";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
-
+import { DeepPartial } from "@osmonauts/helpers";
 /**
  * ClientState defines a loopback (localhost) client. It requires (read-only)
  * access to keys outside the client prefix.
  */
+
 export interface ClientState {
   /** self chain ID */
   chain_id: string;
-
   /** self latest block height */
+
   height: Height;
+}
+/**
+ * ClientState defines a loopback (localhost) client. It requires (read-only)
+ * access to keys outside the client prefix.
+ */
+
+export interface ClientStateSDKType {
+  /** self chain ID */
+  chain_id: string;
+  /** self latest block height */
+
+  height: HeightSDKType;
 }
 
 function createBaseClientState(): ClientState {
@@ -58,20 +70,6 @@ export const ClientState = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): ClientState {
-    return {
-      chain_id: isSet(object.chain_id) ? String(object.chain_id) : "",
-      height: isSet(object.height) ? Height.fromJSON(object.height) : undefined
-    };
-  },
-
-  toJSON(message: ClientState): unknown {
-    const obj: any = {};
-    message.chain_id !== undefined && (obj.chain_id = message.chain_id);
-    message.height !== undefined && (obj.height = message.height ? Height.toJSON(message.height) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<ClientState>): ClientState {

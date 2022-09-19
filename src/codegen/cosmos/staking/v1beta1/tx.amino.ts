@@ -1,7 +1,3 @@
-import { Description, CommissionRates } from "./staking";
-import { Any } from "../../../google/protobuf/any";
-import { Coin } from "../../base/v1beta1/coin";
-import { Timestamp } from "../../../google/protobuf/timestamp";
 import { AminoMsg, decodeBech32Pubkey, encodeBech32Pubkey } from "@cosmjs/amino";
 import { fromBase64, toBase64 } from "@cosmjs/encoding";
 import { Long } from "@osmonauts/helpers";

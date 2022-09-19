@@ -1,23 +1,41 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
-
+import { DeepPartial } from "@osmonauts/helpers";
 /** MsgSend represents a message to send a nft from one account to another account. */
+
 export interface MsgSend {
   /** class_id defines the unique identifier of the nft classification, similar to the contract address of ERC721 */
   class_id: string;
-
   /** id defines the unique identification of nft */
+
   id: string;
-
   /** sender is the address of the owner of nft */
-  sender: string;
 
+  sender: string;
   /** receiver is the receiver address of nft */
+
   receiver: string;
 }
+/** MsgSend represents a message to send a nft from one account to another account. */
 
+export interface MsgSendSDKType {
+  /** class_id defines the unique identifier of the nft classification, similar to the contract address of ERC721 */
+  class_id: string;
+  /** id defines the unique identification of nft */
+
+  id: string;
+  /** sender is the address of the owner of nft */
+
+  sender: string;
+  /** receiver is the receiver address of nft */
+
+  receiver: string;
+}
 /** MsgSendResponse defines the Msg/Send response type. */
+
 export interface MsgSendResponse {}
+/** MsgSendResponse defines the Msg/Send response type. */
+
+export interface MsgSendResponseSDKType {}
 
 function createBaseMsgSend(): MsgSend {
   return {
@@ -83,24 +101,6 @@ export const MsgSend = {
     return message;
   },
 
-  fromJSON(object: any): MsgSend {
-    return {
-      class_id: isSet(object.class_id) ? String(object.class_id) : "",
-      id: isSet(object.id) ? String(object.id) : "",
-      sender: isSet(object.sender) ? String(object.sender) : "",
-      receiver: isSet(object.receiver) ? String(object.receiver) : ""
-    };
-  },
-
-  toJSON(message: MsgSend): unknown {
-    const obj: any = {};
-    message.class_id !== undefined && (obj.class_id = message.class_id);
-    message.id !== undefined && (obj.id = message.id);
-    message.sender !== undefined && (obj.sender = message.sender);
-    message.receiver !== undefined && (obj.receiver = message.receiver);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgSend>): MsgSend {
     const message = createBaseMsgSend();
     message.class_id = object.class_id ?? "";
@@ -121,7 +121,7 @@ export const MsgSendResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSendResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSendResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgSendResponse();
@@ -137,15 +137,6 @@ export const MsgSendResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(_: any): MsgSendResponse {
-    return {};
-  },
-
-  toJSON(_: MsgSendResponse): unknown {
-    const obj: any = {};
-    return obj;
   },
 
   fromPartial(_: DeepPartial<MsgSendResponse>): MsgSendResponse {

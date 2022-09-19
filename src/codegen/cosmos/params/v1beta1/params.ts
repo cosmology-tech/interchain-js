@@ -1,18 +1,35 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
-
+import { DeepPartial } from "@osmonauts/helpers";
 /** ParameterChangeProposal defines a proposal to change one or more parameters. */
+
 export interface ParameterChangeProposal {
   title: string;
   description: string;
   changes: ParamChange[];
 }
+/** ParameterChangeProposal defines a proposal to change one or more parameters. */
 
+export interface ParameterChangeProposalSDKType {
+  title: string;
+  description: string;
+  changes: ParamChangeSDKType[];
+}
 /**
  * ParamChange defines an individual parameter change, for use in
  * ParameterChangeProposal.
  */
+
 export interface ParamChange {
+  subspace: string;
+  key: string;
+  value: string;
+}
+/**
+ * ParamChange defines an individual parameter change, for use in
+ * ParameterChangeProposal.
+ */
+
+export interface ParamChangeSDKType {
   subspace: string;
   key: string;
   value: string;
@@ -71,28 +88,6 @@ export const ParameterChangeProposal = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): ParameterChangeProposal {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      changes: Array.isArray(object?.changes) ? object.changes.map((e: any) => ParamChange.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: ParameterChangeProposal): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-
-    if (message.changes) {
-      obj.changes = message.changes.map(e => e ? ParamChange.toJSON(e) : undefined);
-    } else {
-      obj.changes = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<ParameterChangeProposal>): ParameterChangeProposal {
@@ -158,22 +153,6 @@ export const ParamChange = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): ParamChange {
-    return {
-      subspace: isSet(object.subspace) ? String(object.subspace) : "",
-      key: isSet(object.key) ? String(object.key) : "",
-      value: isSet(object.value) ? String(object.value) : ""
-    };
-  },
-
-  toJSON(message: ParamChange): unknown {
-    const obj: any = {};
-    message.subspace !== undefined && (obj.subspace = message.subspace);
-    message.key !== undefined && (obj.key = message.key);
-    message.value !== undefined && (obj.value = message.value);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<ParamChange>): ParamChange {

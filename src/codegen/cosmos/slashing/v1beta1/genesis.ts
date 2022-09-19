@@ -1,52 +1,100 @@
-import { Params, ValidatorSigningInfo } from "./slashing";
+import { Params, ParamsSDKType, ValidatorSigningInfo, ValidatorSigningInfoSDKType } from "./slashing";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, Long } from "@osmonauts/helpers";
-
+import { DeepPartial, Long } from "@osmonauts/helpers";
 /** GenesisState defines the slashing module's genesis state. */
+
 export interface GenesisState {
   /** params defines all the paramaters of related to deposit. */
   params: Params;
-
   /**
    * signing_infos represents a map between validator addresses and their
    * signing infos.
    */
-  signing_infos: SigningInfo[];
 
+  signing_infos: SigningInfo[];
   /**
    * missed_blocks represents a map between validator addresses and their
    * missed blocks.
    */
+
   missed_blocks: ValidatorMissedBlocks[];
 }
+/** GenesisState defines the slashing module's genesis state. */
 
+export interface GenesisStateSDKType {
+  /** params defines all the paramaters of related to deposit. */
+  params: ParamsSDKType;
+  /**
+   * signing_infos represents a map between validator addresses and their
+   * signing infos.
+   */
+
+  signing_infos: SigningInfoSDKType[];
+  /**
+   * missed_blocks represents a map between validator addresses and their
+   * missed blocks.
+   */
+
+  missed_blocks: ValidatorMissedBlocksSDKType[];
+}
 /** SigningInfo stores validator signing info of corresponding address. */
+
 export interface SigningInfo {
   /** address is the validator address. */
   address: string;
-
   /** validator_signing_info represents the signing info of this validator. */
+
   validator_signing_info: ValidatorSigningInfo;
 }
+/** SigningInfo stores validator signing info of corresponding address. */
 
+export interface SigningInfoSDKType {
+  /** address is the validator address. */
+  address: string;
+  /** validator_signing_info represents the signing info of this validator. */
+
+  validator_signing_info: ValidatorSigningInfoSDKType;
+}
 /**
  * ValidatorMissedBlocks contains array of missed blocks of corresponding
  * address.
  */
+
 export interface ValidatorMissedBlocks {
   /** address is the validator address. */
   address: string;
-
   /** missed_blocks is an array of missed blocks by the validator. */
+
   missed_blocks: MissedBlock[];
 }
+/**
+ * ValidatorMissedBlocks contains array of missed blocks of corresponding
+ * address.
+ */
 
+export interface ValidatorMissedBlocksSDKType {
+  /** address is the validator address. */
+  address: string;
+  /** missed_blocks is an array of missed blocks by the validator. */
+
+  missed_blocks: MissedBlockSDKType[];
+}
 /** MissedBlock contains height and missed status as boolean. */
+
 export interface MissedBlock {
   /** index is the height at which the block was missed. */
   index: Long;
-
   /** missed is the missed status. */
+
+  missed: boolean;
+}
+/** MissedBlock contains height and missed status as boolean. */
+
+export interface MissedBlockSDKType {
+  /** index is the height at which the block was missed. */
+  index: Long;
+  /** missed is the missed status. */
+
   missed: boolean;
 }
 
@@ -105,33 +153,6 @@ export const GenesisState = {
     return message;
   },
 
-  fromJSON(object: any): GenesisState {
-    return {
-      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
-      signing_infos: Array.isArray(object?.signing_infos) ? object.signing_infos.map((e: any) => SigningInfo.fromJSON(e)) : [],
-      missed_blocks: Array.isArray(object?.missed_blocks) ? object.missed_blocks.map((e: any) => ValidatorMissedBlocks.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: GenesisState): unknown {
-    const obj: any = {};
-    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
-
-    if (message.signing_infos) {
-      obj.signing_infos = message.signing_infos.map(e => e ? SigningInfo.toJSON(e) : undefined);
-    } else {
-      obj.signing_infos = [];
-    }
-
-    if (message.missed_blocks) {
-      obj.missed_blocks = message.missed_blocks.map(e => e ? ValidatorMissedBlocks.toJSON(e) : undefined);
-    } else {
-      obj.missed_blocks = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
@@ -186,20 +207,6 @@ export const SigningInfo = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): SigningInfo {
-    return {
-      address: isSet(object.address) ? String(object.address) : "",
-      validator_signing_info: isSet(object.validator_signing_info) ? ValidatorSigningInfo.fromJSON(object.validator_signing_info) : undefined
-    };
-  },
-
-  toJSON(message: SigningInfo): unknown {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = message.address);
-    message.validator_signing_info !== undefined && (obj.validator_signing_info = message.validator_signing_info ? ValidatorSigningInfo.toJSON(message.validator_signing_info) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<SigningInfo>): SigningInfo {
@@ -257,26 +264,6 @@ export const ValidatorMissedBlocks = {
     return message;
   },
 
-  fromJSON(object: any): ValidatorMissedBlocks {
-    return {
-      address: isSet(object.address) ? String(object.address) : "",
-      missed_blocks: Array.isArray(object?.missed_blocks) ? object.missed_blocks.map((e: any) => MissedBlock.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: ValidatorMissedBlocks): unknown {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = message.address);
-
-    if (message.missed_blocks) {
-      obj.missed_blocks = message.missed_blocks.map(e => e ? MissedBlock.toJSON(e) : undefined);
-    } else {
-      obj.missed_blocks = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ValidatorMissedBlocks>): ValidatorMissedBlocks {
     const message = createBaseValidatorMissedBlocks();
     message.address = object.address ?? "";
@@ -330,20 +317,6 @@ export const MissedBlock = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): MissedBlock {
-    return {
-      index: isSet(object.index) ? Long.fromString(object.index) : Long.ZERO,
-      missed: isSet(object.missed) ? Boolean(object.missed) : false
-    };
-  },
-
-  toJSON(message: MissedBlock): unknown {
-    const obj: any = {};
-    message.index !== undefined && (obj.index = (message.index || Long.ZERO).toString());
-    message.missed !== undefined && (obj.missed = message.missed);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<MissedBlock>): MissedBlock {

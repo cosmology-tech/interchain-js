@@ -1,9 +1,9 @@
-import { MsgStoreCode, MsgInstantiateContract, MsgExecuteContract } from "./tx";
-import { Params, CodeInfo, ContractInfo, Model } from "./types";
+import { MsgStoreCode, MsgStoreCodeSDKType, MsgInstantiateContract, MsgInstantiateContractSDKType, MsgExecuteContract, MsgExecuteContractSDKType } from "./tx";
+import { Params, ParamsSDKType, CodeInfo, CodeInfoSDKType, ContractInfo, ContractInfoSDKType, Model, ModelSDKType } from "./types";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, Long, bytesFromBase64, base64FromBytes } from "@osmonauts/helpers";
-
+import { DeepPartial, Long } from "@osmonauts/helpers";
 /** GenesisState - genesis state of x/wasm */
+
 export interface GenesisState {
   params: Params;
   codes: Code[];
@@ -11,36 +11,78 @@ export interface GenesisState {
   sequences: Sequence[];
   gen_msgs: GenesisState_GenMsgs[];
 }
+/** GenesisState - genesis state of x/wasm */
 
+export interface GenesisStateSDKType {
+  params: ParamsSDKType;
+  codes: CodeSDKType[];
+  contracts: ContractSDKType[];
+  sequences: SequenceSDKType[];
+  gen_msgs: GenesisState_GenMsgsSDKType[];
+}
 /**
  * GenMsgs define the messages that can be executed during genesis phase in
  * order. The intention is to have more human readable data that is auditable.
  */
+
 export interface GenesisState_GenMsgs {
   store_code?: MsgStoreCode;
   instantiate_contract?: MsgInstantiateContract;
   execute_contract?: MsgExecuteContract;
 }
+/**
+ * GenMsgs define the messages that can be executed during genesis phase in
+ * order. The intention is to have more human readable data that is auditable.
+ */
 
+export interface GenesisState_GenMsgsSDKType {
+  store_code?: MsgStoreCodeSDKType;
+  instantiate_contract?: MsgInstantiateContractSDKType;
+  execute_contract?: MsgExecuteContractSDKType;
+}
 /** Code struct encompasses CodeInfo and CodeBytes */
+
 export interface Code {
   code_id: Long;
   code_info: CodeInfo;
   code_bytes: Uint8Array;
-
   /** Pinned to wasmvm cache */
+
   pinned: boolean;
 }
+/** Code struct encompasses CodeInfo and CodeBytes */
 
+export interface CodeSDKType {
+  code_id: Long;
+  code_info: CodeInfoSDKType;
+  code_bytes: Uint8Array;
+  /** Pinned to wasmvm cache */
+
+  pinned: boolean;
+}
 /** Contract struct encompasses ContractAddress, ContractInfo, and ContractState */
+
 export interface Contract {
   contract_address: string;
   contract_info: ContractInfo;
   contract_state: Model[];
 }
+/** Contract struct encompasses ContractAddress, ContractInfo, and ContractState */
 
+export interface ContractSDKType {
+  contract_address: string;
+  contract_info: ContractInfoSDKType;
+  contract_state: ModelSDKType[];
+}
 /** Sequence key and value of an id generation counter */
+
 export interface Sequence {
+  id_key: Uint8Array;
+  value: Long;
+}
+/** Sequence key and value of an id generation counter */
+
+export interface SequenceSDKType {
   id_key: Uint8Array;
   value: Long;
 }
@@ -118,47 +160,6 @@ export const GenesisState = {
     return message;
   },
 
-  fromJSON(object: any): GenesisState {
-    return {
-      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
-      codes: Array.isArray(object?.codes) ? object.codes.map((e: any) => Code.fromJSON(e)) : [],
-      contracts: Array.isArray(object?.contracts) ? object.contracts.map((e: any) => Contract.fromJSON(e)) : [],
-      sequences: Array.isArray(object?.sequences) ? object.sequences.map((e: any) => Sequence.fromJSON(e)) : [],
-      gen_msgs: Array.isArray(object?.gen_msgs) ? object.gen_msgs.map((e: any) => GenesisState_GenMsgs.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: GenesisState): unknown {
-    const obj: any = {};
-    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
-
-    if (message.codes) {
-      obj.codes = message.codes.map(e => e ? Code.toJSON(e) : undefined);
-    } else {
-      obj.codes = [];
-    }
-
-    if (message.contracts) {
-      obj.contracts = message.contracts.map(e => e ? Contract.toJSON(e) : undefined);
-    } else {
-      obj.contracts = [];
-    }
-
-    if (message.sequences) {
-      obj.sequences = message.sequences.map(e => e ? Sequence.toJSON(e) : undefined);
-    } else {
-      obj.sequences = [];
-    }
-
-    if (message.gen_msgs) {
-      obj.gen_msgs = message.gen_msgs.map(e => e ? GenesisState_GenMsgs.toJSON(e) : undefined);
-    } else {
-      obj.gen_msgs = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
@@ -224,22 +225,6 @@ export const GenesisState_GenMsgs = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): GenesisState_GenMsgs {
-    return {
-      store_code: isSet(object.store_code) ? MsgStoreCode.fromJSON(object.store_code) : undefined,
-      instantiate_contract: isSet(object.instantiate_contract) ? MsgInstantiateContract.fromJSON(object.instantiate_contract) : undefined,
-      execute_contract: isSet(object.execute_contract) ? MsgExecuteContract.fromJSON(object.execute_contract) : undefined
-    };
-  },
-
-  toJSON(message: GenesisState_GenMsgs): unknown {
-    const obj: any = {};
-    message.store_code !== undefined && (obj.store_code = message.store_code ? MsgStoreCode.toJSON(message.store_code) : undefined);
-    message.instantiate_contract !== undefined && (obj.instantiate_contract = message.instantiate_contract ? MsgInstantiateContract.toJSON(message.instantiate_contract) : undefined);
-    message.execute_contract !== undefined && (obj.execute_contract = message.execute_contract ? MsgExecuteContract.toJSON(message.execute_contract) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<GenesisState_GenMsgs>): GenesisState_GenMsgs {
@@ -316,24 +301,6 @@ export const Code = {
     return message;
   },
 
-  fromJSON(object: any): Code {
-    return {
-      code_id: isSet(object.code_id) ? Long.fromString(object.code_id) : Long.UZERO,
-      code_info: isSet(object.code_info) ? CodeInfo.fromJSON(object.code_info) : undefined,
-      code_bytes: isSet(object.code_bytes) ? bytesFromBase64(object.code_bytes) : new Uint8Array(),
-      pinned: isSet(object.pinned) ? Boolean(object.pinned) : false
-    };
-  },
-
-  toJSON(message: Code): unknown {
-    const obj: any = {};
-    message.code_id !== undefined && (obj.code_id = (message.code_id || Long.UZERO).toString());
-    message.code_info !== undefined && (obj.code_info = message.code_info ? CodeInfo.toJSON(message.code_info) : undefined);
-    message.code_bytes !== undefined && (obj.code_bytes = base64FromBytes(message.code_bytes !== undefined ? message.code_bytes : new Uint8Array()));
-    message.pinned !== undefined && (obj.pinned = message.pinned);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Code>): Code {
     const message = createBaseCode();
     message.code_id = object.code_id !== undefined && object.code_id !== null ? Long.fromValue(object.code_id) : Long.UZERO;
@@ -400,28 +367,6 @@ export const Contract = {
     return message;
   },
 
-  fromJSON(object: any): Contract {
-    return {
-      contract_address: isSet(object.contract_address) ? String(object.contract_address) : "",
-      contract_info: isSet(object.contract_info) ? ContractInfo.fromJSON(object.contract_info) : undefined,
-      contract_state: Array.isArray(object?.contract_state) ? object.contract_state.map((e: any) => Model.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: Contract): unknown {
-    const obj: any = {};
-    message.contract_address !== undefined && (obj.contract_address = message.contract_address);
-    message.contract_info !== undefined && (obj.contract_info = message.contract_info ? ContractInfo.toJSON(message.contract_info) : undefined);
-
-    if (message.contract_state) {
-      obj.contract_state = message.contract_state.map(e => e ? Model.toJSON(e) : undefined);
-    } else {
-      obj.contract_state = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Contract>): Contract {
     const message = createBaseContract();
     message.contract_address = object.contract_address ?? "";
@@ -476,20 +421,6 @@ export const Sequence = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): Sequence {
-    return {
-      id_key: isSet(object.id_key) ? bytesFromBase64(object.id_key) : new Uint8Array(),
-      value: isSet(object.value) ? Long.fromString(object.value) : Long.UZERO
-    };
-  },
-
-  toJSON(message: Sequence): unknown {
-    const obj: any = {};
-    message.id_key !== undefined && (obj.id_key = base64FromBytes(message.id_key !== undefined ? message.id_key : new Uint8Array()));
-    message.value !== undefined && (obj.value = (message.value || Long.UZERO).toString());
-    return obj;
   },
 
   fromPartial(object: DeepPartial<Sequence>): Sequence {

@@ -1,13 +1,33 @@
-import { Coin } from "../../base/v1beta1/coin";
+import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
-
+import { DeepPartial } from "@osmonauts/helpers";
 /**
  * AuthorizationType defines the type of staking module authorization type
  * 
  * Since: cosmos-sdk 0.43
  */
+
 export enum AuthorizationType {
+  /** AUTHORIZATION_TYPE_UNSPECIFIED - AUTHORIZATION_TYPE_UNSPECIFIED specifies an unknown authorization type */
+  AUTHORIZATION_TYPE_UNSPECIFIED = 0,
+
+  /** AUTHORIZATION_TYPE_DELEGATE - AUTHORIZATION_TYPE_DELEGATE defines an authorization type for Msg/Delegate */
+  AUTHORIZATION_TYPE_DELEGATE = 1,
+
+  /** AUTHORIZATION_TYPE_UNDELEGATE - AUTHORIZATION_TYPE_UNDELEGATE defines an authorization type for Msg/Undelegate */
+  AUTHORIZATION_TYPE_UNDELEGATE = 2,
+
+  /** AUTHORIZATION_TYPE_REDELEGATE - AUTHORIZATION_TYPE_REDELEGATE defines an authorization type for Msg/BeginRedelegate */
+  AUTHORIZATION_TYPE_REDELEGATE = 3,
+  UNRECOGNIZED = -1,
+}
+/**
+ * AuthorizationType defines the type of staking module authorization type
+ * 
+ * Since: cosmos-sdk 0.43
+ */
+
+export enum AuthorizationTypeSDKType {
   /** AUTHORIZATION_TYPE_UNSPECIFIED - AUTHORIZATION_TYPE_UNSPECIFIED specifies an unknown authorization type */
   AUTHORIZATION_TYPE_UNSPECIFIED = 0,
 
@@ -63,34 +83,64 @@ export function authorizationTypeToJSON(object: AuthorizationType): string {
       return "UNKNOWN";
   }
 }
-
 /**
  * StakeAuthorization defines authorization for delegate/undelegate/redelegate.
  * 
  * Since: cosmos-sdk 0.43
  */
+
 export interface StakeAuthorization {
   /**
    * max_tokens specifies the maximum amount of tokens can be delegate to a validator. If it is
    * empty, there is no spend limit and any amount of coins can be delegated.
    */
   max_tokens: Coin;
-
   /**
    * allow_list specifies list of validator addresses to whom grantee can delegate tokens on behalf of granter's
    * account.
    */
+
   allow_list?: StakeAuthorization_Validators;
-
   /** deny_list specifies list of validator addresses to whom grantee can not delegate tokens. */
-  deny_list?: StakeAuthorization_Validators;
 
+  deny_list?: StakeAuthorization_Validators;
   /** authorization_type defines one of AuthorizationType. */
+
   authorization_type: AuthorizationType;
 }
+/**
+ * StakeAuthorization defines authorization for delegate/undelegate/redelegate.
+ * 
+ * Since: cosmos-sdk 0.43
+ */
 
+export interface StakeAuthorizationSDKType {
+  /**
+   * max_tokens specifies the maximum amount of tokens can be delegate to a validator. If it is
+   * empty, there is no spend limit and any amount of coins can be delegated.
+   */
+  max_tokens: CoinSDKType;
+  /**
+   * allow_list specifies list of validator addresses to whom grantee can delegate tokens on behalf of granter's
+   * account.
+   */
+
+  allow_list?: StakeAuthorization_ValidatorsSDKType;
+  /** deny_list specifies list of validator addresses to whom grantee can not delegate tokens. */
+
+  deny_list?: StakeAuthorization_ValidatorsSDKType;
+  /** authorization_type defines one of AuthorizationType. */
+
+  authorization_type: AuthorizationTypeSDKType;
+}
 /** Validators defines list of validator addresses. */
+
 export interface StakeAuthorization_Validators {
+  address: string[];
+}
+/** Validators defines list of validator addresses. */
+
+export interface StakeAuthorization_ValidatorsSDKType {
   address: string[];
 }
 
@@ -158,24 +208,6 @@ export const StakeAuthorization = {
     return message;
   },
 
-  fromJSON(object: any): StakeAuthorization {
-    return {
-      max_tokens: isSet(object.max_tokens) ? Coin.fromJSON(object.max_tokens) : undefined,
-      allow_list: isSet(object.allow_list) ? StakeAuthorization_Validators.fromJSON(object.allow_list) : undefined,
-      deny_list: isSet(object.deny_list) ? StakeAuthorization_Validators.fromJSON(object.deny_list) : undefined,
-      authorization_type: isSet(object.authorization_type) ? authorizationTypeFromJSON(object.authorization_type) : 0
-    };
-  },
-
-  toJSON(message: StakeAuthorization): unknown {
-    const obj: any = {};
-    message.max_tokens !== undefined && (obj.max_tokens = message.max_tokens ? Coin.toJSON(message.max_tokens) : undefined);
-    message.allow_list !== undefined && (obj.allow_list = message.allow_list ? StakeAuthorization_Validators.toJSON(message.allow_list) : undefined);
-    message.deny_list !== undefined && (obj.deny_list = message.deny_list ? StakeAuthorization_Validators.toJSON(message.deny_list) : undefined);
-    message.authorization_type !== undefined && (obj.authorization_type = authorizationTypeToJSON(message.authorization_type));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<StakeAuthorization>): StakeAuthorization {
     const message = createBaseStakeAuthorization();
     message.max_tokens = object.max_tokens !== undefined && object.max_tokens !== null ? Coin.fromPartial(object.max_tokens) : undefined;
@@ -222,24 +254,6 @@ export const StakeAuthorization_Validators = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): StakeAuthorization_Validators {
-    return {
-      address: Array.isArray(object?.address) ? object.address.map((e: any) => String(e)) : []
-    };
-  },
-
-  toJSON(message: StakeAuthorization_Validators): unknown {
-    const obj: any = {};
-
-    if (message.address) {
-      obj.address = message.address.map(e => e);
-    } else {
-      obj.address = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<StakeAuthorization_Validators>): StakeAuthorization_Validators {

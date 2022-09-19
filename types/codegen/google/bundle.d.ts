@@ -12,8 +12,6 @@ export declare namespace google {
         Http: {
             encode(message: _93.Http, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _93.Http;
-            fromJSON(object: any): _93.Http;
-            toJSON(message: _93.Http): unknown;
             fromPartial(object: {
                 rules?: {
                     selector?: string;
@@ -36,8 +34,6 @@ export declare namespace google {
         HttpRule: {
             encode(message: _93.HttpRule, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _93.HttpRule;
-            fromJSON(object: any): _93.HttpRule;
-            toJSON(message: _93.HttpRule): unknown;
             fromPartial(object: {
                 selector?: string;
                 get?: string;
@@ -57,8 +53,6 @@ export declare namespace google {
         CustomHttpPattern: {
             encode(message: _93.CustomHttpPattern, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _93.CustomHttpPattern;
-            fromJSON(object: any): _93.CustomHttpPattern;
-            toJSON(message: _93.CustomHttpPattern): unknown;
             fromPartial(object: {
                 kind?: string;
                 path?: string;
@@ -69,8 +63,6 @@ export declare namespace google {
         FieldMask: {
             encode(message: _101.FieldMask, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _101.FieldMask;
-            fromJSON(object: any): _101.FieldMask;
-            toJSON(message: _101.FieldMask): unknown;
             fromPartial(object: {
                 paths?: string[];
             }): _101.FieldMask;
@@ -78,8 +70,6 @@ export declare namespace google {
         DoubleValue: {
             encode(message: _100.DoubleValue, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _100.DoubleValue;
-            fromJSON(object: any): _100.DoubleValue;
-            toJSON(message: _100.DoubleValue): unknown;
             fromPartial(object: {
                 value?: number;
             }): _100.DoubleValue;
@@ -87,8 +77,6 @@ export declare namespace google {
         FloatValue: {
             encode(message: _100.FloatValue, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _100.FloatValue;
-            fromJSON(object: any): _100.FloatValue;
-            toJSON(message: _100.FloatValue): unknown;
             fromPartial(object: {
                 value?: number;
             }): _100.FloatValue;
@@ -96,8 +84,6 @@ export declare namespace google {
         Int64Value: {
             encode(message: _100.Int64Value, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _100.Int64Value;
-            fromJSON(object: any): _100.Int64Value;
-            toJSON(message: _100.Int64Value): unknown;
             fromPartial(object: {
                 value?: any;
             }): _100.Int64Value;
@@ -105,8 +91,6 @@ export declare namespace google {
         UInt64Value: {
             encode(message: _100.UInt64Value, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _100.UInt64Value;
-            fromJSON(object: any): _100.UInt64Value;
-            toJSON(message: _100.UInt64Value): unknown;
             fromPartial(object: {
                 value?: any;
             }): _100.UInt64Value;
@@ -114,8 +98,6 @@ export declare namespace google {
         Int32Value: {
             encode(message: _100.Int32Value, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _100.Int32Value;
-            fromJSON(object: any): _100.Int32Value;
-            toJSON(message: _100.Int32Value): unknown;
             fromPartial(object: {
                 value?: number;
             }): _100.Int32Value;
@@ -123,8 +105,6 @@ export declare namespace google {
         UInt32Value: {
             encode(message: _100.UInt32Value, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _100.UInt32Value;
-            fromJSON(object: any): _100.UInt32Value;
-            toJSON(message: _100.UInt32Value): unknown;
             fromPartial(object: {
                 value?: number;
             }): _100.UInt32Value;
@@ -132,8 +112,6 @@ export declare namespace google {
         BoolValue: {
             encode(message: _100.BoolValue, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _100.BoolValue;
-            fromJSON(object: any): _100.BoolValue;
-            toJSON(message: _100.BoolValue): unknown;
             fromPartial(object: {
                 value?: boolean;
             }): _100.BoolValue;
@@ -141,8 +119,6 @@ export declare namespace google {
         StringValue: {
             encode(message: _100.StringValue, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _100.StringValue;
-            fromJSON(object: any): _100.StringValue;
-            toJSON(message: _100.StringValue): unknown;
             fromPartial(object: {
                 value?: string;
             }): _100.StringValue;
@@ -150,8 +126,6 @@ export declare namespace google {
         BytesValue: {
             encode(message: _100.BytesValue, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _100.BytesValue;
-            fromJSON(object: any): _100.BytesValue;
-            toJSON(message: _100.BytesValue): unknown;
             fromPartial(object: {
                 value?: Uint8Array;
             }): _100.BytesValue;
@@ -159,11 +133,10 @@ export declare namespace google {
         nullValueFromJSON(object: any): _99.NullValue;
         nullValueToJSON(object: _99.NullValue): string;
         NullValue: typeof _99.NullValue;
+        NullValueSDKType: typeof _99.NullValueSDKType;
         Struct_FieldsEntry: {
             encode(message: _99.Struct_FieldsEntry, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.Struct_FieldsEntry;
-            fromJSON(object: any): _99.Struct_FieldsEntry;
-            toJSON(message: _99.Struct_FieldsEntry): unknown;
             fromPartial(object: {
                 key?: string;
                 value?: {
@@ -185,8 +158,6 @@ export declare namespace google {
         Struct: {
             encode(message: _99.Struct, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.Struct;
-            fromJSON(object: any): _99.Struct;
-            toJSON(message: _99.Struct): unknown;
             fromPartial(object: {
                 fields?: {
                     [x: string]: any;
@@ -196,8 +167,6 @@ export declare namespace google {
         Value: {
             encode(message: _99.Value, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.Value;
-            fromJSON(object: any): _99.Value;
-            toJSON(message: _99.Value): unknown;
             fromPartial(object: {
                 null_value?: _99.NullValue;
                 number_value?: number;
@@ -216,8 +185,6 @@ export declare namespace google {
         ListValue: {
             encode(message: _99.ListValue, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _99.ListValue;
-            fromJSON(object: any): _99.ListValue;
-            toJSON(message: _99.ListValue): unknown;
             fromPartial(object: {
                 values?: any[];
             }): _99.ListValue;
@@ -225,8 +192,6 @@ export declare namespace google {
         Timestamp: {
             encode(message: _98.Timestamp, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _98.Timestamp;
-            fromJSON(object: any): _98.Timestamp;
-            toJSON(message: _98.Timestamp): unknown;
             fromPartial(object: {
                 seconds?: any;
                 nanos?: number;
@@ -235,15 +200,11 @@ export declare namespace google {
         Empty: {
             encode(_: _97.Empty, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _97.Empty;
-            fromJSON(_: any): _97.Empty;
-            toJSON(_: _97.Empty): unknown;
             fromPartial(_: {}): _97.Empty;
         };
         Duration: {
             encode(message: _96.Duration, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _96.Duration;
-            fromJSON(object: any): _96.Duration;
-            toJSON(message: _96.Duration): unknown;
             fromPartial(object: {
                 seconds?: any;
                 nanos?: number;
@@ -262,16 +223,20 @@ export declare namespace google {
         methodOptions_IdempotencyLevelFromJSON(object: any): _95.MethodOptions_IdempotencyLevel;
         methodOptions_IdempotencyLevelToJSON(object: _95.MethodOptions_IdempotencyLevel): string;
         FieldDescriptorProto_Type: typeof _95.FieldDescriptorProto_Type;
+        FieldDescriptorProto_TypeSDKType: typeof _95.FieldDescriptorProto_TypeSDKType;
         FieldDescriptorProto_Label: typeof _95.FieldDescriptorProto_Label;
+        FieldDescriptorProto_LabelSDKType: typeof _95.FieldDescriptorProto_LabelSDKType;
         FileOptions_OptimizeMode: typeof _95.FileOptions_OptimizeMode;
+        FileOptions_OptimizeModeSDKType: typeof _95.FileOptions_OptimizeModeSDKType;
         FieldOptions_CType: typeof _95.FieldOptions_CType;
+        FieldOptions_CTypeSDKType: typeof _95.FieldOptions_CTypeSDKType;
         FieldOptions_JSType: typeof _95.FieldOptions_JSType;
+        FieldOptions_JSTypeSDKType: typeof _95.FieldOptions_JSTypeSDKType;
         MethodOptions_IdempotencyLevel: typeof _95.MethodOptions_IdempotencyLevel;
+        MethodOptions_IdempotencyLevelSDKType: typeof _95.MethodOptions_IdempotencyLevelSDKType;
         FileDescriptorSet: {
             encode(message: _95.FileDescriptorSet, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.FileDescriptorSet;
-            fromJSON(object: any): _95.FileDescriptorSet;
-            toJSON(message: _95.FileDescriptorSet): unknown;
             fromPartial(object: {
                 file?: {
                     name?: string;
@@ -611,8 +576,6 @@ export declare namespace google {
         FileDescriptorProto: {
             encode(message: _95.FileDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.FileDescriptorProto;
-            fromJSON(object: any): _95.FileDescriptorProto;
-            toJSON(message: _95.FileDescriptorProto): unknown;
             fromPartial(object: {
                 name?: string;
                 package?: string;
@@ -950,8 +913,6 @@ export declare namespace google {
         DescriptorProto: {
             encode(message: _95.DescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.DescriptorProto;
-            fromJSON(object: any): _95.DescriptorProto;
-            toJSON(message: _95.DescriptorProto): unknown;
             fromPartial(object: {
                 name?: string;
                 field?: {
@@ -1123,8 +1084,6 @@ export declare namespace google {
         DescriptorProto_ExtensionRange: {
             encode(message: _95.DescriptorProto_ExtensionRange, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.DescriptorProto_ExtensionRange;
-            fromJSON(object: any): _95.DescriptorProto_ExtensionRange;
-            toJSON(message: _95.DescriptorProto_ExtensionRange): unknown;
             fromPartial(object: {
                 start?: number;
                 end?: number;
@@ -1147,8 +1106,6 @@ export declare namespace google {
         DescriptorProto_ReservedRange: {
             encode(message: _95.DescriptorProto_ReservedRange, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.DescriptorProto_ReservedRange;
-            fromJSON(object: any): _95.DescriptorProto_ReservedRange;
-            toJSON(message: _95.DescriptorProto_ReservedRange): unknown;
             fromPartial(object: {
                 start?: number;
                 end?: number;
@@ -1157,8 +1114,6 @@ export declare namespace google {
         ExtensionRangeOptions: {
             encode(message: _95.ExtensionRangeOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.ExtensionRangeOptions;
-            fromJSON(object: any): _95.ExtensionRangeOptions;
-            toJSON(message: _95.ExtensionRangeOptions): unknown;
             fromPartial(object: {
                 uninterpreted_option?: {
                     name?: {
@@ -1177,8 +1132,6 @@ export declare namespace google {
         FieldDescriptorProto: {
             encode(message: _95.FieldDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.FieldDescriptorProto;
-            fromJSON(object: any): _95.FieldDescriptorProto;
-            toJSON(message: _95.FieldDescriptorProto): unknown;
             fromPartial(object: {
                 name?: string;
                 number?: number;
@@ -1214,8 +1167,6 @@ export declare namespace google {
         OneofDescriptorProto: {
             encode(message: _95.OneofDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.OneofDescriptorProto;
-            fromJSON(object: any): _95.OneofDescriptorProto;
-            toJSON(message: _95.OneofDescriptorProto): unknown;
             fromPartial(object: {
                 name?: string;
                 options?: {
@@ -1237,8 +1188,6 @@ export declare namespace google {
         EnumDescriptorProto: {
             encode(message: _95.EnumDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.EnumDescriptorProto;
-            fromJSON(object: any): _95.EnumDescriptorProto;
-            toJSON(message: _95.EnumDescriptorProto): unknown;
             fromPartial(object: {
                 name?: string;
                 value?: {
@@ -1286,8 +1235,6 @@ export declare namespace google {
         EnumDescriptorProto_EnumReservedRange: {
             encode(message: _95.EnumDescriptorProto_EnumReservedRange, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.EnumDescriptorProto_EnumReservedRange;
-            fromJSON(object: any): _95.EnumDescriptorProto_EnumReservedRange;
-            toJSON(message: _95.EnumDescriptorProto_EnumReservedRange): unknown;
             fromPartial(object: {
                 start?: number;
                 end?: number;
@@ -1296,8 +1243,6 @@ export declare namespace google {
         EnumValueDescriptorProto: {
             encode(message: _95.EnumValueDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.EnumValueDescriptorProto;
-            fromJSON(object: any): _95.EnumValueDescriptorProto;
-            toJSON(message: _95.EnumValueDescriptorProto): unknown;
             fromPartial(object: {
                 name?: string;
                 number?: number;
@@ -1321,8 +1266,6 @@ export declare namespace google {
         ServiceDescriptorProto: {
             encode(message: _95.ServiceDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.ServiceDescriptorProto;
-            fromJSON(object: any): _95.ServiceDescriptorProto;
-            toJSON(message: _95.ServiceDescriptorProto): unknown;
             fromPartial(object: {
                 name?: string;
                 method?: {
@@ -1368,8 +1311,6 @@ export declare namespace google {
         MethodDescriptorProto: {
             encode(message: _95.MethodDescriptorProto, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.MethodDescriptorProto;
-            fromJSON(object: any): _95.MethodDescriptorProto;
-            toJSON(message: _95.MethodDescriptorProto): unknown;
             fromPartial(object: {
                 name?: string;
                 input_type?: string;
@@ -1397,8 +1338,6 @@ export declare namespace google {
         FileOptions: {
             encode(message: _95.FileOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.FileOptions;
-            fromJSON(object: any): _95.FileOptions;
-            toJSON(message: _95.FileOptions): unknown;
             fromPartial(object: {
                 java_package?: string;
                 java_outer_classname?: string;
@@ -1437,8 +1376,6 @@ export declare namespace google {
         MessageOptions: {
             encode(message: _95.MessageOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.MessageOptions;
-            fromJSON(object: any): _95.MessageOptions;
-            toJSON(message: _95.MessageOptions): unknown;
             fromPartial(object: {
                 message_set_wire_format?: boolean;
                 no_standard_descriptor_accessor?: boolean;
@@ -1461,8 +1398,6 @@ export declare namespace google {
         FieldOptions: {
             encode(message: _95.FieldOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.FieldOptions;
-            fromJSON(object: any): _95.FieldOptions;
-            toJSON(message: _95.FieldOptions): unknown;
             fromPartial(object: {
                 ctype?: _95.FieldOptions_CType;
                 packed?: boolean;
@@ -1487,8 +1422,6 @@ export declare namespace google {
         OneofOptions: {
             encode(message: _95.OneofOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.OneofOptions;
-            fromJSON(object: any): _95.OneofOptions;
-            toJSON(message: _95.OneofOptions): unknown;
             fromPartial(object: {
                 uninterpreted_option?: {
                     name?: {
@@ -1507,8 +1440,6 @@ export declare namespace google {
         EnumOptions: {
             encode(message: _95.EnumOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.EnumOptions;
-            fromJSON(object: any): _95.EnumOptions;
-            toJSON(message: _95.EnumOptions): unknown;
             fromPartial(object: {
                 allow_alias?: boolean;
                 deprecated?: boolean;
@@ -1529,8 +1460,6 @@ export declare namespace google {
         EnumValueOptions: {
             encode(message: _95.EnumValueOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.EnumValueOptions;
-            fromJSON(object: any): _95.EnumValueOptions;
-            toJSON(message: _95.EnumValueOptions): unknown;
             fromPartial(object: {
                 deprecated?: boolean;
                 uninterpreted_option?: {
@@ -1550,8 +1479,6 @@ export declare namespace google {
         ServiceOptions: {
             encode(message: _95.ServiceOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.ServiceOptions;
-            fromJSON(object: any): _95.ServiceOptions;
-            toJSON(message: _95.ServiceOptions): unknown;
             fromPartial(object: {
                 deprecated?: boolean;
                 uninterpreted_option?: {
@@ -1571,8 +1498,6 @@ export declare namespace google {
         MethodOptions: {
             encode(message: _95.MethodOptions, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.MethodOptions;
-            fromJSON(object: any): _95.MethodOptions;
-            toJSON(message: _95.MethodOptions): unknown;
             fromPartial(object: {
                 deprecated?: boolean;
                 idempotency_level?: _95.MethodOptions_IdempotencyLevel;
@@ -1593,8 +1518,6 @@ export declare namespace google {
         UninterpretedOption: {
             encode(message: _95.UninterpretedOption, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.UninterpretedOption;
-            fromJSON(object: any): _95.UninterpretedOption;
-            toJSON(message: _95.UninterpretedOption): unknown;
             fromPartial(object: {
                 name?: {
                     name_part?: string;
@@ -1611,8 +1534,6 @@ export declare namespace google {
         UninterpretedOption_NamePart: {
             encode(message: _95.UninterpretedOption_NamePart, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.UninterpretedOption_NamePart;
-            fromJSON(object: any): _95.UninterpretedOption_NamePart;
-            toJSON(message: _95.UninterpretedOption_NamePart): unknown;
             fromPartial(object: {
                 name_part?: string;
                 is_extension?: boolean;
@@ -1621,8 +1542,6 @@ export declare namespace google {
         SourceCodeInfo: {
             encode(message: _95.SourceCodeInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.SourceCodeInfo;
-            fromJSON(object: any): _95.SourceCodeInfo;
-            toJSON(message: _95.SourceCodeInfo): unknown;
             fromPartial(object: {
                 location?: {
                     path?: number[];
@@ -1636,8 +1555,6 @@ export declare namespace google {
         SourceCodeInfo_Location: {
             encode(message: _95.SourceCodeInfo_Location, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.SourceCodeInfo_Location;
-            fromJSON(object: any): _95.SourceCodeInfo_Location;
-            toJSON(message: _95.SourceCodeInfo_Location): unknown;
             fromPartial(object: {
                 path?: number[];
                 span?: number[];
@@ -1649,8 +1566,6 @@ export declare namespace google {
         GeneratedCodeInfo: {
             encode(message: _95.GeneratedCodeInfo, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.GeneratedCodeInfo;
-            fromJSON(object: any): _95.GeneratedCodeInfo;
-            toJSON(message: _95.GeneratedCodeInfo): unknown;
             fromPartial(object: {
                 annotation?: {
                     path?: number[];
@@ -1663,8 +1578,6 @@ export declare namespace google {
         GeneratedCodeInfo_Annotation: {
             encode(message: _95.GeneratedCodeInfo_Annotation, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _95.GeneratedCodeInfo_Annotation;
-            fromJSON(object: any): _95.GeneratedCodeInfo_Annotation;
-            toJSON(message: _95.GeneratedCodeInfo_Annotation): unknown;
             fromPartial(object: {
                 path?: number[];
                 source_file?: string;
@@ -1675,8 +1588,6 @@ export declare namespace google {
         Any: {
             encode(message: _94.Any, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _94.Any;
-            fromJSON(object: any): _94.Any;
-            toJSON(message: _94.Any): unknown;
             fromPartial(object: {
                 type_url?: string;
                 value?: Uint8Array;

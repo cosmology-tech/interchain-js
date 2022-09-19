@@ -1,8 +1,14 @@
 import * as _m0 from "protobufjs/minimal";
-import { bytesFromBase64, base64FromBytes, DeepPartial } from "@osmonauts/helpers";
-
+import { DeepPartial } from "@osmonauts/helpers";
 /** GenesisState defines the raw genesis transaction in JSON. */
+
 export interface GenesisState {
+  /** gen_txs defines the genesis transactions. */
+  gen_txs: Uint8Array[];
+}
+/** GenesisState defines the raw genesis transaction in JSON. */
+
+export interface GenesisStateSDKType {
   /** gen_txs defines the genesis transactions. */
   gen_txs: Uint8Array[];
 }
@@ -42,24 +48,6 @@ export const GenesisState = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): GenesisState {
-    return {
-      gen_txs: Array.isArray(object?.gen_txs) ? object.gen_txs.map((e: any) => bytesFromBase64(e)) : []
-    };
-  },
-
-  toJSON(message: GenesisState): unknown {
-    const obj: any = {};
-
-    if (message.gen_txs) {
-      obj.gen_txs = message.gen_txs.map(e => base64FromBytes(e !== undefined ? e : new Uint8Array()));
-    } else {
-      obj.gen_txs = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<GenesisState>): GenesisState {

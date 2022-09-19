@@ -1,15 +1,22 @@
-import { DecCoin, Coin } from "../../base/v1beta1/coin";
+import { DecCoin, DecCoinSDKType, Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, Long } from "@osmonauts/helpers";
-
+import { DeepPartial, Long } from "@osmonauts/helpers";
 /** Params defines the set of params for the distribution module. */
+
 export interface Params {
   community_tax: string;
   base_proposer_reward: string;
   bonus_proposer_reward: string;
   withdraw_addr_enabled: boolean;
 }
+/** Params defines the set of params for the distribution module. */
 
+export interface ParamsSDKType {
+  community_tax: string;
+  base_proposer_reward: string;
+  bonus_proposer_reward: string;
+  withdraw_addr_enabled: boolean;
+}
 /**
  * ValidatorHistoricalRewards represents historical rewards for a validator.
  * Height is implicit within the store key.
@@ -24,70 +31,148 @@ export interface Params {
  * read that record)
  * + one per validator for the zeroeth period, set on initialization
  */
+
 export interface ValidatorHistoricalRewards {
   cumulative_reward_ratio: DecCoin[];
   reference_count: number;
 }
+/**
+ * ValidatorHistoricalRewards represents historical rewards for a validator.
+ * Height is implicit within the store key.
+ * Cumulative reward ratio is the sum from the zeroeth period
+ * until this period of rewards / tokens, per the spec.
+ * The reference count indicates the number of objects
+ * which might need to reference this historical entry at any point.
+ * ReferenceCount =
+ * number of outstanding delegations which ended the associated period (and
+ * might need to read that record)
+ * + number of slashes which ended the associated period (and might need to
+ * read that record)
+ * + one per validator for the zeroeth period, set on initialization
+ */
 
+export interface ValidatorHistoricalRewardsSDKType {
+  cumulative_reward_ratio: DecCoinSDKType[];
+  reference_count: number;
+}
 /**
  * ValidatorCurrentRewards represents current rewards and current
  * period for a validator kept as a running counter and incremented
  * each block as long as the validator's tokens remain constant.
  */
+
 export interface ValidatorCurrentRewards {
   rewards: DecCoin[];
   period: Long;
 }
+/**
+ * ValidatorCurrentRewards represents current rewards and current
+ * period for a validator kept as a running counter and incremented
+ * each block as long as the validator's tokens remain constant.
+ */
 
+export interface ValidatorCurrentRewardsSDKType {
+  rewards: DecCoinSDKType[];
+  period: Long;
+}
 /**
  * ValidatorAccumulatedCommission represents accumulated commission
  * for a validator kept as a running counter, can be withdrawn at any time.
  */
+
 export interface ValidatorAccumulatedCommission {
   commission: DecCoin[];
 }
+/**
+ * ValidatorAccumulatedCommission represents accumulated commission
+ * for a validator kept as a running counter, can be withdrawn at any time.
+ */
 
+export interface ValidatorAccumulatedCommissionSDKType {
+  commission: DecCoinSDKType[];
+}
 /**
  * ValidatorOutstandingRewards represents outstanding (un-withdrawn) rewards
  * for a validator inexpensive to track, allows simple sanity checks.
  */
+
 export interface ValidatorOutstandingRewards {
   rewards: DecCoin[];
 }
+/**
+ * ValidatorOutstandingRewards represents outstanding (un-withdrawn) rewards
+ * for a validator inexpensive to track, allows simple sanity checks.
+ */
 
+export interface ValidatorOutstandingRewardsSDKType {
+  rewards: DecCoinSDKType[];
+}
 /**
  * ValidatorSlashEvent represents a validator slash event.
  * Height is implicit within the store key.
  * This is needed to calculate appropriate amount of staking tokens
  * for delegations which are withdrawn after a slash has occurred.
  */
+
 export interface ValidatorSlashEvent {
   validator_period: Long;
   fraction: string;
 }
+/**
+ * ValidatorSlashEvent represents a validator slash event.
+ * Height is implicit within the store key.
+ * This is needed to calculate appropriate amount of staking tokens
+ * for delegations which are withdrawn after a slash has occurred.
+ */
 
+export interface ValidatorSlashEventSDKType {
+  validator_period: Long;
+  fraction: string;
+}
 /** ValidatorSlashEvents is a collection of ValidatorSlashEvent messages. */
+
 export interface ValidatorSlashEvents {
   validator_slash_events: ValidatorSlashEvent[];
 }
+/** ValidatorSlashEvents is a collection of ValidatorSlashEvent messages. */
 
+export interface ValidatorSlashEventsSDKType {
+  validator_slash_events: ValidatorSlashEventSDKType[];
+}
 /** FeePool is the global fee pool for distribution. */
+
 export interface FeePool {
   community_pool: DecCoin[];
 }
+/** FeePool is the global fee pool for distribution. */
 
+export interface FeePoolSDKType {
+  community_pool: DecCoinSDKType[];
+}
 /**
  * CommunityPoolSpendProposal details a proposal for use of community funds,
  * together with how many coins are proposed to be spent, and to which
  * recipient account.
  */
+
 export interface CommunityPoolSpendProposal {
   title: string;
   description: string;
   recipient: string;
   amount: Coin[];
 }
+/**
+ * CommunityPoolSpendProposal details a proposal for use of community funds,
+ * together with how many coins are proposed to be spent, and to which
+ * recipient account.
+ */
 
+export interface CommunityPoolSpendProposalSDKType {
+  title: string;
+  description: string;
+  recipient: string;
+  amount: CoinSDKType[];
+}
 /**
  * DelegatorStartingInfo represents the starting info for a delegator reward
  * period. It tracks the previous validator period, the delegation's amount of
@@ -96,26 +181,62 @@ export interface CommunityPoolSpendProposal {
  * the delegators within the validator may be left with less than a full token,
  * thus sdk.Dec is used.
  */
+
 export interface DelegatorStartingInfo {
   previous_period: Long;
   stake: string;
   height: Long;
 }
+/**
+ * DelegatorStartingInfo represents the starting info for a delegator reward
+ * period. It tracks the previous validator period, the delegation's amount of
+ * staking token, and the creation height (to check later on if any slashes have
+ * occurred). NOTE: Even though validators are slashed to whole staking tokens,
+ * the delegators within the validator may be left with less than a full token,
+ * thus sdk.Dec is used.
+ */
 
+export interface DelegatorStartingInfoSDKType {
+  previous_period: Long;
+  stake: string;
+  height: Long;
+}
 /**
  * DelegationDelegatorReward represents the properties
  * of a delegator's delegation reward.
  */
+
 export interface DelegationDelegatorReward {
   validator_address: string;
   reward: DecCoin[];
 }
+/**
+ * DelegationDelegatorReward represents the properties
+ * of a delegator's delegation reward.
+ */
 
+export interface DelegationDelegatorRewardSDKType {
+  validator_address: string;
+  reward: DecCoinSDKType[];
+}
 /**
  * CommunityPoolSpendProposalWithDeposit defines a CommunityPoolSpendProposal
  * with a deposit
  */
+
 export interface CommunityPoolSpendProposalWithDeposit {
+  title: string;
+  description: string;
+  recipient: string;
+  amount: string;
+  deposit: string;
+}
+/**
+ * CommunityPoolSpendProposalWithDeposit defines a CommunityPoolSpendProposal
+ * with a deposit
+ */
+
+export interface CommunityPoolSpendProposalWithDepositSDKType {
   title: string;
   description: string;
   recipient: string;
@@ -187,24 +308,6 @@ export const Params = {
     return message;
   },
 
-  fromJSON(object: any): Params {
-    return {
-      community_tax: isSet(object.community_tax) ? String(object.community_tax) : "",
-      base_proposer_reward: isSet(object.base_proposer_reward) ? String(object.base_proposer_reward) : "",
-      bonus_proposer_reward: isSet(object.bonus_proposer_reward) ? String(object.bonus_proposer_reward) : "",
-      withdraw_addr_enabled: isSet(object.withdraw_addr_enabled) ? Boolean(object.withdraw_addr_enabled) : false
-    };
-  },
-
-  toJSON(message: Params): unknown {
-    const obj: any = {};
-    message.community_tax !== undefined && (obj.community_tax = message.community_tax);
-    message.base_proposer_reward !== undefined && (obj.base_proposer_reward = message.base_proposer_reward);
-    message.bonus_proposer_reward !== undefined && (obj.bonus_proposer_reward = message.bonus_proposer_reward);
-    message.withdraw_addr_enabled !== undefined && (obj.withdraw_addr_enabled = message.withdraw_addr_enabled);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Params>): Params {
     const message = createBaseParams();
     message.community_tax = object.community_tax ?? "";
@@ -262,26 +365,6 @@ export const ValidatorHistoricalRewards = {
     return message;
   },
 
-  fromJSON(object: any): ValidatorHistoricalRewards {
-    return {
-      cumulative_reward_ratio: Array.isArray(object?.cumulative_reward_ratio) ? object.cumulative_reward_ratio.map((e: any) => DecCoin.fromJSON(e)) : [],
-      reference_count: isSet(object.reference_count) ? Number(object.reference_count) : 0
-    };
-  },
-
-  toJSON(message: ValidatorHistoricalRewards): unknown {
-    const obj: any = {};
-
-    if (message.cumulative_reward_ratio) {
-      obj.cumulative_reward_ratio = message.cumulative_reward_ratio.map(e => e ? DecCoin.toJSON(e) : undefined);
-    } else {
-      obj.cumulative_reward_ratio = [];
-    }
-
-    message.reference_count !== undefined && (obj.reference_count = Math.round(message.reference_count));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ValidatorHistoricalRewards>): ValidatorHistoricalRewards {
     const message = createBaseValidatorHistoricalRewards();
     message.cumulative_reward_ratio = object.cumulative_reward_ratio?.map(e => DecCoin.fromPartial(e)) || [];
@@ -337,26 +420,6 @@ export const ValidatorCurrentRewards = {
     return message;
   },
 
-  fromJSON(object: any): ValidatorCurrentRewards {
-    return {
-      rewards: Array.isArray(object?.rewards) ? object.rewards.map((e: any) => DecCoin.fromJSON(e)) : [],
-      period: isSet(object.period) ? Long.fromString(object.period) : Long.UZERO
-    };
-  },
-
-  toJSON(message: ValidatorCurrentRewards): unknown {
-    const obj: any = {};
-
-    if (message.rewards) {
-      obj.rewards = message.rewards.map(e => e ? DecCoin.toJSON(e) : undefined);
-    } else {
-      obj.rewards = [];
-    }
-
-    message.period !== undefined && (obj.period = (message.period || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ValidatorCurrentRewards>): ValidatorCurrentRewards {
     const message = createBaseValidatorCurrentRewards();
     message.rewards = object.rewards?.map(e => DecCoin.fromPartial(e)) || [];
@@ -403,24 +466,6 @@ export const ValidatorAccumulatedCommission = {
     return message;
   },
 
-  fromJSON(object: any): ValidatorAccumulatedCommission {
-    return {
-      commission: Array.isArray(object?.commission) ? object.commission.map((e: any) => DecCoin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: ValidatorAccumulatedCommission): unknown {
-    const obj: any = {};
-
-    if (message.commission) {
-      obj.commission = message.commission.map(e => e ? DecCoin.toJSON(e) : undefined);
-    } else {
-      obj.commission = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ValidatorAccumulatedCommission>): ValidatorAccumulatedCommission {
     const message = createBaseValidatorAccumulatedCommission();
     message.commission = object.commission?.map(e => DecCoin.fromPartial(e)) || [];
@@ -464,24 +509,6 @@ export const ValidatorOutstandingRewards = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): ValidatorOutstandingRewards {
-    return {
-      rewards: Array.isArray(object?.rewards) ? object.rewards.map((e: any) => DecCoin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: ValidatorOutstandingRewards): unknown {
-    const obj: any = {};
-
-    if (message.rewards) {
-      obj.rewards = message.rewards.map(e => e ? DecCoin.toJSON(e) : undefined);
-    } else {
-      obj.rewards = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<ValidatorOutstandingRewards>): ValidatorOutstandingRewards {
@@ -538,20 +565,6 @@ export const ValidatorSlashEvent = {
     return message;
   },
 
-  fromJSON(object: any): ValidatorSlashEvent {
-    return {
-      validator_period: isSet(object.validator_period) ? Long.fromString(object.validator_period) : Long.UZERO,
-      fraction: isSet(object.fraction) ? String(object.fraction) : ""
-    };
-  },
-
-  toJSON(message: ValidatorSlashEvent): unknown {
-    const obj: any = {};
-    message.validator_period !== undefined && (obj.validator_period = (message.validator_period || Long.UZERO).toString());
-    message.fraction !== undefined && (obj.fraction = message.fraction);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ValidatorSlashEvent>): ValidatorSlashEvent {
     const message = createBaseValidatorSlashEvent();
     message.validator_period = object.validator_period !== undefined && object.validator_period !== null ? Long.fromValue(object.validator_period) : Long.UZERO;
@@ -598,24 +611,6 @@ export const ValidatorSlashEvents = {
     return message;
   },
 
-  fromJSON(object: any): ValidatorSlashEvents {
-    return {
-      validator_slash_events: Array.isArray(object?.validator_slash_events) ? object.validator_slash_events.map((e: any) => ValidatorSlashEvent.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: ValidatorSlashEvents): unknown {
-    const obj: any = {};
-
-    if (message.validator_slash_events) {
-      obj.validator_slash_events = message.validator_slash_events.map(e => e ? ValidatorSlashEvent.toJSON(e) : undefined);
-    } else {
-      obj.validator_slash_events = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ValidatorSlashEvents>): ValidatorSlashEvents {
     const message = createBaseValidatorSlashEvents();
     message.validator_slash_events = object.validator_slash_events?.map(e => ValidatorSlashEvent.fromPartial(e)) || [];
@@ -659,24 +654,6 @@ export const FeePool = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): FeePool {
-    return {
-      community_pool: Array.isArray(object?.community_pool) ? object.community_pool.map((e: any) => DecCoin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: FeePool): unknown {
-    const obj: any = {};
-
-    if (message.community_pool) {
-      obj.community_pool = message.community_pool.map(e => e ? DecCoin.toJSON(e) : undefined);
-    } else {
-      obj.community_pool = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<FeePool>): FeePool {
@@ -751,30 +728,6 @@ export const CommunityPoolSpendProposal = {
     return message;
   },
 
-  fromJSON(object: any): CommunityPoolSpendProposal {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      recipient: isSet(object.recipient) ? String(object.recipient) : "",
-      amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: CommunityPoolSpendProposal): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    message.recipient !== undefined && (obj.recipient = message.recipient);
-
-    if (message.amount) {
-      obj.amount = message.amount.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.amount = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<CommunityPoolSpendProposal>): CommunityPoolSpendProposal {
     const message = createBaseCommunityPoolSpendProposal();
     message.title = object.title ?? "";
@@ -841,22 +794,6 @@ export const DelegatorStartingInfo = {
     return message;
   },
 
-  fromJSON(object: any): DelegatorStartingInfo {
-    return {
-      previous_period: isSet(object.previous_period) ? Long.fromString(object.previous_period) : Long.UZERO,
-      stake: isSet(object.stake) ? String(object.stake) : "",
-      height: isSet(object.height) ? Long.fromString(object.height) : Long.UZERO
-    };
-  },
-
-  toJSON(message: DelegatorStartingInfo): unknown {
-    const obj: any = {};
-    message.previous_period !== undefined && (obj.previous_period = (message.previous_period || Long.UZERO).toString());
-    message.stake !== undefined && (obj.stake = message.stake);
-    message.height !== undefined && (obj.height = (message.height || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<DelegatorStartingInfo>): DelegatorStartingInfo {
     const message = createBaseDelegatorStartingInfo();
     message.previous_period = object.previous_period !== undefined && object.previous_period !== null ? Long.fromValue(object.previous_period) : Long.UZERO;
@@ -911,26 +848,6 @@ export const DelegationDelegatorReward = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): DelegationDelegatorReward {
-    return {
-      validator_address: isSet(object.validator_address) ? String(object.validator_address) : "",
-      reward: Array.isArray(object?.reward) ? object.reward.map((e: any) => DecCoin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: DelegationDelegatorReward): unknown {
-    const obj: any = {};
-    message.validator_address !== undefined && (obj.validator_address = message.validator_address);
-
-    if (message.reward) {
-      obj.reward = message.reward.map(e => e ? DecCoin.toJSON(e) : undefined);
-    } else {
-      obj.reward = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<DelegationDelegatorReward>): DelegationDelegatorReward {
@@ -1013,26 +930,6 @@ export const CommunityPoolSpendProposalWithDeposit = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): CommunityPoolSpendProposalWithDeposit {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      recipient: isSet(object.recipient) ? String(object.recipient) : "",
-      amount: isSet(object.amount) ? String(object.amount) : "",
-      deposit: isSet(object.deposit) ? String(object.deposit) : ""
-    };
-  },
-
-  toJSON(message: CommunityPoolSpendProposalWithDeposit): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    message.recipient !== undefined && (obj.recipient = message.recipient);
-    message.amount !== undefined && (obj.amount = message.amount);
-    message.deposit !== undefined && (obj.deposit = message.deposit);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<CommunityPoolSpendProposalWithDeposit>): CommunityPoolSpendProposalWithDeposit {

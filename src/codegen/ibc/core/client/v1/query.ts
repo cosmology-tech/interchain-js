@@ -1,176 +1,345 @@
-import { PageRequest, PageResponse } from "../../../../cosmos/base/query/v1beta1/pagination";
-import { Any } from "../../../../google/protobuf/any";
-import { Height, IdentifiedClientState, ConsensusStateWithHeight, Params } from "./client";
+import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../../../cosmos/base/query/v1beta1/pagination";
+import { Any, AnySDKType } from "../../../../google/protobuf/any";
+import { Height, HeightSDKType, IdentifiedClientState, IdentifiedClientStateSDKType, ConsensusStateWithHeight, ConsensusStateWithHeightSDKType, Params, ParamsSDKType } from "./client";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, bytesFromBase64, base64FromBytes, Long } from "@osmonauts/helpers";
-
+import { DeepPartial, Long } from "@osmonauts/helpers";
 /**
  * QueryClientStateRequest is the request type for the Query/ClientState RPC
  * method
  */
+
 export interface QueryClientStateRequest {
   /** client state unique identifier */
   client_id: string;
 }
+/**
+ * QueryClientStateRequest is the request type for the Query/ClientState RPC
+ * method
+ */
 
+export interface QueryClientStateRequestSDKType {
+  /** client state unique identifier */
+  client_id: string;
+}
 /**
  * QueryClientStateResponse is the response type for the Query/ClientState RPC
  * method. Besides the client state, it includes a proof and the height from
  * which the proof was retrieved.
  */
+
 export interface QueryClientStateResponse {
   /** client state associated with the request identifier */
   client_state: Any;
-
   /** merkle proof of existence */
-  proof: Uint8Array;
 
+  proof: Uint8Array;
   /** height at which the proof was retrieved */
+
   proof_height: Height;
 }
+/**
+ * QueryClientStateResponse is the response type for the Query/ClientState RPC
+ * method. Besides the client state, it includes a proof and the height from
+ * which the proof was retrieved.
+ */
 
+export interface QueryClientStateResponseSDKType {
+  /** client state associated with the request identifier */
+  client_state: AnySDKType;
+  /** merkle proof of existence */
+
+  proof: Uint8Array;
+  /** height at which the proof was retrieved */
+
+  proof_height: HeightSDKType;
+}
 /**
  * QueryClientStatesRequest is the request type for the Query/ClientStates RPC
  * method
  */
+
 export interface QueryClientStatesRequest {
   /** pagination request */
   pagination?: PageRequest;
 }
+/**
+ * QueryClientStatesRequest is the request type for the Query/ClientStates RPC
+ * method
+ */
 
+export interface QueryClientStatesRequestSDKType {
+  /** pagination request */
+  pagination?: PageRequestSDKType;
+}
 /**
  * QueryClientStatesResponse is the response type for the Query/ClientStates RPC
  * method.
  */
+
 export interface QueryClientStatesResponse {
   /** list of stored ClientStates of the chain. */
   client_states: IdentifiedClientState[];
-
   /** pagination response */
+
   pagination?: PageResponse;
 }
+/**
+ * QueryClientStatesResponse is the response type for the Query/ClientStates RPC
+ * method.
+ */
 
+export interface QueryClientStatesResponseSDKType {
+  /** list of stored ClientStates of the chain. */
+  client_states: IdentifiedClientStateSDKType[];
+  /** pagination response */
+
+  pagination?: PageResponseSDKType;
+}
 /**
  * QueryConsensusStateRequest is the request type for the Query/ConsensusState
  * RPC method. Besides the consensus state, it includes a proof and the height
  * from which the proof was retrieved.
  */
+
 export interface QueryConsensusStateRequest {
   /** client identifier */
   client_id: string;
-
   /** consensus state revision number */
+
   revision_number: Long;
-
   /** consensus state revision height */
-  revision_height: Long;
 
+  revision_height: Long;
   /**
    * latest_height overrrides the height field and queries the latest stored
    * ConsensusState
    */
-  latest_height: boolean;
-}
 
+  latest_height?: boolean;
+}
+/**
+ * QueryConsensusStateRequest is the request type for the Query/ConsensusState
+ * RPC method. Besides the consensus state, it includes a proof and the height
+ * from which the proof was retrieved.
+ */
+
+export interface QueryConsensusStateRequestSDKType {
+  /** client identifier */
+  client_id: string;
+  /** consensus state revision number */
+
+  revision_number: Long;
+  /** consensus state revision height */
+
+  revision_height: Long;
+  /**
+   * latest_height overrrides the height field and queries the latest stored
+   * ConsensusState
+   */
+
+  latest_height?: boolean;
+}
 /**
  * QueryConsensusStateResponse is the response type for the Query/ConsensusState
  * RPC method
  */
+
 export interface QueryConsensusStateResponse {
   /** consensus state associated with the client identifier at the given height */
   consensus_state: Any;
-
   /** merkle proof of existence */
-  proof: Uint8Array;
 
+  proof: Uint8Array;
   /** height at which the proof was retrieved */
+
   proof_height: Height;
 }
+/**
+ * QueryConsensusStateResponse is the response type for the Query/ConsensusState
+ * RPC method
+ */
 
+export interface QueryConsensusStateResponseSDKType {
+  /** consensus state associated with the client identifier at the given height */
+  consensus_state: AnySDKType;
+  /** merkle proof of existence */
+
+  proof: Uint8Array;
+  /** height at which the proof was retrieved */
+
+  proof_height: HeightSDKType;
+}
 /**
  * QueryConsensusStatesRequest is the request type for the Query/ConsensusStates
  * RPC method.
  */
+
 export interface QueryConsensusStatesRequest {
   /** client identifier */
   client_id: string;
-
   /** pagination request */
+
   pagination?: PageRequest;
 }
+/**
+ * QueryConsensusStatesRequest is the request type for the Query/ConsensusStates
+ * RPC method.
+ */
 
+export interface QueryConsensusStatesRequestSDKType {
+  /** client identifier */
+  client_id: string;
+  /** pagination request */
+
+  pagination?: PageRequestSDKType;
+}
 /**
  * QueryConsensusStatesResponse is the response type for the
  * Query/ConsensusStates RPC method
  */
+
 export interface QueryConsensusStatesResponse {
   /** consensus states associated with the identifier */
   consensus_states: ConsensusStateWithHeight[];
-
   /** pagination response */
+
   pagination?: PageResponse;
 }
+/**
+ * QueryConsensusStatesResponse is the response type for the
+ * Query/ConsensusStates RPC method
+ */
 
+export interface QueryConsensusStatesResponseSDKType {
+  /** consensus states associated with the identifier */
+  consensus_states: ConsensusStateWithHeightSDKType[];
+  /** pagination response */
+
+  pagination?: PageResponseSDKType;
+}
 /**
  * QueryClientStatusRequest is the request type for the Query/ClientStatus RPC
  * method
  */
+
 export interface QueryClientStatusRequest {
   /** client unique identifier */
   client_id: string;
 }
+/**
+ * QueryClientStatusRequest is the request type for the Query/ClientStatus RPC
+ * method
+ */
 
+export interface QueryClientStatusRequestSDKType {
+  /** client unique identifier */
+  client_id: string;
+}
 /**
  * QueryClientStatusResponse is the response type for the Query/ClientStatus RPC
  * method. It returns the current status of the IBC client.
  */
+
 export interface QueryClientStatusResponse {
   status: string;
 }
+/**
+ * QueryClientStatusResponse is the response type for the Query/ClientStatus RPC
+ * method. It returns the current status of the IBC client.
+ */
 
+export interface QueryClientStatusResponseSDKType {
+  status: string;
+}
 /**
  * QueryClientParamsRequest is the request type for the Query/ClientParams RPC
  * method.
  */
-export interface QueryClientParamsRequest {}
 
+export interface QueryClientParamsRequest {}
+/**
+ * QueryClientParamsRequest is the request type for the Query/ClientParams RPC
+ * method.
+ */
+
+export interface QueryClientParamsRequestSDKType {}
 /**
  * QueryClientParamsResponse is the response type for the Query/ClientParams RPC
  * method.
  */
+
 export interface QueryClientParamsResponse {
   /** params defines the parameters of the module. */
   params: Params;
 }
+/**
+ * QueryClientParamsResponse is the response type for the Query/ClientParams RPC
+ * method.
+ */
 
+export interface QueryClientParamsResponseSDKType {
+  /** params defines the parameters of the module. */
+  params: ParamsSDKType;
+}
 /**
  * QueryUpgradedClientStateRequest is the request type for the
  * Query/UpgradedClientState RPC method
  */
-export interface QueryUpgradedClientStateRequest {}
 
+export interface QueryUpgradedClientStateRequest {}
+/**
+ * QueryUpgradedClientStateRequest is the request type for the
+ * Query/UpgradedClientState RPC method
+ */
+
+export interface QueryUpgradedClientStateRequestSDKType {}
 /**
  * QueryUpgradedClientStateResponse is the response type for the
  * Query/UpgradedClientState RPC method.
  */
+
 export interface QueryUpgradedClientStateResponse {
   /** client state associated with the request identifier */
   upgraded_client_state: Any;
 }
+/**
+ * QueryUpgradedClientStateResponse is the response type for the
+ * Query/UpgradedClientState RPC method.
+ */
 
+export interface QueryUpgradedClientStateResponseSDKType {
+  /** client state associated with the request identifier */
+  upgraded_client_state: AnySDKType;
+}
 /**
  * QueryUpgradedConsensusStateRequest is the request type for the
  * Query/UpgradedConsensusState RPC method
  */
-export interface QueryUpgradedConsensusStateRequest {}
 
+export interface QueryUpgradedConsensusStateRequest {}
+/**
+ * QueryUpgradedConsensusStateRequest is the request type for the
+ * Query/UpgradedConsensusState RPC method
+ */
+
+export interface QueryUpgradedConsensusStateRequestSDKType {}
 /**
  * QueryUpgradedConsensusStateResponse is the response type for the
  * Query/UpgradedConsensusState RPC method.
  */
+
 export interface QueryUpgradedConsensusStateResponse {
   /** Consensus state associated with the request identifier */
   upgraded_consensus_state: Any;
+}
+/**
+ * QueryUpgradedConsensusStateResponse is the response type for the
+ * Query/UpgradedConsensusState RPC method.
+ */
+
+export interface QueryUpgradedConsensusStateResponseSDKType {
+  /** Consensus state associated with the request identifier */
+  upgraded_consensus_state: AnySDKType;
 }
 
 function createBaseQueryClientStateRequest(): QueryClientStateRequest {
@@ -210,18 +379,6 @@ export const QueryClientStateRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryClientStateRequest {
-    return {
-      client_id: isSet(object.client_id) ? String(object.client_id) : ""
-    };
-  },
-
-  toJSON(message: QueryClientStateRequest): unknown {
-    const obj: any = {};
-    message.client_id !== undefined && (obj.client_id = message.client_id);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryClientStateRequest>): QueryClientStateRequest {
     const message = createBaseQueryClientStateRequest();
     message.client_id = object.client_id ?? "";
@@ -255,7 +412,7 @@ export const QueryClientStateResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientStateResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientStateResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryClientStateResponse();
@@ -283,22 +440,6 @@ export const QueryClientStateResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): QueryClientStateResponse {
-    return {
-      client_state: isSet(object.client_state) ? Any.fromJSON(object.client_state) : undefined,
-      proof: isSet(object.proof) ? bytesFromBase64(object.proof) : new Uint8Array(),
-      proof_height: isSet(object.proof_height) ? Height.fromJSON(object.proof_height) : undefined
-    };
-  },
-
-  toJSON(message: QueryClientStateResponse): unknown {
-    const obj: any = {};
-    message.client_state !== undefined && (obj.client_state = message.client_state ? Any.toJSON(message.client_state) : undefined);
-    message.proof !== undefined && (obj.proof = base64FromBytes(message.proof !== undefined ? message.proof : new Uint8Array()));
-    message.proof_height !== undefined && (obj.proof_height = message.proof_height ? Height.toJSON(message.proof_height) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<QueryClientStateResponse>): QueryClientStateResponse {
@@ -348,18 +489,6 @@ export const QueryClientStatesRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryClientStatesRequest {
-    return {
-      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: QueryClientStatesRequest): unknown {
-    const obj: any = {};
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryClientStatesRequest>): QueryClientStatesRequest {
     const message = createBaseQueryClientStatesRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
@@ -388,7 +517,7 @@ export const QueryClientStatesResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientStatesResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientStatesResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryClientStatesResponse();
@@ -412,26 +541,6 @@ export const QueryClientStatesResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): QueryClientStatesResponse {
-    return {
-      client_states: Array.isArray(object?.client_states) ? object.client_states.map((e: any) => IdentifiedClientState.fromJSON(e)) : [],
-      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: QueryClientStatesResponse): unknown {
-    const obj: any = {};
-
-    if (message.client_states) {
-      obj.client_states = message.client_states.map(e => e ? IdentifiedClientState.toJSON(e) : undefined);
-    } else {
-      obj.client_states = [];
-    }
-
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<QueryClientStatesResponse>): QueryClientStatesResponse {
@@ -507,24 +616,6 @@ export const QueryConsensusStateRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryConsensusStateRequest {
-    return {
-      client_id: isSet(object.client_id) ? String(object.client_id) : "",
-      revision_number: isSet(object.revision_number) ? Long.fromString(object.revision_number) : Long.UZERO,
-      revision_height: isSet(object.revision_height) ? Long.fromString(object.revision_height) : Long.UZERO,
-      latest_height: isSet(object.latest_height) ? Boolean(object.latest_height) : false
-    };
-  },
-
-  toJSON(message: QueryConsensusStateRequest): unknown {
-    const obj: any = {};
-    message.client_id !== undefined && (obj.client_id = message.client_id);
-    message.revision_number !== undefined && (obj.revision_number = (message.revision_number || Long.UZERO).toString());
-    message.revision_height !== undefined && (obj.revision_height = (message.revision_height || Long.UZERO).toString());
-    message.latest_height !== undefined && (obj.latest_height = message.latest_height);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryConsensusStateRequest>): QueryConsensusStateRequest {
     const message = createBaseQueryConsensusStateRequest();
     message.client_id = object.client_id ?? "";
@@ -561,7 +652,7 @@ export const QueryConsensusStateResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryConsensusStateResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryConsensusStateResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryConsensusStateResponse();
@@ -589,22 +680,6 @@ export const QueryConsensusStateResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): QueryConsensusStateResponse {
-    return {
-      consensus_state: isSet(object.consensus_state) ? Any.fromJSON(object.consensus_state) : undefined,
-      proof: isSet(object.proof) ? bytesFromBase64(object.proof) : new Uint8Array(),
-      proof_height: isSet(object.proof_height) ? Height.fromJSON(object.proof_height) : undefined
-    };
-  },
-
-  toJSON(message: QueryConsensusStateResponse): unknown {
-    const obj: any = {};
-    message.consensus_state !== undefined && (obj.consensus_state = message.consensus_state ? Any.toJSON(message.consensus_state) : undefined);
-    message.proof !== undefined && (obj.proof = base64FromBytes(message.proof !== undefined ? message.proof : new Uint8Array()));
-    message.proof_height !== undefined && (obj.proof_height = message.proof_height ? Height.toJSON(message.proof_height) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<QueryConsensusStateResponse>): QueryConsensusStateResponse {
@@ -663,20 +738,6 @@ export const QueryConsensusStatesRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryConsensusStatesRequest {
-    return {
-      client_id: isSet(object.client_id) ? String(object.client_id) : "",
-      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: QueryConsensusStatesRequest): unknown {
-    const obj: any = {};
-    message.client_id !== undefined && (obj.client_id = message.client_id);
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryConsensusStatesRequest>): QueryConsensusStatesRequest {
     const message = createBaseQueryConsensusStatesRequest();
     message.client_id = object.client_id ?? "";
@@ -706,7 +767,7 @@ export const QueryConsensusStatesResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryConsensusStatesResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryConsensusStatesResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryConsensusStatesResponse();
@@ -730,26 +791,6 @@ export const QueryConsensusStatesResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): QueryConsensusStatesResponse {
-    return {
-      consensus_states: Array.isArray(object?.consensus_states) ? object.consensus_states.map((e: any) => ConsensusStateWithHeight.fromJSON(e)) : [],
-      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: QueryConsensusStatesResponse): unknown {
-    const obj: any = {};
-
-    if (message.consensus_states) {
-      obj.consensus_states = message.consensus_states.map(e => e ? ConsensusStateWithHeight.toJSON(e) : undefined);
-    } else {
-      obj.consensus_states = [];
-    }
-
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<QueryConsensusStatesResponse>): QueryConsensusStatesResponse {
@@ -798,18 +839,6 @@ export const QueryClientStatusRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryClientStatusRequest {
-    return {
-      client_id: isSet(object.client_id) ? String(object.client_id) : ""
-    };
-  },
-
-  toJSON(message: QueryClientStatusRequest): unknown {
-    const obj: any = {};
-    message.client_id !== undefined && (obj.client_id = message.client_id);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryClientStatusRequest>): QueryClientStatusRequest {
     const message = createBaseQueryClientStatusRequest();
     message.client_id = object.client_id ?? "";
@@ -833,7 +862,7 @@ export const QueryClientStatusResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientStatusResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientStatusResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryClientStatusResponse();
@@ -853,18 +882,6 @@ export const QueryClientStatusResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): QueryClientStatusResponse {
-    return {
-      status: isSet(object.status) ? String(object.status) : ""
-    };
-  },
-
-  toJSON(message: QueryClientStatusResponse): unknown {
-    const obj: any = {};
-    message.status !== undefined && (obj.status = message.status);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<QueryClientStatusResponse>): QueryClientStatusResponse {
@@ -902,15 +919,6 @@ export const QueryClientParamsRequest = {
     return message;
   },
 
-  fromJSON(_: any): QueryClientParamsRequest {
-    return {};
-  },
-
-  toJSON(_: QueryClientParamsRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<QueryClientParamsRequest>): QueryClientParamsRequest {
     const message = createBaseQueryClientParamsRequest();
     return message;
@@ -933,7 +941,7 @@ export const QueryClientParamsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientParamsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryClientParamsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryClientParamsResponse();
@@ -953,18 +961,6 @@ export const QueryClientParamsResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): QueryClientParamsResponse {
-    return {
-      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
-    };
-  },
-
-  toJSON(message: QueryClientParamsResponse): unknown {
-    const obj: any = {};
-    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<QueryClientParamsResponse>): QueryClientParamsResponse {
@@ -1002,15 +998,6 @@ export const QueryUpgradedClientStateRequest = {
     return message;
   },
 
-  fromJSON(_: any): QueryUpgradedClientStateRequest {
-    return {};
-  },
-
-  toJSON(_: QueryUpgradedClientStateRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<QueryUpgradedClientStateRequest>): QueryUpgradedClientStateRequest {
     const message = createBaseQueryUpgradedClientStateRequest();
     return message;
@@ -1033,7 +1020,7 @@ export const QueryUpgradedClientStateResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryUpgradedClientStateResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryUpgradedClientStateResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryUpgradedClientStateResponse();
@@ -1053,18 +1040,6 @@ export const QueryUpgradedClientStateResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): QueryUpgradedClientStateResponse {
-    return {
-      upgraded_client_state: isSet(object.upgraded_client_state) ? Any.fromJSON(object.upgraded_client_state) : undefined
-    };
-  },
-
-  toJSON(message: QueryUpgradedClientStateResponse): unknown {
-    const obj: any = {};
-    message.upgraded_client_state !== undefined && (obj.upgraded_client_state = message.upgraded_client_state ? Any.toJSON(message.upgraded_client_state) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<QueryUpgradedClientStateResponse>): QueryUpgradedClientStateResponse {
@@ -1102,15 +1077,6 @@ export const QueryUpgradedConsensusStateRequest = {
     return message;
   },
 
-  fromJSON(_: any): QueryUpgradedConsensusStateRequest {
-    return {};
-  },
-
-  toJSON(_: QueryUpgradedConsensusStateRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<QueryUpgradedConsensusStateRequest>): QueryUpgradedConsensusStateRequest {
     const message = createBaseQueryUpgradedConsensusStateRequest();
     return message;
@@ -1133,7 +1099,7 @@ export const QueryUpgradedConsensusStateResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryUpgradedConsensusStateResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryUpgradedConsensusStateResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryUpgradedConsensusStateResponse();
@@ -1153,18 +1119,6 @@ export const QueryUpgradedConsensusStateResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): QueryUpgradedConsensusStateResponse {
-    return {
-      upgraded_consensus_state: isSet(object.upgraded_consensus_state) ? Any.fromJSON(object.upgraded_consensus_state) : undefined
-    };
-  },
-
-  toJSON(message: QueryUpgradedConsensusStateResponse): unknown {
-    const obj: any = {};
-    message.upgraded_consensus_state !== undefined && (obj.upgraded_consensus_state = message.upgraded_consensus_state ? Any.toJSON(message.upgraded_consensus_state) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<QueryUpgradedConsensusStateResponse>): QueryUpgradedConsensusStateResponse {

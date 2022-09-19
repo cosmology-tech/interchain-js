@@ -1,24 +1,45 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
-
+import { DeepPartial } from "@osmonauts/helpers";
 /** BIP44Params is used as path field in ledger item in Record. */
+
 export interface BIP44Params {
   /** purpose is a constant set to 44' (or 0x8000002C) following the BIP43 recommendation */
   purpose: number;
-
   /** coin_type is a constant that improves privacy */
+
   coin_type: number;
-
   /** account splits the key space into independent user identities */
-  account: number;
 
+  account: number;
   /**
    * change is a constant used for public derivation. Constant 0 is used for external chain and constant 1 for internal
    * chain.
    */
-  change: boolean;
 
+  change: boolean;
   /** address_index is used as child index in BIP32 derivation */
+
+  address_index: number;
+}
+/** BIP44Params is used as path field in ledger item in Record. */
+
+export interface BIP44ParamsSDKType {
+  /** purpose is a constant set to 44' (or 0x8000002C) following the BIP43 recommendation */
+  purpose: number;
+  /** coin_type is a constant that improves privacy */
+
+  coin_type: number;
+  /** account splits the key space into independent user identities */
+
+  account: number;
+  /**
+   * change is a constant used for public derivation. Constant 0 is used for external chain and constant 1 for internal
+   * chain.
+   */
+
+  change: boolean;
+  /** address_index is used as child index in BIP32 derivation */
+
   address_index: number;
 }
 
@@ -93,26 +114,6 @@ export const BIP44Params = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): BIP44Params {
-    return {
-      purpose: isSet(object.purpose) ? Number(object.purpose) : 0,
-      coin_type: isSet(object.coin_type) ? Number(object.coin_type) : 0,
-      account: isSet(object.account) ? Number(object.account) : 0,
-      change: isSet(object.change) ? Boolean(object.change) : false,
-      address_index: isSet(object.address_index) ? Number(object.address_index) : 0
-    };
-  },
-
-  toJSON(message: BIP44Params): unknown {
-    const obj: any = {};
-    message.purpose !== undefined && (obj.purpose = Math.round(message.purpose));
-    message.coin_type !== undefined && (obj.coin_type = Math.round(message.coin_type));
-    message.account !== undefined && (obj.account = Math.round(message.account));
-    message.change !== undefined && (obj.change = message.change);
-    message.address_index !== undefined && (obj.address_index = Math.round(message.address_index));
-    return obj;
   },
 
   fromPartial(object: DeepPartial<BIP44Params>): BIP44Params {

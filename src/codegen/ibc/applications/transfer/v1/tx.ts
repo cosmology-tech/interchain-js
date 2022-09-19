@@ -1,44 +1,81 @@
-import { Coin } from "../../../../cosmos/base/v1beta1/coin";
-import { Height } from "../../../core/client/v1/client";
+import { Coin, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
+import { Height, HeightSDKType } from "../../../core/client/v1/client";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, DeepPartial } from "@osmonauts/helpers";
-
+import { Long, DeepPartial } from "@osmonauts/helpers";
 /**
  * MsgTransfer defines a msg to transfer fungible tokens (i.e Coins) between
  * ICS20 enabled chains. See ICS Spec here:
  * https://github.com/cosmos/ibc/tree/master/spec/app/ics-020-fungible-token-transfer#data-structures
  */
+
 export interface MsgTransfer {
   /** the port on which the packet will be sent */
   source_port: string;
-
   /** the channel by which the packet will be sent */
+
   source_channel: string;
-
   /** the tokens to be transferred */
+
   token: Coin;
-
   /** the sender address */
+
   sender: string;
-
   /** the recipient address on the destination chain */
-  receiver: string;
 
+  receiver: string;
   /**
    * Timeout height relative to the current block height.
    * The timeout is disabled when set to 0.
    */
-  timeout_height: Height;
 
+  timeout_height: Height;
   /**
    * Timeout timestamp (in nanoseconds) relative to the current block timestamp.
    * The timeout is disabled when set to 0.
    */
+
   timeout_timestamp: Long;
 }
+/**
+ * MsgTransfer defines a msg to transfer fungible tokens (i.e Coins) between
+ * ICS20 enabled chains. See ICS Spec here:
+ * https://github.com/cosmos/ibc/tree/master/spec/app/ics-020-fungible-token-transfer#data-structures
+ */
 
+export interface MsgTransferSDKType {
+  /** the port on which the packet will be sent */
+  source_port: string;
+  /** the channel by which the packet will be sent */
+
+  source_channel: string;
+  /** the tokens to be transferred */
+
+  token: CoinSDKType;
+  /** the sender address */
+
+  sender: string;
+  /** the recipient address on the destination chain */
+
+  receiver: string;
+  /**
+   * Timeout height relative to the current block height.
+   * The timeout is disabled when set to 0.
+   */
+
+  timeout_height: HeightSDKType;
+  /**
+   * Timeout timestamp (in nanoseconds) relative to the current block timestamp.
+   * The timeout is disabled when set to 0.
+   */
+
+  timeout_timestamp: Long;
+}
 /** MsgTransferResponse defines the Msg/Transfer response type. */
+
 export interface MsgTransferResponse {}
+/** MsgTransferResponse defines the Msg/Transfer response type. */
+
+export interface MsgTransferResponseSDKType {}
 
 function createBaseMsgTransfer(): MsgTransfer {
   return {
@@ -131,30 +168,6 @@ export const MsgTransfer = {
     return message;
   },
 
-  fromJSON(object: any): MsgTransfer {
-    return {
-      source_port: isSet(object.source_port) ? String(object.source_port) : "",
-      source_channel: isSet(object.source_channel) ? String(object.source_channel) : "",
-      token: isSet(object.token) ? Coin.fromJSON(object.token) : undefined,
-      sender: isSet(object.sender) ? String(object.sender) : "",
-      receiver: isSet(object.receiver) ? String(object.receiver) : "",
-      timeout_height: isSet(object.timeout_height) ? Height.fromJSON(object.timeout_height) : undefined,
-      timeout_timestamp: isSet(object.timeout_timestamp) ? Long.fromString(object.timeout_timestamp) : Long.UZERO
-    };
-  },
-
-  toJSON(message: MsgTransfer): unknown {
-    const obj: any = {};
-    message.source_port !== undefined && (obj.source_port = message.source_port);
-    message.source_channel !== undefined && (obj.source_channel = message.source_channel);
-    message.token !== undefined && (obj.token = message.token ? Coin.toJSON(message.token) : undefined);
-    message.sender !== undefined && (obj.sender = message.sender);
-    message.receiver !== undefined && (obj.receiver = message.receiver);
-    message.timeout_height !== undefined && (obj.timeout_height = message.timeout_height ? Height.toJSON(message.timeout_height) : undefined);
-    message.timeout_timestamp !== undefined && (obj.timeout_timestamp = (message.timeout_timestamp || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgTransfer>): MsgTransfer {
     const message = createBaseMsgTransfer();
     message.source_port = object.source_port ?? "";
@@ -178,7 +191,7 @@ export const MsgTransferResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgTransferResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgTransferResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgTransferResponse();
@@ -194,15 +207,6 @@ export const MsgTransferResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(_: any): MsgTransferResponse {
-    return {};
-  },
-
-  toJSON(_: MsgTransferResponse): unknown {
-    const obj: any = {};
-    return obj;
   },
 
   fromPartial(_: DeepPartial<MsgTransferResponse>): MsgTransferResponse {

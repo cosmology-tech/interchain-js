@@ -23,26 +23,6 @@ export declare const MessageComposer: {
             value: MsgRevokeAllowance;
         };
     };
-    toJSON: {
-        grantAllowance(value: MsgGrantAllowance): {
-            typeUrl: string;
-            value: unknown;
-        };
-        revokeAllowance(value: MsgRevokeAllowance): {
-            typeUrl: string;
-            value: unknown;
-        };
-    };
-    fromJSON: {
-        grantAllowance(value: any): {
-            typeUrl: string;
-            value: MsgGrantAllowance;
-        };
-        revokeAllowance(value: any): {
-            typeUrl: string;
-            value: MsgRevokeAllowance;
-        };
-    };
     fromPartial: {
         grantAllowance(value: MsgGrantAllowance): {
             typeUrl: string;

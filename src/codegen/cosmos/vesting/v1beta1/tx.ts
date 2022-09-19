@@ -1,12 +1,12 @@
-import { Coin } from "../../base/v1beta1/coin";
-import { Period } from "./vesting";
+import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
+import { Period, PeriodSDKType } from "./vesting";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, DeepPartial } from "@osmonauts/helpers";
-
+import { Long, DeepPartial } from "@osmonauts/helpers";
 /**
  * MsgCreateVestingAccount defines a message that enables creating a vesting
  * account.
  */
+
 export interface MsgCreateVestingAccount {
   from_address: string;
   to_address: string;
@@ -14,39 +14,84 @@ export interface MsgCreateVestingAccount {
   end_time: Long;
   delayed: boolean;
 }
+/**
+ * MsgCreateVestingAccount defines a message that enables creating a vesting
+ * account.
+ */
 
+export interface MsgCreateVestingAccountSDKType {
+  from_address: string;
+  to_address: string;
+  amount: CoinSDKType[];
+  end_time: Long;
+  delayed: boolean;
+}
 /** MsgCreateVestingAccountResponse defines the Msg/CreateVestingAccount response type. */
-export interface MsgCreateVestingAccountResponse {}
 
+export interface MsgCreateVestingAccountResponse {}
+/** MsgCreateVestingAccountResponse defines the Msg/CreateVestingAccount response type. */
+
+export interface MsgCreateVestingAccountResponseSDKType {}
 /**
  * MsgCreatePermanentLockedAccount defines a message that enables creating a permanent
  * locked account.
  */
+
 export interface MsgCreatePermanentLockedAccount {
   from_address: string;
   to_address: string;
   amount: Coin[];
 }
+/**
+ * MsgCreatePermanentLockedAccount defines a message that enables creating a permanent
+ * locked account.
+ */
 
+export interface MsgCreatePermanentLockedAccountSDKType {
+  from_address: string;
+  to_address: string;
+  amount: CoinSDKType[];
+}
 /** MsgCreatePermanentLockedAccountResponse defines the Msg/CreatePermanentLockedAccount response type. */
-export interface MsgCreatePermanentLockedAccountResponse {}
 
+export interface MsgCreatePermanentLockedAccountResponse {}
+/** MsgCreatePermanentLockedAccountResponse defines the Msg/CreatePermanentLockedAccount response type. */
+
+export interface MsgCreatePermanentLockedAccountResponseSDKType {}
 /**
  * MsgCreateVestingAccount defines a message that enables creating a vesting
  * account.
  */
+
 export interface MsgCreatePeriodicVestingAccount {
   from_address: string;
   to_address: string;
   start_time: Long;
   vesting_periods: Period[];
 }
+/**
+ * MsgCreateVestingAccount defines a message that enables creating a vesting
+ * account.
+ */
 
+export interface MsgCreatePeriodicVestingAccountSDKType {
+  from_address: string;
+  to_address: string;
+  start_time: Long;
+  vesting_periods: PeriodSDKType[];
+}
 /**
  * MsgCreateVestingAccountResponse defines the Msg/CreatePeriodicVestingAccount
  * response type.
  */
+
 export interface MsgCreatePeriodicVestingAccountResponse {}
+/**
+ * MsgCreateVestingAccountResponse defines the Msg/CreatePeriodicVestingAccount
+ * response type.
+ */
+
+export interface MsgCreatePeriodicVestingAccountResponseSDKType {}
 
 function createBaseMsgCreateVestingAccount(): MsgCreateVestingAccount {
   return {
@@ -121,32 +166,6 @@ export const MsgCreateVestingAccount = {
     return message;
   },
 
-  fromJSON(object: any): MsgCreateVestingAccount {
-    return {
-      from_address: isSet(object.from_address) ? String(object.from_address) : "",
-      to_address: isSet(object.to_address) ? String(object.to_address) : "",
-      amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromJSON(e)) : [],
-      end_time: isSet(object.end_time) ? Long.fromString(object.end_time) : Long.ZERO,
-      delayed: isSet(object.delayed) ? Boolean(object.delayed) : false
-    };
-  },
-
-  toJSON(message: MsgCreateVestingAccount): unknown {
-    const obj: any = {};
-    message.from_address !== undefined && (obj.from_address = message.from_address);
-    message.to_address !== undefined && (obj.to_address = message.to_address);
-
-    if (message.amount) {
-      obj.amount = message.amount.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.amount = [];
-    }
-
-    message.end_time !== undefined && (obj.end_time = (message.end_time || Long.ZERO).toString());
-    message.delayed !== undefined && (obj.delayed = message.delayed);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgCreateVestingAccount>): MsgCreateVestingAccount {
     const message = createBaseMsgCreateVestingAccount();
     message.from_address = object.from_address ?? "";
@@ -168,7 +187,7 @@ export const MsgCreateVestingAccountResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateVestingAccountResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateVestingAccountResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgCreateVestingAccountResponse();
@@ -184,15 +203,6 @@ export const MsgCreateVestingAccountResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(_: any): MsgCreateVestingAccountResponse {
-    return {};
-  },
-
-  toJSON(_: MsgCreateVestingAccountResponse): unknown {
-    const obj: any = {};
-    return obj;
   },
 
   fromPartial(_: DeepPartial<MsgCreateVestingAccountResponse>): MsgCreateVestingAccountResponse {
@@ -257,28 +267,6 @@ export const MsgCreatePermanentLockedAccount = {
     return message;
   },
 
-  fromJSON(object: any): MsgCreatePermanentLockedAccount {
-    return {
-      from_address: isSet(object.from_address) ? String(object.from_address) : "",
-      to_address: isSet(object.to_address) ? String(object.to_address) : "",
-      amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: MsgCreatePermanentLockedAccount): unknown {
-    const obj: any = {};
-    message.from_address !== undefined && (obj.from_address = message.from_address);
-    message.to_address !== undefined && (obj.to_address = message.to_address);
-
-    if (message.amount) {
-      obj.amount = message.amount.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.amount = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgCreatePermanentLockedAccount>): MsgCreatePermanentLockedAccount {
     const message = createBaseMsgCreatePermanentLockedAccount();
     message.from_address = object.from_address ?? "";
@@ -298,7 +286,7 @@ export const MsgCreatePermanentLockedAccountResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreatePermanentLockedAccountResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreatePermanentLockedAccountResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgCreatePermanentLockedAccountResponse();
@@ -314,15 +302,6 @@ export const MsgCreatePermanentLockedAccountResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(_: any): MsgCreatePermanentLockedAccountResponse {
-    return {};
-  },
-
-  toJSON(_: MsgCreatePermanentLockedAccountResponse): unknown {
-    const obj: any = {};
-    return obj;
   },
 
   fromPartial(_: DeepPartial<MsgCreatePermanentLockedAccountResponse>): MsgCreatePermanentLockedAccountResponse {
@@ -396,30 +375,6 @@ export const MsgCreatePeriodicVestingAccount = {
     return message;
   },
 
-  fromJSON(object: any): MsgCreatePeriodicVestingAccount {
-    return {
-      from_address: isSet(object.from_address) ? String(object.from_address) : "",
-      to_address: isSet(object.to_address) ? String(object.to_address) : "",
-      start_time: isSet(object.start_time) ? Long.fromString(object.start_time) : Long.ZERO,
-      vesting_periods: Array.isArray(object?.vesting_periods) ? object.vesting_periods.map((e: any) => Period.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: MsgCreatePeriodicVestingAccount): unknown {
-    const obj: any = {};
-    message.from_address !== undefined && (obj.from_address = message.from_address);
-    message.to_address !== undefined && (obj.to_address = message.to_address);
-    message.start_time !== undefined && (obj.start_time = (message.start_time || Long.ZERO).toString());
-
-    if (message.vesting_periods) {
-      obj.vesting_periods = message.vesting_periods.map(e => e ? Period.toJSON(e) : undefined);
-    } else {
-      obj.vesting_periods = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MsgCreatePeriodicVestingAccount>): MsgCreatePeriodicVestingAccount {
     const message = createBaseMsgCreatePeriodicVestingAccount();
     message.from_address = object.from_address ?? "";
@@ -440,7 +395,7 @@ export const MsgCreatePeriodicVestingAccountResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreatePeriodicVestingAccountResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreatePeriodicVestingAccountResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseMsgCreatePeriodicVestingAccountResponse();
@@ -456,15 +411,6 @@ export const MsgCreatePeriodicVestingAccountResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(_: any): MsgCreatePeriodicVestingAccountResponse {
-    return {};
-  },
-
-  toJSON(_: MsgCreatePeriodicVestingAccountResponse): unknown {
-    const obj: any = {};
-    return obj;
   },
 
   fromPartial(_: DeepPartial<MsgCreatePeriodicVestingAccountResponse>): MsgCreatePeriodicVestingAccountResponse {

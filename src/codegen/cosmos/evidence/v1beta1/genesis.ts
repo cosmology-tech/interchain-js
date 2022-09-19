@@ -1,11 +1,17 @@
-import { Any } from "../../../google/protobuf/any";
+import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "@osmonauts/helpers";
-
 /** GenesisState defines the evidence module's genesis state. */
+
 export interface GenesisState {
   /** evidence defines all the evidence at genesis. */
   evidence: Any[];
+}
+/** GenesisState defines the evidence module's genesis state. */
+
+export interface GenesisStateSDKType {
+  /** evidence defines all the evidence at genesis. */
+  evidence: AnySDKType[];
 }
 
 function createBaseGenesisState(): GenesisState {
@@ -43,24 +49,6 @@ export const GenesisState = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): GenesisState {
-    return {
-      evidence: Array.isArray(object?.evidence) ? object.evidence.map((e: any) => Any.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: GenesisState): unknown {
-    const obj: any = {};
-
-    if (message.evidence) {
-      obj.evidence = message.evidence.map(e => e ? Any.toJSON(e) : undefined);
-    } else {
-      obj.evidence = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<GenesisState>): GenesisState {

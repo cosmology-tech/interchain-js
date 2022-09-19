@@ -1,14 +1,23 @@
-import { Coin } from "../../base/v1beta1/coin";
+import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
-
+import { DeepPartial } from "@osmonauts/helpers";
 /** GenesisState defines the crisis module's genesis state. */
+
 export interface GenesisState {
   /**
    * constant_fee is the fee used to verify the invariant in the crisis
    * module.
    */
   constant_fee: Coin;
+}
+/** GenesisState defines the crisis module's genesis state. */
+
+export interface GenesisStateSDKType {
+  /**
+   * constant_fee is the fee used to verify the invariant in the crisis
+   * module.
+   */
+  constant_fee: CoinSDKType;
 }
 
 function createBaseGenesisState(): GenesisState {
@@ -46,18 +55,6 @@ export const GenesisState = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): GenesisState {
-    return {
-      constant_fee: isSet(object.constant_fee) ? Coin.fromJSON(object.constant_fee) : undefined
-    };
-  },
-
-  toJSON(message: GenesisState): unknown {
-    const obj: any = {};
-    message.constant_fee !== undefined && (obj.constant_fee = message.constant_fee ? Coin.toJSON(message.constant_fee) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<GenesisState>): GenesisState {

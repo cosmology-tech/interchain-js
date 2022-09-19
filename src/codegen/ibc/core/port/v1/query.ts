@@ -1,31 +1,58 @@
-import { Order, Counterparty, orderFromJSON, orderToJSON } from "../../channel/v1/channel";
+import { Order, OrderSDKType, Counterparty, CounterpartySDKType } from "../../channel/v1/channel";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
-
+import { DeepPartial } from "@osmonauts/helpers";
 /** QueryAppVersionRequest is the request type for the Query/AppVersion RPC method */
+
 export interface QueryAppVersionRequest {
   /** port unique identifier */
   port_id: string;
-
   /** connection unique identifier */
+
   connection_id: string;
-
   /** whether the channel is ordered or unordered */
+
   ordering: Order;
-
   /** counterparty channel end */
-  counterparty: Counterparty;
 
+  counterparty: Counterparty;
   /** proposed version */
+
   proposed_version: string;
 }
+/** QueryAppVersionRequest is the request type for the Query/AppVersion RPC method */
 
+export interface QueryAppVersionRequestSDKType {
+  /** port unique identifier */
+  port_id: string;
+  /** connection unique identifier */
+
+  connection_id: string;
+  /** whether the channel is ordered or unordered */
+
+  ordering: OrderSDKType;
+  /** counterparty channel end */
+
+  counterparty: CounterpartySDKType;
+  /** proposed version */
+
+  proposed_version: string;
+}
 /** QueryAppVersionResponse is the response type for the Query/AppVersion RPC method. */
+
 export interface QueryAppVersionResponse {
   /** port id associated with the request identifiers */
   port_id: string;
-
   /** supported app version */
+
+  version: string;
+}
+/** QueryAppVersionResponse is the response type for the Query/AppVersion RPC method. */
+
+export interface QueryAppVersionResponseSDKType {
+  /** port id associated with the request identifiers */
+  port_id: string;
+  /** supported app version */
+
   version: string;
 }
 
@@ -102,26 +129,6 @@ export const QueryAppVersionRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryAppVersionRequest {
-    return {
-      port_id: isSet(object.port_id) ? String(object.port_id) : "",
-      connection_id: isSet(object.connection_id) ? String(object.connection_id) : "",
-      ordering: isSet(object.ordering) ? orderFromJSON(object.ordering) : 0,
-      counterparty: isSet(object.counterparty) ? Counterparty.fromJSON(object.counterparty) : undefined,
-      proposed_version: isSet(object.proposed_version) ? String(object.proposed_version) : ""
-    };
-  },
-
-  toJSON(message: QueryAppVersionRequest): unknown {
-    const obj: any = {};
-    message.port_id !== undefined && (obj.port_id = message.port_id);
-    message.connection_id !== undefined && (obj.connection_id = message.connection_id);
-    message.ordering !== undefined && (obj.ordering = orderToJSON(message.ordering));
-    message.counterparty !== undefined && (obj.counterparty = message.counterparty ? Counterparty.toJSON(message.counterparty) : undefined);
-    message.proposed_version !== undefined && (obj.proposed_version = message.proposed_version);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryAppVersionRequest>): QueryAppVersionRequest {
     const message = createBaseQueryAppVersionRequest();
     message.port_id = object.port_id ?? "";
@@ -154,7 +161,7 @@ export const QueryAppVersionResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAppVersionResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAppVersionResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAppVersionResponse();
@@ -178,20 +185,6 @@ export const QueryAppVersionResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): QueryAppVersionResponse {
-    return {
-      port_id: isSet(object.port_id) ? String(object.port_id) : "",
-      version: isSet(object.version) ? String(object.version) : ""
-    };
-  },
-
-  toJSON(message: QueryAppVersionResponse): unknown {
-    const obj: any = {};
-    message.port_id !== undefined && (obj.port_id = message.port_id);
-    message.version !== undefined && (obj.version = message.version);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<QueryAppVersionResponse>): QueryAppVersionResponse {

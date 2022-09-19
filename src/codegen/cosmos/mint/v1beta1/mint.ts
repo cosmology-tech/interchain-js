@@ -1,33 +1,63 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, Long } from "@osmonauts/helpers";
-
+import { DeepPartial, Long } from "@osmonauts/helpers";
 /** Minter represents the minting state. */
+
 export interface Minter {
   /** current annual inflation rate */
   inflation: string;
-
   /** current annual expected provisions */
+
   annual_provisions: string;
 }
+/** Minter represents the minting state. */
 
+export interface MinterSDKType {
+  /** current annual inflation rate */
+  inflation: string;
+  /** current annual expected provisions */
+
+  annual_provisions: string;
+}
 /** Params holds parameters for the mint module. */
+
 export interface Params {
   /** type of coin to mint */
   mint_denom: string;
-
   /** maximum annual change in inflation rate */
+
   inflation_rate_change: string;
-
   /** maximum inflation rate */
+
   inflation_max: string;
-
   /** minimum inflation rate */
+
   inflation_min: string;
-
   /** goal of percent bonded atoms */
-  goal_bonded: string;
 
+  goal_bonded: string;
   /** expected blocks per year */
+
+  blocks_per_year: Long;
+}
+/** Params holds parameters for the mint module. */
+
+export interface ParamsSDKType {
+  /** type of coin to mint */
+  mint_denom: string;
+  /** maximum annual change in inflation rate */
+
+  inflation_rate_change: string;
+  /** maximum inflation rate */
+
+  inflation_max: string;
+  /** minimum inflation rate */
+
+  inflation_min: string;
+  /** goal of percent bonded atoms */
+
+  goal_bonded: string;
+  /** expected blocks per year */
+
   blocks_per_year: Long;
 }
 
@@ -75,20 +105,6 @@ export const Minter = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): Minter {
-    return {
-      inflation: isSet(object.inflation) ? String(object.inflation) : "",
-      annual_provisions: isSet(object.annual_provisions) ? String(object.annual_provisions) : ""
-    };
-  },
-
-  toJSON(message: Minter): unknown {
-    const obj: any = {};
-    message.inflation !== undefined && (obj.inflation = message.inflation);
-    message.annual_provisions !== undefined && (obj.annual_provisions = message.annual_provisions);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<Minter>): Minter {
@@ -180,28 +196,6 @@ export const Params = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): Params {
-    return {
-      mint_denom: isSet(object.mint_denom) ? String(object.mint_denom) : "",
-      inflation_rate_change: isSet(object.inflation_rate_change) ? String(object.inflation_rate_change) : "",
-      inflation_max: isSet(object.inflation_max) ? String(object.inflation_max) : "",
-      inflation_min: isSet(object.inflation_min) ? String(object.inflation_min) : "",
-      goal_bonded: isSet(object.goal_bonded) ? String(object.goal_bonded) : "",
-      blocks_per_year: isSet(object.blocks_per_year) ? Long.fromString(object.blocks_per_year) : Long.UZERO
-    };
-  },
-
-  toJSON(message: Params): unknown {
-    const obj: any = {};
-    message.mint_denom !== undefined && (obj.mint_denom = message.mint_denom);
-    message.inflation_rate_change !== undefined && (obj.inflation_rate_change = message.inflation_rate_change);
-    message.inflation_max !== undefined && (obj.inflation_max = message.inflation_max);
-    message.inflation_min !== undefined && (obj.inflation_min = message.inflation_min);
-    message.goal_bonded !== undefined && (obj.goal_bonded = message.goal_bonded);
-    message.blocks_per_year !== undefined && (obj.blocks_per_year = (message.blocks_per_year || Long.UZERO).toString());
-    return obj;
   },
 
   fromPartial(object: DeepPartial<Params>): Params {

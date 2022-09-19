@@ -1,9 +1,14 @@
-import { PublicKey } from "../crypto/keys";
+import { PublicKey, PublicKeySDKType } from "../crypto/keys";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, DeepPartial, bytesFromBase64, base64FromBytes } from "@osmonauts/helpers";
+import { Long, DeepPartial } from "@osmonauts/helpers";
 export interface ValidatorSet {
   validators: Validator[];
   proposer: Validator;
+  total_voting_power: Long;
+}
+export interface ValidatorSetSDKType {
+  validators: ValidatorSDKType[];
+  proposer: ValidatorSDKType;
   total_voting_power: Long;
 }
 export interface Validator {
@@ -12,8 +17,18 @@ export interface Validator {
   voting_power: Long;
   proposer_priority: Long;
 }
+export interface ValidatorSDKType {
+  address: Uint8Array;
+  pub_key: PublicKeySDKType;
+  voting_power: Long;
+  proposer_priority: Long;
+}
 export interface SimpleValidator {
   pub_key: PublicKey;
+  voting_power: Long;
+}
+export interface SimpleValidatorSDKType {
+  pub_key: PublicKeySDKType;
   voting_power: Long;
 }
 
@@ -70,28 +85,6 @@ export const ValidatorSet = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): ValidatorSet {
-    return {
-      validators: Array.isArray(object?.validators) ? object.validators.map((e: any) => Validator.fromJSON(e)) : [],
-      proposer: isSet(object.proposer) ? Validator.fromJSON(object.proposer) : undefined,
-      total_voting_power: isSet(object.total_voting_power) ? Long.fromString(object.total_voting_power) : Long.ZERO
-    };
-  },
-
-  toJSON(message: ValidatorSet): unknown {
-    const obj: any = {};
-
-    if (message.validators) {
-      obj.validators = message.validators.map(e => e ? Validator.toJSON(e) : undefined);
-    } else {
-      obj.validators = [];
-    }
-
-    message.proposer !== undefined && (obj.proposer = message.proposer ? Validator.toJSON(message.proposer) : undefined);
-    message.total_voting_power !== undefined && (obj.total_voting_power = (message.total_voting_power || Long.ZERO).toString());
-    return obj;
   },
 
   fromPartial(object: DeepPartial<ValidatorSet>): ValidatorSet {
@@ -168,24 +161,6 @@ export const Validator = {
     return message;
   },
 
-  fromJSON(object: any): Validator {
-    return {
-      address: isSet(object.address) ? bytesFromBase64(object.address) : new Uint8Array(),
-      pub_key: isSet(object.pub_key) ? PublicKey.fromJSON(object.pub_key) : undefined,
-      voting_power: isSet(object.voting_power) ? Long.fromString(object.voting_power) : Long.ZERO,
-      proposer_priority: isSet(object.proposer_priority) ? Long.fromString(object.proposer_priority) : Long.ZERO
-    };
-  },
-
-  toJSON(message: Validator): unknown {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = base64FromBytes(message.address !== undefined ? message.address : new Uint8Array()));
-    message.pub_key !== undefined && (obj.pub_key = message.pub_key ? PublicKey.toJSON(message.pub_key) : undefined);
-    message.voting_power !== undefined && (obj.voting_power = (message.voting_power || Long.ZERO).toString());
-    message.proposer_priority !== undefined && (obj.proposer_priority = (message.proposer_priority || Long.ZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Validator>): Validator {
     const message = createBaseValidator();
     message.address = object.address ?? new Uint8Array();
@@ -241,20 +216,6 @@ export const SimpleValidator = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): SimpleValidator {
-    return {
-      pub_key: isSet(object.pub_key) ? PublicKey.fromJSON(object.pub_key) : undefined,
-      voting_power: isSet(object.voting_power) ? Long.fromString(object.voting_power) : Long.ZERO
-    };
-  },
-
-  toJSON(message: SimpleValidator): unknown {
-    const obj: any = {};
-    message.pub_key !== undefined && (obj.pub_key = message.pub_key ? PublicKey.toJSON(message.pub_key) : undefined);
-    message.voting_power !== undefined && (obj.voting_power = (message.voting_power || Long.ZERO).toString());
-    return obj;
   },
 
   fromPartial(object: DeepPartial<SimpleValidator>): SimpleValidator {

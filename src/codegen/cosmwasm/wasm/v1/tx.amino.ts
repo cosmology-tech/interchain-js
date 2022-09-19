@@ -1,5 +1,4 @@
-import { AccessConfig, accessTypeFromJSON } from "./types";
-import { Coin } from "../../../cosmos/base/v1beta1/coin";
+import { accessTypeFromJSON } from "./types";
 import { AminoMsg } from "@cosmjs/amino";
 import { toBase64, fromBase64, fromUtf8, toUtf8 } from "@cosmjs/encoding";
 import { Long } from "@osmonauts/helpers";

@@ -1,12 +1,19 @@
-import { DenomTrace, Params } from "./transfer";
+import { DenomTrace, DenomTraceSDKType, Params, ParamsSDKType } from "./transfer";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
-
+import { DeepPartial } from "@osmonauts/helpers";
 /** GenesisState defines the ibc-transfer genesis state */
+
 export interface GenesisState {
   port_id: string;
   denom_traces: DenomTrace[];
   params: Params;
+}
+/** GenesisState defines the ibc-transfer genesis state */
+
+export interface GenesisStateSDKType {
+  port_id: string;
+  denom_traces: DenomTraceSDKType[];
+  params: ParamsSDKType;
 }
 
 function createBaseGenesisState(): GenesisState {
@@ -62,28 +69,6 @@ export const GenesisState = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): GenesisState {
-    return {
-      port_id: isSet(object.port_id) ? String(object.port_id) : "",
-      denom_traces: Array.isArray(object?.denom_traces) ? object.denom_traces.map((e: any) => DenomTrace.fromJSON(e)) : [],
-      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
-    };
-  },
-
-  toJSON(message: GenesisState): unknown {
-    const obj: any = {};
-    message.port_id !== undefined && (obj.port_id = message.port_id);
-
-    if (message.denom_traces) {
-      obj.denom_traces = message.denom_traces.map(e => e ? DenomTrace.toJSON(e) : undefined);
-    } else {
-      obj.denom_traces = [];
-    }
-
-    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<GenesisState>): GenesisState {

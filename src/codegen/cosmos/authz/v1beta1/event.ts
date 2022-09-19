@@ -1,27 +1,51 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
-
+import { DeepPartial } from "@osmonauts/helpers";
 /** EventGrant is emitted on Msg/Grant */
+
 export interface EventGrant {
   /** Msg type URL for which an autorization is granted */
   msg_type_url: string;
-
   /** Granter account address */
-  granter: string;
 
+  granter: string;
   /** Grantee account address */
+
   grantee: string;
 }
+/** EventGrant is emitted on Msg/Grant */
 
+export interface EventGrantSDKType {
+  /** Msg type URL for which an autorization is granted */
+  msg_type_url: string;
+  /** Granter account address */
+
+  granter: string;
+  /** Grantee account address */
+
+  grantee: string;
+}
 /** EventRevoke is emitted on Msg/Revoke */
+
 export interface EventRevoke {
   /** Msg type URL for which an autorization is revoked */
   msg_type_url: string;
-
   /** Granter account address */
-  granter: string;
 
+  granter: string;
   /** Grantee account address */
+
+  grantee: string;
+}
+/** EventRevoke is emitted on Msg/Revoke */
+
+export interface EventRevokeSDKType {
+  /** Msg type URL for which an autorization is revoked */
+  msg_type_url: string;
+  /** Granter account address */
+
+  granter: string;
+  /** Grantee account address */
+
   grantee: string;
 }
 
@@ -78,22 +102,6 @@ export const EventGrant = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): EventGrant {
-    return {
-      msg_type_url: isSet(object.msg_type_url) ? String(object.msg_type_url) : "",
-      granter: isSet(object.granter) ? String(object.granter) : "",
-      grantee: isSet(object.grantee) ? String(object.grantee) : ""
-    };
-  },
-
-  toJSON(message: EventGrant): unknown {
-    const obj: any = {};
-    message.msg_type_url !== undefined && (obj.msg_type_url = message.msg_type_url);
-    message.granter !== undefined && (obj.granter = message.granter);
-    message.grantee !== undefined && (obj.grantee = message.grantee);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<EventGrant>): EventGrant {
@@ -159,22 +167,6 @@ export const EventRevoke = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): EventRevoke {
-    return {
-      msg_type_url: isSet(object.msg_type_url) ? String(object.msg_type_url) : "",
-      granter: isSet(object.granter) ? String(object.granter) : "",
-      grantee: isSet(object.grantee) ? String(object.grantee) : ""
-    };
-  },
-
-  toJSON(message: EventRevoke): unknown {
-    const obj: any = {};
-    message.msg_type_url !== undefined && (obj.msg_type_url = message.msg_type_url);
-    message.granter !== undefined && (obj.granter = message.granter);
-    message.grantee !== undefined && (obj.grantee = message.grantee);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<EventRevoke>): EventRevoke {

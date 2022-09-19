@@ -15,18 +15,6 @@ export declare const MessageComposer: {
             value: MsgVerifyInvariant;
         };
     };
-    toJSON: {
-        verifyInvariant(value: MsgVerifyInvariant): {
-            typeUrl: string;
-            value: unknown;
-        };
-    };
-    fromJSON: {
-        verifyInvariant(value: any): {
-            typeUrl: string;
-            value: MsgVerifyInvariant;
-        };
-    };
     fromPartial: {
         verifyInvariant(value: MsgVerifyInvariant): {
             typeUrl: string;

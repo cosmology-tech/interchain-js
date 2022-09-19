@@ -1,4 +1,4 @@
-import { Plan } from "./upgrade";
+import { Plan, PlanSDKType } from "./upgrade";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "@osmonauts/helpers";
 /**
@@ -13,11 +13,29 @@ export interface MsgSoftwareUpgrade {
     plan: Plan;
 }
 /**
+ * MsgSoftwareUpgrade is the Msg/SoftwareUpgrade request type.
+ *
+ * Since: cosmos-sdk 0.46
+ */
+export interface MsgSoftwareUpgradeSDKType {
+    /** authority is the address of the governance account. */
+    authority: string;
+    /** plan is the upgrade plan. */
+    plan: PlanSDKType;
+}
+/**
  * MsgSoftwareUpgradeResponse is the Msg/SoftwareUpgrade response type.
  *
  * Since: cosmos-sdk 0.46
  */
 export interface MsgSoftwareUpgradeResponse {
+}
+/**
+ * MsgSoftwareUpgradeResponse is the Msg/SoftwareUpgrade response type.
+ *
+ * Since: cosmos-sdk 0.46
+ */
+export interface MsgSoftwareUpgradeResponseSDKType {
 }
 /**
  * MsgCancelUpgrade is the Msg/CancelUpgrade request type.
@@ -29,37 +47,45 @@ export interface MsgCancelUpgrade {
     authority: string;
 }
 /**
+ * MsgCancelUpgrade is the Msg/CancelUpgrade request type.
+ *
+ * Since: cosmos-sdk 0.46
+ */
+export interface MsgCancelUpgradeSDKType {
+    /** authority is the address of the governance account. */
+    authority: string;
+}
+/**
  * MsgCancelUpgradeResponse is the Msg/CancelUpgrade response type.
  *
  * Since: cosmos-sdk 0.46
  */
 export interface MsgCancelUpgradeResponse {
 }
+/**
+ * MsgCancelUpgradeResponse is the Msg/CancelUpgrade response type.
+ *
+ * Since: cosmos-sdk 0.46
+ */
+export interface MsgCancelUpgradeResponseSDKType {
+}
 export declare const MsgSoftwareUpgrade: {
     encode(message: MsgSoftwareUpgrade, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSoftwareUpgrade;
-    fromJSON(object: any): MsgSoftwareUpgrade;
-    toJSON(message: MsgSoftwareUpgrade): unknown;
     fromPartial(object: DeepPartial<MsgSoftwareUpgrade>): MsgSoftwareUpgrade;
 };
 export declare const MsgSoftwareUpgradeResponse: {
     encode(_: MsgSoftwareUpgradeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSoftwareUpgradeResponse;
-    fromJSON(_: any): MsgSoftwareUpgradeResponse;
-    toJSON(_: MsgSoftwareUpgradeResponse): unknown;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgSoftwareUpgradeResponseSDKType;
     fromPartial(_: DeepPartial<MsgSoftwareUpgradeResponse>): MsgSoftwareUpgradeResponse;
 };
 export declare const MsgCancelUpgrade: {
     encode(message: MsgCancelUpgrade, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCancelUpgrade;
-    fromJSON(object: any): MsgCancelUpgrade;
-    toJSON(message: MsgCancelUpgrade): unknown;
     fromPartial(object: DeepPartial<MsgCancelUpgrade>): MsgCancelUpgrade;
 };
 export declare const MsgCancelUpgradeResponse: {
     encode(_: MsgCancelUpgradeResponse, writer?: _m0.Writer): _m0.Writer;
-    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCancelUpgradeResponse;
-    fromJSON(_: any): MsgCancelUpgradeResponse;
-    toJSON(_: MsgCancelUpgradeResponse): unknown;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgCancelUpgradeResponseSDKType;
     fromPartial(_: DeepPartial<MsgCancelUpgradeResponse>): MsgCancelUpgradeResponse;
 };

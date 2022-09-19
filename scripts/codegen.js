@@ -15,7 +15,7 @@ telescope({
         packages: ['cosmos.gov.v1', 'cosmos.group.v1']
       },
       parser: {
-        keepCase: true
+        keepCase: false
       },
       typingsFormat: {
         duration: 'duration',

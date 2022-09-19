@@ -1,26 +1,47 @@
-import { CapabilityOwners } from "./capability";
+import { CapabilityOwners, CapabilityOwnersSDKType } from "./capability";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, DeepPartial } from "@osmonauts/helpers";
-
+import { Long, DeepPartial } from "@osmonauts/helpers";
 /** GenesisOwners defines the capability owners with their corresponding index. */
+
 export interface GenesisOwners {
   /** index is the index of the capability owner. */
   index: Long;
-
   /** index_owners are the owners at the given index. */
+
   index_owners: CapabilityOwners;
 }
+/** GenesisOwners defines the capability owners with their corresponding index. */
 
+export interface GenesisOwnersSDKType {
+  /** index is the index of the capability owner. */
+  index: Long;
+  /** index_owners are the owners at the given index. */
+
+  index_owners: CapabilityOwnersSDKType;
+}
 /** GenesisState defines the capability module's genesis state. */
+
 export interface GenesisState {
   /** index is the capability global index. */
   index: Long;
-
   /**
    * owners represents a map from index to owners of the capability index
    * index key is string to allow amino marshalling.
    */
+
   owners: GenesisOwners[];
+}
+/** GenesisState defines the capability module's genesis state. */
+
+export interface GenesisStateSDKType {
+  /** index is the capability global index. */
+  index: Long;
+  /**
+   * owners represents a map from index to owners of the capability index
+   * index key is string to allow amino marshalling.
+   */
+
+  owners: GenesisOwnersSDKType[];
 }
 
 function createBaseGenesisOwners(): GenesisOwners {
@@ -67,20 +88,6 @@ export const GenesisOwners = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): GenesisOwners {
-    return {
-      index: isSet(object.index) ? Long.fromString(object.index) : Long.UZERO,
-      index_owners: isSet(object.index_owners) ? CapabilityOwners.fromJSON(object.index_owners) : undefined
-    };
-  },
-
-  toJSON(message: GenesisOwners): unknown {
-    const obj: any = {};
-    message.index !== undefined && (obj.index = (message.index || Long.UZERO).toString());
-    message.index_owners !== undefined && (obj.index_owners = message.index_owners ? CapabilityOwners.toJSON(message.index_owners) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<GenesisOwners>): GenesisOwners {
@@ -136,26 +143,6 @@ export const GenesisState = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): GenesisState {
-    return {
-      index: isSet(object.index) ? Long.fromString(object.index) : Long.UZERO,
-      owners: Array.isArray(object?.owners) ? object.owners.map((e: any) => GenesisOwners.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: GenesisState): unknown {
-    const obj: any = {};
-    message.index !== undefined && (obj.index = (message.index || Long.UZERO).toString());
-
-    if (message.owners) {
-      obj.owners = message.owners.map(e => e ? GenesisOwners.toJSON(e) : undefined);
-    } else {
-      obj.owners = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<GenesisState>): GenesisState {

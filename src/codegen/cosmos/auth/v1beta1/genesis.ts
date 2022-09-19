@@ -1,15 +1,24 @@
-import { Params } from "./auth";
-import { Any } from "../../../google/protobuf/any";
+import { Params, ParamsSDKType } from "./auth";
+import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
-
+import { DeepPartial } from "@osmonauts/helpers";
 /** GenesisState defines the auth module's genesis state. */
+
 export interface GenesisState {
   /** params defines all the paramaters of the module. */
   params: Params;
-
   /** accounts are the accounts present at genesis. */
+
   accounts: Any[];
+}
+/** GenesisState defines the auth module's genesis state. */
+
+export interface GenesisStateSDKType {
+  /** params defines all the paramaters of the module. */
+  params: ParamsSDKType;
+  /** accounts are the accounts present at genesis. */
+
+  accounts: AnySDKType[];
 }
 
 function createBaseGenesisState(): GenesisState {
@@ -56,26 +65,6 @@ export const GenesisState = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): GenesisState {
-    return {
-      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
-      accounts: Array.isArray(object?.accounts) ? object.accounts.map((e: any) => Any.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: GenesisState): unknown {
-    const obj: any = {};
-    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
-
-    if (message.accounts) {
-      obj.accounts = message.accounts.map(e => e ? Any.toJSON(e) : undefined);
-    } else {
-      obj.accounts = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<GenesisState>): GenesisState {

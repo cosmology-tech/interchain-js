@@ -1,5 +1,3 @@
-import { Coin } from "../../base/v1beta1/coin";
-import { Period } from "./vesting";
 import { AminoMsg } from "@cosmjs/amino";
 import { Long } from "@osmonauts/helpers";
 import { MsgCreateVestingAccount, MsgCreatePermanentLockedAccount, MsgCreatePeriodicVestingAccount } from "./tx";

@@ -1,7 +1,4 @@
-import { Grant } from "./authz";
-import { Any } from "../../../google/protobuf/any";
 import { AminoMsg } from "@cosmjs/amino";
-import { Timestamp } from "../../../google/protobuf/timestamp";
 import { MsgGrant, MsgExec, MsgRevoke } from "./tx";
 export interface AminoMsgGrant extends AminoMsg {
   type: "cosmos-sdk/MsgGrant";

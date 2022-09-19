@@ -1,29 +1,54 @@
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, DeepPartial } from "@osmonauts/helpers";
-
+import { Long, DeepPartial } from "@osmonauts/helpers";
 /**
  * Capability defines an implementation of an object capability. The index
  * provided to a Capability must be globally unique.
  */
+
 export interface Capability {
   index: Long;
 }
+/**
+ * Capability defines an implementation of an object capability. The index
+ * provided to a Capability must be globally unique.
+ */
 
+export interface CapabilitySDKType {
+  index: Long;
+}
 /**
  * Owner defines a single capability owner. An owner is defined by the name of
  * capability and the module name.
  */
+
 export interface Owner {
   module: string;
   name: string;
 }
+/**
+ * Owner defines a single capability owner. An owner is defined by the name of
+ * capability and the module name.
+ */
 
+export interface OwnerSDKType {
+  module: string;
+  name: string;
+}
 /**
  * CapabilityOwners defines a set of owners of a single Capability. The set of
  * owners must be unique.
  */
+
 export interface CapabilityOwners {
   owners: Owner[];
+}
+/**
+ * CapabilityOwners defines a set of owners of a single Capability. The set of
+ * owners must be unique.
+ */
+
+export interface CapabilityOwnersSDKType {
+  owners: OwnerSDKType[];
 }
 
 function createBaseCapability(): Capability {
@@ -61,18 +86,6 @@ export const Capability = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): Capability {
-    return {
-      index: isSet(object.index) ? Long.fromString(object.index) : Long.UZERO
-    };
-  },
-
-  toJSON(message: Capability): unknown {
-    const obj: any = {};
-    message.index !== undefined && (obj.index = (message.index || Long.UZERO).toString());
-    return obj;
   },
 
   fromPartial(object: DeepPartial<Capability>): Capability {
@@ -129,20 +142,6 @@ export const Owner = {
     return message;
   },
 
-  fromJSON(object: any): Owner {
-    return {
-      module: isSet(object.module) ? String(object.module) : "",
-      name: isSet(object.name) ? String(object.name) : ""
-    };
-  },
-
-  toJSON(message: Owner): unknown {
-    const obj: any = {};
-    message.module !== undefined && (obj.module = message.module);
-    message.name !== undefined && (obj.name = message.name);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Owner>): Owner {
     const message = createBaseOwner();
     message.module = object.module ?? "";
@@ -187,24 +186,6 @@ export const CapabilityOwners = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): CapabilityOwners {
-    return {
-      owners: Array.isArray(object?.owners) ? object.owners.map((e: any) => Owner.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: CapabilityOwners): unknown {
-    const obj: any = {};
-
-    if (message.owners) {
-      obj.owners = message.owners.map(e => e ? Owner.toJSON(e) : undefined);
-    } else {
-      obj.owners = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<CapabilityOwners>): CapabilityOwners {

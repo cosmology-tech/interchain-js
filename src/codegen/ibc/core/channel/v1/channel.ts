@@ -1,12 +1,40 @@
-import { Height } from "../../client/v1/client";
+import { Height, HeightSDKType } from "../../client/v1/client";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, Long, bytesFromBase64, base64FromBytes } from "@osmonauts/helpers";
-
+import { DeepPartial, Long } from "@osmonauts/helpers";
 /**
  * State defines if a channel is in one of the following states:
  * CLOSED, INIT, TRYOPEN, OPEN or UNINITIALIZED.
  */
+
 export enum State {
+  /** STATE_UNINITIALIZED_UNSPECIFIED - Default State */
+  STATE_UNINITIALIZED_UNSPECIFIED = 0,
+
+  /** STATE_INIT - A channel has just started the opening handshake. */
+  STATE_INIT = 1,
+
+  /** STATE_TRYOPEN - A channel has acknowledged the handshake step on the counterparty chain. */
+  STATE_TRYOPEN = 2,
+
+  /**
+   * STATE_OPEN - A channel has completed the handshake. Open channels are
+   * ready to send and receive packets.
+   */
+  STATE_OPEN = 3,
+
+  /**
+   * STATE_CLOSED - A channel has been closed and can no longer be used to send or receive
+   * packets.
+   */
+  STATE_CLOSED = 4,
+  UNRECOGNIZED = -1,
+}
+/**
+ * State defines if a channel is in one of the following states:
+ * CLOSED, INIT, TRYOPEN, OPEN or UNINITIALIZED.
+ */
+
+export enum StateSDKType {
   /** STATE_UNINITIALIZED_UNSPECIFIED - Default State */
   STATE_UNINITIALIZED_UNSPECIFIED = 0,
 
@@ -78,9 +106,25 @@ export function stateToJSON(object: State): string {
       return "UNKNOWN";
   }
 }
-
 /** Order defines if a channel is ORDERED or UNORDERED */
+
 export enum Order {
+  /** ORDER_NONE_UNSPECIFIED - zero-value for channel ordering */
+  ORDER_NONE_UNSPECIFIED = 0,
+
+  /**
+   * ORDER_UNORDERED - packets can be delivered in any order, which may differ from the order in
+   * which they were sent.
+   */
+  ORDER_UNORDERED = 1,
+
+  /** ORDER_ORDERED - packets are delivered exactly in the order which they were sent */
+  ORDER_ORDERED = 2,
+  UNRECOGNIZED = -1,
+}
+/** Order defines if a channel is ORDERED or UNORDERED */
+
+export enum OrderSDKType {
   /** ORDER_NONE_UNSPECIFIED - zero-value for channel ordering */
   ORDER_NONE_UNSPECIFIED = 0,
 
@@ -129,72 +173,136 @@ export function orderToJSON(object: Order): string {
       return "UNKNOWN";
   }
 }
-
 /**
  * Channel defines pipeline for exactly-once packet delivery between specific
  * modules on separate blockchains, which has at least one end capable of
  * sending packets and one end capable of receiving packets.
  */
+
 export interface Channel {
   /** current state of the channel end */
   state: State;
-
   /** whether the channel is ordered or unordered */
+
   ordering: Order;
-
   /** counterparty channel end */
-  counterparty: Counterparty;
 
+  counterparty: Counterparty;
   /**
    * list of connection identifiers, in order, along which packets sent on
    * this channel will travel
    */
-  connection_hops: string[];
 
+  connection_hops: string[];
   /** opaque channel version, which is agreed upon during the handshake */
+
   version: string;
 }
+/**
+ * Channel defines pipeline for exactly-once packet delivery between specific
+ * modules on separate blockchains, which has at least one end capable of
+ * sending packets and one end capable of receiving packets.
+ */
 
+export interface ChannelSDKType {
+  /** current state of the channel end */
+  state: StateSDKType;
+  /** whether the channel is ordered or unordered */
+
+  ordering: OrderSDKType;
+  /** counterparty channel end */
+
+  counterparty: CounterpartySDKType;
+  /**
+   * list of connection identifiers, in order, along which packets sent on
+   * this channel will travel
+   */
+
+  connection_hops: string[];
+  /** opaque channel version, which is agreed upon during the handshake */
+
+  version: string;
+}
 /**
  * IdentifiedChannel defines a channel with additional port and channel
  * identifier fields.
  */
+
 export interface IdentifiedChannel {
   /** current state of the channel end */
   state: State;
-
   /** whether the channel is ordered or unordered */
+
   ordering: Order;
-
   /** counterparty channel end */
-  counterparty: Counterparty;
 
+  counterparty: Counterparty;
   /**
    * list of connection identifiers, in order, along which packets sent on
    * this channel will travel
    */
+
   connection_hops: string[];
-
   /** opaque channel version, which is agreed upon during the handshake */
+
   version: string;
-
   /** port identifier */
-  port_id: string;
 
+  port_id: string;
   /** channel identifier */
+
   channel_id: string;
 }
+/**
+ * IdentifiedChannel defines a channel with additional port and channel
+ * identifier fields.
+ */
 
+export interface IdentifiedChannelSDKType {
+  /** current state of the channel end */
+  state: StateSDKType;
+  /** whether the channel is ordered or unordered */
+
+  ordering: OrderSDKType;
+  /** counterparty channel end */
+
+  counterparty: CounterpartySDKType;
+  /**
+   * list of connection identifiers, in order, along which packets sent on
+   * this channel will travel
+   */
+
+  connection_hops: string[];
+  /** opaque channel version, which is agreed upon during the handshake */
+
+  version: string;
+  /** port identifier */
+
+  port_id: string;
+  /** channel identifier */
+
+  channel_id: string;
+}
 /** Counterparty defines a channel end counterparty */
+
 export interface Counterparty {
   /** port on the counterparty chain which owns the other end of the channel. */
   port_id: string;
-
   /** channel end on the counterparty chain */
+
   channel_id: string;
 }
+/** Counterparty defines a channel end counterparty */
 
+export interface CounterpartySDKType {
+  /** port on the counterparty chain which owns the other end of the channel. */
+  port_id: string;
+  /** channel end on the counterparty chain */
+
+  channel_id: string;
+}
 /** Packet defines a type that carries data across different chains through IBC */
+
 export interface Packet {
   /**
    * number corresponds to the order of sends and receives, where a Packet
@@ -202,49 +310,99 @@ export interface Packet {
    * with a later sequence number.
    */
   sequence: Long;
-
   /** identifies the port on the sending chain. */
+
   source_port: string;
-
   /** identifies the channel end on the sending chain. */
+
   source_channel: string;
-
   /** identifies the port on the receiving chain. */
+
   destination_port: string;
-
   /** identifies the channel end on the receiving chain. */
+
   destination_channel: string;
-
   /** actual opaque bytes transferred directly to the application module */
+
   data: Uint8Array;
-
   /** block height after which the packet times out */
-  timeout_height: Height;
 
+  timeout_height: Height;
   /** block timestamp (in nanoseconds) after which the packet times out */
+
   timeout_timestamp: Long;
 }
+/** Packet defines a type that carries data across different chains through IBC */
 
+export interface PacketSDKType {
+  /**
+   * number corresponds to the order of sends and receives, where a Packet
+   * with an earlier sequence number must be sent and received before a Packet
+   * with a later sequence number.
+   */
+  sequence: Long;
+  /** identifies the port on the sending chain. */
+
+  source_port: string;
+  /** identifies the channel end on the sending chain. */
+
+  source_channel: string;
+  /** identifies the port on the receiving chain. */
+
+  destination_port: string;
+  /** identifies the channel end on the receiving chain. */
+
+  destination_channel: string;
+  /** actual opaque bytes transferred directly to the application module */
+
+  data: Uint8Array;
+  /** block height after which the packet times out */
+
+  timeout_height: HeightSDKType;
+  /** block timestamp (in nanoseconds) after which the packet times out */
+
+  timeout_timestamp: Long;
+}
 /**
  * PacketState defines the generic type necessary to retrieve and store
  * packet commitments, acknowledgements, and receipts.
  * Caller is responsible for knowing the context necessary to interpret this
  * state as a commitment, acknowledgement, or a receipt.
  */
+
 export interface PacketState {
   /** channel port identifier. */
   port_id: string;
-
   /** channel unique identifier. */
+
   channel_id: string;
-
   /** packet sequence. */
-  sequence: Long;
 
+  sequence: Long;
   /** embedded data that represents packet state. */
+
   data: Uint8Array;
 }
+/**
+ * PacketState defines the generic type necessary to retrieve and store
+ * packet commitments, acknowledgements, and receipts.
+ * Caller is responsible for knowing the context necessary to interpret this
+ * state as a commitment, acknowledgement, or a receipt.
+ */
 
+export interface PacketStateSDKType {
+  /** channel port identifier. */
+  port_id: string;
+  /** channel unique identifier. */
+
+  channel_id: string;
+  /** packet sequence. */
+
+  sequence: Long;
+  /** embedded data that represents packet state. */
+
+  data: Uint8Array;
+}
 /**
  * Acknowledgement is the recommended acknowledgement format to be used by
  * app-specific protocols.
@@ -254,7 +412,22 @@ export interface PacketState {
  * `0xaa` (result) or `0xb2` (error). Implemented as defined by ICS:
  * https://github.com/cosmos/ibc/tree/master/spec/core/ics-004-channel-and-packet-semantics#acknowledgement-envelope
  */
+
 export interface Acknowledgement {
+  result?: Uint8Array;
+  error?: string;
+}
+/**
+ * Acknowledgement is the recommended acknowledgement format to be used by
+ * app-specific protocols.
+ * NOTE: The field numbers 21 and 22 were explicitly chosen to avoid accidental
+ * conflicts with other protobuf message formats used for acknowledgements.
+ * The first byte of any message with this format will be the non-ASCII values
+ * `0xaa` (result) or `0xb2` (error). Implemented as defined by ICS:
+ * https://github.com/cosmos/ibc/tree/master/spec/core/ics-004-channel-and-packet-semantics#acknowledgement-envelope
+ */
+
+export interface AcknowledgementSDKType {
   result?: Uint8Array;
   error?: string;
 }
@@ -330,32 +503,6 @@ export const Channel = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): Channel {
-    return {
-      state: isSet(object.state) ? stateFromJSON(object.state) : 0,
-      ordering: isSet(object.ordering) ? orderFromJSON(object.ordering) : 0,
-      counterparty: isSet(object.counterparty) ? Counterparty.fromJSON(object.counterparty) : undefined,
-      connection_hops: Array.isArray(object?.connection_hops) ? object.connection_hops.map((e: any) => String(e)) : [],
-      version: isSet(object.version) ? String(object.version) : ""
-    };
-  },
-
-  toJSON(message: Channel): unknown {
-    const obj: any = {};
-    message.state !== undefined && (obj.state = stateToJSON(message.state));
-    message.ordering !== undefined && (obj.ordering = orderToJSON(message.ordering));
-    message.counterparty !== undefined && (obj.counterparty = message.counterparty ? Counterparty.toJSON(message.counterparty) : undefined);
-
-    if (message.connection_hops) {
-      obj.connection_hops = message.connection_hops.map(e => e);
-    } else {
-      obj.connection_hops = [];
-    }
-
-    message.version !== undefined && (obj.version = message.version);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<Channel>): Channel {
@@ -461,36 +608,6 @@ export const IdentifiedChannel = {
     return message;
   },
 
-  fromJSON(object: any): IdentifiedChannel {
-    return {
-      state: isSet(object.state) ? stateFromJSON(object.state) : 0,
-      ordering: isSet(object.ordering) ? orderFromJSON(object.ordering) : 0,
-      counterparty: isSet(object.counterparty) ? Counterparty.fromJSON(object.counterparty) : undefined,
-      connection_hops: Array.isArray(object?.connection_hops) ? object.connection_hops.map((e: any) => String(e)) : [],
-      version: isSet(object.version) ? String(object.version) : "",
-      port_id: isSet(object.port_id) ? String(object.port_id) : "",
-      channel_id: isSet(object.channel_id) ? String(object.channel_id) : ""
-    };
-  },
-
-  toJSON(message: IdentifiedChannel): unknown {
-    const obj: any = {};
-    message.state !== undefined && (obj.state = stateToJSON(message.state));
-    message.ordering !== undefined && (obj.ordering = orderToJSON(message.ordering));
-    message.counterparty !== undefined && (obj.counterparty = message.counterparty ? Counterparty.toJSON(message.counterparty) : undefined);
-
-    if (message.connection_hops) {
-      obj.connection_hops = message.connection_hops.map(e => e);
-    } else {
-      obj.connection_hops = [];
-    }
-
-    message.version !== undefined && (obj.version = message.version);
-    message.port_id !== undefined && (obj.port_id = message.port_id);
-    message.channel_id !== undefined && (obj.channel_id = message.channel_id);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<IdentifiedChannel>): IdentifiedChannel {
     const message = createBaseIdentifiedChannel();
     message.state = object.state ?? 0;
@@ -549,20 +666,6 @@ export const Counterparty = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): Counterparty {
-    return {
-      port_id: isSet(object.port_id) ? String(object.port_id) : "",
-      channel_id: isSet(object.channel_id) ? String(object.channel_id) : ""
-    };
-  },
-
-  toJSON(message: Counterparty): unknown {
-    const obj: any = {};
-    message.port_id !== undefined && (obj.port_id = message.port_id);
-    message.channel_id !== undefined && (obj.channel_id = message.channel_id);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<Counterparty>): Counterparty {
@@ -674,32 +777,6 @@ export const Packet = {
     return message;
   },
 
-  fromJSON(object: any): Packet {
-    return {
-      sequence: isSet(object.sequence) ? Long.fromString(object.sequence) : Long.UZERO,
-      source_port: isSet(object.source_port) ? String(object.source_port) : "",
-      source_channel: isSet(object.source_channel) ? String(object.source_channel) : "",
-      destination_port: isSet(object.destination_port) ? String(object.destination_port) : "",
-      destination_channel: isSet(object.destination_channel) ? String(object.destination_channel) : "",
-      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(),
-      timeout_height: isSet(object.timeout_height) ? Height.fromJSON(object.timeout_height) : undefined,
-      timeout_timestamp: isSet(object.timeout_timestamp) ? Long.fromString(object.timeout_timestamp) : Long.UZERO
-    };
-  },
-
-  toJSON(message: Packet): unknown {
-    const obj: any = {};
-    message.sequence !== undefined && (obj.sequence = (message.sequence || Long.UZERO).toString());
-    message.source_port !== undefined && (obj.source_port = message.source_port);
-    message.source_channel !== undefined && (obj.source_channel = message.source_channel);
-    message.destination_port !== undefined && (obj.destination_port = message.destination_port);
-    message.destination_channel !== undefined && (obj.destination_channel = message.destination_channel);
-    message.data !== undefined && (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
-    message.timeout_height !== undefined && (obj.timeout_height = message.timeout_height ? Height.toJSON(message.timeout_height) : undefined);
-    message.timeout_timestamp !== undefined && (obj.timeout_timestamp = (message.timeout_timestamp || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Packet>): Packet {
     const message = createBasePacket();
     message.sequence = object.sequence !== undefined && object.sequence !== null ? Long.fromValue(object.sequence) : Long.UZERO;
@@ -779,24 +856,6 @@ export const PacketState = {
     return message;
   },
 
-  fromJSON(object: any): PacketState {
-    return {
-      port_id: isSet(object.port_id) ? String(object.port_id) : "",
-      channel_id: isSet(object.channel_id) ? String(object.channel_id) : "",
-      sequence: isSet(object.sequence) ? Long.fromString(object.sequence) : Long.UZERO,
-      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: PacketState): unknown {
-    const obj: any = {};
-    message.port_id !== undefined && (obj.port_id = message.port_id);
-    message.channel_id !== undefined && (obj.channel_id = message.channel_id);
-    message.sequence !== undefined && (obj.sequence = (message.sequence || Long.UZERO).toString());
-    message.data !== undefined && (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<PacketState>): PacketState {
     const message = createBasePacketState();
     message.port_id = object.port_id ?? "";
@@ -852,20 +911,6 @@ export const Acknowledgement = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): Acknowledgement {
-    return {
-      result: isSet(object.result) ? bytesFromBase64(object.result) : undefined,
-      error: isSet(object.error) ? String(object.error) : undefined
-    };
-  },
-
-  toJSON(message: Acknowledgement): unknown {
-    const obj: any = {};
-    message.result !== undefined && (obj.result = message.result !== undefined ? base64FromBytes(message.result) : undefined);
-    message.error !== undefined && (obj.error = message.error);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<Acknowledgement>): Acknowledgement {

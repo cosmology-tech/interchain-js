@@ -1,45 +1,85 @@
-import { IdentifiedClientState, ClientConsensusStates, Params } from "./client";
+import { IdentifiedClientState, IdentifiedClientStateSDKType, ClientConsensusStates, ClientConsensusStatesSDKType, Params, ParamsSDKType } from "./client";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, DeepPartial, bytesFromBase64, base64FromBytes } from "@osmonauts/helpers";
-
+import { Long, DeepPartial } from "@osmonauts/helpers";
 /** GenesisState defines the ibc client submodule's genesis state. */
+
 export interface GenesisState {
   /** client states with their corresponding identifiers */
   clients: IdentifiedClientState[];
-
   /** consensus states from each client */
-  clients_consensus: ClientConsensusStates[];
 
+  clients_consensus: ClientConsensusStates[];
   /** metadata from each client */
+
   clients_metadata: IdentifiedGenesisMetadata[];
   params: Params;
-
   /** create localhost on initialization */
-  create_localhost: boolean;
 
+  create_localhost: boolean;
   /** the sequence for the next generated client identifier */
+
   next_client_sequence: Long;
 }
+/** GenesisState defines the ibc client submodule's genesis state. */
 
+export interface GenesisStateSDKType {
+  /** client states with their corresponding identifiers */
+  clients: IdentifiedClientStateSDKType[];
+  /** consensus states from each client */
+
+  clients_consensus: ClientConsensusStatesSDKType[];
+  /** metadata from each client */
+
+  clients_metadata: IdentifiedGenesisMetadataSDKType[];
+  params: ParamsSDKType;
+  /** create localhost on initialization */
+
+  create_localhost: boolean;
+  /** the sequence for the next generated client identifier */
+
+  next_client_sequence: Long;
+}
 /**
  * GenesisMetadata defines the genesis type for metadata that clients may return
  * with ExportMetadata
  */
+
 export interface GenesisMetadata {
   /** store key of metadata without clientID-prefix */
   key: Uint8Array;
-
   /** metadata value */
+
   value: Uint8Array;
 }
+/**
+ * GenesisMetadata defines the genesis type for metadata that clients may return
+ * with ExportMetadata
+ */
 
+export interface GenesisMetadataSDKType {
+  /** store key of metadata without clientID-prefix */
+  key: Uint8Array;
+  /** metadata value */
+
+  value: Uint8Array;
+}
 /**
  * IdentifiedGenesisMetadata has the client metadata with the corresponding
  * client id.
  */
+
 export interface IdentifiedGenesisMetadata {
   client_id: string;
   client_metadata: GenesisMetadata[];
+}
+/**
+ * IdentifiedGenesisMetadata has the client metadata with the corresponding
+ * client id.
+ */
+
+export interface IdentifiedGenesisMetadataSDKType {
+  client_id: string;
+  client_metadata: GenesisMetadataSDKType[];
 }
 
 function createBaseGenesisState(): GenesisState {
@@ -124,44 +164,6 @@ export const GenesisState = {
     return message;
   },
 
-  fromJSON(object: any): GenesisState {
-    return {
-      clients: Array.isArray(object?.clients) ? object.clients.map((e: any) => IdentifiedClientState.fromJSON(e)) : [],
-      clients_consensus: Array.isArray(object?.clients_consensus) ? object.clients_consensus.map((e: any) => ClientConsensusStates.fromJSON(e)) : [],
-      clients_metadata: Array.isArray(object?.clients_metadata) ? object.clients_metadata.map((e: any) => IdentifiedGenesisMetadata.fromJSON(e)) : [],
-      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
-      create_localhost: isSet(object.create_localhost) ? Boolean(object.create_localhost) : false,
-      next_client_sequence: isSet(object.next_client_sequence) ? Long.fromString(object.next_client_sequence) : Long.UZERO
-    };
-  },
-
-  toJSON(message: GenesisState): unknown {
-    const obj: any = {};
-
-    if (message.clients) {
-      obj.clients = message.clients.map(e => e ? IdentifiedClientState.toJSON(e) : undefined);
-    } else {
-      obj.clients = [];
-    }
-
-    if (message.clients_consensus) {
-      obj.clients_consensus = message.clients_consensus.map(e => e ? ClientConsensusStates.toJSON(e) : undefined);
-    } else {
-      obj.clients_consensus = [];
-    }
-
-    if (message.clients_metadata) {
-      obj.clients_metadata = message.clients_metadata.map(e => e ? IdentifiedGenesisMetadata.toJSON(e) : undefined);
-    } else {
-      obj.clients_metadata = [];
-    }
-
-    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
-    message.create_localhost !== undefined && (obj.create_localhost = message.create_localhost);
-    message.next_client_sequence !== undefined && (obj.next_client_sequence = (message.next_client_sequence || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.clients = object.clients?.map(e => IdentifiedClientState.fromPartial(e)) || [];
@@ -221,20 +223,6 @@ export const GenesisMetadata = {
     return message;
   },
 
-  fromJSON(object: any): GenesisMetadata {
-    return {
-      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(),
-      value: isSet(object.value) ? bytesFromBase64(object.value) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: GenesisMetadata): unknown {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = base64FromBytes(message.key !== undefined ? message.key : new Uint8Array()));
-    message.value !== undefined && (obj.value = base64FromBytes(message.value !== undefined ? message.value : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<GenesisMetadata>): GenesisMetadata {
     const message = createBaseGenesisMetadata();
     message.key = object.key ?? new Uint8Array();
@@ -288,26 +276,6 @@ export const IdentifiedGenesisMetadata = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): IdentifiedGenesisMetadata {
-    return {
-      client_id: isSet(object.client_id) ? String(object.client_id) : "",
-      client_metadata: Array.isArray(object?.client_metadata) ? object.client_metadata.map((e: any) => GenesisMetadata.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: IdentifiedGenesisMetadata): unknown {
-    const obj: any = {};
-    message.client_id !== undefined && (obj.client_id = message.client_id);
-
-    if (message.client_metadata) {
-      obj.client_metadata = message.client_metadata.map(e => e ? GenesisMetadata.toJSON(e) : undefined);
-    } else {
-      obj.client_metadata = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<IdentifiedGenesisMetadata>): IdentifiedGenesisMetadata {

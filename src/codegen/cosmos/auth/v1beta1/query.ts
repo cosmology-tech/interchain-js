@@ -1,86 +1,166 @@
-import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
-import { Any } from "../../../google/protobuf/any";
-import { Params } from "./auth";
+import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
+import { Any, AnySDKType } from "../../../google/protobuf/any";
+import { Params, ParamsSDKType } from "./auth";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, bytesFromBase64, base64FromBytes } from "@osmonauts/helpers";
-
+import { DeepPartial } from "@osmonauts/helpers";
 /**
  * QueryAccountsRequest is the request type for the Query/Accounts RPC method.
  * 
  * Since: cosmos-sdk 0.43
  */
+
 export interface QueryAccountsRequest {
   /** pagination defines an optional pagination for the request. */
   pagination?: PageRequest;
 }
+/**
+ * QueryAccountsRequest is the request type for the Query/Accounts RPC method.
+ * 
+ * Since: cosmos-sdk 0.43
+ */
 
+export interface QueryAccountsRequestSDKType {
+  /** pagination defines an optional pagination for the request. */
+  pagination?: PageRequestSDKType;
+}
 /**
  * QueryAccountsResponse is the response type for the Query/Accounts RPC method.
  * 
  * Since: cosmos-sdk 0.43
  */
+
 export interface QueryAccountsResponse {
   /** accounts are the existing accounts */
   accounts: Any[];
-
   /** pagination defines the pagination in the response. */
+
   pagination?: PageResponse;
 }
+/**
+ * QueryAccountsResponse is the response type for the Query/Accounts RPC method.
+ * 
+ * Since: cosmos-sdk 0.43
+ */
 
+export interface QueryAccountsResponseSDKType {
+  /** accounts are the existing accounts */
+  accounts: AnySDKType[];
+  /** pagination defines the pagination in the response. */
+
+  pagination?: PageResponseSDKType;
+}
 /** QueryAccountRequest is the request type for the Query/Account RPC method. */
+
 export interface QueryAccountRequest {
   /** address defines the address to query for. */
   address: string;
 }
+/** QueryAccountRequest is the request type for the Query/Account RPC method. */
 
+export interface QueryAccountRequestSDKType {
+  /** address defines the address to query for. */
+  address: string;
+}
 /** QueryModuleAccountsRequest is the request type for the Query/ModuleAccounts RPC method. */
-export interface QueryModuleAccountsRequest {}
 
+export interface QueryModuleAccountsRequest {}
+/** QueryModuleAccountsRequest is the request type for the Query/ModuleAccounts RPC method. */
+
+export interface QueryModuleAccountsRequestSDKType {}
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
+
 export interface QueryParamsResponse {
   /** params defines the parameters of the module. */
   params: Params;
 }
+/** QueryParamsResponse is the response type for the Query/Params RPC method. */
 
+export interface QueryParamsResponseSDKType {
+  /** params defines the parameters of the module. */
+  params: ParamsSDKType;
+}
 /** QueryAccountResponse is the response type for the Query/Account RPC method. */
+
 export interface QueryAccountResponse {
   /** account defines the account of the corresponding address. */
   account: Any;
 }
+/** QueryAccountResponse is the response type for the Query/Account RPC method. */
 
+export interface QueryAccountResponseSDKType {
+  /** account defines the account of the corresponding address. */
+  account: AnySDKType;
+}
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
-export interface QueryParamsRequest {}
 
+export interface QueryParamsRequest {}
+/** QueryParamsRequest is the request type for the Query/Params RPC method. */
+
+export interface QueryParamsRequestSDKType {}
 /** QueryModuleAccountsResponse is the response type for the Query/ModuleAccounts RPC method. */
+
 export interface QueryModuleAccountsResponse {
   accounts: Any[];
 }
+/** QueryModuleAccountsResponse is the response type for the Query/ModuleAccounts RPC method. */
 
+export interface QueryModuleAccountsResponseSDKType {
+  accounts: AnySDKType[];
+}
 /** Bech32PrefixRequest is the request type for Bech32Prefix rpc method */
-export interface Bech32PrefixRequest {}
 
+export interface Bech32PrefixRequest {}
+/** Bech32PrefixRequest is the request type for Bech32Prefix rpc method */
+
+export interface Bech32PrefixRequestSDKType {}
 /** Bech32PrefixResponse is the response type for Bech32Prefix rpc method */
+
 export interface Bech32PrefixResponse {
   bech32_prefix: string;
 }
+/** Bech32PrefixResponse is the response type for Bech32Prefix rpc method */
 
+export interface Bech32PrefixResponseSDKType {
+  bech32_prefix: string;
+}
 /** AddressBytesToStringRequest is the request type for AddressString rpc method */
+
 export interface AddressBytesToStringRequest {
   address_bytes: Uint8Array;
 }
+/** AddressBytesToStringRequest is the request type for AddressString rpc method */
 
+export interface AddressBytesToStringRequestSDKType {
+  address_bytes: Uint8Array;
+}
 /** AddressBytesToStringResponse is the response type for AddressString rpc method */
+
 export interface AddressBytesToStringResponse {
   address_string: string;
 }
+/** AddressBytesToStringResponse is the response type for AddressString rpc method */
 
+export interface AddressBytesToStringResponseSDKType {
+  address_string: string;
+}
 /** AddressStringToBytesRequest is the request type for AccountBytes rpc method */
+
 export interface AddressStringToBytesRequest {
   address_string: string;
 }
+/** AddressStringToBytesRequest is the request type for AccountBytes rpc method */
 
+export interface AddressStringToBytesRequestSDKType {
+  address_string: string;
+}
 /** AddressStringToBytesResponse is the response type for AddressBytes rpc method */
+
 export interface AddressStringToBytesResponse {
+  address_bytes: Uint8Array;
+}
+/** AddressStringToBytesResponse is the response type for AddressBytes rpc method */
+
+export interface AddressStringToBytesResponseSDKType {
   address_bytes: Uint8Array;
 }
 
@@ -121,18 +201,6 @@ export const QueryAccountsRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryAccountsRequest {
-    return {
-      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: QueryAccountsRequest): unknown {
-    const obj: any = {};
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryAccountsRequest>): QueryAccountsRequest {
     const message = createBaseQueryAccountsRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
@@ -161,7 +229,7 @@ export const QueryAccountsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAccountsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAccountsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAccountsResponse();
@@ -185,26 +253,6 @@ export const QueryAccountsResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): QueryAccountsResponse {
-    return {
-      accounts: Array.isArray(object?.accounts) ? object.accounts.map((e: any) => Any.fromJSON(e)) : [],
-      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: QueryAccountsResponse): unknown {
-    const obj: any = {};
-
-    if (message.accounts) {
-      obj.accounts = message.accounts.map(e => e ? Any.toJSON(e) : undefined);
-    } else {
-      obj.accounts = [];
-    }
-
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<QueryAccountsResponse>): QueryAccountsResponse {
@@ -253,18 +301,6 @@ export const QueryAccountRequest = {
     return message;
   },
 
-  fromJSON(object: any): QueryAccountRequest {
-    return {
-      address: isSet(object.address) ? String(object.address) : ""
-    };
-  },
-
-  toJSON(message: QueryAccountRequest): unknown {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = message.address);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<QueryAccountRequest>): QueryAccountRequest {
     const message = createBaseQueryAccountRequest();
     message.address = object.address ?? "";
@@ -300,15 +336,6 @@ export const QueryModuleAccountsRequest = {
     return message;
   },
 
-  fromJSON(_: any): QueryModuleAccountsRequest {
-    return {};
-  },
-
-  toJSON(_: QueryModuleAccountsRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<QueryModuleAccountsRequest>): QueryModuleAccountsRequest {
     const message = createBaseQueryModuleAccountsRequest();
     return message;
@@ -331,7 +358,7 @@ export const QueryParamsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryParamsResponse();
@@ -351,18 +378,6 @@ export const QueryParamsResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): QueryParamsResponse {
-    return {
-      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
-    };
-  },
-
-  toJSON(message: QueryParamsResponse): unknown {
-    const obj: any = {};
-    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse {
@@ -388,7 +403,7 @@ export const QueryAccountResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAccountResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAccountResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryAccountResponse();
@@ -408,18 +423,6 @@ export const QueryAccountResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): QueryAccountResponse {
-    return {
-      account: isSet(object.account) ? Any.fromJSON(object.account) : undefined
-    };
-  },
-
-  toJSON(message: QueryAccountResponse): unknown {
-    const obj: any = {};
-    message.account !== undefined && (obj.account = message.account ? Any.toJSON(message.account) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<QueryAccountResponse>): QueryAccountResponse {
@@ -457,15 +460,6 @@ export const QueryParamsRequest = {
     return message;
   },
 
-  fromJSON(_: any): QueryParamsRequest {
-    return {};
-  },
-
-  toJSON(_: QueryParamsRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest {
     const message = createBaseQueryParamsRequest();
     return message;
@@ -488,7 +482,7 @@ export const QueryModuleAccountsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): QueryModuleAccountsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryModuleAccountsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseQueryModuleAccountsResponse();
@@ -508,24 +502,6 @@ export const QueryModuleAccountsResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): QueryModuleAccountsResponse {
-    return {
-      accounts: Array.isArray(object?.accounts) ? object.accounts.map((e: any) => Any.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: QueryModuleAccountsResponse): unknown {
-    const obj: any = {};
-
-    if (message.accounts) {
-      obj.accounts = message.accounts.map(e => e ? Any.toJSON(e) : undefined);
-    } else {
-      obj.accounts = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<QueryModuleAccountsResponse>): QueryModuleAccountsResponse {
@@ -563,15 +539,6 @@ export const Bech32PrefixRequest = {
     return message;
   },
 
-  fromJSON(_: any): Bech32PrefixRequest {
-    return {};
-  },
-
-  toJSON(_: Bech32PrefixRequest): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<Bech32PrefixRequest>): Bech32PrefixRequest {
     const message = createBaseBech32PrefixRequest();
     return message;
@@ -594,7 +561,7 @@ export const Bech32PrefixResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): Bech32PrefixResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): Bech32PrefixResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseBech32PrefixResponse();
@@ -614,18 +581,6 @@ export const Bech32PrefixResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): Bech32PrefixResponse {
-    return {
-      bech32_prefix: isSet(object.bech32_prefix) ? String(object.bech32_prefix) : ""
-    };
-  },
-
-  toJSON(message: Bech32PrefixResponse): unknown {
-    const obj: any = {};
-    message.bech32_prefix !== undefined && (obj.bech32_prefix = message.bech32_prefix);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<Bech32PrefixResponse>): Bech32PrefixResponse {
@@ -673,18 +628,6 @@ export const AddressBytesToStringRequest = {
     return message;
   },
 
-  fromJSON(object: any): AddressBytesToStringRequest {
-    return {
-      address_bytes: isSet(object.address_bytes) ? bytesFromBase64(object.address_bytes) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: AddressBytesToStringRequest): unknown {
-    const obj: any = {};
-    message.address_bytes !== undefined && (obj.address_bytes = base64FromBytes(message.address_bytes !== undefined ? message.address_bytes : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<AddressBytesToStringRequest>): AddressBytesToStringRequest {
     const message = createBaseAddressBytesToStringRequest();
     message.address_bytes = object.address_bytes ?? new Uint8Array();
@@ -708,7 +651,7 @@ export const AddressBytesToStringResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): AddressBytesToStringResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): AddressBytesToStringResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAddressBytesToStringResponse();
@@ -728,18 +671,6 @@ export const AddressBytesToStringResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): AddressBytesToStringResponse {
-    return {
-      address_string: isSet(object.address_string) ? String(object.address_string) : ""
-    };
-  },
-
-  toJSON(message: AddressBytesToStringResponse): unknown {
-    const obj: any = {};
-    message.address_string !== undefined && (obj.address_string = message.address_string);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<AddressBytesToStringResponse>): AddressBytesToStringResponse {
@@ -787,18 +718,6 @@ export const AddressStringToBytesRequest = {
     return message;
   },
 
-  fromJSON(object: any): AddressStringToBytesRequest {
-    return {
-      address_string: isSet(object.address_string) ? String(object.address_string) : ""
-    };
-  },
-
-  toJSON(message: AddressStringToBytesRequest): unknown {
-    const obj: any = {};
-    message.address_string !== undefined && (obj.address_string = message.address_string);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<AddressStringToBytesRequest>): AddressStringToBytesRequest {
     const message = createBaseAddressStringToBytesRequest();
     message.address_string = object.address_string ?? "";
@@ -822,7 +741,7 @@ export const AddressStringToBytesResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): AddressStringToBytesResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): AddressStringToBytesResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAddressStringToBytesResponse();
@@ -842,18 +761,6 @@ export const AddressStringToBytesResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): AddressStringToBytesResponse {
-    return {
-      address_bytes: isSet(object.address_bytes) ? bytesFromBase64(object.address_bytes) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: AddressStringToBytesResponse): unknown {
-    const obj: any = {};
-    message.address_bytes !== undefined && (obj.address_bytes = base64FromBytes(message.address_bytes !== undefined ? message.address_bytes : new Uint8Array()));
-    return obj;
   },
 
   fromPartial(object: DeepPartial<AddressStringToBytesResponse>): AddressStringToBytesResponse {

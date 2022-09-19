@@ -1,8 +1,6 @@
-import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
-import { Grant, GrantAuthorization } from "./authz";
-import { LCDClient } from "@osmonauts/lcd";
 import { setPaginationParams } from "@osmonauts/helpers";
-import { QueryGrantsRequest, QueryGrantsResponse, QueryGranterGrantsRequest, QueryGranterGrantsResponse, QueryGranteeGrantsRequest, QueryGranteeGrantsResponse } from "./query";
+import { LCDClient } from "@osmonauts/lcd";
+import { QueryGrantsRequest, QueryGrantsResponseSDKType, QueryGranterGrantsRequest, QueryGranterGrantsResponseSDKType, QueryGranteeGrantsRequest, QueryGranteeGrantsResponseSDKType } from "./query";
 export class LCDQueryClient extends LCDClient {
   constructor({
     restEndpoint
@@ -13,9 +11,10 @@ export class LCDQueryClient extends LCDClient {
       restEndpoint
     });
   }
-
   /* Returns list of `Authorization`, granted to the grantee by the granter. */
-  async grants(params: QueryGrantsRequest): Promise<QueryGrantsResponse> {
+
+
+  async grants(params: QueryGrantsRequest): Promise<QueryGrantsResponseSDKType> {
     const options: any = {
       params: {}
     };
@@ -37,13 +36,14 @@ export class LCDQueryClient extends LCDClient {
     }
 
     const endpoint = `cosmos/authz/v1beta1/grants`;
-    return await this.request<QueryGrantsResponse>(endpoint, options);
+    return await this.get<QueryGrantsResponseSDKType>(endpoint, options);
   }
-
   /* GranterGrants returns list of `GrantAuthorization`, granted by granter.
   
   Since: cosmos-sdk 0.46 */
-  async granterGrants(params: QueryGranterGrantsRequest): Promise<QueryGranterGrantsResponse> {
+
+
+  async granterGrants(params: QueryGranterGrantsRequest): Promise<QueryGranterGrantsResponseSDKType> {
     const options: any = {
       params: {}
     };
@@ -53,13 +53,14 @@ export class LCDQueryClient extends LCDClient {
     }
 
     const endpoint = `cosmos/authz/v1beta1/grants/granter/${params.granter}`;
-    return await this.request<QueryGranterGrantsResponse>(endpoint, options);
+    return await this.get<QueryGranterGrantsResponseSDKType>(endpoint, options);
   }
-
   /* GranteeGrants returns a list of `GrantAuthorization` by grantee.
   
   Since: cosmos-sdk 0.46 */
-  async granteeGrants(params: QueryGranteeGrantsRequest): Promise<QueryGranteeGrantsResponse> {
+
+
+  async granteeGrants(params: QueryGranteeGrantsRequest): Promise<QueryGranteeGrantsResponseSDKType> {
     const options: any = {
       params: {}
     };
@@ -69,7 +70,7 @@ export class LCDQueryClient extends LCDClient {
     }
 
     const endpoint = `cosmos/authz/v1beta1/grants/grantee/${params.grantee}`;
-    return await this.request<QueryGranteeGrantsResponse>(endpoint, options);
+    return await this.get<QueryGranteeGrantsResponseSDKType>(endpoint, options);
   }
 
 }

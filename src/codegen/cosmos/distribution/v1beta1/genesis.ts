@@ -1,124 +1,242 @@
-import { DecCoin } from "../../base/v1beta1/coin";
-import { ValidatorAccumulatedCommission, ValidatorHistoricalRewards, ValidatorCurrentRewards, DelegatorStartingInfo, ValidatorSlashEvent, Params, FeePool } from "./distribution";
+import { DecCoin, DecCoinSDKType } from "../../base/v1beta1/coin";
+import { ValidatorAccumulatedCommission, ValidatorAccumulatedCommissionSDKType, ValidatorHistoricalRewards, ValidatorHistoricalRewardsSDKType, ValidatorCurrentRewards, ValidatorCurrentRewardsSDKType, DelegatorStartingInfo, DelegatorStartingInfoSDKType, ValidatorSlashEvent, ValidatorSlashEventSDKType, Params, ParamsSDKType, FeePool, FeePoolSDKType } from "./distribution";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, Long } from "@osmonauts/helpers";
-
+import { DeepPartial, Long } from "@osmonauts/helpers";
 /**
  * DelegatorWithdrawInfo is the address for where distributions rewards are
  * withdrawn to by default this struct is only used at genesis to feed in
  * default withdraw addresses.
  */
+
 export interface DelegatorWithdrawInfo {
   /** delegator_address is the address of the delegator. */
   delegator_address: string;
-
   /** withdraw_address is the address to withdraw the delegation rewards to. */
+
   withdraw_address: string;
 }
+/**
+ * DelegatorWithdrawInfo is the address for where distributions rewards are
+ * withdrawn to by default this struct is only used at genesis to feed in
+ * default withdraw addresses.
+ */
 
+export interface DelegatorWithdrawInfoSDKType {
+  /** delegator_address is the address of the delegator. */
+  delegator_address: string;
+  /** withdraw_address is the address to withdraw the delegation rewards to. */
+
+  withdraw_address: string;
+}
 /** ValidatorOutstandingRewardsRecord is used for import/export via genesis json. */
+
 export interface ValidatorOutstandingRewardsRecord {
   /** validator_address is the address of the validator. */
   validator_address: string;
-
   /** outstanding_rewards represents the oustanding rewards of a validator. */
+
   outstanding_rewards: DecCoin[];
 }
+/** ValidatorOutstandingRewardsRecord is used for import/export via genesis json. */
 
+export interface ValidatorOutstandingRewardsRecordSDKType {
+  /** validator_address is the address of the validator. */
+  validator_address: string;
+  /** outstanding_rewards represents the oustanding rewards of a validator. */
+
+  outstanding_rewards: DecCoinSDKType[];
+}
 /**
  * ValidatorAccumulatedCommissionRecord is used for import / export via genesis
  * json.
  */
+
 export interface ValidatorAccumulatedCommissionRecord {
   /** validator_address is the address of the validator. */
   validator_address: string;
-
   /** accumulated is the accumulated commission of a validator. */
+
   accumulated: ValidatorAccumulatedCommission;
 }
+/**
+ * ValidatorAccumulatedCommissionRecord is used for import / export via genesis
+ * json.
+ */
 
+export interface ValidatorAccumulatedCommissionRecordSDKType {
+  /** validator_address is the address of the validator. */
+  validator_address: string;
+  /** accumulated is the accumulated commission of a validator. */
+
+  accumulated: ValidatorAccumulatedCommissionSDKType;
+}
 /**
  * ValidatorHistoricalRewardsRecord is used for import / export via genesis
  * json.
  */
+
 export interface ValidatorHistoricalRewardsRecord {
   /** validator_address is the address of the validator. */
   validator_address: string;
-
   /** period defines the period the historical rewards apply to. */
-  period: Long;
 
+  period: Long;
   /** rewards defines the historical rewards of a validator. */
+
   rewards: ValidatorHistoricalRewards;
 }
+/**
+ * ValidatorHistoricalRewardsRecord is used for import / export via genesis
+ * json.
+ */
 
+export interface ValidatorHistoricalRewardsRecordSDKType {
+  /** validator_address is the address of the validator. */
+  validator_address: string;
+  /** period defines the period the historical rewards apply to. */
+
+  period: Long;
+  /** rewards defines the historical rewards of a validator. */
+
+  rewards: ValidatorHistoricalRewardsSDKType;
+}
 /** ValidatorCurrentRewardsRecord is used for import / export via genesis json. */
+
 export interface ValidatorCurrentRewardsRecord {
   /** validator_address is the address of the validator. */
   validator_address: string;
-
   /** rewards defines the current rewards of a validator. */
+
   rewards: ValidatorCurrentRewards;
 }
+/** ValidatorCurrentRewardsRecord is used for import / export via genesis json. */
 
+export interface ValidatorCurrentRewardsRecordSDKType {
+  /** validator_address is the address of the validator. */
+  validator_address: string;
+  /** rewards defines the current rewards of a validator. */
+
+  rewards: ValidatorCurrentRewardsSDKType;
+}
 /** DelegatorStartingInfoRecord used for import / export via genesis json. */
+
 export interface DelegatorStartingInfoRecord {
   /** delegator_address is the address of the delegator. */
   delegator_address: string;
-
   /** validator_address is the address of the validator. */
-  validator_address: string;
 
+  validator_address: string;
   /** starting_info defines the starting info of a delegator. */
+
   starting_info: DelegatorStartingInfo;
 }
+/** DelegatorStartingInfoRecord used for import / export via genesis json. */
 
+export interface DelegatorStartingInfoRecordSDKType {
+  /** delegator_address is the address of the delegator. */
+  delegator_address: string;
+  /** validator_address is the address of the validator. */
+
+  validator_address: string;
+  /** starting_info defines the starting info of a delegator. */
+
+  starting_info: DelegatorStartingInfoSDKType;
+}
 /** ValidatorSlashEventRecord is used for import / export via genesis json. */
+
 export interface ValidatorSlashEventRecord {
   /** validator_address is the address of the validator. */
   validator_address: string;
-
   /** height defines the block height at which the slash event occured. */
+
   height: Long;
-
   /** period is the period of the slash event. */
-  period: Long;
 
+  period: Long;
   /** validator_slash_event describes the slash event. */
+
   validator_slash_event: ValidatorSlashEvent;
 }
+/** ValidatorSlashEventRecord is used for import / export via genesis json. */
 
+export interface ValidatorSlashEventRecordSDKType {
+  /** validator_address is the address of the validator. */
+  validator_address: string;
+  /** height defines the block height at which the slash event occured. */
+
+  height: Long;
+  /** period is the period of the slash event. */
+
+  period: Long;
+  /** validator_slash_event describes the slash event. */
+
+  validator_slash_event: ValidatorSlashEventSDKType;
+}
 /** GenesisState defines the distribution module's genesis state. */
+
 export interface GenesisState {
   /** params defines all the paramaters of the module. */
   params: Params;
-
   /** fee_pool defines the fee pool at genesis. */
+
   fee_pool: FeePool;
-
   /** fee_pool defines the delegator withdraw infos at genesis. */
+
   delegator_withdraw_infos: DelegatorWithdrawInfo[];
-
   /** fee_pool defines the previous proposer at genesis. */
+
   previous_proposer: string;
-
   /** fee_pool defines the outstanding rewards of all validators at genesis. */
+
   outstanding_rewards: ValidatorOutstandingRewardsRecord[];
-
   /** fee_pool defines the accumulated commisions of all validators at genesis. */
+
   validator_accumulated_commissions: ValidatorAccumulatedCommissionRecord[];
-
   /** fee_pool defines the historical rewards of all validators at genesis. */
+
   validator_historical_rewards: ValidatorHistoricalRewardsRecord[];
-
   /** fee_pool defines the current rewards of all validators at genesis. */
+
   validator_current_rewards: ValidatorCurrentRewardsRecord[];
-
   /** fee_pool defines the delegator starting infos at genesis. */
-  delegator_starting_infos: DelegatorStartingInfoRecord[];
 
+  delegator_starting_infos: DelegatorStartingInfoRecord[];
   /** fee_pool defines the validator slash events at genesis. */
+
   validator_slash_events: ValidatorSlashEventRecord[];
+}
+/** GenesisState defines the distribution module's genesis state. */
+
+export interface GenesisStateSDKType {
+  /** params defines all the paramaters of the module. */
+  params: ParamsSDKType;
+  /** fee_pool defines the fee pool at genesis. */
+
+  fee_pool: FeePoolSDKType;
+  /** fee_pool defines the delegator withdraw infos at genesis. */
+
+  delegator_withdraw_infos: DelegatorWithdrawInfoSDKType[];
+  /** fee_pool defines the previous proposer at genesis. */
+
+  previous_proposer: string;
+  /** fee_pool defines the outstanding rewards of all validators at genesis. */
+
+  outstanding_rewards: ValidatorOutstandingRewardsRecordSDKType[];
+  /** fee_pool defines the accumulated commisions of all validators at genesis. */
+
+  validator_accumulated_commissions: ValidatorAccumulatedCommissionRecordSDKType[];
+  /** fee_pool defines the historical rewards of all validators at genesis. */
+
+  validator_historical_rewards: ValidatorHistoricalRewardsRecordSDKType[];
+  /** fee_pool defines the current rewards of all validators at genesis. */
+
+  validator_current_rewards: ValidatorCurrentRewardsRecordSDKType[];
+  /** fee_pool defines the delegator starting infos at genesis. */
+
+  delegator_starting_infos: DelegatorStartingInfoRecordSDKType[];
+  /** fee_pool defines the validator slash events at genesis. */
+
+  validator_slash_events: ValidatorSlashEventRecordSDKType[];
 }
 
 function createBaseDelegatorWithdrawInfo(): DelegatorWithdrawInfo {
@@ -165,20 +283,6 @@ export const DelegatorWithdrawInfo = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): DelegatorWithdrawInfo {
-    return {
-      delegator_address: isSet(object.delegator_address) ? String(object.delegator_address) : "",
-      withdraw_address: isSet(object.withdraw_address) ? String(object.withdraw_address) : ""
-    };
-  },
-
-  toJSON(message: DelegatorWithdrawInfo): unknown {
-    const obj: any = {};
-    message.delegator_address !== undefined && (obj.delegator_address = message.delegator_address);
-    message.withdraw_address !== undefined && (obj.withdraw_address = message.withdraw_address);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<DelegatorWithdrawInfo>): DelegatorWithdrawInfo {
@@ -236,26 +340,6 @@ export const ValidatorOutstandingRewardsRecord = {
     return message;
   },
 
-  fromJSON(object: any): ValidatorOutstandingRewardsRecord {
-    return {
-      validator_address: isSet(object.validator_address) ? String(object.validator_address) : "",
-      outstanding_rewards: Array.isArray(object?.outstanding_rewards) ? object.outstanding_rewards.map((e: any) => DecCoin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: ValidatorOutstandingRewardsRecord): unknown {
-    const obj: any = {};
-    message.validator_address !== undefined && (obj.validator_address = message.validator_address);
-
-    if (message.outstanding_rewards) {
-      obj.outstanding_rewards = message.outstanding_rewards.map(e => e ? DecCoin.toJSON(e) : undefined);
-    } else {
-      obj.outstanding_rewards = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ValidatorOutstandingRewardsRecord>): ValidatorOutstandingRewardsRecord {
     const message = createBaseValidatorOutstandingRewardsRecord();
     message.validator_address = object.validator_address ?? "";
@@ -309,20 +393,6 @@ export const ValidatorAccumulatedCommissionRecord = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): ValidatorAccumulatedCommissionRecord {
-    return {
-      validator_address: isSet(object.validator_address) ? String(object.validator_address) : "",
-      accumulated: isSet(object.accumulated) ? ValidatorAccumulatedCommission.fromJSON(object.accumulated) : undefined
-    };
-  },
-
-  toJSON(message: ValidatorAccumulatedCommissionRecord): unknown {
-    const obj: any = {};
-    message.validator_address !== undefined && (obj.validator_address = message.validator_address);
-    message.accumulated !== undefined && (obj.accumulated = message.accumulated ? ValidatorAccumulatedCommission.toJSON(message.accumulated) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<ValidatorAccumulatedCommissionRecord>): ValidatorAccumulatedCommissionRecord {
@@ -389,22 +459,6 @@ export const ValidatorHistoricalRewardsRecord = {
     return message;
   },
 
-  fromJSON(object: any): ValidatorHistoricalRewardsRecord {
-    return {
-      validator_address: isSet(object.validator_address) ? String(object.validator_address) : "",
-      period: isSet(object.period) ? Long.fromString(object.period) : Long.UZERO,
-      rewards: isSet(object.rewards) ? ValidatorHistoricalRewards.fromJSON(object.rewards) : undefined
-    };
-  },
-
-  toJSON(message: ValidatorHistoricalRewardsRecord): unknown {
-    const obj: any = {};
-    message.validator_address !== undefined && (obj.validator_address = message.validator_address);
-    message.period !== undefined && (obj.period = (message.period || Long.UZERO).toString());
-    message.rewards !== undefined && (obj.rewards = message.rewards ? ValidatorHistoricalRewards.toJSON(message.rewards) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ValidatorHistoricalRewardsRecord>): ValidatorHistoricalRewardsRecord {
     const message = createBaseValidatorHistoricalRewardsRecord();
     message.validator_address = object.validator_address ?? "";
@@ -459,20 +513,6 @@ export const ValidatorCurrentRewardsRecord = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): ValidatorCurrentRewardsRecord {
-    return {
-      validator_address: isSet(object.validator_address) ? String(object.validator_address) : "",
-      rewards: isSet(object.rewards) ? ValidatorCurrentRewards.fromJSON(object.rewards) : undefined
-    };
-  },
-
-  toJSON(message: ValidatorCurrentRewardsRecord): unknown {
-    const obj: any = {};
-    message.validator_address !== undefined && (obj.validator_address = message.validator_address);
-    message.rewards !== undefined && (obj.rewards = message.rewards ? ValidatorCurrentRewards.toJSON(message.rewards) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<ValidatorCurrentRewardsRecord>): ValidatorCurrentRewardsRecord {
@@ -537,22 +577,6 @@ export const DelegatorStartingInfoRecord = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): DelegatorStartingInfoRecord {
-    return {
-      delegator_address: isSet(object.delegator_address) ? String(object.delegator_address) : "",
-      validator_address: isSet(object.validator_address) ? String(object.validator_address) : "",
-      starting_info: isSet(object.starting_info) ? DelegatorStartingInfo.fromJSON(object.starting_info) : undefined
-    };
-  },
-
-  toJSON(message: DelegatorStartingInfoRecord): unknown {
-    const obj: any = {};
-    message.delegator_address !== undefined && (obj.delegator_address = message.delegator_address);
-    message.validator_address !== undefined && (obj.validator_address = message.validator_address);
-    message.starting_info !== undefined && (obj.starting_info = message.starting_info ? DelegatorStartingInfo.toJSON(message.starting_info) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<DelegatorStartingInfoRecord>): DelegatorStartingInfoRecord {
@@ -627,24 +651,6 @@ export const ValidatorSlashEventRecord = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): ValidatorSlashEventRecord {
-    return {
-      validator_address: isSet(object.validator_address) ? String(object.validator_address) : "",
-      height: isSet(object.height) ? Long.fromString(object.height) : Long.UZERO,
-      period: isSet(object.period) ? Long.fromString(object.period) : Long.UZERO,
-      validator_slash_event: isSet(object.validator_slash_event) ? ValidatorSlashEvent.fromJSON(object.validator_slash_event) : undefined
-    };
-  },
-
-  toJSON(message: ValidatorSlashEventRecord): unknown {
-    const obj: any = {};
-    message.validator_address !== undefined && (obj.validator_address = message.validator_address);
-    message.height !== undefined && (obj.height = (message.height || Long.UZERO).toString());
-    message.period !== undefined && (obj.period = (message.period || Long.UZERO).toString());
-    message.validator_slash_event !== undefined && (obj.validator_slash_event = message.validator_slash_event ? ValidatorSlashEvent.toJSON(message.validator_slash_event) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<ValidatorSlashEventRecord>): ValidatorSlashEventRecord {
@@ -774,73 +780,6 @@ export const GenesisState = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): GenesisState {
-    return {
-      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
-      fee_pool: isSet(object.fee_pool) ? FeePool.fromJSON(object.fee_pool) : undefined,
-      delegator_withdraw_infos: Array.isArray(object?.delegator_withdraw_infos) ? object.delegator_withdraw_infos.map((e: any) => DelegatorWithdrawInfo.fromJSON(e)) : [],
-      previous_proposer: isSet(object.previous_proposer) ? String(object.previous_proposer) : "",
-      outstanding_rewards: Array.isArray(object?.outstanding_rewards) ? object.outstanding_rewards.map((e: any) => ValidatorOutstandingRewardsRecord.fromJSON(e)) : [],
-      validator_accumulated_commissions: Array.isArray(object?.validator_accumulated_commissions) ? object.validator_accumulated_commissions.map((e: any) => ValidatorAccumulatedCommissionRecord.fromJSON(e)) : [],
-      validator_historical_rewards: Array.isArray(object?.validator_historical_rewards) ? object.validator_historical_rewards.map((e: any) => ValidatorHistoricalRewardsRecord.fromJSON(e)) : [],
-      validator_current_rewards: Array.isArray(object?.validator_current_rewards) ? object.validator_current_rewards.map((e: any) => ValidatorCurrentRewardsRecord.fromJSON(e)) : [],
-      delegator_starting_infos: Array.isArray(object?.delegator_starting_infos) ? object.delegator_starting_infos.map((e: any) => DelegatorStartingInfoRecord.fromJSON(e)) : [],
-      validator_slash_events: Array.isArray(object?.validator_slash_events) ? object.validator_slash_events.map((e: any) => ValidatorSlashEventRecord.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: GenesisState): unknown {
-    const obj: any = {};
-    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
-    message.fee_pool !== undefined && (obj.fee_pool = message.fee_pool ? FeePool.toJSON(message.fee_pool) : undefined);
-
-    if (message.delegator_withdraw_infos) {
-      obj.delegator_withdraw_infos = message.delegator_withdraw_infos.map(e => e ? DelegatorWithdrawInfo.toJSON(e) : undefined);
-    } else {
-      obj.delegator_withdraw_infos = [];
-    }
-
-    message.previous_proposer !== undefined && (obj.previous_proposer = message.previous_proposer);
-
-    if (message.outstanding_rewards) {
-      obj.outstanding_rewards = message.outstanding_rewards.map(e => e ? ValidatorOutstandingRewardsRecord.toJSON(e) : undefined);
-    } else {
-      obj.outstanding_rewards = [];
-    }
-
-    if (message.validator_accumulated_commissions) {
-      obj.validator_accumulated_commissions = message.validator_accumulated_commissions.map(e => e ? ValidatorAccumulatedCommissionRecord.toJSON(e) : undefined);
-    } else {
-      obj.validator_accumulated_commissions = [];
-    }
-
-    if (message.validator_historical_rewards) {
-      obj.validator_historical_rewards = message.validator_historical_rewards.map(e => e ? ValidatorHistoricalRewardsRecord.toJSON(e) : undefined);
-    } else {
-      obj.validator_historical_rewards = [];
-    }
-
-    if (message.validator_current_rewards) {
-      obj.validator_current_rewards = message.validator_current_rewards.map(e => e ? ValidatorCurrentRewardsRecord.toJSON(e) : undefined);
-    } else {
-      obj.validator_current_rewards = [];
-    }
-
-    if (message.delegator_starting_infos) {
-      obj.delegator_starting_infos = message.delegator_starting_infos.map(e => e ? DelegatorStartingInfoRecord.toJSON(e) : undefined);
-    } else {
-      obj.delegator_starting_infos = [];
-    }
-
-    if (message.validator_slash_events) {
-      obj.validator_slash_events = message.validator_slash_events.map(e => e ? ValidatorSlashEventRecord.toJSON(e) : undefined);
-    } else {
-      obj.validator_slash_events = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<GenesisState>): GenesisState {

@@ -1,14 +1,51 @@
-import { Any } from "../../../../google/protobuf/any";
-import { ConnectionEnd } from "../../../core/connection/v1/connection";
-import { Channel } from "../../../core/channel/v1/channel";
+import { Any, AnySDKType } from "../../../../google/protobuf/any";
+import { ConnectionEnd, ConnectionEndSDKType } from "../../../core/connection/v1/connection";
+import { Channel, ChannelSDKType } from "../../../core/channel/v1/channel";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, DeepPartial, bytesFromBase64, base64FromBytes } from "@osmonauts/helpers";
-
+import { Long, DeepPartial } from "@osmonauts/helpers";
 /**
  * DataType defines the type of solo machine proof being created. This is done
  * to preserve uniqueness of different data sign byte encodings.
  */
+
 export enum DataType {
+  /** DATA_TYPE_UNINITIALIZED_UNSPECIFIED - Default State */
+  DATA_TYPE_UNINITIALIZED_UNSPECIFIED = 0,
+
+  /** DATA_TYPE_CLIENT_STATE - Data type for client state verification */
+  DATA_TYPE_CLIENT_STATE = 1,
+
+  /** DATA_TYPE_CONSENSUS_STATE - Data type for consensus state verification */
+  DATA_TYPE_CONSENSUS_STATE = 2,
+
+  /** DATA_TYPE_CONNECTION_STATE - Data type for connection state verification */
+  DATA_TYPE_CONNECTION_STATE = 3,
+
+  /** DATA_TYPE_CHANNEL_STATE - Data type for channel state verification */
+  DATA_TYPE_CHANNEL_STATE = 4,
+
+  /** DATA_TYPE_PACKET_COMMITMENT - Data type for packet commitment verification */
+  DATA_TYPE_PACKET_COMMITMENT = 5,
+
+  /** DATA_TYPE_PACKET_ACKNOWLEDGEMENT - Data type for packet acknowledgement verification */
+  DATA_TYPE_PACKET_ACKNOWLEDGEMENT = 6,
+
+  /** DATA_TYPE_PACKET_RECEIPT_ABSENCE - Data type for packet receipt absence verification */
+  DATA_TYPE_PACKET_RECEIPT_ABSENCE = 7,
+
+  /** DATA_TYPE_NEXT_SEQUENCE_RECV - Data type for next sequence recv verification */
+  DATA_TYPE_NEXT_SEQUENCE_RECV = 8,
+
+  /** DATA_TYPE_HEADER - Data type for header verification */
+  DATA_TYPE_HEADER = 9,
+  UNRECOGNIZED = -1,
+}
+/**
+ * DataType defines the type of solo machine proof being created. This is done
+ * to preserve uniqueness of different data sign byte encodings.
+ */
+
+export enum DataTypeSDKType {
   /** DATA_TYPE_UNINITIALIZED_UNSPECIFIED - Default State */
   DATA_TYPE_UNINITIALIZED_UNSPECIFIED = 0,
 
@@ -124,45 +161,82 @@ export function dataTypeToJSON(object: DataType): string {
       return "UNKNOWN";
   }
 }
-
 /**
  * ClientState defines a solo machine client that tracks the current consensus
  * state and if the client is frozen.
  */
+
 export interface ClientState {
   /** latest sequence of the client state */
   sequence: Long;
-
   /** frozen sequence of the solo machine */
+
   frozen_sequence: Long;
   consensus_state: ConsensusState;
-
   /**
    * when set to true, will allow governance to update a solo machine client.
    * The client will be unfrozen if it is frozen.
    */
+
   allow_update_after_proposal: boolean;
 }
+/**
+ * ClientState defines a solo machine client that tracks the current consensus
+ * state and if the client is frozen.
+ */
 
+export interface ClientStateSDKType {
+  /** latest sequence of the client state */
+  sequence: Long;
+  /** frozen sequence of the solo machine */
+
+  frozen_sequence: Long;
+  consensus_state: ConsensusStateSDKType;
+  /**
+   * when set to true, will allow governance to update a solo machine client.
+   * The client will be unfrozen if it is frozen.
+   */
+
+  allow_update_after_proposal: boolean;
+}
 /**
  * ConsensusState defines a solo machine consensus state. The sequence of a
  * consensus state is contained in the "height" key used in storing the
  * consensus state.
  */
+
 export interface ConsensusState {
   /** public key of the solo machine */
   public_key: Any;
-
   /**
    * diversifier allows the same public key to be re-used across different solo
    * machine clients (potentially on different chains) without being considered
    * misbehaviour.
    */
+
   diversifier: string;
   timestamp: Long;
 }
+/**
+ * ConsensusState defines a solo machine consensus state. The sequence of a
+ * consensus state is contained in the "height" key used in storing the
+ * consensus state.
+ */
 
+export interface ConsensusStateSDKType {
+  /** public key of the solo machine */
+  public_key: AnySDKType;
+  /**
+   * diversifier allows the same public key to be re-used across different solo
+   * machine clients (potentially on different chains) without being considered
+   * misbehaviour.
+   */
+
+  diversifier: string;
+  timestamp: Long;
+}
 /** Header defines a solo machine consensus header */
+
 export interface Header {
   /** sequence to update solo machine public key at */
   sequence: Long;
@@ -171,124 +245,255 @@ export interface Header {
   new_public_key: Any;
   new_diversifier: string;
 }
+/** Header defines a solo machine consensus header */
 
+export interface HeaderSDKType {
+  /** sequence to update solo machine public key at */
+  sequence: Long;
+  timestamp: Long;
+  signature: Uint8Array;
+  new_public_key: AnySDKType;
+  new_diversifier: string;
+}
 /**
  * Misbehaviour defines misbehaviour for a solo machine which consists
  * of a sequence and two signatures over different messages at that sequence.
  */
+
 export interface Misbehaviour {
   client_id: string;
   sequence: Long;
   signature_one: SignatureAndData;
   signature_two: SignatureAndData;
 }
+/**
+ * Misbehaviour defines misbehaviour for a solo machine which consists
+ * of a sequence and two signatures over different messages at that sequence.
+ */
 
+export interface MisbehaviourSDKType {
+  client_id: string;
+  sequence: Long;
+  signature_one: SignatureAndDataSDKType;
+  signature_two: SignatureAndDataSDKType;
+}
 /**
  * SignatureAndData contains a signature and the data signed over to create that
  * signature.
  */
+
 export interface SignatureAndData {
   signature: Uint8Array;
   data_type: DataType;
   data: Uint8Array;
   timestamp: Long;
 }
+/**
+ * SignatureAndData contains a signature and the data signed over to create that
+ * signature.
+ */
 
+export interface SignatureAndDataSDKType {
+  signature: Uint8Array;
+  data_type: DataTypeSDKType;
+  data: Uint8Array;
+  timestamp: Long;
+}
 /**
  * TimestampedSignatureData contains the signature data and the timestamp of the
  * signature.
  */
+
 export interface TimestampedSignatureData {
   signature_data: Uint8Array;
   timestamp: Long;
 }
+/**
+ * TimestampedSignatureData contains the signature data and the timestamp of the
+ * signature.
+ */
 
+export interface TimestampedSignatureDataSDKType {
+  signature_data: Uint8Array;
+  timestamp: Long;
+}
 /** SignBytes defines the signed bytes used for signature verification. */
+
 export interface SignBytes {
   sequence: Long;
   timestamp: Long;
   diversifier: string;
-
   /** type of the data used */
-  data_type: DataType;
 
+  data_type: DataType;
   /** marshaled data */
+
   data: Uint8Array;
 }
+/** SignBytes defines the signed bytes used for signature verification. */
 
+export interface SignBytesSDKType {
+  sequence: Long;
+  timestamp: Long;
+  diversifier: string;
+  /** type of the data used */
+
+  data_type: DataTypeSDKType;
+  /** marshaled data */
+
+  data: Uint8Array;
+}
 /** HeaderData returns the SignBytes data for update verification. */
+
 export interface HeaderData {
   /** header public key */
   new_pub_key: Any;
-
   /** header diversifier */
+
   new_diversifier: string;
 }
+/** HeaderData returns the SignBytes data for update verification. */
 
+export interface HeaderDataSDKType {
+  /** header public key */
+  new_pub_key: AnySDKType;
+  /** header diversifier */
+
+  new_diversifier: string;
+}
 /** ClientStateData returns the SignBytes data for client state verification. */
+
 export interface ClientStateData {
   path: Uint8Array;
   client_state: Any;
 }
+/** ClientStateData returns the SignBytes data for client state verification. */
 
+export interface ClientStateDataSDKType {
+  path: Uint8Array;
+  client_state: AnySDKType;
+}
 /**
  * ConsensusStateData returns the SignBytes data for consensus state
  * verification.
  */
+
 export interface ConsensusStateData {
   path: Uint8Array;
   consensus_state: Any;
 }
+/**
+ * ConsensusStateData returns the SignBytes data for consensus state
+ * verification.
+ */
 
+export interface ConsensusStateDataSDKType {
+  path: Uint8Array;
+  consensus_state: AnySDKType;
+}
 /**
  * ConnectionStateData returns the SignBytes data for connection state
  * verification.
  */
+
 export interface ConnectionStateData {
   path: Uint8Array;
   connection: ConnectionEnd;
 }
+/**
+ * ConnectionStateData returns the SignBytes data for connection state
+ * verification.
+ */
 
+export interface ConnectionStateDataSDKType {
+  path: Uint8Array;
+  connection: ConnectionEndSDKType;
+}
 /**
  * ChannelStateData returns the SignBytes data for channel state
  * verification.
  */
+
 export interface ChannelStateData {
   path: Uint8Array;
   channel: Channel;
 }
+/**
+ * ChannelStateData returns the SignBytes data for channel state
+ * verification.
+ */
 
+export interface ChannelStateDataSDKType {
+  path: Uint8Array;
+  channel: ChannelSDKType;
+}
 /**
  * PacketCommitmentData returns the SignBytes data for packet commitment
  * verification.
  */
+
 export interface PacketCommitmentData {
   path: Uint8Array;
   commitment: Uint8Array;
 }
+/**
+ * PacketCommitmentData returns the SignBytes data for packet commitment
+ * verification.
+ */
 
+export interface PacketCommitmentDataSDKType {
+  path: Uint8Array;
+  commitment: Uint8Array;
+}
 /**
  * PacketAcknowledgementData returns the SignBytes data for acknowledgement
  * verification.
  */
+
 export interface PacketAcknowledgementData {
   path: Uint8Array;
   acknowledgement: Uint8Array;
 }
+/**
+ * PacketAcknowledgementData returns the SignBytes data for acknowledgement
+ * verification.
+ */
 
+export interface PacketAcknowledgementDataSDKType {
+  path: Uint8Array;
+  acknowledgement: Uint8Array;
+}
 /**
  * PacketReceiptAbsenceData returns the SignBytes data for
  * packet receipt absence verification.
  */
+
 export interface PacketReceiptAbsenceData {
   path: Uint8Array;
 }
+/**
+ * PacketReceiptAbsenceData returns the SignBytes data for
+ * packet receipt absence verification.
+ */
 
+export interface PacketReceiptAbsenceDataSDKType {
+  path: Uint8Array;
+}
 /**
  * NextSequenceRecvData returns the SignBytes data for verification of the next
  * sequence to be received.
  */
+
 export interface NextSequenceRecvData {
+  path: Uint8Array;
+  next_seq_recv: Long;
+}
+/**
+ * NextSequenceRecvData returns the SignBytes data for verification of the next
+ * sequence to be received.
+ */
+
+export interface NextSequenceRecvDataSDKType {
   path: Uint8Array;
   next_seq_recv: Long;
 }
@@ -357,24 +562,6 @@ export const ClientState = {
     return message;
   },
 
-  fromJSON(object: any): ClientState {
-    return {
-      sequence: isSet(object.sequence) ? Long.fromString(object.sequence) : Long.UZERO,
-      frozen_sequence: isSet(object.frozen_sequence) ? Long.fromString(object.frozen_sequence) : Long.UZERO,
-      consensus_state: isSet(object.consensus_state) ? ConsensusState.fromJSON(object.consensus_state) : undefined,
-      allow_update_after_proposal: isSet(object.allow_update_after_proposal) ? Boolean(object.allow_update_after_proposal) : false
-    };
-  },
-
-  toJSON(message: ClientState): unknown {
-    const obj: any = {};
-    message.sequence !== undefined && (obj.sequence = (message.sequence || Long.UZERO).toString());
-    message.frozen_sequence !== undefined && (obj.frozen_sequence = (message.frozen_sequence || Long.UZERO).toString());
-    message.consensus_state !== undefined && (obj.consensus_state = message.consensus_state ? ConsensusState.toJSON(message.consensus_state) : undefined);
-    message.allow_update_after_proposal !== undefined && (obj.allow_update_after_proposal = message.allow_update_after_proposal);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ClientState>): ClientState {
     const message = createBaseClientState();
     message.sequence = object.sequence !== undefined && object.sequence !== null ? Long.fromValue(object.sequence) : Long.UZERO;
@@ -439,22 +626,6 @@ export const ConsensusState = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): ConsensusState {
-    return {
-      public_key: isSet(object.public_key) ? Any.fromJSON(object.public_key) : undefined,
-      diversifier: isSet(object.diversifier) ? String(object.diversifier) : "",
-      timestamp: isSet(object.timestamp) ? Long.fromString(object.timestamp) : Long.UZERO
-    };
-  },
-
-  toJSON(message: ConsensusState): unknown {
-    const obj: any = {};
-    message.public_key !== undefined && (obj.public_key = message.public_key ? Any.toJSON(message.public_key) : undefined);
-    message.diversifier !== undefined && (obj.diversifier = message.diversifier);
-    message.timestamp !== undefined && (obj.timestamp = (message.timestamp || Long.UZERO).toString());
-    return obj;
   },
 
   fromPartial(object: DeepPartial<ConsensusState>): ConsensusState {
@@ -540,26 +711,6 @@ export const Header = {
     return message;
   },
 
-  fromJSON(object: any): Header {
-    return {
-      sequence: isSet(object.sequence) ? Long.fromString(object.sequence) : Long.UZERO,
-      timestamp: isSet(object.timestamp) ? Long.fromString(object.timestamp) : Long.UZERO,
-      signature: isSet(object.signature) ? bytesFromBase64(object.signature) : new Uint8Array(),
-      new_public_key: isSet(object.new_public_key) ? Any.fromJSON(object.new_public_key) : undefined,
-      new_diversifier: isSet(object.new_diversifier) ? String(object.new_diversifier) : ""
-    };
-  },
-
-  toJSON(message: Header): unknown {
-    const obj: any = {};
-    message.sequence !== undefined && (obj.sequence = (message.sequence || Long.UZERO).toString());
-    message.timestamp !== undefined && (obj.timestamp = (message.timestamp || Long.UZERO).toString());
-    message.signature !== undefined && (obj.signature = base64FromBytes(message.signature !== undefined ? message.signature : new Uint8Array()));
-    message.new_public_key !== undefined && (obj.new_public_key = message.new_public_key ? Any.toJSON(message.new_public_key) : undefined);
-    message.new_diversifier !== undefined && (obj.new_diversifier = message.new_diversifier);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Header>): Header {
     const message = createBaseHeader();
     message.sequence = object.sequence !== undefined && object.sequence !== null ? Long.fromValue(object.sequence) : Long.UZERO;
@@ -634,24 +785,6 @@ export const Misbehaviour = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): Misbehaviour {
-    return {
-      client_id: isSet(object.client_id) ? String(object.client_id) : "",
-      sequence: isSet(object.sequence) ? Long.fromString(object.sequence) : Long.UZERO,
-      signature_one: isSet(object.signature_one) ? SignatureAndData.fromJSON(object.signature_one) : undefined,
-      signature_two: isSet(object.signature_two) ? SignatureAndData.fromJSON(object.signature_two) : undefined
-    };
-  },
-
-  toJSON(message: Misbehaviour): unknown {
-    const obj: any = {};
-    message.client_id !== undefined && (obj.client_id = message.client_id);
-    message.sequence !== undefined && (obj.sequence = (message.sequence || Long.UZERO).toString());
-    message.signature_one !== undefined && (obj.signature_one = message.signature_one ? SignatureAndData.toJSON(message.signature_one) : undefined);
-    message.signature_two !== undefined && (obj.signature_two = message.signature_two ? SignatureAndData.toJSON(message.signature_two) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<Misbehaviour>): Misbehaviour {
@@ -729,24 +862,6 @@ export const SignatureAndData = {
     return message;
   },
 
-  fromJSON(object: any): SignatureAndData {
-    return {
-      signature: isSet(object.signature) ? bytesFromBase64(object.signature) : new Uint8Array(),
-      data_type: isSet(object.data_type) ? dataTypeFromJSON(object.data_type) : 0,
-      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(),
-      timestamp: isSet(object.timestamp) ? Long.fromString(object.timestamp) : Long.UZERO
-    };
-  },
-
-  toJSON(message: SignatureAndData): unknown {
-    const obj: any = {};
-    message.signature !== undefined && (obj.signature = base64FromBytes(message.signature !== undefined ? message.signature : new Uint8Array()));
-    message.data_type !== undefined && (obj.data_type = dataTypeToJSON(message.data_type));
-    message.data !== undefined && (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
-    message.timestamp !== undefined && (obj.timestamp = (message.timestamp || Long.UZERO).toString());
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<SignatureAndData>): SignatureAndData {
     const message = createBaseSignatureAndData();
     message.signature = object.signature ?? new Uint8Array();
@@ -802,20 +917,6 @@ export const TimestampedSignatureData = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): TimestampedSignatureData {
-    return {
-      signature_data: isSet(object.signature_data) ? bytesFromBase64(object.signature_data) : new Uint8Array(),
-      timestamp: isSet(object.timestamp) ? Long.fromString(object.timestamp) : Long.UZERO
-    };
-  },
-
-  toJSON(message: TimestampedSignatureData): unknown {
-    const obj: any = {};
-    message.signature_data !== undefined && (obj.signature_data = base64FromBytes(message.signature_data !== undefined ? message.signature_data : new Uint8Array()));
-    message.timestamp !== undefined && (obj.timestamp = (message.timestamp || Long.UZERO).toString());
-    return obj;
   },
 
   fromPartial(object: DeepPartial<TimestampedSignatureData>): TimestampedSignatureData {
@@ -900,26 +1001,6 @@ export const SignBytes = {
     return message;
   },
 
-  fromJSON(object: any): SignBytes {
-    return {
-      sequence: isSet(object.sequence) ? Long.fromString(object.sequence) : Long.UZERO,
-      timestamp: isSet(object.timestamp) ? Long.fromString(object.timestamp) : Long.UZERO,
-      diversifier: isSet(object.diversifier) ? String(object.diversifier) : "",
-      data_type: isSet(object.data_type) ? dataTypeFromJSON(object.data_type) : 0,
-      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: SignBytes): unknown {
-    const obj: any = {};
-    message.sequence !== undefined && (obj.sequence = (message.sequence || Long.UZERO).toString());
-    message.timestamp !== undefined && (obj.timestamp = (message.timestamp || Long.UZERO).toString());
-    message.diversifier !== undefined && (obj.diversifier = message.diversifier);
-    message.data_type !== undefined && (obj.data_type = dataTypeToJSON(message.data_type));
-    message.data !== undefined && (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<SignBytes>): SignBytes {
     const message = createBaseSignBytes();
     message.sequence = object.sequence !== undefined && object.sequence !== null ? Long.fromValue(object.sequence) : Long.UZERO;
@@ -978,20 +1059,6 @@ export const HeaderData = {
     return message;
   },
 
-  fromJSON(object: any): HeaderData {
-    return {
-      new_pub_key: isSet(object.new_pub_key) ? Any.fromJSON(object.new_pub_key) : undefined,
-      new_diversifier: isSet(object.new_diversifier) ? String(object.new_diversifier) : ""
-    };
-  },
-
-  toJSON(message: HeaderData): unknown {
-    const obj: any = {};
-    message.new_pub_key !== undefined && (obj.new_pub_key = message.new_pub_key ? Any.toJSON(message.new_pub_key) : undefined);
-    message.new_diversifier !== undefined && (obj.new_diversifier = message.new_diversifier);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<HeaderData>): HeaderData {
     const message = createBaseHeaderData();
     message.new_pub_key = object.new_pub_key !== undefined && object.new_pub_key !== null ? Any.fromPartial(object.new_pub_key) : undefined;
@@ -1045,20 +1112,6 @@ export const ClientStateData = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): ClientStateData {
-    return {
-      path: isSet(object.path) ? bytesFromBase64(object.path) : new Uint8Array(),
-      client_state: isSet(object.client_state) ? Any.fromJSON(object.client_state) : undefined
-    };
-  },
-
-  toJSON(message: ClientStateData): unknown {
-    const obj: any = {};
-    message.path !== undefined && (obj.path = base64FromBytes(message.path !== undefined ? message.path : new Uint8Array()));
-    message.client_state !== undefined && (obj.client_state = message.client_state ? Any.toJSON(message.client_state) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<ClientStateData>): ClientStateData {
@@ -1116,20 +1169,6 @@ export const ConsensusStateData = {
     return message;
   },
 
-  fromJSON(object: any): ConsensusStateData {
-    return {
-      path: isSet(object.path) ? bytesFromBase64(object.path) : new Uint8Array(),
-      consensus_state: isSet(object.consensus_state) ? Any.fromJSON(object.consensus_state) : undefined
-    };
-  },
-
-  toJSON(message: ConsensusStateData): unknown {
-    const obj: any = {};
-    message.path !== undefined && (obj.path = base64FromBytes(message.path !== undefined ? message.path : new Uint8Array()));
-    message.consensus_state !== undefined && (obj.consensus_state = message.consensus_state ? Any.toJSON(message.consensus_state) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ConsensusStateData>): ConsensusStateData {
     const message = createBaseConsensusStateData();
     message.path = object.path ?? new Uint8Array();
@@ -1183,20 +1222,6 @@ export const ConnectionStateData = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): ConnectionStateData {
-    return {
-      path: isSet(object.path) ? bytesFromBase64(object.path) : new Uint8Array(),
-      connection: isSet(object.connection) ? ConnectionEnd.fromJSON(object.connection) : undefined
-    };
-  },
-
-  toJSON(message: ConnectionStateData): unknown {
-    const obj: any = {};
-    message.path !== undefined && (obj.path = base64FromBytes(message.path !== undefined ? message.path : new Uint8Array()));
-    message.connection !== undefined && (obj.connection = message.connection ? ConnectionEnd.toJSON(message.connection) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<ConnectionStateData>): ConnectionStateData {
@@ -1254,20 +1279,6 @@ export const ChannelStateData = {
     return message;
   },
 
-  fromJSON(object: any): ChannelStateData {
-    return {
-      path: isSet(object.path) ? bytesFromBase64(object.path) : new Uint8Array(),
-      channel: isSet(object.channel) ? Channel.fromJSON(object.channel) : undefined
-    };
-  },
-
-  toJSON(message: ChannelStateData): unknown {
-    const obj: any = {};
-    message.path !== undefined && (obj.path = base64FromBytes(message.path !== undefined ? message.path : new Uint8Array()));
-    message.channel !== undefined && (obj.channel = message.channel ? Channel.toJSON(message.channel) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ChannelStateData>): ChannelStateData {
     const message = createBaseChannelStateData();
     message.path = object.path ?? new Uint8Array();
@@ -1321,20 +1332,6 @@ export const PacketCommitmentData = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): PacketCommitmentData {
-    return {
-      path: isSet(object.path) ? bytesFromBase64(object.path) : new Uint8Array(),
-      commitment: isSet(object.commitment) ? bytesFromBase64(object.commitment) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: PacketCommitmentData): unknown {
-    const obj: any = {};
-    message.path !== undefined && (obj.path = base64FromBytes(message.path !== undefined ? message.path : new Uint8Array()));
-    message.commitment !== undefined && (obj.commitment = base64FromBytes(message.commitment !== undefined ? message.commitment : new Uint8Array()));
-    return obj;
   },
 
   fromPartial(object: DeepPartial<PacketCommitmentData>): PacketCommitmentData {
@@ -1392,20 +1389,6 @@ export const PacketAcknowledgementData = {
     return message;
   },
 
-  fromJSON(object: any): PacketAcknowledgementData {
-    return {
-      path: isSet(object.path) ? bytesFromBase64(object.path) : new Uint8Array(),
-      acknowledgement: isSet(object.acknowledgement) ? bytesFromBase64(object.acknowledgement) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: PacketAcknowledgementData): unknown {
-    const obj: any = {};
-    message.path !== undefined && (obj.path = base64FromBytes(message.path !== undefined ? message.path : new Uint8Array()));
-    message.acknowledgement !== undefined && (obj.acknowledgement = base64FromBytes(message.acknowledgement !== undefined ? message.acknowledgement : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<PacketAcknowledgementData>): PacketAcknowledgementData {
     const message = createBasePacketAcknowledgementData();
     message.path = object.path ?? new Uint8Array();
@@ -1450,18 +1433,6 @@ export const PacketReceiptAbsenceData = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): PacketReceiptAbsenceData {
-    return {
-      path: isSet(object.path) ? bytesFromBase64(object.path) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: PacketReceiptAbsenceData): unknown {
-    const obj: any = {};
-    message.path !== undefined && (obj.path = base64FromBytes(message.path !== undefined ? message.path : new Uint8Array()));
-    return obj;
   },
 
   fromPartial(object: DeepPartial<PacketReceiptAbsenceData>): PacketReceiptAbsenceData {
@@ -1516,20 +1487,6 @@ export const NextSequenceRecvData = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): NextSequenceRecvData {
-    return {
-      path: isSet(object.path) ? bytesFromBase64(object.path) : new Uint8Array(),
-      next_seq_recv: isSet(object.next_seq_recv) ? Long.fromString(object.next_seq_recv) : Long.UZERO
-    };
-  },
-
-  toJSON(message: NextSequenceRecvData): unknown {
-    const obj: any = {};
-    message.path !== undefined && (obj.path = base64FromBytes(message.path !== undefined ? message.path : new Uint8Array()));
-    message.next_seq_recv !== undefined && (obj.next_seq_recv = (message.next_seq_recv || Long.UZERO).toString());
-    return obj;
   },
 
   fromPartial(object: DeepPartial<NextSequenceRecvData>): NextSequenceRecvData {

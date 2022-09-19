@@ -1,13 +1,25 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, isObject } from "@osmonauts/helpers";
-
+import { DeepPartial } from "@osmonauts/helpers";
 /**
  * `NullValue` is a singleton enumeration to represent the null value for the
  * `Value` type union.
  * 
  * The JSON representation for `NullValue` is JSON `null`.
  */
+
 export enum NullValue {
+  /** NULL_VALUE - Null value. */
+  NULL_VALUE = 0,
+  UNRECOGNIZED = -1,
+}
+/**
+ * `NullValue` is a singleton enumeration to represent the null value for the
+ * `Value` type union.
+ * 
+ * The JSON representation for `NullValue` is JSON `null`.
+ */
+
+export enum NullValueSDKType {
   /** NULL_VALUE - Null value. */
   NULL_VALUE = 0,
   UNRECOGNIZED = -1,
@@ -37,7 +49,10 @@ export interface Struct_FieldsEntry {
   key: string;
   value: Value;
 }
-
+export interface Struct_FieldsEntrySDKType {
+  key: string;
+  value: ValueSDKType;
+}
 /**
  * `Struct` represents a structured data value, consisting of fields
  * which map to dynamically typed values. In some languages, `Struct`
@@ -48,13 +63,30 @@ export interface Struct_FieldsEntry {
  * 
  * The JSON representation for `Struct` is JSON object.
  */
+
 export interface Struct {
   /** Unordered map of dynamically typed values. */
   fields: {
     [key: string]: Value;
   };
 }
+/**
+ * `Struct` represents a structured data value, consisting of fields
+ * which map to dynamically typed values. In some languages, `Struct`
+ * might be supported by a native representation. For example, in
+ * scripting languages like JS a struct is represented as an
+ * object. The details of that representation are described together
+ * with the proto support for the language.
+ * 
+ * The JSON representation for `Struct` is JSON object.
+ */
 
+export interface StructSDKType {
+  /** Unordered map of dynamically typed values. */
+  fields: {
+    [key: string]: ValueSDKType;
+  };
+}
 /**
  * `Value` represents a dynamically typed value which can be either
  * null, a number, a string, a boolean, a recursive struct value, or a
@@ -63,34 +95,73 @@ export interface Struct {
  * 
  * The JSON representation for `Value` is JSON value.
  */
+
 export interface Value {
   /** Represents a null value. */
   null_value?: NullValue;
-
   /** Represents a double value. */
+
   number_value?: number;
-
   /** Represents a string value. */
+
   string_value?: string;
-
   /** Represents a boolean value. */
+
   bool_value?: boolean;
-
   /** Represents a structured value. */
-  struct_value?: Struct;
 
+  struct_value?: Struct;
   /** Represents a repeated `Value`. */
+
   list_value?: ListValue;
 }
+/**
+ * `Value` represents a dynamically typed value which can be either
+ * null, a number, a string, a boolean, a recursive struct value, or a
+ * list of values. A producer of value is expected to set one of that
+ * variants, absence of any variant indicates an error.
+ * 
+ * The JSON representation for `Value` is JSON value.
+ */
 
+export interface ValueSDKType {
+  /** Represents a null value. */
+  null_value?: NullValueSDKType;
+  /** Represents a double value. */
+
+  number_value?: number;
+  /** Represents a string value. */
+
+  string_value?: string;
+  /** Represents a boolean value. */
+
+  bool_value?: boolean;
+  /** Represents a structured value. */
+
+  struct_value?: StructSDKType;
+  /** Represents a repeated `Value`. */
+
+  list_value?: ListValueSDKType;
+}
 /**
  * `ListValue` is a wrapper around a repeated field of values.
  * 
  * The JSON representation for `ListValue` is JSON array.
  */
+
 export interface ListValue {
   /** Repeated field of dynamically typed values. */
   values: Value[];
+}
+/**
+ * `ListValue` is a wrapper around a repeated field of values.
+ * 
+ * The JSON representation for `ListValue` is JSON array.
+ */
+
+export interface ListValueSDKType {
+  /** Repeated field of dynamically typed values. */
+  values: ValueSDKType[];
 }
 
 function createBaseStruct_FieldsEntry(): Struct_FieldsEntry {
@@ -137,20 +208,6 @@ export const Struct_FieldsEntry = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): Struct_FieldsEntry {
-    return {
-      key: isSet(object.key) ? String(object.key) : "",
-      value: isSet(object.value) ? Value.fromJSON(object.value) : undefined
-    };
-  },
-
-  toJSON(message: Struct_FieldsEntry): unknown {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.value !== undefined && (obj.value = message.value ? Value.toJSON(message.value) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<Struct_FieldsEntry>): Struct_FieldsEntry {
@@ -204,30 +261,6 @@ export const Struct = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): Struct {
-    return {
-      fields: isObject(object.fields) ? Object.entries(object.fields).reduce<{
-        [key: string]: Value;
-      }>((acc, [key, value]) => {
-        acc[key] = Value.fromJSON(value);
-        return acc;
-      }, {}) : {}
-    };
-  },
-
-  toJSON(message: Struct): unknown {
-    const obj: any = {};
-    obj.fields = {};
-
-    if (message.fields) {
-      Object.entries(message.fields).forEach(([k, v]) => {
-        obj.fields[k] = Value.toJSON(v);
-      });
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<Struct>): Struct {
@@ -328,28 +361,6 @@ export const Value = {
     return message;
   },
 
-  fromJSON(object: any): Value {
-    return {
-      null_value: isSet(object.null_value) ? nullValueFromJSON(object.null_value) : undefined,
-      number_value: isSet(object.number_value) ? Number(object.number_value) : undefined,
-      string_value: isSet(object.string_value) ? String(object.string_value) : undefined,
-      bool_value: isSet(object.bool_value) ? Boolean(object.bool_value) : undefined,
-      struct_value: isSet(object.struct_value) ? Struct.fromJSON(object.struct_value) : undefined,
-      list_value: isSet(object.list_value) ? ListValue.fromJSON(object.list_value) : undefined
-    };
-  },
-
-  toJSON(message: Value): unknown {
-    const obj: any = {};
-    message.null_value !== undefined && (obj.null_value = nullValueToJSON(message.null_value));
-    message.number_value !== undefined && (obj.number_value = message.number_value);
-    message.string_value !== undefined && (obj.string_value = message.string_value);
-    message.bool_value !== undefined && (obj.bool_value = message.bool_value);
-    message.struct_value !== undefined && (obj.struct_value = message.struct_value ? Struct.toJSON(message.struct_value) : undefined);
-    message.list_value !== undefined && (obj.list_value = message.list_value ? ListValue.toJSON(message.list_value) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Value>): Value {
     const message = createBaseValue();
     message.null_value = object.null_value ?? undefined;
@@ -398,24 +409,6 @@ export const ListValue = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): ListValue {
-    return {
-      values: Array.isArray(object?.values) ? object.values.map((e: any) => Value.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: ListValue): unknown {
-    const obj: any = {};
-
-    if (message.values) {
-      obj.values = message.values.map(e => e ? Value.toJSON(e) : undefined);
-    } else {
-      obj.values = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<ListValue>): ListValue {

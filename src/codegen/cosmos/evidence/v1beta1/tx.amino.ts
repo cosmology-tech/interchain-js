@@ -1,4 +1,3 @@
-import { Any } from "../../../google/protobuf/any";
 import { AminoMsg } from "@cosmjs/amino";
 import { MsgSubmitEvidence } from "./tx";
 export interface AminoMsgSubmitEvidence extends AminoMsg {

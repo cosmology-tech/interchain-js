@@ -1,34 +1,60 @@
-import { Coin } from "../../base/v1beta1/coin";
+import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
-
+import { DeepPartial } from "@osmonauts/helpers";
 /** Params defines the parameters for the bank module. */
+
 export interface Params {
   send_enabled: SendEnabled[];
   default_send_enabled: boolean;
 }
+/** Params defines the parameters for the bank module. */
 
+export interface ParamsSDKType {
+  send_enabled: SendEnabledSDKType[];
+  default_send_enabled: boolean;
+}
 /**
  * SendEnabled maps coin denom to a send_enabled status (whether a denom is
  * sendable).
  */
+
 export interface SendEnabled {
   denom: string;
   enabled: boolean;
 }
+/**
+ * SendEnabled maps coin denom to a send_enabled status (whether a denom is
+ * sendable).
+ */
 
+export interface SendEnabledSDKType {
+  denom: string;
+  enabled: boolean;
+}
 /** Input models transaction input. */
+
 export interface Input {
   address: string;
   coins: Coin[];
 }
+/** Input models transaction input. */
 
+export interface InputSDKType {
+  address: string;
+  coins: CoinSDKType[];
+}
 /** Output models transaction outputs. */
+
 export interface Output {
   address: string;
   coins: Coin[];
 }
+/** Output models transaction outputs. */
 
+export interface OutputSDKType {
+  address: string;
+  coins: CoinSDKType[];
+}
 /**
  * Supply represents a struct that passively keeps track of the total supply
  * amounts in the network.
@@ -36,18 +62,29 @@ export interface Output {
  */
 
 /** @deprecated */
+
 export interface Supply {
   total: Coin[];
 }
+/**
+ * Supply represents a struct that passively keeps track of the total supply
+ * amounts in the network.
+ * This message is deprecated now that supply is indexed by denom.
+ */
 
+/** @deprecated */
+
+export interface SupplySDKType {
+  total: CoinSDKType[];
+}
 /**
  * DenomUnit represents a struct that describes a given
  * denomination unit of the basic token.
  */
+
 export interface DenomUnit {
   /** denom represents the string name of the given denom unit (e.g uatom). */
   denom: string;
-
   /**
    * exponent represents power of 10 exponent that one must
    * raise the base_denom to in order to equal the given DenomUnit's denom
@@ -55,59 +92,131 @@ export interface DenomUnit {
    * (e.g. with a base_denom of uatom, one can create a DenomUnit of 'atom' with
    * exponent = 6, thus: 1 atom = 10^6 uatom).
    */
-  exponent: number;
 
+  exponent: number;
   /** aliases is a list of string aliases for the given denom */
+
   aliases: string[];
 }
+/**
+ * DenomUnit represents a struct that describes a given
+ * denomination unit of the basic token.
+ */
 
+export interface DenomUnitSDKType {
+  /** denom represents the string name of the given denom unit (e.g uatom). */
+  denom: string;
+  /**
+   * exponent represents power of 10 exponent that one must
+   * raise the base_denom to in order to equal the given DenomUnit's denom
+   * 1 denom = 10^exponent base_denom
+   * (e.g. with a base_denom of uatom, one can create a DenomUnit of 'atom' with
+   * exponent = 6, thus: 1 atom = 10^6 uatom).
+   */
+
+  exponent: number;
+  /** aliases is a list of string aliases for the given denom */
+
+  aliases: string[];
+}
 /**
  * Metadata represents a struct that describes
  * a basic token.
  */
+
 export interface Metadata {
   description: string;
-
   /** denom_units represents the list of DenomUnit's for a given coin */
+
   denom_units: DenomUnit[];
-
   /** base represents the base denom (should be the DenomUnit with exponent = 0). */
-  base: string;
 
+  base: string;
   /**
    * display indicates the suggested denom that should be
    * displayed in clients.
    */
-  display: string;
 
+  display: string;
   /**
    * name defines the name of the token (eg: Cosmos Atom)
    * 
    * Since: cosmos-sdk 0.43
    */
-  name: string;
 
+  name: string;
   /**
    * symbol is the token symbol usually shown on exchanges (eg: ATOM). This can
    * be the same as the display.
    * 
    * Since: cosmos-sdk 0.43
    */
-  symbol: string;
 
+  symbol: string;
   /**
    * URI to a document (on or off-chain) that contains additional information. Optional.
    * 
    * Since: cosmos-sdk 0.46
    */
-  uri: string;
 
+  uri: string;
   /**
    * URIHash is a sha256 hash of a document pointed by URI. It's used to verify that
    * the document didn't change. Optional.
    * 
    * Since: cosmos-sdk 0.46
    */
+
+  uri_hash: string;
+}
+/**
+ * Metadata represents a struct that describes
+ * a basic token.
+ */
+
+export interface MetadataSDKType {
+  description: string;
+  /** denom_units represents the list of DenomUnit's for a given coin */
+
+  denom_units: DenomUnitSDKType[];
+  /** base represents the base denom (should be the DenomUnit with exponent = 0). */
+
+  base: string;
+  /**
+   * display indicates the suggested denom that should be
+   * displayed in clients.
+   */
+
+  display: string;
+  /**
+   * name defines the name of the token (eg: Cosmos Atom)
+   * 
+   * Since: cosmos-sdk 0.43
+   */
+
+  name: string;
+  /**
+   * symbol is the token symbol usually shown on exchanges (eg: ATOM). This can
+   * be the same as the display.
+   * 
+   * Since: cosmos-sdk 0.43
+   */
+
+  symbol: string;
+  /**
+   * URI to a document (on or off-chain) that contains additional information. Optional.
+   * 
+   * Since: cosmos-sdk 0.46
+   */
+
+  uri: string;
+  /**
+   * URIHash is a sha256 hash of a document pointed by URI. It's used to verify that
+   * the document didn't change. Optional.
+   * 
+   * Since: cosmos-sdk 0.46
+   */
+
   uri_hash: string;
 }
 
@@ -155,26 +264,6 @@ export const Params = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): Params {
-    return {
-      send_enabled: Array.isArray(object?.send_enabled) ? object.send_enabled.map((e: any) => SendEnabled.fromJSON(e)) : [],
-      default_send_enabled: isSet(object.default_send_enabled) ? Boolean(object.default_send_enabled) : false
-    };
-  },
-
-  toJSON(message: Params): unknown {
-    const obj: any = {};
-
-    if (message.send_enabled) {
-      obj.send_enabled = message.send_enabled.map(e => e ? SendEnabled.toJSON(e) : undefined);
-    } else {
-      obj.send_enabled = [];
-    }
-
-    message.default_send_enabled !== undefined && (obj.default_send_enabled = message.default_send_enabled);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<Params>): Params {
@@ -232,20 +321,6 @@ export const SendEnabled = {
     return message;
   },
 
-  fromJSON(object: any): SendEnabled {
-    return {
-      denom: isSet(object.denom) ? String(object.denom) : "",
-      enabled: isSet(object.enabled) ? Boolean(object.enabled) : false
-    };
-  },
-
-  toJSON(message: SendEnabled): unknown {
-    const obj: any = {};
-    message.denom !== undefined && (obj.denom = message.denom);
-    message.enabled !== undefined && (obj.enabled = message.enabled);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<SendEnabled>): SendEnabled {
     const message = createBaseSendEnabled();
     message.denom = object.denom ?? "";
@@ -299,26 +374,6 @@ export const Input = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): Input {
-    return {
-      address: isSet(object.address) ? String(object.address) : "",
-      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: Input): unknown {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = message.address);
-
-    if (message.coins) {
-      obj.coins = message.coins.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.coins = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<Input>): Input {
@@ -376,26 +431,6 @@ export const Output = {
     return message;
   },
 
-  fromJSON(object: any): Output {
-    return {
-      address: isSet(object.address) ? String(object.address) : "",
-      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: Output): unknown {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = message.address);
-
-    if (message.coins) {
-      obj.coins = message.coins.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.coins = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<Output>): Output {
     const message = createBaseOutput();
     message.address = object.address ?? "";
@@ -440,24 +475,6 @@ export const Supply = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): Supply {
-    return {
-      total: Array.isArray(object?.total) ? object.total.map((e: any) => Coin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: Supply): unknown {
-    const obj: any = {};
-
-    if (message.total) {
-      obj.total = message.total.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.total = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<Supply>): Supply {
@@ -521,28 +538,6 @@ export const DenomUnit = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): DenomUnit {
-    return {
-      denom: isSet(object.denom) ? String(object.denom) : "",
-      exponent: isSet(object.exponent) ? Number(object.exponent) : 0,
-      aliases: Array.isArray(object?.aliases) ? object.aliases.map((e: any) => String(e)) : []
-    };
-  },
-
-  toJSON(message: DenomUnit): unknown {
-    const obj: any = {};
-    message.denom !== undefined && (obj.denom = message.denom);
-    message.exponent !== undefined && (obj.exponent = Math.round(message.exponent));
-
-    if (message.aliases) {
-      obj.aliases = message.aliases.map(e => e);
-    } else {
-      obj.aliases = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<DenomUnit>): DenomUnit {
@@ -653,38 +648,6 @@ export const Metadata = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): Metadata {
-    return {
-      description: isSet(object.description) ? String(object.description) : "",
-      denom_units: Array.isArray(object?.denom_units) ? object.denom_units.map((e: any) => DenomUnit.fromJSON(e)) : [],
-      base: isSet(object.base) ? String(object.base) : "",
-      display: isSet(object.display) ? String(object.display) : "",
-      name: isSet(object.name) ? String(object.name) : "",
-      symbol: isSet(object.symbol) ? String(object.symbol) : "",
-      uri: isSet(object.uri) ? String(object.uri) : "",
-      uri_hash: isSet(object.uri_hash) ? String(object.uri_hash) : ""
-    };
-  },
-
-  toJSON(message: Metadata): unknown {
-    const obj: any = {};
-    message.description !== undefined && (obj.description = message.description);
-
-    if (message.denom_units) {
-      obj.denom_units = message.denom_units.map(e => e ? DenomUnit.toJSON(e) : undefined);
-    } else {
-      obj.denom_units = [];
-    }
-
-    message.base !== undefined && (obj.base = message.base);
-    message.display !== undefined && (obj.display = message.display);
-    message.name !== undefined && (obj.name = message.name);
-    message.symbol !== undefined && (obj.symbol = message.symbol);
-    message.uri !== undefined && (obj.uri = message.uri);
-    message.uri_hash !== undefined && (obj.uri_hash = message.uri_hash);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<Metadata>): Metadata {

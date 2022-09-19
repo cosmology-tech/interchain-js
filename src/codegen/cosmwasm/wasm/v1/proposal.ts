@@ -1,170 +1,335 @@
-import { AccessConfig } from "./types";
-import { Coin } from "../../../cosmos/base/v1beta1/coin";
+import { AccessConfig, AccessConfigSDKType } from "./types";
+import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, bytesFromBase64, base64FromBytes, DeepPartial, Long } from "@osmonauts/helpers";
-
+import { DeepPartial, Long } from "@osmonauts/helpers";
 /** StoreCodeProposal gov proposal content type to submit WASM code to the system */
+
 export interface StoreCodeProposal {
   /** Title is a short summary */
   title: string;
-
   /** Description is a human readable text */
+
   description: string;
-
   /** RunAs is the address that is passed to the contract's environment as sender */
+
   run_as: string;
-
   /** WASMByteCode can be raw or gzip compressed */
-  wasm_byte_code: Uint8Array;
 
+  wasm_byte_code: Uint8Array;
   /** InstantiatePermission to apply on contract creation, optional */
+
   instantiate_permission: AccessConfig;
 }
+/** StoreCodeProposal gov proposal content type to submit WASM code to the system */
 
+export interface StoreCodeProposalSDKType {
+  /** Title is a short summary */
+  title: string;
+  /** Description is a human readable text */
+
+  description: string;
+  /** RunAs is the address that is passed to the contract's environment as sender */
+
+  run_as: string;
+  /** WASMByteCode can be raw or gzip compressed */
+
+  wasm_byte_code: Uint8Array;
+  /** InstantiatePermission to apply on contract creation, optional */
+
+  instantiate_permission: AccessConfigSDKType;
+}
 /**
  * InstantiateContractProposal gov proposal content type to instantiate a
  * contract.
  */
+
 export interface InstantiateContractProposal {
   /** Title is a short summary */
   title: string;
-
   /** Description is a human readable text */
+
   description: string;
-
   /** RunAs is the address that is passed to the contract's environment as sender */
+
   run_as: string;
-
   /** Admin is an optional address that can execute migrations */
+
   admin: string;
-
   /** CodeID is the reference to the stored WASM code */
+
   code_id: Long;
-
   /** Label is optional metadata to be stored with a constract instance. */
+
   label: string;
-
   /** Msg json encoded message to be passed to the contract on instantiation */
-  msg: Uint8Array;
 
+  msg: Uint8Array;
   /** Funds coins that are transferred to the contract on instantiation */
+
   funds: Coin[];
 }
+/**
+ * InstantiateContractProposal gov proposal content type to instantiate a
+ * contract.
+ */
 
+export interface InstantiateContractProposalSDKType {
+  /** Title is a short summary */
+  title: string;
+  /** Description is a human readable text */
+
+  description: string;
+  /** RunAs is the address that is passed to the contract's environment as sender */
+
+  run_as: string;
+  /** Admin is an optional address that can execute migrations */
+
+  admin: string;
+  /** CodeID is the reference to the stored WASM code */
+
+  code_id: Long;
+  /** Label is optional metadata to be stored with a constract instance. */
+
+  label: string;
+  /** Msg json encoded message to be passed to the contract on instantiation */
+
+  msg: Uint8Array;
+  /** Funds coins that are transferred to the contract on instantiation */
+
+  funds: CoinSDKType[];
+}
 /** MigrateContractProposal gov proposal content type to migrate a contract. */
+
 export interface MigrateContractProposal {
   /** Title is a short summary */
   title: string;
-
   /** Description is a human readable text */
+
   description: string;
-
   /** Contract is the address of the smart contract */
+
   contract: string;
-
   /** CodeID references the new WASM codesudo */
-  code_id: Long;
 
+  code_id: Long;
   /** Msg json encoded message to be passed to the contract on migration */
+
   msg: Uint8Array;
 }
+/** MigrateContractProposal gov proposal content type to migrate a contract. */
 
+export interface MigrateContractProposalSDKType {
+  /** Title is a short summary */
+  title: string;
+  /** Description is a human readable text */
+
+  description: string;
+  /** Contract is the address of the smart contract */
+
+  contract: string;
+  /** CodeID references the new WASM codesudo */
+
+  code_id: Long;
+  /** Msg json encoded message to be passed to the contract on migration */
+
+  msg: Uint8Array;
+}
 /** SudoContractProposal gov proposal content type to call sudo on a contract. */
+
 export interface SudoContractProposal {
   /** Title is a short summary */
   title: string;
-
   /** Description is a human readable text */
+
   description: string;
-
   /** Contract is the address of the smart contract */
-  contract: string;
 
+  contract: string;
   /** Msg json encoded message to be passed to the contract as sudo */
+
   msg: Uint8Array;
 }
+/** SudoContractProposal gov proposal content type to call sudo on a contract. */
 
+export interface SudoContractProposalSDKType {
+  /** Title is a short summary */
+  title: string;
+  /** Description is a human readable text */
+
+  description: string;
+  /** Contract is the address of the smart contract */
+
+  contract: string;
+  /** Msg json encoded message to be passed to the contract as sudo */
+
+  msg: Uint8Array;
+}
 /**
  * ExecuteContractProposal gov proposal content type to call execute on a
  * contract.
  */
+
 export interface ExecuteContractProposal {
   /** Title is a short summary */
   title: string;
-
   /** Description is a human readable text */
+
   description: string;
-
   /** RunAs is the address that is passed to the contract's environment as sender */
+
   run_as: string;
-
   /** Contract is the address of the smart contract */
+
   contract: string;
-
   /** Msg json encoded message to be passed to the contract as execute */
-  msg: Uint8Array;
 
+  msg: Uint8Array;
   /** Funds coins that are transferred to the contract on instantiation */
+
   funds: Coin[];
 }
+/**
+ * ExecuteContractProposal gov proposal content type to call execute on a
+ * contract.
+ */
 
+export interface ExecuteContractProposalSDKType {
+  /** Title is a short summary */
+  title: string;
+  /** Description is a human readable text */
+
+  description: string;
+  /** RunAs is the address that is passed to the contract's environment as sender */
+
+  run_as: string;
+  /** Contract is the address of the smart contract */
+
+  contract: string;
+  /** Msg json encoded message to be passed to the contract as execute */
+
+  msg: Uint8Array;
+  /** Funds coins that are transferred to the contract on instantiation */
+
+  funds: CoinSDKType[];
+}
 /** UpdateAdminProposal gov proposal content type to set an admin for a contract. */
+
 export interface UpdateAdminProposal {
   /** Title is a short summary */
   title: string;
-
   /** Description is a human readable text */
+
   description: string;
-
   /** NewAdmin address to be set */
-  new_admin: string;
 
+  new_admin: string;
   /** Contract is the address of the smart contract */
+
   contract: string;
 }
+/** UpdateAdminProposal gov proposal content type to set an admin for a contract. */
 
+export interface UpdateAdminProposalSDKType {
+  /** Title is a short summary */
+  title: string;
+  /** Description is a human readable text */
+
+  description: string;
+  /** NewAdmin address to be set */
+
+  new_admin: string;
+  /** Contract is the address of the smart contract */
+
+  contract: string;
+}
 /**
  * ClearAdminProposal gov proposal content type to clear the admin of a
  * contract.
  */
+
 export interface ClearAdminProposal {
   /** Title is a short summary */
   title: string;
-
   /** Description is a human readable text */
-  description: string;
 
+  description: string;
   /** Contract is the address of the smart contract */
+
   contract: string;
 }
+/**
+ * ClearAdminProposal gov proposal content type to clear the admin of a
+ * contract.
+ */
 
+export interface ClearAdminProposalSDKType {
+  /** Title is a short summary */
+  title: string;
+  /** Description is a human readable text */
+
+  description: string;
+  /** Contract is the address of the smart contract */
+
+  contract: string;
+}
 /**
  * PinCodesProposal gov proposal content type to pin a set of code ids in the
  * wasmvm cache.
  */
+
 export interface PinCodesProposal {
   /** Title is a short summary */
   title: string;
-
   /** Description is a human readable text */
-  description: string;
 
+  description: string;
   /** CodeIDs references the new WASM codes */
+
   code_ids: Long[];
 }
+/**
+ * PinCodesProposal gov proposal content type to pin a set of code ids in the
+ * wasmvm cache.
+ */
 
+export interface PinCodesProposalSDKType {
+  /** Title is a short summary */
+  title: string;
+  /** Description is a human readable text */
+
+  description: string;
+  /** CodeIDs references the new WASM codes */
+
+  code_ids: Long[];
+}
 /**
  * UnpinCodesProposal gov proposal content type to unpin a set of code ids in
  * the wasmvm cache.
  */
+
 export interface UnpinCodesProposal {
   /** Title is a short summary */
   title: string;
-
   /** Description is a human readable text */
-  description: string;
 
+  description: string;
   /** CodeIDs references the WASM codes */
+
+  code_ids: Long[];
+}
+/**
+ * UnpinCodesProposal gov proposal content type to unpin a set of code ids in
+ * the wasmvm cache.
+ */
+
+export interface UnpinCodesProposalSDKType {
+  /** Title is a short summary */
+  title: string;
+  /** Description is a human readable text */
+
+  description: string;
+  /** CodeIDs references the WASM codes */
+
   code_ids: Long[];
 }
 
@@ -239,26 +404,6 @@ export const StoreCodeProposal = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): StoreCodeProposal {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      run_as: isSet(object.run_as) ? String(object.run_as) : "",
-      wasm_byte_code: isSet(object.wasm_byte_code) ? bytesFromBase64(object.wasm_byte_code) : new Uint8Array(),
-      instantiate_permission: isSet(object.instantiate_permission) ? AccessConfig.fromJSON(object.instantiate_permission) : undefined
-    };
-  },
-
-  toJSON(message: StoreCodeProposal): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    message.run_as !== undefined && (obj.run_as = message.run_as);
-    message.wasm_byte_code !== undefined && (obj.wasm_byte_code = base64FromBytes(message.wasm_byte_code !== undefined ? message.wasm_byte_code : new Uint8Array()));
-    message.instantiate_permission !== undefined && (obj.instantiate_permission = message.instantiate_permission ? AccessConfig.toJSON(message.instantiate_permission) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<StoreCodeProposal>): StoreCodeProposal {
@@ -373,38 +518,6 @@ export const InstantiateContractProposal = {
     return message;
   },
 
-  fromJSON(object: any): InstantiateContractProposal {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      run_as: isSet(object.run_as) ? String(object.run_as) : "",
-      admin: isSet(object.admin) ? String(object.admin) : "",
-      code_id: isSet(object.code_id) ? Long.fromString(object.code_id) : Long.UZERO,
-      label: isSet(object.label) ? String(object.label) : "",
-      msg: isSet(object.msg) ? bytesFromBase64(object.msg) : new Uint8Array(),
-      funds: Array.isArray(object?.funds) ? object.funds.map((e: any) => Coin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: InstantiateContractProposal): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    message.run_as !== undefined && (obj.run_as = message.run_as);
-    message.admin !== undefined && (obj.admin = message.admin);
-    message.code_id !== undefined && (obj.code_id = (message.code_id || Long.UZERO).toString());
-    message.label !== undefined && (obj.label = message.label);
-    message.msg !== undefined && (obj.msg = base64FromBytes(message.msg !== undefined ? message.msg : new Uint8Array()));
-
-    if (message.funds) {
-      obj.funds = message.funds.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.funds = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<InstantiateContractProposal>): InstantiateContractProposal {
     const message = createBaseInstantiateContractProposal();
     message.title = object.title ?? "";
@@ -493,26 +606,6 @@ export const MigrateContractProposal = {
     return message;
   },
 
-  fromJSON(object: any): MigrateContractProposal {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      contract: isSet(object.contract) ? String(object.contract) : "",
-      code_id: isSet(object.code_id) ? Long.fromString(object.code_id) : Long.UZERO,
-      msg: isSet(object.msg) ? bytesFromBase64(object.msg) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: MigrateContractProposal): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    message.contract !== undefined && (obj.contract = message.contract);
-    message.code_id !== undefined && (obj.code_id = (message.code_id || Long.UZERO).toString());
-    message.msg !== undefined && (obj.msg = base64FromBytes(message.msg !== undefined ? message.msg : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<MigrateContractProposal>): MigrateContractProposal {
     const message = createBaseMigrateContractProposal();
     message.title = object.title ?? "";
@@ -587,24 +680,6 @@ export const SudoContractProposal = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): SudoContractProposal {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      contract: isSet(object.contract) ? String(object.contract) : "",
-      msg: isSet(object.msg) ? bytesFromBase64(object.msg) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: SudoContractProposal): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    message.contract !== undefined && (obj.contract = message.contract);
-    message.msg !== undefined && (obj.msg = base64FromBytes(message.msg !== undefined ? message.msg : new Uint8Array()));
-    return obj;
   },
 
   fromPartial(object: DeepPartial<SudoContractProposal>): SudoContractProposal {
@@ -700,34 +775,6 @@ export const ExecuteContractProposal = {
     return message;
   },
 
-  fromJSON(object: any): ExecuteContractProposal {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      run_as: isSet(object.run_as) ? String(object.run_as) : "",
-      contract: isSet(object.contract) ? String(object.contract) : "",
-      msg: isSet(object.msg) ? bytesFromBase64(object.msg) : new Uint8Array(),
-      funds: Array.isArray(object?.funds) ? object.funds.map((e: any) => Coin.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: ExecuteContractProposal): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    message.run_as !== undefined && (obj.run_as = message.run_as);
-    message.contract !== undefined && (obj.contract = message.contract);
-    message.msg !== undefined && (obj.msg = base64FromBytes(message.msg !== undefined ? message.msg : new Uint8Array()));
-
-    if (message.funds) {
-      obj.funds = message.funds.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.funds = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ExecuteContractProposal>): ExecuteContractProposal {
     const message = createBaseExecuteContractProposal();
     message.title = object.title ?? "";
@@ -805,24 +852,6 @@ export const UpdateAdminProposal = {
     return message;
   },
 
-  fromJSON(object: any): UpdateAdminProposal {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      new_admin: isSet(object.new_admin) ? String(object.new_admin) : "",
-      contract: isSet(object.contract) ? String(object.contract) : ""
-    };
-  },
-
-  toJSON(message: UpdateAdminProposal): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    message.new_admin !== undefined && (obj.new_admin = message.new_admin);
-    message.contract !== undefined && (obj.contract = message.contract);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<UpdateAdminProposal>): UpdateAdminProposal {
     const message = createBaseUpdateAdminProposal();
     message.title = object.title ?? "";
@@ -887,22 +916,6 @@ export const ClearAdminProposal = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): ClearAdminProposal {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      contract: isSet(object.contract) ? String(object.contract) : ""
-    };
-  },
-
-  toJSON(message: ClearAdminProposal): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    message.contract !== undefined && (obj.contract = message.contract);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<ClearAdminProposal>): ClearAdminProposal {
@@ -982,28 +995,6 @@ export const PinCodesProposal = {
     return message;
   },
 
-  fromJSON(object: any): PinCodesProposal {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      code_ids: Array.isArray(object?.code_ids) ? object.code_ids.map((e: any) => Long.fromString(e)) : []
-    };
-  },
-
-  toJSON(message: PinCodesProposal): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-
-    if (message.code_ids) {
-      obj.code_ids = message.code_ids.map(e => (e || Long.UZERO).toString());
-    } else {
-      obj.code_ids = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<PinCodesProposal>): PinCodesProposal {
     const message = createBasePinCodesProposal();
     message.title = object.title ?? "";
@@ -1079,28 +1070,6 @@ export const UnpinCodesProposal = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): UnpinCodesProposal {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      code_ids: Array.isArray(object?.code_ids) ? object.code_ids.map((e: any) => Long.fromString(e)) : []
-    };
-  },
-
-  toJSON(message: UnpinCodesProposal): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-
-    if (message.code_ids) {
-      obj.code_ids = message.code_ids.map(e => (e || Long.UZERO).toString());
-    } else {
-      obj.code_ids = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<UnpinCodesProposal>): UnpinCodesProposal {

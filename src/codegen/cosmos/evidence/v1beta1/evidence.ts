@@ -1,12 +1,23 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
-import { toTimestamp, Long, fromTimestamp, isSet, fromJsonTimestamp, DeepPartial } from "@osmonauts/helpers";
-
+import { toTimestamp, Long, fromTimestamp, DeepPartial } from "@osmonauts/helpers";
 /**
  * Equivocation implements the Evidence interface and defines evidence of double
  * signing misbehavior.
  */
+
 export interface Equivocation {
+  height: Long;
+  time: Date;
+  power: Long;
+  consensus_address: string;
+}
+/**
+ * Equivocation implements the Evidence interface and defines evidence of double
+ * signing misbehavior.
+ */
+
+export interface EquivocationSDKType {
   height: Long;
   time: Date;
   power: Long;
@@ -75,24 +86,6 @@ export const Equivocation = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): Equivocation {
-    return {
-      height: isSet(object.height) ? Long.fromString(object.height) : Long.ZERO,
-      time: isSet(object.time) ? fromJsonTimestamp(object.time) : undefined,
-      power: isSet(object.power) ? Long.fromString(object.power) : Long.ZERO,
-      consensus_address: isSet(object.consensus_address) ? String(object.consensus_address) : ""
-    };
-  },
-
-  toJSON(message: Equivocation): unknown {
-    const obj: any = {};
-    message.height !== undefined && (obj.height = (message.height || Long.ZERO).toString());
-    message.time !== undefined && (obj.time = message.time.toISOString());
-    message.power !== undefined && (obj.power = (message.power || Long.ZERO).toString());
-    message.consensus_address !== undefined && (obj.consensus_address = message.consensus_address);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<Equivocation>): Equivocation {

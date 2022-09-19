@@ -1,13 +1,26 @@
-import { Tx } from "./tx";
-import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
-import { TxResponse, GasInfo, Result } from "../../base/abci/v1beta1/abci";
-import { BlockID } from "../../../tendermint/types/types";
-import { Block } from "../../../tendermint/types/block";
+import { Tx, TxSDKType } from "./tx";
+import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
+import { TxResponse, TxResponseSDKType, GasInfo, GasInfoSDKType, Result, ResultSDKType } from "../../base/abci/v1beta1/abci";
+import { BlockID, BlockIDSDKType } from "../../../tendermint/types/types";
+import { Block, BlockSDKType } from "../../../tendermint/types/block";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial, bytesFromBase64, base64FromBytes, Long } from "@osmonauts/helpers";
-
+import { DeepPartial, Long } from "@osmonauts/helpers";
 /** OrderBy defines the sorting order */
+
 export enum OrderBy {
+  /** ORDER_BY_UNSPECIFIED - ORDER_BY_UNSPECIFIED specifies an unknown sorting order. OrderBy defaults to ASC in this case. */
+  ORDER_BY_UNSPECIFIED = 0,
+
+  /** ORDER_BY_ASC - ORDER_BY_ASC defines ascending order */
+  ORDER_BY_ASC = 1,
+
+  /** ORDER_BY_DESC - ORDER_BY_DESC defines descending order */
+  ORDER_BY_DESC = 2,
+  UNRECOGNIZED = -1,
+}
+/** OrderBy defines the sorting order */
+
+export enum OrderBySDKType {
   /** ORDER_BY_UNSPECIFIED - ORDER_BY_UNSPECIFIED specifies an unknown sorting order. OrderBy defaults to ASC in this case. */
   ORDER_BY_UNSPECIFIED = 0,
 
@@ -53,9 +66,34 @@ export function orderByToJSON(object: OrderBy): string {
       return "UNKNOWN";
   }
 }
-
 /** BroadcastMode specifies the broadcast mode for the TxService.Broadcast RPC method. */
+
 export enum BroadcastMode {
+  /** BROADCAST_MODE_UNSPECIFIED - zero-value for mode ordering */
+  BROADCAST_MODE_UNSPECIFIED = 0,
+
+  /**
+   * BROADCAST_MODE_BLOCK - BROADCAST_MODE_BLOCK defines a tx broadcasting mode where the client waits for
+   * the tx to be committed in a block.
+   */
+  BROADCAST_MODE_BLOCK = 1,
+
+  /**
+   * BROADCAST_MODE_SYNC - BROADCAST_MODE_SYNC defines a tx broadcasting mode where the client waits for
+   * a CheckTx execution response only.
+   */
+  BROADCAST_MODE_SYNC = 2,
+
+  /**
+   * BROADCAST_MODE_ASYNC - BROADCAST_MODE_ASYNC defines a tx broadcasting mode where the client returns
+   * immediately.
+   */
+  BROADCAST_MODE_ASYNC = 3,
+  UNRECOGNIZED = -1,
+}
+/** BroadcastMode specifies the broadcast mode for the TxService.Broadcast RPC method. */
+
+export enum BroadcastModeSDKType {
   /** BROADCAST_MODE_UNSPECIFIED - zero-value for mode ordering */
   BROADCAST_MODE_UNSPECIFIED = 0,
 
@@ -120,58 +158,105 @@ export function broadcastModeToJSON(object: BroadcastMode): string {
       return "UNKNOWN";
   }
 }
-
 /**
  * GetTxsEventRequest is the request type for the Service.TxsByEvents
  * RPC method.
  */
+
 export interface GetTxsEventRequest {
   /** events is the list of transaction event type. */
-  events: string[];
-
+  events?: string[];
   /** pagination defines a pagination for the request. */
-  pagination?: PageRequest;
-  order_by: OrderBy;
-}
 
+  pagination?: PageRequest;
+  order_by?: OrderBy;
+}
+/**
+ * GetTxsEventRequest is the request type for the Service.TxsByEvents
+ * RPC method.
+ */
+
+export interface GetTxsEventRequestSDKType {
+  /** events is the list of transaction event type. */
+  events?: string[];
+  /** pagination defines a pagination for the request. */
+
+  pagination?: PageRequestSDKType;
+  order_by?: OrderBySDKType;
+}
 /**
  * GetTxsEventResponse is the response type for the Service.TxsByEvents
  * RPC method.
  */
+
 export interface GetTxsEventResponse {
   /** txs is the list of queried transactions. */
   txs: Tx[];
-
   /** tx_responses is the list of queried TxResponses. */
-  tx_responses: TxResponse[];
 
+  tx_responses: TxResponse[];
   /** pagination defines a pagination for the response. */
+
   pagination?: PageResponse;
 }
+/**
+ * GetTxsEventResponse is the response type for the Service.TxsByEvents
+ * RPC method.
+ */
 
+export interface GetTxsEventResponseSDKType {
+  /** txs is the list of queried transactions. */
+  txs: TxSDKType[];
+  /** tx_responses is the list of queried TxResponses. */
+
+  tx_responses: TxResponseSDKType[];
+  /** pagination defines a pagination for the response. */
+
+  pagination?: PageResponseSDKType;
+}
 /**
  * BroadcastTxRequest is the request type for the Service.BroadcastTxRequest
  * RPC method.
  */
+
 export interface BroadcastTxRequest {
   /** tx_bytes is the raw transaction. */
   tx_bytes: Uint8Array;
   mode: BroadcastMode;
 }
+/**
+ * BroadcastTxRequest is the request type for the Service.BroadcastTxRequest
+ * RPC method.
+ */
 
+export interface BroadcastTxRequestSDKType {
+  /** tx_bytes is the raw transaction. */
+  tx_bytes: Uint8Array;
+  mode: BroadcastModeSDKType;
+}
 /**
  * BroadcastTxResponse is the response type for the
  * Service.BroadcastTx method.
  */
+
 export interface BroadcastTxResponse {
   /** tx_response is the queried TxResponses. */
   tx_response: TxResponse;
 }
+/**
+ * BroadcastTxResponse is the response type for the
+ * Service.BroadcastTx method.
+ */
 
+export interface BroadcastTxResponseSDKType {
+  /** tx_response is the queried TxResponses. */
+  tx_response: TxResponseSDKType;
+}
 /**
  * SimulateRequest is the request type for the Service.Simulate
  * RPC method.
  */
+
 export interface SimulateRequest {
   /**
    * tx is the transaction to simulate.
@@ -180,72 +265,152 @@ export interface SimulateRequest {
 
   /** @deprecated */
   tx: Tx;
-
   /**
    * tx_bytes is the raw transaction.
    * 
    * Since: cosmos-sdk 0.43
    */
+
   tx_bytes: Uint8Array;
 }
+/**
+ * SimulateRequest is the request type for the Service.Simulate
+ * RPC method.
+ */
 
+export interface SimulateRequestSDKType {
+  /**
+   * tx is the transaction to simulate.
+   * Deprecated. Send raw tx bytes instead.
+   */
+
+  /** @deprecated */
+  tx: TxSDKType;
+  /**
+   * tx_bytes is the raw transaction.
+   * 
+   * Since: cosmos-sdk 0.43
+   */
+
+  tx_bytes: Uint8Array;
+}
 /**
  * SimulateResponse is the response type for the
  * Service.SimulateRPC method.
  */
+
 export interface SimulateResponse {
   /** gas_info is the information about gas used in the simulation. */
   gas_info: GasInfo;
-
   /** result is the result of the simulation. */
+
   result: Result;
 }
+/**
+ * SimulateResponse is the response type for the
+ * Service.SimulateRPC method.
+ */
 
+export interface SimulateResponseSDKType {
+  /** gas_info is the information about gas used in the simulation. */
+  gas_info: GasInfoSDKType;
+  /** result is the result of the simulation. */
+
+  result: ResultSDKType;
+}
 /**
  * GetTxRequest is the request type for the Service.GetTx
  * RPC method.
  */
+
 export interface GetTxRequest {
   /** hash is the tx hash to query, encoded as a hex string. */
   hash: string;
 }
+/**
+ * GetTxRequest is the request type for the Service.GetTx
+ * RPC method.
+ */
 
+export interface GetTxRequestSDKType {
+  /** hash is the tx hash to query, encoded as a hex string. */
+  hash: string;
+}
 /** GetTxResponse is the response type for the Service.GetTx method. */
+
 export interface GetTxResponse {
   /** tx is the queried transaction. */
   tx: Tx;
-
   /** tx_response is the queried TxResponses. */
+
   tx_response: TxResponse;
 }
+/** GetTxResponse is the response type for the Service.GetTx method. */
 
+export interface GetTxResponseSDKType {
+  /** tx is the queried transaction. */
+  tx: TxSDKType;
+  /** tx_response is the queried TxResponses. */
+
+  tx_response: TxResponseSDKType;
+}
 /**
  * GetBlockWithTxsRequest is the request type for the Service.GetBlockWithTxs
  * RPC method.
  * 
  * Since: cosmos-sdk 0.45.2
  */
+
 export interface GetBlockWithTxsRequest {
   /** height is the height of the block to query. */
   height: Long;
-
   /** pagination defines a pagination for the request. */
+
   pagination?: PageRequest;
 }
+/**
+ * GetBlockWithTxsRequest is the request type for the Service.GetBlockWithTxs
+ * RPC method.
+ * 
+ * Since: cosmos-sdk 0.45.2
+ */
 
+export interface GetBlockWithTxsRequestSDKType {
+  /** height is the height of the block to query. */
+  height: Long;
+  /** pagination defines a pagination for the request. */
+
+  pagination?: PageRequestSDKType;
+}
 /**
  * GetBlockWithTxsResponse is the response type for the Service.GetBlockWithTxs method.
  * 
  * Since: cosmos-sdk 0.45.2
  */
+
 export interface GetBlockWithTxsResponse {
   /** txs are the transactions in the block. */
   txs: Tx[];
   block_id: BlockID;
   block: Block;
-
   /** pagination defines a pagination for the response. */
+
   pagination?: PageResponse;
+}
+/**
+ * GetBlockWithTxsResponse is the response type for the Service.GetBlockWithTxs method.
+ * 
+ * Since: cosmos-sdk 0.45.2
+ */
+
+export interface GetBlockWithTxsResponseSDKType {
+  /** txs are the transactions in the block. */
+  txs: TxSDKType[];
+  block_id: BlockIDSDKType;
+  block: BlockSDKType;
+  /** pagination defines a pagination for the response. */
+
+  pagination?: PageResponseSDKType;
 }
 
 function createBaseGetTxsEventRequest(): GetTxsEventRequest {
@@ -303,28 +468,6 @@ export const GetTxsEventRequest = {
     return message;
   },
 
-  fromJSON(object: any): GetTxsEventRequest {
-    return {
-      events: Array.isArray(object?.events) ? object.events.map((e: any) => String(e)) : [],
-      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined,
-      order_by: isSet(object.order_by) ? orderByFromJSON(object.order_by) : 0
-    };
-  },
-
-  toJSON(message: GetTxsEventRequest): unknown {
-    const obj: any = {};
-
-    if (message.events) {
-      obj.events = message.events.map(e => e);
-    } else {
-      obj.events = [];
-    }
-
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
-    message.order_by !== undefined && (obj.order_by = orderByToJSON(message.order_by));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<GetTxsEventRequest>): GetTxsEventRequest {
     const message = createBaseGetTxsEventRequest();
     message.events = object.events?.map(e => e) || [];
@@ -360,7 +503,7 @@ export const GetTxsEventResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): GetTxsEventResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetTxsEventResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetTxsEventResponse();
@@ -388,33 +531,6 @@ export const GetTxsEventResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): GetTxsEventResponse {
-    return {
-      txs: Array.isArray(object?.txs) ? object.txs.map((e: any) => Tx.fromJSON(e)) : [],
-      tx_responses: Array.isArray(object?.tx_responses) ? object.tx_responses.map((e: any) => TxResponse.fromJSON(e)) : [],
-      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: GetTxsEventResponse): unknown {
-    const obj: any = {};
-
-    if (message.txs) {
-      obj.txs = message.txs.map(e => e ? Tx.toJSON(e) : undefined);
-    } else {
-      obj.txs = [];
-    }
-
-    if (message.tx_responses) {
-      obj.tx_responses = message.tx_responses.map(e => e ? TxResponse.toJSON(e) : undefined);
-    } else {
-      obj.tx_responses = [];
-    }
-
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<GetTxsEventResponse>): GetTxsEventResponse {
@@ -473,20 +589,6 @@ export const BroadcastTxRequest = {
     return message;
   },
 
-  fromJSON(object: any): BroadcastTxRequest {
-    return {
-      tx_bytes: isSet(object.tx_bytes) ? bytesFromBase64(object.tx_bytes) : new Uint8Array(),
-      mode: isSet(object.mode) ? broadcastModeFromJSON(object.mode) : 0
-    };
-  },
-
-  toJSON(message: BroadcastTxRequest): unknown {
-    const obj: any = {};
-    message.tx_bytes !== undefined && (obj.tx_bytes = base64FromBytes(message.tx_bytes !== undefined ? message.tx_bytes : new Uint8Array()));
-    message.mode !== undefined && (obj.mode = broadcastModeToJSON(message.mode));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<BroadcastTxRequest>): BroadcastTxRequest {
     const message = createBaseBroadcastTxRequest();
     message.tx_bytes = object.tx_bytes ?? new Uint8Array();
@@ -511,7 +613,7 @@ export const BroadcastTxResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): BroadcastTxResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): BroadcastTxResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseBroadcastTxResponse();
@@ -531,18 +633,6 @@ export const BroadcastTxResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): BroadcastTxResponse {
-    return {
-      tx_response: isSet(object.tx_response) ? TxResponse.fromJSON(object.tx_response) : undefined
-    };
-  },
-
-  toJSON(message: BroadcastTxResponse): unknown {
-    const obj: any = {};
-    message.tx_response !== undefined && (obj.tx_response = message.tx_response ? TxResponse.toJSON(message.tx_response) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<BroadcastTxResponse>): BroadcastTxResponse {
@@ -599,20 +689,6 @@ export const SimulateRequest = {
     return message;
   },
 
-  fromJSON(object: any): SimulateRequest {
-    return {
-      tx: isSet(object.tx) ? Tx.fromJSON(object.tx) : undefined,
-      tx_bytes: isSet(object.tx_bytes) ? bytesFromBase64(object.tx_bytes) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: SimulateRequest): unknown {
-    const obj: any = {};
-    message.tx !== undefined && (obj.tx = message.tx ? Tx.toJSON(message.tx) : undefined);
-    message.tx_bytes !== undefined && (obj.tx_bytes = base64FromBytes(message.tx_bytes !== undefined ? message.tx_bytes : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<SimulateRequest>): SimulateRequest {
     const message = createBaseSimulateRequest();
     message.tx = object.tx !== undefined && object.tx !== null ? Tx.fromPartial(object.tx) : undefined;
@@ -642,7 +718,7 @@ export const SimulateResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): SimulateResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): SimulateResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSimulateResponse();
@@ -666,20 +742,6 @@ export const SimulateResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): SimulateResponse {
-    return {
-      gas_info: isSet(object.gas_info) ? GasInfo.fromJSON(object.gas_info) : undefined,
-      result: isSet(object.result) ? Result.fromJSON(object.result) : undefined
-    };
-  },
-
-  toJSON(message: SimulateResponse): unknown {
-    const obj: any = {};
-    message.gas_info !== undefined && (obj.gas_info = message.gas_info ? GasInfo.toJSON(message.gas_info) : undefined);
-    message.result !== undefined && (obj.result = message.result ? Result.toJSON(message.result) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<SimulateResponse>): SimulateResponse {
@@ -728,18 +790,6 @@ export const GetTxRequest = {
     return message;
   },
 
-  fromJSON(object: any): GetTxRequest {
-    return {
-      hash: isSet(object.hash) ? String(object.hash) : ""
-    };
-  },
-
-  toJSON(message: GetTxRequest): unknown {
-    const obj: any = {};
-    message.hash !== undefined && (obj.hash = message.hash);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<GetTxRequest>): GetTxRequest {
     const message = createBaseGetTxRequest();
     message.hash = object.hash ?? "";
@@ -768,7 +818,7 @@ export const GetTxResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): GetTxResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetTxResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetTxResponse();
@@ -792,20 +842,6 @@ export const GetTxResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): GetTxResponse {
-    return {
-      tx: isSet(object.tx) ? Tx.fromJSON(object.tx) : undefined,
-      tx_response: isSet(object.tx_response) ? TxResponse.fromJSON(object.tx_response) : undefined
-    };
-  },
-
-  toJSON(message: GetTxResponse): unknown {
-    const obj: any = {};
-    message.tx !== undefined && (obj.tx = message.tx ? Tx.toJSON(message.tx) : undefined);
-    message.tx_response !== undefined && (obj.tx_response = message.tx_response ? TxResponse.toJSON(message.tx_response) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<GetTxResponse>): GetTxResponse {
@@ -863,20 +899,6 @@ export const GetBlockWithTxsRequest = {
     return message;
   },
 
-  fromJSON(object: any): GetBlockWithTxsRequest {
-    return {
-      height: isSet(object.height) ? Long.fromString(object.height) : Long.ZERO,
-      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: GetBlockWithTxsRequest): unknown {
-    const obj: any = {};
-    message.height !== undefined && (obj.height = (message.height || Long.ZERO).toString());
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<GetBlockWithTxsRequest>): GetBlockWithTxsRequest {
     const message = createBaseGetBlockWithTxsRequest();
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
@@ -916,7 +938,7 @@ export const GetBlockWithTxsResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): GetBlockWithTxsResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetBlockWithTxsResponseSDKType {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseGetBlockWithTxsResponse();
@@ -948,30 +970,6 @@ export const GetBlockWithTxsResponse = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): GetBlockWithTxsResponse {
-    return {
-      txs: Array.isArray(object?.txs) ? object.txs.map((e: any) => Tx.fromJSON(e)) : [],
-      block_id: isSet(object.block_id) ? BlockID.fromJSON(object.block_id) : undefined,
-      block: isSet(object.block) ? Block.fromJSON(object.block) : undefined,
-      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
-    };
-  },
-
-  toJSON(message: GetBlockWithTxsResponse): unknown {
-    const obj: any = {};
-
-    if (message.txs) {
-      obj.txs = message.txs.map(e => e ? Tx.toJSON(e) : undefined);
-    } else {
-      obj.txs = [];
-    }
-
-    message.block_id !== undefined && (obj.block_id = message.block_id ? BlockID.toJSON(message.block_id) : undefined);
-    message.block !== undefined && (obj.block = message.block ? Block.toJSON(message.block) : undefined);
-    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<GetBlockWithTxsResponse>): GetBlockWithTxsResponse {

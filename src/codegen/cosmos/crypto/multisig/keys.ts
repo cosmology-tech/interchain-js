@@ -1,15 +1,25 @@
-import { Any } from "../../../google/protobuf/any";
+import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, DeepPartial } from "@osmonauts/helpers";
-
+import { DeepPartial } from "@osmonauts/helpers";
 /**
  * LegacyAminoPubKey specifies a public key type
  * which nests multiple public keys and a threshold,
  * it uses legacy amino address rules.
  */
+
 export interface LegacyAminoPubKey {
   threshold: number;
   public_keys: Any[];
+}
+/**
+ * LegacyAminoPubKey specifies a public key type
+ * which nests multiple public keys and a threshold,
+ * it uses legacy amino address rules.
+ */
+
+export interface LegacyAminoPubKeySDKType {
+  threshold: number;
+  public_keys: AnySDKType[];
 }
 
 function createBaseLegacyAminoPubKey(): LegacyAminoPubKey {
@@ -56,26 +66,6 @@ export const LegacyAminoPubKey = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): LegacyAminoPubKey {
-    return {
-      threshold: isSet(object.threshold) ? Number(object.threshold) : 0,
-      public_keys: Array.isArray(object?.public_keys) ? object.public_keys.map((e: any) => Any.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: LegacyAminoPubKey): unknown {
-    const obj: any = {};
-    message.threshold !== undefined && (obj.threshold = Math.round(message.threshold));
-
-    if (message.public_keys) {
-      obj.public_keys = message.public_keys.map(e => e ? Any.toJSON(e) : undefined);
-    } else {
-      obj.public_keys = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<LegacyAminoPubKey>): LegacyAminoPubKey {

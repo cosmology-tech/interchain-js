@@ -1,6 +1,4 @@
-import { Any } from "../../../google/protobuf/any";
-import { Coin } from "../../base/v1beta1/coin";
-import { VoteOption, WeightedVoteOption, voteOptionFromJSON } from "./gov";
+import { voteOptionFromJSON } from "./gov";
 import { AminoMsg } from "@cosmjs/amino";
 import { Long } from "@osmonauts/helpers";
 import { MsgSubmitProposal, MsgVote, MsgVoteWeighted, MsgDeposit } from "./tx";

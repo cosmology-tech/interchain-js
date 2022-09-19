@@ -1,6 +1,18 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet, bytesFromBase64, base64FromBytes, DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial } from "@osmonauts/helpers";
 export enum HashOp {
+  /** NO_HASH - NO_HASH is the default if no data passed. Note this is an illegal argument some places. */
+  NO_HASH = 0,
+  SHA256 = 1,
+  SHA512 = 2,
+  KECCAK = 3,
+  RIPEMD160 = 4,
+
+  /** BITCOIN - ripemd160(sha256(x)) */
+  BITCOIN = 5,
+  UNRECOGNIZED = -1,
+}
+export enum HashOpSDKType {
   /** NO_HASH - NO_HASH is the default if no data passed. Note this is an illegal argument some places. */
   NO_HASH = 0,
   SHA256 = 1,
@@ -68,14 +80,50 @@ export function hashOpToJSON(object: HashOp): string {
       return "UNKNOWN";
   }
 }
-
 /**
  * LengthOp defines how to process the key and value of the LeafOp
  * to include length information. After encoding the length with the given
  * algorithm, the length will be prepended to the key and value bytes.
  * (Each one with it's own encoded length)
  */
+
 export enum LengthOp {
+  /** NO_PREFIX - NO_PREFIX don't include any length info */
+  NO_PREFIX = 0,
+
+  /** VAR_PROTO - VAR_PROTO uses protobuf (and go-amino) varint encoding of the length */
+  VAR_PROTO = 1,
+
+  /** VAR_RLP - VAR_RLP uses rlp int encoding of the length */
+  VAR_RLP = 2,
+
+  /** FIXED32_BIG - FIXED32_BIG uses big-endian encoding of the length as a 32 bit integer */
+  FIXED32_BIG = 3,
+
+  /** FIXED32_LITTLE - FIXED32_LITTLE uses little-endian encoding of the length as a 32 bit integer */
+  FIXED32_LITTLE = 4,
+
+  /** FIXED64_BIG - FIXED64_BIG uses big-endian encoding of the length as a 64 bit integer */
+  FIXED64_BIG = 5,
+
+  /** FIXED64_LITTLE - FIXED64_LITTLE uses little-endian encoding of the length as a 64 bit integer */
+  FIXED64_LITTLE = 6,
+
+  /** REQUIRE_32_BYTES - REQUIRE_32_BYTES is like NONE, but will fail if the input is not exactly 32 bytes (sha256 output) */
+  REQUIRE_32_BYTES = 7,
+
+  /** REQUIRE_64_BYTES - REQUIRE_64_BYTES is like NONE, but will fail if the input is not exactly 64 bytes (sha512 output) */
+  REQUIRE_64_BYTES = 8,
+  UNRECOGNIZED = -1,
+}
+/**
+ * LengthOp defines how to process the key and value of the LeafOp
+ * to include length information. After encoding the length with the given
+ * algorithm, the length will be prepended to the key and value bytes.
+ * (Each one with it's own encoded length)
+ */
+
+export enum LengthOpSDKType {
   /** NO_PREFIX - NO_PREFIX don't include any length info */
   NO_PREFIX = 0,
 
@@ -181,7 +229,6 @@ export function lengthOpToJSON(object: LengthOp): string {
       return "UNKNOWN";
   }
 }
-
 /**
  * ExistenceProof takes a key and a value and a set of steps to perform on it.
  * The result of peforming all these steps will provide a "root hash", which can
@@ -203,33 +250,81 @@ export function lengthOpToJSON(object: LengthOp): string {
  * in the ProofSpec is valuable to prevent this mutability. And why all trees should
  * length-prefix the data before hashing it.
  */
+
 export interface ExistenceProof {
   key: Uint8Array;
   value: Uint8Array;
   leaf: LeafOp;
   path: InnerOp[];
 }
+/**
+ * ExistenceProof takes a key and a value and a set of steps to perform on it.
+ * The result of peforming all these steps will provide a "root hash", which can
+ * be compared to the value in a header.
+ * 
+ * Since it is computationally infeasible to produce a hash collission for any of the used
+ * cryptographic hash functions, if someone can provide a series of operations to transform
+ * a given key and value into a root hash that matches some trusted root, these key and values
+ * must be in the referenced merkle tree.
+ * 
+ * The only possible issue is maliablity in LeafOp, such as providing extra prefix data,
+ * which should be controlled by a spec. Eg. with lengthOp as NONE,
+ * prefix = FOO, key = BAR, value = CHOICE
+ * and
+ * prefix = F, key = OOBAR, value = CHOICE
+ * would produce the same value.
+ * 
+ * With LengthOp this is tricker but not impossible. Which is why the "leafPrefixEqual" field
+ * in the ProofSpec is valuable to prevent this mutability. And why all trees should
+ * length-prefix the data before hashing it.
+ */
 
+export interface ExistenceProofSDKType {
+  key: Uint8Array;
+  value: Uint8Array;
+  leaf: LeafOpSDKType;
+  path: InnerOpSDKType[];
+}
 /**
  * NonExistenceProof takes a proof of two neighbors, one left of the desired key,
  * one right of the desired key. If both proofs are valid AND they are neighbors,
  * then there is no valid proof for the given key.
  */
+
 export interface NonExistenceProof {
   /** TODO: remove this as unnecessary??? we prove a range */
   key: Uint8Array;
   left: ExistenceProof;
   right: ExistenceProof;
 }
+/**
+ * NonExistenceProof takes a proof of two neighbors, one left of the desired key,
+ * one right of the desired key. If both proofs are valid AND they are neighbors,
+ * then there is no valid proof for the given key.
+ */
 
+export interface NonExistenceProofSDKType {
+  /** TODO: remove this as unnecessary??? we prove a range */
+  key: Uint8Array;
+  left: ExistenceProofSDKType;
+  right: ExistenceProofSDKType;
+}
 /** CommitmentProof is either an ExistenceProof or a NonExistenceProof, or a Batch of such messages */
+
 export interface CommitmentProof {
   exist?: ExistenceProof;
   nonexist?: NonExistenceProof;
   batch?: BatchProof;
   compressed?: CompressedBatchProof;
 }
+/** CommitmentProof is either an ExistenceProof or a NonExistenceProof, or a Batch of such messages */
 
+export interface CommitmentProofSDKType {
+  exist?: ExistenceProofSDKType;
+  nonexist?: NonExistenceProofSDKType;
+  batch?: BatchProofSDKType;
+  compressed?: CompressedBatchProofSDKType;
+}
 /**
  * LeafOp represents the raw key-value data we wish to prove, and
  * must be flexible to represent the internal transformation from
@@ -246,19 +341,48 @@ export interface CommitmentProof {
  * Then combine the bytes, and hash it
  * output = hash(prefix || length(hkey) || hkey || length(hvalue) || hvalue)
  */
+
 export interface LeafOp {
   hash: HashOp;
   prehash_key: HashOp;
   prehash_value: HashOp;
   length: LengthOp;
-
   /**
    * prefix is a fixed bytes that may optionally be included at the beginning to differentiate
    * a leaf node from an inner node.
    */
+
   prefix: Uint8Array;
 }
+/**
+ * LeafOp represents the raw key-value data we wish to prove, and
+ * must be flexible to represent the internal transformation from
+ * the original key-value pairs into the basis hash, for many existing
+ * merkle trees.
+ * 
+ * key and value are passed in. So that the signature of this operation is:
+ * leafOp(key, value) -> output
+ * 
+ * To process this, first prehash the keys and values if needed (ANY means no hash in this case):
+ * hkey = prehashKey(key)
+ * hvalue = prehashValue(value)
+ * 
+ * Then combine the bytes, and hash it
+ * output = hash(prefix || length(hkey) || hkey || length(hvalue) || hvalue)
+ */
 
+export interface LeafOpSDKType {
+  hash: HashOpSDKType;
+  prehash_key: HashOpSDKType;
+  prehash_value: HashOpSDKType;
+  length: LengthOpSDKType;
+  /**
+   * prefix is a fixed bytes that may optionally be included at the beginning to differentiate
+   * a leaf node from an inner node.
+   */
+
+  prefix: Uint8Array;
+}
 /**
  * InnerOp represents a merkle-proof step that is not a leaf.
  * It represents concatenating two children and hashing them to provide the next result.
@@ -276,12 +400,35 @@ export interface LeafOp {
  * some value to differentiate from leaf nodes, should be included in prefix and suffix.
  * If either of prefix or suffix is empty, we just treat it as an empty string
  */
+
 export interface InnerOp {
   hash: HashOp;
   prefix: Uint8Array;
   suffix: Uint8Array;
 }
+/**
+ * InnerOp represents a merkle-proof step that is not a leaf.
+ * It represents concatenating two children and hashing them to provide the next result.
+ * 
+ * The result of the previous step is passed in, so the signature of this op is:
+ * innerOp(child) -> output
+ * 
+ * The result of applying InnerOp should be:
+ * output = op.hash(op.prefix || child || op.suffix)
+ * 
+ * where the || operator is concatenation of binary data,
+ * and child is the result of hashing all the tree below this step.
+ * 
+ * Any special data, like prepending child with the length, or prepending the entire operation with
+ * some value to differentiate from leaf nodes, should be included in prefix and suffix.
+ * If either of prefix or suffix is empty, we just treat it as an empty string
+ */
 
+export interface InnerOpSDKType {
+  hash: HashOpSDKType;
+  prefix: Uint8Array;
+  suffix: Uint8Array;
+}
 /**
  * ProofSpec defines what the expected parameters are for a given proof type.
  * This can be stored in the client and used to validate any incoming proofs.
@@ -294,6 +441,7 @@ export interface InnerOp {
  * We need this for proper security, requires client knows a priori what
  * tree format server uses. But not in code, rather a configuration object.
  */
+
 export interface ProofSpec {
   /**
    * any field in the ExistenceProof must be the same as in this spec.
@@ -301,14 +449,40 @@ export interface ProofSpec {
    */
   leaf_spec: LeafOp;
   inner_spec: InnerSpec;
-
   /** max_depth (if > 0) is the maximum number of InnerOps allowed (mainly for fixed-depth tries) */
-  max_depth: number;
 
+  max_depth: number;
   /** min_depth (if > 0) is the minimum number of InnerOps allowed (mainly for fixed-depth tries) */
+
   min_depth: number;
 }
+/**
+ * ProofSpec defines what the expected parameters are for a given proof type.
+ * This can be stored in the client and used to validate any incoming proofs.
+ * 
+ * verify(ProofSpec, Proof) -> Proof | Error
+ * 
+ * As demonstrated in tests, if we don't fix the algorithm used to calculate the
+ * LeafHash for a given tree, there are many possible key-value pairs that can
+ * generate a given hash (by interpretting the preimage differently).
+ * We need this for proper security, requires client knows a priori what
+ * tree format server uses. But not in code, rather a configuration object.
+ */
 
+export interface ProofSpecSDKType {
+  /**
+   * any field in the ExistenceProof must be the same as in this spec.
+   * except Prefix, which is just the first bytes of prefix (spec can be longer)
+   */
+  leaf_spec: LeafOpSDKType;
+  inner_spec: InnerSpecSDKType;
+  /** max_depth (if > 0) is the maximum number of InnerOps allowed (mainly for fixed-depth tries) */
+
+  max_depth: number;
+  /** min_depth (if > 0) is the minimum number of InnerOps allowed (mainly for fixed-depth tries) */
+
+  min_depth: number;
+}
 /**
  * InnerSpec contains all store-specific structure info to determine if two proofs from a
  * given store are neighbors.
@@ -319,6 +493,7 @@ export interface ProofSpec {
  * isRightMost(spec: InnerSpec, op: InnerOp)
  * isLeftNeighbor(spec: InnerSpec, left: InnerOp, right: InnerOp)
  */
+
 export interface InnerSpec {
   /**
    * Child order is the ordering of the children node, must count from 0
@@ -329,40 +504,97 @@ export interface InnerSpec {
   child_size: number;
   min_prefix_length: number;
   max_prefix_length: number;
-
   /** empty child is the prehash image that is used when one child is nil (eg. 20 bytes of 0) */
-  empty_child: Uint8Array;
 
+  empty_child: Uint8Array;
   /** hash is the algorithm that must be used for each InnerOp */
+
   hash: HashOp;
 }
+/**
+ * InnerSpec contains all store-specific structure info to determine if two proofs from a
+ * given store are neighbors.
+ * 
+ * This enables:
+ * 
+ * isLeftMost(spec: InnerSpec, op: InnerOp)
+ * isRightMost(spec: InnerSpec, op: InnerOp)
+ * isLeftNeighbor(spec: InnerSpec, left: InnerOp, right: InnerOp)
+ */
 
+export interface InnerSpecSDKType {
+  /**
+   * Child order is the ordering of the children node, must count from 0
+   * iavl tree is [0, 1] (left then right)
+   * merk is [0, 2, 1] (left, right, here)
+   */
+  child_order: number[];
+  child_size: number;
+  min_prefix_length: number;
+  max_prefix_length: number;
+  /** empty child is the prehash image that is used when one child is nil (eg. 20 bytes of 0) */
+
+  empty_child: Uint8Array;
+  /** hash is the algorithm that must be used for each InnerOp */
+
+  hash: HashOpSDKType;
+}
 /** BatchProof is a group of multiple proof types than can be compressed */
+
 export interface BatchProof {
   entries: BatchEntry[];
 }
+/** BatchProof is a group of multiple proof types than can be compressed */
 
+export interface BatchProofSDKType {
+  entries: BatchEntrySDKType[];
+}
 /** Use BatchEntry not CommitmentProof, to avoid recursion */
+
 export interface BatchEntry {
   exist?: ExistenceProof;
   nonexist?: NonExistenceProof;
+}
+/** Use BatchEntry not CommitmentProof, to avoid recursion */
+
+export interface BatchEntrySDKType {
+  exist?: ExistenceProofSDKType;
+  nonexist?: NonExistenceProofSDKType;
 }
 export interface CompressedBatchProof {
   entries: CompressedBatchEntry[];
   lookup_inners: InnerOp[];
 }
-
+export interface CompressedBatchProofSDKType {
+  entries: CompressedBatchEntrySDKType[];
+  lookup_inners: InnerOpSDKType[];
+}
 /** Use BatchEntry not CommitmentProof, to avoid recursion */
+
 export interface CompressedBatchEntry {
   exist?: CompressedExistenceProof;
   nonexist?: CompressedNonExistenceProof;
+}
+/** Use BatchEntry not CommitmentProof, to avoid recursion */
+
+export interface CompressedBatchEntrySDKType {
+  exist?: CompressedExistenceProofSDKType;
+  nonexist?: CompressedNonExistenceProofSDKType;
 }
 export interface CompressedExistenceProof {
   key: Uint8Array;
   value: Uint8Array;
   leaf: LeafOp;
-
   /** these are indexes into the lookup_inners table in CompressedBatchProof */
+
+  path: number[];
+}
+export interface CompressedExistenceProofSDKType {
+  key: Uint8Array;
+  value: Uint8Array;
+  leaf: LeafOpSDKType;
+  /** these are indexes into the lookup_inners table in CompressedBatchProof */
+
   path: number[];
 }
 export interface CompressedNonExistenceProof {
@@ -370,6 +602,12 @@ export interface CompressedNonExistenceProof {
   key: Uint8Array;
   left: CompressedExistenceProof;
   right: CompressedExistenceProof;
+}
+export interface CompressedNonExistenceProofSDKType {
+  /** TODO: remove this as unnecessary??? we prove a range */
+  key: Uint8Array;
+  left: CompressedExistenceProofSDKType;
+  right: CompressedExistenceProofSDKType;
 }
 
 function createBaseExistenceProof(): ExistenceProof {
@@ -436,30 +674,6 @@ export const ExistenceProof = {
     return message;
   },
 
-  fromJSON(object: any): ExistenceProof {
-    return {
-      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(),
-      value: isSet(object.value) ? bytesFromBase64(object.value) : new Uint8Array(),
-      leaf: isSet(object.leaf) ? LeafOp.fromJSON(object.leaf) : undefined,
-      path: Array.isArray(object?.path) ? object.path.map((e: any) => InnerOp.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: ExistenceProof): unknown {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = base64FromBytes(message.key !== undefined ? message.key : new Uint8Array()));
-    message.value !== undefined && (obj.value = base64FromBytes(message.value !== undefined ? message.value : new Uint8Array()));
-    message.leaf !== undefined && (obj.leaf = message.leaf ? LeafOp.toJSON(message.leaf) : undefined);
-
-    if (message.path) {
-      obj.path = message.path.map(e => e ? InnerOp.toJSON(e) : undefined);
-    } else {
-      obj.path = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<ExistenceProof>): ExistenceProof {
     const message = createBaseExistenceProof();
     message.key = object.key ?? new Uint8Array();
@@ -524,22 +738,6 @@ export const NonExistenceProof = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): NonExistenceProof {
-    return {
-      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(),
-      left: isSet(object.left) ? ExistenceProof.fromJSON(object.left) : undefined,
-      right: isSet(object.right) ? ExistenceProof.fromJSON(object.right) : undefined
-    };
-  },
-
-  toJSON(message: NonExistenceProof): unknown {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = base64FromBytes(message.key !== undefined ? message.key : new Uint8Array()));
-    message.left !== undefined && (obj.left = message.left ? ExistenceProof.toJSON(message.left) : undefined);
-    message.right !== undefined && (obj.right = message.right ? ExistenceProof.toJSON(message.right) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<NonExistenceProof>): NonExistenceProof {
@@ -614,24 +812,6 @@ export const CommitmentProof = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): CommitmentProof {
-    return {
-      exist: isSet(object.exist) ? ExistenceProof.fromJSON(object.exist) : undefined,
-      nonexist: isSet(object.nonexist) ? NonExistenceProof.fromJSON(object.nonexist) : undefined,
-      batch: isSet(object.batch) ? BatchProof.fromJSON(object.batch) : undefined,
-      compressed: isSet(object.compressed) ? CompressedBatchProof.fromJSON(object.compressed) : undefined
-    };
-  },
-
-  toJSON(message: CommitmentProof): unknown {
-    const obj: any = {};
-    message.exist !== undefined && (obj.exist = message.exist ? ExistenceProof.toJSON(message.exist) : undefined);
-    message.nonexist !== undefined && (obj.nonexist = message.nonexist ? NonExistenceProof.toJSON(message.nonexist) : undefined);
-    message.batch !== undefined && (obj.batch = message.batch ? BatchProof.toJSON(message.batch) : undefined);
-    message.compressed !== undefined && (obj.compressed = message.compressed ? CompressedBatchProof.toJSON(message.compressed) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<CommitmentProof>): CommitmentProof {
@@ -718,26 +898,6 @@ export const LeafOp = {
     return message;
   },
 
-  fromJSON(object: any): LeafOp {
-    return {
-      hash: isSet(object.hash) ? hashOpFromJSON(object.hash) : 0,
-      prehash_key: isSet(object.prehash_key) ? hashOpFromJSON(object.prehash_key) : 0,
-      prehash_value: isSet(object.prehash_value) ? hashOpFromJSON(object.prehash_value) : 0,
-      length: isSet(object.length) ? lengthOpFromJSON(object.length) : 0,
-      prefix: isSet(object.prefix) ? bytesFromBase64(object.prefix) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: LeafOp): unknown {
-    const obj: any = {};
-    message.hash !== undefined && (obj.hash = hashOpToJSON(message.hash));
-    message.prehash_key !== undefined && (obj.prehash_key = hashOpToJSON(message.prehash_key));
-    message.prehash_value !== undefined && (obj.prehash_value = hashOpToJSON(message.prehash_value));
-    message.length !== undefined && (obj.length = lengthOpToJSON(message.length));
-    message.prefix !== undefined && (obj.prefix = base64FromBytes(message.prefix !== undefined ? message.prefix : new Uint8Array()));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<LeafOp>): LeafOp {
     const message = createBaseLeafOp();
     message.hash = object.hash ?? 0;
@@ -803,22 +963,6 @@ export const InnerOp = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): InnerOp {
-    return {
-      hash: isSet(object.hash) ? hashOpFromJSON(object.hash) : 0,
-      prefix: isSet(object.prefix) ? bytesFromBase64(object.prefix) : new Uint8Array(),
-      suffix: isSet(object.suffix) ? bytesFromBase64(object.suffix) : new Uint8Array()
-    };
-  },
-
-  toJSON(message: InnerOp): unknown {
-    const obj: any = {};
-    message.hash !== undefined && (obj.hash = hashOpToJSON(message.hash));
-    message.prefix !== undefined && (obj.prefix = base64FromBytes(message.prefix !== undefined ? message.prefix : new Uint8Array()));
-    message.suffix !== undefined && (obj.suffix = base64FromBytes(message.suffix !== undefined ? message.suffix : new Uint8Array()));
-    return obj;
   },
 
   fromPartial(object: DeepPartial<InnerOp>): InnerOp {
@@ -893,24 +1037,6 @@ export const ProofSpec = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): ProofSpec {
-    return {
-      leaf_spec: isSet(object.leaf_spec) ? LeafOp.fromJSON(object.leaf_spec) : undefined,
-      inner_spec: isSet(object.inner_spec) ? InnerSpec.fromJSON(object.inner_spec) : undefined,
-      max_depth: isSet(object.max_depth) ? Number(object.max_depth) : 0,
-      min_depth: isSet(object.min_depth) ? Number(object.min_depth) : 0
-    };
-  },
-
-  toJSON(message: ProofSpec): unknown {
-    const obj: any = {};
-    message.leaf_spec !== undefined && (obj.leaf_spec = message.leaf_spec ? LeafOp.toJSON(message.leaf_spec) : undefined);
-    message.inner_spec !== undefined && (obj.inner_spec = message.inner_spec ? InnerSpec.toJSON(message.inner_spec) : undefined);
-    message.max_depth !== undefined && (obj.max_depth = Math.round(message.max_depth));
-    message.min_depth !== undefined && (obj.min_depth = Math.round(message.min_depth));
-    return obj;
   },
 
   fromPartial(object: DeepPartial<ProofSpec>): ProofSpec {
@@ -1019,34 +1145,6 @@ export const InnerSpec = {
     return message;
   },
 
-  fromJSON(object: any): InnerSpec {
-    return {
-      child_order: Array.isArray(object?.child_order) ? object.child_order.map((e: any) => Number(e)) : [],
-      child_size: isSet(object.child_size) ? Number(object.child_size) : 0,
-      min_prefix_length: isSet(object.min_prefix_length) ? Number(object.min_prefix_length) : 0,
-      max_prefix_length: isSet(object.max_prefix_length) ? Number(object.max_prefix_length) : 0,
-      empty_child: isSet(object.empty_child) ? bytesFromBase64(object.empty_child) : new Uint8Array(),
-      hash: isSet(object.hash) ? hashOpFromJSON(object.hash) : 0
-    };
-  },
-
-  toJSON(message: InnerSpec): unknown {
-    const obj: any = {};
-
-    if (message.child_order) {
-      obj.child_order = message.child_order.map(e => Math.round(e));
-    } else {
-      obj.child_order = [];
-    }
-
-    message.child_size !== undefined && (obj.child_size = Math.round(message.child_size));
-    message.min_prefix_length !== undefined && (obj.min_prefix_length = Math.round(message.min_prefix_length));
-    message.max_prefix_length !== undefined && (obj.max_prefix_length = Math.round(message.max_prefix_length));
-    message.empty_child !== undefined && (obj.empty_child = base64FromBytes(message.empty_child !== undefined ? message.empty_child : new Uint8Array()));
-    message.hash !== undefined && (obj.hash = hashOpToJSON(message.hash));
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<InnerSpec>): InnerSpec {
     const message = createBaseInnerSpec();
     message.child_order = object.child_order?.map(e => e) || [];
@@ -1095,24 +1193,6 @@ export const BatchProof = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): BatchProof {
-    return {
-      entries: Array.isArray(object?.entries) ? object.entries.map((e: any) => BatchEntry.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: BatchProof): unknown {
-    const obj: any = {};
-
-    if (message.entries) {
-      obj.entries = message.entries.map(e => e ? BatchEntry.toJSON(e) : undefined);
-    } else {
-      obj.entries = [];
-    }
-
-    return obj;
   },
 
   fromPartial(object: DeepPartial<BatchProof>): BatchProof {
@@ -1167,20 +1247,6 @@ export const BatchEntry = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): BatchEntry {
-    return {
-      exist: isSet(object.exist) ? ExistenceProof.fromJSON(object.exist) : undefined,
-      nonexist: isSet(object.nonexist) ? NonExistenceProof.fromJSON(object.nonexist) : undefined
-    };
-  },
-
-  toJSON(message: BatchEntry): unknown {
-    const obj: any = {};
-    message.exist !== undefined && (obj.exist = message.exist ? ExistenceProof.toJSON(message.exist) : undefined);
-    message.nonexist !== undefined && (obj.nonexist = message.nonexist ? NonExistenceProof.toJSON(message.nonexist) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<BatchEntry>): BatchEntry {
@@ -1238,31 +1304,6 @@ export const CompressedBatchProof = {
     return message;
   },
 
-  fromJSON(object: any): CompressedBatchProof {
-    return {
-      entries: Array.isArray(object?.entries) ? object.entries.map((e: any) => CompressedBatchEntry.fromJSON(e)) : [],
-      lookup_inners: Array.isArray(object?.lookup_inners) ? object.lookup_inners.map((e: any) => InnerOp.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: CompressedBatchProof): unknown {
-    const obj: any = {};
-
-    if (message.entries) {
-      obj.entries = message.entries.map(e => e ? CompressedBatchEntry.toJSON(e) : undefined);
-    } else {
-      obj.entries = [];
-    }
-
-    if (message.lookup_inners) {
-      obj.lookup_inners = message.lookup_inners.map(e => e ? InnerOp.toJSON(e) : undefined);
-    } else {
-      obj.lookup_inners = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<CompressedBatchProof>): CompressedBatchProof {
     const message = createBaseCompressedBatchProof();
     message.entries = object.entries?.map(e => CompressedBatchEntry.fromPartial(e)) || [];
@@ -1316,20 +1357,6 @@ export const CompressedBatchEntry = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): CompressedBatchEntry {
-    return {
-      exist: isSet(object.exist) ? CompressedExistenceProof.fromJSON(object.exist) : undefined,
-      nonexist: isSet(object.nonexist) ? CompressedNonExistenceProof.fromJSON(object.nonexist) : undefined
-    };
-  },
-
-  toJSON(message: CompressedBatchEntry): unknown {
-    const obj: any = {};
-    message.exist !== undefined && (obj.exist = message.exist ? CompressedExistenceProof.toJSON(message.exist) : undefined);
-    message.nonexist !== undefined && (obj.nonexist = message.nonexist ? CompressedNonExistenceProof.toJSON(message.nonexist) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<CompressedBatchEntry>): CompressedBatchEntry {
@@ -1417,30 +1444,6 @@ export const CompressedExistenceProof = {
     return message;
   },
 
-  fromJSON(object: any): CompressedExistenceProof {
-    return {
-      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(),
-      value: isSet(object.value) ? bytesFromBase64(object.value) : new Uint8Array(),
-      leaf: isSet(object.leaf) ? LeafOp.fromJSON(object.leaf) : undefined,
-      path: Array.isArray(object?.path) ? object.path.map((e: any) => Number(e)) : []
-    };
-  },
-
-  toJSON(message: CompressedExistenceProof): unknown {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = base64FromBytes(message.key !== undefined ? message.key : new Uint8Array()));
-    message.value !== undefined && (obj.value = base64FromBytes(message.value !== undefined ? message.value : new Uint8Array()));
-    message.leaf !== undefined && (obj.leaf = message.leaf ? LeafOp.toJSON(message.leaf) : undefined);
-
-    if (message.path) {
-      obj.path = message.path.map(e => Math.round(e));
-    } else {
-      obj.path = [];
-    }
-
-    return obj;
-  },
-
   fromPartial(object: DeepPartial<CompressedExistenceProof>): CompressedExistenceProof {
     const message = createBaseCompressedExistenceProof();
     message.key = object.key ?? new Uint8Array();
@@ -1505,22 +1508,6 @@ export const CompressedNonExistenceProof = {
     }
 
     return message;
-  },
-
-  fromJSON(object: any): CompressedNonExistenceProof {
-    return {
-      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(),
-      left: isSet(object.left) ? CompressedExistenceProof.fromJSON(object.left) : undefined,
-      right: isSet(object.right) ? CompressedExistenceProof.fromJSON(object.right) : undefined
-    };
-  },
-
-  toJSON(message: CompressedNonExistenceProof): unknown {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = base64FromBytes(message.key !== undefined ? message.key : new Uint8Array()));
-    message.left !== undefined && (obj.left = message.left ? CompressedExistenceProof.toJSON(message.left) : undefined);
-    message.right !== undefined && (obj.right = message.right ? CompressedExistenceProof.toJSON(message.right) : undefined);
-    return obj;
   },
 
   fromPartial(object: DeepPartial<CompressedNonExistenceProof>): CompressedNonExistenceProof {
