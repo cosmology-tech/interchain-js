@@ -9,6 +9,8 @@ export class LCDQueryClient extends LCDClient {
     super({
       restEndpoint
     });
+    this.params = this.params.bind(this);
+    this.subspaces = this.subspaces.bind(this);
   }
   /* Params queries a specific parameter of a module, given its subspace and
   key. */
