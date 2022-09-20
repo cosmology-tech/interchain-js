@@ -10,8 +10,6 @@ export class LCDQueryClient extends LCDClient {
     super({
       restEndpoint
     });
-    this.evidence = this.evidence.bind(this);
-    this.allEvidence = this.allEvidence.bind(this);
   }
   /* Evidence queries evidence based on evidence hash. */
 
