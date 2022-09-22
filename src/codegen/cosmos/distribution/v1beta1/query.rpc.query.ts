@@ -39,71 +39,72 @@ export class QueryClientImpl implements Query {
 
   constructor(rpc: Rpc) {
     this.rpc = rpc;
-    this.params = this.params.bind(this);
-    this.validatorOutstandingRewards = this.validatorOutstandingRewards.bind(this);
-    this.validatorCommission = this.validatorCommission.bind(this);
-    this.validatorSlashes = this.validatorSlashes.bind(this);
-    this.delegationRewards = this.delegationRewards.bind(this);
-    this.delegationTotalRewards = this.delegationTotalRewards.bind(this);
-    this.delegatorValidators = this.delegatorValidators.bind(this);
-    this.delegatorWithdrawAddress = this.delegatorWithdrawAddress.bind(this);
-    this.communityPool = this.communityPool.bind(this);
   }
+  /* Params queries params of the distribution module. */
 
-  params(request: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> {
+
+  params = async (request: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> => {
     const data = QueryParamsRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.distribution.v1beta1.Query", "Params", data);
     return promise.then(data => QueryParamsResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* ValidatorOutstandingRewards queries rewards of a validator address. */
 
-  validatorOutstandingRewards(request: QueryValidatorOutstandingRewardsRequest): Promise<QueryValidatorOutstandingRewardsResponseSDKType> {
+  validatorOutstandingRewards = async (request: QueryValidatorOutstandingRewardsRequest): Promise<QueryValidatorOutstandingRewardsResponseSDKType> => {
     const data = QueryValidatorOutstandingRewardsRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.distribution.v1beta1.Query", "ValidatorOutstandingRewards", data);
     return promise.then(data => QueryValidatorOutstandingRewardsResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* ValidatorCommission queries accumulated commission for a validator. */
 
-  validatorCommission(request: QueryValidatorCommissionRequest): Promise<QueryValidatorCommissionResponseSDKType> {
+  validatorCommission = async (request: QueryValidatorCommissionRequest): Promise<QueryValidatorCommissionResponseSDKType> => {
     const data = QueryValidatorCommissionRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.distribution.v1beta1.Query", "ValidatorCommission", data);
     return promise.then(data => QueryValidatorCommissionResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* ValidatorSlashes queries slash events of a validator. */
 
-  validatorSlashes(request: QueryValidatorSlashesRequest): Promise<QueryValidatorSlashesResponseSDKType> {
+  validatorSlashes = async (request: QueryValidatorSlashesRequest): Promise<QueryValidatorSlashesResponseSDKType> => {
     const data = QueryValidatorSlashesRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.distribution.v1beta1.Query", "ValidatorSlashes", data);
     return promise.then(data => QueryValidatorSlashesResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* DelegationRewards queries the total rewards accrued by a delegation. */
 
-  delegationRewards(request: QueryDelegationRewardsRequest): Promise<QueryDelegationRewardsResponseSDKType> {
+  delegationRewards = async (request: QueryDelegationRewardsRequest): Promise<QueryDelegationRewardsResponseSDKType> => {
     const data = QueryDelegationRewardsRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.distribution.v1beta1.Query", "DelegationRewards", data);
     return promise.then(data => QueryDelegationRewardsResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* DelegationTotalRewards queries the total rewards accrued by a each
+  validator. */
 
-  delegationTotalRewards(request: QueryDelegationTotalRewardsRequest): Promise<QueryDelegationTotalRewardsResponseSDKType> {
+  delegationTotalRewards = async (request: QueryDelegationTotalRewardsRequest): Promise<QueryDelegationTotalRewardsResponseSDKType> => {
     const data = QueryDelegationTotalRewardsRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.distribution.v1beta1.Query", "DelegationTotalRewards", data);
     return promise.then(data => QueryDelegationTotalRewardsResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* DelegatorValidators queries the validators of a delegator. */
 
-  delegatorValidators(request: QueryDelegatorValidatorsRequest): Promise<QueryDelegatorValidatorsResponseSDKType> {
+  delegatorValidators = async (request: QueryDelegatorValidatorsRequest): Promise<QueryDelegatorValidatorsResponseSDKType> => {
     const data = QueryDelegatorValidatorsRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.distribution.v1beta1.Query", "DelegatorValidators", data);
     return promise.then(data => QueryDelegatorValidatorsResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* DelegatorWithdrawAddress queries withdraw address of a delegator. */
 
-  delegatorWithdrawAddress(request: QueryDelegatorWithdrawAddressRequest): Promise<QueryDelegatorWithdrawAddressResponseSDKType> {
+  delegatorWithdrawAddress = async (request: QueryDelegatorWithdrawAddressRequest): Promise<QueryDelegatorWithdrawAddressResponseSDKType> => {
     const data = QueryDelegatorWithdrawAddressRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.distribution.v1beta1.Query", "DelegatorWithdrawAddress", data);
     return promise.then(data => QueryDelegatorWithdrawAddressResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* CommunityPool queries the community pool coins. */
 
-  communityPool(request: QueryCommunityPoolRequest = {}): Promise<QueryCommunityPoolResponseSDKType> {
+  communityPool = async (request: QueryCommunityPoolRequest = {}): Promise<QueryCommunityPoolResponseSDKType> => {
     const data = QueryCommunityPoolRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.distribution.v1beta1.Query", "CommunityPool", data);
     return promise.then(data => QueryCommunityPoolResponse.decode(new _m0.Reader(data)));
-  }
-
+  };
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);

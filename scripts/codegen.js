@@ -10,6 +10,7 @@ telescope({
   protoDirs,
   outPath,
   options: {
+    classesUseArrowFunctions: true,
     prototypes: {
       excluded: {
         packages: ['cosmos.gov.v1', 'cosmos.group.v1']

@@ -18,22 +18,23 @@ export class QueryClientImpl implements Query {
 
   constructor(rpc: Rpc) {
     this.rpc = rpc;
-    this.params = this.params.bind(this);
-    this.subspaces = this.subspaces.bind(this);
   }
+  /* Params queries a specific parameter of a module, given its subspace and
+  key. */
 
-  params(request: QueryParamsRequest): Promise<QueryParamsResponseSDKType> {
+
+  params = async (request: QueryParamsRequest): Promise<QueryParamsResponseSDKType> => {
     const data = QueryParamsRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.params.v1beta1.Query", "Params", data);
     return promise.then(data => QueryParamsResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* Subspaces queries for all registered subspaces and all keys for a subspace. */
 
-  subspaces(request: QuerySubspacesRequest = {}): Promise<QuerySubspacesResponseSDKType> {
+  subspaces = async (request: QuerySubspacesRequest = {}): Promise<QuerySubspacesResponseSDKType> => {
     const data = QuerySubspacesRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.params.v1beta1.Query", "Subspaces", data);
     return promise.then(data => QuerySubspacesResponse.decode(new _m0.Reader(data)));
-  }
-
+  };
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);

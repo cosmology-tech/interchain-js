@@ -14,15 +14,15 @@ export class QueryClientImpl implements Query {
 
   constructor(rpc: Rpc) {
     this.rpc = rpc;
-    this.appVersion = this.appVersion.bind(this);
   }
+  /* AppVersion queries an IBC Port and determines the appropriate application version to be used */
 
-  appVersion(request: QueryAppVersionRequest): Promise<QueryAppVersionResponseSDKType> {
+
+  appVersion = async (request: QueryAppVersionRequest): Promise<QueryAppVersionResponseSDKType> => {
     const data = QueryAppVersionRequest.encode(request).finish();
     const promise = this.rpc.request("ibc.core.port.v1.Query", "AppVersion", data);
     return promise.then(data => QueryAppVersionResponse.decode(new _m0.Reader(data)));
-  }
-
+  };
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);

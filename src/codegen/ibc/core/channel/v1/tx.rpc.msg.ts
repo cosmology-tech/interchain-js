@@ -41,76 +41,77 @@ export class MsgClientImpl implements Msg {
 
   constructor(rpc: Rpc) {
     this.rpc = rpc;
-    this.channelOpenInit = this.channelOpenInit.bind(this);
-    this.channelOpenTry = this.channelOpenTry.bind(this);
-    this.channelOpenAck = this.channelOpenAck.bind(this);
-    this.channelOpenConfirm = this.channelOpenConfirm.bind(this);
-    this.channelCloseInit = this.channelCloseInit.bind(this);
-    this.channelCloseConfirm = this.channelCloseConfirm.bind(this);
-    this.recvPacket = this.recvPacket.bind(this);
-    this.timeout = this.timeout.bind(this);
-    this.timeoutOnClose = this.timeoutOnClose.bind(this);
-    this.acknowledgement = this.acknowledgement.bind(this);
   }
+  /* ChannelOpenInit defines a rpc handler method for MsgChannelOpenInit. */
 
-  channelOpenInit(request: MsgChannelOpenInit): Promise<MsgChannelOpenInitResponseSDKType> {
+
+  channelOpenInit = async (request: MsgChannelOpenInit): Promise<MsgChannelOpenInitResponseSDKType> => {
     const data = MsgChannelOpenInit.encode(request).finish();
     const promise = this.rpc.request("ibc.core.channel.v1.Msg", "ChannelOpenInit", data);
     return promise.then(data => MsgChannelOpenInitResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* ChannelOpenTry defines a rpc handler method for MsgChannelOpenTry. */
 
-  channelOpenTry(request: MsgChannelOpenTry): Promise<MsgChannelOpenTryResponseSDKType> {
+  channelOpenTry = async (request: MsgChannelOpenTry): Promise<MsgChannelOpenTryResponseSDKType> => {
     const data = MsgChannelOpenTry.encode(request).finish();
     const promise = this.rpc.request("ibc.core.channel.v1.Msg", "ChannelOpenTry", data);
     return promise.then(data => MsgChannelOpenTryResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* ChannelOpenAck defines a rpc handler method for MsgChannelOpenAck. */
 
-  channelOpenAck(request: MsgChannelOpenAck): Promise<MsgChannelOpenAckResponseSDKType> {
+  channelOpenAck = async (request: MsgChannelOpenAck): Promise<MsgChannelOpenAckResponseSDKType> => {
     const data = MsgChannelOpenAck.encode(request).finish();
     const promise = this.rpc.request("ibc.core.channel.v1.Msg", "ChannelOpenAck", data);
     return promise.then(data => MsgChannelOpenAckResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* ChannelOpenConfirm defines a rpc handler method for MsgChannelOpenConfirm. */
 
-  channelOpenConfirm(request: MsgChannelOpenConfirm): Promise<MsgChannelOpenConfirmResponseSDKType> {
+  channelOpenConfirm = async (request: MsgChannelOpenConfirm): Promise<MsgChannelOpenConfirmResponseSDKType> => {
     const data = MsgChannelOpenConfirm.encode(request).finish();
     const promise = this.rpc.request("ibc.core.channel.v1.Msg", "ChannelOpenConfirm", data);
     return promise.then(data => MsgChannelOpenConfirmResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* ChannelCloseInit defines a rpc handler method for MsgChannelCloseInit. */
 
-  channelCloseInit(request: MsgChannelCloseInit): Promise<MsgChannelCloseInitResponseSDKType> {
+  channelCloseInit = async (request: MsgChannelCloseInit): Promise<MsgChannelCloseInitResponseSDKType> => {
     const data = MsgChannelCloseInit.encode(request).finish();
     const promise = this.rpc.request("ibc.core.channel.v1.Msg", "ChannelCloseInit", data);
     return promise.then(data => MsgChannelCloseInitResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* ChannelCloseConfirm defines a rpc handler method for
+  MsgChannelCloseConfirm. */
 
-  channelCloseConfirm(request: MsgChannelCloseConfirm): Promise<MsgChannelCloseConfirmResponseSDKType> {
+  channelCloseConfirm = async (request: MsgChannelCloseConfirm): Promise<MsgChannelCloseConfirmResponseSDKType> => {
     const data = MsgChannelCloseConfirm.encode(request).finish();
     const promise = this.rpc.request("ibc.core.channel.v1.Msg", "ChannelCloseConfirm", data);
     return promise.then(data => MsgChannelCloseConfirmResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* RecvPacket defines a rpc handler method for MsgRecvPacket. */
 
-  recvPacket(request: MsgRecvPacket): Promise<MsgRecvPacketResponseSDKType> {
+  recvPacket = async (request: MsgRecvPacket): Promise<MsgRecvPacketResponseSDKType> => {
     const data = MsgRecvPacket.encode(request).finish();
     const promise = this.rpc.request("ibc.core.channel.v1.Msg", "RecvPacket", data);
     return promise.then(data => MsgRecvPacketResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* Timeout defines a rpc handler method for MsgTimeout. */
 
-  timeout(request: MsgTimeout): Promise<MsgTimeoutResponseSDKType> {
+  timeout = async (request: MsgTimeout): Promise<MsgTimeoutResponseSDKType> => {
     const data = MsgTimeout.encode(request).finish();
     const promise = this.rpc.request("ibc.core.channel.v1.Msg", "Timeout", data);
     return promise.then(data => MsgTimeoutResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* TimeoutOnClose defines a rpc handler method for MsgTimeoutOnClose. */
 
-  timeoutOnClose(request: MsgTimeoutOnClose): Promise<MsgTimeoutOnCloseResponseSDKType> {
+  timeoutOnClose = async (request: MsgTimeoutOnClose): Promise<MsgTimeoutOnCloseResponseSDKType> => {
     const data = MsgTimeoutOnClose.encode(request).finish();
     const promise = this.rpc.request("ibc.core.channel.v1.Msg", "TimeoutOnClose", data);
     return promise.then(data => MsgTimeoutOnCloseResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* Acknowledgement defines a rpc handler method for MsgAcknowledgement. */
 
-  acknowledgement(request: MsgAcknowledgement): Promise<MsgAcknowledgementResponseSDKType> {
+  acknowledgement = async (request: MsgAcknowledgement): Promise<MsgAcknowledgementResponseSDKType> => {
     const data = MsgAcknowledgement.encode(request).finish();
     const promise = this.rpc.request("ibc.core.channel.v1.Msg", "Acknowledgement", data);
     return promise.then(data => MsgAcknowledgementResponse.decode(new _m0.Reader(data)));
-  }
-
+  };
 }

@@ -20,29 +20,29 @@ export class QueryClientImpl implements Query {
 
   constructor(rpc: Rpc) {
     this.rpc = rpc;
-    this.params = this.params.bind(this);
-    this.inflation = this.inflation.bind(this);
-    this.annualProvisions = this.annualProvisions.bind(this);
   }
+  /* Params returns the total set of minting parameters. */
 
-  params(request: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> {
+
+  params = async (request: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> => {
     const data = QueryParamsRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.mint.v1beta1.Query", "Params", data);
     return promise.then(data => QueryParamsResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* Inflation returns the current minting inflation value. */
 
-  inflation(request: QueryInflationRequest = {}): Promise<QueryInflationResponseSDKType> {
+  inflation = async (request: QueryInflationRequest = {}): Promise<QueryInflationResponseSDKType> => {
     const data = QueryInflationRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.mint.v1beta1.Query", "Inflation", data);
     return promise.then(data => QueryInflationResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* AnnualProvisions current minting annual provisions value. */
 
-  annualProvisions(request: QueryAnnualProvisionsRequest = {}): Promise<QueryAnnualProvisionsResponseSDKType> {
+  annualProvisions = async (request: QueryAnnualProvisionsRequest = {}): Promise<QueryAnnualProvisionsResponseSDKType> => {
     const data = QueryAnnualProvisionsRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.mint.v1beta1.Query", "AnnualProvisions", data);
     return promise.then(data => QueryAnnualProvisionsResponse.decode(new _m0.Reader(data)));
-  }
-
+  };
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);

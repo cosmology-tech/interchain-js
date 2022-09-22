@@ -17,24 +17,24 @@ export class QueryClientImpl implements Query {
 
   constructor(rpc: Rpc) {
     this.rpc = rpc;
-    this.evidence = this.evidence.bind(this);
-    this.allEvidence = this.allEvidence.bind(this);
   }
+  /* Evidence queries evidence based on evidence hash. */
 
-  evidence(request: QueryEvidenceRequest): Promise<QueryEvidenceResponseSDKType> {
+
+  evidence = async (request: QueryEvidenceRequest): Promise<QueryEvidenceResponseSDKType> => {
     const data = QueryEvidenceRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.evidence.v1beta1.Query", "Evidence", data);
     return promise.then(data => QueryEvidenceResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* AllEvidence queries all evidence. */
 
-  allEvidence(request: QueryAllEvidenceRequest = {
+  allEvidence = async (request: QueryAllEvidenceRequest = {
     pagination: undefined
-  }): Promise<QueryAllEvidenceResponseSDKType> {
+  }): Promise<QueryAllEvidenceResponseSDKType> => {
     const data = QueryAllEvidenceRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.evidence.v1beta1.Query", "AllEvidence", data);
     return promise.then(data => QueryAllEvidenceResponse.decode(new _m0.Reader(data)));
-  }
-
+  };
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);

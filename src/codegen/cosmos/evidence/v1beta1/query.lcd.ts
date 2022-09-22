@@ -10,22 +10,19 @@ export class LCDQueryClient {
     requestClient: LCDClient;
   }) {
     this.req = requestClient;
-    this.evidence = this.evidence.bind(this);
-    this.allEvidence = this.allEvidence.bind(this);
   }
   /* Evidence queries evidence based on evidence hash. */
 
 
-  async evidence(params: QueryEvidenceRequest): Promise<QueryEvidenceResponseSDKType> {
+  evidence = async (params: QueryEvidenceRequest): Promise<QueryEvidenceResponseSDKType> => {
     const endpoint = `cosmos/evidence/v1beta1/evidence/${params.evidenceHash}`;
     return await this.req.get<QueryEvidenceResponseSDKType>(endpoint);
-  }
+  };
   /* AllEvidence queries all evidence. */
 
-
-  async allEvidence(params: QueryAllEvidenceRequest = {
+  allEvidence = async (params: QueryAllEvidenceRequest = {
     pagination: undefined
-  }): Promise<QueryAllEvidenceResponseSDKType> {
+  }): Promise<QueryAllEvidenceResponseSDKType> => {
     const options: any = {
       params: {}
     };
@@ -36,6 +33,5 @@ export class LCDQueryClient {
 
     const endpoint = `cosmos/evidence/v1beta1/evidence`;
     return await this.req.get<QueryAllEvidenceResponseSDKType>(endpoint, options);
-  }
-
+  };
 }

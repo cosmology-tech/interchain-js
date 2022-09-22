@@ -21,20 +21,25 @@ export class MsgClientImpl implements Msg {
 
   constructor(rpc: Rpc) {
     this.rpc = rpc;
-    this.softwareUpgrade = this.softwareUpgrade.bind(this);
-    this.cancelUpgrade = this.cancelUpgrade.bind(this);
   }
+  /* SoftwareUpgrade is a governance operation for initiating a software upgrade.
+  
+  Since: cosmos-sdk 0.46 */
 
-  softwareUpgrade(request: MsgSoftwareUpgrade): Promise<MsgSoftwareUpgradeResponseSDKType> {
+
+  softwareUpgrade = async (request: MsgSoftwareUpgrade): Promise<MsgSoftwareUpgradeResponseSDKType> => {
     const data = MsgSoftwareUpgrade.encode(request).finish();
     const promise = this.rpc.request("cosmos.upgrade.v1beta1.Msg", "SoftwareUpgrade", data);
     return promise.then(data => MsgSoftwareUpgradeResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* CancelUpgrade is a governance operation for cancelling a previously
+  approvid software upgrade.
+  
+  Since: cosmos-sdk 0.46 */
 
-  cancelUpgrade(request: MsgCancelUpgrade): Promise<MsgCancelUpgradeResponseSDKType> {
+  cancelUpgrade = async (request: MsgCancelUpgrade): Promise<MsgCancelUpgradeResponseSDKType> => {
     const data = MsgCancelUpgrade.encode(request).finish();
     const promise = this.rpc.request("cosmos.upgrade.v1beta1.Msg", "CancelUpgrade", data);
     return promise.then(data => MsgCancelUpgradeResponse.decode(new _m0.Reader(data)));
-  }
-
+  };
 }

@@ -26,34 +26,38 @@ export class MsgClientImpl implements Msg {
 
   constructor(rpc: Rpc) {
     this.rpc = rpc;
-    this.setWithdrawAddress = this.setWithdrawAddress.bind(this);
-    this.withdrawDelegatorReward = this.withdrawDelegatorReward.bind(this);
-    this.withdrawValidatorCommission = this.withdrawValidatorCommission.bind(this);
-    this.fundCommunityPool = this.fundCommunityPool.bind(this);
   }
+  /* SetWithdrawAddress defines a method to change the withdraw address
+  for a delegator (or validator self-delegation). */
 
-  setWithdrawAddress(request: MsgSetWithdrawAddress): Promise<MsgSetWithdrawAddressResponseSDKType> {
+
+  setWithdrawAddress = async (request: MsgSetWithdrawAddress): Promise<MsgSetWithdrawAddressResponseSDKType> => {
     const data = MsgSetWithdrawAddress.encode(request).finish();
     const promise = this.rpc.request("cosmos.distribution.v1beta1.Msg", "SetWithdrawAddress", data);
     return promise.then(data => MsgSetWithdrawAddressResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* WithdrawDelegatorReward defines a method to withdraw rewards of delegator
+  from a single validator. */
 
-  withdrawDelegatorReward(request: MsgWithdrawDelegatorReward): Promise<MsgWithdrawDelegatorRewardResponseSDKType> {
+  withdrawDelegatorReward = async (request: MsgWithdrawDelegatorReward): Promise<MsgWithdrawDelegatorRewardResponseSDKType> => {
     const data = MsgWithdrawDelegatorReward.encode(request).finish();
     const promise = this.rpc.request("cosmos.distribution.v1beta1.Msg", "WithdrawDelegatorReward", data);
     return promise.then(data => MsgWithdrawDelegatorRewardResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* WithdrawValidatorCommission defines a method to withdraw the
+  full commission to the validator address. */
 
-  withdrawValidatorCommission(request: MsgWithdrawValidatorCommission): Promise<MsgWithdrawValidatorCommissionResponseSDKType> {
+  withdrawValidatorCommission = async (request: MsgWithdrawValidatorCommission): Promise<MsgWithdrawValidatorCommissionResponseSDKType> => {
     const data = MsgWithdrawValidatorCommission.encode(request).finish();
     const promise = this.rpc.request("cosmos.distribution.v1beta1.Msg", "WithdrawValidatorCommission", data);
     return promise.then(data => MsgWithdrawValidatorCommissionResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* FundCommunityPool defines a method to allow an account to directly
+  fund the community pool. */
 
-  fundCommunityPool(request: MsgFundCommunityPool): Promise<MsgFundCommunityPoolResponseSDKType> {
+  fundCommunityPool = async (request: MsgFundCommunityPool): Promise<MsgFundCommunityPoolResponseSDKType> => {
     const data = MsgFundCommunityPool.encode(request).finish();
     const promise = this.rpc.request("cosmos.distribution.v1beta1.Msg", "FundCommunityPool", data);
     return promise.then(data => MsgFundCommunityPoolResponse.decode(new _m0.Reader(data)));
-  }
-
+  };
 }

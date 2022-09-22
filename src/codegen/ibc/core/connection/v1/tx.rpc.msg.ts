@@ -23,34 +23,35 @@ export class MsgClientImpl implements Msg {
 
   constructor(rpc: Rpc) {
     this.rpc = rpc;
-    this.connectionOpenInit = this.connectionOpenInit.bind(this);
-    this.connectionOpenTry = this.connectionOpenTry.bind(this);
-    this.connectionOpenAck = this.connectionOpenAck.bind(this);
-    this.connectionOpenConfirm = this.connectionOpenConfirm.bind(this);
   }
+  /* ConnectionOpenInit defines a rpc handler method for MsgConnectionOpenInit. */
 
-  connectionOpenInit(request: MsgConnectionOpenInit): Promise<MsgConnectionOpenInitResponseSDKType> {
+
+  connectionOpenInit = async (request: MsgConnectionOpenInit): Promise<MsgConnectionOpenInitResponseSDKType> => {
     const data = MsgConnectionOpenInit.encode(request).finish();
     const promise = this.rpc.request("ibc.core.connection.v1.Msg", "ConnectionOpenInit", data);
     return promise.then(data => MsgConnectionOpenInitResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* ConnectionOpenTry defines a rpc handler method for MsgConnectionOpenTry. */
 
-  connectionOpenTry(request: MsgConnectionOpenTry): Promise<MsgConnectionOpenTryResponseSDKType> {
+  connectionOpenTry = async (request: MsgConnectionOpenTry): Promise<MsgConnectionOpenTryResponseSDKType> => {
     const data = MsgConnectionOpenTry.encode(request).finish();
     const promise = this.rpc.request("ibc.core.connection.v1.Msg", "ConnectionOpenTry", data);
     return promise.then(data => MsgConnectionOpenTryResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* ConnectionOpenAck defines a rpc handler method for MsgConnectionOpenAck. */
 
-  connectionOpenAck(request: MsgConnectionOpenAck): Promise<MsgConnectionOpenAckResponseSDKType> {
+  connectionOpenAck = async (request: MsgConnectionOpenAck): Promise<MsgConnectionOpenAckResponseSDKType> => {
     const data = MsgConnectionOpenAck.encode(request).finish();
     const promise = this.rpc.request("ibc.core.connection.v1.Msg", "ConnectionOpenAck", data);
     return promise.then(data => MsgConnectionOpenAckResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* ConnectionOpenConfirm defines a rpc handler method for
+  MsgConnectionOpenConfirm. */
 
-  connectionOpenConfirm(request: MsgConnectionOpenConfirm): Promise<MsgConnectionOpenConfirmResponseSDKType> {
+  connectionOpenConfirm = async (request: MsgConnectionOpenConfirm): Promise<MsgConnectionOpenConfirmResponseSDKType> => {
     const data = MsgConnectionOpenConfirm.encode(request).finish();
     const promise = this.rpc.request("ibc.core.connection.v1.Msg", "ConnectionOpenConfirm", data);
     return promise.then(data => MsgConnectionOpenConfirmResponse.decode(new _m0.Reader(data)));
-  }
-
+  };
 }

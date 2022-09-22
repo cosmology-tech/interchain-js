@@ -20,31 +20,31 @@ export class QueryClientImpl implements Query {
 
   constructor(rpc: Rpc) {
     this.rpc = rpc;
-    this.params = this.params.bind(this);
-    this.signingInfo = this.signingInfo.bind(this);
-    this.signingInfos = this.signingInfos.bind(this);
   }
+  /* Params queries the parameters of slashing module */
 
-  params(request: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> {
+
+  params = async (request: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> => {
     const data = QueryParamsRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.slashing.v1beta1.Query", "Params", data);
     return promise.then(data => QueryParamsResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* SigningInfo queries the signing info of given cons address */
 
-  signingInfo(request: QuerySigningInfoRequest): Promise<QuerySigningInfoResponseSDKType> {
+  signingInfo = async (request: QuerySigningInfoRequest): Promise<QuerySigningInfoResponseSDKType> => {
     const data = QuerySigningInfoRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.slashing.v1beta1.Query", "SigningInfo", data);
     return promise.then(data => QuerySigningInfoResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* SigningInfos queries signing info of all validators */
 
-  signingInfos(request: QuerySigningInfosRequest = {
+  signingInfos = async (request: QuerySigningInfosRequest = {
     pagination: undefined
-  }): Promise<QuerySigningInfosResponseSDKType> {
+  }): Promise<QuerySigningInfosResponseSDKType> => {
     const data = QuerySigningInfosRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.slashing.v1beta1.Query", "SigningInfos", data);
     return promise.then(data => QuerySigningInfosResponse.decode(new _m0.Reader(data)));
-  }
-
+  };
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);

@@ -22,27 +22,30 @@ export class MsgClientImpl implements Msg {
 
   constructor(rpc: Rpc) {
     this.rpc = rpc;
-    this.createVestingAccount = this.createVestingAccount.bind(this);
-    this.createPermanentLockedAccount = this.createPermanentLockedAccount.bind(this);
-    this.createPeriodicVestingAccount = this.createPeriodicVestingAccount.bind(this);
   }
+  /* CreateVestingAccount defines a method that enables creating a vesting
+  account. */
 
-  createVestingAccount(request: MsgCreateVestingAccount): Promise<MsgCreateVestingAccountResponseSDKType> {
+
+  createVestingAccount = async (request: MsgCreateVestingAccount): Promise<MsgCreateVestingAccountResponseSDKType> => {
     const data = MsgCreateVestingAccount.encode(request).finish();
     const promise = this.rpc.request("cosmos.vesting.v1beta1.Msg", "CreateVestingAccount", data);
     return promise.then(data => MsgCreateVestingAccountResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* CreatePermanentLockedAccount defines a method that enables creating a permanent
+  locked account. */
 
-  createPermanentLockedAccount(request: MsgCreatePermanentLockedAccount): Promise<MsgCreatePermanentLockedAccountResponseSDKType> {
+  createPermanentLockedAccount = async (request: MsgCreatePermanentLockedAccount): Promise<MsgCreatePermanentLockedAccountResponseSDKType> => {
     const data = MsgCreatePermanentLockedAccount.encode(request).finish();
     const promise = this.rpc.request("cosmos.vesting.v1beta1.Msg", "CreatePermanentLockedAccount", data);
     return promise.then(data => MsgCreatePermanentLockedAccountResponse.decode(new _m0.Reader(data)));
-  }
+  };
+  /* CreatePeriodicVestingAccount defines a method that enables creating a
+  periodic vesting account. */
 
-  createPeriodicVestingAccount(request: MsgCreatePeriodicVestingAccount): Promise<MsgCreatePeriodicVestingAccountResponseSDKType> {
+  createPeriodicVestingAccount = async (request: MsgCreatePeriodicVestingAccount): Promise<MsgCreatePeriodicVestingAccountResponseSDKType> => {
     const data = MsgCreatePeriodicVestingAccount.encode(request).finish();
     const promise = this.rpc.request("cosmos.vesting.v1beta1.Msg", "CreatePeriodicVestingAccount", data);
     return promise.then(data => MsgCreatePeriodicVestingAccountResponse.decode(new _m0.Reader(data)));
-  }
-
+  };
 }
