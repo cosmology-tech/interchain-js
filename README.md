@@ -1,6 +1,18 @@
 # interchain
 
-<img src="https://user-images.githubusercontent.com/545047/186588059-736cc25a-c849-4c30-a2d6-f779bcb6e305.svg" width="400">
+<p align="center">
+  <a href="https://github.com/cosmology-tech/interchain">
+    <img width="150" src="https://user-images.githubusercontent.com/545047/186588059-736cc25a-c849-4c30-a2d6-f779bcb6e305.svg">
+  </a>
+</p>
+
+<p align="center" width="100%">
+  <a href="https://github.com/osmosis-labs/osmojs/actions/workflows/run-tests.yaml">
+    <img height="20" src="https://github.com/osmosis-labs/osmojs/actions/workflows/run-tests.yaml/badge.svg" />
+  </a>
+   <a href="https://github.com/cosmology-tech/interchain/blob/main/LICENSE"><img height="20" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
+   <a href="https://www.npmjs.com/package/interchain"><img height="20" src="https://img.shields.io/github/package-json/v/cosmology-tech/interchain?filename=package.json"></a>
+</p>
 
 ## usage
 
