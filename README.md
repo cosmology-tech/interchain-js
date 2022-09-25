@@ -11,6 +11,8 @@
    <a href="https://www.npmjs.com/package/interchain"><img height="20" src="https://img.shields.io/github/package-json/v/cosmology-tech/interchain?filename=package.json"></a>
 </p>
 
+[interchain](https://github.com/cosmology-labs/interchain) makes it easy to compose and broadcast Cosmos messages, with all of the proto and amino encoding handled for you.
+
 ## usage
 
 ```sh
