@@ -5,7 +5,7 @@ export declare class LCDQueryClient {
     constructor({ requestClient }: {
         requestClient: LCDClient;
     });
-    grants(params: QueryGrantsRequest): Promise<QueryGrantsResponseSDKType>;
-    granterGrants(params: QueryGranterGrantsRequest): Promise<QueryGranterGrantsResponseSDKType>;
-    granteeGrants(params: QueryGranteeGrantsRequest): Promise<QueryGranteeGrantsResponseSDKType>;
+    grants: (params: QueryGrantsRequest) => Promise<QueryGrantsResponseSDKType>;
+    granterGrants: (params: QueryGranterGrantsRequest) => Promise<QueryGranterGrantsResponseSDKType>;
+    granteeGrants: (params: QueryGranteeGrantsRequest) => Promise<QueryGranteeGrantsResponseSDKType>;
 }

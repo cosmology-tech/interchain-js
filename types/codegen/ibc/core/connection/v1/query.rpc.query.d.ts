@@ -12,11 +12,11 @@ export interface Query {
 export declare class QueryClientImpl implements Query {
     private readonly rpc;
     constructor(rpc: Rpc);
-    connection(request: QueryConnectionRequest): Promise<QueryConnectionResponseSDKType>;
-    connections(request?: QueryConnectionsRequest): Promise<QueryConnectionsResponseSDKType>;
-    clientConnections(request: QueryClientConnectionsRequest): Promise<QueryClientConnectionsResponseSDKType>;
-    connectionClientState(request: QueryConnectionClientStateRequest): Promise<QueryConnectionClientStateResponseSDKType>;
-    connectionConsensusState(request: QueryConnectionConsensusStateRequest): Promise<QueryConnectionConsensusStateResponseSDKType>;
+    connection: (request: QueryConnectionRequest) => Promise<QueryConnectionResponseSDKType>;
+    connections: (request?: QueryConnectionsRequest) => Promise<QueryConnectionsResponseSDKType>;
+    clientConnections: (request: QueryClientConnectionsRequest) => Promise<QueryClientConnectionsResponseSDKType>;
+    connectionClientState: (request: QueryConnectionClientStateRequest) => Promise<QueryConnectionClientStateResponseSDKType>;
+    connectionConsensusState: (request: QueryConnectionConsensusStateRequest) => Promise<QueryConnectionConsensusStateResponseSDKType>;
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
     connection(request: QueryConnectionRequest): Promise<QueryConnectionResponseSDKType>;

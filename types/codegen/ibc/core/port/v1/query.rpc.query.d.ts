@@ -8,7 +8,7 @@ export interface Query {
 export declare class QueryClientImpl implements Query {
     private readonly rpc;
     constructor(rpc: Rpc);
-    appVersion(request: QueryAppVersionRequest): Promise<QueryAppVersionResponseSDKType>;
+    appVersion: (request: QueryAppVersionRequest) => Promise<QueryAppVersionResponseSDKType>;
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
     appVersion(request: QueryAppVersionRequest): Promise<QueryAppVersionResponseSDKType>;

@@ -5,7 +5,7 @@ export declare class LCDQueryClient {
     constructor({ requestClient }: {
         requestClient: LCDClient;
     });
-    getTx(params: GetTxRequest): Promise<GetTxResponseSDKType>;
-    getTxsEvent(params: GetTxsEventRequest): Promise<GetTxsEventResponseSDKType>;
-    getBlockWithTxs(params: GetBlockWithTxsRequest): Promise<GetBlockWithTxsResponseSDKType>;
+    getTx: (params: GetTxRequest) => Promise<GetTxResponseSDKType>;
+    getTxsEvent: (params: GetTxsEventRequest) => Promise<GetTxsEventResponseSDKType>;
+    getBlockWithTxs: (params: GetBlockWithTxsRequest) => Promise<GetBlockWithTxsResponseSDKType>;
 }

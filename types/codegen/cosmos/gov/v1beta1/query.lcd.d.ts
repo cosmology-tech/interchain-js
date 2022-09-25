@@ -5,12 +5,12 @@ export declare class LCDQueryClient {
     constructor({ requestClient }: {
         requestClient: LCDClient;
     });
-    proposal(params: QueryProposalRequest): Promise<QueryProposalResponseSDKType>;
-    proposals(params: QueryProposalsRequest): Promise<QueryProposalsResponseSDKType>;
-    vote(params: QueryVoteRequest): Promise<QueryVoteResponseSDKType>;
-    votes(params: QueryVotesRequest): Promise<QueryVotesResponseSDKType>;
-    params(params: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
-    deposit(params: QueryDepositRequest): Promise<QueryDepositResponseSDKType>;
-    deposits(params: QueryDepositsRequest): Promise<QueryDepositsResponseSDKType>;
-    tallyResult(params: QueryTallyResultRequest): Promise<QueryTallyResultResponseSDKType>;
+    proposal: (params: QueryProposalRequest) => Promise<QueryProposalResponseSDKType>;
+    proposals: (params: QueryProposalsRequest) => Promise<QueryProposalsResponseSDKType>;
+    vote: (params: QueryVoteRequest) => Promise<QueryVoteResponseSDKType>;
+    votes: (params: QueryVotesRequest) => Promise<QueryVotesResponseSDKType>;
+    params: (params: QueryParamsRequest) => Promise<QueryParamsResponseSDKType>;
+    deposit: (params: QueryDepositRequest) => Promise<QueryDepositResponseSDKType>;
+    deposits: (params: QueryDepositsRequest) => Promise<QueryDepositsResponseSDKType>;
+    tallyResult: (params: QueryTallyResultRequest) => Promise<QueryTallyResultResponseSDKType>;
 }

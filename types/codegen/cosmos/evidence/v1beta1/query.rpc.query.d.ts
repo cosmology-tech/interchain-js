@@ -9,8 +9,8 @@ export interface Query {
 export declare class QueryClientImpl implements Query {
     private readonly rpc;
     constructor(rpc: Rpc);
-    evidence(request: QueryEvidenceRequest): Promise<QueryEvidenceResponseSDKType>;
-    allEvidence(request?: QueryAllEvidenceRequest): Promise<QueryAllEvidenceResponseSDKType>;
+    evidence: (request: QueryEvidenceRequest) => Promise<QueryEvidenceResponseSDKType>;
+    allEvidence: (request?: QueryAllEvidenceRequest) => Promise<QueryAllEvidenceResponseSDKType>;
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
     evidence(request: QueryEvidenceRequest): Promise<QueryEvidenceResponseSDKType>;

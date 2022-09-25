@@ -16,14 +16,14 @@ export interface Msg {
 export declare class MsgClientImpl implements Msg {
     private readonly rpc;
     constructor(rpc: Rpc);
-    channelOpenInit(request: MsgChannelOpenInit): Promise<MsgChannelOpenInitResponseSDKType>;
-    channelOpenTry(request: MsgChannelOpenTry): Promise<MsgChannelOpenTryResponseSDKType>;
-    channelOpenAck(request: MsgChannelOpenAck): Promise<MsgChannelOpenAckResponseSDKType>;
-    channelOpenConfirm(request: MsgChannelOpenConfirm): Promise<MsgChannelOpenConfirmResponseSDKType>;
-    channelCloseInit(request: MsgChannelCloseInit): Promise<MsgChannelCloseInitResponseSDKType>;
-    channelCloseConfirm(request: MsgChannelCloseConfirm): Promise<MsgChannelCloseConfirmResponseSDKType>;
-    recvPacket(request: MsgRecvPacket): Promise<MsgRecvPacketResponseSDKType>;
-    timeout(request: MsgTimeout): Promise<MsgTimeoutResponseSDKType>;
-    timeoutOnClose(request: MsgTimeoutOnClose): Promise<MsgTimeoutOnCloseResponseSDKType>;
-    acknowledgement(request: MsgAcknowledgement): Promise<MsgAcknowledgementResponseSDKType>;
+    channelOpenInit: (request: MsgChannelOpenInit) => Promise<MsgChannelOpenInitResponseSDKType>;
+    channelOpenTry: (request: MsgChannelOpenTry) => Promise<MsgChannelOpenTryResponseSDKType>;
+    channelOpenAck: (request: MsgChannelOpenAck) => Promise<MsgChannelOpenAckResponseSDKType>;
+    channelOpenConfirm: (request: MsgChannelOpenConfirm) => Promise<MsgChannelOpenConfirmResponseSDKType>;
+    channelCloseInit: (request: MsgChannelCloseInit) => Promise<MsgChannelCloseInitResponseSDKType>;
+    channelCloseConfirm: (request: MsgChannelCloseConfirm) => Promise<MsgChannelCloseConfirmResponseSDKType>;
+    recvPacket: (request: MsgRecvPacket) => Promise<MsgRecvPacketResponseSDKType>;
+    timeout: (request: MsgTimeout) => Promise<MsgTimeoutResponseSDKType>;
+    timeoutOnClose: (request: MsgTimeoutOnClose) => Promise<MsgTimeoutOnCloseResponseSDKType>;
+    acknowledgement: (request: MsgAcknowledgement) => Promise<MsgAcknowledgementResponseSDKType>;
 }

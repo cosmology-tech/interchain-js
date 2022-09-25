@@ -5,12 +5,12 @@ export declare class LCDQueryClient {
     constructor({ requestClient }: {
         requestClient: LCDClient;
     });
-    clientState(params: QueryClientStateRequest): Promise<QueryClientStateResponseSDKType>;
-    clientStates(params?: QueryClientStatesRequest): Promise<QueryClientStatesResponseSDKType>;
-    consensusState(params: QueryConsensusStateRequest): Promise<QueryConsensusStateResponseSDKType>;
-    consensusStates(params: QueryConsensusStatesRequest): Promise<QueryConsensusStatesResponseSDKType>;
-    clientStatus(params: QueryClientStatusRequest): Promise<QueryClientStatusResponseSDKType>;
-    clientParams(_params?: QueryClientParamsRequest): Promise<QueryClientParamsResponseSDKType>;
-    upgradedClientState(_params?: QueryUpgradedClientStateRequest): Promise<QueryUpgradedClientStateResponseSDKType>;
-    upgradedConsensusState(_params?: QueryUpgradedConsensusStateRequest): Promise<QueryUpgradedConsensusStateResponseSDKType>;
+    clientState: (params: QueryClientStateRequest) => Promise<QueryClientStateResponseSDKType>;
+    clientStates: (params?: QueryClientStatesRequest) => Promise<QueryClientStatesResponseSDKType>;
+    consensusState: (params: QueryConsensusStateRequest) => Promise<QueryConsensusStateResponseSDKType>;
+    consensusStates: (params: QueryConsensusStatesRequest) => Promise<QueryConsensusStatesResponseSDKType>;
+    clientStatus: (params: QueryClientStatusRequest) => Promise<QueryClientStatusResponseSDKType>;
+    clientParams: (_params?: QueryClientParamsRequest) => Promise<QueryClientParamsResponseSDKType>;
+    upgradedClientState: (_params?: QueryUpgradedClientStateRequest) => Promise<QueryUpgradedClientStateResponseSDKType>;
+    upgradedConsensusState: (_params?: QueryUpgradedConsensusStateRequest) => Promise<QueryUpgradedConsensusStateResponseSDKType>;
 }

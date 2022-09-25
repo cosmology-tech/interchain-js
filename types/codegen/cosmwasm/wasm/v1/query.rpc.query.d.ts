@@ -16,15 +16,15 @@ export interface Query {
 export declare class QueryClientImpl implements Query {
     private readonly rpc;
     constructor(rpc: Rpc);
-    contractInfo(request: QueryContractInfoRequest): Promise<QueryContractInfoResponseSDKType>;
-    contractHistory(request: QueryContractHistoryRequest): Promise<QueryContractHistoryResponseSDKType>;
-    contractsByCode(request: QueryContractsByCodeRequest): Promise<QueryContractsByCodeResponseSDKType>;
-    allContractState(request: QueryAllContractStateRequest): Promise<QueryAllContractStateResponseSDKType>;
-    rawContractState(request: QueryRawContractStateRequest): Promise<QueryRawContractStateResponseSDKType>;
-    smartContractState(request: QuerySmartContractStateRequest): Promise<QuerySmartContractStateResponseSDKType>;
-    code(request: QueryCodeRequest): Promise<QueryCodeResponseSDKType>;
-    codes(request?: QueryCodesRequest): Promise<QueryCodesResponseSDKType>;
-    pinnedCodes(request?: QueryPinnedCodesRequest): Promise<QueryPinnedCodesResponseSDKType>;
+    contractInfo: (request: QueryContractInfoRequest) => Promise<QueryContractInfoResponseSDKType>;
+    contractHistory: (request: QueryContractHistoryRequest) => Promise<QueryContractHistoryResponseSDKType>;
+    contractsByCode: (request: QueryContractsByCodeRequest) => Promise<QueryContractsByCodeResponseSDKType>;
+    allContractState: (request: QueryAllContractStateRequest) => Promise<QueryAllContractStateResponseSDKType>;
+    rawContractState: (request: QueryRawContractStateRequest) => Promise<QueryRawContractStateResponseSDKType>;
+    smartContractState: (request: QuerySmartContractStateRequest) => Promise<QuerySmartContractStateResponseSDKType>;
+    code: (request: QueryCodeRequest) => Promise<QueryCodeResponseSDKType>;
+    codes: (request?: QueryCodesRequest) => Promise<QueryCodesResponseSDKType>;
+    pinnedCodes: (request?: QueryPinnedCodesRequest) => Promise<QueryPinnedCodesResponseSDKType>;
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
     contractInfo(request: QueryContractInfoRequest): Promise<QueryContractInfoResponseSDKType>;

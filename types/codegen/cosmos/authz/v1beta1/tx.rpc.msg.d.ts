@@ -9,7 +9,7 @@ export interface Msg {
 export declare class MsgClientImpl implements Msg {
     private readonly rpc;
     constructor(rpc: Rpc);
-    grant(request: MsgGrant): Promise<MsgGrantResponseSDKType>;
-    exec(request: MsgExec): Promise<MsgExecResponseSDKType>;
-    revoke(request: MsgRevoke): Promise<MsgRevokeResponseSDKType>;
+    grant: (request: MsgGrant) => Promise<MsgGrantResponseSDKType>;
+    exec: (request: MsgExec) => Promise<MsgExecResponseSDKType>;
+    revoke: (request: MsgRevoke) => Promise<MsgRevokeResponseSDKType>;
 }

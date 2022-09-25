@@ -5,11 +5,11 @@ export declare class LCDQueryClient {
     constructor({ requestClient }: {
         requestClient: LCDClient;
     });
-    balance(params: QueryBalanceRequest): Promise<QueryBalanceResponseSDKType>;
-    owner(params: QueryOwnerRequest): Promise<QueryOwnerResponseSDKType>;
-    supply(params: QuerySupplyRequest): Promise<QuerySupplyResponseSDKType>;
-    nFTs(params: QueryNFTsRequest): Promise<QueryNFTsResponseSDKType>;
-    nFT(params: QueryNFTRequest): Promise<QueryNFTResponseSDKType>;
-    class(params: QueryClassRequest): Promise<QueryClassResponseSDKType>;
-    classes(params?: QueryClassesRequest): Promise<QueryClassesResponseSDKType>;
+    balance: (params: QueryBalanceRequest) => Promise<QueryBalanceResponseSDKType>;
+    owner: (params: QueryOwnerRequest) => Promise<QueryOwnerResponseSDKType>;
+    supply: (params: QuerySupplyRequest) => Promise<QuerySupplyResponseSDKType>;
+    nFTs: (params: QueryNFTsRequest) => Promise<QueryNFTsResponseSDKType>;
+    nFT: (params: QueryNFTRequest) => Promise<QueryNFTResponseSDKType>;
+    class: (params: QueryClassRequest) => Promise<QueryClassResponseSDKType>;
+    classes: (params?: QueryClassesRequest) => Promise<QueryClassesResponseSDKType>;
 }

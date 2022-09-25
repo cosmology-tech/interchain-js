@@ -8,6 +8,6 @@ export interface Msg {
 export declare class MsgClientImpl implements Msg {
     private readonly rpc;
     constructor(rpc: Rpc);
-    softwareUpgrade(request: MsgSoftwareUpgrade): Promise<MsgSoftwareUpgradeResponseSDKType>;
-    cancelUpgrade(request: MsgCancelUpgrade): Promise<MsgCancelUpgradeResponseSDKType>;
+    softwareUpgrade: (request: MsgSoftwareUpgrade) => Promise<MsgSoftwareUpgradeResponseSDKType>;
+    cancelUpgrade: (request: MsgCancelUpgrade) => Promise<MsgCancelUpgradeResponseSDKType>;
 }

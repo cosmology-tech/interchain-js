@@ -5,7 +5,7 @@ export declare class LCDQueryClient {
     constructor({ requestClient }: {
         requestClient: LCDClient;
     });
-    denomTrace(params: QueryDenomTraceRequest): Promise<QueryDenomTraceResponseSDKType>;
-    denomTraces(params?: QueryDenomTracesRequest): Promise<QueryDenomTracesResponseSDKType>;
-    params(_params?: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
+    denomTrace: (params: QueryDenomTraceRequest) => Promise<QueryDenomTraceResponseSDKType>;
+    denomTraces: (params?: QueryDenomTracesRequest) => Promise<QueryDenomTracesResponseSDKType>;
+    params: (_params?: QueryParamsRequest) => Promise<QueryParamsResponseSDKType>;
 }

@@ -10,8 +10,8 @@ export interface Msg {
 export declare class MsgClientImpl implements Msg {
     private readonly rpc;
     constructor(rpc: Rpc);
-    connectionOpenInit(request: MsgConnectionOpenInit): Promise<MsgConnectionOpenInitResponseSDKType>;
-    connectionOpenTry(request: MsgConnectionOpenTry): Promise<MsgConnectionOpenTryResponseSDKType>;
-    connectionOpenAck(request: MsgConnectionOpenAck): Promise<MsgConnectionOpenAckResponseSDKType>;
-    connectionOpenConfirm(request: MsgConnectionOpenConfirm): Promise<MsgConnectionOpenConfirmResponseSDKType>;
+    connectionOpenInit: (request: MsgConnectionOpenInit) => Promise<MsgConnectionOpenInitResponseSDKType>;
+    connectionOpenTry: (request: MsgConnectionOpenTry) => Promise<MsgConnectionOpenTryResponseSDKType>;
+    connectionOpenAck: (request: MsgConnectionOpenAck) => Promise<MsgConnectionOpenAckResponseSDKType>;
+    connectionOpenConfirm: (request: MsgConnectionOpenConfirm) => Promise<MsgConnectionOpenConfirmResponseSDKType>;
 }

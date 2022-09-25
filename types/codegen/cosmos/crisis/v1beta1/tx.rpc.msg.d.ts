@@ -7,5 +7,5 @@ export interface Msg {
 export declare class MsgClientImpl implements Msg {
     private readonly rpc;
     constructor(rpc: Rpc);
-    verifyInvariant(request: MsgVerifyInvariant): Promise<MsgVerifyInvariantResponseSDKType>;
+    verifyInvariant: (request: MsgVerifyInvariant) => Promise<MsgVerifyInvariantResponseSDKType>;
 }

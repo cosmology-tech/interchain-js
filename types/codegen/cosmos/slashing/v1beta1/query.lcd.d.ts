@@ -5,7 +5,7 @@ export declare class LCDQueryClient {
     constructor({ requestClient }: {
         requestClient: LCDClient;
     });
-    params(_params?: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
-    signingInfo(params: QuerySigningInfoRequest): Promise<QuerySigningInfoResponseSDKType>;
-    signingInfos(params?: QuerySigningInfosRequest): Promise<QuerySigningInfosResponseSDKType>;
+    params: (_params?: QueryParamsRequest) => Promise<QueryParamsResponseSDKType>;
+    signingInfo: (params: QuerySigningInfoRequest) => Promise<QuerySigningInfoResponseSDKType>;
+    signingInfos: (params?: QuerySigningInfosRequest) => Promise<QuerySigningInfosResponseSDKType>;
 }

@@ -9,7 +9,7 @@ export interface Msg {
 export declare class MsgClientImpl implements Msg {
     private readonly rpc;
     constructor(rpc: Rpc);
-    createVestingAccount(request: MsgCreateVestingAccount): Promise<MsgCreateVestingAccountResponseSDKType>;
-    createPermanentLockedAccount(request: MsgCreatePermanentLockedAccount): Promise<MsgCreatePermanentLockedAccountResponseSDKType>;
-    createPeriodicVestingAccount(request: MsgCreatePeriodicVestingAccount): Promise<MsgCreatePeriodicVestingAccountResponseSDKType>;
+    createVestingAccount: (request: MsgCreateVestingAccount) => Promise<MsgCreateVestingAccountResponseSDKType>;
+    createPermanentLockedAccount: (request: MsgCreatePermanentLockedAccount) => Promise<MsgCreatePermanentLockedAccountResponseSDKType>;
+    createPeriodicVestingAccount: (request: MsgCreatePeriodicVestingAccount) => Promise<MsgCreatePeriodicVestingAccountResponseSDKType>;
 }

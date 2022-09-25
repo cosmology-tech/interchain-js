@@ -11,9 +11,9 @@ export interface Msg {
 export declare class MsgClientImpl implements Msg {
     private readonly rpc;
     constructor(rpc: Rpc);
-    createValidator(request: MsgCreateValidator): Promise<MsgCreateValidatorResponseSDKType>;
-    editValidator(request: MsgEditValidator): Promise<MsgEditValidatorResponseSDKType>;
-    delegate(request: MsgDelegate): Promise<MsgDelegateResponseSDKType>;
-    beginRedelegate(request: MsgBeginRedelegate): Promise<MsgBeginRedelegateResponseSDKType>;
-    undelegate(request: MsgUndelegate): Promise<MsgUndelegateResponseSDKType>;
+    createValidator: (request: MsgCreateValidator) => Promise<MsgCreateValidatorResponseSDKType>;
+    editValidator: (request: MsgEditValidator) => Promise<MsgEditValidatorResponseSDKType>;
+    delegate: (request: MsgDelegate) => Promise<MsgDelegateResponseSDKType>;
+    beginRedelegate: (request: MsgBeginRedelegate) => Promise<MsgBeginRedelegateResponseSDKType>;
+    undelegate: (request: MsgUndelegate) => Promise<MsgUndelegateResponseSDKType>;
 }

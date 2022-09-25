@@ -5,9 +5,9 @@ export declare class LCDQueryClient {
     constructor({ requestClient }: {
         requestClient: LCDClient;
     });
-    connection(params: QueryConnectionRequest): Promise<QueryConnectionResponseSDKType>;
-    connections(params?: QueryConnectionsRequest): Promise<QueryConnectionsResponseSDKType>;
-    clientConnections(params: QueryClientConnectionsRequest): Promise<QueryClientConnectionsResponseSDKType>;
-    connectionClientState(params: QueryConnectionClientStateRequest): Promise<QueryConnectionClientStateResponseSDKType>;
-    connectionConsensusState(params: QueryConnectionConsensusStateRequest): Promise<QueryConnectionConsensusStateResponseSDKType>;
+    connection: (params: QueryConnectionRequest) => Promise<QueryConnectionResponseSDKType>;
+    connections: (params?: QueryConnectionsRequest) => Promise<QueryConnectionsResponseSDKType>;
+    clientConnections: (params: QueryClientConnectionsRequest) => Promise<QueryClientConnectionsResponseSDKType>;
+    connectionClientState: (params: QueryConnectionClientStateRequest) => Promise<QueryConnectionClientStateResponseSDKType>;
+    connectionConsensusState: (params: QueryConnectionConsensusStateRequest) => Promise<QueryConnectionConsensusStateResponseSDKType>;
 }

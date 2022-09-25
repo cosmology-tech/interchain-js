@@ -8,6 +8,6 @@ export interface Msg {
 export declare class MsgClientImpl implements Msg {
     private readonly rpc;
     constructor(rpc: Rpc);
-    grantAllowance(request: MsgGrantAllowance): Promise<MsgGrantAllowanceResponseSDKType>;
-    revokeAllowance(request: MsgRevokeAllowance): Promise<MsgRevokeAllowanceResponseSDKType>;
+    grantAllowance: (request: MsgGrantAllowance) => Promise<MsgGrantAllowanceResponseSDKType>;
+    revokeAllowance: (request: MsgRevokeAllowance) => Promise<MsgRevokeAllowanceResponseSDKType>;
 }

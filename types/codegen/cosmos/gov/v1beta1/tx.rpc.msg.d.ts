@@ -10,8 +10,8 @@ export interface Msg {
 export declare class MsgClientImpl implements Msg {
     private readonly rpc;
     constructor(rpc: Rpc);
-    submitProposal(request: MsgSubmitProposal): Promise<MsgSubmitProposalResponseSDKType>;
-    vote(request: MsgVote): Promise<MsgVoteResponseSDKType>;
-    voteWeighted(request: MsgVoteWeighted): Promise<MsgVoteWeightedResponseSDKType>;
-    deposit(request: MsgDeposit): Promise<MsgDepositResponseSDKType>;
+    submitProposal: (request: MsgSubmitProposal) => Promise<MsgSubmitProposalResponseSDKType>;
+    vote: (request: MsgVote) => Promise<MsgVoteResponseSDKType>;
+    voteWeighted: (request: MsgVoteWeighted) => Promise<MsgVoteWeightedResponseSDKType>;
+    deposit: (request: MsgDeposit) => Promise<MsgDepositResponseSDKType>;
 }

@@ -10,9 +10,9 @@ export interface Query {
 export declare class QueryClientImpl implements Query {
     private readonly rpc;
     constructor(rpc: Rpc);
-    allowance(request: QueryAllowanceRequest): Promise<QueryAllowanceResponseSDKType>;
-    allowances(request: QueryAllowancesRequest): Promise<QueryAllowancesResponseSDKType>;
-    allowancesByGranter(request: QueryAllowancesByGranterRequest): Promise<QueryAllowancesByGranterResponseSDKType>;
+    allowance: (request: QueryAllowanceRequest) => Promise<QueryAllowanceResponseSDKType>;
+    allowances: (request: QueryAllowancesRequest) => Promise<QueryAllowancesResponseSDKType>;
+    allowancesByGranter: (request: QueryAllowancesByGranterRequest) => Promise<QueryAllowancesByGranterResponseSDKType>;
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
     allowance(request: QueryAllowanceRequest): Promise<QueryAllowanceResponseSDKType>;

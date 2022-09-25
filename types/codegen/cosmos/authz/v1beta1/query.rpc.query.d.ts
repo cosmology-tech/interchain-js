@@ -10,9 +10,9 @@ export interface Query {
 export declare class QueryClientImpl implements Query {
     private readonly rpc;
     constructor(rpc: Rpc);
-    grants(request: QueryGrantsRequest): Promise<QueryGrantsResponseSDKType>;
-    granterGrants(request: QueryGranterGrantsRequest): Promise<QueryGranterGrantsResponseSDKType>;
-    granteeGrants(request: QueryGranteeGrantsRequest): Promise<QueryGranteeGrantsResponseSDKType>;
+    grants: (request: QueryGrantsRequest) => Promise<QueryGrantsResponseSDKType>;
+    granterGrants: (request: QueryGranterGrantsRequest) => Promise<QueryGranterGrantsResponseSDKType>;
+    granteeGrants: (request: QueryGranteeGrantsRequest) => Promise<QueryGranteeGrantsResponseSDKType>;
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
     grants(request: QueryGrantsRequest): Promise<QueryGrantsResponseSDKType>;

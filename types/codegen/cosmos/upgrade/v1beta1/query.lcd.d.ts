@@ -5,9 +5,9 @@ export declare class LCDQueryClient {
     constructor({ requestClient }: {
         requestClient: LCDClient;
     });
-    currentPlan(_params?: QueryCurrentPlanRequest): Promise<QueryCurrentPlanResponseSDKType>;
-    appliedPlan(params: QueryAppliedPlanRequest): Promise<QueryAppliedPlanResponseSDKType>;
-    upgradedConsensusState(params: QueryUpgradedConsensusStateRequest): Promise<QueryUpgradedConsensusStateResponseSDKType>;
-    moduleVersions(params: QueryModuleVersionsRequest): Promise<QueryModuleVersionsResponseSDKType>;
-    authority(_params?: QueryAuthorityRequest): Promise<QueryAuthorityResponseSDKType>;
+    currentPlan: (_params?: QueryCurrentPlanRequest) => Promise<QueryCurrentPlanResponseSDKType>;
+    appliedPlan: (params: QueryAppliedPlanRequest) => Promise<QueryAppliedPlanResponseSDKType>;
+    upgradedConsensusState: (params: QueryUpgradedConsensusStateRequest) => Promise<QueryUpgradedConsensusStateResponseSDKType>;
+    moduleVersions: (params: QueryModuleVersionsRequest) => Promise<QueryModuleVersionsResponseSDKType>;
+    authority: (_params?: QueryAuthorityRequest) => Promise<QueryAuthorityResponseSDKType>;
 }

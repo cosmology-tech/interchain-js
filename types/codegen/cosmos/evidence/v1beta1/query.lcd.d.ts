@@ -5,6 +5,6 @@ export declare class LCDQueryClient {
     constructor({ requestClient }: {
         requestClient: LCDClient;
     });
-    evidence(params: QueryEvidenceRequest): Promise<QueryEvidenceResponseSDKType>;
-    allEvidence(params?: QueryAllEvidenceRequest): Promise<QueryAllEvidenceResponseSDKType>;
+    evidence: (params: QueryEvidenceRequest) => Promise<QueryEvidenceResponseSDKType>;
+    allEvidence: (params?: QueryAllEvidenceRequest) => Promise<QueryAllEvidenceResponseSDKType>;
 }

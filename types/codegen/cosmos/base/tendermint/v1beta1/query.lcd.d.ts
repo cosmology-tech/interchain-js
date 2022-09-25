@@ -5,10 +5,10 @@ export declare class LCDQueryClient {
     constructor({ requestClient }: {
         requestClient: LCDClient;
     });
-    getNodeInfo(_params?: GetNodeInfoRequest): Promise<GetNodeInfoResponseSDKType>;
-    getSyncing(_params?: GetSyncingRequest): Promise<GetSyncingResponseSDKType>;
-    getLatestBlock(_params?: GetLatestBlockRequest): Promise<GetLatestBlockResponseSDKType>;
-    getBlockByHeight(params: GetBlockByHeightRequest): Promise<GetBlockByHeightResponseSDKType>;
-    getLatestValidatorSet(params?: GetLatestValidatorSetRequest): Promise<GetLatestValidatorSetResponseSDKType>;
-    getValidatorSetByHeight(params: GetValidatorSetByHeightRequest): Promise<GetValidatorSetByHeightResponseSDKType>;
+    getNodeInfo: (_params?: GetNodeInfoRequest) => Promise<GetNodeInfoResponseSDKType>;
+    getSyncing: (_params?: GetSyncingRequest) => Promise<GetSyncingResponseSDKType>;
+    getLatestBlock: (_params?: GetLatestBlockRequest) => Promise<GetLatestBlockResponseSDKType>;
+    getBlockByHeight: (params: GetBlockByHeightRequest) => Promise<GetBlockByHeightResponseSDKType>;
+    getLatestValidatorSet: (params?: GetLatestValidatorSetRequest) => Promise<GetLatestValidatorSetResponseSDKType>;
+    getValidatorSetByHeight: (params: GetValidatorSetByHeightRequest) => Promise<GetValidatorSetByHeightResponseSDKType>;
 }

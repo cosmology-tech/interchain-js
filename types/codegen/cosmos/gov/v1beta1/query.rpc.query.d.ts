@@ -15,14 +15,14 @@ export interface Query {
 export declare class QueryClientImpl implements Query {
     private readonly rpc;
     constructor(rpc: Rpc);
-    proposal(request: QueryProposalRequest): Promise<QueryProposalResponseSDKType>;
-    proposals(request: QueryProposalsRequest): Promise<QueryProposalsResponseSDKType>;
-    vote(request: QueryVoteRequest): Promise<QueryVoteResponseSDKType>;
-    votes(request: QueryVotesRequest): Promise<QueryVotesResponseSDKType>;
-    params(request: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
-    deposit(request: QueryDepositRequest): Promise<QueryDepositResponseSDKType>;
-    deposits(request: QueryDepositsRequest): Promise<QueryDepositsResponseSDKType>;
-    tallyResult(request: QueryTallyResultRequest): Promise<QueryTallyResultResponseSDKType>;
+    proposal: (request: QueryProposalRequest) => Promise<QueryProposalResponseSDKType>;
+    proposals: (request: QueryProposalsRequest) => Promise<QueryProposalsResponseSDKType>;
+    vote: (request: QueryVoteRequest) => Promise<QueryVoteResponseSDKType>;
+    votes: (request: QueryVotesRequest) => Promise<QueryVotesResponseSDKType>;
+    params: (request: QueryParamsRequest) => Promise<QueryParamsResponseSDKType>;
+    deposit: (request: QueryDepositRequest) => Promise<QueryDepositResponseSDKType>;
+    deposits: (request: QueryDepositsRequest) => Promise<QueryDepositsResponseSDKType>;
+    tallyResult: (request: QueryTallyResultRequest) => Promise<QueryTallyResultResponseSDKType>;
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
     proposal(request: QueryProposalRequest): Promise<QueryProposalResponseSDKType>;

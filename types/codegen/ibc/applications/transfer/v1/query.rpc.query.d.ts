@@ -10,9 +10,9 @@ export interface Query {
 export declare class QueryClientImpl implements Query {
     private readonly rpc;
     constructor(rpc: Rpc);
-    denomTrace(request: QueryDenomTraceRequest): Promise<QueryDenomTraceResponseSDKType>;
-    denomTraces(request?: QueryDenomTracesRequest): Promise<QueryDenomTracesResponseSDKType>;
-    params(request?: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
+    denomTrace: (request: QueryDenomTraceRequest) => Promise<QueryDenomTraceResponseSDKType>;
+    denomTraces: (request?: QueryDenomTracesRequest) => Promise<QueryDenomTracesResponseSDKType>;
+    params: (request?: QueryParamsRequest) => Promise<QueryParamsResponseSDKType>;
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
     denomTrace(request: QueryDenomTraceRequest): Promise<QueryDenomTraceResponseSDKType>;

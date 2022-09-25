@@ -10,8 +10,8 @@ export interface Msg {
 export declare class MsgClientImpl implements Msg {
     private readonly rpc;
     constructor(rpc: Rpc);
-    setWithdrawAddress(request: MsgSetWithdrawAddress): Promise<MsgSetWithdrawAddressResponseSDKType>;
-    withdrawDelegatorReward(request: MsgWithdrawDelegatorReward): Promise<MsgWithdrawDelegatorRewardResponseSDKType>;
-    withdrawValidatorCommission(request: MsgWithdrawValidatorCommission): Promise<MsgWithdrawValidatorCommissionResponseSDKType>;
-    fundCommunityPool(request: MsgFundCommunityPool): Promise<MsgFundCommunityPoolResponseSDKType>;
+    setWithdrawAddress: (request: MsgSetWithdrawAddress) => Promise<MsgSetWithdrawAddressResponseSDKType>;
+    withdrawDelegatorReward: (request: MsgWithdrawDelegatorReward) => Promise<MsgWithdrawDelegatorRewardResponseSDKType>;
+    withdrawValidatorCommission: (request: MsgWithdrawValidatorCommission) => Promise<MsgWithdrawValidatorCommissionResponseSDKType>;
+    fundCommunityPool: (request: MsgFundCommunityPool) => Promise<MsgFundCommunityPoolResponseSDKType>;
 }

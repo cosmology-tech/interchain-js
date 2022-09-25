@@ -5,7 +5,7 @@ export declare class LCDQueryClient {
     constructor({ requestClient }: {
         requestClient: LCDClient;
     });
-    params(_params?: QueryParamsRequest): Promise<QueryParamsResponseSDKType>;
-    inflation(_params?: QueryInflationRequest): Promise<QueryInflationResponseSDKType>;
-    annualProvisions(_params?: QueryAnnualProvisionsRequest): Promise<QueryAnnualProvisionsResponseSDKType>;
+    params: (_params?: QueryParamsRequest) => Promise<QueryParamsResponseSDKType>;
+    inflation: (_params?: QueryInflationRequest) => Promise<QueryInflationResponseSDKType>;
+    annualProvisions: (_params?: QueryAnnualProvisionsRequest) => Promise<QueryAnnualProvisionsResponseSDKType>;
 }

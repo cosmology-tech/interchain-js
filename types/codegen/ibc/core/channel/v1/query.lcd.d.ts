@@ -5,17 +5,17 @@ export declare class LCDQueryClient {
     constructor({ requestClient }: {
         requestClient: LCDClient;
     });
-    channel(params: QueryChannelRequest): Promise<QueryChannelResponseSDKType>;
-    channels(params?: QueryChannelsRequest): Promise<QueryChannelsResponseSDKType>;
-    connectionChannels(params: QueryConnectionChannelsRequest): Promise<QueryConnectionChannelsResponseSDKType>;
-    channelClientState(params: QueryChannelClientStateRequest): Promise<QueryChannelClientStateResponseSDKType>;
-    channelConsensusState(params: QueryChannelConsensusStateRequest): Promise<QueryChannelConsensusStateResponseSDKType>;
-    packetCommitment(params: QueryPacketCommitmentRequest): Promise<QueryPacketCommitmentResponseSDKType>;
-    packetCommitments(params: QueryPacketCommitmentsRequest): Promise<QueryPacketCommitmentsResponseSDKType>;
-    packetReceipt(params: QueryPacketReceiptRequest): Promise<QueryPacketReceiptResponseSDKType>;
-    packetAcknowledgement(params: QueryPacketAcknowledgementRequest): Promise<QueryPacketAcknowledgementResponseSDKType>;
-    packetAcknowledgements(params: QueryPacketAcknowledgementsRequest): Promise<QueryPacketAcknowledgementsResponseSDKType>;
-    unreceivedPackets(params: QueryUnreceivedPacketsRequest): Promise<QueryUnreceivedPacketsResponseSDKType>;
-    unreceivedAcks(params: QueryUnreceivedAcksRequest): Promise<QueryUnreceivedAcksResponseSDKType>;
-    nextSequenceReceive(params: QueryNextSequenceReceiveRequest): Promise<QueryNextSequenceReceiveResponseSDKType>;
+    channel: (params: QueryChannelRequest) => Promise<QueryChannelResponseSDKType>;
+    channels: (params?: QueryChannelsRequest) => Promise<QueryChannelsResponseSDKType>;
+    connectionChannels: (params: QueryConnectionChannelsRequest) => Promise<QueryConnectionChannelsResponseSDKType>;
+    channelClientState: (params: QueryChannelClientStateRequest) => Promise<QueryChannelClientStateResponseSDKType>;
+    channelConsensusState: (params: QueryChannelConsensusStateRequest) => Promise<QueryChannelConsensusStateResponseSDKType>;
+    packetCommitment: (params: QueryPacketCommitmentRequest) => Promise<QueryPacketCommitmentResponseSDKType>;
+    packetCommitments: (params: QueryPacketCommitmentsRequest) => Promise<QueryPacketCommitmentsResponseSDKType>;
+    packetReceipt: (params: QueryPacketReceiptRequest) => Promise<QueryPacketReceiptResponseSDKType>;
+    packetAcknowledgement: (params: QueryPacketAcknowledgementRequest) => Promise<QueryPacketAcknowledgementResponseSDKType>;
+    packetAcknowledgements: (params: QueryPacketAcknowledgementsRequest) => Promise<QueryPacketAcknowledgementsResponseSDKType>;
+    unreceivedPackets: (params: QueryUnreceivedPacketsRequest) => Promise<QueryUnreceivedPacketsResponseSDKType>;
+    unreceivedAcks: (params: QueryUnreceivedAcksRequest) => Promise<QueryUnreceivedAcksResponseSDKType>;
+    nextSequenceReceive: (params: QueryNextSequenceReceiveRequest) => Promise<QueryNextSequenceReceiveResponseSDKType>;
 }

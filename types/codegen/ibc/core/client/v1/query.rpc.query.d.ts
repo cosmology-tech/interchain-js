@@ -15,14 +15,14 @@ export interface Query {
 export declare class QueryClientImpl implements Query {
     private readonly rpc;
     constructor(rpc: Rpc);
-    clientState(request: QueryClientStateRequest): Promise<QueryClientStateResponseSDKType>;
-    clientStates(request?: QueryClientStatesRequest): Promise<QueryClientStatesResponseSDKType>;
-    consensusState(request: QueryConsensusStateRequest): Promise<QueryConsensusStateResponseSDKType>;
-    consensusStates(request: QueryConsensusStatesRequest): Promise<QueryConsensusStatesResponseSDKType>;
-    clientStatus(request: QueryClientStatusRequest): Promise<QueryClientStatusResponseSDKType>;
-    clientParams(request?: QueryClientParamsRequest): Promise<QueryClientParamsResponseSDKType>;
-    upgradedClientState(request?: QueryUpgradedClientStateRequest): Promise<QueryUpgradedClientStateResponseSDKType>;
-    upgradedConsensusState(request?: QueryUpgradedConsensusStateRequest): Promise<QueryUpgradedConsensusStateResponseSDKType>;
+    clientState: (request: QueryClientStateRequest) => Promise<QueryClientStateResponseSDKType>;
+    clientStates: (request?: QueryClientStatesRequest) => Promise<QueryClientStatesResponseSDKType>;
+    consensusState: (request: QueryConsensusStateRequest) => Promise<QueryConsensusStateResponseSDKType>;
+    consensusStates: (request: QueryConsensusStatesRequest) => Promise<QueryConsensusStatesResponseSDKType>;
+    clientStatus: (request: QueryClientStatusRequest) => Promise<QueryClientStatusResponseSDKType>;
+    clientParams: (request?: QueryClientParamsRequest) => Promise<QueryClientParamsResponseSDKType>;
+    upgradedClientState: (request?: QueryUpgradedClientStateRequest) => Promise<QueryUpgradedClientStateResponseSDKType>;
+    upgradedConsensusState: (request?: QueryUpgradedConsensusStateRequest) => Promise<QueryUpgradedConsensusStateResponseSDKType>;
 }
 export declare const createRpcQueryExtension: (base: QueryClient) => {
     clientState(request: QueryClientStateRequest): Promise<QueryClientStateResponseSDKType>;

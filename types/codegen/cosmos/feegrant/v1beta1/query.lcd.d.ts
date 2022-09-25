@@ -5,7 +5,7 @@ export declare class LCDQueryClient {
     constructor({ requestClient }: {
         requestClient: LCDClient;
     });
-    allowance(params: QueryAllowanceRequest): Promise<QueryAllowanceResponseSDKType>;
-    allowances(params: QueryAllowancesRequest): Promise<QueryAllowancesResponseSDKType>;
-    allowancesByGranter(params: QueryAllowancesByGranterRequest): Promise<QueryAllowancesByGranterResponseSDKType>;
+    allowance: (params: QueryAllowanceRequest) => Promise<QueryAllowanceResponseSDKType>;
+    allowances: (params: QueryAllowancesRequest) => Promise<QueryAllowancesResponseSDKType>;
+    allowancesByGranter: (params: QueryAllowancesByGranterRequest) => Promise<QueryAllowancesByGranterResponseSDKType>;
 }
