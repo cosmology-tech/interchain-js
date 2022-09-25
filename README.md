@@ -7,9 +7,6 @@
 </p>
 
 <p align="center" width="100%">
-  <a href="https://github.com/osmosis-labs/osmojs/actions/workflows/run-tests.yaml">
-    <img height="20" src="https://github.com/osmosis-labs/osmojs/actions/workflows/run-tests.yaml/badge.svg" />
-  </a>
    <a href="https://github.com/cosmology-tech/interchain/blob/main/LICENSE"><img height="20" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
    <a href="https://www.npmjs.com/package/interchain"><img height="20" src="https://img.shields.io/github/package-json/v/cosmology-tech/interchain?filename=package.json"></a>
 </p>
