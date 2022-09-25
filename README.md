@@ -79,6 +79,14 @@ const client = await getSigningCosmosClient({
 });
 ```
 
+### Stargate Client Options
+
+If you need the options in scenarios where you're using tools like [cosmos-kit](https://github.com/cosmology-tech/cosmos-kit), you can get the options to pass into the provider:
+
+```js
+import { getSigningCosmosClientOptions } from 'interchain';
+```
+
 ## Creating Signers
 
 To broadcast messages, you'll want to use either [keplr](https://docs.keplr.app/api/cosmjs.html) or an `OfflineSigner` from `cosmjs` using mnemonics.
