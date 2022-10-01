@@ -19,6 +19,9 @@ export declare const createRPCMsgClient: ({ rpc }: {
         staking: {
             v1beta1: import("../cosmos/staking/v1beta1/tx.rpc.msg").MsgClientImpl;
         };
+        upgrade: {
+            v1beta1: import("../cosmos/upgrade/v1beta1/tx.rpc.msg").MsgClientImpl;
+        };
     };
     ibc: {
         applications: {
@@ -32,6 +35,9 @@ export declare const createRPCMsgClient: ({ rpc }: {
             };
             client: {
                 v1: import("./core/client/v1/tx.rpc.msg").MsgClientImpl;
+            };
+            connection: {
+                v1: import("./core/connection/v1/tx.rpc.msg").MsgClientImpl;
             };
         };
     };

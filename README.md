@@ -100,7 +100,15 @@ import { getSigningCosmosClientOptions } from 'interchain';
 
 ## Creating Signers
 
-To broadcast messages, you'll want to use either [keplr](https://docs.keplr.app/api/cosmjs.html) or an `OfflineSigner` from `cosmjs` using mnemonics.
+To broadcast messages, you can create signers with a variety of options:
+
+* [cosmos-kit](https://github.com/cosmology-tech/cosmos-kit/tree/main/packages/react#signing-clients) (recommended)
+* [keplr](https://docs.keplr.app/api/cosmjs.html)
+* [cosmjs](https://gist.github.com/webmaster128/8444d42a7eceeda2544c8a59fbd7e1d9)
+### Cosmos Kit
+
+We recommend using [cosmos-kit](https://github.com/cosmology-tech/cosmos-kit/tree/main/packages/react#signing-clients) for creating signers that work with Keplr and other wallets.
+
 ### Amino Signer
 
 Likely you'll want to use the Amino, so unless you need proto, you should use this one:
@@ -151,6 +159,7 @@ Built by Cosmology — if you like our tools, please consider delegating to [ou
 Code built with the help of these related projects:
 
 * [@osmonauts/telescope](https://github.com/osmosis-labs/telescope) a "babel for the Cosmos", Telescope is a TypeScript Transpiler for Cosmos Protobufs.
+* [cosmos-kit](https://github.com/cosmology-tech/cosmos-kit) A wallet connector for the Cosmos ⚛️
 
 ## Disclaimer
 

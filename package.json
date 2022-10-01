@@ -83,7 +83,7 @@
     "@cosmjs/tendermint-rpc": "^0.29.0",
     "@osmonauts/helpers": "^0.6.0",
     "@osmonauts/lcd": "^0.6.0",
-    "@osmonauts/telescope": "^0.31.0",
+    "@osmonauts/telescope": "^0.35.0",
     "protobufjs": "^6.11.2"
   }
 }

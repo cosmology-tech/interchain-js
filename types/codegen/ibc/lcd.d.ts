@@ -21,6 +21,9 @@ export declare const createLCDClient: ({ restEndpoint }: {
         tx: {
             v1beta1: import("../cosmos/tx/v1beta1/service.lcd").LCDQueryClient;
         };
+        upgrade: {
+            v1beta1: import("../cosmos/upgrade/v1beta1/query.lcd").LCDQueryClient;
+        };
     };
     ibc: {
         applications: {
@@ -34,6 +37,9 @@ export declare const createLCDClient: ({ restEndpoint }: {
             };
             client: {
                 v1: import("./core/client/v1/query.lcd").LCDQueryClient;
+            };
+            connection: {
+                v1: import("./core/connection/v1/query.lcd").LCDQueryClient;
             };
         };
     };

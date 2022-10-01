@@ -19,5 +19,8 @@ export declare const createRPCMsgClient: ({ rpc }: {
         staking: {
             v1beta1: import("./staking/v1beta1/tx.rpc.msg").MsgClientImpl;
         };
+        upgrade: {
+            v1beta1: import("./upgrade/v1beta1/tx.rpc.msg").MsgClientImpl;
+        };
     };
 }>;

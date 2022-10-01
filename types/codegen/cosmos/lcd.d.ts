@@ -21,5 +21,8 @@ export declare const createLCDClient: ({ restEndpoint }: {
         tx: {
             v1beta1: import("./tx/v1beta1/service.lcd").LCDQueryClient;
         };
+        upgrade: {
+            v1beta1: import("./upgrade/v1beta1/query.lcd").LCDQueryClient;
+        };
     };
 }>;
