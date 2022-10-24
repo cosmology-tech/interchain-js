@@ -1,4 +1,4 @@
-import { setPaginationParams } from "@osmonauts/helpers";
+import { setPaginationParams } from "../../../helpers";
 import { LCDClient } from "@osmonauts/lcd";
 import { QueryBalanceRequest, QueryBalanceResponseSDKType, QueryAllBalancesRequest, QueryAllBalancesResponseSDKType, QuerySpendableBalancesRequest, QuerySpendableBalancesResponseSDKType, QueryTotalSupplyRequest, QueryTotalSupplyResponseSDKType, QuerySupplyOfRequest, QuerySupplyOfResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType, QueryDenomMetadataRequest, QueryDenomMetadataResponseSDKType, QueryDenomsMetadataRequest, QueryDenomsMetadataResponseSDKType, QueryDenomOwnersRequest, QueryDenomOwnersResponseSDKType } from "./query";
 export class LCDQueryClient {
@@ -41,7 +41,7 @@ export class LCDQueryClient {
     return await this.req.get<QueryAllBalancesResponseSDKType>(endpoint, options);
   };
   /* SpendableBalances queries the spenable balance of all coins for a single
-  account. */
+   account. */
 
   spendableBalances = async (params: QuerySpendableBalancesRequest): Promise<QuerySpendableBalancesResponseSDKType> => {
     const options: any = {
@@ -98,7 +98,7 @@ export class LCDQueryClient {
     return await this.req.get<QueryDenomMetadataResponseSDKType>(endpoint);
   };
   /* DenomsMetadata queries the client metadata for all registered coin
-  denominations. */
+   denominations. */
 
   denomsMetadata = async (params: QueryDenomsMetadataRequest = {
     pagination: undefined
@@ -115,7 +115,7 @@ export class LCDQueryClient {
     return await this.req.get<QueryDenomsMetadataResponseSDKType>(endpoint, options);
   };
   /* DenomOwners queries for all account addresses that own a particular token
-  denomination. */
+   denomination. */
 
   denomOwners = async (params: QueryDenomOwnersRequest): Promise<QueryDenomOwnersResponseSDKType> => {
     const options: any = {

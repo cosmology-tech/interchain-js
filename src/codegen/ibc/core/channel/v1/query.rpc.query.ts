@@ -1,57 +1,72 @@
-import { Rpc } from "@osmonauts/helpers";
+import { Rpc } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryChannelRequest, QueryChannelResponse, QueryChannelsRequest, QueryChannelsResponse, QueryConnectionChannelsRequest, QueryConnectionChannelsResponse, QueryChannelClientStateRequest, QueryChannelClientStateResponse, QueryChannelConsensusStateRequest, QueryChannelConsensusStateResponse, QueryPacketCommitmentRequest, QueryPacketCommitmentResponse, QueryPacketCommitmentsRequest, QueryPacketCommitmentsResponse, QueryPacketReceiptRequest, QueryPacketReceiptResponse, QueryPacketAcknowledgementRequest, QueryPacketAcknowledgementResponse, QueryPacketAcknowledgementsRequest, QueryPacketAcknowledgementsResponse, QueryUnreceivedPacketsRequest, QueryUnreceivedPacketsResponse, QueryUnreceivedAcksRequest, QueryUnreceivedAcksResponse, QueryNextSequenceReceiveRequest, QueryNextSequenceReceiveResponse } from "./query";
-/** Query defines the RPC service */
+/** Query provides defines the gRPC querier service */
 
 export interface Query {
+  /** Channel queries an IBC Channel. */
   channel(request: QueryChannelRequest): Promise<QueryChannelResponse>;
-  /*Channel queries an IBC Channel.*/
+  /** Channels queries all the IBC channels of a chain. */
 
   channels(request?: QueryChannelsRequest): Promise<QueryChannelsResponse>;
-  /*Channels queries all the IBC channels of a chain.*/
+  /**
+   * ConnectionChannels queries all the channels associated with a connection
+   * end.
+   */
 
   connectionChannels(request: QueryConnectionChannelsRequest): Promise<QueryConnectionChannelsResponse>;
-  /*ConnectionChannels queries all the channels associated with a connection
-  end.*/
+  /**
+   * ChannelClientState queries for the client state for the channel associated
+   * with the provided channel identifiers.
+   */
 
   channelClientState(request: QueryChannelClientStateRequest): Promise<QueryChannelClientStateResponse>;
-  /*ChannelClientState queries for the client state for the channel associated
-  with the provided channel identifiers.*/
+  /**
+   * ChannelConsensusState queries for the consensus state for the channel
+   * associated with the provided channel identifiers.
+   */
 
   channelConsensusState(request: QueryChannelConsensusStateRequest): Promise<QueryChannelConsensusStateResponse>;
-  /*ChannelConsensusState queries for the consensus state for the channel
-  associated with the provided channel identifiers.*/
+  /** PacketCommitment queries a stored packet commitment hash. */
 
   packetCommitment(request: QueryPacketCommitmentRequest): Promise<QueryPacketCommitmentResponse>;
-  /*PacketCommitment queries a stored packet commitment hash.*/
+  /**
+   * PacketCommitments returns all the packet commitments hashes associated
+   * with a channel.
+   */
 
   packetCommitments(request: QueryPacketCommitmentsRequest): Promise<QueryPacketCommitmentsResponse>;
-  /*PacketCommitments returns all the packet commitments hashes associated
-  with a channel.*/
+  /**
+   * PacketReceipt queries if a given packet sequence has been received on the
+   * queried chain
+   */
 
   packetReceipt(request: QueryPacketReceiptRequest): Promise<QueryPacketReceiptResponse>;
-  /*PacketReceipt queries if a given packet sequence has been received on the
-  queried chain*/
+  /** PacketAcknowledgement queries a stored packet acknowledgement hash. */
 
   packetAcknowledgement(request: QueryPacketAcknowledgementRequest): Promise<QueryPacketAcknowledgementResponse>;
-  /*PacketAcknowledgement queries a stored packet acknowledgement hash.*/
+  /**
+   * PacketAcknowledgements returns all the packet acknowledgements associated
+   * with a channel.
+   */
 
   packetAcknowledgements(request: QueryPacketAcknowledgementsRequest): Promise<QueryPacketAcknowledgementsResponse>;
-  /*PacketAcknowledgements returns all the packet acknowledgements associated
-  with a channel.*/
+  /**
+   * UnreceivedPackets returns all the unreceived IBC packets associated with a
+   * channel and sequences.
+   */
 
   unreceivedPackets(request: QueryUnreceivedPacketsRequest): Promise<QueryUnreceivedPacketsResponse>;
-  /*UnreceivedPackets returns all the unreceived IBC packets associated with a
-  channel and sequences.*/
+  /**
+   * UnreceivedAcks returns all the unreceived IBC acknowledgements associated
+   * with a channel and sequences.
+   */
 
   unreceivedAcks(request: QueryUnreceivedAcksRequest): Promise<QueryUnreceivedAcksResponse>;
-  /*UnreceivedAcks returns all the unreceived IBC acknowledgements associated
-  with a channel and sequences.*/
+  /** NextSequenceReceive returns the next receive sequence for a given channel. */
 
   nextSequenceReceive(request: QueryNextSequenceReceiveRequest): Promise<QueryNextSequenceReceiveResponse>;
-  /*NextSequenceReceive returns the next receive sequence for a given channel.*/
-
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
@@ -77,7 +92,7 @@ export class QueryClientImpl implements Query {
     return promise.then(data => QueryChannelsResponse.decode(new _m0.Reader(data)));
   };
   /* ConnectionChannels queries all the channels associated with a connection
-  end. */
+   end. */
 
   connectionChannels = async (request: QueryConnectionChannelsRequest): Promise<QueryConnectionChannelsResponse> => {
     const data = QueryConnectionChannelsRequest.encode(request).finish();
@@ -85,7 +100,7 @@ export class QueryClientImpl implements Query {
     return promise.then(data => QueryConnectionChannelsResponse.decode(new _m0.Reader(data)));
   };
   /* ChannelClientState queries for the client state for the channel associated
-  with the provided channel identifiers. */
+   with the provided channel identifiers. */
 
   channelClientState = async (request: QueryChannelClientStateRequest): Promise<QueryChannelClientStateResponse> => {
     const data = QueryChannelClientStateRequest.encode(request).finish();
@@ -93,7 +108,7 @@ export class QueryClientImpl implements Query {
     return promise.then(data => QueryChannelClientStateResponse.decode(new _m0.Reader(data)));
   };
   /* ChannelConsensusState queries for the consensus state for the channel
-  associated with the provided channel identifiers. */
+   associated with the provided channel identifiers. */
 
   channelConsensusState = async (request: QueryChannelConsensusStateRequest): Promise<QueryChannelConsensusStateResponse> => {
     const data = QueryChannelConsensusStateRequest.encode(request).finish();
@@ -108,7 +123,7 @@ export class QueryClientImpl implements Query {
     return promise.then(data => QueryPacketCommitmentResponse.decode(new _m0.Reader(data)));
   };
   /* PacketCommitments returns all the packet commitments hashes associated
-  with a channel. */
+   with a channel. */
 
   packetCommitments = async (request: QueryPacketCommitmentsRequest): Promise<QueryPacketCommitmentsResponse> => {
     const data = QueryPacketCommitmentsRequest.encode(request).finish();
@@ -116,7 +131,7 @@ export class QueryClientImpl implements Query {
     return promise.then(data => QueryPacketCommitmentsResponse.decode(new _m0.Reader(data)));
   };
   /* PacketReceipt queries if a given packet sequence has been received on the
-  queried chain */
+   queried chain */
 
   packetReceipt = async (request: QueryPacketReceiptRequest): Promise<QueryPacketReceiptResponse> => {
     const data = QueryPacketReceiptRequest.encode(request).finish();
@@ -131,7 +146,7 @@ export class QueryClientImpl implements Query {
     return promise.then(data => QueryPacketAcknowledgementResponse.decode(new _m0.Reader(data)));
   };
   /* PacketAcknowledgements returns all the packet acknowledgements associated
-  with a channel. */
+   with a channel. */
 
   packetAcknowledgements = async (request: QueryPacketAcknowledgementsRequest): Promise<QueryPacketAcknowledgementsResponse> => {
     const data = QueryPacketAcknowledgementsRequest.encode(request).finish();
@@ -139,7 +154,7 @@ export class QueryClientImpl implements Query {
     return promise.then(data => QueryPacketAcknowledgementsResponse.decode(new _m0.Reader(data)));
   };
   /* UnreceivedPackets returns all the unreceived IBC packets associated with a
-  channel and sequences. */
+   channel and sequences. */
 
   unreceivedPackets = async (request: QueryUnreceivedPacketsRequest): Promise<QueryUnreceivedPacketsResponse> => {
     const data = QueryUnreceivedPacketsRequest.encode(request).finish();
@@ -147,7 +162,7 @@ export class QueryClientImpl implements Query {
     return promise.then(data => QueryUnreceivedPacketsResponse.decode(new _m0.Reader(data)));
   };
   /* UnreceivedAcks returns all the unreceived IBC acknowledgements associated
-  with a channel and sequences. */
+   with a channel and sequences. */
 
   unreceivedAcks = async (request: QueryUnreceivedAcksRequest): Promise<QueryUnreceivedAcksResponse> => {
     const data = QueryUnreceivedAcksRequest.encode(request).finish();

@@ -1,7 +1,7 @@
 import { ProposalStatus, ProposalStatusSDKType, Proposal, ProposalSDKType, Vote, VoteSDKType, VotingParams, VotingParamsSDKType, DepositParams, DepositParamsSDKType, TallyParams, TallyParamsSDKType, Deposit, DepositSDKType, TallyResult, TallyResultSDKType } from "./gov";
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import * as _m0 from "protobufjs/minimal";
-import { Long, DeepPartial } from "@osmonauts/helpers";
+import { Long, DeepPartial } from "../../../helpers";
 /** QueryProposalRequest is the request type for the Query/Proposal RPC method. */
 export interface QueryProposalRequest {
     /** proposal_id defines the unique id of the proposal. */
@@ -14,31 +14,31 @@ export interface QueryProposalRequestSDKType {
 }
 /** QueryProposalResponse is the response type for the Query/Proposal RPC method. */
 export interface QueryProposalResponse {
-    proposal: Proposal;
+    proposal?: Proposal;
 }
 /** QueryProposalResponse is the response type for the Query/Proposal RPC method. */
 export interface QueryProposalResponseSDKType {
-    proposal: ProposalSDKType;
+    proposal?: ProposalSDKType;
 }
 /** QueryProposalsRequest is the request type for the Query/Proposals RPC method. */
 export interface QueryProposalsRequest {
     /** proposal_status defines the status of the proposals. */
-    proposalStatus?: ProposalStatus;
+    proposalStatus: ProposalStatus;
     /** voter defines the voter address for the proposals. */
-    voter?: string;
+    voter: string;
     /** depositor defines the deposit addresses from the proposals. */
-    depositor?: string;
+    depositor: string;
     /** pagination defines an optional pagination for the request. */
     pagination?: PageRequest;
 }
 /** QueryProposalsRequest is the request type for the Query/Proposals RPC method. */
 export interface QueryProposalsRequestSDKType {
     /** proposal_status defines the status of the proposals. */
-    proposal_status?: ProposalStatusSDKType;
+    proposal_status: ProposalStatusSDKType;
     /** voter defines the voter address for the proposals. */
-    voter?: string;
+    voter: string;
     /** depositor defines the deposit addresses from the proposals. */
-    depositor?: string;
+    depositor: string;
     /** pagination defines an optional pagination for the request. */
     pagination?: PageRequestSDKType;
 }
@@ -77,12 +77,12 @@ export interface QueryVoteRequestSDKType {
 /** QueryVoteResponse is the response type for the Query/Vote RPC method. */
 export interface QueryVoteResponse {
     /** vote defined the queried vote. */
-    vote: Vote;
+    vote?: Vote;
 }
 /** QueryVoteResponse is the response type for the Query/Vote RPC method. */
 export interface QueryVoteResponseSDKType {
     /** vote defined the queried vote. */
-    vote: VoteSDKType;
+    vote?: VoteSDKType;
 }
 /** QueryVotesRequest is the request type for the Query/Votes RPC method. */
 export interface QueryVotesRequest {
@@ -131,20 +131,20 @@ export interface QueryParamsRequestSDKType {
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponse {
     /** voting_params defines the parameters related to voting. */
-    votingParams: VotingParams;
+    votingParams?: VotingParams;
     /** deposit_params defines the parameters related to deposit. */
-    depositParams: DepositParams;
+    depositParams?: DepositParams;
     /** tally_params defines the parameters related to tally. */
-    tallyParams: TallyParams;
+    tallyParams?: TallyParams;
 }
 /** QueryParamsResponse is the response type for the Query/Params RPC method. */
 export interface QueryParamsResponseSDKType {
     /** voting_params defines the parameters related to voting. */
-    voting_params: VotingParamsSDKType;
+    voting_params?: VotingParamsSDKType;
     /** deposit_params defines the parameters related to deposit. */
-    deposit_params: DepositParamsSDKType;
+    deposit_params?: DepositParamsSDKType;
     /** tally_params defines the parameters related to tally. */
-    tally_params: TallyParamsSDKType;
+    tally_params?: TallyParamsSDKType;
 }
 /** QueryDepositRequest is the request type for the Query/Deposit RPC method. */
 export interface QueryDepositRequest {
@@ -163,12 +163,12 @@ export interface QueryDepositRequestSDKType {
 /** QueryDepositResponse is the response type for the Query/Deposit RPC method. */
 export interface QueryDepositResponse {
     /** deposit defines the requested deposit. */
-    deposit: Deposit;
+    deposit?: Deposit;
 }
 /** QueryDepositResponse is the response type for the Query/Deposit RPC method. */
 export interface QueryDepositResponseSDKType {
     /** deposit defines the requested deposit. */
-    deposit: DepositSDKType;
+    deposit?: DepositSDKType;
 }
 /** QueryDepositsRequest is the request type for the Query/Deposits RPC method. */
 export interface QueryDepositsRequest {
@@ -209,12 +209,12 @@ export interface QueryTallyResultRequestSDKType {
 /** QueryTallyResultResponse is the response type for the Query/Tally RPC method. */
 export interface QueryTallyResultResponse {
     /** tally defines the requested tally. */
-    tally: TallyResult;
+    tally?: TallyResult;
 }
 /** QueryTallyResultResponse is the response type for the Query/Tally RPC method. */
 export interface QueryTallyResultResponseSDKType {
     /** tally defines the requested tally. */
-    tally: TallyResultSDKType;
+    tally?: TallyResultSDKType;
 }
 export declare const QueryProposalRequest: {
     encode(message: QueryProposalRequest, writer?: _m0.Writer): _m0.Writer;

@@ -1,5 +1,5 @@
 import { AminoMsg } from "@cosmjs/amino";
-import { AminoHeight, Long, omitDefault } from "@osmonauts/helpers";
+import { AminoHeight, Long, omitDefault } from "../../../../helpers";
 import { MsgTransfer } from "./tx";
 export interface AminoMsgTransfer extends AminoMsg {
   type: "cosmos-sdk/MsgTransfer";
@@ -33,7 +33,7 @@ export const AminoConverter = {
         source_channel: sourceChannel,
         token: {
           denom: token.denom,
-          amount: Long.fromNumber(token.amount).toString()
+          amount: Long.fromValue(token.amount).toString()
         },
         sender,
         receiver,

@@ -2,13 +2,13 @@ import { Any, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import { VoteOption, VoteOptionSDKType, WeightedVoteOption, WeightedVoteOptionSDKType } from "./gov";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "@osmonauts/helpers";
+import { DeepPartial, Long } from "../../../helpers";
 /**
  * MsgSubmitProposal defines an sdk.Msg type that supports submitting arbitrary
  * proposal Content.
  */
 export interface MsgSubmitProposal {
-    content: Any;
+    content?: Any;
     initialDeposit: Coin[];
     proposer: string;
 }
@@ -17,7 +17,7 @@ export interface MsgSubmitProposal {
  * proposal Content.
  */
 export interface MsgSubmitProposalSDKType {
-    content: AnySDKType;
+    content?: AnySDKType;
     initial_deposit: CoinSDKType[];
     proposer: string;
 }

@@ -32,6 +32,11 @@ export const createLCDClient = async ({
           requestClient
         })
       },
+      mint: {
+        v1beta1: new (await import("./mint/v1beta1/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
       staking: {
         v1beta1: new (await import("./staking/v1beta1/query.lcd")).LCDQueryClient({
           requestClient

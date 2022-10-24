@@ -1,6 +1,6 @@
 import { Plan, PlanSDKType, ModuleVersion, ModuleVersionSDKType } from "./upgrade";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "@osmonauts/helpers";
+import { DeepPartial, Long } from "../../../helpers";
 /**
  * QueryCurrentPlanRequest is the request type for the Query/CurrentPlan RPC
  * method.
@@ -19,7 +19,7 @@ export interface QueryCurrentPlanRequestSDKType {
  */
 export interface QueryCurrentPlanResponse {
     /** plan is the current upgrade plan. */
-    plan: Plan;
+    plan?: Plan;
 }
 /**
  * QueryCurrentPlanResponse is the response type for the Query/CurrentPlan RPC
@@ -27,7 +27,7 @@ export interface QueryCurrentPlanResponse {
  */
 export interface QueryCurrentPlanResponseSDKType {
     /** plan is the current upgrade plan. */
-    plan: PlanSDKType;
+    plan?: PlanSDKType;
 }
 /**
  * QueryCurrentPlanRequest is the request type for the Query/AppliedPlan RPC
@@ -115,7 +115,7 @@ export interface QueryModuleVersionsRequest {
      * consensus version from state. Leaving this empty will
      * fetch the full list of module versions from state
      */
-    moduleName?: string;
+    moduleName: string;
 }
 /**
  * QueryModuleVersionsRequest is the request type for the Query/ModuleVersions
@@ -129,7 +129,7 @@ export interface QueryModuleVersionsRequestSDKType {
      * consensus version from state. Leaving this empty will
      * fetch the full list of module versions from state
      */
-    module_name?: string;
+    module_name: string;
 }
 /**
  * QueryModuleVersionsResponse is the response type for the Query/ModuleVersions

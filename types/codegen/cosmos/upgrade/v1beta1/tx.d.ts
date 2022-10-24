@@ -1,6 +1,6 @@
 import { Plan, PlanSDKType } from "./upgrade";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "@osmonauts/helpers";
+import { DeepPartial } from "../../../helpers";
 /**
  * MsgSoftwareUpgrade is the Msg/SoftwareUpgrade request type.
  *
@@ -10,7 +10,7 @@ export interface MsgSoftwareUpgrade {
     /** authority is the address of the governance account. */
     authority: string;
     /** plan is the upgrade plan. */
-    plan: Plan;
+    plan?: Plan;
 }
 /**
  * MsgSoftwareUpgrade is the Msg/SoftwareUpgrade request type.
@@ -21,7 +21,7 @@ export interface MsgSoftwareUpgradeSDKType {
     /** authority is the address of the governance account. */
     authority: string;
     /** plan is the upgrade plan. */
-    plan: PlanSDKType;
+    plan?: PlanSDKType;
 }
 /**
  * MsgSoftwareUpgradeResponse is the Msg/SoftwareUpgrade response type.

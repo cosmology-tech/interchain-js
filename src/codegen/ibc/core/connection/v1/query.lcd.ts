@@ -1,4 +1,4 @@
-import { setPaginationParams } from "@osmonauts/helpers";
+import { setPaginationParams } from "../../../../helpers";
 import { LCDClient } from "@osmonauts/lcd";
 import { QueryConnectionRequest, QueryConnectionResponseSDKType, QueryConnectionsRequest, QueryConnectionsResponseSDKType, QueryClientConnectionsRequest, QueryClientConnectionsResponseSDKType, QueryConnectionClientStateRequest, QueryConnectionClientStateResponseSDKType, QueryConnectionConsensusStateRequest, QueryConnectionConsensusStateResponseSDKType } from "./query";
 export class LCDQueryClient {
@@ -35,21 +35,21 @@ export class LCDQueryClient {
     return await this.req.get<QueryConnectionsResponseSDKType>(endpoint, options);
   };
   /* ClientConnections queries the connection paths associated with a client
-  state. */
+   state. */
 
   clientConnections = async (params: QueryClientConnectionsRequest): Promise<QueryClientConnectionsResponseSDKType> => {
     const endpoint = `ibc/core/connection/v1/client_connections/${params.clientId}`;
     return await this.req.get<QueryClientConnectionsResponseSDKType>(endpoint);
   };
   /* ConnectionClientState queries the client state associated with the
-  connection. */
+   connection. */
 
   connectionClientState = async (params: QueryConnectionClientStateRequest): Promise<QueryConnectionClientStateResponseSDKType> => {
     const endpoint = `ibc/core/connection/v1/connections/${params.connectionId}/client_state`;
     return await this.req.get<QueryConnectionClientStateResponseSDKType>(endpoint);
   };
   /* ConnectionConsensusState queries the consensus state associated with the
-  connection. */
+   connection. */
 
   connectionConsensusState = async (params: QueryConnectionConsensusStateRequest): Promise<QueryConnectionConsensusStateResponseSDKType> => {
     const endpoint = `ibc/core/connection/v1/connections/${params.connectionId}/consensus_state/revision/${params.revisionNumber}height/${params.revisionHeight}`;

@@ -2,7 +2,7 @@ import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } fr
 import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import { Height, HeightSDKType, IdentifiedClientState, IdentifiedClientStateSDKType, ConsensusStateWithHeight, ConsensusStateWithHeightSDKType, Params, ParamsSDKType } from "./client";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "@osmonauts/helpers";
+import { DeepPartial, Long } from "../../../../helpers";
 /**
  * QueryClientStateRequest is the request type for the Query/ClientState RPC
  * method
@@ -26,11 +26,11 @@ export interface QueryClientStateRequestSDKType {
  */
 export interface QueryClientStateResponse {
     /** client state associated with the request identifier */
-    clientState: Any;
+    clientState?: Any;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight: Height;
+    proofHeight?: Height;
 }
 /**
  * QueryClientStateResponse is the response type for the Query/ClientState RPC
@@ -39,11 +39,11 @@ export interface QueryClientStateResponse {
  */
 export interface QueryClientStateResponseSDKType {
     /** client state associated with the request identifier */
-    client_state: AnySDKType;
+    client_state?: AnySDKType;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proof_height: HeightSDKType;
+    proof_height?: HeightSDKType;
 }
 /**
  * QueryClientStatesRequest is the request type for the Query/ClientStates RPC
@@ -97,7 +97,7 @@ export interface QueryConsensusStateRequest {
      * latest_height overrrides the height field and queries the latest stored
      * ConsensusState
      */
-    latestHeight?: boolean;
+    latestHeight: boolean;
 }
 /**
  * QueryConsensusStateRequest is the request type for the Query/ConsensusState
@@ -115,7 +115,7 @@ export interface QueryConsensusStateRequestSDKType {
      * latest_height overrrides the height field and queries the latest stored
      * ConsensusState
      */
-    latest_height?: boolean;
+    latest_height: boolean;
 }
 /**
  * QueryConsensusStateResponse is the response type for the Query/ConsensusState
@@ -123,11 +123,11 @@ export interface QueryConsensusStateRequestSDKType {
  */
 export interface QueryConsensusStateResponse {
     /** consensus state associated with the client identifier at the given height */
-    consensusState: Any;
+    consensusState?: Any;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proofHeight: Height;
+    proofHeight?: Height;
 }
 /**
  * QueryConsensusStateResponse is the response type for the Query/ConsensusState
@@ -135,11 +135,11 @@ export interface QueryConsensusStateResponse {
  */
 export interface QueryConsensusStateResponseSDKType {
     /** consensus state associated with the client identifier at the given height */
-    consensus_state: AnySDKType;
+    consensus_state?: AnySDKType;
     /** merkle proof of existence */
     proof: Uint8Array;
     /** height at which the proof was retrieved */
-    proof_height: HeightSDKType;
+    proof_height?: HeightSDKType;
 }
 /**
  * QueryConsensusStatesRequest is the request type for the Query/ConsensusStates
@@ -229,7 +229,7 @@ export interface QueryClientParamsRequestSDKType {
  */
 export interface QueryClientParamsResponse {
     /** params defines the parameters of the module. */
-    params: Params;
+    params?: Params;
 }
 /**
  * QueryClientParamsResponse is the response type for the Query/ClientParams RPC
@@ -237,7 +237,7 @@ export interface QueryClientParamsResponse {
  */
 export interface QueryClientParamsResponseSDKType {
     /** params defines the parameters of the module. */
-    params: ParamsSDKType;
+    params?: ParamsSDKType;
 }
 /**
  * QueryUpgradedClientStateRequest is the request type for the
@@ -257,7 +257,7 @@ export interface QueryUpgradedClientStateRequestSDKType {
  */
 export interface QueryUpgradedClientStateResponse {
     /** client state associated with the request identifier */
-    upgradedClientState: Any;
+    upgradedClientState?: Any;
 }
 /**
  * QueryUpgradedClientStateResponse is the response type for the
@@ -265,7 +265,7 @@ export interface QueryUpgradedClientStateResponse {
  */
 export interface QueryUpgradedClientStateResponseSDKType {
     /** client state associated with the request identifier */
-    upgraded_client_state: AnySDKType;
+    upgraded_client_state?: AnySDKType;
 }
 /**
  * QueryUpgradedConsensusStateRequest is the request type for the
@@ -285,7 +285,7 @@ export interface QueryUpgradedConsensusStateRequestSDKType {
  */
 export interface QueryUpgradedConsensusStateResponse {
     /** Consensus state associated with the request identifier */
-    upgradedConsensusState: Any;
+    upgradedConsensusState?: Any;
 }
 /**
  * QueryUpgradedConsensusStateResponse is the response type for the
@@ -293,7 +293,7 @@ export interface QueryUpgradedConsensusStateResponse {
  */
 export interface QueryUpgradedConsensusStateResponseSDKType {
     /** Consensus state associated with the request identifier */
-    upgraded_consensus_state: AnySDKType;
+    upgraded_consensus_state?: AnySDKType;
 }
 export declare const QueryClientStateRequest: {
     encode(message: QueryClientStateRequest, writer?: _m0.Writer): _m0.Writer;

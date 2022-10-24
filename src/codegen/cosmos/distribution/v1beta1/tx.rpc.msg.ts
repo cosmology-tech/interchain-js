@@ -1,25 +1,32 @@
-import { Rpc } from "@osmonauts/helpers";
+import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { MsgSetWithdrawAddress, MsgSetWithdrawAddressResponse, MsgWithdrawDelegatorReward, MsgWithdrawDelegatorRewardResponse, MsgWithdrawValidatorCommission, MsgWithdrawValidatorCommissionResponse, MsgFundCommunityPool, MsgFundCommunityPoolResponse } from "./tx";
-/** Msg defines the RPC service */
+/** Msg defines the distribution Msg service. */
 
 export interface Msg {
+  /**
+   * SetWithdrawAddress defines a method to change the withdraw address
+   * for a delegator (or validator self-delegation).
+   */
   setWithdrawAddress(request: MsgSetWithdrawAddress): Promise<MsgSetWithdrawAddressResponse>;
-  /*SetWithdrawAddress defines a method to change the withdraw address
-  for a delegator (or validator self-delegation).*/
+  /**
+   * WithdrawDelegatorReward defines a method to withdraw rewards of delegator
+   * from a single validator.
+   */
 
   withdrawDelegatorReward(request: MsgWithdrawDelegatorReward): Promise<MsgWithdrawDelegatorRewardResponse>;
-  /*WithdrawDelegatorReward defines a method to withdraw rewards of delegator
-  from a single validator.*/
+  /**
+   * WithdrawValidatorCommission defines a method to withdraw the
+   * full commission to the validator address.
+   */
 
   withdrawValidatorCommission(request: MsgWithdrawValidatorCommission): Promise<MsgWithdrawValidatorCommissionResponse>;
-  /*WithdrawValidatorCommission defines a method to withdraw the
-  full commission to the validator address.*/
+  /**
+   * FundCommunityPool defines a method to allow an account to directly
+   * fund the community pool.
+   */
 
   fundCommunityPool(request: MsgFundCommunityPool): Promise<MsgFundCommunityPoolResponse>;
-  /*FundCommunityPool defines a method to allow an account to directly
-  fund the community pool.*/
-
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;
@@ -28,7 +35,7 @@ export class MsgClientImpl implements Msg {
     this.rpc = rpc;
   }
   /* SetWithdrawAddress defines a method to change the withdraw address
-  for a delegator (or validator self-delegation). */
+   for a delegator (or validator self-delegation). */
 
 
   setWithdrawAddress = async (request: MsgSetWithdrawAddress): Promise<MsgSetWithdrawAddressResponse> => {
@@ -37,7 +44,7 @@ export class MsgClientImpl implements Msg {
     return promise.then(data => MsgSetWithdrawAddressResponse.decode(new _m0.Reader(data)));
   };
   /* WithdrawDelegatorReward defines a method to withdraw rewards of delegator
-  from a single validator. */
+   from a single validator. */
 
   withdrawDelegatorReward = async (request: MsgWithdrawDelegatorReward): Promise<MsgWithdrawDelegatorRewardResponse> => {
     const data = MsgWithdrawDelegatorReward.encode(request).finish();
@@ -45,7 +52,7 @@ export class MsgClientImpl implements Msg {
     return promise.then(data => MsgWithdrawDelegatorRewardResponse.decode(new _m0.Reader(data)));
   };
   /* WithdrawValidatorCommission defines a method to withdraw the
-  full commission to the validator address. */
+   full commission to the validator address. */
 
   withdrawValidatorCommission = async (request: MsgWithdrawValidatorCommission): Promise<MsgWithdrawValidatorCommissionResponse> => {
     const data = MsgWithdrawValidatorCommission.encode(request).finish();
@@ -53,7 +60,7 @@ export class MsgClientImpl implements Msg {
     return promise.then(data => MsgWithdrawValidatorCommissionResponse.decode(new _m0.Reader(data)));
   };
   /* FundCommunityPool defines a method to allow an account to directly
-  fund the community pool. */
+   fund the community pool. */
 
   fundCommunityPool = async (request: MsgFundCommunityPool): Promise<MsgFundCommunityPoolResponse> => {
     const data = MsgFundCommunityPool.encode(request).finish();

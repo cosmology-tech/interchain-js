@@ -20,30 +20,30 @@ import * as _78 from "./lightclients/localhost/v1/localhost";
 import * as _79 from "./lightclients/solomachine/v1/solomachine";
 import * as _80 from "./lightclients/solomachine/v2/solomachine";
 import * as _81 from "./lightclients/tendermint/v1/tendermint";
-import * as _141 from "./applications/transfer/v1/query.lcd";
-import * as _142 from "./core/channel/v1/query.lcd";
-import * as _143 from "./core/client/v1/query.lcd";
-import * as _144 from "./core/connection/v1/query.lcd";
-import * as _145 from "./applications/transfer/v1/query.rpc.query";
-import * as _146 from "./core/channel/v1/query.rpc.query";
-import * as _147 from "./core/client/v1/query.rpc.query";
-import * as _148 from "./core/connection/v1/query.rpc.query";
-import * as _149 from "./applications/transfer/v1/tx.rpc.msg";
-import * as _150 from "./core/channel/v1/tx.rpc.msg";
-import * as _151 from "./core/client/v1/tx.rpc.msg";
-import * as _152 from "./core/connection/v1/tx.rpc.msg";
+import * as _143 from "./applications/transfer/v1/query.lcd";
+import * as _144 from "./core/channel/v1/query.lcd";
+import * as _145 from "./core/client/v1/query.lcd";
+import * as _146 from "./core/connection/v1/query.lcd";
+import * as _147 from "./applications/transfer/v1/query.rpc.Query";
+import * as _148 from "./core/channel/v1/query.rpc.Query";
+import * as _149 from "./core/client/v1/query.rpc.Query";
+import * as _150 from "./core/connection/v1/query.rpc.Query";
+import * as _151 from "./applications/transfer/v1/tx.rpc.msg";
+import * as _152 from "./core/channel/v1/tx.rpc.msg";
+import * as _153 from "./core/client/v1/tx.rpc.msg";
+import * as _154 from "./core/connection/v1/tx.rpc.msg";
 export declare namespace ibc {
     namespace applications {
         namespace transfer {
             const v1: {
-                MsgClientImpl: typeof _149.MsgClientImpl;
-                QueryClientImpl: typeof _145.QueryClientImpl;
+                MsgClientImpl: typeof _151.MsgClientImpl;
+                QueryClientImpl: typeof _147.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                     denomTrace(request: _61.QueryDenomTraceRequest): Promise<_61.QueryDenomTraceResponse>;
                     denomTraces(request?: _61.QueryDenomTracesRequest): Promise<_61.QueryDenomTracesResponse>;
                     params(request?: _61.QueryParamsRequest): Promise<_61.QueryParamsResponse>;
                 };
-                LCDQueryClient: typeof _141.LCDQueryClient;
+                LCDQueryClient: typeof _143.LCDQueryClient;
                 registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                 load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                 MessageComposer: {
@@ -78,7 +78,7 @@ export declare namespace ibc {
                             };
                             sender: string;
                             receiver: string;
-                            timeout_height: import("@osmonauts/helpers").AminoHeight;
+                            timeout_height: import("../helpers").AminoHeight;
                             timeout_timestamp: string;
                         };
                         fromAmino: ({ source_port, source_channel, token, sender, receiver, timeout_height, timeout_timestamp }: {
@@ -90,7 +90,7 @@ export declare namespace ibc {
                             };
                             sender: string;
                             receiver: string;
-                            timeout_height: import("@osmonauts/helpers").AminoHeight;
+                            timeout_height: import("../helpers").AminoHeight;
                             timeout_timestamp: string;
                         }) => _63.MsgTransfer;
                     };
@@ -227,8 +227,8 @@ export declare namespace ibc {
     namespace core {
         namespace channel {
             const v1: {
-                MsgClientImpl: typeof _150.MsgClientImpl;
-                QueryClientImpl: typeof _146.QueryClientImpl;
+                MsgClientImpl: typeof _152.MsgClientImpl;
+                QueryClientImpl: typeof _148.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                     channel(request: _67.QueryChannelRequest): Promise<_67.QueryChannelResponse>;
                     channels(request?: _67.QueryChannelsRequest): Promise<_67.QueryChannelsResponse>;
@@ -244,7 +244,7 @@ export declare namespace ibc {
                     unreceivedAcks(request: _67.QueryUnreceivedAcksRequest): Promise<_67.QueryUnreceivedAcksResponse>;
                     nextSequenceReceive(request: _67.QueryNextSequenceReceiveRequest): Promise<_67.QueryNextSequenceReceiveResponse>;
                 };
-                LCDQueryClient: typeof _142.LCDQueryClient;
+                LCDQueryClient: typeof _144.LCDQueryClient;
                 registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                 load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                 MessageComposer: {
@@ -424,7 +424,7 @@ export declare namespace ibc {
                             };
                             counterparty_version: string;
                             proof_init: Uint8Array;
-                            proof_height: import("@osmonauts/helpers").AminoHeight;
+                            proof_height: import("../helpers").AminoHeight;
                             signer: string;
                         };
                         fromAmino: ({ port_id, previous_channel_id, channel, counterparty_version, proof_init, proof_height, signer }: {
@@ -442,7 +442,7 @@ export declare namespace ibc {
                             };
                             counterparty_version: string;
                             proof_init: Uint8Array;
-                            proof_height: import("@osmonauts/helpers").AminoHeight;
+                            proof_height: import("../helpers").AminoHeight;
                             signer: string;
                         }) => _68.MsgChannelOpenTry;
                     };
@@ -454,7 +454,7 @@ export declare namespace ibc {
                             counterparty_channel_id: string;
                             counterparty_version: string;
                             proof_try: Uint8Array;
-                            proof_height: import("@osmonauts/helpers").AminoHeight;
+                            proof_height: import("../helpers").AminoHeight;
                             signer: string;
                         };
                         fromAmino: ({ port_id, channel_id, counterparty_channel_id, counterparty_version, proof_try, proof_height, signer }: {
@@ -463,7 +463,7 @@ export declare namespace ibc {
                             counterparty_channel_id: string;
                             counterparty_version: string;
                             proof_try: Uint8Array;
-                            proof_height: import("@osmonauts/helpers").AminoHeight;
+                            proof_height: import("../helpers").AminoHeight;
                             signer: string;
                         }) => _68.MsgChannelOpenAck;
                     };
@@ -473,14 +473,14 @@ export declare namespace ibc {
                             port_id: string;
                             channel_id: string;
                             proof_ack: Uint8Array;
-                            proof_height: import("@osmonauts/helpers").AminoHeight;
+                            proof_height: import("../helpers").AminoHeight;
                             signer: string;
                         };
                         fromAmino: ({ port_id, channel_id, proof_ack, proof_height, signer }: {
                             port_id: string;
                             channel_id: string;
                             proof_ack: Uint8Array;
-                            proof_height: import("@osmonauts/helpers").AminoHeight;
+                            proof_height: import("../helpers").AminoHeight;
                             signer: string;
                         }) => _68.MsgChannelOpenConfirm;
                     };
@@ -503,14 +503,14 @@ export declare namespace ibc {
                             port_id: string;
                             channel_id: string;
                             proof_init: Uint8Array;
-                            proof_height: import("@osmonauts/helpers").AminoHeight;
+                            proof_height: import("../helpers").AminoHeight;
                             signer: string;
                         };
                         fromAmino: ({ port_id, channel_id, proof_init, proof_height, signer }: {
                             port_id: string;
                             channel_id: string;
                             proof_init: Uint8Array;
-                            proof_height: import("@osmonauts/helpers").AminoHeight;
+                            proof_height: import("../helpers").AminoHeight;
                             signer: string;
                         }) => _68.MsgChannelCloseConfirm;
                     };
@@ -524,11 +524,11 @@ export declare namespace ibc {
                                 destination_port: string;
                                 destination_channel: string;
                                 data: Uint8Array;
-                                timeout_height: import("@osmonauts/helpers").AminoHeight;
+                                timeout_height: import("../helpers").AminoHeight;
                                 timeout_timestamp: string;
                             };
                             proof_commitment: Uint8Array;
-                            proof_height: import("@osmonauts/helpers").AminoHeight;
+                            proof_height: import("../helpers").AminoHeight;
                             signer: string;
                         };
                         fromAmino: ({ packet, proof_commitment, proof_height, signer }: {
@@ -539,11 +539,11 @@ export declare namespace ibc {
                                 destination_port: string;
                                 destination_channel: string;
                                 data: Uint8Array;
-                                timeout_height: import("@osmonauts/helpers").AminoHeight;
+                                timeout_height: import("../helpers").AminoHeight;
                                 timeout_timestamp: string;
                             };
                             proof_commitment: Uint8Array;
-                            proof_height: import("@osmonauts/helpers").AminoHeight;
+                            proof_height: import("../helpers").AminoHeight;
                             signer: string;
                         }) => _68.MsgRecvPacket;
                     };
@@ -557,11 +557,11 @@ export declare namespace ibc {
                                 destination_port: string;
                                 destination_channel: string;
                                 data: Uint8Array;
-                                timeout_height: import("@osmonauts/helpers").AminoHeight;
+                                timeout_height: import("../helpers").AminoHeight;
                                 timeout_timestamp: string;
                             };
                             proof_unreceived: Uint8Array;
-                            proof_height: import("@osmonauts/helpers").AminoHeight;
+                            proof_height: import("../helpers").AminoHeight;
                             next_sequence_recv: string;
                             signer: string;
                         };
@@ -573,11 +573,11 @@ export declare namespace ibc {
                                 destination_port: string;
                                 destination_channel: string;
                                 data: Uint8Array;
-                                timeout_height: import("@osmonauts/helpers").AminoHeight;
+                                timeout_height: import("../helpers").AminoHeight;
                                 timeout_timestamp: string;
                             };
                             proof_unreceived: Uint8Array;
-                            proof_height: import("@osmonauts/helpers").AminoHeight;
+                            proof_height: import("../helpers").AminoHeight;
                             next_sequence_recv: string;
                             signer: string;
                         }) => _68.MsgTimeout;
@@ -592,12 +592,12 @@ export declare namespace ibc {
                                 destination_port: string;
                                 destination_channel: string;
                                 data: Uint8Array;
-                                timeout_height: import("@osmonauts/helpers").AminoHeight;
+                                timeout_height: import("../helpers").AminoHeight;
                                 timeout_timestamp: string;
                             };
                             proof_unreceived: Uint8Array;
                             proof_close: Uint8Array;
-                            proof_height: import("@osmonauts/helpers").AminoHeight;
+                            proof_height: import("../helpers").AminoHeight;
                             next_sequence_recv: string;
                             signer: string;
                         };
@@ -609,12 +609,12 @@ export declare namespace ibc {
                                 destination_port: string;
                                 destination_channel: string;
                                 data: Uint8Array;
-                                timeout_height: import("@osmonauts/helpers").AminoHeight;
+                                timeout_height: import("../helpers").AminoHeight;
                                 timeout_timestamp: string;
                             };
                             proof_unreceived: Uint8Array;
                             proof_close: Uint8Array;
-                            proof_height: import("@osmonauts/helpers").AminoHeight;
+                            proof_height: import("../helpers").AminoHeight;
                             next_sequence_recv: string;
                             signer: string;
                         }) => _68.MsgTimeoutOnClose;
@@ -629,12 +629,12 @@ export declare namespace ibc {
                                 destination_port: string;
                                 destination_channel: string;
                                 data: Uint8Array;
-                                timeout_height: import("@osmonauts/helpers").AminoHeight;
+                                timeout_height: import("../helpers").AminoHeight;
                                 timeout_timestamp: string;
                             };
                             acknowledgement: Uint8Array;
                             proof_acked: Uint8Array;
-                            proof_height: import("@osmonauts/helpers").AminoHeight;
+                            proof_height: import("../helpers").AminoHeight;
                             signer: string;
                         };
                         fromAmino: ({ packet, acknowledgement, proof_acked, proof_height, signer }: {
@@ -645,12 +645,12 @@ export declare namespace ibc {
                                 destination_port: string;
                                 destination_channel: string;
                                 data: Uint8Array;
-                                timeout_height: import("@osmonauts/helpers").AminoHeight;
+                                timeout_height: import("../helpers").AminoHeight;
                                 timeout_timestamp: string;
                             };
                             acknowledgement: Uint8Array;
                             proof_acked: Uint8Array;
-                            proof_height: import("@osmonauts/helpers").AminoHeight;
+                            proof_height: import("../helpers").AminoHeight;
                             signer: string;
                         }) => _68.MsgAcknowledgement;
                     };
@@ -1405,8 +1405,8 @@ export declare namespace ibc {
         }
         namespace client {
             const v1: {
-                MsgClientImpl: typeof _151.MsgClientImpl;
-                QueryClientImpl: typeof _147.QueryClientImpl;
+                MsgClientImpl: typeof _153.MsgClientImpl;
+                QueryClientImpl: typeof _149.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                     clientState(request: _71.QueryClientStateRequest): Promise<_71.QueryClientStateResponse>;
                     clientStates(request?: _71.QueryClientStatesRequest): Promise<_71.QueryClientStatesResponse>;
@@ -1417,7 +1417,7 @@ export declare namespace ibc {
                     upgradedClientState(request?: _71.QueryUpgradedClientStateRequest): Promise<_71.QueryUpgradedClientStateResponse>;
                     upgradedConsensusState(request?: _71.QueryUpgradedConsensusStateRequest): Promise<_71.QueryUpgradedConsensusStateResponse>;
                 };
-                LCDQueryClient: typeof _143.LCDQueryClient;
+                LCDQueryClient: typeof _145.LCDQueryClient;
                 registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                 load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                 MessageComposer: {
@@ -2155,8 +2155,8 @@ export declare namespace ibc {
         }
         namespace connection {
             const v1: {
-                MsgClientImpl: typeof _152.MsgClientImpl;
-                QueryClientImpl: typeof _148.QueryClientImpl;
+                MsgClientImpl: typeof _154.MsgClientImpl;
+                QueryClientImpl: typeof _150.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                     connection(request: _76.QueryConnectionRequest): Promise<_76.QueryConnectionResponse>;
                     connections(request?: _76.QueryConnectionsRequest): Promise<_76.QueryConnectionsResponse>;
@@ -2164,7 +2164,7 @@ export declare namespace ibc {
                     connectionClientState(request: _76.QueryConnectionClientStateRequest): Promise<_76.QueryConnectionClientStateResponse>;
                     connectionConsensusState(request: _76.QueryConnectionConsensusStateRequest): Promise<_76.QueryConnectionConsensusStateResponse>;
                 };
-                LCDQueryClient: typeof _144.LCDQueryClient;
+                LCDQueryClient: typeof _146.LCDQueryClient;
                 registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                 load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                 MessageComposer: {
@@ -2280,11 +2280,11 @@ export declare namespace ibc {
                                 identifier: string;
                                 features: string[];
                             }[];
-                            proof_height: import("@osmonauts/helpers").AminoHeight;
+                            proof_height: import("../helpers").AminoHeight;
                             proof_init: Uint8Array;
                             proof_client: Uint8Array;
                             proof_consensus: Uint8Array;
-                            consensus_height: import("@osmonauts/helpers").AminoHeight;
+                            consensus_height: import("../helpers").AminoHeight;
                             signer: string;
                         };
                         fromAmino: ({ client_id, previous_connection_id, client_state, counterparty, delay_period, counterparty_versions, proof_height, proof_init, proof_client, proof_consensus, consensus_height, signer }: {
@@ -2306,11 +2306,11 @@ export declare namespace ibc {
                                 identifier: string;
                                 features: string[];
                             }[];
-                            proof_height: import("@osmonauts/helpers").AminoHeight;
+                            proof_height: import("../helpers").AminoHeight;
                             proof_init: Uint8Array;
                             proof_client: Uint8Array;
                             proof_consensus: Uint8Array;
-                            consensus_height: import("@osmonauts/helpers").AminoHeight;
+                            consensus_height: import("../helpers").AminoHeight;
                             signer: string;
                         }) => _77.MsgConnectionOpenTry;
                     };
@@ -2327,11 +2327,11 @@ export declare namespace ibc {
                                 type_url: string;
                                 value: Uint8Array;
                             };
-                            proof_height: import("@osmonauts/helpers").AminoHeight;
+                            proof_height: import("../helpers").AminoHeight;
                             proof_try: Uint8Array;
                             proof_client: Uint8Array;
                             proof_consensus: Uint8Array;
-                            consensus_height: import("@osmonauts/helpers").AminoHeight;
+                            consensus_height: import("../helpers").AminoHeight;
                             signer: string;
                         };
                         fromAmino: ({ connection_id, counterparty_connection_id, version, client_state, proof_height, proof_try, proof_client, proof_consensus, consensus_height, signer }: {
@@ -2345,11 +2345,11 @@ export declare namespace ibc {
                                 type_url: string;
                                 value: Uint8Array;
                             };
-                            proof_height: import("@osmonauts/helpers").AminoHeight;
+                            proof_height: import("../helpers").AminoHeight;
                             proof_try: Uint8Array;
                             proof_client: Uint8Array;
                             proof_consensus: Uint8Array;
-                            consensus_height: import("@osmonauts/helpers").AminoHeight;
+                            consensus_height: import("../helpers").AminoHeight;
                             signer: string;
                         }) => _77.MsgConnectionOpenAck;
                     };
@@ -2358,13 +2358,13 @@ export declare namespace ibc {
                         toAmino: ({ connectionId, proofAck, proofHeight, signer }: _77.MsgConnectionOpenConfirm) => {
                             connection_id: string;
                             proof_ack: Uint8Array;
-                            proof_height: import("@osmonauts/helpers").AminoHeight;
+                            proof_height: import("../helpers").AminoHeight;
                             signer: string;
                         };
                         fromAmino: ({ connection_id, proof_ack, proof_height, signer }: {
                             connection_id: string;
                             proof_ack: Uint8Array;
-                            proof_height: import("@osmonauts/helpers").AminoHeight;
+                            proof_height: import("../helpers").AminoHeight;
                             signer: string;
                         }) => _77.MsgConnectionOpenConfirm;
                     };
@@ -3246,7 +3246,7 @@ export declare namespace ibc {
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _81.Misbehaviour;
                     fromPartial(object: {
                         clientId?: string;
-                        header_1?: {
+                        header1?: {
                             signedHeader?: {
                                 header?: {
                                     version?: {
@@ -3338,7 +3338,7 @@ export declare namespace ibc {
                                 totalVotingPower?: any;
                             };
                         };
-                        header_2?: {
+                        header2?: {
                             signedHeader?: {
                                 header?: {
                                     version?: {
@@ -3541,7 +3541,7 @@ export declare namespace ibc {
     }
     const ClientFactory: {
         createRPCMsgClient: ({ rpc }: {
-            rpc: import("@osmonauts/helpers").Rpc;
+            rpc: import("../helpers").Rpc;
         }) => Promise<{
             cosmos: {
                 authz: {
@@ -3567,18 +3567,18 @@ export declare namespace ibc {
             ibc: {
                 applications: {
                     transfer: {
-                        v1: _149.MsgClientImpl;
+                        v1: _151.MsgClientImpl;
                     };
                 };
                 core: {
                     channel: {
-                        v1: _150.MsgClientImpl;
+                        v1: _152.MsgClientImpl;
                     };
                     client: {
-                        v1: _151.MsgClientImpl;
+                        v1: _153.MsgClientImpl;
                     };
                     connection: {
-                        v1: _152.MsgClientImpl;
+                        v1: _154.MsgClientImpl;
                     };
                 };
             };
@@ -3640,6 +3640,13 @@ export declare namespace ibc {
                         deposit(request: import("../cosmos/gov/v1beta1/query").QueryDepositRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryDepositResponse>;
                         deposits(request: import("../cosmos/gov/v1beta1/query").QueryDepositsRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryDepositsResponse>;
                         tallyResult(request: import("../cosmos/gov/v1beta1/query").QueryTallyResultRequest): Promise<import("../cosmos/gov/v1beta1/query").QueryTallyResultResponse>;
+                    };
+                };
+                mint: {
+                    v1beta1: {
+                        params(request?: import("../cosmos/mint/v1beta1/query").QueryParamsRequest): Promise<import("../cosmos/mint/v1beta1/query").QueryParamsResponse>;
+                        inflation(request?: import("../cosmos/mint/v1beta1/query").QueryInflationRequest): Promise<import("../cosmos/mint/v1beta1/query").QueryInflationResponse>;
+                        annualProvisions(request?: import("../cosmos/mint/v1beta1/query").QueryAnnualProvisionsRequest): Promise<import("../cosmos/mint/v1beta1/query").QueryAnnualProvisionsResponse>;
                     };
                 };
                 staking: {
@@ -3748,6 +3755,9 @@ export declare namespace ibc {
                     v1: import("../cosmos/gov/v1/query.lcd").LCDQueryClient;
                     v1beta1: import("../cosmos/gov/v1beta1/query.lcd").LCDQueryClient;
                 };
+                mint: {
+                    v1beta1: import("../cosmos/mint/v1beta1/query.lcd").LCDQueryClient;
+                };
                 staking: {
                     v1beta1: import("../cosmos/staking/v1beta1/query.lcd").LCDQueryClient;
                 };
@@ -3761,18 +3771,18 @@ export declare namespace ibc {
             ibc: {
                 applications: {
                     transfer: {
-                        v1: _141.LCDQueryClient;
+                        v1: _143.LCDQueryClient;
                     };
                 };
                 core: {
                     channel: {
-                        v1: _142.LCDQueryClient;
+                        v1: _144.LCDQueryClient;
                     };
                     client: {
-                        v1: _143.LCDQueryClient;
+                        v1: _145.LCDQueryClient;
                     };
                     connection: {
-                        v1: _144.LCDQueryClient;
+                        v1: _146.LCDQueryClient;
                     };
                 };
             };
