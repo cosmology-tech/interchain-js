@@ -1,6 +1,6 @@
 {
   "name": "interchain",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "interchain",
   "author": "Dan Lynch <pyramation@gmail.com>",
   "homepage": "https://github.com/cosmology-tech/interchain#readme",
@@ -18,7 +18,9 @@
     "module"
   ],
   "scripts": {
-    "build": "cross-env BABEL_ENV=production babel src --out-dir main --delete-dir-on-start --extensions \".tsx,.ts,.js\"",
+    "build:main": "cross-env BABEL_ENV=production babel src --out-dir main --delete-dir-on-start --extensions \".tsx,.ts,.js\"",
+    "build:module": "cross-env MODULE=true babel src --out-dir module --delete-dir-on-start  --extensions \".tsx,.ts,.js\"",
+    "build": "npm run build:module && npm run build:main",
     "build:ts": "tsc --project ./tsconfig.json",
     "buidl": "npm run build && npm run build:ts",
     "codegen": "cross-env NODE_ENV=development babel-node scripts/codegen.js",
@@ -77,12 +79,12 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.19.0",
-    "@cosmjs/amino": "0.29.0",
-    "@cosmjs/proto-signing": "0.29.0",
-    "@cosmjs/stargate": "0.29.0",
-    "@cosmjs/tendermint-rpc": "^0.29.0",
+    "@cosmjs/amino": "0.29.4",
+    "@cosmjs/proto-signing": "0.29.4",
+    "@cosmjs/stargate": "0.29.4",
+    "@cosmjs/tendermint-rpc": "^0.29.4",
     "@osmonauts/lcd": "^0.8.0",
-    "@osmonauts/telescope": "^0.72.0",
+    "@osmonauts/telescope": "^0.75.1",
     "protobufjs": "^6.11.2"
   }
 }
