@@ -6,7 +6,7 @@
   "homepage": "https://github.com/cosmology-tech/interchain#readme",
   "license": "SEE LICENSE IN LICENSE",
   "main": "main/index.js",
-  "module": "module/index.js",
+  "module": "main/index.js",
   "typings": "types/index.d.ts",
   "directories": {
     "lib": "src",
