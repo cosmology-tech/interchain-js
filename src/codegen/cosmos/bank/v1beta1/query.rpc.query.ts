@@ -184,7 +184,7 @@ export const createRpcQueryHooks = (base: QueryClient) => {
     useBalance<TData = QueryBalanceResponse>({
       args,
       options
-    }): UseBalanceQuery<TData> {
+    }) {
       return useQuery<QueryBalanceResponse, Error, TData>(["queryBalance", args], () => {
         return queryService.balance(args)
       }, options);
