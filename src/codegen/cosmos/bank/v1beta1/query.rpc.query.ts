@@ -4,6 +4,13 @@ import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryBalanceRequest, QueryBalanceResponse, QueryAllBalancesRequest, QueryAllBalancesResponse, QuerySpendableBalancesRequest, QuerySpendableBalancesResponse, QueryTotalSupplyRequest, QueryTotalSupplyResponse, QuerySupplyOfRequest, QuerySupplyOfResponse, QueryParamsRequest, QueryParamsResponse, QueryDenomMetadataRequest, QueryDenomMetadataResponse, QueryDenomsMetadataRequest, QueryDenomsMetadataResponse, QueryDenomOwnersRequest, QueryDenomOwnersResponse } from "./query";
 /** Query defines the gRPC querier service. */
 
+import {
+  useQuery,
+  useMutation,
+  UseQueryOptions,
+} from '@tanstack/react-query'
+
+
 export interface Query {
   /** Balance queries the balance of a single coin for a single account. */
   balance(request: QueryBalanceRequest): Promise<QueryBalanceResponse>;
@@ -158,6 +165,62 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     denomOwners(request: QueryDenomOwnersRequest): Promise<QueryDenomOwnersResponse> {
       return queryService.denomOwners(request);
     }
+
+  };
+};
+
+export interface ReactQueryParams<TResponse, TData = TResponse> {
+  options?: UseQueryOptions<TResponse, Error, TData>;
+}
+
+export interface UseBalanceQuery<TData> extends ReactQueryParams<QueryBalanceResponse, TData> {
+  args: QueryBalanceRequest;
+}
+
+export const createRpcQueryHooks = (base: QueryClient) => {
+  const rpc = createProtobufRpcClient(base);
+  const queryService = new QueryClientImpl(rpc);
+  return {
+    useBalance<TData = QueryBalanceResponse>({
+      args,
+      options
+    }) {
+      return useQuery<QueryBalanceResponse, Error, TData>(["queryBalance", args], () => {
+        return queryService.balance(args)
+      }, options);
+    },
+
+    // useAllBalances(request: QueryAllBalancesRequest): Promise<QueryAllBalancesResponse> {
+    //   return queryService.allBalances(request);
+    // },
+
+    // useSpendableBalances(request: QuerySpendableBalancesRequest): Promise<QuerySpendableBalancesResponse> {
+    //   return queryService.spendableBalances(request);
+    // },
+
+    // useTotalSupply(request?: QueryTotalSupplyRequest): Promise<QueryTotalSupplyResponse> {
+    //   return queryService.totalSupply(request);
+    // },
+
+    // useSupplyOf(request: QuerySupplyOfRequest): Promise<QuerySupplyOfResponse> {
+    //   return queryService.supplyOf(request);
+    // },
+
+    // useParams(request?: QueryParamsRequest): Promise<QueryParamsResponse> {
+    //   return queryService.params(request);
+    // },
+
+    // useDenomMetadata(request: QueryDenomMetadataRequest): Promise<QueryDenomMetadataResponse> {
+    //   return queryService.denomMetadata(request);
+    // },
+
+    // denomsMetadata(request?: QueryDenomsMetadataRequest): Promise<QueryDenomsMetadataResponse> {
+    //   return queryService.denomsMetadata(request);
+    // },
+
+    // useDenomOwners(request: QueryDenomOwnersRequest): Promise<QueryDenomOwnersResponse> {
+    //   return queryService.denomOwners(request);
+    // }
 
   };
 };
