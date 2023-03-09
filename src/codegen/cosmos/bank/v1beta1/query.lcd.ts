@@ -41,7 +41,9 @@ export class LCDQueryClient {
     return await this.req.get<QueryAllBalancesResponseSDKType>(endpoint, options);
   };
   /* SpendableBalances queries the spenable balance of all coins for a single
-   account. */
+   account.
+  
+   Since: cosmos-sdk 0.46 */
 
   spendableBalances = async (params: QuerySpendableBalancesRequest): Promise<QuerySpendableBalancesResponseSDKType> => {
     const options: any = {
@@ -115,7 +117,9 @@ export class LCDQueryClient {
     return await this.req.get<QueryDenomsMetadataResponseSDKType>(endpoint, options);
   };
   /* DenomOwners queries for all account addresses that own a particular token
-   denomination. */
+   denomination.
+  
+   Since: cosmos-sdk 0.46 */
 
   denomOwners = async (params: QueryDenomOwnersRequest): Promise<QueryDenomOwnersResponseSDKType> => {
     const options: any = {

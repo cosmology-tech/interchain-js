@@ -19,6 +19,13 @@ export const createLCDClient = async ({
           requestClient
         })
       },
+      base: {
+        node: {
+          v1beta1: new (await import("./base/node/v1beta1/query.lcd")).LCDQueryClient({
+            requestClient
+          })
+        }
+      },
       distribution: {
         v1beta1: new (await import("./distribution/v1beta1/query.lcd")).LCDQueryClient({
           requestClient

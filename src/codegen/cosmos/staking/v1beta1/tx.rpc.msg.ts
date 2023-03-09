@@ -1,6 +1,6 @@
 import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { MsgCreateValidator, MsgCreateValidatorResponse, MsgEditValidator, MsgEditValidatorResponse, MsgDelegate, MsgDelegateResponse, MsgBeginRedelegate, MsgBeginRedelegateResponse, MsgUndelegate, MsgUndelegateResponse } from "./tx";
+import { MsgCreateValidator, MsgCreateValidatorResponse, MsgEditValidator, MsgEditValidatorResponse, MsgDelegate, MsgDelegateResponse, MsgBeginRedelegate, MsgBeginRedelegateResponse, MsgUndelegate, MsgUndelegateResponse, MsgCancelUnbondingDelegation, MsgCancelUnbondingDelegationResponse } from "./tx";
 /** Msg defines the staking Msg service. */
 
 export interface Msg {
@@ -27,6 +27,14 @@ export interface Msg {
    */
 
   undelegate(request: MsgUndelegate): Promise<MsgUndelegateResponse>;
+  /**
+   * CancelUnbondingDelegation defines a method for performing canceling the unbonding delegation
+   * and delegate back to previous validator.
+   * 
+   * Since: cosmos-sdk 0.46
+   */
+
+  cancelUnbondingDelegation(request: MsgCancelUnbondingDelegation): Promise<MsgCancelUnbondingDelegationResponse>;
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;
@@ -72,5 +80,15 @@ export class MsgClientImpl implements Msg {
     const data = MsgUndelegate.encode(request).finish();
     const promise = this.rpc.request("cosmos.staking.v1beta1.Msg", "Undelegate", data);
     return promise.then(data => MsgUndelegateResponse.decode(new _m0.Reader(data)));
+  };
+  /* CancelUnbondingDelegation defines a method for performing canceling the unbonding delegation
+   and delegate back to previous validator.
+  
+   Since: cosmos-sdk 0.46 */
+
+  cancelUnbondingDelegation = async (request: MsgCancelUnbondingDelegation): Promise<MsgCancelUnbondingDelegationResponse> => {
+    const data = MsgCancelUnbondingDelegation.encode(request).finish();
+    const promise = this.rpc.request("cosmos.staking.v1beta1.Msg", "CancelUnbondingDelegation", data);
+    return promise.then(data => MsgCancelUnbondingDelegationResponse.decode(new _m0.Reader(data)));
   };
 }

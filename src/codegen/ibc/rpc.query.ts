@@ -15,6 +15,11 @@ export const createRPCQueryClient = async ({
       bank: {
         v1beta1: (await import("../cosmos/bank/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
       },
+      base: {
+        node: {
+          v1beta1: (await import("../cosmos/base/node/v1beta1/query.rpc.Service")).createRpcQueryExtension(client)
+        }
+      },
       distribution: {
         v1beta1: (await import("../cosmos/distribution/v1beta1/query.rpc.Query")).createRpcQueryExtension(client)
       },
@@ -37,6 +42,14 @@ export const createRPCQueryClient = async ({
     },
     ibc: {
       applications: {
+        interchain_accounts: {
+          controller: {
+            v1: (await import("./applications/interchain_accounts/controller/v1/query.rpc.Query")).createRpcQueryExtension(client)
+          },
+          host: {
+            v1: (await import("./applications/interchain_accounts/host/v1/query.rpc.Query")).createRpcQueryExtension(client)
+          }
+        },
         transfer: {
           v1: (await import("./applications/transfer/v1/query.rpc.Query")).createRpcQueryExtension(client)
         }
