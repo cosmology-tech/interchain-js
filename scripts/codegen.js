@@ -2,7 +2,11 @@ import { join } from 'path';
 import telescope from '@osmonauts/telescope';
 import { sync as rimraf } from 'rimraf';
 
-const protoDirs = [join(__dirname, '/../proto')];
+const protoDirs = [
+  join(__dirname, '/../cosmos-sdk/proto'),
+  join(__dirname, '/../ibc-go/proto'),
+  join(__dirname, '/../proto')
+];
 const outPath = join(__dirname, '/../src/codegen');
 rimraf(outPath);
 
@@ -10,11 +14,14 @@ telescope({
   protoDirs,
   outPath,
   options: {
-    removeUnusedImports: true,
+    removeUnusedImports: true, // testing...
     classesUseArrowFunctions: true,
+
     prototypes: {
       excluded: {
         packages: [
+          'ibc.applications.fee.v1', // issue with parsing protos (LCD routes with nested objects in params)
+
           'cosmos.auth.v1beta1',
           'cosmos.app.v1alpha1',
           'cosmos.app.v1beta1',
@@ -54,13 +61,19 @@ telescope({
         useExact: false
       }
     },
+    interfaces: {
+      enabled: true,
+      useUnionTypes: false
+    },
     aminoEncoding: {
-      enabled: true
+      enabled: true,
+      useRecursiveV2encoding: true
     },
     lcdClients: {
       enabled: true
     },
     rpcClients: {
+      type: 'tendermint',
       enabled: true,
       camelCase: true
     },

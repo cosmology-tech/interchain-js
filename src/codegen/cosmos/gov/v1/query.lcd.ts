@@ -47,7 +47,7 @@ export class LCDQueryClient {
   /* Vote queries voted information based on proposalID, voterAddr. */
 
   vote = async (params: QueryVoteRequest): Promise<QueryVoteResponseSDKType> => {
-    const endpoint = `cosmos/gov/v1/proposals/${params.proposalId}votes/${params.voter}`;
+    const endpoint = `cosmos/gov/v1/proposals/${params.proposalId}/votes/${params.voter}`;
     return await this.req.get<QueryVoteResponseSDKType>(endpoint);
   };
   /* Votes queries votes of a given proposal. */
@@ -73,7 +73,7 @@ export class LCDQueryClient {
   /* Deposit queries single deposit information based proposalID, depositAddr. */
 
   deposit = async (params: QueryDepositRequest): Promise<QueryDepositResponseSDKType> => {
-    const endpoint = `cosmos/gov/v1/proposals/${params.proposalId}deposits/${params.depositor}`;
+    const endpoint = `cosmos/gov/v1/proposals/${params.proposalId}/deposits/${params.depositor}`;
     return await this.req.get<QueryDepositResponseSDKType>(endpoint);
   };
   /* Deposits queries all deposits of a single proposal. */

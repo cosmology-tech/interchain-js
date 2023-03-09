@@ -15,7 +15,7 @@ export class LCDQueryClient {
 
 
   channel = async (params: QueryChannelRequest): Promise<QueryChannelResponseSDKType> => {
-    const endpoint = `ibc/core/channel/v1/channels/${params.channelId}ports/${params.portId}`;
+    const endpoint = `ibc/core/channel/v1/channels/${params.channelId}/ports/${params.portId}`;
     return await this.req.get<QueryChannelResponseSDKType>(endpoint);
   };
   /* Channels queries all the IBC channels of a chain. */
@@ -60,13 +60,13 @@ export class LCDQueryClient {
    associated with the provided channel identifiers. */
 
   channelConsensusState = async (params: QueryChannelConsensusStateRequest): Promise<QueryChannelConsensusStateResponseSDKType> => {
-    const endpoint = `ibc/core/channel/v1/channels/${params.channelId}/ports/${params.portId}/consensus_state/revision/${params.revisionNumber}height/${params.revisionHeight}`;
+    const endpoint = `ibc/core/channel/v1/channels/${params.channelId}/ports/${params.portId}/consensus_state/revision/${params.revisionNumber}/height/${params.revisionHeight}`;
     return await this.req.get<QueryChannelConsensusStateResponseSDKType>(endpoint);
   };
   /* PacketCommitment queries a stored packet commitment hash. */
 
   packetCommitment = async (params: QueryPacketCommitmentRequest): Promise<QueryPacketCommitmentResponseSDKType> => {
-    const endpoint = `ibc/core/channel/v1/channels/${params.channelId}/ports/${params.portId}packet_commitments/${params.sequence}`;
+    const endpoint = `ibc/core/channel/v1/channels/${params.channelId}/ports/${params.portId}/packet_commitments/${params.sequence}`;
     return await this.req.get<QueryPacketCommitmentResponseSDKType>(endpoint);
   };
   /* PacketCommitments returns all the packet commitments hashes associated
@@ -88,13 +88,13 @@ export class LCDQueryClient {
    queried chain */
 
   packetReceipt = async (params: QueryPacketReceiptRequest): Promise<QueryPacketReceiptResponseSDKType> => {
-    const endpoint = `ibc/core/channel/v1/channels/${params.channelId}/ports/${params.portId}packet_receipts/${params.sequence}`;
+    const endpoint = `ibc/core/channel/v1/channels/${params.channelId}/ports/${params.portId}/packet_receipts/${params.sequence}`;
     return await this.req.get<QueryPacketReceiptResponseSDKType>(endpoint);
   };
   /* PacketAcknowledgement queries a stored packet acknowledgement hash. */
 
   packetAcknowledgement = async (params: QueryPacketAcknowledgementRequest): Promise<QueryPacketAcknowledgementResponseSDKType> => {
-    const endpoint = `ibc/core/channel/v1/channels/${params.channelId}/ports/${params.portId}packet_acks/${params.sequence}`;
+    const endpoint = `ibc/core/channel/v1/channels/${params.channelId}/ports/${params.portId}/packet_acks/${params.sequence}`;
     return await this.req.get<QueryPacketAcknowledgementResponseSDKType>(endpoint);
   };
   /* PacketAcknowledgements returns all the packet acknowledgements associated

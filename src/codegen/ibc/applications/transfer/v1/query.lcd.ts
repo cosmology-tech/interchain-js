@@ -1,6 +1,6 @@
 import { setPaginationParams } from "../../../../helpers";
 import { LCDClient } from "@osmonauts/lcd";
-import { QueryDenomTraceRequest, QueryDenomTraceResponseSDKType, QueryDenomTracesRequest, QueryDenomTracesResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType } from "./query";
+import { QueryDenomTraceRequest, QueryDenomTraceResponseSDKType, QueryDenomTracesRequest, QueryDenomTracesResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType, QueryDenomHashRequest, QueryDenomHashResponseSDKType, QueryEscrowAddressRequest, QueryEscrowAddressResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
 
@@ -39,5 +39,17 @@ export class LCDQueryClient {
   params = async (_params: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> => {
     const endpoint = `ibc/apps/transfer/v1/params`;
     return await this.req.get<QueryParamsResponseSDKType>(endpoint);
+  };
+  /* DenomHash queries a denomination hash information. */
+
+  denomHash = async (params: QueryDenomHashRequest): Promise<QueryDenomHashResponseSDKType> => {
+    const endpoint = `ibc/apps/transfer/v1/denom_hashes/${params.trace}`;
+    return await this.req.get<QueryDenomHashResponseSDKType>(endpoint);
+  };
+  /* EscrowAddress returns the escrow address for a particular port and channel id. */
+
+  escrowAddress = async (params: QueryEscrowAddressRequest): Promise<QueryEscrowAddressResponseSDKType> => {
+    const endpoint = `ibc/apps/transfer/v1/channels/${params.channelId}/ports/${params.portId}/escrow_address`;
+    return await this.req.get<QueryEscrowAddressResponseSDKType>(endpoint);
   };
 }

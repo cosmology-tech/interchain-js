@@ -13,6 +13,8 @@ export interface Query {
   /**
    * SpendableBalances queries the spenable balance of all coins for a single
    * account.
+   * 
+   * Since: cosmos-sdk 0.46
    */
 
   spendableBalances(request: QuerySpendableBalancesRequest): Promise<QuerySpendableBalancesResponse>;
@@ -37,6 +39,8 @@ export interface Query {
   /**
    * DenomOwners queries for all account addresses that own a particular token
    * denomination.
+   * 
+   * Since: cosmos-sdk 0.46
    */
 
   denomOwners(request: QueryDenomOwnersRequest): Promise<QueryDenomOwnersResponse>;
@@ -63,7 +67,9 @@ export class QueryClientImpl implements Query {
     return promise.then(data => QueryAllBalancesResponse.decode(new _m0.Reader(data)));
   };
   /* SpendableBalances queries the spenable balance of all coins for a single
-   account. */
+   account.
+  
+   Since: cosmos-sdk 0.46 */
 
   spendableBalances = async (request: QuerySpendableBalancesRequest): Promise<QuerySpendableBalancesResponse> => {
     const data = QuerySpendableBalancesRequest.encode(request).finish();
@@ -111,7 +117,9 @@ export class QueryClientImpl implements Query {
     return promise.then(data => QueryDenomsMetadataResponse.decode(new _m0.Reader(data)));
   };
   /* DenomOwners queries for all account addresses that own a particular token
-   denomination. */
+   denomination.
+  
+   Since: cosmos-sdk 0.46 */
 
   denomOwners = async (request: QueryDenomOwnersRequest): Promise<QueryDenomOwnersResponse> => {
     const data = QueryDenomOwnersRequest.encode(request).finish();

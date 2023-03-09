@@ -27,7 +27,11 @@ export interface Query {
    */
 
   moduleVersions(request: QueryModuleVersionsRequest): Promise<QueryModuleVersionsResponse>;
-  /** Returns the account with authority to conduct upgrades */
+  /**
+   * Returns the account with authority to conduct upgrades
+   * 
+   * Since: cosmos-sdk 0.46
+   */
 
   authority(request?: QueryAuthorityRequest): Promise<QueryAuthorityResponse>;
 }
@@ -73,7 +77,9 @@ export class QueryClientImpl implements Query {
     const promise = this.rpc.request("cosmos.upgrade.v1beta1.Query", "ModuleVersions", data);
     return promise.then(data => QueryModuleVersionsResponse.decode(new _m0.Reader(data)));
   };
-  /* Returns the account with authority to conduct upgrades */
+  /* Returns the account with authority to conduct upgrades
+  
+   Since: cosmos-sdk 0.46 */
 
   authority = async (request: QueryAuthorityRequest = {}): Promise<QueryAuthorityResponse> => {
     const data = QueryAuthorityRequest.encode(request).finish();
