@@ -25,6 +25,11 @@ export declare const createRPCMsgClient: ({ rpc }: {
     };
     ibc: {
         applications: {
+            interchain_accounts: {
+                controller: {
+                    v1: import("./applications/interchain_accounts/controller/v1/tx.rpc.msg").MsgClientImpl;
+                };
+            };
             transfer: {
                 v1: import("./applications/transfer/v1/tx.rpc.msg").MsgClientImpl;
             };

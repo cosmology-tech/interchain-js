@@ -8,6 +8,11 @@ export declare const createLCDClient: ({ restEndpoint }: {
         bank: {
             v1beta1: import("../cosmos/bank/v1beta1/query.lcd").LCDQueryClient;
         };
+        base: {
+            node: {
+                v1beta1: import("../cosmos/base/node/v1beta1/query.lcd").LCDQueryClient;
+            };
+        };
         distribution: {
             v1beta1: import("../cosmos/distribution/v1beta1/query.lcd").LCDQueryClient;
         };
@@ -30,6 +35,14 @@ export declare const createLCDClient: ({ restEndpoint }: {
     };
     ibc: {
         applications: {
+            interchain_accounts: {
+                controller: {
+                    v1: import("./applications/interchain_accounts/controller/v1/query.lcd").LCDQueryClient;
+                };
+                host: {
+                    v1: import("./applications/interchain_accounts/host/v1/query.lcd").LCDQueryClient;
+                };
+            };
             transfer: {
                 v1: import("./applications/transfer/v1/query.lcd").LCDQueryClient;
             };

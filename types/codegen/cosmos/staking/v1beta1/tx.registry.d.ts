@@ -1,5 +1,5 @@
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgCreateValidator, MsgEditValidator, MsgDelegate, MsgBeginRedelegate, MsgUndelegate } from "./tx";
+import { MsgCreateValidator, MsgEditValidator, MsgDelegate, MsgBeginRedelegate, MsgUndelegate, MsgCancelUnbondingDelegation } from "./tx";
 export declare const registry: ReadonlyArray<[string, GeneratedType]>;
 export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {
@@ -21,6 +21,10 @@ export declare const MessageComposer: {
             value: Uint8Array;
         };
         undelegate(value: MsgUndelegate): {
+            typeUrl: string;
+            value: Uint8Array;
+        };
+        cancelUnbondingDelegation(value: MsgCancelUnbondingDelegation): {
             typeUrl: string;
             value: Uint8Array;
         };
@@ -46,6 +50,10 @@ export declare const MessageComposer: {
             typeUrl: string;
             value: MsgUndelegate;
         };
+        cancelUnbondingDelegation(value: MsgCancelUnbondingDelegation): {
+            typeUrl: string;
+            value: MsgCancelUnbondingDelegation;
+        };
     };
     fromPartial: {
         createValidator(value: MsgCreateValidator): {
@@ -67,6 +75,10 @@ export declare const MessageComposer: {
         undelegate(value: MsgUndelegate): {
             typeUrl: string;
             value: MsgUndelegate;
+        };
+        cancelUnbondingDelegation(value: MsgCancelUnbondingDelegation): {
+            typeUrl: string;
+            value: MsgCancelUnbondingDelegation;
         };
     };
 };

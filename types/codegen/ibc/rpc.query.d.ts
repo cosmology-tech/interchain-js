@@ -1,5 +1,6 @@
+import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
 export declare const createRPCQueryClient: ({ rpcEndpoint }: {
-    rpcEndpoint: string;
+    rpcEndpoint: string | HttpEndpoint;
 }) => Promise<{
     cosmos: {
         authz: {
@@ -20,6 +21,13 @@ export declare const createRPCQueryClient: ({ rpcEndpoint }: {
                 denomMetadata(request: import("../cosmos/bank/v1beta1/query").QueryDenomMetadataRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomMetadataResponse>;
                 denomsMetadata(request?: import("../cosmos/bank/v1beta1/query").QueryDenomsMetadataRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomsMetadataResponse>;
                 denomOwners(request: import("../cosmos/bank/v1beta1/query").QueryDenomOwnersRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomOwnersResponse>;
+            };
+        };
+        base: {
+            node: {
+                v1beta1: {
+                    config(request?: import("../cosmos/base/node/v1beta1/query").ConfigRequest): Promise<import("../cosmos/base/node/v1beta1/query").ConfigResponse>;
+                };
             };
         };
         distribution: {
@@ -103,11 +111,26 @@ export declare const createRPCQueryClient: ({ rpcEndpoint }: {
     };
     ibc: {
         applications: {
+            interchain_accounts: {
+                controller: {
+                    v1: {
+                        interchainAccount(request: import("./applications/interchain_accounts/controller/v1/query").QueryInterchainAccountRequest): Promise<import("./applications/interchain_accounts/controller/v1/query").QueryInterchainAccountResponse>;
+                        params(request?: import("./applications/interchain_accounts/controller/v1/query").QueryParamsRequest): Promise<import("./applications/interchain_accounts/controller/v1/query").QueryParamsResponse>;
+                    };
+                };
+                host: {
+                    v1: {
+                        params(request?: import("./applications/interchain_accounts/host/v1/query").QueryParamsRequest): Promise<import("./applications/interchain_accounts/host/v1/query").QueryParamsResponse>;
+                    };
+                };
+            };
             transfer: {
                 v1: {
                     denomTrace(request: import("./applications/transfer/v1/query").QueryDenomTraceRequest): Promise<import("./applications/transfer/v1/query").QueryDenomTraceResponse>;
                     denomTraces(request?: import("./applications/transfer/v1/query").QueryDenomTracesRequest): Promise<import("./applications/transfer/v1/query").QueryDenomTracesResponse>;
                     params(request?: import("./applications/transfer/v1/query").QueryParamsRequest): Promise<import("./applications/transfer/v1/query").QueryParamsResponse>;
+                    denomHash(request: import("./applications/transfer/v1/query").QueryDenomHashRequest): Promise<import("./applications/transfer/v1/query").QueryDenomHashResponse>;
+                    escrowAddress(request: import("./applications/transfer/v1/query").QueryEscrowAddressRequest): Promise<import("./applications/transfer/v1/query").QueryEscrowAddressResponse>;
                 };
             };
         };
@@ -135,6 +158,7 @@ export declare const createRPCQueryClient: ({ rpcEndpoint }: {
                     clientStates(request?: import("./core/client/v1/query").QueryClientStatesRequest): Promise<import("./core/client/v1/query").QueryClientStatesResponse>;
                     consensusState(request: import("./core/client/v1/query").QueryConsensusStateRequest): Promise<import("./core/client/v1/query").QueryConsensusStateResponse>;
                     consensusStates(request: import("./core/client/v1/query").QueryConsensusStatesRequest): Promise<import("./core/client/v1/query").QueryConsensusStatesResponse>;
+                    consensusStateHeights(request: import("./core/client/v1/query").QueryConsensusStateHeightsRequest): Promise<import("./core/client/v1/query").QueryConsensusStateHeightsResponse>;
                     clientStatus(request: import("./core/client/v1/query").QueryClientStatusRequest): Promise<import("./core/client/v1/query").QueryClientStatusResponse>;
                     clientParams(request?: import("./core/client/v1/query").QueryClientParamsRequest): Promise<import("./core/client/v1/query").QueryClientParamsResponse>;
                     upgradedClientState(request?: import("./core/client/v1/query").QueryUpgradedClientStateRequest): Promise<import("./core/client/v1/query").QueryUpgradedClientStateResponse>;
@@ -148,6 +172,7 @@ export declare const createRPCQueryClient: ({ rpcEndpoint }: {
                     clientConnections(request: import("./core/connection/v1/query").QueryClientConnectionsRequest): Promise<import("./core/connection/v1/query").QueryClientConnectionsResponse>;
                     connectionClientState(request: import("./core/connection/v1/query").QueryConnectionClientStateRequest): Promise<import("./core/connection/v1/query").QueryConnectionClientStateResponse>;
                     connectionConsensusState(request: import("./core/connection/v1/query").QueryConnectionConsensusStateRequest): Promise<import("./core/connection/v1/query").QueryConnectionConsensusStateResponse>;
+                    connectionParams(request?: import("./core/connection/v1/query").QueryConnectionParamsRequest): Promise<import("./core/connection/v1/query").QueryConnectionParamsResponse>;
                 };
             };
         };

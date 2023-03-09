@@ -8,6 +8,11 @@ export declare const createLCDClient: ({ restEndpoint }: {
         bank: {
             v1beta1: import("../cosmos/bank/v1beta1/query.lcd").LCDQueryClient;
         };
+        base: {
+            node: {
+                v1beta1: import("../cosmos/base/node/v1beta1/query.lcd").LCDQueryClient;
+            };
+        };
         distribution: {
             v1beta1: import("../cosmos/distribution/v1beta1/query.lcd").LCDQueryClient;
         };

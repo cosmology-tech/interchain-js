@@ -10,6 +10,8 @@ export interface Query {
     /**
      * SpendableBalances queries the spenable balance of all coins for a single
      * account.
+     *
+     * Since: cosmos-sdk 0.46
      */
     spendableBalances(request: QuerySpendableBalancesRequest): Promise<QuerySpendableBalancesResponse>;
     /** TotalSupply queries the total supply of all coins. */
@@ -28,6 +30,8 @@ export interface Query {
     /**
      * DenomOwners queries for all account addresses that own a particular token
      * denomination.
+     *
+     * Since: cosmos-sdk 0.46
      */
     denomOwners(request: QueryDenomOwnersRequest): Promise<QueryDenomOwnersResponse>;
 }

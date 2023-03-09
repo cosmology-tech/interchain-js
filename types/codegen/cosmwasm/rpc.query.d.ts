@@ -1,5 +1,6 @@
+import { HttpEndpoint } from "@cosmjs/tendermint-rpc";
 export declare const createRPCQueryClient: ({ rpcEndpoint }: {
-    rpcEndpoint: string;
+    rpcEndpoint: string | HttpEndpoint;
 }) => Promise<{
     cosmos: {
         authz: {
@@ -20,6 +21,13 @@ export declare const createRPCQueryClient: ({ rpcEndpoint }: {
                 denomMetadata(request: import("../cosmos/bank/v1beta1/query").QueryDenomMetadataRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomMetadataResponse>;
                 denomsMetadata(request?: import("../cosmos/bank/v1beta1/query").QueryDenomsMetadataRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomsMetadataResponse>;
                 denomOwners(request: import("../cosmos/bank/v1beta1/query").QueryDenomOwnersRequest): Promise<import("../cosmos/bank/v1beta1/query").QueryDenomOwnersResponse>;
+            };
+        };
+        base: {
+            node: {
+                v1beta1: {
+                    config(request?: import("../cosmos/base/node/v1beta1/query").ConfigRequest): Promise<import("../cosmos/base/node/v1beta1/query").ConfigResponse>;
+                };
             };
         };
         distribution: {
