@@ -1,6 +1,6 @@
 import { DecCoin, DecCoinAmino, DecCoinSDKType, Coin, CoinAmino, CoinSDKType } from "../../base/v1beta1/coin";
+import { Long, DeepPartial } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
 /** Params defines the set of params for the distribution module. */
 export interface Params {
     communityTax: string;

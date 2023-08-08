@@ -1,7 +1,7 @@
 import { AccessConfig, AccessConfigAmino, AccessConfigSDKType } from "./types";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
+import { Long, DeepPartial } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
 /** StoreCodeProposal gov proposal content type to submit WASM code to the system */
 export interface StoreCodeProposal {
     /** Title is a short summary */
@@ -13,7 +13,7 @@ export interface StoreCodeProposal {
     /** WASMByteCode can be raw or gzip compressed */
     wasmByteCode: Uint8Array;
     /** InstantiatePermission to apply on contract creation, optional */
-    instantiatePermission?: AccessConfig;
+    instantiatePermission: AccessConfig;
 }
 export interface StoreCodeProposalProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.StoreCodeProposal";
@@ -42,7 +42,7 @@ export interface StoreCodeProposalSDKType {
     description: string;
     run_as: string;
     wasm_byte_code: Uint8Array;
-    instantiate_permission?: AccessConfigSDKType;
+    instantiate_permission: AccessConfigSDKType;
 }
 /**
  * InstantiateContractProposal gov proposal content type to instantiate a

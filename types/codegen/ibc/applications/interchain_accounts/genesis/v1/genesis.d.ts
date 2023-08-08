@@ -8,8 +8,8 @@ import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "../../../../../helpers";
 /** GenesisState defines the interchain accounts genesis state */
 export interface GenesisState {
-    controllerGenesisState?: ControllerGenesisState;
-    hostGenesisState?: HostGenesisState;
+    controllerGenesisState: ControllerGenesisState;
+    hostGenesisState: HostGenesisState;
 }
 export interface GenesisStateProtoMsg {
     typeUrl: "/ibc.applications.interchain_accounts.genesis.v1.GenesisState";
@@ -26,15 +26,15 @@ export interface GenesisStateAminoMsg {
 }
 /** GenesisState defines the interchain accounts genesis state */
 export interface GenesisStateSDKType {
-    controller_genesis_state?: ControllerGenesisStateSDKType;
-    host_genesis_state?: HostGenesisStateSDKType;
+    controller_genesis_state: ControllerGenesisStateSDKType;
+    host_genesis_state: HostGenesisStateSDKType;
 }
 /** ControllerGenesisState defines the interchain accounts controller genesis state */
 export interface ControllerGenesisState {
     activeChannels: ActiveChannel[];
     interchainAccounts: RegisteredInterchainAccount[];
     ports: string[];
-    params?: Params1;
+    params: Params1;
 }
 export interface ControllerGenesisStateProtoMsg {
     typeUrl: "/ibc.applications.interchain_accounts.genesis.v1.ControllerGenesisState";
@@ -56,14 +56,14 @@ export interface ControllerGenesisStateSDKType {
     active_channels: ActiveChannelSDKType[];
     interchain_accounts: RegisteredInterchainAccountSDKType[];
     ports: string[];
-    params?: Params1SDKType;
+    params: Params1SDKType;
 }
 /** HostGenesisState defines the interchain accounts host genesis state */
 export interface HostGenesisState {
     activeChannels: ActiveChannel[];
     interchainAccounts: RegisteredInterchainAccount[];
     port: string;
-    params?: Params2;
+    params: Params2;
 }
 export interface HostGenesisStateProtoMsg {
     typeUrl: "/ibc.applications.interchain_accounts.genesis.v1.HostGenesisState";
@@ -85,7 +85,7 @@ export interface HostGenesisStateSDKType {
     active_channels: ActiveChannelSDKType[];
     interchain_accounts: RegisteredInterchainAccountSDKType[];
     port: string;
-    params?: Params2SDKType;
+    params: Params2SDKType;
 }
 /**
  * ActiveChannel contains a connection ID, port ID and associated active channel ID, as well as a boolean flag to

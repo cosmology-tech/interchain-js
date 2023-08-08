@@ -40,7 +40,7 @@ export interface ConnectionEnd {
     /** current state of the connection end. */
     state: State;
     /** counterparty chain associated with this connection. */
-    counterparty?: Counterparty;
+    counterparty: Counterparty;
     /**
      * delay period that must pass before a consensus state can be used for
      * packet-verification NOTE: delay period logic is only implemented by some
@@ -91,7 +91,7 @@ export interface ConnectionEndSDKType {
     client_id: string;
     versions: VersionSDKType[];
     state: State;
-    counterparty?: CounterpartySDKType;
+    counterparty: CounterpartySDKType;
     delay_period: Long;
 }
 /**
@@ -111,7 +111,7 @@ export interface IdentifiedConnection {
     /** current state of the connection end. */
     state: State;
     /** counterparty chain associated with this connection. */
-    counterparty?: Counterparty;
+    counterparty: Counterparty;
     /** delay period associated with this connection. */
     delayPeriod: Long;
 }
@@ -153,7 +153,7 @@ export interface IdentifiedConnectionSDKType {
     client_id: string;
     versions: VersionSDKType[];
     state: State;
-    counterparty?: CounterpartySDKType;
+    counterparty: CounterpartySDKType;
     delay_period: Long;
 }
 /** Counterparty defines the counterparty chain associated with a connection end. */
@@ -169,7 +169,7 @@ export interface Counterparty {
      */
     connectionId: string;
     /** commitment merkle prefix of the counterparty chain. */
-    prefix?: MerklePrefix;
+    prefix: MerklePrefix;
 }
 export interface CounterpartyProtoMsg {
     typeUrl: "/ibc.core.connection.v1.Counterparty";
@@ -198,7 +198,7 @@ export interface CounterpartyAminoMsg {
 export interface CounterpartySDKType {
     client_id: string;
     connection_id: string;
-    prefix?: MerklePrefixSDKType;
+    prefix: MerklePrefixSDKType;
 }
 /** ClientPaths define all the connection paths for a client state. */
 export interface ClientPaths {

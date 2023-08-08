@@ -9,8 +9,8 @@ import * as _m0 from "protobufjs/minimal";
  */
 export interface MsgConnectionOpenInit {
     clientId: string;
-    counterparty?: Counterparty;
-    version?: Version;
+    counterparty: Counterparty;
+    version: Version;
     delayPeriod: Long;
     signer: string;
 }
@@ -39,8 +39,8 @@ export interface MsgConnectionOpenInitAminoMsg {
  */
 export interface MsgConnectionOpenInitSDKType {
     client_id: string;
-    counterparty?: CounterpartySDKType;
-    version?: VersionSDKType;
+    counterparty: CounterpartySDKType;
+    version: VersionSDKType;
     delay_period: Long;
     signer: string;
 }
@@ -79,11 +79,11 @@ export interface MsgConnectionOpenTry {
     /** Deprecated: this field is unused. Crossing hellos are no longer supported in core IBC. */
     /** @deprecated */
     previousConnectionId: string;
-    clientState?: Any;
-    counterparty?: Counterparty;
+    clientState: Any;
+    counterparty: Counterparty;
     delayPeriod: Long;
     counterpartyVersions: Version[];
-    proofHeight?: Height;
+    proofHeight: Height;
     /**
      * proof of the initialization the connection on Chain A: `UNITIALIZED ->
      * INIT`
@@ -93,7 +93,7 @@ export interface MsgConnectionOpenTry {
     proofClient: Uint8Array;
     /** proof of client consensus state */
     proofConsensus: Uint8Array;
-    consensusHeight?: Height;
+    consensusHeight: Height;
     signer: string;
 }
 export interface MsgConnectionOpenTryProtoMsg {
@@ -138,15 +138,15 @@ export interface MsgConnectionOpenTrySDKType {
     client_id: string;
     /** @deprecated */
     previous_connection_id: string;
-    client_state?: AnySDKType;
-    counterparty?: CounterpartySDKType;
+    client_state: AnySDKType;
+    counterparty: CounterpartySDKType;
     delay_period: Long;
     counterparty_versions: VersionSDKType[];
-    proof_height?: HeightSDKType;
+    proof_height: HeightSDKType;
     proof_init: Uint8Array;
     proof_client: Uint8Array;
     proof_consensus: Uint8Array;
-    consensus_height?: HeightSDKType;
+    consensus_height: HeightSDKType;
     signer: string;
 }
 /** MsgConnectionOpenTryResponse defines the Msg/ConnectionOpenTry response type. */
@@ -173,9 +173,9 @@ export interface MsgConnectionOpenTryResponseSDKType {
 export interface MsgConnectionOpenAck {
     connectionId: string;
     counterpartyConnectionId: string;
-    version?: Version;
-    clientState?: Any;
-    proofHeight?: Height;
+    version: Version;
+    clientState: Any;
+    proofHeight: Height;
     /**
      * proof of the initialization the connection on Chain B: `UNITIALIZED ->
      * TRYOPEN`
@@ -185,7 +185,7 @@ export interface MsgConnectionOpenAck {
     proofClient: Uint8Array;
     /** proof of client consensus state */
     proofConsensus: Uint8Array;
-    consensusHeight?: Height;
+    consensusHeight: Height;
     signer: string;
 }
 export interface MsgConnectionOpenAckProtoMsg {
@@ -225,13 +225,13 @@ export interface MsgConnectionOpenAckAminoMsg {
 export interface MsgConnectionOpenAckSDKType {
     connection_id: string;
     counterparty_connection_id: string;
-    version?: VersionSDKType;
-    client_state?: AnySDKType;
-    proof_height?: HeightSDKType;
+    version: VersionSDKType;
+    client_state: AnySDKType;
+    proof_height: HeightSDKType;
     proof_try: Uint8Array;
     proof_client: Uint8Array;
     proof_consensus: Uint8Array;
-    consensus_height?: HeightSDKType;
+    consensus_height: HeightSDKType;
     signer: string;
 }
 /** MsgConnectionOpenAckResponse defines the Msg/ConnectionOpenAck response type. */
@@ -259,7 +259,7 @@ export interface MsgConnectionOpenConfirm {
     connectionId: string;
     /** proof for the change of the connection state on Chain A: `INIT -> OPEN` */
     proofAck: Uint8Array;
-    proofHeight?: Height;
+    proofHeight: Height;
     signer: string;
 }
 export interface MsgConnectionOpenConfirmProtoMsg {
@@ -288,7 +288,7 @@ export interface MsgConnectionOpenConfirmAminoMsg {
 export interface MsgConnectionOpenConfirmSDKType {
     connection_id: string;
     proof_ack: Uint8Array;
-    proof_height?: HeightSDKType;
+    proof_height: HeightSDKType;
     signer: string;
 }
 /**

@@ -1,6 +1,6 @@
 import { InterchainAccountPacketData, InterchainAccountPacketDataAmino, InterchainAccountPacketDataSDKType } from "../../v1/packet";
+import { Long, DeepPartial } from "../../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../../../helpers";
 /** MsgRegisterInterchainAccount defines the payload for Msg/MsgRegisterInterchainAccount */
 export interface MsgRegisterInterchainAccount {
     owner: string;
@@ -51,7 +51,7 @@ export interface MsgRegisterInterchainAccountResponseSDKType {
 export interface MsgSendTx {
     owner: string;
     connectionId: string;
-    packetData?: InterchainAccountPacketData;
+    packetData: InterchainAccountPacketData;
     /**
      * Relative timeout timestamp provided will be added to the current block time during transaction execution.
      * The timeout timestamp must be non-zero.
@@ -81,7 +81,7 @@ export interface MsgSendTxAminoMsg {
 export interface MsgSendTxSDKType {
     owner: string;
     connection_id: string;
-    packet_data?: InterchainAccountPacketDataSDKType;
+    packet_data: InterchainAccountPacketDataSDKType;
     relative_timeout: Long;
 }
 /** MsgSendTxResponse defines the response for MsgSendTx */

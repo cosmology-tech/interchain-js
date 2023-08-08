@@ -9,7 +9,7 @@ export interface ClientState {
     /** self chain ID */
     chainId: string;
     /** self latest block height */
-    height?: Height;
+    height: Height;
 }
 export interface ClientStateProtoMsg {
     typeUrl: "/ibc.lightclients.localhost.v1.ClientState";
@@ -35,7 +35,7 @@ export interface ClientStateAminoMsg {
  */
 export interface ClientStateSDKType {
     chain_id: string;
-    height?: HeightSDKType;
+    height: HeightSDKType;
 }
 export declare const ClientState: {
     encode(message: ClientState, writer?: _m0.Writer): _m0.Writer;

@@ -4,9 +4,9 @@ import { DeepPartial } from "../../../helpers";
 /** GenesisState defines the mint module's genesis state. */
 export interface GenesisState {
     /** minter is a space for holding current inflation information. */
-    minter?: Minter;
+    minter: Minter;
     /** params defines all the paramaters of the module. */
-    params?: Params;
+    params: Params;
 }
 export interface GenesisStateProtoMsg {
     typeUrl: "/cosmos.mint.v1beta1.GenesisState";
@@ -25,8 +25,8 @@ export interface GenesisStateAminoMsg {
 }
 /** GenesisState defines the mint module's genesis state. */
 export interface GenesisStateSDKType {
-    minter?: MinterSDKType;
-    params?: ParamsSDKType;
+    minter: MinterSDKType;
+    params: ParamsSDKType;
 }
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;

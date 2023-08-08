@@ -43,7 +43,7 @@ export interface ClientState {
     sequence: Long;
     /** frozen sequence of the solo machine */
     frozenSequence: Long;
-    consensusState?: ConsensusState;
+    consensusState: ConsensusState;
     /**
      * when set to true, will allow governance to update a solo machine client.
      * The client will be unfrozen if it is frozen.
@@ -81,7 +81,7 @@ export interface ClientStateAminoMsg {
 export interface ClientStateSDKType {
     sequence: Long;
     frozen_sequence: Long;
-    consensus_state?: ConsensusStateSDKType;
+    consensus_state: ConsensusStateSDKType;
     allow_update_after_proposal: boolean;
 }
 /**
@@ -91,7 +91,7 @@ export interface ClientStateSDKType {
  */
 export interface ConsensusState {
     /** public key of the solo machine */
-    publicKey?: Any;
+    publicKey: Any;
     /**
      * diversifier allows the same public key to be re-used across different solo
      * machine clients (potentially on different chains) without being considered
@@ -130,7 +130,7 @@ export interface ConsensusStateAminoMsg {
  * consensus state.
  */
 export interface ConsensusStateSDKType {
-    public_key?: AnySDKType;
+    public_key: AnySDKType;
     diversifier: string;
     timestamp: Long;
 }
@@ -140,7 +140,7 @@ export interface Header {
     sequence: Long;
     timestamp: Long;
     signature: Uint8Array;
-    newPublicKey?: Any;
+    newPublicKey: Any;
     newDiversifier: string;
 }
 export interface HeaderProtoMsg {
@@ -165,7 +165,7 @@ export interface HeaderSDKType {
     sequence: Long;
     timestamp: Long;
     signature: Uint8Array;
-    new_public_key?: AnySDKType;
+    new_public_key: AnySDKType;
     new_diversifier: string;
 }
 /**
@@ -175,8 +175,8 @@ export interface HeaderSDKType {
 export interface Misbehaviour {
     clientId: string;
     sequence: Long;
-    signatureOne?: SignatureAndData;
-    signatureTwo?: SignatureAndData;
+    signatureOne: SignatureAndData;
+    signatureTwo: SignatureAndData;
 }
 export interface MisbehaviourProtoMsg {
     typeUrl: "/ibc.lightclients.solomachine.v1.Misbehaviour";
@@ -203,8 +203,8 @@ export interface MisbehaviourAminoMsg {
 export interface MisbehaviourSDKType {
     client_id: string;
     sequence: Long;
-    signature_one?: SignatureAndDataSDKType;
-    signature_two?: SignatureAndDataSDKType;
+    signature_one: SignatureAndDataSDKType;
+    signature_two: SignatureAndDataSDKType;
 }
 /**
  * SignatureAndData contains a signature and the data signed over to create that
@@ -315,7 +315,7 @@ export interface SignBytesSDKType {
 /** HeaderData returns the SignBytes data for update verification. */
 export interface HeaderData {
     /** header public key */
-    newPubKey?: Any;
+    newPubKey: Any;
     /** header diversifier */
     newDiversifier: string;
 }
@@ -336,13 +336,13 @@ export interface HeaderDataAminoMsg {
 }
 /** HeaderData returns the SignBytes data for update verification. */
 export interface HeaderDataSDKType {
-    new_pub_key?: AnySDKType;
+    new_pub_key: AnySDKType;
     new_diversifier: string;
 }
 /** ClientStateData returns the SignBytes data for client state verification. */
 export interface ClientStateData {
     path: Uint8Array;
-    clientState?: Any;
+    clientState: Any;
 }
 export interface ClientStateDataProtoMsg {
     typeUrl: "/ibc.lightclients.solomachine.v1.ClientStateData";
@@ -360,7 +360,7 @@ export interface ClientStateDataAminoMsg {
 /** ClientStateData returns the SignBytes data for client state verification. */
 export interface ClientStateDataSDKType {
     path: Uint8Array;
-    client_state?: AnySDKType;
+    client_state: AnySDKType;
 }
 /**
  * ConsensusStateData returns the SignBytes data for consensus state
@@ -368,7 +368,7 @@ export interface ClientStateDataSDKType {
  */
 export interface ConsensusStateData {
     path: Uint8Array;
-    consensusState?: Any;
+    consensusState: Any;
 }
 export interface ConsensusStateDataProtoMsg {
     typeUrl: "/ibc.lightclients.solomachine.v1.ConsensusStateData";
@@ -392,7 +392,7 @@ export interface ConsensusStateDataAminoMsg {
  */
 export interface ConsensusStateDataSDKType {
     path: Uint8Array;
-    consensus_state?: AnySDKType;
+    consensus_state: AnySDKType;
 }
 /**
  * ConnectionStateData returns the SignBytes data for connection state
@@ -400,7 +400,7 @@ export interface ConsensusStateDataSDKType {
  */
 export interface ConnectionStateData {
     path: Uint8Array;
-    connection?: ConnectionEnd;
+    connection: ConnectionEnd;
 }
 export interface ConnectionStateDataProtoMsg {
     typeUrl: "/ibc.lightclients.solomachine.v1.ConnectionStateData";
@@ -424,7 +424,7 @@ export interface ConnectionStateDataAminoMsg {
  */
 export interface ConnectionStateDataSDKType {
     path: Uint8Array;
-    connection?: ConnectionEndSDKType;
+    connection: ConnectionEndSDKType;
 }
 /**
  * ChannelStateData returns the SignBytes data for channel state
@@ -432,7 +432,7 @@ export interface ConnectionStateDataSDKType {
  */
 export interface ChannelStateData {
     path: Uint8Array;
-    channel?: Channel;
+    channel: Channel;
 }
 export interface ChannelStateDataProtoMsg {
     typeUrl: "/ibc.lightclients.solomachine.v1.ChannelStateData";
@@ -456,7 +456,7 @@ export interface ChannelStateDataAminoMsg {
  */
 export interface ChannelStateDataSDKType {
     path: Uint8Array;
-    channel?: ChannelSDKType;
+    channel: ChannelSDKType;
 }
 /**
  * PacketCommitmentData returns the SignBytes data for packet commitment

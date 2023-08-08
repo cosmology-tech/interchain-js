@@ -1,5 +1,5 @@
+import { Long, DeepPartial } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
 /** Minter represents the minting state. */
 export interface Minter {
     /** current annual inflation rate */

@@ -9,7 +9,7 @@ import { DeepPartial } from "../../../helpers";
 export interface MsgGrant {
     granter: string;
     grantee: string;
-    grant?: Grant;
+    grant: Grant;
 }
 export interface MsgGrantProtoMsg {
     typeUrl: "/cosmos.authz.v1beta1.MsgGrant";
@@ -35,7 +35,7 @@ export interface MsgGrantAminoMsg {
 export interface MsgGrantSDKType {
     granter: string;
     grantee: string;
-    grant?: GrantSDKType;
+    grant: GrantSDKType;
 }
 /** MsgExecResponse defines the Msg/MsgExecResponse response type. */
 export interface MsgExecResponse {
@@ -75,7 +75,7 @@ export interface MsgExecProtoMsg {
     typeUrl: "/cosmos.authz.v1beta1.MsgExec";
     value: Uint8Array;
 }
-export declare type MsgExecEncoded = Omit<MsgExec, "msgs"> & {
+export type MsgExecEncoded = Omit<MsgExec, "msgs"> & {
     /**
      * Authorization Msg requests to execute. Each msg must implement Authorization interface
      * The x/authz will try to find a grant matching (msg.signers[0], grantee, MsgTypeURL(msg))

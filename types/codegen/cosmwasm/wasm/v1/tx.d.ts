@@ -1,7 +1,7 @@
 import { AccessConfig, AccessConfigAmino, AccessConfigSDKType } from "./types";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
+import { Long, DeepPartial } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../../helpers";
 /** MsgStoreCode submit Wasm code to the system */
 export interface MsgStoreCode {
     /** Sender is the that actor that signed the messages */
@@ -12,7 +12,7 @@ export interface MsgStoreCode {
      * InstantiatePermission access control to apply on contract creation,
      * optional
      */
-    instantiatePermission?: AccessConfig;
+    instantiatePermission: AccessConfig;
 }
 export interface MsgStoreCodeProtoMsg {
     typeUrl: "/cosmwasm.wasm.v1.MsgStoreCode";
@@ -38,7 +38,7 @@ export interface MsgStoreCodeAminoMsg {
 export interface MsgStoreCodeSDKType {
     sender: string;
     wasm_byte_code: Uint8Array;
-    instantiate_permission?: AccessConfigSDKType;
+    instantiate_permission: AccessConfigSDKType;
 }
 /** MsgStoreCodeResponse returns store result data. */
 export interface MsgStoreCodeResponse {

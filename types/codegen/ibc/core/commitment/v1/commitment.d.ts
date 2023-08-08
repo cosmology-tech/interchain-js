@@ -1,4 +1,3 @@
-import { CommitmentProof, CommitmentProofAmino, CommitmentProofSDKType } from "../../../../confio/proofs";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "../../../../helpers";
 /**
@@ -102,7 +101,6 @@ export interface MerklePathSDKType {
  * MerkleProofs are ordered from leaf-to-root
  */
 export interface MerkleProof {
-    proofs: CommitmentProof[];
 }
 export interface MerkleProofProtoMsg {
     typeUrl: "/ibc.core.commitment.v1.MerkleProof";
@@ -116,7 +114,6 @@ export interface MerkleProofProtoMsg {
  * MerkleProofs are ordered from leaf-to-root
  */
 export interface MerkleProofAmino {
-    proofs: CommitmentProofAmino[];
 }
 export interface MerkleProofAminoMsg {
     type: "cosmos-sdk/MerkleProof";
@@ -130,7 +127,6 @@ export interface MerkleProofAminoMsg {
  * MerkleProofs are ordered from leaf-to-root
  */
 export interface MerkleProofSDKType {
-    proofs: CommitmentProofSDKType[];
 }
 export declare const MerkleRoot: {
     encode(message: MerkleRoot, writer?: _m0.Writer): _m0.Writer;
@@ -169,11 +165,11 @@ export declare const MerklePath: {
     toProtoMsg(message: MerklePath): MerklePathProtoMsg;
 };
 export declare const MerkleProof: {
-    encode(message: MerkleProof, writer?: _m0.Writer): _m0.Writer;
+    encode(_: MerkleProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MerkleProof;
-    fromPartial(object: DeepPartial<MerkleProof>): MerkleProof;
-    fromAmino(object: MerkleProofAmino): MerkleProof;
-    toAmino(message: MerkleProof): MerkleProofAmino;
+    fromPartial(_: DeepPartial<MerkleProof>): MerkleProof;
+    fromAmino(_: MerkleProofAmino): MerkleProof;
+    toAmino(_: MerkleProof): MerkleProofAmino;
     fromAminoMsg(object: MerkleProofAminoMsg): MerkleProof;
     toAminoMsg(message: MerkleProof): MerkleProofAminoMsg;
     fromProtoMsg(message: MerkleProofProtoMsg): MerkleProof;
