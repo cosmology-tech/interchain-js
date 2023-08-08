@@ -2,7 +2,6 @@ import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { MsgSoftwareUpgrade, MsgSoftwareUpgradeResponse, MsgCancelUpgrade, MsgCancelUpgradeResponse } from "./tx";
 /** Msg defines the upgrade Msg service. */
-
 export interface Msg {
   /**
    * SoftwareUpgrade is a governance operation for initiating a software upgrade.
@@ -16,20 +15,16 @@ export interface Msg {
    * 
    * Since: cosmos-sdk 0.46
    */
-
   cancelUpgrade(request: MsgCancelUpgrade): Promise<MsgCancelUpgradeResponse>;
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;
-
   constructor(rpc: Rpc) {
     this.rpc = rpc;
   }
   /* SoftwareUpgrade is a governance operation for initiating a software upgrade.
   
    Since: cosmos-sdk 0.46 */
-
-
   softwareUpgrade = async (request: MsgSoftwareUpgrade): Promise<MsgSoftwareUpgradeResponse> => {
     const data = MsgSoftwareUpgrade.encode(request).finish();
     const promise = this.rpc.request("cosmos.upgrade.v1beta1.Msg", "SoftwareUpgrade", data);
@@ -39,7 +34,6 @@ export class MsgClientImpl implements Msg {
    approvid software upgrade.
   
    Since: cosmos-sdk 0.46 */
-
   cancelUpgrade = async (request: MsgCancelUpgrade): Promise<MsgCancelUpgradeResponse> => {
     const data = MsgCancelUpgrade.encode(request).finish();
     const promise = this.rpc.request("cosmos.upgrade.v1beta1.Msg", "CancelUpgrade", data);

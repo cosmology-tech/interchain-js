@@ -5,6 +5,7 @@ import { sync as rimraf } from 'rimraf';
 const protoDirs = [
   join(__dirname, '/../cosmos-sdk/proto'),
   join(__dirname, '/../ibc-go/proto'),
+  join(__dirname, '/../ics23/proto'),
   join(__dirname, '/../proto')
 ];
 const outPath = join(__dirname, '/../src/codegen');
@@ -22,7 +23,7 @@ telescope({
         packages: [
           'ibc.applications.fee.v1', // issue with parsing protos (LCD routes with nested objects in params)
 
-          'cosmos.auth.v1beta1',
+          // 'cosmos.auth.v1beta1',
           'cosmos.app.v1alpha1',
           'cosmos.app.v1beta1',
           'cosmos.base.kv.v1beta1',

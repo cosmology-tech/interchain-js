@@ -3,7 +3,6 @@ import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryGrantsRequest, QueryGrantsResponse, QueryGranterGrantsRequest, QueryGranterGrantsResponse, QueryGranteeGrantsRequest, QueryGranteeGrantsResponse } from "./query";
 /** Query defines the gRPC querier service. */
-
 export interface Query {
   /** Returns list of `Authorization`, granted to the grantee by the granter. */
   grants(request: QueryGrantsRequest): Promise<QueryGrantsResponse>;
@@ -12,25 +11,20 @@ export interface Query {
    * 
    * Since: cosmos-sdk 0.46
    */
-
   granterGrants(request: QueryGranterGrantsRequest): Promise<QueryGranterGrantsResponse>;
   /**
    * GranteeGrants returns a list of `GrantAuthorization` by grantee.
    * 
    * Since: cosmos-sdk 0.46
    */
-
   granteeGrants(request: QueryGranteeGrantsRequest): Promise<QueryGranteeGrantsResponse>;
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
-
   constructor(rpc: Rpc) {
     this.rpc = rpc;
   }
   /* Returns list of `Authorization`, granted to the grantee by the granter. */
-
-
   grants = async (request: QueryGrantsRequest): Promise<QueryGrantsResponse> => {
     const data = QueryGrantsRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.authz.v1beta1.Query", "Grants", data);
@@ -39,7 +33,6 @@ export class QueryClientImpl implements Query {
   /* GranterGrants returns list of `GrantAuthorization`, granted by granter.
   
    Since: cosmos-sdk 0.46 */
-
   granterGrants = async (request: QueryGranterGrantsRequest): Promise<QueryGranterGrantsResponse> => {
     const data = QueryGranterGrantsRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.authz.v1beta1.Query", "GranterGrants", data);
@@ -48,7 +41,6 @@ export class QueryClientImpl implements Query {
   /* GranteeGrants returns a list of `GrantAuthorization` by grantee.
   
    Since: cosmos-sdk 0.46 */
-
   granteeGrants = async (request: QueryGranteeGrantsRequest): Promise<QueryGranteeGrantsResponse> => {
     const data = QueryGranteeGrantsRequest.encode(request).finish();
     const promise = this.rpc.request("cosmos.authz.v1beta1.Query", "GranteeGrants", data);
@@ -62,14 +54,11 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     grants(request: QueryGrantsRequest): Promise<QueryGrantsResponse> {
       return queryService.grants(request);
     },
-
     granterGrants(request: QueryGranterGrantsRequest): Promise<QueryGranterGrantsResponse> {
       return queryService.granterGrants(request);
     },
-
     granteeGrants(request: QueryGranteeGrantsRequest): Promise<QueryGranteeGrantsResponse> {
       return queryService.granteeGrants(request);
     }
-
   };
 };

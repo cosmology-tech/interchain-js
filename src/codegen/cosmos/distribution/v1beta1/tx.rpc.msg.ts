@@ -2,7 +2,6 @@ import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { MsgSetWithdrawAddress, MsgSetWithdrawAddressResponse, MsgWithdrawDelegatorReward, MsgWithdrawDelegatorRewardResponse, MsgWithdrawValidatorCommission, MsgWithdrawValidatorCommissionResponse, MsgFundCommunityPool, MsgFundCommunityPoolResponse } from "./tx";
 /** Msg defines the distribution Msg service. */
-
 export interface Msg {
   /**
    * SetWithdrawAddress defines a method to change the withdraw address
@@ -13,31 +12,25 @@ export interface Msg {
    * WithdrawDelegatorReward defines a method to withdraw rewards of delegator
    * from a single validator.
    */
-
   withdrawDelegatorReward(request: MsgWithdrawDelegatorReward): Promise<MsgWithdrawDelegatorRewardResponse>;
   /**
    * WithdrawValidatorCommission defines a method to withdraw the
    * full commission to the validator address.
    */
-
   withdrawValidatorCommission(request: MsgWithdrawValidatorCommission): Promise<MsgWithdrawValidatorCommissionResponse>;
   /**
    * FundCommunityPool defines a method to allow an account to directly
    * fund the community pool.
    */
-
   fundCommunityPool(request: MsgFundCommunityPool): Promise<MsgFundCommunityPoolResponse>;
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;
-
   constructor(rpc: Rpc) {
     this.rpc = rpc;
   }
   /* SetWithdrawAddress defines a method to change the withdraw address
    for a delegator (or validator self-delegation). */
-
-
   setWithdrawAddress = async (request: MsgSetWithdrawAddress): Promise<MsgSetWithdrawAddressResponse> => {
     const data = MsgSetWithdrawAddress.encode(request).finish();
     const promise = this.rpc.request("cosmos.distribution.v1beta1.Msg", "SetWithdrawAddress", data);
@@ -45,7 +38,6 @@ export class MsgClientImpl implements Msg {
   };
   /* WithdrawDelegatorReward defines a method to withdraw rewards of delegator
    from a single validator. */
-
   withdrawDelegatorReward = async (request: MsgWithdrawDelegatorReward): Promise<MsgWithdrawDelegatorRewardResponse> => {
     const data = MsgWithdrawDelegatorReward.encode(request).finish();
     const promise = this.rpc.request("cosmos.distribution.v1beta1.Msg", "WithdrawDelegatorReward", data);
@@ -53,7 +45,6 @@ export class MsgClientImpl implements Msg {
   };
   /* WithdrawValidatorCommission defines a method to withdraw the
    full commission to the validator address. */
-
   withdrawValidatorCommission = async (request: MsgWithdrawValidatorCommission): Promise<MsgWithdrawValidatorCommissionResponse> => {
     const data = MsgWithdrawValidatorCommission.encode(request).finish();
     const promise = this.rpc.request("cosmos.distribution.v1beta1.Msg", "WithdrawValidatorCommission", data);
@@ -61,7 +52,6 @@ export class MsgClientImpl implements Msg {
   };
   /* FundCommunityPool defines a method to allow an account to directly
    fund the community pool. */
-
   fundCommunityPool = async (request: MsgFundCommunityPool): Promise<MsgFundCommunityPoolResponse> => {
     const data = MsgFundCommunityPool.encode(request).finish();
     const promise = this.rpc.request("cosmos.distribution.v1beta1.Msg", "FundCommunityPool", data);

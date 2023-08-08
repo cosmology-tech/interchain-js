@@ -14,14 +14,12 @@ export const MessageComposer = {
         value: MsgRegisterInterchainAccount.encode(value).finish()
       };
     },
-
     sendTx(value: MsgSendTx) {
       return {
         typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgSendTx",
         value: MsgSendTx.encode(value).finish()
       };
     }
-
   },
   withTypeUrl: {
     registerInterchainAccount(value: MsgRegisterInterchainAccount) {
@@ -30,14 +28,12 @@ export const MessageComposer = {
         value
       };
     },
-
     sendTx(value: MsgSendTx) {
       return {
         typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgSendTx",
         value
       };
     }
-
   },
   fromPartial: {
     registerInterchainAccount(value: MsgRegisterInterchainAccount) {
@@ -46,13 +42,11 @@ export const MessageComposer = {
         value: MsgRegisterInterchainAccount.fromPartial(value)
       };
     },
-
     sendTx(value: MsgSendTx) {
       return {
         typeUrl: "/ibc.applications.interchain_accounts.controller.v1.MsgSendTx",
         value: MsgSendTx.fromPartial(value)
       };
     }
-
   }
 };

@@ -81,7 +81,6 @@ import { DeepPartial } from "../../helpers";
  *       "value": "1.212s"
  *     }
  */
-
 export interface Any {
   /**
    * A URL/resource name that uniquely identifies the type of the serialized
@@ -114,7 +113,6 @@ export interface Any {
    */
   typeUrl: string;
   /** Must be a valid serialized protocol buffer of the above specified type. */
-
   value: Uint8Array;
 }
 export interface AnyProtoMsg {
@@ -202,7 +200,6 @@ export interface AnyProtoMsg {
  *       "value": "1.212s"
  *     }
  */
-
 export interface AnyAmino {
   /**
    * A URL/resource name that uniquely identifies the type of the serialized
@@ -235,7 +232,6 @@ export interface AnyAmino {
    */
   type: string;
   /** Must be a valid serialized protocol buffer of the above specified type. */
-
   value: any;
 }
 export interface AnyAminoMsg {
@@ -323,96 +319,77 @@ export interface AnyAminoMsg {
  *       "value": "1.212s"
  *     }
  */
-
 export interface AnySDKType {
   type_url: string;
   value: Uint8Array;
 }
-
 function createBaseAny(): Any {
   return {
     typeUrl: "",
     value: new Uint8Array()
   };
 }
-
 export const Any = {
   encode(message: Any, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.typeUrl !== "") {
       writer.uint32(10).string(message.typeUrl);
     }
-
     if (message.value.length !== 0) {
       writer.uint32(18).bytes(message.value);
     }
-
     return writer;
   },
-
   decode(input: _m0.Reader | Uint8Array, length?: number): Any {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseAny();
-
     while (reader.pos < end) {
       const tag = reader.uint32();
-
       switch (tag >>> 3) {
         case 1:
           message.typeUrl = reader.string();
           break;
-
         case 2:
           message.value = reader.bytes();
           break;
-
         default:
           reader.skipType(tag & 7);
           break;
       }
     }
-
     return message;
   },
-
   fromPartial(object: DeepPartial<Any>): Any {
     const message = createBaseAny();
     message.typeUrl = object.typeUrl ?? "";
     message.value = object.value ?? new Uint8Array();
     return message;
   },
-
   fromAmino(object: AnyAmino): Any {
     return {
-      typeUrl: object.type_url,
+      typeUrl: object.type,
       value: object.value
     };
   },
-
   toAmino(message: Any): AnyAmino {
     const obj: any = {};
-    obj.type_url = message.typeUrl;
+    obj.type = message.typeUrl;
     obj.value = message.value;
     return obj;
   },
-
   fromAminoMsg(object: AnyAminoMsg): Any {
     return Any.fromAmino(object.value);
   },
-
   fromProtoMsg(message: AnyProtoMsg): Any {
     return Any.decode(message.value);
   },
-
   toProto(message: Any): Uint8Array {
     return Any.encode(message).finish();
   },
-
   toProtoMsg(message: Any): AnyProtoMsg {
     return {
       typeUrl: "/google.protobuf.Any",
       value: Any.encode(message).finish()
     };
   }
-
 };

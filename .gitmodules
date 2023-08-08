@@ -4,3 +4,6 @@
 [submodule "ibc-go"]
 	path = ibc-go
 	url = git@github.com:cosmos/ibc-go.git
+[submodule "ics23"]
+	path = ics23
+	url = git@github.com:cosmos/ics23.git

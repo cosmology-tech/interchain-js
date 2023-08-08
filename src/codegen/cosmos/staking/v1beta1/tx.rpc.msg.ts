@@ -2,30 +2,25 @@ import { Rpc } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { MsgCreateValidator, MsgCreateValidatorResponse, MsgEditValidator, MsgEditValidatorResponse, MsgDelegate, MsgDelegateResponse, MsgBeginRedelegate, MsgBeginRedelegateResponse, MsgUndelegate, MsgUndelegateResponse, MsgCancelUnbondingDelegation, MsgCancelUnbondingDelegationResponse } from "./tx";
 /** Msg defines the staking Msg service. */
-
 export interface Msg {
   /** CreateValidator defines a method for creating a new validator. */
   createValidator(request: MsgCreateValidator): Promise<MsgCreateValidatorResponse>;
   /** EditValidator defines a method for editing an existing validator. */
-
   editValidator(request: MsgEditValidator): Promise<MsgEditValidatorResponse>;
   /**
    * Delegate defines a method for performing a delegation of coins
    * from a delegator to a validator.
    */
-
   delegate(request: MsgDelegate): Promise<MsgDelegateResponse>;
   /**
    * BeginRedelegate defines a method for performing a redelegation
    * of coins from a delegator and source validator to a destination validator.
    */
-
   beginRedelegate(request: MsgBeginRedelegate): Promise<MsgBeginRedelegateResponse>;
   /**
    * Undelegate defines a method for performing an undelegation from a
    * delegate and a validator.
    */
-
   undelegate(request: MsgUndelegate): Promise<MsgUndelegateResponse>;
   /**
    * CancelUnbondingDelegation defines a method for performing canceling the unbonding delegation
@@ -33,25 +28,20 @@ export interface Msg {
    * 
    * Since: cosmos-sdk 0.46
    */
-
   cancelUnbondingDelegation(request: MsgCancelUnbondingDelegation): Promise<MsgCancelUnbondingDelegationResponse>;
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;
-
   constructor(rpc: Rpc) {
     this.rpc = rpc;
   }
   /* CreateValidator defines a method for creating a new validator. */
-
-
   createValidator = async (request: MsgCreateValidator): Promise<MsgCreateValidatorResponse> => {
     const data = MsgCreateValidator.encode(request).finish();
     const promise = this.rpc.request("cosmos.staking.v1beta1.Msg", "CreateValidator", data);
     return promise.then(data => MsgCreateValidatorResponse.decode(new _m0.Reader(data)));
   };
   /* EditValidator defines a method for editing an existing validator. */
-
   editValidator = async (request: MsgEditValidator): Promise<MsgEditValidatorResponse> => {
     const data = MsgEditValidator.encode(request).finish();
     const promise = this.rpc.request("cosmos.staking.v1beta1.Msg", "EditValidator", data);
@@ -59,7 +49,6 @@ export class MsgClientImpl implements Msg {
   };
   /* Delegate defines a method for performing a delegation of coins
    from a delegator to a validator. */
-
   delegate = async (request: MsgDelegate): Promise<MsgDelegateResponse> => {
     const data = MsgDelegate.encode(request).finish();
     const promise = this.rpc.request("cosmos.staking.v1beta1.Msg", "Delegate", data);
@@ -67,7 +56,6 @@ export class MsgClientImpl implements Msg {
   };
   /* BeginRedelegate defines a method for performing a redelegation
    of coins from a delegator and source validator to a destination validator. */
-
   beginRedelegate = async (request: MsgBeginRedelegate): Promise<MsgBeginRedelegateResponse> => {
     const data = MsgBeginRedelegate.encode(request).finish();
     const promise = this.rpc.request("cosmos.staking.v1beta1.Msg", "BeginRedelegate", data);
@@ -75,7 +63,6 @@ export class MsgClientImpl implements Msg {
   };
   /* Undelegate defines a method for performing an undelegation from a
    delegate and a validator. */
-
   undelegate = async (request: MsgUndelegate): Promise<MsgUndelegateResponse> => {
     const data = MsgUndelegate.encode(request).finish();
     const promise = this.rpc.request("cosmos.staking.v1beta1.Msg", "Undelegate", data);
@@ -85,7 +72,6 @@ export class MsgClientImpl implements Msg {
    and delegate back to previous validator.
   
    Since: cosmos-sdk 0.46 */
-
   cancelUnbondingDelegation = async (request: MsgCancelUnbondingDelegation): Promise<MsgCancelUnbondingDelegationResponse> => {
     const data = MsgCancelUnbondingDelegation.encode(request).finish();
     const promise = this.rpc.request("cosmos.staking.v1beta1.Msg", "CancelUnbondingDelegation", data);

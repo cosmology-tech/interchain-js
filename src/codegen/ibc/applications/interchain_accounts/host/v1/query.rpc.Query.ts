@@ -3,20 +3,16 @@ import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
 import { QueryParamsRequest, QueryParamsResponse } from "./query";
 /** Query provides defines the gRPC querier service. */
-
 export interface Query {
   /** Params queries all parameters of the ICA host submodule. */
   params(request?: QueryParamsRequest): Promise<QueryParamsResponse>;
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
-
   constructor(rpc: Rpc) {
     this.rpc = rpc;
   }
   /* Params queries all parameters of the ICA host submodule. */
-
-
   params = async (request: QueryParamsRequest = {}): Promise<QueryParamsResponse> => {
     const data = QueryParamsRequest.encode(request).finish();
     const promise = this.rpc.request("ibc.applications.interchain_accounts.host.v1.Query", "Params", data);
@@ -30,6 +26,5 @@ export const createRpcQueryExtension = (base: QueryClient) => {
     params(request?: QueryParamsRequest): Promise<QueryParamsResponse> {
       return queryService.params(request);
     }
-
   };
 };
